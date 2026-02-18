@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <img src={aswaqLogo} alt="ASWAQ Developments" className="h-12 brightness-0 invert mb-4" />
+            <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[150px] brightness-0 invert mb-4" />
             <p className="text-primary-foreground/70 text-sm leading-relaxed font-body">
               A forward-thinking real estate developer specializing in commercial, administrative, and medical projects across East Cairo.
             </p>
@@ -22,7 +22,7 @@ const Footer = () => {
               {[
                 { label: "Home", href: "/" },
                 { label: "Our Projects", href: "/projects" },
-                { label: "Available Units", href: "/units" },
+                { label: "Choose your Unit", href: "/units" },
                 { label: "About Us", href: "/about" },
               ].map((link) => (
                 <li key={link.href}>
@@ -41,13 +41,18 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold mb-4">Our Projects</h4>
             <ul className="space-y-3 font-body">
-              {["City Hub Mall", "Mercado Mall", "Arena Mall", "Solaria Mall"].map((name) => (
-                <li key={name}>
+              {[
+                { name: "City Hub Mall", href: "/projects/city-hub-mall" },
+                { name: "Mercado Mall", href: "/projects/mercado-mall" },
+                { name: "Arena Mall", href: "/projects/arena-mall" },
+                { name: "Solaria Mall", href: "/projects/solaria-mall" },
+              ].map((project) => (
+                <li key={project.name}>
                   <Link
-                    to="/projects"
+                    to={project.href}
                     className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
                   >
-                    {name}
+                    {project.name}
                   </Link>
                 </li>
               ))}
@@ -64,7 +69,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
                 <Phone size={16} className="shrink-0 text-accent" />
-                +20 123 456 789
+                +20 12 89311523
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
                 <Mail size={16} className="shrink-0 text-accent" />
