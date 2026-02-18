@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import aswaqLogo from "@/assets/aswaq-logo.png";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -17,8 +18,8 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
-        <Link to="/" className="font-display text-2xl font-bold tracking-wider text-primary-foreground">
-          ASWAQ
+        <Link to="/">
+          <img src={aswaqLogo} alt="ASWAQ Developments" className="h-10 brightness-0 invert" />
         </Link>
 
         {/* Desktop Nav */}
