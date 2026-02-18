@@ -11,19 +11,19 @@ const unitCategories = [
     title: "Commercial Units for Sale",
     icon: ShoppingBag,
     description: "Ideal for retail stores, showrooms, cafes, and service brands. These units benefit from strong foot traffic, strategic mall placement, and modern storefront designs.",
-    link: "/units/for-sale",
+    link: "/units/commercial-for-sale",
   },
   {
     title: "Administrative Units for Sale",
     icon: Briefcase,
     description: "Professional office spaces designed for corporate teams, startups, and service providers. Administrative units feature practical layouts that support productivity and long-term business growth.",
-    link: "/units/for-sale",
+    link: "/units/administrative-for-sale",
   },
   {
     title: "Medical Units for Sale",
     icon: Stethoscope,
     description: "Specialized units tailored for clinics and healthcare service providers. Designed to meet operational requirements while offering accessibility and visibility within mixed-use developments.",
-    link: "/units/for-sale",
+    link: "/units/medical-for-sale",
   },
 ];
 

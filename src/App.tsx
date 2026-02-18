@@ -15,6 +15,15 @@ import SolariaMall from "./pages/SolariaMall";
 import UnitsForSale from "./pages/UnitsForSale";
 import UnitsForRent from "./pages/UnitsForRent";
 import UnitsForInvestment from "./pages/UnitsForInvestment";
+import CommercialForSale from "./pages/CommercialForSale";
+import CommercialForRent from "./pages/CommercialForRent";
+import CommercialForInvestment from "./pages/CommercialForInvestment";
+import AdministrativeForSale from "./pages/AdministrativeForSale";
+import AdministrativeForRent from "./pages/AdministrativeForRent";
+import AdministrativeForInvestment from "./pages/AdministrativeForInvestment";
+import MedicalForSale from "./pages/MedicalForSale";
+import MedicalForRent from "./pages/MedicalForRent";
+import MedicalForInvestment from "./pages/MedicalForInvestment";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +44,15 @@ const App = () => (
           <Route path="/units/for-sale" element={<UnitsForSale />} />
           <Route path="/units/for-rent" element={<UnitsForRent />} />
           <Route path="/units/for-investment" element={<UnitsForInvestment />} />
+          <Route path="/units/commercial-for-sale" element={<CommercialForSale />} />
+          <Route path="/units/commercial-for-rent" element={<CommercialForRent />} />
+          <Route path="/units/commercial-for-investment" element={<CommercialForInvestment />} />
+          <Route path="/units/administrative-for-sale" element={<AdministrativeForSale />} />
+          <Route path="/units/administrative-for-rent" element={<AdministrativeForRent />} />
+          <Route path="/units/administrative-for-investment" element={<AdministrativeForInvestment />} />
+          <Route path="/units/medical-for-sale" element={<MedicalForSale />} />
+          <Route path="/units/medical-for-rent" element={<MedicalForRent />} />
+          <Route path="/units/medical-for-investment" element={<MedicalForInvestment />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
