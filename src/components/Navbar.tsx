@@ -19,7 +19,7 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         <Link to="/">
-          <img src={aswaqLogo} alt="ASWAQ Developments" className="h-10 brightness-0 invert" />
+          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[150px] brightness-0 invert" />
         </Link>
 
         {/* Desktop Nav */}
