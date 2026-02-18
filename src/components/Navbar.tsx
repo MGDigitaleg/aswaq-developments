@@ -180,15 +180,7 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
 };
 
 /* ── Mobile Accordion ── */
-const MobileAccordion = ({
-  item,
-  pathname,
-  onClose,
-}: {
-  item: NavItem;
-  pathname: string;
-  onClose: () => void;
-}) => {
+const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname: string; onClose: () => void }) => {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<string | null>(null);
   const active = isPathInTree(pathname, item);
@@ -218,7 +210,10 @@ const MobileAccordion = ({
                     className={`w-full flex items-center justify-between text-sm font-medium py-2.5 transition-colors ${isPathInTree(pathname, child) ? "text-accent" : "text-primary-foreground/60"}`}
                   >
                     {child.label}
-                    <ChevronDown size={14} className={`transition-transform ${subOpen === child.href ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform ${subOpen === child.href ? "rotate-180" : ""}`}
+                    />
                   </button>
                   <AnimatePresence>
                     {subOpen === child.href && (
@@ -251,7 +246,7 @@ const MobileAccordion = ({
                 >
                   {child.label}
                 </Link>
-              )
+              ),
             )}
           </motion.div>
         )}
@@ -269,7 +264,7 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         <Link to="/">
-          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] brightness-0 invert" />
+          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[180px] brightness-0 invert" />
         </Link>
 
         {/* Desktop Nav */}
@@ -295,7 +290,10 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <Link to="/units" className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded hover:bg-gold-light transition-colors">
+          <Link
+            to="/units"
+            className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded hover:bg-gold-light transition-colors"
+          >
             Request a Unit
           </Link>
         </div>
@@ -317,7 +315,12 @@ const Navbar = () => {
             <nav className="container mx-auto py-4 px-4 flex flex-col gap-1">
               {navLinks.map((link) =>
                 link.children ? (
-                  <MobileAccordion key={link.href} item={link} pathname={location.pathname} onClose={() => setOpen(false)} />
+                  <MobileAccordion
+                    key={link.href}
+                    item={link}
+                    pathname={location.pathname}
+                    onClose={() => setOpen(false)}
+                  />
                 ) : (
                   <Link
                     key={link.href}
@@ -327,7 +330,7 @@ const Navbar = () => {
                   >
                     {link.label}
                   </Link>
-                )
+                ),
               )}
               <Link
                 to="/units"
