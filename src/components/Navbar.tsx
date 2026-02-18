@@ -62,6 +62,7 @@ const navLinks: NavItem[] = [
     ],
   },
   { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 const isPathInTree = (pathname: string, item: NavItem | NavChild): boolean => {

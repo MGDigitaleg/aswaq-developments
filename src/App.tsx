@@ -8,6 +8,7 @@ import Projects from "./pages/Projects";
 import AvailableUnits from "./pages/AvailableUnits";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import Contact from "./pages/Contact";
 import ArenaMall from "./pages/ArenaMall";
 import CityHubMall from "./pages/CityHubMall";
 import MercadoMall from "./pages/MercadoMall";
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/units/medical-for-rent" element={<MedicalForRent />} />
           <Route path="/units/medical-for-investment" element={<MedicalForInvestment />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
