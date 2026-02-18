@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import aswaqLogo from "@/assets/aswaq-logo.png";
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <h3 className="font-display text-2xl font-bold tracking-wider mb-4">ASWAQ</h3>
+            <img src={aswaqLogo} alt="ASWAQ Developments" className="h-12 brightness-0 invert mb-4" />
             <p className="text-primary-foreground/70 text-sm leading-relaxed font-body">
               A forward-thinking real estate developer specializing in commercial, administrative, and medical projects across East Cairo.
             </p>
