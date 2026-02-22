@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -73,18 +73,18 @@ const isPathInTree = (pathname: string, item: NavItem | NavChild): boolean => {
 /* ── Desktop Dropdown (simple) ── */
 const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
+  const handleEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(true);
+  };
+  const handleLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+  };
 
   return (
-    <div ref={ref} className="relative">
+    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <div className="flex items-center gap-1">
         <Link
           to={item.href}
@@ -92,13 +92,7 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
         >
           {item.label}
         </Link>
-        <button
-          onClick={() => setOpen(!open)}
-          className={`transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
-          aria-label={`Toggle ${item.label} submenu`}
-        >
-          <ChevronDown size={14} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-        </button>
+        <ChevronDown size={14} className={`transition-transform ${isActive ? "text-accent" : "text-primary-foreground/80"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
@@ -113,7 +107,6 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
               <Link
                 key={child.href}
                 to={child.href}
-                onClick={() => setOpen(false)}
                 className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-muted hover:text-accent transition-colors"
               >
                 {child.label}
@@ -129,18 +122,18 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
 /* ── Desktop Mega Menu (for Choose your Unit) ── */
 const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
+  const handleEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(true);
+  };
+  const handleLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+  };
 
   return (
-    <div ref={ref} className="relative">
+    <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <div className="flex items-center gap-1">
         <Link
           to={item.href}
@@ -148,13 +141,7 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
         >
           {item.label}
         </Link>
-        <button
-          onClick={() => setOpen(!open)}
-          className={`transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
-          aria-label={`Toggle ${item.label} submenu`}
-        >
-          <ChevronDown size={14} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-        </button>
+        <ChevronDown size={14} className={`transition-transform ${isActive ? "text-accent" : "text-primary-foreground/80"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
@@ -170,7 +157,6 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
                 <div key={group.href}>
                   <Link
                     to={group.href}
-                    onClick={() => setOpen(false)}
                     className="block font-display font-bold text-sm text-foreground hover:text-accent transition-colors mb-3"
                   >
                     {group.label}
@@ -179,7 +165,6 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
                     <Link
                       key={sub.href}
                       to={sub.href}
-                      onClick={() => setOpen(false)}
                       className="block text-xs text-muted-foreground hover:text-accent transition-colors py-1.5"
                     >
                       {sub.label}
