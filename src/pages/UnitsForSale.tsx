@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import unitImg from "@/assets/unit-interior.jpg";
+import useSEO from "@/hooks/useSEO";
 
 const unitCategories = [
   {
@@ -54,6 +55,8 @@ const faqs = [
 ];
 
 const UnitsForSale = () => {
+  useSEO("Units for Sale in Egypt | Commercial, Administrative & Medical Properties", "Looking for units for sale? Explore commercial, administrative, and medical properties for sale by ASWAQ Developments. Invest in mixed-use property in Egypt.");
+
   return (
     <Layout>
       <section className="bg-primary py-24">

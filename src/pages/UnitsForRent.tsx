@@ -4,6 +4,7 @@ import { ShoppingBag, Briefcase, Stethoscope, MapPin, Layers, TrendingUp, Shield
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import useSEO from "@/hooks/useSEO";
 
 const unitCategories = [
   {
@@ -50,6 +51,8 @@ const faqs = [
 ];
 
 const UnitsForRent = () => {
+  useSEO("Units for Rent in Egypt | Commercial, Administrative & Medical Properties", "Explore units for rent across prime ASWAQ developments. Discover commercial, administrative, and medical properties in high-demand mixed-use malls.");
+
   return (
     <Layout>
       <section className="bg-primary py-24">

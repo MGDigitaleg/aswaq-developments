@@ -5,6 +5,7 @@ import { newsArticles } from "@/data/newsData";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import useSEO from "@/hooks/useSEO";
 import heroBg from "@/assets/hero-building.jpg";
 import cityhubImg from "@/assets/cityhub-mall.jpg";
 import mercadoImg from "@/assets/mercado-mall.jpg";
@@ -86,6 +87,8 @@ const fadeIn = {
 };
 
 const Index = () => {
+  useSEO("ASWAQ Developments | Real Estate Developer in Egypt", "ASWAQ Developments delivers premium units for rent and property for sale in Egypt, with mixed-use properties in Shorouk City and flexible payment plans.");
+
   return (
     <Layout>
       {/* Hero */}

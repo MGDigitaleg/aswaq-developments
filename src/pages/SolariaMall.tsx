@@ -3,6 +3,7 @@ import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2 } from "lucide-r
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import solariaImg from "@/assets/solaria-mall.jpg";
+import useSEO from "@/hooks/useSEO";
 
 const unitTypes = [
   { icon: ShoppingBag, label: "Retail shops and showrooms" },
@@ -29,6 +30,8 @@ const whyInvest = [
 ];
 
 const SolariaMall = () => {
+  useSEO("Solaria Mall | Mixed-Use Properties for Rent in El Shorouk", "Select prime commercial units for rent at Solaria Mall El Shorouk. Find ideal spaces for retail, offices, and profitable property investment in Egypt.");
+
   return (
     <Layout>
       <section className="bg-primary py-24">

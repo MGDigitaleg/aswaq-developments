@@ -4,6 +4,7 @@ import { MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import useSEO from "@/hooks/useSEO";
 
 interface MallInfo {
   name: string;
@@ -13,6 +14,8 @@ interface MallInfo {
 }
 
 interface UnitCategoryPageProps {
+  metaTitle?: string;
+  metaDescription?: string;
   heroLabel: string;
   heroTitle: string;
   heroDescription: string;
@@ -43,6 +46,8 @@ const commonFaqs = [
 export { commonFaqs };
 
 const UnitCategoryPage = ({
+  metaTitle,
+  metaDescription,
   heroLabel,
   heroTitle,
   heroDescription,
@@ -59,6 +64,8 @@ const UnitCategoryPage = ({
   ctaSubtitle,
   faqs,
 }: UnitCategoryPageProps) => {
+  useSEO(metaTitle || heroTitle, metaDescription || heroDescription);
+
   return (
     <Layout>
       {/* Hero */}

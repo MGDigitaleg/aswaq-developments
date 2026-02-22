@@ -2,6 +2,8 @@ import UnitCategoryPage, { commonFaqs } from "@/components/UnitCategoryPage";
 
 const MedicalForRent = () => (
   <UnitCategoryPage
+    metaTitle="Medical Units for Rent in Shorouk City | ASWAQ Developments"
+    metaDescription="Find premium medical units for rent in Shorouk City. ASWAQ Developments offers modern clinics for rent at City Hub and Mercado Mall. Fully serviced medical properties starting from 30 m²."
     heroLabel="Medical Units"
     heroTitle="Medical Units for Rent in Shorouk City"
     heroDescription="Find premium medical units for rent in Shorouk City. ASWAQ Developments offers modern clinics for rent at City Hub and Mercado Mall. Fully serviced medical properties starting from 30 m²."

@@ -2,6 +2,8 @@ import UnitCategoryPage, { commonFaqs } from "@/components/UnitCategoryPage";
 
 const MedicalForInvestment = () => (
   <UnitCategoryPage
+    metaTitle="Medical Units for Investment in Shorouk City | ASWAQ Developments"
+    metaDescription="Capitalize on high-growth medical units for investment with ASWAQ Developments. Explore modern clinics & premium healthcare spaces from 30 m² in prime Shorouk City locations."
     heroLabel="Medical Units"
     heroTitle="Medical Units for Investment in Shorouk City"
     heroDescription="Capitalize on high-growth medical units for investment with ASWAQ Developments. Explore modern clinics & premium healthcare spaces from 30 m² in prime Shorouk City locations."

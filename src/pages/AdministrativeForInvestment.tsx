@@ -2,6 +2,8 @@ import UnitCategoryPage, { commonFaqs } from "@/components/UnitCategoryPage";
 
 const AdministrativeForInvestment = () => (
   <UnitCategoryPage
+    metaTitle="Administrative Units for Investment in Shorouk City | ASWAQ Developments"
+    metaDescription="Capitalize on administrative units for investment in Shorouk City with ASWAQ Developments. Discover premium offices within mixed-use real estate projects at City Hub & Mercado Mall."
     heroLabel="Administrative Units"
     heroTitle="Administrative Units for Investment in Shorouk City"
     heroDescription="Capitalize on administrative units for investment in Shorouk City with ASWAQ Developments. Discover premium offices within mixed-use real estate projects."

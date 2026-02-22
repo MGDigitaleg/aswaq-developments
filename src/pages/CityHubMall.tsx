@@ -4,6 +4,7 @@ import { MapPin, ShoppingBag, TrendingUp, Store, Wrench } from "lucide-react";
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import cityhubImg from "@/assets/cityhub-mall.jpg";
+import useSEO from "@/hooks/useSEO";
 
 const unitTypes = [
   { icon: ShoppingBag, label: "Commercial units for rent" },
@@ -21,6 +22,8 @@ const whyInvest = [
 ];
 
 const CityHubMall = () => {
+  useSEO("City Hub Mall | Commercial Units for Rent in El Shorouk", "Explore prime business properties & spaces in City Hub Mall in El Shorouk offering commercial units for rent and sale at flexible prices.");
+
   return (
     <Layout>
       {/* Hero */}
