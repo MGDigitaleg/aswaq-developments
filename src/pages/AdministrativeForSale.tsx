@@ -2,6 +2,8 @@ import UnitCategoryPage, { commonFaqs } from "@/components/UnitCategoryPage";
 
 const AdministrativeForSale = () => (
   <UnitCategoryPage
+    metaTitle="Administrative Units for Sale in Shorouk City | Offices for Sale"
+    metaDescription="Discover administrative units for sale in Shorouk City with ASWAQ Developments. Own offices for sale within strategic real estate projects built for business growth."
     heroLabel="Administrative Units"
     heroTitle="Administrative Units for Sale in Shorouk City"
     heroDescription="Secure a permanent foundation for your business in Shorouk City's most prestigious commercial landmarks."

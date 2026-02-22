@@ -2,6 +2,8 @@ import UnitCategoryPage, { commonFaqs } from "@/components/UnitCategoryPage";
 
 const AdministrativeForRent = () => (
   <UnitCategoryPage
+    metaTitle="Administrative Units for Rent in Shorouk City | Offices for Rent"
+    metaDescription="Elevate your business with premium administrative units for rent in Shorouk City. Discover modern offices at mixed-use malls by ASWAQ Developments. Flexible spaces from 30 m²."
     heroLabel="Administrative Units"
     heroTitle="Administrative Units for Rent in Shorouk City"
     heroDescription="Elevate your business with premium administrative units for rent in Shorouk City. Discover modern offices at mixed-use malls by ASWAQ Developments."

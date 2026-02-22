@@ -2,6 +2,8 @@ import UnitCategoryPage, { commonFaqs } from "@/components/UnitCategoryPage";
 
 const CommercialForRent = () => (
   <UnitCategoryPage
+    metaTitle="Commercial Units for Rent in Shorouk City"
+    metaDescription="Looking for commercial units for rent in Shorouk? Discover premium commercial properties in Shorouk City's most active malls with ASWAQ."
     heroLabel="Commercial Units"
     heroTitle="Commercial Units for Rent in Shorouk City"
     heroDescription="Looking for commercial units for rent in Shorouk? Discover premium commercial properties in Shorouk City's most active malls with ASWAQ."

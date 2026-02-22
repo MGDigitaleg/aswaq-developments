@@ -3,6 +3,7 @@ import { MapPin, ShoppingBag, TrendingUp, Store, Wrench } from "lucide-react";
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import mercadoImg from "@/assets/mercado-mall.jpg";
+import useSEO from "@/hooks/useSEO";
 
 const unitTypes = [
   { icon: ShoppingBag, label: "Commercial units for rent" },
@@ -29,6 +30,8 @@ const whyInvest = [
 ];
 
 const MercadoMall = () => {
+  useSEO("Mercado Mall | Commercial Units for Rent in El Shorouk", "Looking for commercial property for rent? Invest in Mercado Mall El Shorouk, offering retail units for sale & rent at flexible prices.");
+
   return (
     <Layout>
       <section className="bg-primary py-24">

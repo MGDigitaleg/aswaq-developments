@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import useSEO from "@/hooks/useSEO";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import cityhubImg from "@/assets/cityhub-mall.jpg";
@@ -99,18 +99,7 @@ const faqs = [
 ];
 
 const Projects = () => {
-  useEffect(() => {
-    document.title = "ASWAQ Developments Real Estate Projects";
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute("content", "Looking for commercial units for sale in Shorouk? Discover premium commercial properties in Shorouk City's most active malls with ASWAQ.");
-    } else {
-      const meta = document.createElement("meta");
-      meta.name = "description";
-      meta.content = "Looking for commercial units for sale in Shorouk? Discover premium commercial properties in Shorouk City's most active malls with ASWAQ.";
-      document.head.appendChild(meta);
-    }
-  }, []);
+  useSEO("ASWAQ Developments Real Estate Projects", "Looking for commercial units for sale in Shorouk? Discover premium commercial properties in Shorouk City's most active malls with ASWAQ.");
 
   return (
     <Layout>

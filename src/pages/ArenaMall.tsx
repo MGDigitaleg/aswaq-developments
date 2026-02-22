@@ -4,6 +4,7 @@ import { MapPin, Building2, Stethoscope, Briefcase, ShoppingBag } from "lucide-r
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import arenaImg from "@/assets/arena-mall.jpg";
+import useSEO from "@/hooks/useSEO";
 
 const unitTypes = [
   { icon: ShoppingBag, label: "Retail shops and showrooms" },
@@ -30,6 +31,8 @@ const locationAdvantages = [
 ];
 
 const ArenaMall = () => {
+  useSEO("Arena Mall | Commercial, Medical, & Administrative Units for Rent in El Shorouk", "Explore properties for rent at Arena Mall El Shorouk by ASWAQ Developments. Discover commercial, business, and medical units in a prime mixed-use location. Find your ideal rental space today.");
+
   return (
     <Layout>
       {/* Hero */}

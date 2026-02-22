@@ -4,6 +4,7 @@ import { ShoppingBag, Briefcase, Stethoscope, MapPin, Layers, TrendingUp, Shield
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import useSEO from "@/hooks/useSEO";
 
 const unitCategories = [
   {
@@ -50,6 +51,8 @@ const faqs = [
 ];
 
 const UnitsForInvestment = () => {
+  useSEO("Units for investment in Egypt | Commercial & Mixed-Use Property", "Explore investment units across ASWAQ developments. Discover commercial, administrative, and medical properties designed for rental income and long-term value growth in Egypt.");
+
   return (
     <Layout>
       <section className="bg-primary py-24">

@@ -2,6 +2,8 @@ import UnitCategoryPage, { commonFaqs } from "@/components/UnitCategoryPage";
 
 const CommercialForInvestment = () => (
   <UnitCategoryPage
+    metaTitle="Commercial Units for Investment in Shorouk City | ASWAQ Developments"
+    metaDescription="Explore commercial units for investment in Shorouk City with ASWAQ Developments. Discover high-potential commercial properties within growing real estate projects designed for long-term returns."
     heroLabel="Commercial Units"
     heroTitle="Commercial Units for Investment in Shorouk City"
     heroDescription="Invest in commercial properties built for sustainable growth. Secure high-demand commercial properties for investment inside Shorouk City's most promising real estate projects."
