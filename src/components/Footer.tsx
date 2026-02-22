@@ -69,15 +69,15 @@ const Footer = () => {
             <ul className="space-y-3 font-body">
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
-                Shorouk City, East Cairo, Egypt
+                Villa 1/127 - Al-Nsoor complex, Al Moltaqa Neighborhood, Otostrad road - Sheraton
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
                 <Phone size={16} className="shrink-0 text-accent" />
-                +20 12 89311523
+                19474
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
                 <Mail size={16} className="shrink-0 text-accent" />
-                info@aswaq-egypt.com
+                marketing@aswaqdev.com
               </li>
             </ul>
           </div>
