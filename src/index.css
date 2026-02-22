@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 228 50% 16%;
+    --primary: 227 51% 16%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 20% 96%;
@@ -37,7 +37,7 @@
     --radius: 0.5rem;
 
     /* Custom tokens */
-    --navy: 228 50% 16%;
+    --navy: 227 51% 16%;
     --navy-light: 228 40% 25%;
     --gold: 40 76% 50%;
     --gold-light: 40 76% 60%;
@@ -95,7 +95,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
-    color: hsl(var(--primary));
+    color: #141D3D;
   }
 }
 
