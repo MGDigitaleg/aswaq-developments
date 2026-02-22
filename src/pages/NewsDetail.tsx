@@ -55,6 +55,26 @@ const NewsDetail = () => {
               {paragraph}
             </motion.p>
           ))}
+
+          {/* YouTube Video */}
+          {article.youtubeId && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-8"
+            >
+              <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                  src={`https://www.youtube.com/embed/${article.youtubeId}`}
+                  title="YouTube video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                />
+              </div>
+            </motion.div>
+          )}
         </div>
       </section>
 

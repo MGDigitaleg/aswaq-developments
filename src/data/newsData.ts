@@ -12,6 +12,7 @@ export interface NewsArticle {
   image: string;
   excerpt: string;
   content: string[];
+  youtubeId?: string;
 }
 
 export const newsArticles: NewsArticle[] = [
@@ -38,6 +39,7 @@ export const newsArticles: NewsArticle[] = [
       "Aswaq Developments participated in the activities of Cityscape Egypt 2024 — one of the largest real estate exhibitions in Egypt and the Middle East.",
       "By participating in this exhibition, we presented exclusive offers for all our projects in Shorouk City. All our offers were exclusive and limited to the expo only, which led to a very noticeable influx of customers to our booth.",
     ],
+    youtubeId: "lPmkKwYuF0I",
   },
   {
     id: "invest-with-experience",
