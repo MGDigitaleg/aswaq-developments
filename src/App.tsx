@@ -28,6 +28,7 @@ import MedicalForInvestment from "./pages/MedicalForInvestment";
 import News from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import Gallery from "./pages/Gallery";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/projects" element={<Projects />} />
