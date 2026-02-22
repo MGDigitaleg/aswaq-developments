@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronRight, Newspaper } from "lucide-react";
+import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronRight } from "lucide-react";
+import { newsArticles } from "@/data/newsData";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -282,49 +283,46 @@ const Index = () => {
       {/* Latest News */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
-            Latest News
-          </h2>
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              Latest News
+            </h2>
+            <Link to="/news" className="text-accent font-semibold font-body text-sm inline-flex items-center gap-1 hover:underline">
+              View All <ChevronRight size={14} />
+            </Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                date: "September 19, 2024",
-                title: "Launching the Fourth Masterpiece of ASWAQ Developments",
-                tag: "Launch",
-              },
-              {
-                date: "September 15, 2024",
-                title: "Press Conference to Announce Solaria Mall",
-                tag: "Announcement",
-              },
-              {
-                date: "September 10, 2024",
-                title: "ASWAQ Takes Part in Cityscape Egypt 2024",
-                tag: "Event",
-              },
-            ].map((news) => (
+            {newsArticles.slice(0, 3).map((article, i) => (
               <motion.div
-                key={news.title}
+                key={article.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-card border border-border rounded-lg overflow-hidden group hover:shadow-lg transition-shadow"
+                transition={{ delay: i * 0.1 }}
               >
-                <div className="h-48 bg-primary/10 flex items-center justify-center">
-                  <Newspaper size={48} className="text-primary/30" />
-                </div>
-                <div className="p-6">
-                  <span className="text-xs text-accent font-semibold uppercase font-body">
-                    {news.tag}
-                  </span>
-                  <p className="text-xs text-muted-foreground mt-1 font-body">{news.date}</p>
-                  <h3 className="font-display text-lg font-semibold text-foreground mt-2 group-hover:text-primary transition-colors">
-                    {news.title}
-                  </h3>
-                  <span className="inline-flex items-center gap-1 text-sm text-accent mt-3 font-body font-medium">
-                    Read More <ChevronRight size={14} />
-                  </span>
-                </div>
+                <Link
+                  to={`/news/${article.id}`}
+                  className="group block bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-xs text-muted-foreground font-body">{article.date}</p>
+                    <h3 className="font-display text-lg font-semibold text-foreground mt-2 group-hover:text-primary transition-colors line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground font-body mt-2 line-clamp-2">{article.excerpt}</p>
+                    <span className="inline-flex items-center gap-1 text-sm text-accent mt-3 font-body font-medium">
+                      Read More <ChevronRight size={14} />
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
