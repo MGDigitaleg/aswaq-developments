@@ -18,6 +18,7 @@ interface NavItem {
 
 const navLinks: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
   {
     label: "Projects",
     href: "/projects",
@@ -61,7 +62,6 @@ const navLinks: NavItem[] = [
       },
     ],
   },
-  { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
 ];
 
