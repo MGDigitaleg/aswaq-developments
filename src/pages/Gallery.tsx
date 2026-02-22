@@ -8,6 +8,8 @@ import solaria1 from "@/assets/gallery/solaria-1.jpg";
 import solaria2 from "@/assets/gallery/solaria-2.jpg";
 import solaria3 from "@/assets/gallery/solaria-3.jpg";
 import solaria4 from "@/assets/gallery/solaria-4.jpg";
+import arena1 from "@/assets/gallery/arena-1.jpg";
+import arena2 from "@/assets/gallery/arena-2.jpg";
 
 const projectTabs = [
   { id: "solaria", label: "Solaria Mall" },
@@ -29,7 +31,7 @@ const galleryData: Record<string, { images: string[]; videos: string[] }> = {
     ],
   },
   arena: {
-    images: [],
+    images: [arena1, arena2],
     videos: ["buh9BJmWn9A", "unR4JKFXAXE", "6YWp0lGYC3Q", "JFqUABOPOk8", "kVdnKIBWN2A"],
   },
   mercado: {
