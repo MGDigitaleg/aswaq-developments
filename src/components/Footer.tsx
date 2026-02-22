@@ -22,9 +22,9 @@ const Footer = () => {
             <ul className="space-y-3 font-body">
               {[
                 { label: "Home", href: "/" },
+                { label: "About Us", href: "/about" },
                 { label: "Our Projects", href: "/projects" },
                 { label: "Choose your Unit", href: "/units" },
-                { label: "About Us", href: "/about" },
                 { label: "Contact Us", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
