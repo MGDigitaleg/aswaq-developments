@@ -59,7 +59,7 @@ const News = () => {
                     />
                   </div>
                   <div className="p-6">
-                    <span className="text-xs font-body text-muted-foreground">{article.date}</span>
+                    
                     <h3 className="font-display text-lg font-bold mt-2 mb-3 group-hover:text-accent transition-colors line-clamp-2">
                       {article.title}
                     </h3>
