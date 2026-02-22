@@ -85,7 +85,8 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-primary-foreground/10 text-center">
           <p className="text-sm text-primary-foreground/50 font-body">
-            © {new Date().getFullYear()} ASWAQ Developments. All rights reserved.
+            © {new Date().getFullYear()} ASWAQ Developments. All rights reserved. | Developed By{" "}
+            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">MG Digital</a>
           </p>
         </div>
       </div>
