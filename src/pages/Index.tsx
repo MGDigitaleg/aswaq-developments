@@ -114,13 +114,13 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/projects"
-              className="bg-accent text-accent-foreground px-8 py-3 font-semibold rounded hover:bg-gold-light transition-colors font-body"
+              className="bg-white text-[#e0a01f] border-2 border-[#e0a01f] px-8 py-3 font-semibold rounded hover:bg-[#e0a01f] hover:text-white transition-colors font-body"
             >
               Explore Projects
             </Link>
             <Link
               to="/about"
-              className="border border-primary-foreground/40 text-primary-foreground px-8 py-3 font-semibold rounded hover:bg-primary-foreground/10 transition-colors font-body"
+              className="bg-white text-[#e0a01f] border-2 border-[#e0a01f] px-8 py-3 font-semibold rounded hover:bg-[#e0a01f] hover:text-white transition-colors font-body"
             >
               Learn More
             </Link>
