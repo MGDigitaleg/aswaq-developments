@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Layers, TrendingUp, ShieldCheck } from "lucide-react";
@@ -66,6 +67,20 @@ const faqs = [
 ];
 
 const AvailableUnits = () => {
+  useEffect(() => {
+    document.title = "Choose Your Unit in Shorouk City | Properties for Sale & Properties";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const content = "Explore units for sale, investment opportunities, and properties for rent across prime developments by ASWAQ Developments, a trusted real estate developer in Egypt. Choose your unit today.";
+    if (metaDesc) {
+      metaDesc.setAttribute("content", content);
+    } else {
+      const meta = document.createElement("meta");
+      meta.name = "description";
+      meta.content = content;
+      document.head.appendChild(meta);
+    }
+  }, []);
+
   return (
     <Layout>
       {/* Hero */}
