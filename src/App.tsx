@@ -27,6 +27,7 @@ import MedicalForRent from "./pages/MedicalForRent";
 import MedicalForInvestment from "./pages/MedicalForInvestment";
 import News from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
+import Gallery from "./pages/Gallery";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
           <Route path="/units/medical-for-investment" element={<MedicalForInvestment />} />
           <Route path="/news" element={<News />} />
           <Route path="/news/:slug" element={<NewsDetail />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

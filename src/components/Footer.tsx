@@ -26,6 +26,7 @@ const Footer = () => {
                 { label: "Our Projects", href: "/projects" },
                 { label: "Choose your Unit", href: "/units" },
                 { label: "News", href: "/news" },
+                { label: "Gallery", href: "/gallery" },
                 { label: "Contact Us", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>

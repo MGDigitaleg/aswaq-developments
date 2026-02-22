@@ -63,6 +63,7 @@ const navLinks: NavItem[] = [
     ],
   },
   { label: "News", href: "/news" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact Us", href: "/contact" },
 ];
 
