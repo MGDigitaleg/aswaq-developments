@@ -12,12 +12,30 @@ const projectTabs = [
   { id: "cityhub", label: "City Hub Mall" },
 ];
 
-// Placeholder data – replace with real images/videos later
 const galleryData: Record<string, { images: string[]; videos: string[] }> = {
-  solaria: { images: [], videos: [] },
-  arena: { images: [], videos: [] },
-  mercado: { images: [], videos: [] },
-  cityhub: { images: [], videos: [] },
+  solaria: {
+    images: [],
+    videos: [
+      "pnchRd-AAwg", "5zo6Nh69DoU", "21h59Aidbss", "lDb2srq3prQ", "9xWD4rjaFz4",
+      "PtXQ7ekGibo", "NjbdYDPeErM", "IFGQuVc1Qh4", "boE6pqIItFE", "Xf8AUcMltIQ",
+      "Yq2XDpp2UNU", "7_I97gYQrho", "Hqv9KliWT1s", "BrDGv2SxZXI", "Y4lN13Cas5c",
+      "vDInqD_HcKU", "cepHBQGE7J0", "9ejGoFF4Jrk", "urvheJNfRdQ", "Z2s5k9hBR5s",
+      "lIwPvTA4kl8", "5Vg0nxFPN2s", "giAo0wIirns", "bWMNLhNUWic", "l6kA_Ya2tW8",
+      "-vQ52O22iwM", "0SPxL2rY3Dc", "ntpGQTMyq3Q",
+    ],
+  },
+  arena: {
+    images: [],
+    videos: ["buh9BJmWn9A", "unR4JKFXAXE", "6YWp0lGYC3Q", "JFqUABOPOk8", "kVdnKIBWN2A"],
+  },
+  mercado: {
+    images: [],
+    videos: ["fHgVO2698Jw", "_QHKwyMozZw", "hUGvrHMnmoY"],
+  },
+  cityhub: {
+    images: [],
+    videos: ["9pl-SiE0VVk", "868YMiO0LJc", "82mVbp9nB6U", "VIvmPBqrLnk"],
+  },
 };
 
 const Gallery = () => {
