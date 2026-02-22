@@ -18,7 +18,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-display text-lg font-semibold mb-4 text-primary-foreground">Quick Links</h4>
             <ul className="space-y-3 font-body">
               {[
                 { label: "Home", href: "/" },
@@ -43,7 +43,7 @@ const Footer = () => {
 
           {/* Our Projects */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4">Our Projects</h4>
+            <h4 className="font-display text-lg font-semibold mb-4 text-primary-foreground">Our Projects</h4>
             <ul className="space-y-3 font-body">
               {[
                 { name: "City Hub Mall", href: "/projects/city-hub-mall" },
@@ -65,7 +65,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4">Contact Us</h4>
+            <h4 className="font-display text-lg font-semibold mb-4 text-primary-foreground">Contact Us</h4>
             <ul className="space-y-3 font-body">
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
