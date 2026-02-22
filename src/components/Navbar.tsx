@@ -85,13 +85,21 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
 
   return (
     <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 text-sm font-medium tracking-wide transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
-      >
-        {item.label}
-        <ChevronDown size={14} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
+      <div className="flex items-center gap-1">
+        <Link
+          to={item.href}
+          className={`text-sm font-medium tracking-wide transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+        >
+          {item.label}
+        </Link>
+        <button
+          onClick={() => setOpen(!open)}
+          className={`transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+          aria-label={`Toggle ${item.label} submenu`}
+        >
+          <ChevronDown size={14} className={`transition-transform ${open ? "rotate-180" : ""}`} />
+        </button>
+      </div>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -133,13 +141,21 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
 
   return (
     <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 text-sm font-medium tracking-wide transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
-      >
-        {item.label}
-        <ChevronDown size={14} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
+      <div className="flex items-center gap-1">
+        <Link
+          to={item.href}
+          className={`text-sm font-medium tracking-wide transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+        >
+          {item.label}
+        </Link>
+        <button
+          onClick={() => setOpen(!open)}
+          className={`transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+          aria-label={`Toggle ${item.label} submenu`}
+        >
+          <ChevronDown size={14} className={`transition-transform ${open ? "rotate-180" : ""}`} />
+        </button>
+      </div>
       <AnimatePresence>
         {open && (
           <motion.div
