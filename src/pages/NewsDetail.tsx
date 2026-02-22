@@ -36,7 +36,7 @@ const NewsDetail = () => {
           >
             {article.title}
           </motion.h1>
-          <p className="font-body text-primary-foreground/60 mt-3">{article.date}</p>
+          
         </div>
       </section>
 
@@ -96,7 +96,7 @@ const NewsDetail = () => {
                     <img src={a.image} alt={a.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   </div>
                   <div className="p-5">
-                    <span className="text-xs font-body text-muted-foreground">{a.date}</span>
+                    
                     <h3 className="font-display text-base font-bold mt-2 group-hover:text-accent transition-colors line-clamp-2">
                       {a.title}
                     </h3>
