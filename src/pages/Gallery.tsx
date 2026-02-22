@@ -4,6 +4,10 @@ import Layout from "@/components/Layout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ImageIcon, Film } from "lucide-react";
 import heroImg from "@/assets/hero-building.jpg";
+import solaria1 from "@/assets/gallery/solaria-1.jpg";
+import solaria2 from "@/assets/gallery/solaria-2.jpg";
+import solaria3 from "@/assets/gallery/solaria-3.jpg";
+import solaria4 from "@/assets/gallery/solaria-4.jpg";
 
 const projectTabs = [
   { id: "solaria", label: "Solaria Mall" },
@@ -14,7 +18,7 @@ const projectTabs = [
 
 const galleryData: Record<string, { images: string[]; videos: string[] }> = {
   solaria: {
-    images: [],
+    images: [solaria1, solaria2, solaria3, solaria4],
     videos: [
       "pnchRd-AAwg", "5zo6Nh69DoU", "21h59Aidbss", "lDb2srq3prQ", "9xWD4rjaFz4",
       "PtXQ7ekGibo", "NjbdYDPeErM", "IFGQuVc1Qh4", "boE6pqIItFE", "Xf8AUcMltIQ",
