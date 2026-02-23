@@ -47,6 +47,14 @@ import CityHubMallAr from "./pages/ar/CityHubMallAr";
 import UnitsForSaleAr from "./pages/ar/UnitsForSaleAr";
 import UnitsForRentAr from "./pages/ar/UnitsForRentAr";
 import UnitsForInvestmentAr from "./pages/ar/UnitsForInvestmentAr";
+import IndexAr from "./pages/ar/IndexAr";
+import AboutAr from "./pages/ar/AboutAr";
+import NewsAr from "./pages/ar/NewsAr";
+import NewsDetailAr from "./pages/ar/NewsDetailAr";
+import GalleryAr from "./pages/ar/GalleryAr";
+import ContactAr from "./pages/ar/ContactAr";
+import ProjectsAr from "./pages/ar/ProjectsAr";
+import AvailableUnitsAr from "./pages/ar/AvailableUnitsAr";
 
 const queryClient = new QueryClient();
 
@@ -85,13 +93,13 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
 
           {/* Arabic routes */}
-          <Route path="/ar" element={<Index />} />
-          <Route path="/ar/projects" element={<Projects />} />
+          <Route path="/ar" element={<IndexAr />} />
+          <Route path="/ar/projects" element={<ProjectsAr />} />
           <Route path="/ar/projects/arena-mall" element={<ArenaMallAr />} />
           <Route path="/ar/projects/city-hub-mall" element={<CityHubMallAr />} />
           <Route path="/ar/projects/mercado-mall" element={<MercadoMallAr />} />
           <Route path="/ar/projects/solaria-mall" element={<SolariaMallAr />} />
-          <Route path="/ar/units" element={<AvailableUnits />} />
+          <Route path="/ar/units" element={<AvailableUnitsAr />} />
           <Route path="/ar/units/for-sale" element={<UnitsForSaleAr />} />
           <Route path="/ar/units/for-rent" element={<UnitsForRentAr />} />
           <Route path="/ar/units/for-investment" element={<UnitsForInvestmentAr />} />
@@ -104,11 +112,11 @@ const App = () => (
           <Route path="/ar/units/medical-for-sale" element={<MedicalForSaleAr />} />
           <Route path="/ar/units/medical-for-rent" element={<MedicalForRentAr />} />
           <Route path="/ar/units/medical-for-investment" element={<MedicalForInvestmentAr />} />
-          <Route path="/ar/news" element={<News />} />
-          <Route path="/ar/news/:slug" element={<NewsDetail />} />
-          <Route path="/ar/gallery" element={<Gallery />} />
-          <Route path="/ar/about" element={<About />} />
-          <Route path="/ar/contact" element={<Contact />} />
+          <Route path="/ar/news" element={<NewsAr />} />
+          <Route path="/ar/news/:slug" element={<NewsDetailAr />} />
+          <Route path="/ar/gallery" element={<GalleryAr />} />
+          <Route path="/ar/about" element={<AboutAr />} />
+          <Route path="/ar/contact" element={<ContactAr />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
