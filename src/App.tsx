@@ -30,6 +30,17 @@ import NewsDetail from "./pages/NewsDetail";
 import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
 
+// Arabic pages
+import CommercialForSaleAr from "./pages/ar/CommercialForSaleAr";
+import CommercialForRentAr from "./pages/ar/CommercialForRentAr";
+import CommercialForInvestmentAr from "./pages/ar/CommercialForInvestmentAr";
+import AdministrativeForSaleAr from "./pages/ar/AdministrativeForSaleAr";
+import AdministrativeForRentAr from "./pages/ar/AdministrativeForRentAr";
+import AdministrativeForInvestmentAr from "./pages/ar/AdministrativeForInvestmentAr";
+import MedicalForSaleAr from "./pages/ar/MedicalForSaleAr";
+import MedicalForRentAr from "./pages/ar/MedicalForRentAr";
+import MedicalForInvestmentAr from "./pages/ar/MedicalForInvestmentAr";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -40,6 +51,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
+          {/* English routes */}
           <Route path="/" element={<Index />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/arena-mall" element={<ArenaMall />} />
@@ -64,6 +76,33 @@ const App = () => (
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+
+          {/* Arabic routes */}
+          <Route path="/ar" element={<Index />} />
+          <Route path="/ar/projects" element={<Projects />} />
+          <Route path="/ar/projects/arena-mall" element={<ArenaMall />} />
+          <Route path="/ar/projects/city-hub-mall" element={<CityHubMall />} />
+          <Route path="/ar/projects/mercado-mall" element={<MercadoMall />} />
+          <Route path="/ar/projects/solaria-mall" element={<SolariaMall />} />
+          <Route path="/ar/units" element={<AvailableUnits />} />
+          <Route path="/ar/units/for-sale" element={<UnitsForSale />} />
+          <Route path="/ar/units/for-rent" element={<UnitsForRent />} />
+          <Route path="/ar/units/for-investment" element={<UnitsForInvestment />} />
+          <Route path="/ar/units/commercial-for-sale" element={<CommercialForSaleAr />} />
+          <Route path="/ar/units/commercial-for-rent" element={<CommercialForRentAr />} />
+          <Route path="/ar/units/commercial-for-investment" element={<CommercialForInvestmentAr />} />
+          <Route path="/ar/units/administrative-for-sale" element={<AdministrativeForSaleAr />} />
+          <Route path="/ar/units/administrative-for-rent" element={<AdministrativeForRentAr />} />
+          <Route path="/ar/units/administrative-for-investment" element={<AdministrativeForInvestmentAr />} />
+          <Route path="/ar/units/medical-for-sale" element={<MedicalForSaleAr />} />
+          <Route path="/ar/units/medical-for-rent" element={<MedicalForRentAr />} />
+          <Route path="/ar/units/medical-for-investment" element={<MedicalForInvestmentAr />} />
+          <Route path="/ar/news" element={<News />} />
+          <Route path="/ar/news/:slug" element={<NewsDetail />} />
+          <Route path="/ar/gallery" element={<Gallery />} />
+          <Route path="/ar/about" element={<About />} />
+          <Route path="/ar/contact" element={<Contact />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
