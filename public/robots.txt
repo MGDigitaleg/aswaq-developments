@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://aswaq-dream-maker.lovable.app/sitemap.xml
+Sitemap: https://aswaq-eg.site/sitemap.xml
