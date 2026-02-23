@@ -275,7 +275,7 @@ const Navbar = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-primary/80 backdrop-blur-md" : "bg-primary"}`}>
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         <Link to="/">
-          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[180px] brightness-0 invert" />
+          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px]" />
         </Link>
 
         {/* Desktop Nav */}
