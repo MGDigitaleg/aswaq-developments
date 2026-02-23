@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { newsArticles } from "@/data/newsData";
+import { newsArticlesAr } from "@/data/newsDataAr";
 import heroBuilding from "@/assets/hero-building.jpg";
 
 const NewsAr = () => {
@@ -32,7 +32,7 @@ const NewsAr = () => {
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsArticles.map((article, i) => (
+            {newsArticlesAr.map((article, i) => (
               <motion.div key={article.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <Link to={`/ar/news/${article.id}`} className="group block bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                   <div className="aspect-[16/10] overflow-hidden">
