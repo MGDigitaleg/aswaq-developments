@@ -3,11 +3,11 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
-import { newsArticles } from "@/data/newsData";
+import { newsArticlesAr } from "@/data/newsDataAr";
 
 const NewsDetailAr = () => {
   const { slug } = useParams<{ slug: string }>();
-  const article = newsArticles.find((a) => a.id === slug);
+  const article = newsArticlesAr.find((a) => a.id === slug);
 
   useEffect(() => {
     if (article) {
@@ -17,7 +17,7 @@ const NewsDetailAr = () => {
 
   if (!article) return <Navigate to="/ar/news" replace />;
 
-  const otherArticles = newsArticles.filter((a) => a.id !== slug).slice(0, 3);
+  const otherArticles = newsArticlesAr.filter((a) => a.id !== slug).slice(0, 3);
 
   return (
     <Layout>
