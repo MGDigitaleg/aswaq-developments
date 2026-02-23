@@ -6,12 +6,12 @@ import aboutHero from "@/assets/about-hero.jpg";
 import useSEO from "@/hooks/useSEO";
 
 const whyChoose = [
-  { icon: Award, text: "أكثر من 20 عامًا من الخبرة العقارية" },
-  { icon: Building2, text: "أكثر من 15 مشروعًا ناجحًا في مصر" },
-  { icon: Heart, text: "أكثر من 400 عميل راضٍ" },
-  { icon: Target, text: "استثمارات تتجاوز 3 مليارات جنيه" },
-  { icon: Clock, text: "تسليم المشاريع قبل الموعد المحدد" },
-  { icon: CheckCircle, text: "مملوكة ومدارة بواسطة أسواق لضمان الجودة" },
+  { icon: Award, text: "خبرة عقارية تمتد لأكثر من 20 عاماً في مجال الاستثمار العقاري في مصر" },
+  { icon: Building2, text: "أكثر من 15 مشروعاً ناجحاً وبصمة قوية ومشاريع عقارية متكاملة" },
+  { icon: Heart, text: "أكثر من 400 عميل واثق بنا، نفتخر ببناء علاقات مستدامة مع شركائنا" },
+  { icon: Target, text: "استثمارات تتخطى 3 مليارات جنيه مصري تضمن استمرارية وتطور مشاريعنا" },
+  { icon: Clock, text: "أعمال سابقة وتصديق بالتسليم قبل الموعد بأعلى معايير الانضباط" },
+  { icon: CheckCircle, text: "إدارة وتشغيل مباشر بواسطة شركة أسواق لضمان استدامة قيمة وحداتك" },
 ];
 
 const stats = [
@@ -22,7 +22,7 @@ const stats = [
 ];
 
 const AboutAr = () => {
-  useSEO("أسواق للتطوير العقاري | قصتنا", "مطور عقاري متخصص في مصر يقدم وحدات متميزة للإيجار وعقارات للبيع، مدعومًا بأكثر من 20 عامًا من الخبرة المثبتة.");
+  useSEO("أسواق للتطوير العقاري - رؤية رائدة في الاستثمار العقاري", "نحن شركة المطور العقاري الرائد في مدينة الشروق. لدينا خبرة تزيد عن 20 عاماً في تقديم عقارات متميزة للبيع، تشمل وحدات إدارية وتجارية.");
 
   return (
     <Layout>
@@ -33,7 +33,7 @@ const AboutAr = () => {
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="relative z-10 text-center px-4 max-w-3xl">
           <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-6">من نحن</h1>
           <p className="text-primary-foreground/80 font-arabic max-w-2xl mx-auto">
-            أسواق للتطوير العقاري، تأسست عام 2019، تمثل محطة استراتيجية مبنية على أكثر من 20 عامًا من النجاح المثبت عبر القطاعات السكنية والتجارية والصناعية والسياحية.
+            نحن في مجال الاستثمار العقاري واحدة من الشركات الرائدة في السوق المصري. نبني المستقبل بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا.
           </p>
         </motion.div>
       </section>
@@ -41,8 +41,11 @@ const AboutAr = () => {
       {/* About Content */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-muted-foreground font-arabic leading-relaxed text-lg text-center mb-6">
+            نحن لسنا مجرد مطور عقاري، بل نمتد بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا، ونجاح شركائنا في الاستثمار المستدام.
+          </motion.p>
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-muted-foreground font-arabic leading-relaxed text-lg text-center">
-            تأسست أسواق بالشراكة مع شركات عقارية ناشطة منذ عام 2002، وتم إنشاؤها لتبسيط إدارة المشاريع الحالية والمستقبلية، وتعزيز الربحية، وتجاوز توقعات العملاء مع فتح أسواق جديدة بفرص استثمارية وتوظيفية متنوعة. ومنذ تأسيسها، واصلت أسواق الازدهار من خلال تقديم مشاريع سكنية وتجارية وإدارية وطبية عالية الجودة.
+            لقد ركزنا جهودنا منذ انطلاقنا في الشروق، في منطقة شرق القاهرة، حيث نقدم مشاريع عقارية متكاملة تخدم قطاعات التجزئة والإدارة والطب.
           </motion.p>
         </div>
       </section>
@@ -77,7 +80,7 @@ const AboutAr = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-            لماذا تختارنا؟
+            لماذا تختار "أسواق" كشريك في استثمارك العقاري؟
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {whyChoose.map((item, i) => (
@@ -108,9 +111,9 @@ const AboutAr = () => {
 
       {/* CTA */}
       <CTASection
-        title="أمّن استثمارك مع مطور موثوق"
+        title="امنح استثمارك الثقة التي يستحقها مع مطور عقاري موثوق"
         subtitle="شارك مع أسواق للتطوير العقاري للحصول على فرص عقارية متميزة في أكثر المواقع حيوية في مصر."
-        buttonText="تواصل معنا"
+        buttonText="احجز وحدتك الآن"
         buttonLink="/ar/contact"
       />
     </Layout>
