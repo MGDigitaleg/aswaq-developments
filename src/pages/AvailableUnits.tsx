@@ -13,21 +13,24 @@ const unitTypes = [
     icon: "🏷️",
     description:
       "Own a unit in a strategically located development and secure a long-term asset with strong growth potential. ASWAQ offers a variety of units for sale suitable for retail, commercial, and medical use.",
-    cta: "Explore Units for Sale",
+    cta: "Explore Units for Sale in El Shorouk",
+    link: "/units/for-sale",
   },
   {
     title: "Units for Investment",
     icon: "📈",
     description:
-      "Looking for reliable returns? Our investment units are selected based on location strength, rental demand, and market performance. Ideal for investors seeking income-generating real estate.",
-    cta: "Explore Units for Investment",
+      "Looking for reliable returns? Our investment units are selected based on location strength, rental demand, and market performance. Ideal for investors seeking income-generating real estate with professional planning and clear demand drivers.",
+    cta: "Explore Units for Investment in El Shorouk",
+    link: "/units/for-investment",
   },
   {
     title: "Units for Rent",
     icon: "🏢",
     description:
-      "Discover flexible properties for rent in high-traffic, well-serviced developments. Whether you're launching a new business or expanding an existing one, ASWAQ provides ready-to-operate rental units.",
-    cta: "Explore Units for Rent",
+      "Discover flexible properties for rent in high-traffic, well-serviced developments. Whether you're launching a new business or expanding an existing one, ASWAQ provides ready-to-operate rental units that match different business models.",
+    cta: "Explore Units for Rent in El Shorouk",
+    link: "/units/for-rent",
   },
 ];
 
@@ -42,27 +45,52 @@ const faqs = [
   {
     question: "What types of properties does ASWAQ Developments offer?",
     answer:
-      "ASWAQ Developments offers a range of commercial real estate options, including commercial units for sale, units for rent, administrative spaces, and medical units.",
+      "ASWAQ Developments offers a range of commercial real estate options, including commercial units for sale, units for rent, administrative spaces, and medical units located within strategic malls and commercial destinations. We design our properties to serve businesses, investors, and tenants looking for quality spaces with strong footfall.",
   },
   {
     question: "How do I buy a unit or property in Shorouk City?",
     answer:
-      "You first decide the type of property that matches your needs, discover the types we offer and locations, then contact us to request your unit.",
+      "To buy a property in Shorouk City, you first decide the type of property that matches your needs, search for aswaq-egypt.com, discover the types we offer and locations, then contact us to request your unit.",
   },
   {
-    question: "Where can I buy a unit in Shorouk city?",
+    question: "Where can I buy a unit in Shorouk City?",
     answer:
-      "ASWAQ Developments offers a range of commercial and retail spaces for sale across four major mall destinations: Solaria Mall, Arena Mall, Mercado Mall, and City Hub Mall.",
+      "ASWAQ Developments offers a range of commercial and retail spaces for sale across its four major mall destinations: Solaria Mall, Arena Mall, Mercado Mall, and City Hub Mall. These units range in size from 30 m² up to 300 m², providing flexible options.",
   },
   {
     question: "How many malls does ASWAQ Developments have units in?",
     answer:
-      "ASWAQ Developments currently offers units in four major malls in Shorouk City.",
+      "ASWAQ Developments currently offers units in four major malls in Shorouk City: Solaria Mall, Arena Mall, Mercado Mall, and City Hub Mall. Each mall targets a different retail and service audience to help businesses thrive.",
+  },
+  {
+    question: "What are the typical sizes of the spaces & units available?",
+    answer:
+      "Our units & spaces range from 30 m² up to 300 m², giving flexibility for small shops, medium-sized outlets, and larger flagship stores. Whether you're starting a new business or expanding an existing one, we have units that fit your needs.",
+  },
+  {
+    question: "Where are ASWAQ's units located?",
+    answer:
+      "All our commercial spaces are strategically located in Shorouk City, one of East Cairo's fast-growing urban hubs. These locations benefit from residential density, accessibility, and increasing daily foot traffic.",
+  },
+  {
+    question: "Are the commercial units available for both sale and rent?",
+    answer:
+      "Yes. ASWAQ Developments offers both commercial units for sale and units for rent across our four mall destinations. You can choose according to your investment capacity and business strategy.",
+  },
+  {
+    question: "What types of businesses can operate in ASWAQ's malls?",
+    answer:
+      "Our units are suitable for a variety of businesses, such as retail shops, cafés, restaurants, service centers, medical clinics, offices, and more. Each mall's environment supports specific business activity, from daily needs to lifestyle-driven outlets.",
+  },
+  {
+    question: "What makes ASWAQ's locations attractive for investors?",
+    answer:
+      "ASWAQ's locations are carefully chosen based on growth potential, residential proximity, and accessibility. Shorouk City's consistent population growth and increasing demand for commercial activity make our units a strong investment opportunity with future appreciation.",
   },
   {
     question: "Are there flexible payment plans for buying units?",
     answer:
-      "Yes. ASWAQ Developments offers flexible payment plans for buyers interested in owning a unit.",
+      "Yes. ASWAQ Developments offers flexible payment plans for buyers interested in owning a unit. This allows investors and business owners to manage payments over time while securing prime retail, commercial, administrative, and medical space.",
   },
 ];
 
@@ -85,8 +113,11 @@ const AvailableUnits = () => {
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
               Available Units: Explore Properties for<br />Sale, Investment & Rent
             </h1>
-            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto mb-4">
               Whether you're looking for units for sale, properties for rent, or smart investment opportunities, ASWAQ Developments offers a carefully selected portfolio of commercial, administrative, and medical units in prime locations across Egypt.
+            </p>
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
+              Explore flexible spaces designed to meet real business needs, developed by a trusted Real Estate Developer in Egypt with a clear focus on value, location, and long-term growth. Choose your unit type below and start your journey today.
             </p>
           </motion.div>
         </div>
@@ -125,7 +156,7 @@ const AvailableUnits = () => {
                     {type.description}
                   </p>
                   <Link
-                    to="/units"
+                    to={type.link}
                     className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded hover:bg-gold-light transition-colors font-body text-sm"
                   >
                     {type.cta}
@@ -140,9 +171,12 @@ const AvailableUnits = () => {
       {/* Why Choose */}
       <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
             Why Choose ASWAQ Developments?
           </h2>
+          <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
+            ASWAQ Developments is a leading Real Estate Developer in Egypt, specializing in mixed-use and commercial projects designed around real market demand. Every project is planned with a focus on:
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {whyChoose.map((item, i) => (
               <motion.div
