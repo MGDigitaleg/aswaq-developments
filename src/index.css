@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -106,4 +106,25 @@
   .font-body {
     font-family: 'DM Sans', sans-serif;
   }
+  .font-arabic {
+    font-family: 'Cairo', sans-serif;
+  }
+}
+
+/* RTL adjustments */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-family: 'Cairo', sans-serif;
+}
+
+[dir="rtl"] .font-display {
+  font-family: 'Cairo', sans-serif;
+}
+
+[dir="rtl"] .font-body {
+  font-family: 'Cairo', sans-serif;
 }

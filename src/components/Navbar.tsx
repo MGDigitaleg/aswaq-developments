@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import aswaqLogo from "@/assets/aswaq-logo.png";
 
@@ -16,55 +16,55 @@ interface NavItem {
   children?: NavChild[];
 }
 
-const navLinks: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
+const getNavLinks = (prefix: string): NavItem[] => [
+  { label: prefix ? "الرئيسية" : "Home", href: `${prefix}/` },
+  { label: prefix ? "من نحن" : "About Us", href: `${prefix}/about` },
   {
-    label: "Projects",
-    href: "/projects",
+    label: prefix ? "المشاريع" : "Projects",
+    href: `${prefix}/projects`,
     children: [
-      { label: "City Hub Mall", href: "/projects/city-hub-mall" },
-      { label: "Mercado Mall", href: "/projects/mercado-mall" },
-      { label: "Arena Mall", href: "/projects/arena-mall" },
-      { label: "Solaria Mall", href: "/projects/solaria-mall" },
+      { label: prefix ? "سيتي هب مول" : "City Hub Mall", href: `${prefix}/projects/city-hub-mall` },
+      { label: prefix ? "مريكادو مول" : "Mercado Mall", href: `${prefix}/projects/mercado-mall` },
+      { label: prefix ? "أرينا مول" : "Arena Mall", href: `${prefix}/projects/arena-mall` },
+      { label: prefix ? "سولاريا مول" : "Solaria Mall", href: `${prefix}/projects/solaria-mall` },
     ],
   },
   {
-    label: "Choose your Unit",
-    href: "/units",
+    label: prefix ? "اختر وحدتك" : "Choose your Unit",
+    href: `${prefix}/units`,
     children: [
       {
-        label: "Units for Sale",
-        href: "/units/for-sale",
+        label: prefix ? "وحدات للبيع" : "Units for Sale",
+        href: `${prefix}/units/for-sale`,
         children: [
-          { label: "Commercial Units for Sale", href: "/units/commercial-for-sale" },
-          { label: "Administrative Units for Sale", href: "/units/administrative-for-sale" },
-          { label: "Medical Units for Sale", href: "/units/medical-for-sale" },
+          { label: prefix ? "وحدات تجارية للبيع" : "Commercial Units for Sale", href: `${prefix}/units/commercial-for-sale` },
+          { label: prefix ? "وحدات إدارية للبيع" : "Administrative Units for Sale", href: `${prefix}/units/administrative-for-sale` },
+          { label: prefix ? "وحدات طبية للبيع" : "Medical Units for Sale", href: `${prefix}/units/medical-for-sale` },
         ],
       },
       {
-        label: "Units for Investment",
-        href: "/units/for-investment",
+        label: prefix ? "وحدات للاستثمار" : "Units for Investment",
+        href: `${prefix}/units/for-investment`,
         children: [
-          { label: "Commercial Units for Investment", href: "/units/commercial-for-investment" },
-          { label: "Administrative Units for Investment", href: "/units/administrative-for-investment" },
-          { label: "Medical Units for Investment", href: "/units/medical-for-investment" },
+          { label: prefix ? "وحدات تجارية للاستثمار" : "Commercial Units for Investment", href: `${prefix}/units/commercial-for-investment` },
+          { label: prefix ? "وحدات إدارية للاستثمار" : "Administrative Units for Investment", href: `${prefix}/units/administrative-for-investment` },
+          { label: prefix ? "وحدات طبية للاستثمار" : "Medical Units for Investment", href: `${prefix}/units/medical-for-investment` },
         ],
       },
       {
-        label: "Units for Rent",
-        href: "/units/for-rent",
+        label: prefix ? "وحدات للإيجار" : "Units for Rent",
+        href: `${prefix}/units/for-rent`,
         children: [
-          { label: "Commercial Units for Rent", href: "/units/commercial-for-rent" },
-          { label: "Administrative Units for Rent", href: "/units/administrative-for-rent" },
-          { label: "Medical Units for Rent", href: "/units/medical-for-rent" },
+          { label: prefix ? "وحدات تجارية للإيجار" : "Commercial Units for Rent", href: `${prefix}/units/commercial-for-rent` },
+          { label: prefix ? "وحدات إدارية للإيجار" : "Administrative Units for Rent", href: `${prefix}/units/administrative-for-rent` },
+          { label: prefix ? "وحدات طبية للإيجار" : "Medical Units for Rent", href: `${prefix}/units/medical-for-rent` },
         ],
       },
     ],
   },
-  { label: "News", href: "/news" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Contact Us", href: "/contact" },
+  { label: prefix ? "الأخبار" : "News", href: `${prefix}/news` },
+  { label: prefix ? "معرض الصور" : "Gallery", href: `${prefix}/gallery` },
+  { label: prefix ? "تواصل معنا" : "Contact Us", href: `${prefix}/contact` },
 ];
 
 const isPathInTree = (pathname: string, item: NavItem | NavChild): boolean => {
@@ -263,6 +263,10 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const isArabic = location.pathname.startsWith("/ar");
+  const prefix = isArabic ? "/ar" : "";
+  const navLinks = getNavLinks(prefix);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 200);
@@ -271,10 +275,19 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const switchLanguage = () => {
+    if (isArabic) {
+      const enPath = location.pathname.replace(/^\/ar/, "") || "/";
+      navigate(enPath);
+    } else {
+      navigate(`/ar${location.pathname === "/" ? "" : location.pathname}`);
+    }
+  };
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-primary/80 backdrop-blur-md" : "bg-primary"}`}>
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
-        <Link to="/">
+        <Link to={isArabic ? "/ar" : "/"}>
           <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px]" />
         </Link>
 
@@ -301,11 +314,19 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
+          <button
+            onClick={switchLanguage}
+            className="flex items-center gap-1.5 text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors"
+            aria-label="Switch language"
+          >
+            <Globe size={16} />
+            {isArabic ? "EN" : "عربي"}
+          </button>
           <Link
-            to="/units"
+            to={`${prefix}/units`}
             className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded hover:bg-gold-light transition-colors"
           >
-            Request a Unit
+            {isArabic ? "اطلب وحدة" : "Request a Unit"}
           </Link>
         </div>
 
@@ -343,12 +364,19 @@ const Navbar = () => {
                   </Link>
                 ),
               )}
+              <button
+                onClick={() => { switchLanguage(); setOpen(false); }}
+                className="flex items-center gap-2 text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors py-3"
+              >
+                <Globe size={16} />
+                {isArabic ? "English" : "عربي"}
+              </button>
               <Link
-                to="/units"
+                to={`${prefix}/units`}
                 onClick={() => setOpen(false)}
                 className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded text-center hover:bg-gold-light transition-colors mt-2"
               >
-                Request a Unit
+                {isArabic ? "اطلب وحدة" : "Request a Unit"}
               </Link>
             </nav>
           </motion.div>

@@ -31,6 +31,9 @@ interface UnitCategoryPageProps {
   ctaTitle: string;
   ctaSubtitle: string;
   faqs: { question: string; answer: string }[];
+  faqTitle?: string;
+  mallLinkText?: string;
+  ctaButtonText?: string;
 }
 
 const commonFaqs = [
@@ -63,6 +66,9 @@ const UnitCategoryPage = ({
   ctaTitle,
   ctaSubtitle,
   faqs,
+  faqTitle,
+  mallLinkText,
+  ctaButtonText,
 }: UnitCategoryPageProps) => {
   useSEO(metaTitle || heroTitle, metaDescription || heroDescription);
 
@@ -124,7 +130,7 @@ const UnitCategoryPage = ({
                 <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">{mall.description}</p>
                 <p className="text-accent font-body font-semibold text-sm mb-4">{mall.sizes}</p>
                 <Link to={mall.href} className="inline-block text-sm font-semibold text-primary hover:text-accent transition-colors font-body">
-                  View Mall Details →
+                  {mallLinkText || "View Mall Details →"}
                 </Link>
               </motion.div>
             ))}
@@ -132,8 +138,8 @@ const UnitCategoryPage = ({
         </div>
       </section>
 
-      <FAQSection faqs={faqs} />
-      <CTASection title={ctaTitle} subtitle={ctaSubtitle} buttonText="Request Unit Details" buttonLink="/contact" />
+      <FAQSection faqs={faqs} title={faqTitle} />
+      <CTASection title={ctaTitle} subtitle={ctaSubtitle} buttonText={ctaButtonText || "Request Unit Details"} buttonLink="/contact" />
     </Layout>
   );
 };

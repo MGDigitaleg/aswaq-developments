@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- English pages -->
   <url><loc>https://aswaq-eg.site/</loc><priority>1.0</priority></url>
   <url><loc>https://aswaq-eg.site/about</loc><priority>0.8</priority></url>
   <url><loc>https://aswaq-eg.site/projects</loc><priority>0.9</priority></url>
@@ -23,4 +24,29 @@
   <url><loc>https://aswaq-eg.site/news</loc><priority>0.7</priority></url>
   <url><loc>https://aswaq-eg.site/gallery</loc><priority>0.6</priority></url>
   <url><loc>https://aswaq-eg.site/contact</loc><priority>0.7</priority></url>
+
+  <!-- Arabic pages -->
+  <url><loc>https://aswaq-eg.site/ar</loc><priority>1.0</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/about</loc><priority>0.8</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/projects</loc><priority>0.9</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/projects/city-hub-mall</loc><priority>0.8</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/projects/mercado-mall</loc><priority>0.8</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/projects/arena-mall</loc><priority>0.8</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/projects/solaria-mall</loc><priority>0.8</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units</loc><priority>0.9</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/for-sale</loc><priority>0.7</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/for-rent</loc><priority>0.7</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/for-investment</loc><priority>0.7</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/commercial-for-sale</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/commercial-for-rent</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/commercial-for-investment</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/administrative-for-sale</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/administrative-for-rent</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/administrative-for-investment</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/medical-for-sale</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/medical-for-rent</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/units/medical-for-investment</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/news</loc><priority>0.7</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/gallery</loc><priority>0.6</priority></url>
+  <url><loc>https://aswaq-eg.site/ar/contact</loc><priority>0.7</priority></url>
 </urlset>
