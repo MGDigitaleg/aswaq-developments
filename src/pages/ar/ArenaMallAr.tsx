@@ -1,0 +1,136 @@
+import { motion } from "framer-motion";
+import { MapPin, Building2, Stethoscope, Briefcase, ShoppingBag } from "lucide-react";
+import Layout from "@/components/Layout";
+import CTASection from "@/components/CTASection";
+import arenaImg from "@/assets/arena-mall.jpg";
+import useSEO from "@/hooks/useSEO";
+
+const unitTypes = [
+  { icon: ShoppingBag, label: "محلات تجارية وصالات عرض" },
+  { icon: Stethoscope, label: "عيادات طبية ووحدات رعاية صحية" },
+  { icon: Briefcase, label: "مكاتب إدارية ومقرات للشركات" },
+  { icon: Building2, label: "وحدات أعمال مرنة للشركات الناشئة والقائمة" },
+];
+
+const whyInvest = [
+  "موقع استراتيجي بواجهة مباشرة أمام الجامعة الفرنسية مع نشاط يومي كثيف",
+  "تصميم متعدد الاستخدامات يجمع بين الأنشطة التجارية والطبية والإدارية",
+  "مخططات مرنة للوحدات تناسب مختلف القطاعات والصناعات",
+  "هندسة معمارية حديثة وبيئة مهنية متكاملة",
+  "سهولة الوصول إلى محاور النقل الرئيسية والمجتمعات السكنية المحيطة",
+  "أسعار تنافسية مع خطط سداد ميسرة ومناسبة للمستثمرين",
+  "بيئة تجارية كاملة الخدمات: مواقف سيارات، أمن، أنظمة مراقبة، مصاعد، ومناطق بلازا",
+];
+
+const locationAdvantages = [
+  "رؤية ممتازة وتدفق مستمر للزوار من الطلاب وأعضاء هيئة التدريس والسكان المجاورين",
+  "سهولة الوصول عبر الطرق الرئيسية التي تربط مدينة الشروق بالمجتمعات العمرانية المجاورة",
+  "القرب من المناطق السكنية المتوسعة والمراكز الخدمية الحيوية",
+  "موقع يعزز الطلب المتزايد على مساحات التجزئة وبيئات العمل الإدارية والخدمات الطبية",
+];
+
+const ArenaMallAr = () => {
+  useSEO("أرينا مول | وحدات تجارية وطبية وإدارية للإيجار في الشروق", "استكشف أفضل الوحدات المتاحة للإيجار في أرينا مول الشروق من شركة أسواق للتطوير العقاري. نوفر مساحات تجارية وإدارية وطبية في موقع استراتيجي متميز.");
+
+  return (
+    <Layout>
+      <section className="bg-primary py-24">
+        <div className="container mx-auto px-4 lg:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">شركة أسواق للتطوير العقاري</p>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">أرينا مول في مدينة الشروق</h1>
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
+              مشروع عصري متعدد الاستخدامات مصمم خصيصاً لتلبية الاحتياجات المتطورة للشركات والمهنيين والمستثمرين في مدينة الشروق.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
+            <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="rounded-lg overflow-hidden aspect-[4/3]">
+                <img src={arenaImg} alt="أرينا مول" className="w-full h-full object-cover" />
+              </div>
+            </motion.div>
+            <motion.div className="md:w-1/2" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <h2 className="font-display text-3xl font-bold text-foreground mb-4">أرينا مول بمدينة الشروق</h2>
+              <p className="text-muted-foreground font-body leading-relaxed mb-4">
+                يُعد أرينا مول مشروعاً عصرياً متعدد الاستخدامات من تطوير شركة أسواق للتطوير العقاري، يقع في واحد من أكثر المواقع الاستراتيجية في المدينة. ويوفر بيئة استثمارية راقية تضم مزيجاً من الوحدات التجارية والإدارية والطبية.
+              </p>
+              <p className="text-muted-foreground font-body leading-relaxed">
+                بفضل تصميمه المعماري الحديث وتنوع مساحات وحداته، يلبي المول متطلبات محلات التجزئة ومكاتب الإدارة وعيادات الرعاية الصحية.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-cream">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-6">موقع أرينا مول</h2>
+          <p className="text-muted-foreground font-body text-center max-w-3xl mx-auto mb-12">
+            يتمتع أرينا مول بموقع استراتيجي فريد مباشرة أمام الجامعة الفرنسية في مدينة الشروق، مما يمنحه مزايا استثمارية كبرى.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {locationAdvantages.map((adv, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="flex items-start gap-3 p-5 bg-background rounded-lg"
+              >
+                <MapPin size={20} className="text-accent shrink-0 mt-0.5" />
+                <p className="text-foreground font-body text-sm">{adv}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 lg:px-8 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">الوحدات المتاحة في أرينا مول</h2>
+          <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
+            اكتشف الوحدات المتاحة للإيجار والبيع في أرينا مول بمساحات تتراوح من 30 م² إلى 300 م².
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {unitTypes.map((type, i) => (
+              <motion.div key={type.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="flex flex-col items-center gap-3 p-6 bg-cream rounded-lg"
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                  <type.icon size={24} className="text-primary" />
+                </div>
+                <p className="font-semibold text-foreground font-body text-sm text-center">{type.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-cream">
+        <div className="container mx-auto px-4 lg:px-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">لماذا تستثمر في أرينا مول</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {whyInvest.map((item, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? 20 : -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
+                className="flex items-start gap-3 p-4 bg-background rounded-lg"
+              >
+                <span className="text-accent font-bold">✓</span>
+                <p className="text-foreground font-body text-sm">{item}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection
+        title="استثمر في أرينا مول اليوم"
+        subtitle="احجز مساحتك التجارية الآن في أرينا مول الشروق. تواصل مع شركة أسواق للتطوير العقاري للحصول على التفاصيل والأسعار وتوافر الوحدات التجارية والإدارية والطبية."
+        buttonText="طلب تفاصيل الوحدة"
+        buttonLink="/ar/contact"
+      />
+    </Layout>
+  );
+};
+
+export default ArenaMallAr;

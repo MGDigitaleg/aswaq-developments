@@ -40,6 +40,13 @@ import AdministrativeForInvestmentAr from "./pages/ar/AdministrativeForInvestmen
 import MedicalForSaleAr from "./pages/ar/MedicalForSaleAr";
 import MedicalForRentAr from "./pages/ar/MedicalForRentAr";
 import MedicalForInvestmentAr from "./pages/ar/MedicalForInvestmentAr";
+import SolariaMallAr from "./pages/ar/SolariaMallAr";
+import ArenaMallAr from "./pages/ar/ArenaMallAr";
+import MercadoMallAr from "./pages/ar/MercadoMallAr";
+import CityHubMallAr from "./pages/ar/CityHubMallAr";
+import UnitsForSaleAr from "./pages/ar/UnitsForSaleAr";
+import UnitsForRentAr from "./pages/ar/UnitsForRentAr";
+import UnitsForInvestmentAr from "./pages/ar/UnitsForInvestmentAr";
 
 const queryClient = new QueryClient();
 
@@ -80,14 +87,14 @@ const App = () => (
           {/* Arabic routes */}
           <Route path="/ar" element={<Index />} />
           <Route path="/ar/projects" element={<Projects />} />
-          <Route path="/ar/projects/arena-mall" element={<ArenaMall />} />
-          <Route path="/ar/projects/city-hub-mall" element={<CityHubMall />} />
-          <Route path="/ar/projects/mercado-mall" element={<MercadoMall />} />
-          <Route path="/ar/projects/solaria-mall" element={<SolariaMall />} />
+          <Route path="/ar/projects/arena-mall" element={<ArenaMallAr />} />
+          <Route path="/ar/projects/city-hub-mall" element={<CityHubMallAr />} />
+          <Route path="/ar/projects/mercado-mall" element={<MercadoMallAr />} />
+          <Route path="/ar/projects/solaria-mall" element={<SolariaMallAr />} />
           <Route path="/ar/units" element={<AvailableUnits />} />
-          <Route path="/ar/units/for-sale" element={<UnitsForSale />} />
-          <Route path="/ar/units/for-rent" element={<UnitsForRent />} />
-          <Route path="/ar/units/for-investment" element={<UnitsForInvestment />} />
+          <Route path="/ar/units/for-sale" element={<UnitsForSaleAr />} />
+          <Route path="/ar/units/for-rent" element={<UnitsForRentAr />} />
+          <Route path="/ar/units/for-investment" element={<UnitsForInvestmentAr />} />
           <Route path="/ar/units/commercial-for-sale" element={<CommercialForSaleAr />} />
           <Route path="/ar/units/commercial-for-rent" element={<CommercialForRentAr />} />
           <Route path="/ar/units/commercial-for-investment" element={<CommercialForInvestmentAr />} />
