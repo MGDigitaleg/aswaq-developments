@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { newsArticles } from "@/data/newsData";
+import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
 import heroBuilding from "@/assets/hero-building.jpg";
 
 const News = () => {
@@ -14,8 +15,14 @@ const News = () => {
     }
   }, []);
 
+  const breadcrumbs = buildBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "News & Events", url: "/news" },
+  ]);
+
   return (
     <Layout>
+      <JsonLd data={breadcrumbs} />
       {/* Hero */}
       <section className="relative h-[40vh] min-h-[320px] flex items-center justify-center">
         <img src={heroBuilding} alt="ASWAQ News" className="absolute inset-0 w-full h-full object-cover" />

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { z } from "zod";
 import Layout from "@/components/Layout";
+import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -72,8 +73,14 @@ const Contact = () => {
   const selectClass =
     "w-full px-4 py-3 border border-border rounded-md bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all appearance-none cursor-pointer";
 
+  const breadcrumbs = buildBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Contact Us", url: "/contact" },
+  ]);
+
   return (
     <Layout>
+      <JsonLd data={breadcrumbs} />
       {/* Hero */}
       <section className="bg-primary py-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">

@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import aboutHero from "@/assets/about-hero.jpg";
 import useSEO from "@/hooks/useSEO";
+import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
 
 const whyChoose = [
   { icon: Award, text: "20+ Years of Real Estate Expertise" },
@@ -24,8 +25,14 @@ const stats = [
 const About = () => {
   useSEO("ASWAQ Developments | Our Story", "Expert real estate developer in Egypt offering premium units for rent and property for sale, backed by over 20 years of proven experience.");
 
+  const breadcrumbs = buildBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Our Story", url: "/about" },
+  ]);
+
   return (
     <Layout>
+      <JsonLd data={breadcrumbs} />
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div
