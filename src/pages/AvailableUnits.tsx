@@ -6,6 +6,7 @@ import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import unitImg from "@/assets/unit-interior.jpg";
+import JsonLd, { buildBreadcrumbSchema, buildFaqSchema } from "@/components/JsonLd";
 
 const unitTypes = [
   {
@@ -97,8 +98,16 @@ const faqs = [
 const AvailableUnits = () => {
   useSEO("Choose Your Unit in Shorouk City | Properties for Sale & Properties", "Explore units for sale, investment opportunities, and properties for rent across prime developments by ASWAQ Developments, a trusted real estate developer in Egypt. Choose your unit today.");
 
+  const breadcrumbs = buildBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Available Units", url: "/units" },
+  ]);
+  const faqSchemaData = buildFaqSchema(faqs.map(f => ({ question: f.question, answer: f.answer })));
+
   return (
     <Layout>
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={faqSchemaData} />
       {/* Hero */}
       <section className="bg-primary py-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">

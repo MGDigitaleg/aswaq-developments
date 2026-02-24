@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import useSEO from "@/hooks/useSEO";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
+import JsonLd, { buildBreadcrumbSchema, buildProjectSchema } from "@/components/JsonLd";
 import cityhubImg from "@/assets/cityhub-mall.jpg";
 import mercadoImg from "@/assets/mercado-mall.jpg";
 import arenaImg from "@/assets/arena-mall.jpg";
@@ -101,8 +102,22 @@ const faqs = [
 const Projects = () => {
   useSEO("ASWAQ Developments Real Estate Projects", "Looking for commercial units for sale in Shorouk? Discover premium commercial properties in Shorouk City's most active malls with ASWAQ.");
 
+  const breadcrumbs = buildBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Our Projects", url: "/projects" },
+  ]);
+
+  const projectSchemas = projects.map(p => buildProjectSchema({
+    name: p.name,
+    description: p.description,
+    image: p.image,
+    url: p.href,
+  }));
+
   return (
     <Layout>
+      <JsonLd data={breadcrumbs} />
+      {projectSchemas.map((schema, i) => <JsonLd key={i} data={schema} />)}
       {/* Hero Banner */}
       <section className="relative h-[220px] md:h-[280px] flex items-center justify-center overflow-hidden">
         <img

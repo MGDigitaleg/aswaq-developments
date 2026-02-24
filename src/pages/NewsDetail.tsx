@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import Layout from "@/components/Layout";
 import { newsArticles } from "@/data/newsData";
+import JsonLd, { buildArticleSchema, buildBreadcrumbSchema } from "@/components/JsonLd";
 
 const NewsDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -19,8 +20,24 @@ const NewsDetail = () => {
 
   const otherArticles = newsArticles.filter((a) => a.id !== slug).slice(0, 3);
 
+  const articleSchema = buildArticleSchema({
+    title: article.title,
+    excerpt: article.excerpt,
+    date: article.date,
+    image: article.image,
+    slug: article.id,
+  });
+
+  const breadcrumbs = buildBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "News", url: "/news" },
+    { name: article.title, url: `/news/${article.id}` },
+  ]);
+
   return (
     <Layout>
+      <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbs} />
       {/* Hero */}
       <section className="relative h-[45vh] min-h-[350px] flex items-end">
         <img src={article.image} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
