@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronRight } from "lucide-react";
-import { newsArticles } from "@/data/newsData";
+import { useLatestNews } from "@/hooks/useNewsArticles";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -89,7 +89,7 @@ const fadeIn = {
 
 const Index = () => {
   useSEO("ASWAQ Developments | Real Estate Developer in Egypt", "ASWAQ Developments delivers premium units for rent and property for sale in Egypt, with mixed-use properties in Shorouk City and flexible payment plans.");
-
+  const { articles: latestNews } = useLatestNews("en", 3);
   const faqSchemaData = buildFaqSchema(faqs.map(f => ({ question: f.question, answer: f.answer })));
 
   return (
@@ -301,7 +301,7 @@ const Index = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {newsArticles.slice(0, 3).map((article, i) => (
+            {latestNews.map((article, i) => (
               <motion.div
                 key={article.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -322,7 +322,7 @@ const Index = () => {
                     />
                   </div>
                   <div className="p-6">
-                    <p className="text-xs text-muted-foreground font-body">{article.date}</p>
+                    
                     <h3 className="font-display text-lg font-semibold text-foreground mt-2 group-hover:text-primary transition-colors line-clamp-2">
                       {article.title}
                     </h3>

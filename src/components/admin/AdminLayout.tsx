@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import aswaqLogo from "@/assets/aswaq-logo.png";
 
 const navItems = [
-  { label: "Blog Articles", path: "/admin", icon: FileText },
+  { label: "News Articles", path: "/admin", icon: FileText },
   { label: "Page Content", path: "/admin/pages", icon: Layout },
   { label: "Users", path: "/admin/users", icon: Users },
 ];
