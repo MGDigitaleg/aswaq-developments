@@ -29,6 +29,10 @@ import News from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminBlogList from "./pages/admin/AdminBlogList";
+import AdminBlogEditor from "./pages/admin/AdminBlogEditor";
+import AdminPageContent from "./pages/admin/AdminPageContent";
 
 // Arabic pages
 import CommercialForSaleAr from "./pages/ar/CommercialForSaleAr";
@@ -117,6 +121,12 @@ const App = () => (
           <Route path="/ar/gallery" element={<GalleryAr />} />
           <Route path="/ar/about" element={<AboutAr />} />
           <Route path="/ar/contact" element={<ContactAr />} />
+
+          {/* Admin routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminBlogList />} />
+          <Route path="/admin/blog/:id" element={<AdminBlogEditor />} />
+          <Route path="/admin/pages" element={<AdminPageContent />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
