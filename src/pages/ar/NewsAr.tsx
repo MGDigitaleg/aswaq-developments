@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
-import { newsArticlesAr } from "@/data/newsDataAr";
+import { useNewsArticles } from "@/hooks/useNewsArticles";
 import heroBuilding from "@/assets/hero-building.jpg";
 
 const NewsAr = () => {
+  const { articles, loading } = useNewsArticles("ar");
+
   useEffect(() => {
     document.title = "الأخبار والفعاليات | أسواق للتطوير العقاري";
     const meta = document.querySelector('meta[name="description"]');
@@ -31,22 +33,30 @@ const NewsAr = () => {
 
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsArticlesAr.map((article, i) => (
-              <motion.div key={article.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <Link to={`/ar/news/${article.id}`} className="group block bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                  <div className="aspect-[16/10] overflow-hidden">
-                    <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-lg font-bold mt-2 mb-3 group-hover:text-accent transition-colors line-clamp-2">{article.title}</h3>
-                    <p className="font-arabic text-sm text-muted-foreground line-clamp-3">{article.excerpt}</p>
-                    <span className="inline-block mt-4 text-accent font-semibold text-sm font-arabic">اقرأ المزيد ←</span>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          {loading ? (
+            <p className="text-center text-muted-foreground">جاري التحميل...</p>
+          ) : articles.length === 0 ? (
+            <p className="text-center text-muted-foreground">لا توجد مقالات بعد.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {articles.map((article, i) => (
+                <motion.div key={article.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                  <Link to={`/ar/news/${article.id}`} className="group block bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                    {article.image && (
+                      <div className="aspect-[16/10] overflow-hidden">
+                        <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <h3 className="font-display text-lg font-bold mt-2 mb-3 group-hover:text-accent transition-colors line-clamp-2">{article.title}</h3>
+                      <p className="font-arabic text-sm text-muted-foreground line-clamp-3">{article.excerpt}</p>
+                      <span className="inline-block mt-4 text-accent font-semibold text-sm font-arabic">اقرأ المزيد ←</span>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </Layout>

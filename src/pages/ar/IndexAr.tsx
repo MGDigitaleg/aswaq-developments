@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft } from "lucide-react";
-import { newsArticles } from "@/data/newsData";
+import { useLatestNews } from "@/hooks/useNewsArticles";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -96,6 +96,7 @@ const fadeIn = {
 
 const IndexAr = () => {
   useSEO("أسواق للتطوير العقاري | مطور عقاري في مصر", "أسواق للتطوير العقاري تقدم وحدات متميزة للإيجار وعقارات للبيع في مصر، مع عقارات متعددة الاستخدامات في مدينة الشروق وخطط سداد مرنة.");
+  const { articles: latestNews } = useLatestNews("ar", 3);
 
   return (
     <Layout>
@@ -231,14 +232,15 @@ const IndexAr = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {newsArticles.slice(0, 3).map((article, i) => (
+            {latestNews.map((article, i) => (
               <motion.div key={article.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <Link to={`/ar/news/${article.id}`} className="group block bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="aspect-[16/10] overflow-hidden">
-                    <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                  </div>
+                  {article.image && (
+                    <div className="aspect-[16/10] overflow-hidden">
+                      <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                    </div>
+                  )}
                   <div className="p-6">
-                    <p className="text-xs text-muted-foreground font-arabic">{article.date}</p>
                     <h3 className="font-display text-lg font-semibold text-foreground mt-2 group-hover:text-primary transition-colors line-clamp-2">
                       {article.title}
                     </h3>
