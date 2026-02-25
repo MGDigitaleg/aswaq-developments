@@ -1,13 +1,14 @@
 import { ReactNode, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { FileText, Layout, LogOut, Home } from "lucide-react";
+import { FileText, Layout, LogOut, Home, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aswaqLogo from "@/assets/aswaq-logo.png";
 
 const navItems = [
   { label: "Blog Articles", path: "/admin", icon: FileText },
   { label: "Page Content", path: "/admin/pages", icon: Layout },
+  { label: "Users", path: "/admin/users", icon: Users },
 ];
 
 const AdminLayout = ({ children }: { children: ReactNode }) => {
