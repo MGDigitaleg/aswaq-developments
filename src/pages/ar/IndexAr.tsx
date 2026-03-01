@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft } from "lucide-react";
 import { useLatestNews } from "@/hooks/useNewsArticles";
+import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import useSEO from "@/hooks/useSEO";
 import heroBg from "@/assets/hero-building.jpg";
+import heroMercado from "@/assets/hero-mercado.jpg";
+import heroArena from "@/assets/hero-arena.jpg";
+import heroSolaria from "@/assets/hero-solaria.jpg";
 import cityhubImg from "@/assets/cityhub-mall.jpg";
+
+const heroSlides = [heroBg, heroMercado, heroArena, heroSolaria];
 import mercadoImg from "@/assets/mercado-mall.jpg";
 import arenaImg from "@/assets/arena-mall.jpg";
 import solariaImg from "@/assets/solaria-mall.jpg";
@@ -96,14 +102,45 @@ const fadeIn = {
 
 const IndexAr = () => {
   useSEO("أسواق للتطوير العقاري | مطور عقاري في مصر", "أسواق للتطوير العقاري تقدم وحدات متميزة للإيجار وعقارات للبيع في مصر، مع عقارات متعددة الاستخدامات في مدينة الشروق وخطط سداد مرنة.");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
   const { articles: latestNews } = useLatestNews("ar", 3);
 
   return (
     <Layout>
       {/* Hero */}
       <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }} />
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroSlides[currentSlide]})` }}
+          />
+        </AnimatePresence>
         <div className="absolute inset-0 bg-primary/60" />
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentSlide(i)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-accent w-8" : "bg-primary-foreground/50 hover:bg-primary-foreground/80"}`}
+              aria-label={`الانتقال إلى الشريحة ${i + 1}`}
+            />
+          ))}
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
