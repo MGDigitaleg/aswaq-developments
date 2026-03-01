@@ -3,8 +3,14 @@ import { motion } from "framer-motion";
 import { MapPin, Building2, Stethoscope, Briefcase, ShoppingBag } from "lucide-react";
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
+import MallGallerySection from "@/components/MallGallerySection";
 import arenaImg from "@/assets/arena-mall.jpg";
 import useSEO from "@/hooks/useSEO";
+import arena1 from "@/assets/gallery/arena-1.jpg";
+import arena2 from "@/assets/gallery/arena-2.jpg";
+
+const galleryImages = [arena1, arena2];
+const galleryVideos = ["buh9BJmWn9A", "unR4JKFXAXE", "6YWp0lGYC3Q", "JFqUABOPOk8", "kVdnKIBWN2A"];
 
 const unitTypes = [
   { icon: ShoppingBag, label: "Retail shops and showrooms" },
@@ -167,6 +173,8 @@ const ArenaMall = () => {
           </div>
         </div>
       </section>
+
+      <MallGallerySection mallName="Arena Mall" images={galleryImages} videos={galleryVideos} />
 
       <CTASection
         title="Invest in Arena Mall Today"
