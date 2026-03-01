@@ -323,10 +323,10 @@ const Navbar = () => {
             {isArabic ? "EN" : "عربي"}
           </button>
           <Link
-            to={`${prefix}/units`}
+            to={`${prefix}/contact`}
             className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded hover:bg-gold-light transition-colors"
           >
-            {isArabic ? "اطلب وحدة" : "Request a Unit"}
+            {isArabic ? "تواصل معنا" : "Contact Us"}
           </Link>
         </div>
 
@@ -372,11 +372,11 @@ const Navbar = () => {
                 {isArabic ? "English" : "عربي"}
               </button>
               <Link
-                to={`${prefix}/units`}
+                to={`${prefix}/contact`}
                 onClick={() => setOpen(false)}
                 className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded text-center hover:bg-gold-light transition-colors mt-2"
               >
-                {isArabic ? "اطلب وحدة" : "Request a Unit"}
+                {isArabic ? "تواصل معنا" : "Contact Us"}
               </Link>
             </nav>
           </motion.div>
