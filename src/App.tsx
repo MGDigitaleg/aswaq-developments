@@ -34,6 +34,7 @@ import AdminBlogList from "./pages/admin/AdminBlogList";
 import AdminBlogEditor from "./pages/admin/AdminBlogEditor";
 import AdminPageContent from "./pages/admin/AdminPageContent";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminFormSubmissions from "./pages/admin/AdminFormSubmissions";
 
 // Arabic pages
 import CommercialForSaleAr from "./pages/ar/CommercialForSaleAr";
@@ -128,6 +129,7 @@ const App = () => (
           <Route path="/admin" element={<AdminBlogList />} />
           <Route path="/admin/blog/:id" element={<AdminBlogEditor />} />
           <Route path="/admin/pages" element={<AdminPageContent />} />
+          <Route path="/admin/submissions" element={<AdminFormSubmissions />} />
           <Route path="/admin/users" element={<AdminUsers />} />
 
           <Route path="*" element={<NotFound />} />

@@ -56,6 +56,45 @@ export type Database = {
         }
         Relationships: []
       }
+      form_submissions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          lang: string
+          name: string
+          notes: string | null
+          phone: string
+          preferred_mall: string
+          request_type: string
+          unit_type: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          lang?: string
+          name: string
+          notes?: string | null
+          phone: string
+          preferred_mall: string
+          request_type: string
+          unit_type: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          lang?: string
+          name?: string
+          notes?: string | null
+          phone?: string
+          preferred_mall?: string
+          request_type?: string
+          unit_type?: string
+        }
+        Relationships: []
+      }
       page_content: {
         Row: {
           content: Json

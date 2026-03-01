@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 import Layout from "@/components/Layout";
 import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
 
@@ -46,13 +47,14 @@ const Contact = () => {
   const [form, setForm] = useState<Partial<ContactForm>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (field: keyof ContactForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = contactSchema.safeParse(form);
     if (!result.success) {
@@ -63,9 +65,23 @@ const Contact = () => {
       setErrors(fieldErrors);
       return;
     }
-    setSubmitted(true);
-    setForm({});
-    setErrors({});
+    setSubmitting(true);
+    const { error } = await supabase.from("form_submissions").insert({
+      name: result.data.name,
+      phone: result.data.phone,
+      email: result.data.email,
+      request_type: result.data.requestType,
+      unit_type: result.data.unitType,
+      preferred_mall: result.data.preferredMall,
+      notes: result.data.notes || null,
+      lang: "en",
+    });
+    setSubmitting(false);
+    if (!error) {
+      setSubmitted(true);
+      setForm({});
+      setErrors({});
+    }
   };
 
   const inputClass =
@@ -226,9 +242,10 @@ const Contact = () => {
                   <div className="flex items-center justify-end">
                     <button
                       type="submit"
-                      className="bg-primary text-primary-foreground px-10 py-3 font-semibold rounded hover:bg-navy-light transition-colors font-body text-sm"
+                      disabled={submitting}
+                      className="bg-primary text-primary-foreground px-10 py-3 font-semibold rounded hover:bg-navy-light transition-colors font-body text-sm disabled:opacity-50"
                     >
-                      Send
+                      {submitting ? "Sending…" : "Send"}
                     </button>
                   </div>
                 </form>
