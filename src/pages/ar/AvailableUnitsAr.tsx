@@ -5,24 +5,29 @@ import { MapPin, Layers, TrendingUp, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import unitImg from "@/assets/unit-interior.jpg";
+import unitSaleImg from "@/assets/units-sale.jpg";
+import unitInvestmentImg from "@/assets/units-investment.jpg";
+import unitRentImg from "@/assets/units-rent.jpg";
 
 const unitTypes = [
   {
     title: "وحدات للبيع",
     icon: "🏷️",
+    image: unitSaleImg,
     description: "امتلك وحدة في مشروع بموقع استراتيجي واضمن أصلاً طويل الأجل مع إمكانات نمو قوية. تقدم أسواق مجموعة متنوعة من الوحدات للبيع المناسبة للتجزئة والتجارة والاستخدام الطبي.",
     cta: "استكشف وحدات للبيع",
   },
   {
     title: "وحدات للاستثمار",
     icon: "📈",
+    image: unitInvestmentImg,
     description: "تبحث عن عوائد موثوقة؟ وحداتنا الاستثمارية مختارة بناءً على قوة الموقع والطلب الإيجاري وأداء السوق. مثالية للمستثمرين الباحثين عن عقارات مدرة للدخل.",
     cta: "استكشف وحدات للاستثمار",
   },
   {
     title: "وحدات للإيجار",
     icon: "🏢",
+    image: unitRentImg,
     description: "اكتشف عقارات مرنة للإيجار في مشاريع عالية الحركة ومتكاملة الخدمات. سواء كنت تطلق عملاً جديدًا أو توسع عملاً قائمًا، توفر أسواق وحدات إيجارية جاهزة للتشغيل.",
     cta: "استكشف وحدات للإيجار",
   },
@@ -75,7 +80,7 @@ const AvailableUnitsAr = () => {
               <motion.div key={type.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`flex flex-col md:flex-row gap-8 items-center ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden aspect-[4/3]">
-                    <img src={unitImg} alt={type.title} className="w-full h-full object-cover" />
+                    <img src={type.image} alt={type.title} className="w-full h-full object-cover" />
                   </div>
                 </div>
                 <div className="md:w-1/2">
