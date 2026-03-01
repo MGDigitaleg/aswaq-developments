@@ -5,13 +5,16 @@ import { MapPin, Layers, TrendingUp, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import unitImg from "@/assets/unit-interior.jpg";
+import unitSaleImg from "@/assets/units-sale.jpg";
+import unitInvestmentImg from "@/assets/units-investment.jpg";
+import unitRentImg from "@/assets/units-rent.jpg";
 import JsonLd, { buildBreadcrumbSchema, buildFaqSchema } from "@/components/JsonLd";
 
 const unitTypes = [
   {
     title: "Units for Sale",
     icon: "🏷️",
+    image: unitSaleImg,
     description:
       "Own a unit in a strategically located development and secure a long-term asset with strong growth potential. ASWAQ offers a variety of units for sale suitable for retail, commercial, and medical use.",
     cta: "Explore Units for Sale in El Shorouk",
@@ -20,6 +23,7 @@ const unitTypes = [
   {
     title: "Units for Investment",
     icon: "📈",
+    image: unitInvestmentImg,
     description:
       "Looking for reliable returns? Our investment units are selected based on location strength, rental demand, and market performance. Ideal for investors seeking income-generating real estate with professional planning and clear demand drivers.",
     cta: "Explore Units for Investment in El Shorouk",
@@ -28,6 +32,7 @@ const unitTypes = [
   {
     title: "Units for Rent",
     icon: "🏢",
+    image: unitRentImg,
     description:
       "Discover flexible properties for rent in high-traffic, well-serviced developments. Whether you're launching a new business or expanding an existing one, ASWAQ provides ready-to-operate rental units that match different business models.",
     cta: "Explore Units for Rent in El Shorouk",
@@ -150,7 +155,7 @@ const AvailableUnits = () => {
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden aspect-[4/3]">
                     <img
-                      src={unitImg}
+                      src={type.image}
                       alt={type.title}
                       className="w-full h-full object-cover"
                     />
