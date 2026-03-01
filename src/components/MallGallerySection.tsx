@@ -7,10 +7,12 @@ interface MallGallerySectionProps {
   mallName: string;
   images: string[];
   videos: string[];
+  lang?: "en" | "ar";
 }
 
-const MallGallerySection = ({ mallName, images, videos }: MallGallerySectionProps) => {
+const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGallerySectionProps) => {
   const [activeMedia, setActiveMedia] = useState("images");
+  const isAr = lang === "ar";
 
   if (images.length === 0 && videos.length === 0) return null;
 
@@ -18,7 +20,7 @@ const MallGallerySection = ({ mallName, images, videos }: MallGallerySectionProp
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
-          {mallName} Gallery
+          {isAr ? `معرض ${mallName}` : `${mallName} Gallery`}
         </h2>
 
         <Tabs value={activeMedia} onValueChange={setActiveMedia}>
@@ -29,14 +31,14 @@ const MallGallerySection = ({ mallName, images, videos }: MallGallerySectionProp
                 className="rounded-md px-5 py-2 text-sm font-medium font-body flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
               >
                 <ImageIcon size={16} />
-                Images
+                {isAr ? "صور" : "Images"}
               </TabsTrigger>
               <TabsTrigger
                 value="videos"
                 className="rounded-md px-5 py-2 text-sm font-medium font-body flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
               >
                 <Film size={16} />
-                Videos
+                {isAr ? "فيديوهات" : "Videos"}
               </TabsTrigger>
             </TabsList>
           </div>
@@ -65,7 +67,7 @@ const MallGallerySection = ({ mallName, images, videos }: MallGallerySectionProp
             ) : (
               <div className="text-center py-20">
                 <ImageIcon size={48} className="mx-auto text-muted-foreground/40 mb-4" />
-                <p className="text-muted-foreground font-body">Images coming soon</p>
+                <p className="text-muted-foreground font-body">{isAr ? "الصور قريباً" : "Images coming soon"}</p>
               </div>
             )}
           </TabsContent>
@@ -95,7 +97,7 @@ const MallGallerySection = ({ mallName, images, videos }: MallGallerySectionProp
             ) : (
               <div className="text-center py-20">
                 <Film size={48} className="mx-auto text-muted-foreground/40 mb-4" />
-                <p className="text-muted-foreground font-body">Videos coming soon</p>
+                <p className="text-muted-foreground font-body">{isAr ? "الفيديوهات قريباً" : "Videos coming soon"}</p>
               </div>
             )}
           </TabsContent>

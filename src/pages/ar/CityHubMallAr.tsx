@@ -2,8 +2,16 @@ import { motion } from "framer-motion";
 import { MapPin, ShoppingBag, TrendingUp, Store, Wrench } from "lucide-react";
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
+import MallGallerySection from "@/components/MallGallerySection";
 import cityhubImg from "@/assets/cityhub-mall.jpg";
 import useSEO from "@/hooks/useSEO";
+import cityhub1 from "@/assets/gallery/cityhub-1.jpg";
+import cityhub2 from "@/assets/gallery/cityhub-2.jpg";
+import cityhub3 from "@/assets/gallery/cityhub-3.jpg";
+import cityhub4 from "@/assets/gallery/cityhub-4.jpg";
+
+const galleryImages = [cityhub1, cityhub2, cityhub3, cityhub4];
+const galleryVideos = ["9pl-SiE0VVk", "868YMiO0LJc", "82mVbp9nB6U", "VIvmPBqrLnk"];
 
 const unitTypes = [
   { icon: ShoppingBag, label: "وحدات تجارية للإيجار" },
@@ -112,6 +120,8 @@ const CityHubMallAr = () => {
           </div>
         </div>
       </section>
+
+      <MallGallerySection mallName="سيتي هب مول" images={galleryImages} videos={galleryVideos} lang="ar" />
 
       <CTASection
         title="استثمر في سيتي هب مول اليوم"
