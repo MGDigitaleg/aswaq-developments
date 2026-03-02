@@ -5,6 +5,7 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import Layout from "@/components/Layout";
 import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
+import { countryCodes } from "@/data/countryCodes";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -48,6 +49,7 @@ const Contact = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [countryCode, setCountryCode] = useState("+20");
 
   const handleChange = (field: keyof ContactForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -152,9 +154,17 @@ const Contact = () => {
                     </div>
                     <div>
                       <div className="flex">
-                        <span className="inline-flex items-center px-3 border border-r-0 border-border rounded-l-md bg-muted text-sm text-muted-foreground font-body">
-                          🇪🇬 +20
-                        </span>
+                        <select
+                          value={countryCode}
+                          onChange={(e) => setCountryCode(e.target.value)}
+                          className="inline-flex items-center px-2 border border-r-0 border-border rounded-l-md bg-muted text-sm text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-accent/50 appearance-none cursor-pointer min-w-[90px]"
+                        >
+                          {countryCodes.map((c) => (
+                            <option key={`${c.flag}${c.code}`} value={c.code}>
+                              {c.flag} {c.code}
+                            </option>
+                          ))}
+                        </select>
                         <input
                           type="tel"
                           placeholder="Phone Number *"
