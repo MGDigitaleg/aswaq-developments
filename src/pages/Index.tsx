@@ -303,14 +303,19 @@ const Index = () => {
               Browse our available units and select what matches your business or investment plan.
             </p>
             <div className="flex flex-wrap gap-3 justify-center mb-8">
-              {["Mixed-use Properties", "Commercial Units", "Administrative Units", "Medical Units"].map(
-                (tag) => (
-                  <span
-                    key={tag}
-                    className="border border-primary-foreground/20 text-primary-foreground/80 px-4 py-1.5 rounded-full text-sm font-body"
+              {[
+                { label: "Mixed-use Properties", href: "/units" },
+                { label: "Commercial Units", href: "/units/commercial-for-sale" },
+                { label: "Administrative Units", href: "/units/administrative-for-sale" },
+                { label: "Medical Units", href: "/units/medical-for-sale" },
+              ].map((tag) => (
+                  <Link
+                    key={tag.label}
+                    to={tag.href}
+                    className="border border-primary-foreground/20 text-primary-foreground/80 px-4 py-1.5 rounded-full text-sm font-body hover:bg-primary-foreground/10 transition-colors"
                   >
-                    {tag}
-                  </span>
+                    {tag.label}
+                  </Link>
                 )
               )}
             </div>
