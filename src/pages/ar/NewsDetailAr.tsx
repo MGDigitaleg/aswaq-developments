@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useNewsArticle, useLatestNews } from "@/hooks/useNewsArticles";
+import ContentBlockRenderer from "@/components/ContentBlockRenderer";
 
 const NewsDetailAr = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -49,11 +50,8 @@ const NewsDetailAr = () => {
 
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          {article.content.map((paragraph, i) => (
-            <motion.p key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="font-arabic text-foreground/80 leading-relaxed mb-6 text-base md:text-lg">
-              {paragraph}
-            </motion.p>
-          ))}
+          <ContentBlockRenderer content={article.rawContent} fontClass="font-arabic" />
+
           {article.youtubeId && (
             <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-8">
               <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
