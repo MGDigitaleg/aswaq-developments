@@ -4,6 +4,7 @@ import { MapPin, Phone, Mail } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import Layout from "@/components/Layout";
+import { countryCodes } from "@/data/countryCodes";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "الاسم مطلوب").max(100),
@@ -47,6 +48,7 @@ const ContactAr = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [countryCode, setCountryCode] = useState("+20");
 
   const handleChange = (field: keyof ContactForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -125,10 +127,18 @@ const ContactAr = () => {
                     </div>
                     <div>
                       <div className="flex">
-                        <span className="inline-flex items-center px-3 border border-l-0 border-border rounded-r-md bg-muted text-sm text-muted-foreground font-arabic">
-                          🇪🇬 20+
-                        </span>
-                        <input type="tel" placeholder="رقم الهاتف *" value={form.phone || ""} onChange={(e) => handleChange("phone", e.target.value)} className={`${inputClass} rounded-r-none`} />
+                        <input type="tel" placeholder="رقم الهاتف *" value={form.phone || ""} onChange={(e) => handleChange("phone", e.target.value)} className={`${inputClass} rounded-l-none`} />
+                        <select
+                          value={countryCode}
+                          onChange={(e) => setCountryCode(e.target.value)}
+                          className="inline-flex items-center px-2 border border-l-0 border-border rounded-l-md bg-muted text-sm text-muted-foreground font-arabic focus:outline-none focus:ring-2 focus:ring-accent/50 appearance-none cursor-pointer min-w-[90px]"
+                        >
+                          {countryCodes.map((c) => (
+                            <option key={`${c.flag}${c.code}`} value={c.code}>
+                              {c.flag} {c.code}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                       {errors.phone && <p className="text-destructive text-xs mt-1 font-arabic">{errors.phone}</p>}
                     </div>
