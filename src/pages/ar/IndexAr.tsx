@@ -246,10 +246,15 @@ const IndexAr = () => {
               تصفح وحداتنا المتاحة واختر ما يناسب خطتك التجارية أو الاستثمارية.
             </p>
             <div className="flex flex-wrap gap-3 justify-center mb-8">
-              {["عقارات متعددة الاستخدامات", "وحدات تجارية", "وحدات إدارية", "وحدات طبية"].map((tag) => (
-                <span key={tag} className="border border-primary-foreground/20 text-primary-foreground/80 px-4 py-1.5 rounded-full text-sm font-arabic">
-                  {tag}
-                </span>
+              {[
+                { label: "عقارات متعددة الاستخدامات", href: "/ar/units" },
+                { label: "وحدات تجارية", href: "/ar/units/commercial-for-sale" },
+                { label: "وحدات إدارية", href: "/ar/units/administrative-for-sale" },
+                { label: "وحدات طبية", href: "/ar/units/medical-for-sale" },
+              ].map((tag) => (
+                <Link key={tag.label} to={tag.href} className="border border-primary-foreground/20 text-primary-foreground/80 px-4 py-1.5 rounded-full text-sm font-arabic hover:bg-primary-foreground/10 transition-colors">
+                  {tag.label}
+                </Link>
               ))}
             </div>
             <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-8 py-3 font-semibold rounded hover:bg-gold-light transition-colors font-arabic">
