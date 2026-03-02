@@ -9,6 +9,7 @@ export interface NewsArticle {
   excerpt: string;
   image: string;
   content: string[];
+  rawContent: unknown;
   youtubeId?: string;
 }
 
@@ -26,6 +27,7 @@ function mapArticle(row: Tables<"blog_articles">): NewsArticle {
     excerpt: row.excerpt || "",
     image: row.image_url || "",
     content: contentArray,
+    rawContent: row.content,
     youtubeId: row.youtube_id || undefined,
   };
 }

@@ -9,7 +9,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { ArrowLeft, Plus, Trash2, Upload } from "lucide-react";
+import { ArrowLeft, Plus, Upload, Type, Image, Columns } from "lucide-react";
+import ContentBlockEditor from "@/components/admin/ContentBlockEditor";
+import { normalizeContent, type ContentBlock } from "@/types/contentBlocks";
 
 const AdminBlogEditor = () => {
   const { id } = useParams();
@@ -19,7 +21,7 @@ const AdminBlogEditor = () => {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [excerpt, setExcerpt] = useState("");
-  const [paragraphs, setParagraphs] = useState<string[]>([""]);
+  const [blocks, setBlocks] = useState<ContentBlock[]>([{ type: "text", text: "" }]);
   const [imageUrl, setImageUrl] = useState("");
   const [youtubeId, setYoutubeId] = useState("");
   const [lang, setLang] = useState("en");
@@ -43,7 +45,7 @@ const AdminBlogEditor = () => {
           setTitle(data.title);
           setSlug(data.slug);
           setExcerpt(data.excerpt || "");
-          setParagraphs(Array.isArray(data.content) ? (data.content as string[]) : [""]);
+          setBlocks(normalizeContent(data.content));
           setImageUrl(data.image_url || "");
           setYoutubeId(data.youtube_id || "");
           setLang(data.lang);
@@ -88,7 +90,12 @@ const AdminBlogEditor = () => {
       title,
       slug,
       excerpt,
-      content: paragraphs.filter((p) => p.trim()),
+      content: JSON.parse(JSON.stringify(blocks.filter((b) => {
+        if (b.type === "text") return b.text.trim();
+        if (b.type === "media") return b.mediaUrl.trim();
+        if (b.type === "text_with_media") return b.text.trim() || b.mediaUrl.trim();
+        return false;
+      }))),
       image_url: imageUrl || null,
       youtube_id: youtubeId || null,
       lang,
@@ -97,30 +104,31 @@ const AdminBlogEditor = () => {
 
     if (isNew) {
       const { error } = await supabase.from("blog_articles").insert(payload);
-      if (error) {
-        toast.error(error.message);
-      } else {
-        toast.success("Article created");
-        navigate("/admin");
-      }
+      if (error) toast.error(error.message);
+      else { toast.success("Article created"); navigate("/admin"); }
     } else {
       const { error } = await supabase.from("blog_articles").update(payload).eq("id", id!);
-      if (error) {
-        toast.error(error.message);
-      } else {
-        toast.success("Article updated");
-      }
+      if (error) toast.error(error.message);
+      else toast.success("Article updated");
     }
     setSaving(false);
   };
 
-  const addParagraph = () => setParagraphs([...paragraphs, ""]);
-  const removeParagraph = (i: number) => setParagraphs(paragraphs.filter((_, idx) => idx !== i));
-  const updateParagraph = (i: number, val: string) => {
-    const updated = [...paragraphs];
-    updated[i] = val;
-    setParagraphs(updated);
+  const addBlock = (type: ContentBlock["type"]) => {
+    const newBlock: ContentBlock =
+      type === "text" ? { type: "text", text: "" } :
+      type === "media" ? { type: "media", mediaUrl: "", mediaType: "image", caption: "" } :
+      { type: "text_with_media", text: "", mediaUrl: "", mediaType: "image", mediaPosition: "right" };
+    setBlocks([...blocks, newBlock]);
   };
+
+  const updateBlock = (i: number, block: ContentBlock) => {
+    const updated = [...blocks];
+    updated[i] = block;
+    setBlocks(updated);
+  };
+
+  const removeBlock = (i: number) => setBlocks(blocks.filter((_, idx) => idx !== i));
 
   return (
     <AdminLayout>
@@ -176,36 +184,36 @@ const AdminBlogEditor = () => {
                 <span><Upload size={14} /> {uploading ? "Uploading..." : "Upload Image"}</span>
               </Button>
             </label>
-            {imageUrl && (
-              <img src={imageUrl} alt="preview" className="h-16 rounded-md object-cover" />
-            )}
+            {imageUrl && <img src={imageUrl} alt="preview" className="h-16 rounded-md object-cover" />}
           </div>
           <Input value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder="Or paste image URL" className="mt-2" />
         </div>
 
         <div>
-          <div className="flex items-center justify-between mb-2">
-            <Label>Content Paragraphs</Label>
-            <Button variant="outline" size="sm" onClick={addParagraph}>
-              <Plus size={14} /> Add Paragraph
-            </Button>
+          <div className="flex items-center justify-between mb-3">
+            <Label className="text-base">Content Blocks</Label>
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" onClick={() => addBlock("text")}>
+                <Type size={14} /> Text
+              </Button>
+              <Button variant="outline" size="sm" onClick={() => addBlock("media")}>
+                <Image size={14} /> Media
+              </Button>
+              <Button variant="outline" size="sm" onClick={() => addBlock("text_with_media")}>
+                <Columns size={14} /> Text + Media
+              </Button>
+            </div>
           </div>
           <div className="space-y-3">
-            {paragraphs.map((p, i) => (
-              <div key={i} className="flex gap-2">
-                <Textarea
-                  value={p}
-                  onChange={(e) => updateParagraph(i, e.target.value)}
-                  rows={3}
-                  placeholder={`Paragraph ${i + 1}`}
-                  className="flex-1"
-                />
-                {paragraphs.length > 1 && (
-                  <Button variant="ghost" size="icon" onClick={() => removeParagraph(i)}>
-                    <Trash2 size={14} className="text-destructive" />
-                  </Button>
-                )}
-              </div>
+            {blocks.map((block, i) => (
+              <ContentBlockEditor
+                key={i}
+                block={block}
+                index={i}
+                onChange={updateBlock}
+                onRemove={removeBlock}
+                canRemove={blocks.length > 1}
+              />
             ))}
           </div>
         </div>

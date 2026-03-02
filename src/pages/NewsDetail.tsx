@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useNewsArticle, useLatestNews } from "@/hooks/useNewsArticles";
 import JsonLd, { buildArticleSchema, buildBreadcrumbSchema } from "@/components/JsonLd";
+import ContentBlockRenderer from "@/components/ContentBlockRenderer";
 
 const NewsDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -72,18 +73,7 @@ const NewsDetail = () => {
       {/* Content */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          {article.content.map((paragraph, i) => (
-            <motion.p
-              key={i}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="font-body text-foreground/80 leading-relaxed mb-6 text-base md:text-lg"
-            >
-              {paragraph}
-            </motion.p>
-          ))}
+          <ContentBlockRenderer content={article.rawContent} fontClass="font-body" />
 
           {article.youtubeId && (
             <motion.div
