@@ -96,7 +96,7 @@ const faqs = [
   {
     question: "Are there flexible payment plans for buying units?",
     answer:
-      "Yes. ASWAQ Developments offers flexible payment plans for buyers interested in owning a unit. This allows investors and business owners to manage payments over time while securing prime retail, commercial, administrative, and medical space.",
+      "Yes. ASWAQ Developments offers flexible payment plans for buyers interested in owning a unit. This allows investors and business owners to manage payments over time while securing prime retail and commercial space.",
   },
 ];
 
