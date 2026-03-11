@@ -128,7 +128,7 @@ const AvailableUnits = () => {
               Available Units: Explore Properties for<br />Sale, Investment & Rent
             </h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto mb-4">
-              Whether you're looking for units for sale, properties for rent, or smart investment opportunities, ASWAQ Developments offers a carefully selected portfolio of commercial, administrative, and medical units in prime locations across Egypt.
+              Whether you're looking for units for sale, properties for rent, or smart investment opportunities, ASWAQ Developments offers a carefully selected portfolio of commercial and administrative units in prime locations across Egypt.
             </p>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
               Explore flexible spaces designed to meet real business needs, developed by a trusted Real Estate Developer in Egypt with a clear focus on value, location, and long-term growth. Choose your unit type below and start your journey today.
