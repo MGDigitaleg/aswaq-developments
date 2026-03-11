@@ -16,7 +16,7 @@ const unitTypes = [
     icon: "🏷️",
     image: unitSaleImg,
     description:
-      "Own a unit in a strategically located development and secure a long-term asset with strong growth potential. ASWAQ offers a variety of units for sale suitable for retail, commercial, and medical use.",
+      "Own a unit in a strategically located development and secure a long-term asset with strong growth potential. ASWAQ offers a variety of units for sale suitable for retail and commercial use.",
     cta: "Explore Units for Sale in El Shorouk",
     link: "/units/for-sale",
   },
@@ -51,7 +51,7 @@ const faqs = [
   {
     question: "What types of properties does ASWAQ Developments offer?",
     answer:
-      "ASWAQ Developments offers a range of commercial real estate options, including commercial units for sale, units for rent, administrative spaces, and medical units located within strategic malls and commercial destinations. We design our properties to serve businesses, investors, and tenants looking for quality spaces with strong footfall.",
+      "ASWAQ Developments offers a range of commercial real estate options, including commercial units for sale, units for rent, and administrative spaces located within strategic malls and commercial destinations. We design our properties to serve businesses, investors, and tenants looking for quality spaces with strong footfall.",
   },
   {
     question: "How do I buy a unit or property in Shorouk City?",
@@ -86,7 +86,7 @@ const faqs = [
   {
     question: "What types of businesses can operate in ASWAQ's malls?",
     answer:
-      "Our units are suitable for a variety of businesses, such as retail shops, cafés, restaurants, service centers, medical clinics, offices, and more. Each mall's environment supports specific business activity, from daily needs to lifestyle-driven outlets.",
+      "Our units are suitable for a variety of businesses, such as retail shops, cafés, restaurants, service centers, and offices. Each mall's environment supports specific business activity, from daily needs to lifestyle-driven outlets.",
   },
   {
     question: "What makes ASWAQ's locations attractive for investors?",
@@ -96,7 +96,7 @@ const faqs = [
   {
     question: "Are there flexible payment plans for buying units?",
     answer:
-      "Yes. ASWAQ Developments offers flexible payment plans for buyers interested in owning a unit. This allows investors and business owners to manage payments over time while securing prime retail, commercial, administrative, and medical space.",
+      "Yes. ASWAQ Developments offers flexible payment plans for buyers interested in owning a unit. This allows investors and business owners to manage payments over time while securing prime retail and commercial space.",
   },
 ];
 
@@ -128,7 +128,7 @@ const AvailableUnits = () => {
               Available Units: Explore Properties for<br />Sale, Investment & Rent
             </h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto mb-4">
-              Whether you're looking for units for sale, properties for rent, or smart investment opportunities, ASWAQ Developments offers a carefully selected portfolio of commercial, administrative, and medical units in prime locations across Egypt.
+              Whether you're looking for units for sale, properties for rent, or smart investment opportunities, ASWAQ Developments offers a carefully selected portfolio of commercial and administrative units in prime locations across Egypt.
             </p>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
               Explore flexible spaces designed to meet real business needs, developed by a trusted Real Estate Developer in Egypt with a clear focus on value, location, and long-term growth. Choose your unit type below and start your journey today.
