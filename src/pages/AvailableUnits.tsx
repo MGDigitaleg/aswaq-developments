@@ -51,7 +51,7 @@ const faqs = [
   {
     question: "What types of properties does ASWAQ Developments offer?",
     answer:
-      "ASWAQ Developments offers a range of commercial real estate options, including commercial units for sale, units for rent, administrative spaces, and medical units located within strategic malls and commercial destinations. We design our properties to serve businesses, investors, and tenants looking for quality spaces with strong footfall.",
+      "ASWAQ Developments offers a range of commercial real estate options, including commercial units for sale, units for rent, and administrative spaces located within strategic malls and commercial destinations. We design our properties to serve businesses, investors, and tenants looking for quality spaces with strong footfall.",
   },
   {
     question: "How do I buy a unit or property in Shorouk City?",
