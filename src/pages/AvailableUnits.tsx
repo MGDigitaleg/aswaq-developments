@@ -86,7 +86,7 @@ const faqs = [
   {
     question: "What types of businesses can operate in ASWAQ's malls?",
     answer:
-      "Our units are suitable for a variety of businesses, such as retail shops, cafés, restaurants, service centers, medical clinics, offices, and more. Each mall's environment supports specific business activity, from daily needs to lifestyle-driven outlets.",
+      "Our units are suitable for a variety of businesses, such as retail shops, cafés, restaurants, service centers, and offices. Each mall's environment supports specific business activity, from daily needs to lifestyle-driven outlets.",
   },
   {
     question: "What makes ASWAQ's locations attractive for investors?",
