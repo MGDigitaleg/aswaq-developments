@@ -19,10 +19,10 @@ const AdministrativeForInvestment = () => (
     ]}
     locationConclusion="These factors make administrative properties for investment in Shorouk City highly attractive."
     mallsSectionTitle="Best Administrative Units for Investment at ASWAQ Malls"
-    mallsSectionIntro="We specialize in creating vibrant destinations that blend retail, medical, and professional services."
+    mallsSectionIntro="We specialize in creating vibrant destinations that blend retail and professional services."
     malls={[
-      { name: "City Hub Mall", href: "/projects/city-hub-mall", description: "Located in the heart of the Club District, City Hub is a landmark of modern architecture. Facing the Shorouk and City Clubs, it offers administrative units that benefit from the mall's vibrant atmosphere, including its signature dancing fountain and open-air dining zones.", sizes: "Spaces from 30 m² to 300 m²" },
-      { name: "Mercado Mall", href: "/projects/mercado-mall", description: "As one of the largest fully-serviced complexes in the area, Mercado Mall provides a professional setting for businesses. Its strategic location in the Second District ensures a high volume of traffic, making its offices for investment highly sought after.", sizes: "Spaces from 30 m² to 300 m²" },
+      { name: "Solaria Mall", href: "/projects/solaria-mall", description: "Located in the 9th District, Solaria Mall offers modern administrative units designed for productivity and professional growth. The mall features contemporary architecture and a strategic location near major residential communities.", sizes: "Spaces from 30 m² to 300 m²" },
+      { name: "Arena Mall", href: "/projects/arena-mall", description: "Strategically positioned in the Third District, Arena Mall provides administrative spaces with excellent accessibility and visibility. Its modern design and vibrant atmosphere create an ideal setting for businesses to thrive.", sizes: "Spaces from 30 m² to 300 m²" },
     ]}
     ctaTitle="Ready to Secure your Administrative Unit?"
     ctaSubtitle="Contact us now to explore available units, pricing details, and investment opportunities tailored to your business goals."
