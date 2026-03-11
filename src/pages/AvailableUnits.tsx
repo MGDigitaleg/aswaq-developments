@@ -16,7 +16,7 @@ const unitTypes = [
     icon: "🏷️",
     image: unitSaleImg,
     description:
-      "Own a unit in a strategically located development and secure a long-term asset with strong growth potential. ASWAQ offers a variety of units for sale suitable for retail, commercial, and medical use.",
+      "Own a unit in a strategically located development and secure a long-term asset with strong growth potential. ASWAQ offers a variety of units for sale suitable for retail and commercial use.",
     cta: "Explore Units for Sale in El Shorouk",
     link: "/units/for-sale",
   },
