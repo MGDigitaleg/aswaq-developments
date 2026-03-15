@@ -21,7 +21,7 @@ const AdministrativeForRent = () => (
     mallsSectionTitle="Best Administrative Units for Rent at ASWAQ Malls"
     mallsSectionIntro="We specialize in creating vibrant destinations that blend retail and professional services."
     malls={[
-      { name: "Solaria Mall", href: "/projects/solaria-mall", description: "Located in the 9th District, Solaria Mall offers modern administrative units designed for productivity and professional growth. The mall features contemporary architecture and a strategic location near major residential communities.", sizes: "Spaces from 30 m² to 300 m²" },
+      { name: "Solaria Mall", href: "/projects/solaria-mall", description: "Located in the 9th District, Solaria Mall offers modern administrative units designed for productivity and professional growth. The mall features contemporary architecture and a strategic location near major residential communities.", sizes: "Spaces from 30 m² to 396 m²" },,
       { name: "Arena Mall", href: "/projects/arena-mall", description: "Strategically positioned in the Third District, Arena Mall provides administrative spaces with excellent accessibility and visibility. Its modern design and vibrant atmosphere create an ideal setting for businesses to thrive.", sizes: "Spaces from 16 m² to 343 m²" },
     ]}
     ctaTitle="Ready to Secure your Administrative Unit?"
