@@ -55,7 +55,7 @@ const SolariaMall = () => {
             <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">ASWAQ Developments</p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Solaria Mall at El Shorouk</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
-              One of ASWAQ's most ambitious mixed-use properties — a vibrant hub for shopping, services, healthcare, and professional activities spanning 6,400 m².
+              One of ASWAQ's most ambitious mixed-use properties — a vibrant hub for shopping, services, healthcare, and professional activities spanning 6,600 m².
             </p>
           </motion.div>
         </div>
