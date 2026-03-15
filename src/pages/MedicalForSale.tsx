@@ -21,7 +21,7 @@ const MedicalForSale = () => (
     mallsSectionTitle="Best Medical Units for Sale at ASWAQ Malls"
     mallsSectionIntro="We specialize in creating vibrant destinations that blend retail, medical, and professional services. Our medical units are strategically positioned within our flagship malls."
     malls={[
-      { name: "City Hub Mall", href: "/projects/city-hub-mall", description: "Perfect for practitioners seeking a high-end, modern atmosphere. Located in the Club District, these clinics for sale offer a sophisticated environment that reflects the quality of your medical services.", sizes: "Spaces from 30 m² to 300 m²" },
+      { name: "City Hub Mall", href: "/projects/city-hub-mall", description: "Perfect for practitioners seeking a high-end, modern atmosphere. Located in the Club District, these clinics for sale offer a sophisticated environment that reflects the quality of your medical services.", sizes: "Spaces from 29 m² to 198 m²" },,
       { name: "Mercado Mall", href: "/projects/mercado-mall", description: "Secure a medical unit for sale in one of Shorouk's largest service hubs. Owning a unit here puts you at the center of a high-density residential area, ensuring your practice is a community landmark.", sizes: "Spaces from 30 m² to 300 m²" },
     ]}
     ctaTitle="Ready to Secure your Medical Unit?"
