@@ -113,7 +113,7 @@ const MercadoMallAr = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">الوحدات التجارية المتاحة في ميركادو مول</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            استكشف الوحدات المتاحة للإيجار والبيع في ميركادو مول والتي تتراوح مساحاتها من 30 م² إلى 300 م².
+            استكشف الوحدات المتاحة للإيجار والبيع في ميركادو مول والتي تتراوح مساحاتها من 24 م² إلى 300 م².
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (

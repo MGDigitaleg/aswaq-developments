@@ -113,7 +113,7 @@ const MercadoMall = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Commercial Units Available at Mercado Mall</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            Explore available units for rent & sale at Mercado Mall ranging from 30 m² to 300 m².
+            Explore available units for rent & sale at Mercado Mall ranging from 24 m² to 300 m².
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (
