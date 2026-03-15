@@ -62,7 +62,7 @@ const MercadoMallAr = () => {
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <h2 className="font-display text-3xl font-bold text-foreground mb-4">ميركادو مول بالشروق</h2>
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
-                يُعد ميركادو مول الشروق وجهة تجارية متميزة يقع في موقع استراتيجي ويمتد على ثلاثة طوابق، ويقدم مجموعة واسعة من الوحدات التجارية تبدأ مساحاتها من 30 متر مربع.
+                يُعد ميركادو مول الشروق وجهة تجارية متميزة يقع في موقع استراتيجي ويمتد على ثلاثة طوابق، ويقدم مجموعة واسعة من الوحدات التجارية تبدأ مساحاتها من 24 متر مربع.
               </p>
               <p className="text-muted-foreground font-body leading-relaxed">
                 بفضل موقعه القوي وتصميماته العملية وتركيزه على الجانب الاستثماري، يمثل ميركادو مول فرصة استثمارية حقيقية للباحثين عن العقارات التجارية ومحلات للبيع في الشروق.
