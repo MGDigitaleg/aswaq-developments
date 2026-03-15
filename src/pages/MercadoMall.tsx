@@ -27,7 +27,7 @@ const locationAdvantages = [
 const whyInvest = [
   "Strategic location in East Cairo with steady foot traffic",
   "Modern architectural design enhancing visibility and business appeal",
-  "Flexible unit sizes starting from approximately 30 m²",
+  "Flexible unit sizes starting from approximately 24 m²",
   "Competitive pricing with attractive entry points for investors",
   "Flexible payment plans with investor-friendly installment options",
   "Immediate or near-immediate delivery for faster operation",
