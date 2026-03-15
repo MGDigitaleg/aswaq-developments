@@ -62,7 +62,7 @@ const MercadoMall = () => {
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <h2 className="font-display text-3xl font-bold text-foreground mb-4">Mercado Mall at El Shorouk</h2>
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
-                Mercado Mall El Shorouk is a prime commercial destination strategically located in a prime location. The mall spans three floors, offering a wide range of commercial units starting from 30 square meters.
+                Mercado Mall El Shorouk is a prime commercial destination strategically located in a prime location. The mall spans three floors, offering a wide range of commercial units starting from 24 square meters.
               </p>
               <p className="text-muted-foreground font-body leading-relaxed">
                 With its strong location, practical layouts, and investment-focused design, Mercado Mall represents a solid opportunity for investors seeking commercial real estate and property for sale in Egypt.
