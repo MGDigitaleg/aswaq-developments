@@ -114,7 +114,7 @@ const ArenaMallAr = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">الوحدات المتاحة في أرينا مول</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            اكتشف الوحدات المتاحة للإيجار والبيع في أرينا مول بمساحات تتراوح من 30 م² إلى 300 م².
+            اكتشف الوحدات المتاحة للإيجار والبيع في أرينا مول بمساحات تتراوح من 16 م² إلى 343 م².
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (
