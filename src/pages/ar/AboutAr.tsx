@@ -60,7 +60,7 @@ const AboutAr = () => {
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">رؤيتنا</h3>
               <p className="text-muted-foreground font-arabic">
-                ترسيخ إرثنا في القطاع من خلال تقديم التميز والابتكار في التطوير العقاري عبر مصر والشرق الأوسط.
+                نبني مستقبلًا عقاريًا مبتكرًا في مصر والشرق الأوسط.
               </p>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-lg">
