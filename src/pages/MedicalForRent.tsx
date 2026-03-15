@@ -21,7 +21,7 @@ const MedicalForRent = () => (
     mallsSectionTitle="Best Medical Units for Rent at ASWAQ Malls"
     mallsSectionIntro="Our medical units are strategically positioned within our flagship malls to ensure maximum accessibility."
     malls={[
-      { name: "City Hub Mall", href: "/projects/city-hub-mall", description: "Perfect for practitioners seeking a high-end, modern atmosphere. Located across from the Shorouk and City Clubs, this location attracts a premium demographic looking for quality healthcare services.", sizes: "Spaces from 30 m² to 300 m²" },
+      { name: "City Hub Mall", href: "/projects/city-hub-mall", description: "Perfect for practitioners seeking a high-end, modern atmosphere. Located across from the Shorouk and City Clubs, this location attracts a premium demographic looking for quality healthcare services.", sizes: "Spaces from 29 m² to 198 m²" },,
       { name: "Mercado Mall", href: "/projects/mercado-mall", description: "As one of the largest fully-serviced complexes in the area, Mercado Mall offers a dedicated environment for medical professionals. These units benefit from the mall's existing footfall and community reputation.", sizes: "Spaces from 30 m² to 300 m²" },
     ]}
     ctaTitle="Ready to Secure your Medical Unit?"
