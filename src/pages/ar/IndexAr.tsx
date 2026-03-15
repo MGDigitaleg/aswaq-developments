@@ -149,8 +149,7 @@ const IndexAr = () => {
         >
           <p className="text-accent font-arabic font-medium tracking-widest text-sm mb-4">أسواق للتطوير العقاري</p>
           <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-            نُعيد تعريف<br />
-            <span className="italic text-accent">التميز العقاري</span>
+            مستقبل التطوير
           </h1>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/ar/projects" className="bg-[#141D3E] text-primary-foreground px-8 py-3 font-semibold rounded hover:bg-accent transition-colors font-arabic">
