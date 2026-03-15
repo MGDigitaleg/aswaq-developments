@@ -23,7 +23,7 @@ const CommercialForSale = () => (
       { name: "Solaria Mall", href: "/projects/solaria-mall", description: "A modern retail destination designed to serve surrounding residential compounds, offering excellent visibility and daily foot traffic for commercial properties; shops, cafés, and service providers.", sizes: "Spaces from 30 m² to 300 m²" },
       { name: "Arena Mall", href: "/projects/arena-mall", description: "A vibrant commercial hub suitable for brands seeking strong exposure, with smart layouts that enhance customer movement and maximize storefront impact.", sizes: "Spaces from 16 m² to 343 m²" },
       { name: "Mercado Mall", href: "/projects/mercado-mall", description: "Boost your brand's visibility in El Shorouk's busiest commercial hub. Located in a high-density residential zone with a built-in customer base from Madinaty and New Heliopolis.", sizes: "Spaces from 24 m² to 300 m²" },
-      { name: "City Hub Mall", href: "/projects/city-hub-mall", description: "Position your business in the heart of the 'Clubs District,' facing El Shorouk's premier sporting clubs. Famous for its open-air dining and dancing fountain.", sizes: "Spaces from 30 m² to 300 m²" },
+      { name: "City Hub Mall", href: "/projects/city-hub-mall", description: "Position your business in the heart of the 'Clubs District,' facing El Shorouk's premier sporting clubs. Famous for its open-air dining and dancing fountain.", sizes: "Spaces from 29 m² to 198 m²" },,
     ]}
     ctaTitle="Own your Commercial Unit Today"
     ctaSubtitle="Contact us now to explore available units, pricing details, and investment opportunities tailored to your business goals."
