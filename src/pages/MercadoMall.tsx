@@ -27,7 +27,7 @@ const locationAdvantages = [
 const whyInvest = [
   "Strategic location in East Cairo with steady foot traffic",
   "Modern architectural design enhancing visibility and business appeal",
-  "Flexible unit sizes starting from approximately 30 m²",
+  "Flexible unit sizes starting from approximately 24 m²",
   "Competitive pricing with attractive entry points for investors",
   "Flexible payment plans with investor-friendly installment options",
   "Immediate or near-immediate delivery for faster operation",
@@ -62,7 +62,7 @@ const MercadoMall = () => {
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <h2 className="font-display text-3xl font-bold text-foreground mb-4">Mercado Mall at El Shorouk</h2>
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
-                Mercado Mall El Shorouk is a prime commercial destination strategically located in a prime location. The mall spans three floors, offering a wide range of commercial units starting from 30 square meters.
+                Mercado Mall El Shorouk is a prime commercial destination strategically located in a prime location. The mall spans three floors, offering a wide range of commercial units starting from 24 square meters.
               </p>
               <p className="text-muted-foreground font-body leading-relaxed">
                 With its strong location, practical layouts, and investment-focused design, Mercado Mall represents a solid opportunity for investors seeking commercial real estate and property for sale in Egypt.
@@ -113,7 +113,7 @@ const MercadoMall = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Commercial Units Available at Mercado Mall</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            Explore available units for rent & sale at Mercado Mall ranging from 30 m² to 300 m².
+            Explore available units for rent & sale at Mercado Mall ranging from 24 m² to 300 m².
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (

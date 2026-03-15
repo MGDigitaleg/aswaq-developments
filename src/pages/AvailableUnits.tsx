@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "Where can I buy a unit in Shorouk City?",
     answer:
-      "ASWAQ Developments offers a range of commercial and retail spaces for sale across its four major mall destinations: Solaria Mall, Arena Mall, Mercado Mall, and City Hub Mall. These units range in size from 30 m² up to 300 m², providing flexible options.",
+      "ASWAQ Developments offers a range of commercial and retail spaces for sale across its four major mall destinations: Solaria Mall, Arena Mall, Mercado Mall, and City Hub Mall. These units range in size from 24 m² up to 300 m², providing flexible options.",
   },
   {
     question: "How many malls does ASWAQ Developments have units in?",

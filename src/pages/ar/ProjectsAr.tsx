@@ -105,7 +105,7 @@ const ProjectsAr = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-accent-foreground mb-6">وحدات متاحة للبيع والإيجار</h2>
             <p className="text-accent-foreground/80 font-arabic leading-relaxed mb-4">
-              عبر مشاريع أسواق، تتوفر مجموعة متنوعة من الوحدات لتناسب احتياجات الأعمال والاستثمار المختلفة. تتراوح مساحاتنا من 30 م² إلى 300 م².
+              عبر مشاريع أسواق، تتوفر مجموعة متنوعة من الوحدات لتناسب احتياجات الأعمال والاستثمار المختلفة. تتراوح مساحاتنا من 24 م² إلى 300 م².
             </p>
             <p className="text-accent-foreground/80 font-arabic leading-relaxed mb-8">
               سواء كنت تبحث عن وحدات تجارية للإيجار أو وحدات متعددة الاستخدامات للبيع، تقدم أسواق فرصًا استراتيجية داخل مولات متطورة بالكامل في مدينة الشروق.
