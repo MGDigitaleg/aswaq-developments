@@ -146,7 +146,7 @@ const ArenaMall = () => {
             Commercial Units Available at Arena Mall
           </h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            Explore available units for rent & sale at Arena Mall ranging from 30 m² to 300 m², suitable for both small enterprises and larger commercial concepts.
+            Explore available units for rent & sale at Arena Mall ranging from 16 m² to 343 m², suitable for both small enterprises and larger commercial concepts.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (
