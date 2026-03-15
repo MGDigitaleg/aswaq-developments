@@ -119,7 +119,7 @@ const CityHubMall = () => {
             Commercial Units Available at City Hub Mall
           </h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            Explore available units for rent & sale at City Hub Mall ranging from 30 m² to 300 m².
+            Explore available units for rent & sale at City Hub Mall ranging from 29 m² to 198 m².
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (

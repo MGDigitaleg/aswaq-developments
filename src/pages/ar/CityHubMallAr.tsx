@@ -106,7 +106,7 @@ const CityHubMallAr = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">الوحدات التجارية المتاحة في سيتي هب مول</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            استكشف الوحدات المتاحة للإيجار والبيع في سيتي هب مول بمساحات تتراوح من 30 م² إلى 300 م².
+            استكشف الوحدات المتاحة للإيجار والبيع في سيتي هب مول بمساحات تتراوح من 29 م² إلى 198 م².
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (
