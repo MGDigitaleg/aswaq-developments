@@ -107,6 +107,41 @@ const Footer = () => {
                 marketing@aswaqdev.com
               </li>
             </ul>
+            {/* Social Media Links */}
+            <div className="mt-6">
+              <h5 className="font-display text-sm font-semibold mb-3 text-primary-foreground">
+                {isArabic ? "تابعنا" : "Follow Us"}
+              </h5>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://www.facebook.com/AswaqDev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={18} />
+                </a>
+                <a
+                  href="https://www.instagram.com/aswaqdev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={18} />
+                </a>
+                <a
+                  href="https://www.youtube.com/@aswaqdevelopments3057"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
+                  aria-label="YouTube"
+                >
+                  <Youtube size={18} />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
