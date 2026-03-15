@@ -22,7 +22,7 @@ const CommercialForRent = () => (
     malls={[
       { name: "Solaria Mall", href: "/projects/solaria-mall", description: "Establish your brand in a sophisticated, next-generation mall designed for luxury and accessibility. Located near the Suez Road and major institutions, Solaria offers modern rental spaces with high-end infrastructure.", sizes: "Spaces from 30 m² to 300 m²" },
       { name: "Arena Mall", href: "/projects/arena-mall", description: "Capitalize on a young, active demographic by renting directly across from the French University. With the city's first dedicated food court and a constant stream of students and professionals.", sizes: "Spaces from 30 m² to 300 m²" },
-      { name: "Mercado Mall", href: "/projects/mercado-mall", description: "Boost your brand's visibility in El Shorouk's busiest commercial hub. Renting at Mercado Mall places you in a high-density residential zone with a built-in customer base.", sizes: "Spaces from 30 m² to 300 m²" },
+      { name: "Mercado Mall", href: "/projects/mercado-mall", description: "Boost your brand's visibility in El Shorouk's busiest commercial hub. Renting at Mercado Mall places you in a high-density residential zone with a built-in customer base.", sizes: "Spaces from 24 m² to 300 m²" },
       { name: "City Hub Mall", href: "/projects/city-hub-mall", description: "Position your business in the heart of the 'Clubs District,' facing El Shorouk's premier sporting clubs. Famous for its open-air dining and dancing fountain.", sizes: "Spaces from 30 m² to 300 m²" },
     ]}
     ctaTitle="Rent your Commercial Unit Today"
