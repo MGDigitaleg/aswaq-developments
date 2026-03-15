@@ -55,7 +55,7 @@ const SolariaMallAr = () => {
             <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">شركة أسواق للتطوير العقاري</p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">سولاريا مول في مدينة الشروق</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
-              أحد أكثر المشاريع الطموحة لشركة أسواق للتطوير العقاري، مصمم ليكون مركزاً حيوياً للتسوق والخدمات والرعاية الصحية والأنشطة المهنية على مساحة 6,400 متر مربع.
+              أحد أكثر المشاريع الطموحة لشركة أسواق للتطوير العقاري، مصمم ليكون مركزاً حيوياً للتسوق والخدمات والرعاية الصحية والأنشطة المهنية على مساحة 6,600 متر مربع.
             </p>
           </motion.div>
         </div>
