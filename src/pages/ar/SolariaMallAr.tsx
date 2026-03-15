@@ -123,7 +123,7 @@ const SolariaMallAr = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">الوحدات المتاحة في سولاريا مول</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            استكشف الوحدات المتاحة للإيجار والبيع في سولاريا مول بمساحات تبدأ من 30 م² وتصل إلى 300 م².
+            استكشف الوحدات المتاحة للإيجار والبيع في سولاريا مول بمساحات تبدأ من 30 م² وتصل إلى 396 م².
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (
