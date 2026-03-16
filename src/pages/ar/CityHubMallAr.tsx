@@ -9,8 +9,12 @@ import cityhub1 from "@/assets/gallery/cityhub-1.jpg";
 import cityhub2 from "@/assets/gallery/cityhub-2.jpg";
 import cityhub3 from "@/assets/gallery/cityhub-3.jpg";
 import cityhub4 from "@/assets/gallery/cityhub-4.jpg";
+import cityhub5 from "@/assets/gallery/cityhub-5.jpg";
+import cityhub6 from "@/assets/gallery/cityhub-6.jpg";
+import cityhub7 from "@/assets/gallery/cityhub-7.jpg";
+import cityhub8 from "@/assets/gallery/cityhub-8.jpg";
 
-const galleryImages = [cityhub1, cityhub2, cityhub3, cityhub4];
+const galleryImages = [cityhub1, cityhub2, cityhub3, cityhub4, cityhub5, cityhub6, cityhub7, cityhub8];
 const galleryVideos = ["9pl-SiE0VVk", "868YMiO0LJc", "82mVbp9nB6U", "VIvmPBqrLnk"];
 
 const unitTypes = [
