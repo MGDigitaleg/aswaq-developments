@@ -55,7 +55,7 @@ const About = () => {
             About Us
           </h1>
           <p className="text-primary-foreground/80 font-body max-w-2xl mx-auto">
-            ASWAQ Developments, established in 2019, represents a strategic milestone built on more than 20 years of proven success across residential, commercial, industrial, and resort sectors. Formed in partnership with real estate firms active since 2002, Aswaq was created to streamline the management of existing and future projects, enhance profitability, and exceed client expectations while opening new markets with diverse investment and employment opportunities. Since its inception, Aswaq has continued to thrive by delivering high-quality Residential, Commercial, Administrative, and Medical projects, offering premium units for rent and exceptional property for sale in Egypt, all driven by a strong commitment to excellence and long-term value.
+            ASWAQ Developments, established in 2019, represents a strategic milestone built on more than 20 years of proven success across residential, commercial, industrial, and resort sectors.
           </p>
         </motion.div>
       </section>
