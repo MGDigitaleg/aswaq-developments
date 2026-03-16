@@ -35,10 +35,15 @@ const About = () => {
       <JsonLd data={breadcrumbs} />
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${aboutHero})` }}
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/about-hero.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-primary/70" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
