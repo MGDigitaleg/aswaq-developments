@@ -9,13 +9,51 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import type { Career } from "@/hooks/useCareers";
 
+interface Labels {
+  name?: string;
+  email?: string;
+  phone?: string;
+  major?: string;
+  coverLetter?: string;
+  uploadCv?: string;
+  chooseFile?: string;
+  browse?: string;
+  selectPosition?: string;
+  send?: string;
+  sending?: string;
+  errorPosition?: string;
+  errorCv?: string;
+  success?: string;
+  errorSubmit?: string;
+}
+
 interface Props {
   careers: Career[];
   selectedCareerId?: string;
   title?: string;
+  labels?: Labels;
 }
 
-const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For Job" }: Props) => {
+const defaultLabels: Labels = {
+  name: "Name",
+  email: "Email Address",
+  phone: "Phone Number",
+  major: "Major",
+  coverLetter: "Cover Letter",
+  uploadCv: "Upload CV*",
+  chooseFile: "Choose file...",
+  browse: "Browse",
+  selectPosition: "Select Position",
+  send: "Send",
+  sending: "Sending...",
+  errorPosition: "Please select a position.",
+  errorCv: "Please upload your CV.",
+  success: "Your application has been submitted successfully.",
+  errorSubmit: "Failed to submit application. Please try again.",
+};
+
+const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For Job", labels: labelsProp }: Props) => {
+  const l = { ...defaultLabels, ...labelsProp };
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
