@@ -73,7 +73,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.career_id) {
-      toast({ title: "Error", description: "Please select a position.", variant: "destructive" });
+      toast({ title: "Error", description: l.errorPosition, variant: "destructive" });
       return;
     }
     if (!cvFile) {
