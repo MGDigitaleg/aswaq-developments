@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import AvailableUnits from "./pages/AvailableUnits";
@@ -131,6 +131,12 @@ const App = () => (
           <Route path="/admin/pages" element={<AdminPageContent />} />
           <Route path="/admin/submissions" element={<AdminFormSubmissions />} />
           <Route path="/admin/users" element={<AdminUsers />} />
+
+          {/* Redirects */}
+          <Route path="/photo.php" element={<Navigate to="/gallery" replace />} />
+          <Route path="/photo" element={<Navigate to="/gallery" replace />} />
+          <Route path="/videos.php" element={<Navigate to="/gallery" replace />} />
+          <Route path="/videos" element={<Navigate to="/gallery" replace />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
