@@ -132,7 +132,7 @@ const CareerDetailAr = () => {
                   </span>
                 </div>
                 <div className="mt-6 text-sm leading-relaxed">
-                  <ul className="list-disc">{renderDescription(career.description)}</ul>
+                  <ul className="list-disc">{renderDescription(career.description_ar || career.description)}</ul>
                 </div>
               </motion.div>
             </div>
