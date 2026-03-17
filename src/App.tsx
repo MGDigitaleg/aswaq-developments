@@ -29,6 +29,7 @@ import News from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
+import NewsDetailRedirect from "./components/NewsDetailRedirect";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminBlogList from "./pages/admin/AdminBlogList";
 import AdminBlogEditor from "./pages/admin/AdminBlogEditor";
@@ -137,6 +138,7 @@ const App = () => (
           <Route path="/photo" element={<Navigate to="/gallery" replace />} />
           <Route path="/videos.php" element={<Navigate to="/gallery" replace />} />
           <Route path="/videos" element={<Navigate to="/gallery" replace />} />
+          <Route path="/newsdetial.php" element={<NewsDetailRedirect />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
