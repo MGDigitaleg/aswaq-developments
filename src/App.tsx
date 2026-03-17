@@ -138,6 +138,7 @@ const App = () => (
           <Route path="/photo" element={<Navigate to="/gallery" replace />} />
           <Route path="/videos.php" element={<Navigate to="/gallery" replace />} />
           <Route path="/videos" element={<Navigate to="/gallery" replace />} />
+          <Route path="/newsdetial.php" element={<NewsDetailRedirect />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
