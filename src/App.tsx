@@ -29,6 +29,7 @@ import News from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import Gallery from "./pages/Gallery";
 import ScrollToTop from "./components/ScrollToTop";
+import NewsDetailRedirect from "./components/NewsDetailRedirect";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminBlogList from "./pages/admin/AdminBlogList";
 import AdminBlogEditor from "./pages/admin/AdminBlogEditor";
