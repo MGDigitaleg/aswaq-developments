@@ -28,6 +28,8 @@ import MedicalForInvestment from "./pages/MedicalForInvestment";
 import News from "./pages/News";
 import NewsDetail from "./pages/NewsDetail";
 import Gallery from "./pages/Gallery";
+import Careers from "./pages/Careers";
+import CareerDetail from "./pages/CareerDetail";
 import ScrollToTop from "./components/ScrollToTop";
 import NewsDetailRedirect from "./components/NewsDetailRedirect";
 import AdminLogin from "./pages/admin/AdminLogin";
