@@ -130,6 +130,8 @@ const App = () => (
           <Route path="/ar/gallery" element={<GalleryAr />} />
           <Route path="/ar/about" element={<AboutAr />} />
           <Route path="/ar/contact" element={<ContactAr />} />
+          <Route path="/ar/careers" element={<CareersAr />} />
+          <Route path="/ar/careers/:slug" element={<CareerDetailAr />} />
 
           {/* Admin routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
