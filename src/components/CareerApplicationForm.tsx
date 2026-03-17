@@ -77,7 +77,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
       return;
     }
     if (!cvFile) {
-      toast({ title: "Error", description: "Please upload your CV.", variant: "destructive" });
+      toast({ title: "Error", description: l.errorCv, variant: "destructive" });
       return;
     }
 
