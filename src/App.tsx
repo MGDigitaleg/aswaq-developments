@@ -64,6 +64,8 @@ import GalleryAr from "./pages/ar/GalleryAr";
 import ContactAr from "./pages/ar/ContactAr";
 import ProjectsAr from "./pages/ar/ProjectsAr";
 import AvailableUnitsAr from "./pages/ar/AvailableUnitsAr";
+import CareersAr from "./pages/ar/CareersAr";
+import CareerDetailAr from "./pages/ar/CareerDetailAr";
 
 const queryClient = new QueryClient();
 
