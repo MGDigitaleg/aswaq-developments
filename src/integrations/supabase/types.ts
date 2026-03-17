@@ -56,6 +56,83 @@ export type Database = {
         }
         Relationships: []
       }
+      career_applications: {
+        Row: {
+          career_id: string
+          cover_letter: string | null
+          created_at: string
+          cv_url: string | null
+          email: string
+          id: string
+          major: string | null
+          name: string
+          phone: string
+        }
+        Insert: {
+          career_id: string
+          cover_letter?: string | null
+          created_at?: string
+          cv_url?: string | null
+          email: string
+          id?: string
+          major?: string | null
+          name: string
+          phone: string
+        }
+        Update: {
+          career_id?: string
+          cover_letter?: string | null
+          created_at?: string
+          cv_url?: string | null
+          email?: string
+          id?: string
+          major?: string | null
+          name?: string
+          phone?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "career_applications_career_id_fkey"
+            columns: ["career_id"]
+            isOneToOne: false
+            referencedRelation: "careers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      careers: {
+        Row: {
+          created_at: string
+          date: string
+          description: string
+          id: string
+          is_published: boolean
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date?: string
+          description: string
+          id?: string
+          is_published?: boolean
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          description?: string
+          id?: string
+          is_published?: boolean
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       form_submissions: {
         Row: {
           created_at: string
