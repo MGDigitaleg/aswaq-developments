@@ -64,6 +64,7 @@ const getNavLinks = (prefix: string): NavItem[] => [
   },
   { label: prefix ? "الأخبار" : "News", href: `${prefix}/news` },
   { label: prefix ? "معرض الصور" : "Gallery", href: `${prefix}/gallery` },
+  { label: prefix ? "الوظائف" : "Careers", href: `${prefix}/careers` },
   { label: prefix ? "تواصل معنا" : "Contact Us", href: `${prefix}/contact` },
 ];
 
