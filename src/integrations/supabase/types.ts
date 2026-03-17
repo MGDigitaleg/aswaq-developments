@@ -105,30 +105,36 @@ export type Database = {
           created_at: string
           date: string
           description: string
+          description_ar: string | null
           id: string
           is_published: boolean
           slug: string
           title: string
+          title_ar: string | null
           updated_at: string
         }
         Insert: {
           created_at?: string
           date?: string
           description: string
+          description_ar?: string | null
           id?: string
           is_published?: boolean
           slug: string
           title: string
+          title_ar?: string | null
           updated_at?: string
         }
         Update: {
           created_at?: string
           date?: string
           description?: string
+          description_ar?: string | null
           id?: string
           is_published?: boolean
           slug?: string
           title?: string
+          title_ar?: string | null
           updated_at?: string
         }
         Relationships: []

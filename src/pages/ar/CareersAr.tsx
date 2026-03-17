@@ -77,7 +77,7 @@ const CareersAr = () => {
                   >
                     <Link to={`/ar/careers/${career.slug}`}>
                       <h3 className="font-display text-lg font-bold text-foreground hover:text-accent transition-colors">
-                        {career.title}
+                        {career.title_ar || career.title}
                       </h3>
                     </Link>
                     <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
@@ -85,7 +85,7 @@ const CareersAr = () => {
                       <span>{new Date(career.date).toLocaleDateString("ar-EG", { day: "numeric", month: "long", year: "numeric" })}</span>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
-                      {career.description.split("\n")[0]}
+                      {(career.description_ar || career.description).split("\n")[0]}
                     </p>
                     <Link
                       to={`/ar/careers/${career.slug}`}

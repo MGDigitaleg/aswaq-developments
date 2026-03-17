@@ -4,8 +4,10 @@ import { supabase } from "@/integrations/supabase/client";
 export interface Career {
   id: string;
   title: string;
+  title_ar?: string | null;
   slug: string;
   description: string;
+  description_ar?: string | null;
   date: string;
   is_published: boolean;
 }

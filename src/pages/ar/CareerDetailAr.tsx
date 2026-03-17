@@ -119,7 +119,7 @@ const CareerDetailAr = () => {
                 animate={{ opacity: 1, y: 0 }}
               >
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-accent">
-                  {career.title}
+                  {career.title_ar || career.title}
                 </h2>
                 <div className="flex items-center gap-2 mt-3 text-sm text-muted-foreground">
                   <Calendar size={14} />
@@ -132,7 +132,7 @@ const CareerDetailAr = () => {
                   </span>
                 </div>
                 <div className="mt-6 text-sm leading-relaxed">
-                  <ul className="list-disc">{renderDescription(career.description)}</ul>
+                  <ul className="list-disc">{renderDescription(career.description_ar || career.description)}</ul>
                 </div>
               </motion.div>
             </div>
