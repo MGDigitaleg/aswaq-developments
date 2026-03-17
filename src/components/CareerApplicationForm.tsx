@@ -111,7 +111,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
       setCvFile(null);
     } catch (err: any) {
       console.error(err);
-      toast({ title: "Error", description: "Failed to submit application. Please try again.", variant: "destructive" });
+      toast({ title: "Error", description: l.errorSubmit, variant: "destructive" });
     } finally {
       setLoading(false);
     }
