@@ -169,7 +169,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
         )}
 
         <Textarea
-          placeholder="Cover Letter"
+          placeholder={l.coverLetter}
           value={form.cover_letter}
           onChange={(e) => handleChange("cover_letter", e.target.value)}
           rows={4}
@@ -177,14 +177,14 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
         />
 
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Upload CV*</p>
+          <p className="text-sm text-muted-foreground mb-2">{l.uploadCv}</p>
           <label className="flex items-center gap-3 cursor-pointer bg-secondary rounded-md px-4 py-3 hover:bg-muted transition-colors">
             <Upload size={18} className="text-muted-foreground" />
             <span className="text-sm text-muted-foreground truncate">
-              {cvFile ? cvFile.name : "Choose file..."}
+              {cvFile ? cvFile.name : l.chooseFile}
             </span>
-            <span className="ml-auto bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded">
-              Browse
+            <span className="ms-auto bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded">
+              {l.browse}
             </span>
             <input
               type="file"
