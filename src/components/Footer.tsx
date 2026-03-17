@@ -83,51 +83,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      {/* Google Reviews Section */}
-      <div className="border-b border-primary-foreground/10">
-        <div className="container mx-auto px-4 lg:px-8 py-10">
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-            <div className="flex items-center gap-3">
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={20} className={i < 5 ? "fill-amber-400 text-amber-400" : "text-primary-foreground/20"} />
-                ))}
-              </div>
-              <span className="text-2xl font-bold text-primary-foreground font-display">4.6</span>
-              <span className="text-sm text-primary-foreground/50 font-body">
-                {isArabic ? "بناءً على تقييمات Google" : "based on Google Reviews"}
-              </span>
-            </div>
-            <a
-              href="https://maps.app.goo.gl/6jGACMa9mZKx5sYp9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-accent hover:underline flex items-center gap-1.5 font-body"
-            >
-              {isArabic ? "اترك تقييم" : "Leave a Review"}
-              <ExternalLink size={13} />
-            </a>
-          </div>
-
-          {/* Review Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {reviews.map((review, i) => (
-              <div
-                key={i}
-                className="bg-primary-foreground/5 rounded-lg p-5 border border-primary-foreground/10"
-              >
-                <StarRating rating={review.rating} />
-                <p className="text-sm text-primary-foreground/70 mt-3 mb-4 font-body leading-relaxed min-h-[40px]">
-                  "{isArabic ? review.textAr : review.text}"
-                </p>
-                <p className="text-sm font-semibold text-accent font-body">{review.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="container mx-auto px-4 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -221,6 +176,51 @@ const Footer = () => {
                 </span>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Google Reviews Section */}
+      <div className="border-t border-primary-foreground/10">
+        <div className="container mx-auto px-4 lg:px-8 py-10">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={20} className={i < 5 ? "fill-amber-400 text-amber-400" : "text-primary-foreground/20"} />
+                ))}
+              </div>
+              <span className="text-2xl font-bold text-primary-foreground font-display">4.6</span>
+              <span className="text-sm text-primary-foreground/50 font-body">
+                {isArabic ? "بناءً على تقييمات Google" : "based on Google Reviews"}
+              </span>
+            </div>
+            <a
+              href="https://maps.app.goo.gl/6jGACMa9mZKx5sYp9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-accent hover:underline flex items-center gap-1.5 font-body"
+            >
+              {isArabic ? "اترك تقييم" : "Leave a Review"}
+              <ExternalLink size={13} />
+            </a>
+          </div>
+
+          {/* Review Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {reviews.map((review, i) => (
+              <div
+                key={i}
+                className="bg-primary-foreground/5 rounded-lg p-5 border border-primary-foreground/10"
+              >
+                <StarRating rating={review.rating} />
+                <p className="text-sm text-primary-foreground/70 mt-3 mb-4 font-body leading-relaxed min-h-[40px]">
+                  "{isArabic ? review.textAr : review.text}"
+                </p>
+                <p className="text-sm font-semibold text-accent font-body">{review.name}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
