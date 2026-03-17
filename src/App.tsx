@@ -64,6 +64,8 @@ import GalleryAr from "./pages/ar/GalleryAr";
 import ContactAr from "./pages/ar/ContactAr";
 import ProjectsAr from "./pages/ar/ProjectsAr";
 import AvailableUnitsAr from "./pages/ar/AvailableUnitsAr";
+import CareersAr from "./pages/ar/CareersAr";
+import CareerDetailAr from "./pages/ar/CareerDetailAr";
 
 const queryClient = new QueryClient();
 
@@ -128,6 +130,8 @@ const App = () => (
           <Route path="/ar/gallery" element={<GalleryAr />} />
           <Route path="/ar/about" element={<AboutAr />} />
           <Route path="/ar/contact" element={<ContactAr />} />
+          <Route path="/ar/careers" element={<CareersAr />} />
+          <Route path="/ar/careers/:slug" element={<CareerDetailAr />} />
 
           {/* Admin routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -144,6 +148,7 @@ const App = () => (
           <Route path="/videos" element={<Navigate to="/gallery" replace />} />
           <Route path="/newsdetial.php" element={<NewsDetailRedirect />} />
           <Route path="/careers.php" element={<Navigate to="/careers" replace />} />
+          <Route path="/careersarabic.php" element={<Navigate to="/ar/careers" replace />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

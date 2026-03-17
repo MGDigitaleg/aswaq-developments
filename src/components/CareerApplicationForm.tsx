@@ -9,13 +9,51 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import type { Career } from "@/hooks/useCareers";
 
+interface Labels {
+  name?: string;
+  email?: string;
+  phone?: string;
+  major?: string;
+  coverLetter?: string;
+  uploadCv?: string;
+  chooseFile?: string;
+  browse?: string;
+  selectPosition?: string;
+  send?: string;
+  sending?: string;
+  errorPosition?: string;
+  errorCv?: string;
+  success?: string;
+  errorSubmit?: string;
+}
+
 interface Props {
   careers: Career[];
   selectedCareerId?: string;
   title?: string;
+  labels?: Labels;
 }
 
-const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For Job" }: Props) => {
+const defaultLabels: Labels = {
+  name: "Name",
+  email: "Email Address",
+  phone: "Phone Number",
+  major: "Major",
+  coverLetter: "Cover Letter",
+  uploadCv: "Upload CV*",
+  chooseFile: "Choose file...",
+  browse: "Browse",
+  selectPosition: "Select Position",
+  send: "Send",
+  sending: "Sending...",
+  errorPosition: "Please select a position.",
+  errorCv: "Please upload your CV.",
+  success: "Your application has been submitted successfully.",
+  errorSubmit: "Failed to submit application. Please try again.",
+};
+
+const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For Job", labels: labelsProp }: Props) => {
+  const l = { ...defaultLabels, ...labelsProp };
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -35,11 +73,11 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.career_id) {
-      toast({ title: "Error", description: "Please select a position.", variant: "destructive" });
+      toast({ title: "Error", description: l.errorPosition, variant: "destructive" });
       return;
     }
     if (!cvFile) {
-      toast({ title: "Error", description: "Please upload your CV.", variant: "destructive" });
+      toast({ title: "Error", description: l.errorCv, variant: "destructive" });
       return;
     }
 
@@ -68,12 +106,12 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
 
       if (error) throw error;
 
-      toast({ title: "Success!", description: "Your application has been submitted successfully." });
+      toast({ title: "✓", description: l.success });
       setForm({ name: "", email: "", phone: "", major: "", cover_letter: "", career_id: selectedCareerId || "" });
       setCvFile(null);
     } catch (err: any) {
       console.error(err);
-      toast({ title: "Error", description: "Failed to submit application. Please try again.", variant: "destructive" });
+      toast({ title: "Error", description: l.errorSubmit, variant: "destructive" });
     } finally {
       setLoading(false);
     }
@@ -89,7 +127,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
       <h2 className="font-display text-xl font-bold text-foreground mb-6">{title}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <Input
-          placeholder="Name"
+          placeholder={l.name}
           value={form.name}
           onChange={(e) => handleChange("name", e.target.value)}
           required
@@ -97,21 +135,21 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
         />
         <Input
           type="email"
-          placeholder="Email Address"
+          placeholder={l.email}
           value={form.email}
           onChange={(e) => handleChange("email", e.target.value)}
           required
           className="bg-secondary border-0"
         />
         <Input
-          placeholder="Phone Number"
+          placeholder={l.phone}
           value={form.phone}
           onChange={(e) => handleChange("phone", e.target.value)}
           required
           className="bg-secondary border-0"
         />
         <Input
-          placeholder="Major"
+          placeholder={l.major}
           value={form.major}
           onChange={(e) => handleChange("major", e.target.value)}
           className="bg-secondary border-0"
@@ -120,7 +158,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
         {!selectedCareerId && (
           <Select value={form.career_id} onValueChange={(v) => handleChange("career_id", v)}>
             <SelectTrigger className="bg-secondary border-0">
-              <SelectValue placeholder="Select Position" />
+              <SelectValue placeholder={l.selectPosition} />
             </SelectTrigger>
             <SelectContent>
               {careers.map((c) => (
@@ -131,7 +169,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
         )}
 
         <Textarea
-          placeholder="Cover Letter"
+          placeholder={l.coverLetter}
           value={form.cover_letter}
           onChange={(e) => handleChange("cover_letter", e.target.value)}
           rows={4}
@@ -139,14 +177,14 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
         />
 
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Upload CV*</p>
+          <p className="text-sm text-muted-foreground mb-2">{l.uploadCv}</p>
           <label className="flex items-center gap-3 cursor-pointer bg-secondary rounded-md px-4 py-3 hover:bg-muted transition-colors">
             <Upload size={18} className="text-muted-foreground" />
             <span className="text-sm text-muted-foreground truncate">
-              {cvFile ? cvFile.name : "Choose file..."}
+              {cvFile ? cvFile.name : l.chooseFile}
             </span>
-            <span className="ml-auto bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded">
-              Browse
+            <span className="ms-auto bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded">
+              {l.browse}
             </span>
             <input
               type="file"
@@ -162,7 +200,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           disabled={loading}
           className="w-full bg-primary text-primary-foreground hover:bg-navy-light font-semibold"
         >
-          {loading ? "Sending..." : "Send"}
+          {loading ? l.sending : l.send}
         </Button>
       </form>
     </motion.div>
