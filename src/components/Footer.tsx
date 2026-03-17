@@ -15,6 +15,7 @@ const Footer = () => {
         { label: "اختر وحدتك", href: "/ar/units" },
         { label: "الأخبار", href: "/ar/news" },
         { label: "معرض الصور", href: "/ar/gallery" },
+        { label: "وظائف", href: "/ar/careers" },
         { label: "تواصل معنا", href: "/ar/contact" },
       ]
     : [
@@ -24,6 +25,7 @@ const Footer = () => {
         { label: "Choose your Unit", href: "/units" },
         { label: "News", href: "/news" },
         { label: "Gallery", href: "/gallery" },
+        { label: "Careers", href: "/careers" },
         { label: "Contact Us", href: "/contact" },
       ];
 
@@ -34,31 +36,52 @@ const Footer = () => {
     { name: isArabic ? "سولاريا مول" : "Solaria Mall", href: `${prefix}/projects/solaria-mall` },
   ];
 
+  const socialLinks = [
+    { href: "https://www.facebook.com/AswaqDev", icon: Facebook, label: "Facebook" },
+    { href: "https://www.instagram.com/aswaqdev/", icon: Instagram, label: "Instagram" },
+    { href: "https://www.youtube.com/@aswaqdevelopments3057", icon: Youtube, label: "YouTube" },
+  ];
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
-            <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] mb-4" />
-            <p className="text-primary-foreground/70 text-sm leading-relaxed font-body">
+            <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] mb-5" />
+            <p className="text-primary-foreground/60 text-sm leading-relaxed font-body mb-6">
               {isArabic
                 ? "شركة تطوير عقاري متطلعة متخصصة في المشاريع التجارية والإدارية والطبية في شرق القاهرة."
                 : "A forward-thinking real estate developer specializing in commercial, administrative, and medical projects across East Cairo."}
             </p>
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/60 hover:bg-accent hover:text-accent-foreground transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon size={16} />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4 text-primary-foreground">
+            <h4 className="font-display text-base font-semibold mb-5 text-primary-foreground uppercase tracking-wide">
               {isArabic ? "روابط سريعة" : "Quick Links"}
             </h4>
-            <ul className="space-y-3 font-body">
+            <ul className="space-y-2.5 font-body">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
+                    className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -69,15 +92,15 @@ const Footer = () => {
 
           {/* Our Projects */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4 text-primary-foreground">
+            <h4 className="font-display text-base font-semibold mb-5 text-primary-foreground uppercase tracking-wide">
               {isArabic ? "مشاريعنا" : "Our Projects"}
             </h4>
-            <ul className="space-y-3 font-body">
+            <ul className="space-y-2.5 font-body">
               {projectLinks.map((project) => (
                 <li key={project.name}>
                   <Link
                     to={project.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
+                    className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
                   >
                     {project.name}
                   </Link>
@@ -88,67 +111,46 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4 text-primary-foreground">
+            <h4 className="font-display text-base font-semibold mb-5 text-primary-foreground uppercase tracking-wide">
               {isArabic ? "تواصل معنا" : "Contact Us"}
             </h4>
-            <ul className="space-y-3 font-body">
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
+            <ul className="space-y-4 font-body">
+              <li>
+                <a href="tel:19474" className="flex items-center gap-3 text-sm text-primary-foreground/60 hover:text-accent transition-colors">
+                  <Phone size={16} className="shrink-0 text-accent" />
+                  19474
+                </a>
+              </li>
+              <li>
+                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-sm text-primary-foreground/60 hover:text-accent transition-colors">
+                  <Mail size={16} className="shrink-0 text-accent" />
+                  marketing@aswaqdev.com
+                </a>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/60">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
-                {isArabic
-                  ? "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون"
-                  : "Villa 1/127 - Al-Nsoor complex, Al Moltaqa Neighborhood, Otostrad road - Sheraton"}
-              </li>
-              <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
-                <Phone size={16} className="shrink-0 text-accent" />
-                19474
-              </li>
-              <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
-                <Mail size={16} className="shrink-0 text-accent" />
-                marketing@aswaqdev.com
+                <span>
+                  {isArabic
+                    ? "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون"
+                    : "Villa 1/127 - Al-Nsoor complex, Al Moltaqa Neighborhood, Otostrad road - Sheraton"}
+                </span>
               </li>
             </ul>
-            {/* Social Media Links */}
-            <div className="mt-6">
-              <h5 className="font-display text-sm font-semibold mb-3 text-primary-foreground">
-                {isArabic ? "تابعنا" : "Follow Us"}
-              </h5>
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://www.facebook.com/AswaqDev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={18} />
-                </a>
-                <a
-                  href="https://www.instagram.com/aswaqdev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={18} />
-                </a>
-                <a
-                  href="https://www.youtube.com/@aswaqdevelopments3057"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
-                  aria-label="YouTube"
-                >
-                  <Youtube size={18} />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10 text-center">
-          <p className="text-sm text-primary-foreground/50 font-body">
-            © {new Date().getFullYear()} {isArabic ? "أسواق للتطوير العقاري. جميع الحقوق محفوظة." : "ASWAQ Developments. All rights reserved."} | {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
-            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">MG Digital</a>
+      {/* Bottom bar */}
+      <div className="border-t border-primary-foreground/10">
+        <div className="container mx-auto px-4 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-primary-foreground/40 font-body">
+            © {new Date().getFullYear()} {isArabic ? "أسواق للتطوير العقاري. جميع الحقوق محفوظة." : "ASWAQ Developments. All rights reserved."}
+          </p>
+          <p className="text-xs text-primary-foreground/40 font-body">
+            {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
+            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              MG Digital
+            </a>
           </p>
         </div>
       </div>
