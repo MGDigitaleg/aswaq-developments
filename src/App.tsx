@@ -32,6 +32,9 @@ import Careers from "./pages/Careers";
 import CareerDetail from "./pages/CareerDetail";
 import ScrollToTop from "./components/ScrollToTop";
 import NewsDetailRedirect from "./components/NewsDetailRedirect";
+import NewsDetailArabicRedirect from "./components/NewsDetailArabicRedirect";
+import WorksRedirect from "./components/WorksRedirect";
+import WorksArabicRedirect from "./components/WorksArabicRedirect";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminBlogList from "./pages/admin/AdminBlogList";
 import AdminBlogEditor from "./pages/admin/AdminBlogEditor";
@@ -142,12 +145,26 @@ const App = () => (
           <Route path="/admin/users" element={<AdminUsers />} />
 
           {/* Redirects */}
+          <Route path="/index.php" element={<Navigate to="/" replace />} />
+          <Route path="/about.php" element={<Navigate to="/about" replace />} />
+          <Route path="/works.php" element={<WorksRedirect />} />
+          <Route path="/news.php" element={<Navigate to="/news" replace />} />
+          <Route path="/contact.php" element={<Navigate to="/contact" replace />} />
           <Route path="/photo.php" element={<Navigate to="/gallery" replace />} />
           <Route path="/photo" element={<Navigate to="/gallery" replace />} />
           <Route path="/videos.php" element={<Navigate to="/gallery" replace />} />
           <Route path="/videos" element={<Navigate to="/gallery" replace />} />
           <Route path="/newsdetial.php" element={<NewsDetailRedirect />} />
           <Route path="/careers.php" element={<Navigate to="/careers" replace />} />
+          {/* Arabic redirects */}
+          <Route path="/indexarabic.php" element={<Navigate to="/ar" replace />} />
+          <Route path="/aboutarabic.php" element={<Navigate to="/ar/about" replace />} />
+          <Route path="/worksarabic.php" element={<WorksArabicRedirect />} />
+          <Route path="/photoarabic.php" element={<Navigate to="/ar/gallery" replace />} />
+          <Route path="/videosarabic.php" element={<Navigate to="/ar/gallery" replace />} />
+          <Route path="/newsarabic.php" element={<Navigate to="/ar/news" replace />} />
+          <Route path="/newsdetialarabic.php" element={<NewsDetailArabicRedirect />} />
+          <Route path="/contactarabic.php" element={<Navigate to="/ar/contact" replace />} />
           <Route path="/careersarabic.php" element={<Navigate to="/ar/careers" replace />} />
 
           <Route path="*" element={<NotFound />} />
