@@ -132,6 +132,12 @@ const App = () => (
           <Route path="/admin/submissions" element={<AdminFormSubmissions />} />
           <Route path="/admin/users" element={<AdminUsers />} />
 
+          {/* Redirects */}
+          <Route path="/photo.php" element={<Navigate to="/gallery" replace />} />
+          <Route path="/photo" element={<Navigate to="/gallery" replace />} />
+          <Route path="/videos.php" element={<Navigate to="/gallery" replace />} />
+          <Route path="/videos" element={<Navigate to="/gallery" replace />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
