@@ -200,7 +200,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           disabled={loading}
           className="w-full bg-primary text-primary-foreground hover:bg-navy-light font-semibold"
         >
-          {loading ? "Sending..." : "Send"}
+          {loading ? l.sending : l.send}
         </Button>
       </form>
     </motion.div>
