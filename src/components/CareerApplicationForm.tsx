@@ -106,7 +106,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
 
       if (error) throw error;
 
-      toast({ title: "Success!", description: "Your application has been submitted successfully." });
+      toast({ title: "✓", description: l.success });
       setForm({ name: "", email: "", phone: "", major: "", cover_letter: "", career_id: selectedCareerId || "" });
       setCvFile(null);
     } catch (err: any) {
