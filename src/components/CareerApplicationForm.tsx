@@ -127,7 +127,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
       <h2 className="font-display text-xl font-bold text-foreground mb-6">{title}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <Input
-          placeholder="Name"
+          placeholder={l.name}
           value={form.name}
           onChange={(e) => handleChange("name", e.target.value)}
           required
@@ -135,21 +135,21 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
         />
         <Input
           type="email"
-          placeholder="Email Address"
+          placeholder={l.email}
           value={form.email}
           onChange={(e) => handleChange("email", e.target.value)}
           required
           className="bg-secondary border-0"
         />
         <Input
-          placeholder="Phone Number"
+          placeholder={l.phone}
           value={form.phone}
           onChange={(e) => handleChange("phone", e.target.value)}
           required
           className="bg-secondary border-0"
         />
         <Input
-          placeholder="Major"
+          placeholder={l.major}
           value={form.major}
           onChange={(e) => handleChange("major", e.target.value)}
           className="bg-secondary border-0"
