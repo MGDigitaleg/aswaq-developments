@@ -322,7 +322,8 @@ const Navbar = () => {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
+          <DarkModeToggle />
           <button
             onClick={switchLanguage}
             className="flex items-center gap-1.5 text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors duration-300"
