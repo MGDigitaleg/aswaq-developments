@@ -3,10 +3,12 @@ import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
+import StickyActionBar from "./StickyActionBar";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
   const isArabic = location.pathname.startsWith("/ar");
+  const isAdmin = location.pathname.startsWith("/admin");
 
   useEffect(() => {
     document.documentElement.dir = isArabic ? "rtl" : "ltr";
@@ -18,7 +20,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Navbar />
       <main className="flex-1 pt-[72px]">{children}</main>
       <Footer />
-      <WhatsAppButton />
+      {!isAdmin && <WhatsAppButton />}
+      {!isAdmin && <StickyActionBar />}
     </div>
   );
 };
