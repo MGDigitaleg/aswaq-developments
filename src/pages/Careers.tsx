@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import CareerApplicationForm from "@/components/CareerApplicationForm";
 import { useCareers } from "@/hooks/useCareers";
@@ -17,56 +17,65 @@ const Careers = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-[30vh] min-h-[200px] flex items-center justify-center">
-        <img src={heroImage} alt="Careers" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-primary/70" />
-        <div className="relative z-10 text-center">
-          <motion.h1
+      <section className="relative h-[40vh] min-h-[280px] flex items-center justify-center overflow-hidden">
+        <img src={heroImage} alt="Careers at ASWAQ Developments" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="relative z-10 text-center px-4">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground"
+            transition={{ duration: 0.7 }}
           >
-            Careers
-          </motion.h1>
+            <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Join Our Team</p>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground">
+              Careers
+            </h1>
+          </motion.div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-20">
+      <section className="section-padding bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Job Listings */}
             <div className="lg:col-span-2 space-y-6">
               {loading ? (
-                <p className="text-muted-foreground">Loading positions...</p>
+                <div className="text-center py-16">
+                  <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                  <p className="text-muted-foreground font-body">Loading positions...</p>
+                </div>
               ) : careers.length === 0 ? (
-                <p className="text-muted-foreground">No open positions at the moment.</p>
+                <div className="text-center py-16 bg-cream rounded-xl border border-border/50">
+                  <p className="text-muted-foreground font-body">No open positions at the moment.</p>
+                </div>
               ) : (
                 careers.map((career, i) => (
                   <motion.div
                     key={career.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-card rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className="premium-card p-6 md:p-8"
                   >
                     <Link to={`/careers/${career.slug}`}>
                       <h3 className="font-display text-lg font-bold text-foreground hover:text-accent transition-colors">
                         {career.title}
                       </h3>
                     </Link>
-                    <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
-                      <Calendar size={14} />
+                    <div className="flex items-center gap-2 mt-3 text-sm text-muted-foreground font-body">
+                      <Calendar size={14} className="text-accent" />
                       <span>{new Date(career.date).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" })}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+                    <p className="text-sm text-muted-foreground font-body mt-3 line-clamp-2 leading-relaxed">
                       {career.description.split("\n")[0]}
                     </p>
                     <Link
                       to={`/careers/${career.slug}`}
-                      className="inline-block mt-4 bg-primary text-primary-foreground text-sm font-semibold px-6 py-2 rounded hover:bg-navy-light transition-colors"
+                      className="group inline-flex items-center gap-2 mt-5 bg-primary text-primary-foreground text-sm font-semibold px-6 py-2.5 rounded-md hover:bg-navy-light transition-all duration-300 font-body"
                     >
                       Read More
+                      <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </Link>
                   </motion.div>
                 ))
