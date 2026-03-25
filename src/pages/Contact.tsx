@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import Layout from "@/components/Layout";
@@ -28,19 +28,16 @@ const contactInfo = [
     icon: MapPin,
     title: "Address",
     detail: "Villa 1/127 - Al-Nsoor complex, Al Moltaqa Neighborhood, Otostrad road - Sheraton",
-    bg: "bg-accent/10",
   },
   {
     icon: Phone,
     title: "Hotline",
     detail: "19474",
-    bg: "bg-primary/5",
   },
   {
     icon: Mail,
     title: "Email",
     detail: "marketing@aswaqdev.com",
-    bg: "bg-accent/10",
   },
 ];
 
@@ -87,9 +84,9 @@ const Contact = () => {
   };
 
   const inputClass =
-    "w-full px-4 py-3 border border-border rounded-md bg-background text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all";
+    "w-full px-4 py-3.5 border border-border rounded-lg bg-background text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/40 transition-all duration-300";
   const selectClass =
-    "w-full px-4 py-3 border border-border rounded-md bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all appearance-none cursor-pointer";
+    "w-full px-4 py-3.5 border border-border rounded-lg bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/40 transition-all duration-300 appearance-none cursor-pointer";
 
   const breadcrumbs = buildBreadcrumbSchema([
     { name: "Home", url: "/" },
@@ -100,12 +97,12 @@ const Contact = () => {
     <Layout>
       <JsonLd data={breadcrumbs} />
       {/* Hero */}
-      <section className="bg-primary py-24">
+      <section className="bg-primary py-24 md:py-28">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">Get In Touch</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Contact Us</h1>
-            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
+            <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Get In Touch</p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">Contact Us</h1>
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
               Have questions about our projects or available units? Reach out to our team and we'll help you find the perfect space.
             </p>
           </motion.div>
@@ -113,7 +110,7 @@ const Contact = () => {
       </section>
 
       {/* Form + Contact Info */}
-      <section className="py-20 bg-background">
+      <section className="section-padding bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
             {/* Form */}
@@ -122,18 +119,25 @@ const Contact = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">
-                Send Us Your Inquiry
-              </h2>
+              <div className="mb-8">
+                <div className="section-divider mb-5" style={{ marginLeft: 0 }} />
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                  Send Us Your Inquiry
+                </h2>
+              </div>
 
               {submitted ? (
-                <div className="text-center py-16 bg-cream rounded-lg">
+                <div className="text-center py-16 bg-cream rounded-xl border border-border/50">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+                    <Mail size={28} className="text-accent" />
+                  </div>
                   <p className="font-display text-2xl font-bold text-foreground mb-2">Thank You!</p>
                   <p className="text-muted-foreground font-body">We've received your inquiry and will get back to you shortly.</p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded hover:bg-gold-light transition-colors font-body"
+                    className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body"
                   >
                     Send Another Inquiry
                   </button>
@@ -150,14 +154,14 @@ const Contact = () => {
                         onChange={(e) => handleChange("name", e.target.value)}
                         className={inputClass}
                       />
-                      {errors.name && <p className="text-destructive text-xs mt-1 font-body">{errors.name}</p>}
+                      {errors.name && <p className="text-destructive text-xs mt-1.5 font-body">{errors.name}</p>}
                     </div>
                     <div>
                       <div className="flex">
                         <select
                           value={countryCode}
                           onChange={(e) => setCountryCode(e.target.value)}
-                          className="inline-flex items-center px-2 border border-r-0 border-border rounded-l-md bg-muted text-sm text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-accent/50 appearance-none cursor-pointer min-w-[90px]"
+                          className="inline-flex items-center px-2 border border-r-0 border-border rounded-l-lg bg-muted text-sm text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-accent/40 appearance-none cursor-pointer min-w-[90px]"
                         >
                           {countryCodes.map((c) => (
                             <option key={`${c.flag}${c.code}`} value={c.code}>
@@ -173,7 +177,7 @@ const Contact = () => {
                           className={`${inputClass} rounded-l-none`}
                         />
                       </div>
-                      {errors.phone && <p className="text-destructive text-xs mt-1 font-body">{errors.phone}</p>}
+                      {errors.phone && <p className="text-destructive text-xs mt-1.5 font-body">{errors.phone}</p>}
                     </div>
                   </div>
 
@@ -187,7 +191,7 @@ const Contact = () => {
                         onChange={(e) => handleChange("email", e.target.value)}
                         className={inputClass}
                       />
-                      {errors.email && <p className="text-destructive text-xs mt-1 font-body">{errors.email}</p>}
+                      {errors.email && <p className="text-destructive text-xs mt-1.5 font-body">{errors.email}</p>}
                     </div>
                     <div className="relative">
                       <select
@@ -201,7 +205,7 @@ const Contact = () => {
                         ))}
                       </select>
                       <ChevronIcon />
-                      {errors.requestType && <p className="text-destructive text-xs mt-1 font-body">{errors.requestType}</p>}
+                      {errors.requestType && <p className="text-destructive text-xs mt-1.5 font-body">{errors.requestType}</p>}
                     </div>
                   </div>
 
@@ -219,7 +223,7 @@ const Contact = () => {
                         ))}
                       </select>
                       <ChevronIcon />
-                      {errors.unitType && <p className="text-destructive text-xs mt-1 font-body">{errors.unitType}</p>}
+                      {errors.unitType && <p className="text-destructive text-xs mt-1.5 font-body">{errors.unitType}</p>}
                     </div>
                     <div className="relative">
                       <select
@@ -233,7 +237,7 @@ const Contact = () => {
                         ))}
                       </select>
                       <ChevronIcon />
-                      {errors.preferredMall && <p className="text-destructive text-xs mt-1 font-body">{errors.preferredMall}</p>}
+                      {errors.preferredMall && <p className="text-destructive text-xs mt-1.5 font-body">{errors.preferredMall}</p>}
                     </div>
                   </div>
 
@@ -253,9 +257,10 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="bg-primary text-primary-foreground px-10 py-3 font-semibold rounded hover:bg-navy-light transition-colors font-body text-sm disabled:opacity-50"
+                      className="group bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-navy-light transition-all duration-300 font-body text-sm disabled:opacity-50 inline-flex items-center gap-2"
                     >
                       {submitting ? "Sending…" : "Send"}
+                      {!submitting && <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
                     </button>
                   </div>
                 </form>
@@ -268,18 +273,19 @@ const Contact = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
               {contactInfo.map((info, i) => (
                 <div
                   key={info.title}
-                  className={`p-6 ${info.bg} ${i === 0 ? "rounded-t-lg" : ""} ${i === contactInfo.length - 1 ? "rounded-b-lg" : ""}`}
+                  className={`p-7 bg-cream ${i === 0 ? "rounded-t-xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-xl" : ""} ${i !== contactInfo.length - 1 ? "border-b border-border/50" : ""}`}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                       <info.icon size={20} className="text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-foreground mb-1">{info.title}</h4>
+                      <h4 className="font-display font-bold text-foreground mb-1.5">{info.title}</h4>
                       <p className="text-muted-foreground font-body text-sm leading-relaxed">{info.detail}</p>
                     </div>
                   </div>

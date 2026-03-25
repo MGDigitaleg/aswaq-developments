@@ -84,12 +84,12 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       {/* Main Footer */}
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container mx-auto px-4 lg:px-8 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand */}
           <div>
-            <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] mb-5" />
-            <p className="text-primary-foreground/60 text-sm leading-relaxed font-body mb-6">
+            <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] mb-6" />
+            <p className="text-primary-foreground/50 text-sm leading-relaxed font-body mb-6">
               {isArabic
                 ? "شركة تطوير عقاري متطلعة متخصصة في المشاريع التجارية والإدارية والطبية في شرق القاهرة."
                 : "A forward-thinking real estate developer specializing in commercial, administrative, and medical projects across East Cairo."}
@@ -102,7 +102,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/60 hover:bg-accent hover:text-accent-foreground transition-colors"
+                  className="w-10 h-10 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/50 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={16} />
@@ -113,15 +113,15 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-base font-semibold mb-5 text-primary-foreground uppercase tracking-wide">
+            <h4 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
               {isArabic ? "روابط سريعة" : "Quick Links"}
             </h4>
-            <ul className="space-y-2.5 font-body">
+            <ul className="space-y-3 font-body">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+                    className="text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -132,15 +132,15 @@ const Footer = () => {
 
           {/* Our Projects */}
           <div>
-            <h4 className="font-display text-base font-semibold mb-5 text-primary-foreground uppercase tracking-wide">
+            <h4 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
               {isArabic ? "مشاريعنا" : "Our Projects"}
             </h4>
-            <ul className="space-y-2.5 font-body">
+            <ul className="space-y-3 font-body">
               {projectLinks.map((project) => (
                 <li key={project.name}>
                   <Link
                     to={project.href}
-                    className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+                    className="text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300"
                   >
                     {project.name}
                   </Link>
@@ -151,23 +151,23 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display text-base font-semibold mb-5 text-primary-foreground uppercase tracking-wide">
+            <h4 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
               {isArabic ? "تواصل معنا" : "Contact Us"}
             </h4>
             <ul className="space-y-4 font-body">
               <li>
-                <a href="tel:19474" className="flex items-center gap-3 text-sm text-primary-foreground/60 hover:text-accent transition-colors">
+                <a href="tel:19474" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300">
                   <Phone size={16} className="shrink-0 text-accent" />
                   19474
                 </a>
               </li>
               <li>
-                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-sm text-primary-foreground/60 hover:text-accent transition-colors">
+                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300">
                   <Mail size={16} className="shrink-0 text-accent" />
                   marketing@aswaqdev.com
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/60">
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/50">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
                 <span>
                   {isArabic
@@ -188,11 +188,11 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={20} className={i < 5 ? "fill-amber-400 text-amber-400" : "text-primary-foreground/20"} />
+                  <Star key={i} size={18} className={i < 5 ? "fill-amber-400 text-amber-400" : "text-primary-foreground/20"} />
                 ))}
               </div>
               <span className="text-2xl font-bold text-primary-foreground font-display">4.6</span>
-              <span className="text-sm text-primary-foreground/50 font-body">
+              <span className="text-sm text-primary-foreground/40 font-body">
                 {isArabic ? "بناءً على تقييمات Google" : "based on Google Reviews"}
               </span>
             </div>
@@ -200,7 +200,7 @@ const Footer = () => {
               href="https://maps.app.goo.gl/6jGACMa9mZKx5sYp9"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-accent hover:underline flex items-center gap-1.5 font-body"
+              className="text-sm text-accent hover:underline flex items-center gap-1.5 font-body transition-colors duration-300"
             >
               {isArabic ? "اترك تقييم" : "Leave a Review"}
               <ExternalLink size={13} />
@@ -212,10 +212,10 @@ const Footer = () => {
             {reviews.map((review, i) => (
               <div
                 key={i}
-                className="bg-primary-foreground/5 rounded-lg p-5 border border-primary-foreground/10"
+                className="bg-primary-foreground/[0.03] rounded-xl p-5 border border-primary-foreground/[0.07] hover:border-primary-foreground/15 transition-all duration-300"
               >
                 <StarRating rating={review.rating} />
-                <p className="text-sm text-primary-foreground/70 mt-3 mb-4 font-body leading-relaxed min-h-[40px]">
+                <p className="text-sm text-primary-foreground/60 mt-3 mb-4 font-body leading-relaxed min-h-[40px]">
                   "{isArabic ? review.textAr : review.text}"
                 </p>
                 <p className="text-sm font-semibold text-accent font-body">{review.name}</p>
@@ -228,10 +228,10 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-4 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-primary-foreground/40 font-body">
+          <p className="text-xs text-primary-foreground/35 font-body">
             © {new Date().getFullYear()} {isArabic ? "أسواق للتطوير العقاري. جميع الحقوق محفوظة." : "ASWAQ Developments. All rights reserved."}
           </p>
-          <p className="text-xs text-primary-foreground/40 font-body">
+          <p className="text-xs text-primary-foreground/35 font-body">
             {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
             <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
               MG Digital
