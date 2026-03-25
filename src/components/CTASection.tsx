@@ -18,27 +18,30 @@ const CTASection = ({
   const resolvedLink = buttonLink || (isArabic ? "/ar/contact" : "/contact");
 
   return (
-    <section className="relative bg-primary py-24 md:py-28 overflow-hidden">
-      {/* Subtle decorative gradient */}
-      <div className="absolute inset-0 opacity-[0.06]">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent to-transparent" />
+    <section className="relative bg-primary py-24 md:py-32 overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/[0.06] to-transparent" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-accent/[0.03] blur-3xl" />
       </div>
       <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
         >
-          <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5 leading-tight">
+          <div className="section-divider mb-8 bg-accent" />
+          <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5 leading-tight max-w-3xl mx-auto">
             {title}
           </h2>
-          <p className="text-primary-foreground/70 font-body max-w-2xl mx-auto mb-10 text-base leading-relaxed">
+          <p className="text-primary-foreground/60 font-body max-w-2xl mx-auto mb-10 text-base md:text-lg leading-relaxed">
             {subtitle}
           </p>
           <Link
             to={resolvedLink}
-            className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body"
+            className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-4 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body text-sm md:text-base"
+            data-cursor-hover
           >
             {buttonText}
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
