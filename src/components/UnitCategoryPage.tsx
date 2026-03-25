@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -75,40 +75,38 @@ const UnitCategoryPage = ({
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-primary py-24 md:py-28">
+      <section className="bg-primary py-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">{heroLabel}</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">{heroTitle}</h1>
-            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">{heroDescription}</p>
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">{heroLabel}</p>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">{heroTitle}</h1>
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">{heroDescription}</p>
           </motion.div>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="section-padding bg-background">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <div className="section-divider mb-6" style={{ marginLeft: 0 }} />
-            <h2 className="font-display text-3xl font-bold text-foreground mb-5">{introTitle}</h2>
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="font-display text-3xl font-bold text-foreground mb-4">{introTitle}</h2>
             <p className="text-muted-foreground font-body leading-relaxed">{introDescription}</p>
           </motion.div>
         </div>
       </section>
 
       {/* Location */}
-      <section className="section-padding bg-cream">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <div className="section-divider mb-6" style={{ marginLeft: 0 }} />
-          <h2 className="font-display text-3xl font-bold text-foreground mb-5">{locationTitle}</h2>
-          <p className="text-muted-foreground font-body mb-8 leading-relaxed">{locationDescription}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <h2 className="font-display text-3xl font-bold text-foreground mb-6">{locationTitle}</h2>
+          <p className="text-muted-foreground font-body mb-6">{locationDescription}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             {locationDrivers.map((driver, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex items-start gap-3 p-5 bg-background rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="flex items-start gap-3 p-4 bg-background rounded-lg"
               >
                 <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
-                <p className="text-foreground font-body text-sm leading-relaxed">{driver}</p>
+                <p className="text-foreground font-body text-sm">{driver}</p>
               </motion.div>
             ))}
           </div>
@@ -117,26 +115,22 @@ const UnitCategoryPage = ({
       </section>
 
       {/* Malls */}
-      <section className="section-padding bg-background">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="section-divider mb-6" />
-            <h2 className="font-display text-3xl font-bold text-foreground mb-4">{mallsSectionTitle}</h2>
-            {mallsSectionIntro && (
-              <p className="text-muted-foreground font-body max-w-3xl mx-auto leading-relaxed">{mallsSectionIntro}</p>
-            )}
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-4">{mallsSectionTitle}</h2>
+          {mallsSectionIntro && (
+            <p className="text-muted-foreground font-body text-center max-w-3xl mx-auto mb-12">{mallsSectionIntro}</p>
+          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-8">
             {malls.map((mall, i) => (
-              <motion.div key={mall.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="premium-card p-8 md:p-10"
+              <motion.div key={mall.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                className="bg-cream rounded-lg p-8"
               >
                 <h3 className="font-display text-xl font-bold text-foreground mb-3">{mall.name}</h3>
                 <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">{mall.description}</p>
-                <p className="text-accent font-body font-semibold text-sm mb-5">{mall.sizes}</p>
-                <Link to={mall.href} className="group inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-accent transition-colors font-body">
-                  {mallLinkText || "View Mall Details"}
-                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                <p className="text-accent font-body font-semibold text-sm mb-4">{mall.sizes}</p>
+                <Link to={mall.href} className="inline-block text-sm font-semibold text-primary hover:text-accent transition-colors font-body">
+                  {mallLinkText || "View Mall Details →"}
                 </Link>
               </motion.div>
             ))}

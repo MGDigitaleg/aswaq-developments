@@ -1,7 +1,7 @@
 import useSEO from "@/hooks/useSEO";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Layers, TrendingUp, ShieldCheck, ArrowRight } from "lucide-react";
+import { MapPin, Layers, TrendingUp, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -114,23 +114,23 @@ const AvailableUnits = () => {
       <JsonLd data={breadcrumbs} />
       <JsonLd data={faqSchemaData} />
       {/* Hero */}
-      <section className="bg-primary py-24 md:py-28">
+      <section className="bg-primary py-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
           >
-            <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">
+            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">
               Choose Your Unit
             </p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
               Available Units: Explore Properties for<br />Sale, Investment & Rent
             </h1>
-            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto mb-4 text-base leading-relaxed">
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto mb-4">
               Whether you're looking for units for sale, properties for rent, or smart investment opportunities, ASWAQ Developments offers a carefully selected portfolio of commercial and administrative units in prime locations across Egypt.
             </p>
-            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
               Explore flexible spaces designed to meet real business needs, developed by a trusted Real Estate Developer in Egypt with a clear focus on value, location, and long-term growth. Choose your unit type below and start your journey today.
             </p>
           </motion.div>
@@ -138,45 +138,42 @@ const AvailableUnits = () => {
       </section>
 
       {/* Unit Types */}
-      <section className="section-padding bg-background">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="space-y-20">
+          <div className="space-y-16">
             {unitTypes.map((type, i) => (
               <motion.div
                 key={type.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                className={`flex flex-col md:flex-row gap-10 md:gap-14 items-center ${
+                transition={{ delay: i * 0.1 }}
+                className={`flex flex-col md:flex-row gap-8 items-center ${
                   i % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
               >
                 <div className="md:w-1/2">
-                  <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                  <div className="rounded-lg overflow-hidden aspect-[4/3]">
                     <img
                       src={type.image}
                       alt={type.title}
                       className="w-full h-full object-cover"
-                      loading="lazy"
                     />
                   </div>
                 </div>
                 <div className="md:w-1/2">
-                  <div className="section-divider mb-5" style={{ marginLeft: 0 }} />
                   <span className="text-3xl mb-3 block">{type.icon}</span>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-5">
+                  <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
                     {type.title}
                   </h2>
-                  <p className="text-muted-foreground font-body leading-relaxed mb-8">
+                  <p className="text-muted-foreground font-body leading-relaxed mb-6">
                     {type.description}
                   </p>
                   <Link
                     to={type.link}
-                    className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-3 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body text-sm"
+                    className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded hover:bg-gold-light transition-colors font-body text-sm"
                   >
                     {type.cta}
-                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </motion.div>
@@ -186,27 +183,26 @@ const AvailableUnits = () => {
       </section>
 
       {/* Why Choose */}
-      <section className="section-padding bg-cream">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <div className="section-divider mb-6" />
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-5">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
             Why Choose ASWAQ Developments?
           </h2>
-          <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-14 leading-relaxed">
+          <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
             ASWAQ Developments is a leading Real Estate Developer in Egypt, specializing in mixed-use and commercial projects designed around real market demand. Every project is planned with a focus on:
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {whyChoose.map((item, i) => (
               <motion.div
                 key={item.text}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex flex-col items-center gap-4 p-6 md:p-8 bg-background rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
+                transition={{ delay: i * 0.08 }}
+                className="flex flex-col items-center gap-3 p-6 bg-background rounded-lg"
               >
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <item.icon size={26} className="text-primary" />
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                  <item.icon size={24} className="text-primary" />
                 </div>
                 <p className="font-semibold text-foreground font-body">{item.text}</p>
                 <p className="text-sm text-muted-foreground font-body">{item.desc}</p>
