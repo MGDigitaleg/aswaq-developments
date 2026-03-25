@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import ROICalculator from "@/components/ROICalculator";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
 import heroBg from "@/assets/hero-building.jpg";
@@ -110,62 +111,106 @@ const Index = () => {
       <JsonLd data={websiteSchema} />
       <JsonLd data={faqSchemaData} />
 
-      {/* Hero */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <AnimatePresence mode="popLayout">
+      {/* Hero — Split-screen on desktop */}
+      <section className="relative min-h-[100vh] lg:min-h-[92vh] flex items-stretch overflow-hidden">
+        {/* Left: Content */}
+        <div className="relative z-10 w-full lg:w-[45%] flex items-center bg-primary px-6 md:px-12 lg:px-16 py-20 lg:py-0">
           <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2 }}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroSlides[currentSlide]})` }}
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 hero-gradient" />
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="max-w-lg"
+          >
+            <p className="text-accent font-body font-semibold tracking-[0.3em] uppercase text-xs mb-6">
+              ASWAQ Developments
+            </p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.08] mb-6">
+              Redefining<br />
+              <span className="italic text-accent">Living Excellence</span>
+            </h1>
+            <p className="text-primary-foreground/60 font-body text-base md:text-lg leading-relaxed mb-10 max-w-md">
+              Premium commercial, administrative & medical developments in Egypt's most sought-after locations.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/projects"
+                className="group bg-accent text-accent-foreground px-8 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body inline-flex items-center justify-center gap-2"
+              >
+                Explore Projects
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/about"
+                className="border border-primary-foreground/20 text-primary-foreground px-8 py-3.5 font-semibold rounded-md hover:bg-primary-foreground/5 hover:border-primary-foreground/40 transition-all duration-300 font-body text-center"
+              >
+                Learn More
+              </Link>
+            </div>
 
-        {/* Slide indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
-          {heroSlides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`h-1.5 rounded-full transition-all duration-500 ${i === currentSlide ? "bg-accent w-10" : "bg-primary-foreground/40 w-4 hover:bg-primary-foreground/70"}`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+            {/* Trust badges */}
+            <div className="flex items-center gap-6 mt-12 pt-8 border-t border-primary-foreground/10">
+              {[
+                { value: "20+", label: "Years" },
+                { value: "15+", label: "Projects" },
+                { value: "3B+", label: "EGP" },
+              ].map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 + i * 0.1 }}
+                >
+                  <div className="font-display text-2xl lg:text-3xl font-bold text-accent">{s.value}</div>
+                  <div className="text-[11px] text-primary-foreground/40 font-body tracking-wide">{s.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
-          className="relative z-10 text-center px-4 max-w-3xl"
-        >
-          <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-6">
-            ASWAQ Developments
-          </p>
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.1] mb-8">
-            Redefining<br />
-            <span className="italic text-accent">Living Excellence</span>
-          </h1>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/projects"
-              className="group bg-accent text-accent-foreground px-8 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body inline-flex items-center justify-center gap-2"
-            >
-              Explore Projects
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="/about"
-              className="border border-primary-foreground/30 text-primary-foreground px-8 py-3.5 font-semibold rounded-md hover:bg-primary-foreground/10 hover:border-primary-foreground/50 transition-all duration-300 font-body"
-            >
-              Learn More
-            </Link>
+        {/* Right: Image carousel */}
+        <div className="hidden lg:block relative w-[55%]">
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${heroSlides[currentSlide]})` }}
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-transparent to-transparent" />
+
+          {/* Slide indicators */}
+          <div className="absolute bottom-10 right-10 z-20 flex gap-2.5">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`h-1 rounded-full transition-all duration-500 ${i === currentSlide ? "bg-accent w-10" : "bg-primary-foreground/30 w-4 hover:bg-primary-foreground/60"}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
           </div>
-        </motion.div>
+        </div>
+
+        {/* Mobile: background image behind content */}
+        <div className="lg:hidden absolute inset-0">
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${heroSlides[currentSlide]})` }}
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-primary/85" />
+        </div>
       </section>
 
       {/* Stats + About */}
@@ -182,7 +227,7 @@ const Index = () => {
               <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-5 leading-tight">
                 ASWAQ Developments, The Trusted Real Estate Developer in Egypt
               </h2>
-              <p className="text-muted-foreground max-w-3xl mx-auto font-body text-base leading-relaxed">
+              <p className="text-muted-foreground max-w-3xl mx-auto font-body text-base md:text-lg leading-relaxed">
                 ASWAQ Developments is a forward-thinking real estate developer specializing in commercial, administrative, and medical projects across East Cairo.
               </p>
             </motion.div>
@@ -196,7 +241,8 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="text-center p-6 md:p-8 rounded-xl bg-cream border border-border/50"
+                className="text-center p-6 md:p-8 rounded-xl bg-cream border border-border/50 hover:border-accent/20 transition-all duration-500"
+                style={{ boxShadow: "var(--shadow-sm)" }}
               >
                 <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
                   {stat.value}
@@ -238,12 +284,19 @@ const Index = () => {
                       src={project.image}
                       alt={project.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent group-hover:from-primary/50 transition-all duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent group-hover:from-primary/60 transition-all duration-500" />
                     <div className="absolute bottom-0 left-0 right-0 p-5">
                       <h3 className="font-display text-lg font-bold text-primary-foreground drop-shadow-sm">
                         {project.name}
                       </h3>
+                    </div>
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+                      <span className="text-accent font-body font-semibold text-sm inline-flex items-center gap-1.5">
+                        View Project <ArrowRight size={14} />
+                      </span>
                     </div>
                   </div>
                   <p className="mt-4 text-sm text-muted-foreground font-body line-clamp-2 leading-relaxed">
@@ -279,7 +332,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex flex-col items-center gap-4 p-4"
+                className="flex flex-col items-center gap-4 p-5"
               >
                 <div className="w-16 h-16 rounded-2xl bg-cream flex items-center justify-center border border-border/50 transition-all duration-300 hover:border-accent/30 hover:shadow-[var(--shadow-gold)]">
                   <item.icon size={26} className="text-primary" />
@@ -292,47 +345,62 @@ const Index = () => {
       </section>
 
       {/* Units CTA Banner */}
-      <section className="relative py-28 bg-primary overflow-hidden">
+      <section className="relative py-28 md:py-32 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5">
-              Units Are Selling Fast, Don't Miss Out!
-            </h2>
-            <p className="text-primary-foreground/70 font-body max-w-2xl mx-auto mb-6 text-base leading-relaxed">
-              Browse our available units and select what matches your business or investment plan.
-            </p>
-            <div className="flex flex-wrap gap-3 justify-center mb-10">
-              {[
-                { label: "Mixed-use Properties", href: "/units" },
-                { label: "Commercial Units", href: "/units/commercial-for-sale" },
-                { label: "Administrative Units", href: "/units/administrative-for-sale" },
-                { label: "Medical Units", href: "/units/medical-for-sale" },
-              ].map((tag) => (
-                <Link
-                  key={tag.label}
-                  to={tag.href}
-                  className="border border-primary-foreground/20 text-primary-foreground/80 px-5 py-2 rounded-full text-sm font-body hover:bg-primary-foreground/10 hover:border-primary-foreground/40 transition-all duration-300"
-                >
-                  {tag.label}
-                </Link>
-              ))}
-            </div>
-            <Link
-              to="/units"
-              className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body group"
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Left: CTA content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex-1 text-center lg:text-left"
             >
-              Reserve Your Unit
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </Link>
-          </motion.div>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5">
+                Units Are Selling Fast, Don't Miss Out!
+              </h2>
+              <p className="text-primary-foreground/70 font-body max-w-2xl mb-6 text-base leading-relaxed">
+                Browse our available units and select what matches your business or investment plan.
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
+                {[
+                  { label: "Mixed-use Properties", href: "/units" },
+                  { label: "Commercial Units", href: "/units/commercial-for-sale" },
+                  { label: "Administrative Units", href: "/units/administrative-for-sale" },
+                  { label: "Medical Units", href: "/units/medical-for-sale" },
+                ].map((tag) => (
+                  <Link
+                    key={tag.label}
+                    to={tag.href}
+                    className="border border-primary-foreground/20 text-primary-foreground/80 px-5 py-2 rounded-full text-sm font-body hover:bg-primary-foreground/10 hover:border-primary-foreground/40 transition-all duration-300"
+                  >
+                    {tag.label}
+                  </Link>
+                ))}
+              </div>
+              <Link
+                to="/units"
+                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body group"
+              >
+                Reserve Your Unit
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
+
+            {/* Right: ROI Calculator */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="w-full lg:w-[420px] shrink-0"
+            >
+              <ROICalculator />
+            </motion.div>
+          </div>
         </div>
       </section>
 
