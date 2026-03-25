@@ -81,7 +81,7 @@ const CustomCursor = () => {
           borderColor: isHovering ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.6)",
           opacity: isVisible ? 1 : 0,
           transition: "width 0.3s, height 0.3s, opacity 0.3s, border-color 0.3s",
-        }
+        }}
       />
       <div
         ref={dotRef}
