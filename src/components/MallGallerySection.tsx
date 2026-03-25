@@ -17,25 +17,28 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
   if (images.length === 0 && videos.length === 0) return null;
 
   return (
-    <section className="py-20 bg-background">
+    <section className="section-padding bg-background">
       <div className="container mx-auto px-4 lg:px-8">
-        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
-          {isAr ? `معرض ${mallName}` : `${mallName} Gallery`}
-        </h2>
+        <div className="text-center mb-12">
+          <div className="section-divider mb-6" />
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+            {isAr ? `معرض ${mallName}` : `${mallName} Gallery`}
+          </h2>
+        </div>
 
         <Tabs value={activeMedia} onValueChange={setActiveMedia}>
-          <div className="flex justify-center mb-8">
-            <TabsList className="bg-muted p-1 rounded-lg gap-1 h-auto">
+          <div className="flex justify-center mb-10">
+            <TabsList className="bg-cream p-1.5 rounded-xl gap-1.5 h-auto border border-border/50">
               <TabsTrigger
                 value="images"
-                className="rounded-md px-5 py-2 text-sm font-medium font-body flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                className="rounded-lg px-6 py-2.5 text-sm font-medium font-body flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300"
               >
                 <ImageIcon size={16} />
                 {isAr ? "صور" : "Images"}
               </TabsTrigger>
               <TabsTrigger
                 value="videos"
-                className="rounded-md px-5 py-2 text-sm font-medium font-body flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                className="rounded-lg px-6 py-2.5 text-sm font-medium font-body flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300"
               >
                 <Film size={16} />
                 {isAr ? "فيديوهات" : "Videos"}
@@ -45,7 +48,7 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
 
           <TabsContent value="images">
             {images.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {images.map((src, i) => (
                   <motion.div
                     key={i}
@@ -53,12 +56,13 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-xl overflow-hidden shadow-md aspect-[4/3]"
+                    className="rounded-xl overflow-hidden aspect-[4/3] border border-border/30"
+                    style={{ boxShadow: 'var(--shadow-md)' }}
                   >
                     <img
                       src={src}
                       alt={`${mallName} image ${i + 1}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
                   </motion.div>
@@ -82,7 +86,8 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-xl overflow-hidden shadow-md aspect-video"
+                    className="rounded-xl overflow-hidden aspect-video border border-border/30"
+                    style={{ boxShadow: 'var(--shadow-md)' }}
                   >
                     <iframe
                       src={`https://www.youtube.com/embed/${videoId}`}
@@ -90,6 +95,7 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       className="w-full h-full"
+                      loading="lazy"
                     />
                   </motion.div>
                 ))}

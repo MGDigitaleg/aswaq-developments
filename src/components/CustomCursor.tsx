@@ -73,13 +73,14 @@ const CustomCursor = () => {
         ref={cursorRef}
         className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
         style={{
-          width: 40,
-          height: 40,
+          width: isHovering ? 56 : 40,
+          height: isHovering ? 56 : 40,
           borderRadius: "50%",
-          border: "1.5px solid hsl(var(--primary-foreground) / 0.6)",
+          borderWidth: "1.5px",
+          borderStyle: "solid",
+          borderColor: isHovering ? "hsl(var(--accent))" : "hsl(var(--primary-foreground) / 0.6)",
           opacity: isVisible ? 1 : 0,
-          transition: `width 0.3s, height 0.3s, opacity 0.3s, border-color 0.3s`,
-          ...(isHovering ? { width: 56, height: 56, borderColor: "hsl(var(--accent))" } : {}),
+          transition: "width 0.3s, height 0.3s, opacity 0.3s, border-color 0.3s",
         }}
       />
       <div

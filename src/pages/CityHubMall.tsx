@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, ShoppingBag, TrendingUp, Store, Wrench } from "lucide-react";
 import Layout from "@/components/Layout";
@@ -39,14 +38,14 @@ const CityHubMall = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-primary py-24">
+      <section className="bg-primary py-24 md:py-28">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">ASWAQ Developments</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">ASWAQ Developments</p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
               City Hub Mall at El Shorouk
             </h1>
-            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
               A premier integrated commercial and entertainment destination where profitable investment meets everyday lifestyle demand.
             </p>
           </motion.div>
@@ -54,16 +53,17 @@ const CityHubMall = () => {
       </section>
 
       {/* About */}
-      <section className="py-20 bg-background">
+      <section className="section-padding bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <motion.div className="md:w-1/2" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="rounded-lg overflow-hidden aspect-[4/3]">
+            <motion.div className="md:w-1/2" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
                 <img src={cityhubImg} alt="City Hub Mall" className="w-full h-full object-cover" />
               </div>
             </motion.div>
-            <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">City Hub Mall at El Shorouk City</h2>
+            <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <div className="section-divider mb-5" style={{ marginLeft: 0 }} />
+              <h2 className="font-display text-3xl font-bold text-foreground mb-5">City Hub Mall at El Shorouk City</h2>
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
                 City Hub El Shorouk Mall is a premier integrated commercial and entertainment destination. Strategically positioned in the heart of El Shorouk City, this modern mall delivers high-visibility commercial real estate designed for constant foot traffic and business activity.
               </p>
@@ -76,21 +76,25 @@ const CityHubMall = () => {
       </section>
 
       {/* Location */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">City Hub Mall Location</h2>
-          <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
-            Situated on El Nawadi Street in El Shorouk City, City Hub Mall benefits from a strategic position in a bustling residential and commercial corridor.
-          </p>
+      <section className="section-padding bg-cream">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="section-divider mb-6" />
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-5">City Hub Mall Location</h2>
+            <p className="text-muted-foreground font-body max-w-3xl mx-auto leading-relaxed">
+              Situated on El Nawadi Street in El Shorouk City, City Hub Mall benefits from a strategic position in a bustling residential and commercial corridor.
+            </p>
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-2xl mx-auto p-6 bg-background rounded-lg"
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl mx-auto p-6 bg-background rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300 mb-10"
           >
             <div className="flex items-start gap-3">
               <MapPin size={20} className="text-accent shrink-0 mt-0.5" />
-              <p className="text-foreground font-body text-sm text-left">
+              <p className="text-foreground font-body text-sm text-left leading-relaxed">
                 Prime placement near major arteries like Suez Road, the Ring Road, and the Gamal Abdel Nasser Axis for effortless connectivity across Cairo.
               </p>
             </div>
@@ -99,7 +103,9 @@ const CityHubMall = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-8 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg"
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto rounded-xl overflow-hidden"
+            style={{ boxShadow: 'var(--shadow-lg)' }}
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.1527093465797!2d31.34942880000001!3d30.061156900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583f6d0024fbe5%3A0xa28dc2865dabbf10!2sCity%20Hub!5e0!3m2!1sen!2seg!4v1772535758532!5m2!1sen!2seg"
@@ -117,21 +123,22 @@ const CityHubMall = () => {
       </section>
 
       {/* Available Units */}
-      <section className="py-20 bg-background">
+      <section className="section-padding bg-background">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <div className="section-divider mb-6" />
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-5">
             Commercial Units Available at City Hub Mall
           </h2>
-          <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
+          <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12 leading-relaxed">
             Explore available units for rent & sale at City Hub Mall ranging from 29 m² to 198 m².
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {unitTypes.map((type, i) => (
-              <motion.div key={type.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="flex flex-col items-center gap-3 p-6 bg-cream rounded-lg"
+              <motion.div key={type.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="flex flex-col items-center gap-4 p-6 md:p-8 bg-cream rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
-                  <type.icon size={24} className="text-primary" />
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <type.icon size={26} className="text-primary" />
                 </div>
                 <p className="font-semibold text-foreground font-body text-sm text-center">{type.label}</p>
               </motion.div>
@@ -141,16 +148,19 @@ const CityHubMall = () => {
       </section>
 
       {/* Why Invest */}
-      <section className="py-20 bg-cream">
+      <section className="section-padding bg-cream">
         <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">Why Invest in City Hub Mall</h2>
+          <div className="text-center mb-12">
+            <div className="section-divider mb-6" />
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Why Invest in City Hub Mall</h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {whyInvest.map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-3 p-4 bg-background rounded-lg"
+              <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05, duration: 0.5 }}
+                className="flex items-start gap-3 p-5 bg-background rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
               >
-                <span className="text-accent font-bold">✓</span>
-                <p className="text-foreground font-body text-sm">{item}</p>
+                <span className="text-accent font-bold text-lg">✓</span>
+                <p className="text-foreground font-body text-sm leading-relaxed">{item}</p>
               </motion.div>
             ))}
           </div>
