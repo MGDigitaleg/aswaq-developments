@@ -75,12 +75,25 @@ const Contact = () => {
       notes: result.data.notes || null,
       lang: "en",
     });
-    setSubmitting(false);
     if (!error) {
+      // Send email notification via Pingram
+      supabase.functions.invoke('send-pingram-email', {
+        body: {
+          name: result.data.name,
+          email: result.data.email,
+          phone: result.data.phone,
+          requestType: result.data.requestType,
+          unitType: result.data.unitType,
+          preferredMall: result.data.preferredMall,
+          notes: result.data.notes || '',
+        },
+      }).catch(console.error);
+
       setSubmitted(true);
       setForm({});
       setErrors({});
     }
+    setSubmitting(false);
   };
 
   const inputClass =
