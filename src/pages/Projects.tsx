@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import useSEO from "@/hooks/useSEO";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
@@ -118,34 +119,39 @@ const Projects = () => {
     <Layout>
       <JsonLd data={breadcrumbs} />
       {projectSchemas.map((schema, i) => <JsonLd key={i} data={schema} />)}
+
       {/* Hero Banner */}
-      <section className="relative h-[220px] md:h-[280px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[260px] md:h-[340px] flex items-center justify-center overflow-hidden">
         <img
           src={heroImg}
           alt="ASWAQ Developments Real Estate Projects"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/70" />
-        <motion.h1
+        <div className="absolute inset-0 hero-gradient" />
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground text-center px-4"
+          transition={{ duration: 0.6 }}
+          className="relative z-10 text-center px-4"
         >
-          ASWAQ Developments Real Estate Projects
-        </motion.h1>
+          <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Portfolio</p>
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground">
+            ASWAQ Developments Real Estate Projects
+          </h1>
+        </motion.div>
       </section>
 
       {/* Intro Section */}
-      <section className="py-16 md:py-20 bg-background">
+      <section className="section-padding bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="text-center"
           >
+            <div className="section-divider mb-6" />
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-6">
               Integrated Real Estate Projects in Shorouk City
             </h2>
@@ -164,7 +170,7 @@ const Projects = () => {
       </section>
 
       {/* Project Cards with Hover */}
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="section-padding bg-cream">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {projects.map((project, i) => (
@@ -177,15 +183,16 @@ const Projects = () => {
               >
                 <Link
                   to={project.href}
-                  className="group block relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow aspect-[4/3]"
+                  className="group block relative rounded-xl overflow-hidden aspect-[4/3]"
+                  style={{ boxShadow: 'var(--shadow-lg)' }}
                 >
                   <img
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Default overlay with name */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex items-end p-6 transition-opacity duration-300 group-hover:opacity-0">
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex items-end p-6 md:p-8 transition-opacity duration-300 group-hover:opacity-0">
                     <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground">
                       {project.name}
                     </h3>
@@ -198,8 +205,8 @@ const Projects = () => {
                     <p className="text-primary-foreground/80 font-body text-sm md:text-base leading-relaxed max-w-sm">
                       {project.description}
                     </p>
-                    <span className="mt-4 text-accent font-semibold text-sm font-body">
-                      Explore Project →
+                    <span className="mt-5 text-accent font-semibold text-sm font-body inline-flex items-center gap-1.5">
+                      Explore Project <ArrowRight size={14} />
                     </span>
                   </div>
                 </Link>
@@ -210,13 +217,13 @@ const Projects = () => {
       </section>
 
       {/* Available Units CTA */}
-      <section className="bg-accent py-16 md:py-20">
+      <section className="bg-accent py-20 md:py-24">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-accent-foreground mb-6">
               Available Units for Sale & Rent
@@ -224,14 +231,15 @@ const Projects = () => {
             <p className="text-accent-foreground/80 font-body leading-relaxed mb-4">
               Across ASWAQ Developments Projects, a variety of units are available to suit different business and investment needs. Our spaces range from 30 m² to 300 m², providing flexible options for small shops, medium-sized outlets, and larger commercial concepts.
             </p>
-            <p className="text-accent-foreground/80 font-body leading-relaxed mb-8">
+            <p className="text-accent-foreground/80 font-body leading-relaxed mb-10">
               Whether you are searching for commercial units for rent, commercial property for rent, or mixed-use units for sale in Egypt, ASWAQ Developments offers strategic opportunities within fully developed malls in Shorouk City.
             </p>
             <Link
               to="/contact"
-              className="inline-block bg-primary text-primary-foreground px-8 py-3 font-semibold rounded hover:bg-navy-light transition-colors font-body"
+              className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-navy-light transition-all duration-300 font-body"
             >
               Explore Available Units
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
         </div>

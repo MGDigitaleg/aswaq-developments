@@ -91,26 +91,27 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
       <div className="flex items-center gap-1">
         <Link
           to={item.href}
-          className={`text-sm font-medium tracking-wide transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+          className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={14} className={`transition-transform ${isActive ? "text-accent" : "text-primary-foreground/80"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={14} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/80"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.15 }}
-            className="absolute top-full left-0 mt-3 w-52 bg-background rounded-lg shadow-xl border border-border py-2 z-50"
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 mt-4 w-56 bg-background rounded-xl border border-border py-2 z-50"
+            style={{ boxShadow: 'var(--shadow-xl)' }}
           >
             {item.children?.map((child) => (
               <Link
                 key={child.href}
                 to={child.href}
-                className="block px-4 py-2.5 text-sm font-medium text-foreground hover:bg-muted hover:text-accent transition-colors"
+                className="block px-5 py-2.5 text-sm font-medium text-foreground hover:bg-cream hover:text-accent transition-colors duration-200"
               >
                 {child.label}
               </Link>
@@ -140,27 +141,28 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
       <div className="flex items-center gap-1">
         <Link
           to={item.href}
-          className={`text-sm font-medium tracking-wide transition-colors hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+          className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={14} className={`transition-transform ${isActive ? "text-accent" : "text-primary-foreground/80"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={14} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/80"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.15 }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-background rounded-lg shadow-xl border border-border py-4 px-6 z-50 min-w-[520px]"
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 bg-background rounded-xl border border-border py-5 px-7 z-50 min-w-[540px]"
+            style={{ boxShadow: 'var(--shadow-xl)' }}
           >
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-7">
               {item.children?.map((group) => (
                 <div key={group.href}>
                   <Link
                     to={group.href}
-                    className="block font-display font-bold text-sm text-foreground hover:text-accent transition-colors mb-3"
+                    className="block font-display font-bold text-sm text-foreground hover:text-accent transition-colors mb-3 pb-2 border-b border-border"
                   >
                     {group.label}
                   </Link>
@@ -196,7 +198,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
         className={`w-full flex items-center justify-between text-sm font-medium py-3 transition-colors ${active ? "text-accent" : "text-primary-foreground/80"}`}
       >
         {item.label}
-        <ChevronDown size={16} className={`transition-transform ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={16} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -216,7 +218,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
                     {child.label}
                     <ChevronDown
                       size={14}
-                      className={`transition-transform ${subOpen === child.href ? "rotate-180" : ""}`}
+                      className={`transition-transform duration-300 ${subOpen === child.href ? "rotate-180" : ""}`}
                     />
                   </button>
                   <AnimatePresence>
@@ -270,7 +272,7 @@ const Navbar = () => {
   const navLinks = getNavLinks(prefix);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 200);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -286,14 +288,20 @@ const Navbar = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-primary/80 backdrop-blur-md" : "bg-primary"}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-primary/95 backdrop-blur-lg shadow-lg"
+          : "bg-primary"
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         <Link to={isArabic ? "/ar" : "/"}>
           <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px]" />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => {
             const active = isPathInTree(location.pathname, link);
             if (!link.children) {
@@ -301,13 +309,12 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`text-sm font-medium tracking-wide transition-colors hover:text-accent ${active ? "text-accent" : "text-primary-foreground/80"}`}
+                  className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-accent ${active ? "text-accent" : "text-primary-foreground/80"}`}
                 >
                   {link.label}
                 </Link>
               );
             }
-            // Check if any child has children (mega menu) vs simple dropdown
             const hasSubs = link.children.some((c) => c.children);
             if (hasSubs) return <MegaMenu key={link.href} item={link} isActive={active} />;
             return <SimpleDropdown key={link.href} item={link} isActive={active} />;
@@ -317,7 +324,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4">
           <button
             onClick={switchLanguage}
-            className="flex items-center gap-1.5 text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors"
+            className="flex items-center gap-1.5 text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors duration-300"
             aria-label="Switch language"
           >
             <Globe size={16} />
@@ -325,7 +332,7 @@ const Navbar = () => {
           </button>
           <Link
             to={`${prefix}/contact`}
-            className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded hover:bg-gold-light transition-colors"
+            className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-md hover:bg-gold-light transition-all duration-300"
           >
             {isArabic ? "تواصل معنا" : "Contact Us"}
           </Link>
@@ -375,7 +382,7 @@ const Navbar = () => {
               <Link
                 to={`${prefix}/contact`}
                 onClick={() => setOpen(false)}
-                className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded text-center hover:bg-gold-light transition-colors mt-2"
+                className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-md text-center hover:bg-gold-light transition-colors mt-2"
               >
                 {isArabic ? "تواصل معنا" : "Contact Us"}
               </Link>
