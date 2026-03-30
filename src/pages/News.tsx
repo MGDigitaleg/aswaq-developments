@@ -81,7 +81,7 @@ const News = () => {
                       <p className="font-body text-sm text-muted-foreground line-clamp-3">
                         {article.excerpt}
                       </p>
-                      <span className="inline-block mt-4 text-accent font-semibold text-sm font-body">
+                      <span className="inline-block mt-4 text-primary font-semibold text-sm font-body">
                         Read More →
                       </span>
                     </div>

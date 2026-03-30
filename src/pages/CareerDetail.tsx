@@ -94,7 +94,7 @@ const CareerDetail = () => {
             <div className="lg:col-span-2">
               <Link
                 to="/careers"
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors text-sm mb-6"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm mb-6"
               >
                 <ArrowLeft size={16} /> Back to Careers
               </Link>
@@ -103,7 +103,7 @@ const CareerDetail = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-accent">
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
                   {career.title}
                 </h2>
                 <div className="flex items-center gap-2 mt-3 text-sm text-muted-foreground">
