@@ -317,14 +317,14 @@ const Navbar = () => {
           className="relative rounded-full overflow-visible px-4 lg:px-7 transition-all duration-500"
           style={{
             background: scrolled
-              ? 'hsl(var(--navy) / 0.85)'
-              : 'hsl(var(--navy) / 0.6)',
+320:               ? 'hsl(226 76% 12% / 0.9)'
+321:               : 'hsl(226 76% 12% / 0.65)',
             backdropFilter: 'blur(28px) saturate(1.4)',
             WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
-            border: '1px solid hsl(0 0% 100% / 0.08)',
+            border: '1px solid hsl(39 38% 93% / 0.08)',
             boxShadow: scrolled
-              ? '0 8px 40px -8px hsl(227 51% 6% / 0.5), 0 2px 12px -2px hsl(227 51% 6% / 0.3), inset 0 1px 0 0 hsl(0 0% 100% / 0.04)'
-              : '0 4px 24px -4px hsl(227 51% 6% / 0.3), 0 1px 8px -1px hsl(227 51% 6% / 0.15), inset 0 1px 0 0 hsl(0 0% 100% / 0.06)',
+              ? '0 8px 40px -8px hsl(226 76% 6% / 0.6), 0 2px 12px -2px hsl(226 76% 6% / 0.35), inset 0 1px 0 0 hsl(39 38% 93% / 0.04)'
+              : '0 4px 24px -4px hsl(226 76% 6% / 0.35), 0 1px 8px -1px hsl(226 76% 6% / 0.2), inset 0 1px 0 0 hsl(39 38% 93% / 0.06)',
           }}
         >
           {/* Subtle top highlight */}
