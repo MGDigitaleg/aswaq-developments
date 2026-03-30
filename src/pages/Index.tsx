@@ -409,7 +409,7 @@ const Index = () => {
                 transition={{ delay: i * 0.08, duration: 0.5 }}
                 className="flex flex-col items-center gap-4 p-5"
               >
-                <div className="w-16 h-16 rounded-2xl bg-cream flex items-center justify-center border border-border/50 transition-all duration-300 hover:border-accent/30 hover:shadow-[var(--shadow-gold)]">
+                <div className="w-16 h-16 rounded-2xl bg-cream flex items-center justify-center border border-border/50 transition-all duration-300 hover:border-secondary/30 hover:shadow-[var(--shadow-md)]">
                   <item.icon size={26} className="text-primary" />
                 </div>
                 <p className="text-sm font-medium text-foreground font-body leading-snug">{item.text}</p>
