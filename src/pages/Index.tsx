@@ -140,7 +140,7 @@ const Index = () => {
         {/* Content overlay container */}
         <div className="relative z-10 h-full flex items-center">
           <div className="container mx-auto px-4 md:px-8 lg:px-12">
-            <div className="flex justify-start lg:justify-start">
+            <div className="flex justify-center">
               {/* Glass content card */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
