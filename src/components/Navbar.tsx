@@ -327,7 +327,7 @@ const Navbar = () => {
           <button
             onClick={switchLanguage}
             className="flex items-center gap-1.5 text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors duration-300"
-            aria-label="Switch language"
+            aria-label={isArabic ? "Switch to English - EN" : "التبديل إلى العربية - عربي"}
           >
             <Globe size={16} />
             {isArabic ? "EN" : "عربي"}
