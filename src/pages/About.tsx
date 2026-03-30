@@ -3,6 +3,7 @@ import { CheckCircle, Eye, Target, Heart, Award, Clock, Building2 } from "lucide
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import useSEO from "@/hooks/useSEO";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
 
 const whyChoose = [
