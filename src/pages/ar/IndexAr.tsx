@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft } from "lucide-react";
+import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft, ArrowLeft } from "lucide-react";
 import { useLatestNews } from "@/hooks/useNewsArticles";
 import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
@@ -118,15 +118,16 @@ const IndexAr = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative min-h-[700px] flex items-center justify-center pt-[120px] overflow-hidden" style={{ height: 'calc(100vh + 100px)', maxHeight: '1200px' }}>
+      {/* Hero — Cinematic Full-Width Slider */}
+      <section className="relative min-h-[700px] overflow-hidden" style={{ height: 'calc(100vh + 100px)', maxHeight: '1200px' }}>
+        {/* Full-bleed background slider */}
         <AnimatePresence mode="popLayout">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
           >
             <img
@@ -138,36 +139,156 @@ const IndexAr = () => {
             />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-primary/60" />
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {heroSlides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${i === currentSlide ? "bg-accent w-8" : "bg-primary-foreground/50 hover:bg-primary-foreground/80"}`}
-              aria-label={`الانتقال إلى الشريحة ${i + 1}`}
-            />
-          ))}
-        </div>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-center px-4 max-w-3xl"
-        >
-          <p className="text-primary-foreground/60 font-arabic font-medium tracking-widest text-sm mb-4">أسواق للتطوير العقاري</p>
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-            مستقبل التطوير
-          </h1>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/ar/projects" className="bg-[#141D3E] text-primary-foreground px-8 py-3 font-semibold rounded hover:bg-accent transition-colors font-arabic">
-              استكشف المشاريع
-            </Link>
-            <Link to="/ar/about" className="border border-primary-foreground/40 text-primary-foreground px-8 py-3 font-semibold rounded hover:bg-primary-foreground/10 transition-colors font-arabic">
-              اعرف المزيد
-            </Link>
+
+        {/* Cinematic overlays */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, hsl(var(--navy) / 0.35) 0%, hsl(var(--navy) / 0.15) 40%, hsl(var(--navy) / 0.5) 100%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 70% 50%, hsl(var(--navy) / 0.4) 0%, transparent 70%)' }} />
+
+        {/* Content overlay container */}
+        <div className="relative z-10 h-full flex items-center pt-[120px]">
+          <div className="container mx-auto px-4 md:px-8 lg:px-12">
+            <div className="flex justify-center">
+              {/* Glass content card */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="w-full max-w-[580px] rounded-3xl p-8 md:p-12 lg:p-14 text-center"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--navy) / 0.65) 0%, hsl(var(--navy) / 0.45) 100%)',
+                  backdropFilter: 'blur(24px) saturate(1.4)',
+                  WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
+                  border: '1px solid hsl(0 0% 100% / 0.08)',
+                  boxShadow: '0 32px 80px -12px hsl(var(--navy) / 0.5), inset 0 1px 0 hsl(0 0% 100% / 0.06)',
+                }}
+              >
+                <motion.p
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  className="text-primary-foreground/60 font-arabic font-semibold tracking-[0.25em] text-[11px] mb-6"
+                >
+                  أسواق للتطوير العقاري
+                </motion.p>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground leading-[1.08] mb-6"
+                >
+                  مستقبل التطوير
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.75 }}
+                  className="text-primary-foreground/65 font-arabic text-sm md:text-base leading-[1.8] mb-10 max-w-[420px] mx-auto"
+                >
+                  مشاريع تجارية وإدارية وطبية متميزة في أكثر مواقع مصر طلبًا.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.9 }}
+                  className="flex flex-col sm:flex-row gap-3 justify-center"
+                >
+                  <Link
+                    to="/ar/projects"
+                    className="group bg-accent text-accent-foreground px-8 py-3.5 font-semibold rounded-lg hover:bg-gold-light transition-all duration-300 font-arabic inline-flex items-center justify-center gap-2"
+                    style={{ boxShadow: '0 4px 24px -4px hsl(var(--accent) / 0.4)' }}
+                  >
+                    استكشف المشاريع
+                    <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+                  </Link>
+                  <Link
+                    to="/ar/about"
+                    className="border border-primary-foreground/20 text-primary-foreground/90 px-8 py-3.5 font-semibold rounded-lg hover:bg-primary-foreground/10 hover:border-primary-foreground/35 transition-all duration-300 font-arabic text-center"
+                  >
+                    اعرف المزيد عن أسواق
+                  </Link>
+                </motion.div>
+
+                {/* Trust badges */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.1, duration: 0.8 }}
+                  className="flex items-center justify-center gap-8 mt-10 pt-8 border-t border-primary-foreground/[0.08]"
+                >
+                  {[
+                    { value: "20+", label: "سنة" },
+                    { value: "15+", label: "مشروع" },
+                    { value: "3B+", label: "ج.م" },
+                  ].map((s) => (
+                    <div key={s.label} className="text-center">
+                      <div className="font-display text-xl lg:text-2xl font-bold text-primary-foreground" style={{ letterSpacing: '-0.02em' }}><AnimatedCounter value={s.value} /></div>
+                      <div className="text-[10px] text-primary-foreground/45 font-arabic tracking-[0.15em] mt-1">{s.label}</div>
+                    </div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Slide navigation — bottom center */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
+          {/* Next (appears on right in RTL) */}
+          <button
+            onClick={nextSlide}
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+            style={{
+              background: 'hsl(0 0% 100% / 0.1)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid hsl(0 0% 100% / 0.12)',
+            }}
+            aria-label="الشريحة التالية"
+          >
+            <ChevronLeft size={18} className="text-primary-foreground/80 rotate-180" />
+          </button>
+
+          {/* Dots */}
+          <div className="flex gap-2">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`rounded-full transition-all duration-500 ${
+                  i === currentSlide ? "w-8 h-2" : "w-2 h-2 hover:bg-primary-foreground/50"
+                }`}
+                style={{
+                  backgroundColor: i === currentSlide ? 'hsl(var(--accent))' : 'hsl(0 0% 100% / 0.3)',
+                  boxShadow: i === currentSlide ? '0 0 14px hsl(var(--accent) / 0.5)' : 'none',
+                }}
+                aria-label={`الانتقال إلى الشريحة ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Prev */}
+          <button
+            onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+            className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+            style={{
+              background: 'hsl(0 0% 100% / 0.1)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid hsl(0 0% 100% / 0.12)',
+            }}
+            aria-label="الشريحة السابقة"
+          >
+            <ChevronLeft size={18} className="text-primary-foreground/80" />
+          </button>
+        </div>
+
+        {/* Slide counter */}
+        <div className="absolute bottom-8 left-8 z-20 hidden md:flex items-baseline gap-1 font-arabic">
+          <span className="text-2xl font-display font-bold text-primary-foreground/90">{String(currentSlide + 1).padStart(2, '0')}</span>
+          <span className="text-primary-foreground/30 text-sm mx-1">/</span>
+          <span className="text-sm text-primary-foreground/40">{String(heroSlides.length).padStart(2, '0')}</span>
+        </div>
       </section>
 
       {/* Stats + About */}
