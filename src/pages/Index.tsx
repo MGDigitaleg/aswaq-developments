@@ -113,42 +113,54 @@ const Index = () => {
 
       {/* Hero — Split-screen on desktop */}
       <section className="relative min-h-[100vh] lg:min-h-[92vh] flex items-stretch overflow-hidden">
+        {/* Ambient glow — subtle cinematic lighting */}
+        <div className="absolute top-0 left-[30%] w-[500px] h-[500px] rounded-full opacity-[0.04] blur-[120px] pointer-events-none" style={{ background: 'radial-gradient(circle, hsl(var(--accent)), transparent 70%)' }} />
+
         {/* Left: Content */}
-        <div className="relative z-10 w-full lg:w-[45%] flex items-center bg-primary px-6 md:px-12 lg:px-16 py-20 lg:py-0">
+        <div className="relative z-10 w-full lg:w-[45%] flex items-center px-6 md:px-12 lg:px-16 xl:px-20 py-24 lg:py-0" style={{ background: 'linear-gradient(165deg, hsl(227 51% 14%) 0%, hsl(227 51% 16%) 50%, hsl(227 48% 18%) 100%)' }}>
+          {/* Subtle vertical accent line */}
+          <div className="hidden lg:block absolute left-0 top-[15%] bottom-[15%] w-px" style={{ background: 'linear-gradient(to bottom, transparent, hsl(var(--accent) / 0.3), transparent)' }} />
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
             className="max-w-lg"
           >
-            <p className="text-accent font-body font-semibold tracking-[0.3em] uppercase text-xs mb-6">
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-accent font-body font-semibold tracking-[0.35em] uppercase text-[11px] mb-8"
+            >
               ASWAQ Developments
-            </p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.08] mb-6">
+            </motion.p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.05] mb-7" style={{ letterSpacing: '-0.02em' }}>
               Redefining<br />
-              <span className="italic text-accent">Living Excellence</span>
+              <span className="italic" style={{ color: 'hsl(var(--accent))', textShadow: '0 0 60px hsl(var(--accent) / 0.15)' }}>Living Excellence</span>
             </h1>
-            <p className="text-primary-foreground/60 font-body text-base md:text-lg leading-relaxed mb-10 max-w-md">
+            <p className="text-primary-foreground/55 font-body text-base md:text-lg leading-[1.75] mb-12 max-w-[420px]">
               Premium commercial, administrative & medical developments in Egypt's most sought-after locations.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3.5">
               <Link
                 to="/projects"
                 className="group bg-accent text-accent-foreground px-8 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body inline-flex items-center justify-center gap-2"
+                style={{ boxShadow: '0 4px 24px -4px hsl(var(--accent) / 0.35)' }}
               >
                 Explore Projects
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/about"
-                className="border border-primary-foreground/20 text-primary-foreground px-8 py-3.5 font-semibold rounded-md hover:bg-primary-foreground/5 hover:border-primary-foreground/40 transition-all duration-300 font-body text-center"
+                className="border border-primary-foreground/15 text-primary-foreground/85 px-8 py-3.5 font-semibold rounded-md hover:bg-primary-foreground/5 hover:border-primary-foreground/30 transition-all duration-300 font-body text-center backdrop-blur-sm"
               >
                 Learn More About ASWAQ Developments
               </Link>
             </div>
 
             {/* Trust badges */}
-            <div className="flex items-center gap-6 mt-12 pt-8 border-t border-primary-foreground/10">
+            <div className="flex items-center gap-8 mt-14 pt-8 border-t border-primary-foreground/[0.06]">
               {[
                 { value: "20+", label: "Years" },
                 { value: "15+", label: "Projects" },
@@ -158,10 +170,11 @@ const Index = () => {
                   key={s.label}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 + i * 0.1 }}
+                  transition={{ delay: 0.8 + i * 0.12 }}
+                  className="text-center"
                 >
-                  <div className="font-display text-2xl lg:text-3xl font-bold text-accent">{s.value}</div>
-                  <div className="text-[11px] text-primary-foreground/65 font-body tracking-wide">{s.label}</div>
+                  <div className="font-display text-2xl lg:text-3xl font-bold" style={{ color: 'hsl(var(--accent))', letterSpacing: '-0.02em' }}>{s.value}</div>
+                  <div className="text-[10px] text-primary-foreground/45 font-body tracking-[0.15em] uppercase mt-1">{s.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -173,10 +186,10 @@ const Index = () => {
           <AnimatePresence mode="popLayout">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, scale: 1.08 }}
+              initial={{ opacity: 0, scale: 1.06 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
               className="absolute inset-0"
             >
               <img
@@ -188,15 +201,21 @@ const Index = () => {
               />
             </motion.div>
           </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-transparent to-transparent" />
+          {/* Cinematic edge gradient for seamless blend */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, hsl(227 51% 15% / 0.6) 0%, hsl(227 51% 16% / 0.15) 25%, transparent 50%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(227 51% 14% / 0.4) 0%, transparent 30%)' }} />
 
-          {/* Slide indicators */}
-          <div className="absolute bottom-10 right-10 z-20 flex gap-2.5">
+          {/* Slide indicators — refined */}
+          <div className="absolute bottom-12 right-12 z-20 flex gap-2.5">
             {heroSlides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`h-1 rounded-full transition-all duration-500 ${i === currentSlide ? "bg-accent w-10" : "bg-primary-foreground/30 w-4 hover:bg-primary-foreground/60"}`}
+                className={`h-[3px] rounded-full transition-all duration-600 ${i === currentSlide ? "w-10" : "w-4 hover:bg-primary-foreground/50"}`}
+                style={{
+                  backgroundColor: i === currentSlide ? 'hsl(var(--accent))' : 'hsl(0 0% 100% / 0.25)',
+                  boxShadow: i === currentSlide ? '0 0 12px hsl(var(--accent) / 0.4)' : 'none',
+                }}
                 aria-label={`Go to slide ${i + 1}`}
               />
             ))}
@@ -223,7 +242,7 @@ const Index = () => {
               />
             </motion.div>
           </AnimatePresence>
-          <div className="absolute inset-0 bg-primary/85" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(165deg, hsl(227 51% 14% / 0.92) 0%, hsl(227 51% 16% / 0.88) 100%)' }} />
         </div>
       </section>
 
