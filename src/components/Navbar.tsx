@@ -317,8 +317,8 @@ const Navbar = () => {
           className="relative rounded-full overflow-visible px-4 lg:px-7 transition-all duration-500"
           style={{
             background: scrolled
-320:               ? 'hsl(226 76% 12% / 0.9)'
-321:               : 'hsl(226 76% 12% / 0.65)',
+              ? 'hsl(226 76% 12% / 0.9)'
+              : 'hsl(226 76% 12% / 0.65)',
             backdropFilter: 'blur(28px) saturate(1.4)',
             WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
             border: '1px solid hsl(39 38% 93% / 0.08)',
