@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import aboutHero from "@/assets/about-hero.webp";
 import useSEO from "@/hooks/useSEO";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const whyChoose = [
   { icon: Award, text: "خبرة عقارية تمتد لأكثر من 20 عاماً في مجال الاستثمار العقاري في مصر" },
