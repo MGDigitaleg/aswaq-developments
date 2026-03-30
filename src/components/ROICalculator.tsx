@@ -50,11 +50,11 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
         </label>
 
         {/* Down Payment */}
-        <div>
-          <label className="flex justify-between text-sm font-body text-foreground mb-2">
+        <label>
+          <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "الدفعة المقدمة" : "Down Payment"}</span>
             <span className="font-semibold text-accent">{downPayment}%</span>
-          </label>
+          </span>
           <input
             type="range"
             min={10}
@@ -64,7 +64,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             onChange={(e) => setDownPayment(Number(e.target.value))}
             className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
           />
-        </div>
+        </label>
 
         {/* Monthly Rent */}
         <div>
