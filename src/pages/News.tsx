@@ -75,13 +75,13 @@ const News = () => {
                       </div>
                     )}
                     <div className="p-6">
-                      <h3 className="font-display text-lg font-bold mt-2 mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                      <h3 className="font-display text-lg font-bold mt-2 mb-3 group-hover:text-primary transition-colors line-clamp-2">
                         {article.title}
                       </h3>
                       <p className="font-body text-sm text-muted-foreground line-clamp-3">
                         {article.excerpt}
                       </p>
-                      <span className="inline-block mt-4 text-accent font-semibold text-sm font-body">
+                      <span className="inline-block mt-4 text-primary font-semibold text-sm font-body">
                         Read More →
                       </span>
                     </div>

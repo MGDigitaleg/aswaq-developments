@@ -23,8 +23,8 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
   return (
     <div className="premium-card p-6 md:p-8">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
-          <Calculator size={20} className="text-accent" />
+        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+          <Calculator size={20} className="text-primary" />
         </div>
         <h3 className="font-display text-lg font-bold text-foreground">
           {isArabic ? "حاسبة العائد على الاستثمار" : "ROI Calculator"}
@@ -36,7 +36,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
         <label>
           <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "سعر الوحدة" : "Unit Price"}</span>
-            <span className="font-semibold text-accent">{formatNum(unitPrice)} EGP</span>
+            <span className="font-semibold text-foreground">{formatNum(unitPrice)} EGP</span>
           </span>
           <input
             type="range"
@@ -53,7 +53,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
         <label>
           <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "الدفعة المقدمة" : "Down Payment"}</span>
-            <span className="font-semibold text-accent">{downPayment}%</span>
+            <span className="font-semibold text-foreground">{downPayment}%</span>
           </span>
           <input
             type="range"
@@ -70,7 +70,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
         <label>
           <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "الإيجار الشهري المتوقع" : "Expected Monthly Rent"}</span>
-            <span className="font-semibold text-accent">{formatNum(monthlyRent)} EGP</span>
+            <span className="font-semibold text-foreground">{formatNum(monthlyRent)} EGP</span>
           </span>
           <input
             type="range"
@@ -87,7 +87,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
         <label>
           <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "معدل الارتفاع السنوي" : "Annual Appreciation"}</span>
-            <span className="font-semibold text-accent">{appreciation}%</span>
+            <span className="font-semibold text-foreground">{appreciation}%</span>
           </span>
           <input
             type="range"
@@ -110,7 +110,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
           </div>
           <div className="p-4 bg-cream rounded-xl text-center">
             <p className="text-xs text-muted-foreground font-body mb-1">{isArabic ? "العائد السنوي" : "Gross Yield"}</p>
-            <p className="font-display text-lg font-bold text-accent">{grossYield}%</p>
+            <p className="font-display text-lg font-bold text-foreground">{grossYield}%</p>
           </div>
           <div className="p-4 bg-cream rounded-xl text-center">
             <p className="text-xs text-muted-foreground font-body mb-1">{isArabic ? "القيمة بعد 5 سنوات" : "5-Year Value"}</p>

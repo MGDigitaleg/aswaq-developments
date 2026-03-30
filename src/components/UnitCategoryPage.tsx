@@ -78,7 +78,7 @@ const UnitCategoryPage = ({
       <section className="bg-primary pt-48 pb-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">{heroLabel}</p>
+            <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">{heroLabel}</p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">{heroTitle}</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">{heroDescription}</p>
           </motion.div>
@@ -105,7 +105,7 @@ const UnitCategoryPage = ({
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="flex items-start gap-3 p-4 bg-background rounded-lg"
               >
-                <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
+                <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
                 <p className="text-foreground font-body text-sm">{driver}</p>
               </motion.div>
             ))}
@@ -128,8 +128,8 @@ const UnitCategoryPage = ({
               >
                 <h3 className="font-display text-xl font-bold text-foreground mb-3">{mall.name}</h3>
                 <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">{mall.description}</p>
-                <p className="text-accent font-body font-semibold text-sm mb-4">{mall.sizes}</p>
-                <Link to={mall.href} className="inline-block text-sm font-semibold text-primary hover:text-accent transition-colors font-body">
+                <p className="text-foreground font-body font-semibold text-sm mb-4">{mall.sizes}</p>
+                <Link to={mall.href} className="inline-block text-sm font-semibold text-primary hover:text-secondary transition-colors font-body">
                   {mallLinkText || "View Mall Details →"}
                 </Link>
               </motion.div>

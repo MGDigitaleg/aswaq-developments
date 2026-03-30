@@ -113,7 +113,7 @@ const Contact = () => {
       <section className="bg-primary pt-48 pb-24 md:pb-28">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Get In Touch</p>
+            <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Get In Touch</p>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">Contact Us</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
               Have questions about our projects or available units? Reach out to our team and we'll help you find the perfect space.
@@ -143,8 +143,8 @@ const Contact = () => {
 
               {submitted ? (
                 <div className="text-center py-16 bg-cream rounded-xl border border-border/50">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
-                    <Mail size={28} className="text-accent" />
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Mail size={28} className="text-primary" />
                   </div>
                   <p className="font-display text-2xl font-bold text-foreground mb-2">Thank You!</p>
                   <p className="text-muted-foreground font-body">We've received your inquiry and will get back to you shortly.</p>

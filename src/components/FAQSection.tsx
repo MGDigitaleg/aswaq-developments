@@ -29,7 +29,7 @@ const FAQSection = ({ faqs, title = "You Ask, We Answer" }: { faqs: FAQItem[]; t
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04, duration: 0.4 }}
-                className={`rounded-xl overflow-hidden transition-all duration-400 ${isOpen ? "bg-cream border border-accent/20" : "bg-background border border-border hover:border-accent/15"}`}
+                className={`rounded-xl overflow-hidden transition-all duration-400 ${isOpen ? "bg-cream border border-secondary/20" : "bg-background border border-border hover:border-secondary/15"}`}
                 style={{ boxShadow: isOpen ? "var(--shadow-md)" : "var(--shadow-sm)" }}
               >
                 <button
@@ -38,7 +38,7 @@ const FAQSection = ({ faqs, title = "You Ask, We Answer" }: { faqs: FAQItem[]; t
                   data-cursor-hover
                 >
                   <span className="font-body font-semibold text-foreground pr-4 text-[15px]">{faq.question}</span>
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-accent text-accent-foreground rotate-180" : "bg-muted text-muted-foreground"}`}>
+                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-primary text-primary-foreground rotate-180" : "bg-muted text-muted-foreground"}`}>
                     <ChevronDown size={16} />
                   </div>
                 </button>

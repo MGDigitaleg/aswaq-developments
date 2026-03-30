@@ -53,7 +53,7 @@ const SolariaMall = () => {
       <section className="bg-primary pt-48 pb-24 md:pb-28">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">ASWAQ Developments</p>
+            <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">ASWAQ Developments</p>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">Solaria Mall at El Shorouk</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
               One of ASWAQ's most ambitious mixed-use properties — a vibrant hub for shopping, services, healthcare, and professional activities spanning 6,600 m².
@@ -100,7 +100,7 @@ const SolariaMall = () => {
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
                 className="flex items-start gap-3 p-5 bg-background rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
               >
-                <MapPin size={20} className="text-accent shrink-0 mt-0.5" />
+                <MapPin size={20} className="text-primary shrink-0 mt-0.5" />
                 <p className="text-foreground font-body text-sm leading-relaxed">{adv}</p>
               </motion.div>
             ))}
@@ -163,7 +163,7 @@ const SolariaMall = () => {
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05, duration: 0.5 }}
                 className="flex items-start gap-3 p-5 bg-background rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
               >
-                <span className="text-accent font-bold text-lg">✓</span>
+                <span className="text-primary font-bold text-lg">✓</span>
                 <p className="text-foreground font-body text-sm leading-relaxed">{item}</p>
               </motion.div>
             ))}

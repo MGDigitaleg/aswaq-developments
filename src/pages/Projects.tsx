@@ -134,7 +134,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="relative z-10 text-center px-4"
         >
-          <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Portfolio</p>
+          <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Portfolio</p>
           <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground">
             ASWAQ Developments Real Estate Projects
           </h1>
@@ -160,7 +160,7 @@ const Projects = () => {
             </p>
             <p className="text-muted-foreground font-body leading-relaxed">
               With a strong focus on mixed-use units in Egypt, ASWAQ Developments offers commercial units across multiple malls where you can explore{" "}
-              <Link to="/units/for-sale" className="text-accent font-semibold underline hover:text-gold-light transition-colors">
+              <Link to="/units/for-sale" className="text-primary font-semibold underline hover:text-secondary transition-colors">
                 available retail spaces in Shorouk City
               </Link>
               , whether it's for both property for sale in Egypt and commercial property for rent, all within well-connected areas in Shorouk City.
@@ -205,7 +205,7 @@ const Projects = () => {
                     <p className="text-primary-foreground/80 font-body text-sm md:text-base leading-relaxed max-w-sm">
                       {project.description}
                     </p>
-                    <span className="mt-5 text-accent font-semibold text-sm font-body inline-flex items-center gap-1.5">
+                    <span className="mt-5 text-primary-foreground font-semibold text-sm font-body inline-flex items-center gap-1.5">
                       Explore Project <ArrowRight size={14} />
                     </span>
                   </div>
@@ -217,7 +217,7 @@ const Projects = () => {
       </section>
 
       {/* Available Units CTA */}
-      <section className="bg-accent py-20 md:py-24">
+      <section className="bg-primary py-20 md:py-24">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -225,18 +225,18 @@ const Projects = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-accent-foreground mb-6">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-6">
               Available Units for Sale & Rent
             </h2>
-            <p className="text-accent-foreground/80 font-body leading-relaxed mb-4">
+            <p className="text-primary-foreground/70 font-body leading-relaxed mb-4">
               Across ASWAQ Developments Projects, a variety of units are available to suit different business and investment needs. Our spaces range from 30 m² to 300 m², providing flexible options for small shops, medium-sized outlets, and larger commercial concepts.
             </p>
-            <p className="text-accent-foreground/80 font-body leading-relaxed mb-10">
+            <p className="text-primary-foreground/70 font-body leading-relaxed mb-10">
               Whether you are searching for commercial units for rent, commercial property for rent, or mixed-use units for sale in Egypt, ASWAQ Developments offers strategic opportunities within fully developed malls in Shorouk City.
             </p>
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-navy-light transition-all duration-300 font-body"
+              className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body"
             >
               Explore Available Units
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

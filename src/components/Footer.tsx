@@ -102,7 +102,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/50 hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300"
+                  className="w-10 h-10 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/50 hover:bg-primary-foreground/10 hover:text-primary-foreground hover:border-primary-foreground/20 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={16} />
@@ -121,7 +121,7 @@ const Footer = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300"
+                    className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -140,7 +140,7 @@ const Footer = () => {
                 <li key={project.name}>
                   <Link
                     to={project.href}
-                    className="text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300"
+                    className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors duration-300"
                   >
                     {project.name}
                   </Link>
@@ -156,19 +156,19 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4 font-body">
               <li>
-                <a href="tel:19474" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300">
-                  <Phone size={16} className="shrink-0 text-accent" />
+                <a href="tel:19474" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors duration-300">
+                  <Phone size={16} className="shrink-0 text-primary-foreground/40" />
                   19474
                 </a>
               </li>
               <li>
-                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300">
-                  <Mail size={16} className="shrink-0 text-accent" />
+                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors duration-300">
+                  <Mail size={16} className="shrink-0 text-primary-foreground/40" />
                   marketing@aswaqdev.com
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/50">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
+                <MapPin size={16} className="mt-0.5 shrink-0 text-primary-foreground/40" />
                 <span>
                   {isArabic
                     ? "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون"
@@ -200,7 +200,7 @@ const Footer = () => {
               href="https://maps.app.goo.gl/6jGACMa9mZKx5sYp9"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-accent hover:underline flex items-center gap-1.5 font-body transition-colors duration-300"
+              className="text-sm text-primary-foreground/60 hover:underline flex items-center gap-1.5 font-body transition-colors duration-300"
             >
               {isArabic ? "اترك تقييم" : "Leave a Review"}
               <ExternalLink size={13} />
@@ -218,7 +218,7 @@ const Footer = () => {
                 <p className="text-sm text-primary-foreground/60 mt-3 mb-4 font-body leading-relaxed min-h-[40px]">
                   "{isArabic ? review.textAr : review.text}"
                 </p>
-                <p className="text-sm font-semibold text-accent font-body">{review.name}</p>
+                <p className="text-sm font-semibold text-primary-foreground font-body">{review.name}</p>
               </div>
             ))}
           </div>
@@ -233,7 +233,7 @@ const Footer = () => {
           </p>
           <p className="text-xs text-primary-foreground/60 font-body">
             {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
-            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent underline hover:no-underline">
+            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 underline hover:no-underline">
               MG Digital
             </a>
           </p>

@@ -59,7 +59,7 @@ const AvailableUnitsAr = () => {
       <section className="bg-primary py-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-accent font-arabic font-medium tracking-widest text-sm mb-3">اختر وحدتك</p>
+            <p className="text-primary-foreground/60 font-arabic font-medium tracking-widest text-sm mb-3">اختر وحدتك</p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
               الوحدات المتاحة: استكشف عقارات<br />للبيع والاستثمار والإيجار
             </h1>

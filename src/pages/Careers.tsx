@@ -51,7 +51,7 @@ const Careers = () => {
                     className="bg-card rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
                   >
                     <Link to={`/careers/${career.slug}`}>
-                      <h3 className="font-display text-lg font-bold text-foreground hover:text-accent transition-colors">
+                      <h3 className="font-display text-lg font-bold text-foreground hover:text-primary transition-colors">
                         {career.title}
                       </h3>
                     </Link>

@@ -159,7 +159,7 @@ const Index = () => {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="text-accent font-body font-semibold tracking-[0.35em] uppercase text-[11px] mb-6"
+                  className="text-primary-foreground/60 font-body font-semibold tracking-[0.35em] uppercase text-[11px] mb-6"
                 >
                   ASWAQ Developments
                 </motion.p>
@@ -172,8 +172,8 @@ const Index = () => {
                   style={{ letterSpacing: '-0.02em' }}
                 >
                   Redefining<br />
-                  <span className="italic text-accent" style={{ textShadow: '0 0 60px hsl(var(--accent) / 0.2)' }}>
-                    Living Excellence
+                  <span className="italic text-primary-foreground">
+                    Living <span className="text-accent">Excellence</span>
                   </span>
                 </motion.h1>
 
@@ -221,7 +221,7 @@ const Index = () => {
                     { value: "3B+", label: "EGP" },
                   ].map((s, i) => (
                     <div key={s.label} className="text-center">
-                      <div className="font-display text-xl lg:text-2xl font-bold text-accent" style={{ letterSpacing: '-0.02em' }}>{s.value}</div>
+                      <div className="font-display text-xl lg:text-2xl font-bold text-primary-foreground" style={{ letterSpacing: '-0.02em' }}>{s.value}</div>
                       <div className="text-[10px] text-primary-foreground/45 font-body tracking-[0.15em] uppercase mt-1">{s.label}</div>
                     </div>
                   ))}
@@ -319,7 +319,7 @@ const Index = () => {
                 className="text-center p-6 md:p-8 rounded-xl bg-cream border border-border/50 hover:border-accent/20 transition-all duration-500"
                 style={{ boxShadow: "var(--shadow-sm)" }}
               >
-                <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
+                <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
@@ -369,7 +369,7 @@ const Index = () => {
                     </div>
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                      <span className="text-accent font-body font-semibold text-sm inline-flex items-center gap-1.5">
+                      <span className="text-primary-foreground font-body font-semibold text-sm inline-flex items-center gap-1.5">
                         View Project <ArrowRight size={14} />
                       </span>
                     </div>
@@ -409,7 +409,7 @@ const Index = () => {
                 transition={{ delay: i * 0.08, duration: 0.5 }}
                 className="flex flex-col items-center gap-4 p-5"
               >
-                <div className="w-16 h-16 rounded-2xl bg-cream flex items-center justify-center border border-border/50 transition-all duration-300 hover:border-accent/30 hover:shadow-[var(--shadow-gold)]">
+                <div className="w-16 h-16 rounded-2xl bg-cream flex items-center justify-center border border-border/50 transition-all duration-300 hover:border-secondary/30 hover:shadow-[var(--shadow-md)]">
                   <item.icon size={26} className="text-primary" />
                 </div>
                 <p className="text-sm font-medium text-foreground font-body leading-snug">{item.text}</p>
@@ -489,7 +489,7 @@ const Index = () => {
                 Latest News
               </h2>
             </div>
-            <Link to="/news" className="text-accent font-semibold font-body text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all duration-300">
+            <Link to="/news" className="text-primary font-semibold font-body text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all duration-300">
               View All <ChevronRight size={14} />
             </Link>
           </div>
@@ -522,7 +522,7 @@ const Index = () => {
                       {article.title}
                     </h3>
                     <p className="text-sm text-muted-foreground font-body mt-3 line-clamp-2 leading-relaxed">{article.excerpt}</p>
-                    <span className="inline-flex items-center gap-1.5 text-sm text-accent mt-4 font-body font-semibold group-hover:gap-2.5 transition-all duration-300">
+                    <span className="inline-flex items-center gap-1.5 text-sm text-primary mt-4 font-body font-semibold group-hover:gap-2.5 transition-all duration-300">
                       Read More <ChevronRight size={14} />
                     </span>
                   </div>

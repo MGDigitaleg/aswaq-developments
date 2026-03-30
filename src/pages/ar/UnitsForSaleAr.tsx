@@ -60,7 +60,7 @@ const UnitsForSaleAr = () => {
       <section className="bg-primary py-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">وحدات للبيع</p>
+            <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">وحدات للبيع</p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
               امتلك عقاراً مصمماً للنمو
             </h1>

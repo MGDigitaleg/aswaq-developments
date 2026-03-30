@@ -92,11 +92,11 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
       <div className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-medium tracking-[0.03em] transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+          className={`text-[12.5px] font-medium tracking-[0.03em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/40"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-primary-foreground/70" : "text-primary-foreground/40"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
@@ -118,7 +118,7 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
               <Link
                 key={child.href}
                 to={child.href}
-                className="block px-4 py-2.5 text-[12.5px] font-medium text-primary-foreground/70 hover:text-accent hover:bg-primary-foreground/[0.04] transition-all duration-200 mx-1.5 rounded-lg"
+                className="block px-4 py-2.5 text-[12.5px] font-medium text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/[0.04] transition-all duration-200 mx-1.5 rounded-lg"
               >
                 {child.label}
               </Link>
@@ -148,11 +148,11 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
       <div className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-medium tracking-[0.03em] transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+          className={`text-[12.5px] font-medium tracking-[0.03em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/40"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-primary-foreground/70" : "text-primary-foreground/40"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
@@ -175,7 +175,7 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
                 <div key={group.href}>
                   <Link
                     to={group.href}
-                    className="block font-display font-bold text-[12px] uppercase tracking-wider text-accent/80 hover:text-accent transition-colors mb-3 pb-2 border-b border-primary-foreground/[0.06]"
+                    className="block font-display font-bold text-[12px] uppercase tracking-wider text-primary-foreground/60 hover:text-primary-foreground transition-colors mb-3 pb-2 border-b border-primary-foreground/[0.06]"
                   >
                     {group.label}
                   </Link>
@@ -183,7 +183,7 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
                     <Link
                       key={sub.href}
                       to={sub.href}
-                      className="block text-[11.5px] text-primary-foreground/55 hover:text-accent transition-colors py-1.5"
+                      className="block text-[11.5px] text-primary-foreground/55 hover:text-primary-foreground transition-colors py-1.5"
                     >
                       {sub.label}
                     </Link>
@@ -208,7 +208,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className={`w-full flex items-center justify-between text-sm font-medium py-3 transition-colors ${active ? "text-accent" : "text-primary-foreground/80"}`}
+        className={`w-full flex items-center justify-between text-sm font-medium py-3 transition-colors ${active ? "text-primary-foreground" : "text-primary-foreground/80"}`}
       >
         {item.label}
         <ChevronDown size={16} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
@@ -226,7 +226,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
                 <div key={child.href}>
                   <button
                     onClick={() => setSubOpen(subOpen === child.href ? null : child.href)}
-                    className={`w-full flex items-center justify-between text-sm font-medium py-2.5 transition-colors ${isPathInTree(pathname, child) ? "text-accent" : "text-primary-foreground/60"}`}
+                    className={`w-full flex items-center justify-between text-sm font-medium py-2.5 transition-colors ${isPathInTree(pathname, child) ? "text-primary-foreground" : "text-primary-foreground/60"}`}
                   >
                     {child.label}
                     <ChevronDown
@@ -247,7 +247,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
                             key={sub.href}
                             to={sub.href}
                             onClick={onClose}
-                            className={`block text-sm py-2 transition-colors ${pathname === sub.href ? "text-accent" : "text-primary-foreground/50"}`}
+                            className={`block text-sm py-2 transition-colors ${pathname === sub.href ? "text-primary-foreground" : "text-primary-foreground/50"}`}
                           >
                             {sub.label}
                           </Link>
@@ -261,7 +261,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
                   key={child.href}
                   to={child.href}
                   onClick={onClose}
-                  className={`block text-sm font-medium py-2.5 transition-colors ${pathname === child.href ? "text-accent" : "text-primary-foreground/60"}`}
+                  className={`block text-sm font-medium py-2.5 transition-colors ${pathname === child.href ? "text-primary-foreground" : "text-primary-foreground/60"}`}
                 >
                   {child.label}
                 </Link>
@@ -356,7 +356,7 @@ const Navbar = () => {
                       to={link.href}
                       className={`relative text-[12.5px] font-medium tracking-[0.03em] transition-all duration-300 whitespace-nowrap ${
                         active
-                          ? "text-accent"
+                          ? "text-primary-foreground"
                           : "text-primary-foreground/70 hover:text-primary-foreground"
                       }`}
                     >
@@ -448,7 +448,7 @@ const Navbar = () => {
                       key={link.href}
                       to={link.href}
                       onClick={() => setOpen(false)}
-                      className={`text-sm font-medium py-3 transition-colors ${location.pathname === link.href ? "text-accent" : "text-primary-foreground/80"}`}
+                      className={`text-sm font-medium py-3 transition-colors ${location.pathname === link.href ? "text-primary-foreground" : "text-primary-foreground/80"}`}
                     >
                       {link.label}
                     </Link>
@@ -457,7 +457,7 @@ const Navbar = () => {
                 <div className="h-px my-2" style={{ background: 'hsl(39 38% 93% / 0.06)' }} />
                 <button
                   onClick={() => { switchLanguage(); setOpen(false); }}
-                  className="flex items-center gap-2 text-sm font-medium text-primary-foreground/70 hover:text-accent transition-colors py-3"
+                  className="flex items-center gap-2 text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors py-3"
                 >
                   <Globe size={16} />
                   {isArabic ? "English" : "عربي"}

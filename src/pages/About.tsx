@@ -50,7 +50,7 @@ const About = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="relative z-10 text-center px-4 max-w-3xl"
         >
-          <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Story</p>
+          <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Story</p>
           <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
             About Us
           </h1>
@@ -89,8 +89,8 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="premium-card p-8 md:p-10"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
-                <Eye size={24} className="text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                <Eye size={24} className="text-primary" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">Our Vision</h3>
               <p className="text-muted-foreground font-body leading-relaxed">
@@ -104,8 +104,8 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="premium-card p-8 md:p-10"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
-                <Target size={24} className="text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                <Target size={24} className="text-primary" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">Our Mission</h3>
               <p className="text-muted-foreground font-body leading-relaxed">
@@ -139,7 +139,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex items-center gap-4 p-5 bg-cream rounded-xl text-left border border-border/50 hover:border-accent/20 transition-all duration-300"
+                className="flex items-center gap-4 p-5 bg-cream rounded-xl text-left border border-border/50 hover:border-secondary/20 transition-all duration-300"
               >
                 <div className="shrink-0 w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
                   <item.icon size={18} className="text-primary" />
@@ -163,7 +163,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
-                <div className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-3">
+                <div className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-3">
                   {stat.value}
                 </div>
                 <div className="text-primary-foreground/70 font-body text-sm tracking-wide">{stat.label}</div>

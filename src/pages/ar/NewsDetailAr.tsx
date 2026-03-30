@@ -39,7 +39,7 @@ const NewsDetailAr = () => {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
         <div className="relative z-10 container mx-auto px-4 lg:px-8 pb-10">
-          <Link to="/ar/news" className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors font-arabic text-sm mb-4">
+          <Link to="/ar/news" className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors font-arabic text-sm mb-4">
             <ArrowRight size={16} /> العودة إلى الأخبار
           </Link>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground max-w-3xl">
@@ -75,7 +75,7 @@ const NewsDetailAr = () => {
                     </div>
                   )}
                   <div className="p-5">
-                    <h3 className="font-display text-base font-bold mt-2 group-hover:text-accent transition-colors line-clamp-2">{a.title}</h3>
+                    <h3 className="font-display text-base font-bold mt-2 group-hover:text-primary transition-colors line-clamp-2">{a.title}</h3>
                   </div>
                 </Link>
               ))}

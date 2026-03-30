@@ -41,7 +41,7 @@ const CityHubMallAr = () => {
       <section className="bg-primary pt-48 pb-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">شركة أسواق للتطوير العقاري</p>
+            <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">شركة أسواق للتطوير العقاري</p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">سيتي هب مول في مدينة الشروق</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
               وجهة تجارية وترفيهية رائدة متكاملة حيث يلتقي نمط الحياة اليومية مع متطلبات الاستثمار المربح.
@@ -79,7 +79,7 @@ const CityHubMallAr = () => {
           </p>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto p-6 bg-background rounded-lg">
             <div className="flex items-start gap-3">
-              <MapPin size={20} className="text-accent shrink-0 mt-0.5" />
+              <MapPin size={20} className="text-primary shrink-0 mt-0.5" />
               <p className="text-foreground font-body text-sm text-right">
                 بالقرب من مجمعات سكنية راقية وجامعات مما يولد تدفقاً مستمراً للزوار يدعم الطلب على التجزئة والترفيه.
               </p>
@@ -135,7 +135,7 @@ const CityHubMallAr = () => {
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? 20 : -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
                 className="flex items-start gap-3 p-4 bg-background rounded-lg"
               >
-                <span className="text-accent font-bold">✓</span>
+                <span className="text-primary font-bold">✓</span>
                 <p className="text-foreground font-body text-sm">{item}</p>
               </motion.div>
             ))}

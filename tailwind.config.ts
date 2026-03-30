@@ -54,6 +54,7 @@ export default {
         navy: {
           DEFAULT: "hsl(var(--navy))",
           light: "hsl(var(--navy-light))",
+          rich: "hsl(var(--navy-rich))",
         },
         gold: {
           DEFAULT: "hsl(var(--gold))",
