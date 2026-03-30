@@ -107,11 +107,11 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute top-full left-0 mt-4 w-52 rounded-2xl border py-2 z-50"
             style={{
-              background: 'hsl(var(--navy) / 0.92)',
+              background: 'hsl(226 76% 12% / 0.94)',
               backdropFilter: 'blur(24px) saturate(1.3)',
               WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
-              borderColor: 'hsl(0 0% 100% / 0.08)',
-              boxShadow: '0 20px 50px -12px hsl(227 51% 6% / 0.5), 0 0 0 1px hsl(0 0% 100% / 0.03)',
+              borderColor: 'hsl(39 38% 93% / 0.08)',
+              boxShadow: '0 20px 50px -12px hsl(226 76% 6% / 0.6), 0 0 0 1px hsl(39 38% 93% / 0.03)',
             }}
           >
             {item.children?.map((child) => (
