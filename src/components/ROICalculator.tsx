@@ -33,11 +33,11 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
 
       <div className="space-y-5">
         {/* Unit Price */}
-        <div>
-          <label className="flex justify-between text-sm font-body text-foreground mb-2">
+        <label>
+          <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "سعر الوحدة" : "Unit Price"}</span>
             <span className="font-semibold text-accent">{formatNum(unitPrice)} EGP</span>
-          </label>
+          </span>
           <input
             type="range"
             min={500000}
@@ -47,7 +47,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             onChange={(e) => setUnitPrice(Number(e.target.value))}
             className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
           />
-        </div>
+        </label>
 
         {/* Down Payment */}
         <div>
