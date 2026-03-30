@@ -221,7 +221,7 @@ const Index = () => {
                     { value: "3B+", label: "EGP" },
                   ].map((s, i) => (
                     <div key={s.label} className="text-center">
-                      <div className="font-display text-xl lg:text-2xl font-bold text-primary-foreground" style={{ letterSpacing: '-0.02em' }}>{s.value}</div>
+                      <div className="font-display text-xl lg:text-2xl font-bold text-primary-foreground" style={{ letterSpacing: '-0.02em' }}><AnimatedCounter value={s.value} /></div>
                       <div className="text-[10px] text-primary-foreground/45 font-body tracking-[0.15em] uppercase mt-1">{s.label}</div>
                     </div>
                   ))}
