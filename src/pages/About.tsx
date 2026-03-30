@@ -3,6 +3,7 @@ import { CheckCircle, Eye, Target, Heart, Award, Clock, Building2 } from "lucide
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import useSEO from "@/hooks/useSEO";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
 
 const whyChoose = [
@@ -164,7 +165,7 @@ const About = () => {
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
                 <div className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-3">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-primary-foreground/70 font-body text-sm tracking-wide">{stat.label}</div>
               </motion.div>

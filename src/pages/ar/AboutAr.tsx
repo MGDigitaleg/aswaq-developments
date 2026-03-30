@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import aboutHero from "@/assets/about-hero.webp";
 import useSEO from "@/hooks/useSEO";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const whyChoose = [
   { icon: Award, text: "خبرة عقارية تمتد لأكثر من 20 عاماً في مجال الاستثمار العقاري في مصر" },
@@ -109,7 +110,7 @@ const AboutAr = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
               <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <div className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-2">{stat.value}</div>
+                <div className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-2"><AnimatedCounter value={stat.value} /></div>
                 <div className="text-primary-foreground/70 font-arabic text-sm">{stat.label}</div>
               </motion.div>
             ))}
