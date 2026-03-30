@@ -69,7 +69,7 @@ const ProjectsAr = () => {
             </p>
             <p className="text-muted-foreground font-arabic leading-relaxed">
               مع تركيزنا القوي على توفير وحدات متعددة الاستخدامات في مصر، تقدم شركة أسواق وحدات تجارية عبر مجموعة من{" "}
-              <Link to="/ar/units/for-sale" className="text-accent font-semibold underline hover:text-gold-light transition-colors">
+              <Link to="/ar/units/for-sale" className="text-primary font-semibold underline hover:text-secondary transition-colors">
                 المولات المتميزة في مدينة الشروق
               </Link>
               . سواء كنت تبحث عن عقارات للبيع في مصر أو وحدات تجارية للإيجار في أكثر المناطق حيوية بمدينة الشروق.
@@ -100,14 +100,14 @@ const ProjectsAr = () => {
         </div>
       </section>
 
-      <section className="bg-accent py-16 md:py-20">
+      <section className="bg-primary py-16 md:py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-accent-foreground mb-6">وحدات متاحة للبيع والإيجار</h2>
-            <p className="text-accent-foreground/80 font-arabic leading-relaxed mb-4">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-6">وحدات متاحة للبيع والإيجار</h2>
+            <p className="text-primary-foreground/70 font-arabic leading-relaxed mb-4">
               عبر مشاريع أسواق، تتوفر مجموعة متنوعة من الوحدات لتناسب احتياجات الأعمال والاستثمار المختلفة. تتراوح مساحاتنا من 24 م² إلى 300 م².
             </p>
-            <p className="text-accent-foreground/80 font-arabic leading-relaxed mb-8">
+            <p className="text-primary-foreground/70 font-arabic leading-relaxed mb-8">
               سواء كنت تبحث عن وحدات تجارية للإيجار أو وحدات متعددة الاستخدامات للبيع، تقدم أسواق فرصًا استراتيجية داخل مولات متطورة بالكامل في مدينة الشروق.
             </p>
             <Link to="/ar/contact" className="inline-block bg-primary text-primary-foreground px-8 py-3 font-semibold rounded hover:bg-navy-light transition-colors font-arabic">

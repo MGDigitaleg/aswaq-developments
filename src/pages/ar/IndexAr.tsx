@@ -154,7 +154,7 @@ const IndexAr = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center px-4 max-w-3xl"
         >
-          <p className="text-accent font-arabic font-medium tracking-widest text-sm mb-4">أسواق للتطوير العقاري</p>
+          <p className="text-primary-foreground/60 font-arabic font-medium tracking-widest text-sm mb-4">أسواق للتطوير العقاري</p>
           <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground leading-tight mb-6">
             مستقبل التطوير
           </h1>
@@ -275,7 +275,7 @@ const IndexAr = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">آخر الأخبار</h2>
-            <Link to="/ar/news" className="text-accent font-semibold font-arabic text-sm inline-flex items-center gap-1 hover:underline">
+            <Link to="/ar/news" className="text-primary font-semibold font-arabic text-sm inline-flex items-center gap-1 hover:underline">
               عرض الكل <ChevronLeft size={14} />
             </Link>
           </div>
@@ -293,7 +293,7 @@ const IndexAr = () => {
                       {article.title}
                     </h3>
                     <p className="text-sm text-muted-foreground font-arabic mt-2 line-clamp-2">{article.excerpt}</p>
-                    <span className="inline-flex items-center gap-1 text-sm text-accent mt-3 font-arabic font-medium">
+                    <span className="inline-flex items-center gap-1 text-sm text-primary mt-3 font-arabic font-medium">
                       اقرأ المزيد <ChevronLeft size={14} />
                     </span>
                   </div>
