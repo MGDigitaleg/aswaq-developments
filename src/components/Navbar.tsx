@@ -89,34 +89,36 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
 
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[13px] font-medium tracking-[0.04em] transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/75"}`}
+          className={`text-[12.5px] font-medium tracking-[0.03em] transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={12} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/50"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/40"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 6, scale: 0.97 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-full left-0 mt-5 w-56 rounded-xl border py-2 z-50 backdrop-blur-xl"
+            className="absolute top-full left-0 mt-4 w-52 rounded-2xl border py-2 z-50"
             style={{
-              background: 'hsl(var(--background) / 0.97)',
-              borderColor: 'hsl(var(--border) / 0.6)',
-              boxShadow: '0 20px 50px -12px hsl(227 51% 10% / 0.25), 0 8px 20px -8px hsl(227 51% 10% / 0.12)',
+              background: 'hsl(var(--navy) / 0.92)',
+              backdropFilter: 'blur(24px) saturate(1.3)',
+              WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
+              borderColor: 'hsl(0 0% 100% / 0.08)',
+              boxShadow: '0 20px 50px -12px hsl(227 51% 6% / 0.5), 0 0 0 1px hsl(0 0% 100% / 0.03)',
             }}
           >
             {item.children?.map((child) => (
               <Link
                 key={child.href}
                 to={child.href}
-                className="block px-5 py-2.5 text-[13px] font-medium text-foreground hover:bg-cream hover:text-accent transition-all duration-200"
+                className="block px-4 py-2.5 text-[12.5px] font-medium text-primary-foreground/70 hover:text-accent hover:bg-primary-foreground/[0.04] transition-all duration-200 mx-1.5 rounded-lg"
               >
                 {child.label}
               </Link>
@@ -143,35 +145,37 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
 
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[13px] font-medium tracking-[0.04em] transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/75"}`}
+          className={`text-[12.5px] font-medium tracking-[0.03em] transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={12} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/50"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/40"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 6, scale: 0.97 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-5 rounded-xl border py-6 px-8 z-50 min-w-[560px] backdrop-blur-xl"
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-2xl border py-5 px-6 z-50 min-w-[520px]"
             style={{
-              background: 'hsl(var(--background) / 0.97)',
-              borderColor: 'hsl(var(--border) / 0.6)',
-              boxShadow: '0 20px 50px -12px hsl(227 51% 10% / 0.25), 0 8px 20px -8px hsl(227 51% 10% / 0.12)',
+              background: 'hsl(var(--navy) / 0.92)',
+              backdropFilter: 'blur(24px) saturate(1.3)',
+              WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
+              borderColor: 'hsl(0 0% 100% / 0.08)',
+              boxShadow: '0 20px 50px -12px hsl(227 51% 6% / 0.5), 0 0 0 1px hsl(0 0% 100% / 0.03)',
             }}
           >
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-3 gap-6">
               {item.children?.map((group) => (
                 <div key={group.href}>
                   <Link
                     to={group.href}
-                    className="block font-display font-bold text-[13px] text-foreground hover:text-accent transition-colors mb-3 pb-2.5 border-b border-border/60"
+                    className="block font-display font-bold text-[12px] uppercase tracking-wider text-accent/80 hover:text-accent transition-colors mb-3 pb-2 border-b border-primary-foreground/[0.06]"
                   >
                     {group.label}
                   </Link>
@@ -179,7 +183,7 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
                     <Link
                       key={sub.href}
                       to={sub.href}
-                      className="block text-xs text-muted-foreground hover:text-accent transition-colors py-1.5"
+                      className="block text-[11.5px] text-primary-foreground/55 hover:text-accent transition-colors py-1.5"
                     >
                       {sub.label}
                     </Link>
@@ -297,153 +301,183 @@ const Navbar = () => {
   };
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-700"
-      style={{
-        background: scrolled
-          ? 'linear-gradient(180deg, hsl(227 51% 12% / 0.97) 0%, hsl(227 51% 14% / 0.95) 100%)'
-          : 'linear-gradient(180deg, hsl(227 51% 14%) 0%, hsl(227 51% 16%) 100%)',
-        backdropFilter: scrolled ? 'blur(20px) saturate(1.2)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(1.2)' : 'none',
-        boxShadow: scrolled
-          ? '0 1px 0 0 hsl(var(--accent) / 0.08), 0 8px 32px -8px hsl(227 51% 8% / 0.4)'
-          : '0 1px 0 0 hsl(var(--primary-foreground) / 0.04)',
-      }}
-    >
-      {/* Subtle top accent line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent 10%, hsl(var(--accent) / 0.2) 50%, transparent 90%)' }}
-      />
-
-      <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
-        {/* Logo */}
-        <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
+      {/* Floating pill container */}
+      <motion.div
+        className="pointer-events-auto relative mx-4 lg:mx-8 mt-4 lg:mt-5 w-full"
+        style={{ maxWidth: '1320px' }}
+        initial={false}
+        animate={{
+          paddingTop: scrolled ? '12px' : '14px',
+          paddingBottom: scrolled ? '12px' : '14px',
+        }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div
+          className="relative rounded-full overflow-visible px-4 lg:px-7 transition-all duration-500"
+          style={{
+            background: scrolled
+              ? 'hsl(var(--navy) / 0.85)'
+              : 'hsl(var(--navy) / 0.6)',
+            backdropFilter: 'blur(28px) saturate(1.4)',
+            WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
+            border: '1px solid hsl(0 0% 100% / 0.08)',
+            boxShadow: scrolled
+              ? '0 8px 40px -8px hsl(227 51% 6% / 0.5), 0 2px 12px -2px hsl(227 51% 6% / 0.3), inset 0 1px 0 0 hsl(0 0% 100% / 0.04)'
+              : '0 4px 24px -4px hsl(227 51% 6% / 0.3), 0 1px 8px -1px hsl(227 51% 6% / 0.15), inset 0 1px 0 0 hsl(0 0% 100% / 0.06)',
+          }}
+        >
+          {/* Subtle top highlight */}
           <div
-            className="absolute -inset-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{ background: 'radial-gradient(ellipse at center, hsl(var(--accent) / 0.06), transparent 70%)' }}
+            className="absolute top-0 left-[15%] right-[15%] h-px rounded-full"
+            style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--accent) / 0.15), transparent)' }}
           />
-          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] relative" width={200} height={79} />
-        </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
-          {navLinks.map((link) => {
-            const active = isPathInTree(location.pathname, link);
-            if (!link.children) {
-              return (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`relative text-[13px] font-medium tracking-[0.04em] transition-all duration-300 hover:text-accent ${active ? "text-accent" : "text-primary-foreground/75 hover:text-primary-foreground"}`}
-                >
-                  {link.label}
-                  {/* Active indicator dot */}
-                  {active && (
-                    <span
-                      className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
-                      style={{ backgroundColor: 'hsl(var(--accent))', boxShadow: '0 0 6px hsl(var(--accent) / 0.5)' }}
-                    />
-                  )}
-                </Link>
-              );
-            }
-            const hasSubs = link.children.some((c) => c.children);
-            if (hasSubs) return <MegaMenu key={link.href} item={link} isActive={active} />;
-            return <SimpleDropdown key={link.href} item={link} isActive={active} />;
-          })}
-        </nav>
+          <div className="flex items-center justify-between py-2.5 lg:py-3">
+            {/* Logo */}
+            <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0">
+              <img
+                src={aswaqLogo}
+                alt="ASWAQ Developments"
+                className="w-[140px] lg:w-[160px] relative transition-opacity duration-300 group-hover:opacity-90"
+                width={160}
+                height={63}
+              />
+            </Link>
 
-        {/* Right: Language + CTA */}
-        <div className="hidden lg:flex items-center gap-4">
-          <button
-            onClick={switchLanguage}
-            className="flex items-center gap-1.5 text-[13px] font-medium text-primary-foreground/60 hover:text-primary-foreground transition-all duration-300 px-2.5 py-1.5 rounded-md hover:bg-primary-foreground/5"
-            aria-label={isArabic ? "Switch to English - EN" : "التبديل إلى العربية - عربي"}
-          >
-            <Globe size={14} className="opacity-70" />
-            {isArabic ? "EN" : "عربي"}
-          </button>
+            {/* Desktop Nav — centered */}
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-5 absolute left-1/2 -translate-x-1/2">
+              {navLinks.map((link) => {
+                const active = isPathInTree(location.pathname, link);
+                if (!link.children) {
+                  return (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      className={`relative text-[12.5px] font-medium tracking-[0.03em] transition-all duration-300 whitespace-nowrap ${
+                        active
+                          ? "text-accent"
+                          : "text-primary-foreground/70 hover:text-primary-foreground"
+                      }`}
+                    >
+                      {link.label}
+                      {active && (
+                        <motion.span
+                          layoutId="nav-active"
+                          className="absolute -bottom-1 left-0 right-0 h-[1.5px] rounded-full"
+                          style={{ background: 'hsl(var(--accent))' }}
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                    </Link>
+                  );
+                }
+                const hasSubs = link.children.some((c) => c.children);
+                if (hasSubs) return <MegaMenu key={link.href} item={link} isActive={active} />;
+                return <SimpleDropdown key={link.href} item={link} isActive={active} />;
+              })}
+            </nav>
 
-          {/* Separator */}
-          <div className="w-px h-5" style={{ background: 'hsl(var(--primary-foreground) / 0.1)' }} />
-
-          <Link
-            to={`${prefix}/contact`}
-            className="relative text-[13px] font-semibold rounded-md transition-all duration-300 font-body overflow-hidden group px-7 py-2.5"
-            style={{
-              background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
-              color: 'hsl(var(--accent-foreground))',
-              boxShadow: '0 2px 12px -2px hsl(var(--accent) / 0.3)',
-            }}
-          >
-            <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{ background: 'linear-gradient(135deg, hsl(40 76% 55%) 0%, hsl(var(--accent)) 100%)' }}
-            />
-          </Link>
-        </div>
-
-        {/* Mobile toggle */}
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-primary-foreground" aria-label="Toggle menu">
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-primary-foreground/[0.06]"
-            style={{ background: 'linear-gradient(180deg, hsl(227 51% 13%) 0%, hsl(227 51% 15%) 100%)' }}
-          >
-            <nav className="container mx-auto py-5 px-4 flex flex-col gap-1">
-              {navLinks.map((link) =>
-                link.children ? (
-                  <MobileAccordion
-                    key={link.href}
-                    item={link}
-                    pathname={location.pathname}
-                    onClose={() => setOpen(false)}
-                  />
-                ) : (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    onClick={() => setOpen(false)}
-                    className={`text-sm font-medium py-3 transition-colors ${location.pathname === link.href ? "text-accent" : "text-primary-foreground/80"}`}
-                  >
-                    {link.label}
-                  </Link>
-                ),
-              )}
-              <div className="h-px my-2" style={{ background: 'hsl(var(--primary-foreground) / 0.06)' }} />
+            {/* Right: Language + CTA */}
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
               <button
-                onClick={() => { switchLanguage(); setOpen(false); }}
-                className="flex items-center gap-2 text-sm font-medium text-primary-foreground/70 hover:text-accent transition-colors py-3"
+                onClick={switchLanguage}
+                className="flex items-center gap-1.5 text-[12px] font-medium text-primary-foreground/50 hover:text-primary-foreground transition-all duration-300 px-2 py-1.5 rounded-full hover:bg-primary-foreground/[0.06]"
+                aria-label={isArabic ? "Switch to English - EN" : "التبديل إلى العربية - عربي"}
               >
-                <Globe size={16} />
-                {isArabic ? "English" : "عربي"}
+                <Globe size={13} className="opacity-60" />
+                {isArabic ? "EN" : "عربي"}
               </button>
+
               <Link
                 to={`${prefix}/contact`}
-                onClick={() => setOpen(false)}
-                className="text-sm font-semibold rounded-md text-center py-3 mt-1 transition-all duration-300"
+                className="relative text-[12px] font-semibold rounded-full transition-all duration-300 font-body overflow-hidden group px-5 py-2"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
                   color: 'hsl(var(--accent-foreground))',
+                  boxShadow: '0 2px 10px -2px hsl(var(--accent) / 0.35)',
                 }}
               >
-                {isArabic ? "تواصل معنا" : "Contact Us"}
+                <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: 'linear-gradient(135deg, hsl(40 76% 55%) 0%, hsl(var(--accent)) 100%)' }}
+                />
               </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="lg:hidden text-primary-foreground/80 hover:text-primary-foreground transition-colors p-1"
+              aria-label="Toggle menu"
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu — drops below the pill */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:hidden mt-2 mx-1 rounded-3xl overflow-hidden"
+              style={{
+                background: 'hsl(var(--navy) / 0.92)',
+                backdropFilter: 'blur(28px) saturate(1.4)',
+                WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
+                border: '1px solid hsl(0 0% 100% / 0.07)',
+                boxShadow: '0 12px 40px -8px hsl(227 51% 6% / 0.5)',
+              }}
+            >
+              <nav className="py-4 px-5 flex flex-col gap-0.5">
+                {navLinks.map((link) =>
+                  link.children ? (
+                    <MobileAccordion
+                      key={link.href}
+                      item={link}
+                      pathname={location.pathname}
+                      onClose={() => setOpen(false)}
+                    />
+                  ) : (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      onClick={() => setOpen(false)}
+                      className={`text-sm font-medium py-3 transition-colors ${location.pathname === link.href ? "text-accent" : "text-primary-foreground/80"}`}
+                    >
+                      {link.label}
+                    </Link>
+                  ),
+                )}
+                <div className="h-px my-2" style={{ background: 'hsl(0 0% 100% / 0.06)' }} />
+                <button
+                  onClick={() => { switchLanguage(); setOpen(false); }}
+                  className="flex items-center gap-2 text-sm font-medium text-primary-foreground/70 hover:text-accent transition-colors py-3"
+                >
+                  <Globe size={16} />
+                  {isArabic ? "English" : "عربي"}
+                </button>
+                <Link
+                  to={`${prefix}/contact`}
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-semibold rounded-full text-center py-3 mt-1 transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
+                    color: 'hsl(var(--accent-foreground))',
+                  }}
+                >
+                  {isArabic ? "تواصل معنا" : "Contact Us"}
+                </Link>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </header>
   );
 };
