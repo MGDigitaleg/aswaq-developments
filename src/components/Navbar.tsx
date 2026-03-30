@@ -401,7 +401,7 @@ const Navbar = () => {
                 <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(135deg, hsl(40 76% 55%) 0%, hsl(var(--accent)) 100%)' }}
+                  style={{ background: 'linear-gradient(135deg, hsl(41 63% 61%) 0%, hsl(41 56% 51%) 100%)' }}
                 />
               </Link>
             </div>
