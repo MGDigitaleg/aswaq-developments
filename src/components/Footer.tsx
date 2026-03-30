@@ -156,8 +156,8 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4 font-body">
               <li>
-                <a href="tel:19474" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300">
-                  <Phone size={16} className="shrink-0 text-accent" />
+                <a href="tel:19474" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-primary-foreground transition-colors duration-300">
+                  <Phone size={16} className="shrink-0 text-primary-foreground/40" />
                   19474
                 </a>
               </li>
