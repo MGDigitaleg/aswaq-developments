@@ -3,12 +3,12 @@ import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, ArrowRight } fr
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
-import solariaImg from "@/assets/solaria-mall.jpg";
+import solariaImg from "@/assets/solaria-mall.webp";
 import useSEO from "@/hooks/useSEO";
-import solaria1 from "@/assets/gallery/solaria-1.jpg";
-import solaria2 from "@/assets/gallery/solaria-2.jpg";
-import solaria3 from "@/assets/gallery/solaria-3.jpg";
-import solaria4 from "@/assets/gallery/solaria-4.jpg";
+import solaria1 from "@/assets/gallery/solaria-1.webp";
+import solaria2 from "@/assets/gallery/solaria-2.webp";
+import solaria3 from "@/assets/gallery/solaria-3.webp";
+import solaria4 from "@/assets/gallery/solaria-4.webp";
 
 const galleryImages = [solaria1, solaria2, solaria3, solaria4];
 const galleryVideos = [

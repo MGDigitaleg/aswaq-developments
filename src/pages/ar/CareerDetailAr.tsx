@@ -5,7 +5,7 @@ import { ArrowLeft, Calendar } from "lucide-react";
 import Layout from "@/components/Layout";
 import CareerApplicationForm from "@/components/CareerApplicationForm";
 import { useCareer, useCareers } from "@/hooks/useCareers";
-import heroImage from "@/assets/about-hero.jpg";
+import heroImage from "@/assets/about-hero.webp";
 
 const CareerDetailAr = () => {
   const { slug } = useParams<{ slug: string }>();

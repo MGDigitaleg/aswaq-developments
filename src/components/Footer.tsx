@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Star, ExternalLink } from "lucide-react";
-import aswaqLogo from "@/assets/aswaq-logo.png";
+import aswaqLogo from "@/assets/aswaq-logo.webp";
 
 const reviews = [
   {

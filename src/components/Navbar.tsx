@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import aswaqLogo from "@/assets/aswaq-logo.png";
+import aswaqLogo from "@/assets/aswaq-logo.webp";
 
 
 interface NavChild {

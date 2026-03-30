@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { useNewsArticles } from "@/hooks/useNewsArticles";
-import heroBuilding from "@/assets/hero-building.jpg";
+import heroBuilding from "@/assets/hero-building.webp";
 
 const NewsAr = () => {
   const { articles, loading } = useNewsArticles("ar");
