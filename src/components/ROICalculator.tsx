@@ -84,11 +84,11 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
         </label>
 
         {/* Appreciation */}
-        <div>
-          <label className="flex justify-between text-sm font-body text-foreground mb-2">
+        <label>
+          <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "معدل الارتفاع السنوي" : "Annual Appreciation"}</span>
             <span className="font-semibold text-accent">{appreciation}%</span>
-          </label>
+          </span>
           <input
             type="range"
             min={5}
@@ -98,7 +98,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             onChange={(e) => setAppreciation(Number(e.target.value))}
             className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
           />
-        </div>
+        </label>
       </div>
 
       {/* Results */}
