@@ -187,7 +187,7 @@ const IndexAr = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, i) => (
               <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center p-6 rounded-lg bg-cream">
-                <div className="font-display text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                <div className="font-display text-3xl md:text-4xl font-bold text-primary mb-2"><AnimatedCounter value={stat.value} /></div>
                 <div className="text-sm text-muted-foreground font-arabic">{stat.label}</div>
               </motion.div>
             ))}

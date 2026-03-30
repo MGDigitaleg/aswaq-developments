@@ -7,6 +7,7 @@ import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import ROICalculator from "@/components/ROICalculator";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
 import heroBg from "@/assets/hero-building.webp";
