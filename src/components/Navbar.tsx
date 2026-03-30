@@ -454,7 +454,7 @@ const Navbar = () => {
                     </Link>
                   ),
                 )}
-                <div className="h-px my-2" style={{ background: 'hsl(0 0% 100% / 0.06)' }} />
+                <div className="h-px my-2" style={{ background: 'hsl(39 38% 93% / 0.06)' }} />
                 <button
                   onClick={() => { switchLanguage(); setOpen(false); }}
                   className="flex items-center gap-2 text-sm font-medium text-primary-foreground/70 hover:text-accent transition-colors py-3"
