@@ -177,9 +177,16 @@ const Index = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${heroSlides[currentSlide]})` }}
-            />
+              className="absolute inset-0"
+            >
+              <img
+                src={heroSlides[currentSlide]}
+                alt=""
+                className="w-full h-full object-cover object-center"
+                fetchPriority={currentSlide === 0 ? "high" : "auto"}
+                loading={currentSlide === 0 ? "eager" : "lazy"}
+              />
+            </motion.div>
           </AnimatePresence>
           <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-transparent to-transparent" />
 
@@ -205,9 +212,16 @@ const Index = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${heroSlides[currentSlide]})` }}
-            />
+              className="absolute inset-0"
+            >
+              <img
+                src={heroSlides[currentSlide]}
+                alt=""
+                className="w-full h-full object-cover object-center"
+                fetchPriority={currentSlide === 0 ? "high" : "auto"}
+                loading={currentSlide === 0 ? "eager" : "lazy"}
+              />
+            </motion.div>
           </AnimatePresence>
           <div className="absolute inset-0 bg-primary/85" />
         </div>

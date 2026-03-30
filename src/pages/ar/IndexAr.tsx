@@ -126,9 +126,16 @@ const IndexAr = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroSlides[currentSlide]})` }}
-          />
+            className="absolute inset-0"
+          >
+            <img
+              src={heroSlides[currentSlide]}
+              alt=""
+              className="w-full h-full object-cover object-center"
+              fetchPriority={currentSlide === 0 ? "high" : "auto"}
+              loading={currentSlide === 0 ? "eager" : "lazy"}
+            />
+          </motion.div>
         </AnimatePresence>
         <div className="absolute inset-0 bg-primary/60" />
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
