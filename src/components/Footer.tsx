@@ -218,7 +218,7 @@ const Footer = () => {
                 <p className="text-sm text-primary-foreground/60 mt-3 mb-4 font-body leading-relaxed min-h-[40px]">
                   "{isArabic ? review.textAr : review.text}"
                 </p>
-                <p className="text-sm font-semibold text-accent font-body">{review.name}</p>
+                <p className="text-sm font-semibold text-primary-foreground font-body">{review.name}</p>
               </div>
             ))}
           </div>
