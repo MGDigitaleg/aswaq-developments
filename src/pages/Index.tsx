@@ -320,7 +320,7 @@ const Index = () => {
                 style={{ boxShadow: "var(--shadow-sm)" }}
               >
                 <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
               </motion.div>
