@@ -173,7 +173,7 @@ const Index = () => {
                 >
                   Redefining<br />
                   <span className="italic text-primary-foreground">
-                    Living <span className="text-accent">Excellence</span>
+                    Living Excellence
                   </span>
                 </motion.h1>
 
