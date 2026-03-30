@@ -467,8 +467,8 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                   className="text-sm font-semibold rounded-full text-center py-3 mt-1 transition-all duration-300"
                   style={{
-                    background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
-                    color: 'hsl(var(--accent-foreground))',
+                    background: 'linear-gradient(135deg, hsl(41 56% 51%) 0%, hsl(41 56% 45%) 100%)',
+                    color: 'hsl(226 76% 12%)',
                   }}
                 >
                   {isArabic ? "تواصل معنا" : "Contact Us"}
