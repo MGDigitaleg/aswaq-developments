@@ -53,7 +53,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
         <label>
           <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "الدفعة المقدمة" : "Down Payment"}</span>
-            <span className="font-semibold text-accent">{downPayment}%</span>
+            <span className="font-semibold text-foreground">{downPayment}%</span>
           </span>
           <input
             type="range"
