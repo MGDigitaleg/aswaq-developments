@@ -228,10 +228,10 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-4 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-primary-foreground/35 font-body">
+          <p className="text-xs text-primary-foreground/60 font-body">
             © {new Date().getFullYear()} {isArabic ? "أسواق للتطوير العقاري. جميع الحقوق محفوظة." : "ASWAQ Developments. All rights reserved."}
           </p>
-          <p className="text-xs text-primary-foreground/35 font-body">
+          <p className="text-xs text-primary-foreground/60 font-body">
             {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
             <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
               MG Digital
