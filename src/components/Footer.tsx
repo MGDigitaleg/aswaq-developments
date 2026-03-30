@@ -188,7 +188,7 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={18} className={i < 5 ? "fill-amber-400 text-amber-400" : "text-primary-foreground/20"} />
+                  <Star key={i} size={18} className={i < 5 ? "fill-accent text-accent" : "text-primary-foreground/20"} />
                 ))}
               </div>
               <span className="text-2xl font-bold text-primary-foreground font-display">4.6</span>
