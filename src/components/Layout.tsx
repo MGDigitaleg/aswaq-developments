@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
-import StickyActionBar from "./StickyActionBar";
 import CustomCursor from "./CustomCursor";
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -22,7 +21,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <main className="flex-1">{children}</main>
       <Footer />
       <WhatsAppButton />
-      <StickyActionBar />
     </div>
   );
 };
