@@ -27,7 +27,7 @@ const AboutAr = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <video
           autoPlay
           muted
