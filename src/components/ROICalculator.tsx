@@ -33,11 +33,11 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
 
       <div className="space-y-5">
         {/* Unit Price */}
-        <div>
-          <label className="flex justify-between text-sm font-body text-foreground mb-2">
+        <label>
+          <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "سعر الوحدة" : "Unit Price"}</span>
             <span className="font-semibold text-accent">{formatNum(unitPrice)} EGP</span>
-          </label>
+          </span>
           <input
             type="range"
             min={500000}
@@ -47,14 +47,14 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             onChange={(e) => setUnitPrice(Number(e.target.value))}
             className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
           />
-        </div>
+        </label>
 
         {/* Down Payment */}
-        <div>
-          <label className="flex justify-between text-sm font-body text-foreground mb-2">
+        <label>
+          <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "الدفعة المقدمة" : "Down Payment"}</span>
             <span className="font-semibold text-accent">{downPayment}%</span>
-          </label>
+          </span>
           <input
             type="range"
             min={10}
@@ -64,14 +64,14 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             onChange={(e) => setDownPayment(Number(e.target.value))}
             className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
           />
-        </div>
+        </label>
 
         {/* Monthly Rent */}
-        <div>
-          <label className="flex justify-between text-sm font-body text-foreground mb-2">
+        <label>
+          <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "الإيجار الشهري المتوقع" : "Expected Monthly Rent"}</span>
             <span className="font-semibold text-accent">{formatNum(monthlyRent)} EGP</span>
-          </label>
+          </span>
           <input
             type="range"
             min={3000}
@@ -81,14 +81,14 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             onChange={(e) => setMonthlyRent(Number(e.target.value))}
             className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
           />
-        </div>
+        </label>
 
         {/* Appreciation */}
-        <div>
-          <label className="flex justify-between text-sm font-body text-foreground mb-2">
+        <label>
+          <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "معدل الارتفاع السنوي" : "Annual Appreciation"}</span>
             <span className="font-semibold text-accent">{appreciation}%</span>
-          </label>
+          </span>
           <input
             type="range"
             min={5}
@@ -98,7 +98,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             onChange={(e) => setAppreciation(Number(e.target.value))}
             className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
           />
-        </div>
+        </label>
       </div>
 
       {/* Results */}
