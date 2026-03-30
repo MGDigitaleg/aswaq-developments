@@ -19,7 +19,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <div className={`min-h-screen flex flex-col ${isArabic ? "font-arabic" : "font-body"}`}>
       <CustomCursor />
       <Navbar />
-      <main className="flex-1 pt-[72px]">{children}</main>
+      <main className="flex-1">{children}</main>
       <Footer />
       <WhatsAppButton />
       <StickyActionBar />
