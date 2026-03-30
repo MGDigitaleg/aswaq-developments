@@ -128,8 +128,8 @@ const UnitCategoryPage = ({
               >
                 <h3 className="font-display text-xl font-bold text-foreground mb-3">{mall.name}</h3>
                 <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">{mall.description}</p>
-                <p className="text-accent font-body font-semibold text-sm mb-4">{mall.sizes}</p>
-                <Link to={mall.href} className="inline-block text-sm font-semibold text-primary hover:text-accent transition-colors font-body">
+                <p className="text-foreground font-body font-semibold text-sm mb-4">{mall.sizes}</p>
+                <Link to={mall.href} className="inline-block text-sm font-semibold text-primary hover:text-secondary transition-colors font-body">
                   {mallLinkText || "View Mall Details →"}
                 </Link>
               </motion.div>
