@@ -427,11 +427,11 @@ const Navbar = () => {
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="lg:hidden mt-2 mx-1 rounded-3xl overflow-hidden"
               style={{
-                background: 'hsl(var(--navy) / 0.92)',
+                background: 'hsl(226 76% 12% / 0.94)',
                 backdropFilter: 'blur(28px) saturate(1.4)',
                 WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
-                border: '1px solid hsl(0 0% 100% / 0.07)',
-                boxShadow: '0 12px 40px -8px hsl(227 51% 6% / 0.5)',
+                border: '1px solid hsl(39 38% 93% / 0.07)',
+                boxShadow: '0 12px 40px -8px hsl(226 76% 6% / 0.6)',
               }}
             >
               <nav className="py-4 px-5 flex flex-col gap-0.5">
