@@ -369,7 +369,7 @@ const Index = () => {
                     </div>
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                      <span className="text-accent font-body font-semibold text-sm inline-flex items-center gap-1.5">
+                      <span className="text-primary-foreground font-body font-semibold text-sm inline-flex items-center gap-1.5">
                         View Project <ArrowRight size={14} />
                       </span>
                     </div>
