@@ -172,8 +172,8 @@ const Index = () => {
                   style={{ letterSpacing: '-0.02em' }}
                 >
                   Redefining<br />
-                  <span className="italic text-accent" style={{ textShadow: '0 0 60px hsl(var(--accent) / 0.2)' }}>
-                    Living Excellence
+                  <span className="italic text-primary-foreground">
+                    Living <span className="text-accent">Excellence</span>
                   </span>
                 </motion.h1>
 
