@@ -51,7 +51,7 @@ const NewsDetail = () => {
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbs} />
       {/* Hero */}
-      <section className="relative h-[45vh] min-h-[350px] flex items-end">
+      <section className="relative h-[55vh] min-h-[450px] flex items-end">
         {article.image && (
           <img src={article.image} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
         )}

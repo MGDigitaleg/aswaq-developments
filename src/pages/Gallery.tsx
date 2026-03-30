@@ -72,7 +72,7 @@ const Gallery = () => {
   return (
     <Layout>
       {/* Hero Banner */}
-      <section className="relative h-[220px] md:h-[280px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[320px] md:h-[380px] flex items-center justify-center overflow-hidden">
         <img
           src={heroImg}
           alt="ASWAQ Developments Gallery"
