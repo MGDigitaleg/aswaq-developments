@@ -217,7 +217,7 @@ const Projects = () => {
       </section>
 
       {/* Available Units CTA */}
-      <section className="bg-accent py-20 md:py-24">
+      <section className="bg-primary py-20 md:py-24">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -225,18 +225,18 @@ const Projects = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-accent-foreground mb-6">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-6">
               Available Units for Sale & Rent
             </h2>
-            <p className="text-accent-foreground/80 font-body leading-relaxed mb-4">
+            <p className="text-primary-foreground/70 font-body leading-relaxed mb-4">
               Across ASWAQ Developments Projects, a variety of units are available to suit different business and investment needs. Our spaces range from 30 m² to 300 m², providing flexible options for small shops, medium-sized outlets, and larger commercial concepts.
             </p>
-            <p className="text-accent-foreground/80 font-body leading-relaxed mb-10">
+            <p className="text-primary-foreground/70 font-body leading-relaxed mb-10">
               Whether you are searching for commercial units for rent, commercial property for rent, or mixed-use units for sale in Egypt, ASWAQ Developments offers strategic opportunities within fully developed malls in Shorouk City.
             </p>
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-navy-light transition-all duration-300 font-body"
+              className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body"
             >
               Explore Available Units
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
