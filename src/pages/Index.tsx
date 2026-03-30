@@ -143,7 +143,7 @@ const Index = () => {
                 to="/about"
                 className="border border-primary-foreground/20 text-primary-foreground px-8 py-3.5 font-semibold rounded-md hover:bg-primary-foreground/5 hover:border-primary-foreground/40 transition-all duration-300 font-body text-center"
               >
-                Learn More
+                Learn More About ASWAQ Developments
               </Link>
             </div>
 
