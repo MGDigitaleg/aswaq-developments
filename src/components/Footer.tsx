@@ -132,9 +132,9 @@ const Footer = () => {
 
           {/* Our Projects */}
           <div>
-            <h4 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
+            <h3 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
               {isArabic ? "مشاريعنا" : "Our Projects"}
-            </h4>
+            </h3>
             <ul className="space-y-3 font-body">
               {projectLinks.map((project) => (
                 <li key={project.name}>
