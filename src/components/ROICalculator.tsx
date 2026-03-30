@@ -110,7 +110,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
           </div>
           <div className="p-4 bg-cream rounded-xl text-center">
             <p className="text-xs text-muted-foreground font-body mb-1">{isArabic ? "العائد السنوي" : "Gross Yield"}</p>
-            <p className="font-display text-lg font-bold text-accent">{grossYield}%</p>
+            <p className="font-display text-lg font-bold text-foreground">{grossYield}%</p>
           </div>
           <div className="p-4 bg-cream rounded-xl text-center">
             <p className="text-xs text-muted-foreground font-body mb-1">{isArabic ? "القيمة بعد 5 سنوات" : "5-Year Value"}</p>
