@@ -393,9 +393,9 @@ const Navbar = () => {
                 to={`${prefix}/contact`}
                 className="relative text-[12px] font-semibold rounded-full transition-all duration-300 font-body overflow-hidden group px-5 py-2"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
-                  color: 'hsl(var(--accent-foreground))',
-                  boxShadow: '0 2px 10px -2px hsl(var(--accent) / 0.35)',
+                  background: 'linear-gradient(135deg, hsl(41 56% 51%) 0%, hsl(41 56% 45%) 100%)',
+                  color: 'hsl(226 76% 12%)',
+                  boxShadow: '0 2px 10px -2px hsl(41 56% 51% / 0.4)',
                 }}
               >
                 <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
