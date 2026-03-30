@@ -522,7 +522,7 @@ const Index = () => {
                       {article.title}
                     </h3>
                     <p className="text-sm text-muted-foreground font-body mt-3 line-clamp-2 leading-relaxed">{article.excerpt}</p>
-                    <span className="inline-flex items-center gap-1.5 text-sm text-accent mt-4 font-body font-semibold group-hover:gap-2.5 transition-all duration-300">
+                    <span className="inline-flex items-center gap-1.5 text-sm text-primary mt-4 font-body font-semibold group-hover:gap-2.5 transition-all duration-300">
                       Read More <ChevronRight size={14} />
                     </span>
                   </div>
