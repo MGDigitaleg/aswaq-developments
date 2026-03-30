@@ -4,7 +4,7 @@ import { ShoppingBag, Briefcase, Stethoscope, MapPin, Layers, TrendingUp, Shield
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import unitImg from "@/assets/unit-interior.jpg";
+import unitImg from "@/assets/unit-interior.webp";
 import useSEO from "@/hooks/useSEO";
 
 const unitCategories = [

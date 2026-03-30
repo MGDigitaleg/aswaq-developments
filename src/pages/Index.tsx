@@ -9,16 +9,16 @@ import CTASection from "@/components/CTASection";
 import ROICalculator from "@/components/ROICalculator";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
-import heroBg from "@/assets/hero-building.jpg";
-import heroMercado from "@/assets/hero-mercado.jpg";
-import heroArena from "@/assets/hero-arena.jpg";
-import heroSolaria from "@/assets/hero-solaria.jpg";
-import cityhubImg from "@/assets/cityhub-mall.jpg";
+import heroBg from "@/assets/hero-building.webp";
+import heroMercado from "@/assets/hero-mercado.webp";
+import heroArena from "@/assets/hero-arena.webp";
+import heroSolaria from "@/assets/hero-solaria.webp";
+import cityhubImg from "@/assets/cityhub-mall.webp";
 
 const heroSlides = [heroBg, heroMercado, heroArena, heroSolaria];
-import mercadoImg from "@/assets/mercado-mall.jpg";
-import arenaImg from "@/assets/arena-mall.jpg";
-import solariaImg from "@/assets/solaria-mall.jpg";
+import mercadoImg from "@/assets/mercado-mall.webp";
+import arenaImg from "@/assets/arena-mall.webp";
+import solariaImg from "@/assets/solaria-mall.webp";
 
 const stats = [
   { value: "20+", label: "Years of Expertise" },
@@ -437,6 +437,9 @@ const Index = () => {
                       alt={article.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
+                      width={400}
+                      height={250}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
                   <div className="p-6">

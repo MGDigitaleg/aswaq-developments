@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import aswaqLogo from "@/assets/aswaq-logo.png";
+import aswaqLogo from "@/assets/aswaq-logo.webp";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");

@@ -5,9 +5,9 @@ import { MapPin, Layers, TrendingUp, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import unitSaleImg from "@/assets/units-sale.jpg";
-import unitInvestmentImg from "@/assets/units-investment.jpg";
-import unitRentImg from "@/assets/units-rent.jpg";
+import unitSaleImg from "@/assets/units-sale.webp";
+import unitInvestmentImg from "@/assets/units-investment.webp";
+import unitRentImg from "@/assets/units-rent.webp";
 import JsonLd, { buildBreadcrumbSchema, buildFaqSchema } from "@/components/JsonLd";
 
 const unitTypes = [

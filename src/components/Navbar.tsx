@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import aswaqLogo from "@/assets/aswaq-logo.png";
+import aswaqLogo from "@/assets/aswaq-logo.webp";
 
 
 interface NavChild {
@@ -298,7 +298,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         <Link to={isArabic ? "/ar" : "/"}>
-          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px]" />
+          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px]" width={200} height={79} />
         </Link>
 
         {/* Desktop Nav */}

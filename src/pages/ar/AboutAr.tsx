@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, Eye, Target, Heart, Award, Clock, Building2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
-import aboutHero from "@/assets/about-hero.jpg";
+import aboutHero from "@/assets/about-hero.webp";
 import useSEO from "@/hooks/useSEO";
 
 const whyChoose = [

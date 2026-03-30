@@ -1,9 +1,9 @@
-import newsSolariaPress from "@/assets/news-solaria-press.jpg";
-import newsCityscape from "@/assets/news-cityscape.jpg";
-import newsInvest from "@/assets/news-invest.jpg";
-import newsChooseProject from "@/assets/news-choose-project.jpg";
-import newsCityHub from "@/assets/news-city-hub.jpg";
-import newsSolariaLaunch from "@/assets/news-solaria-launch.jpg";
+import newsSolariaPress from "@/assets/news-solaria-press.webp";
+import newsCityscape from "@/assets/news-cityscape.webp";
+import newsInvest from "@/assets/news-invest.webp";
+import newsChooseProject from "@/assets/news-choose-project.webp";
+import newsCityHub from "@/assets/news-city-hub.webp";
+import newsSolariaLaunch from "@/assets/news-solaria-launch.webp";
 
 export interface NewsArticle {
   id: string;

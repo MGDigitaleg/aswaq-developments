@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { FileText, Layout, LogOut, Home, Users, Inbox } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import aswaqLogo from "@/assets/aswaq-logo.png";
+import aswaqLogo from "@/assets/aswaq-logo.webp";
 
 const navItems = [
   { label: "News Articles", path: "/admin", icon: FileText },

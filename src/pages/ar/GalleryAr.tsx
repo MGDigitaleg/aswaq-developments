@@ -3,18 +3,18 @@ import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ImageIcon, Film } from "lucide-react";
-import heroImg from "@/assets/hero-building.jpg";
-import solaria1 from "@/assets/gallery/solaria-1.jpg";
-import solaria2 from "@/assets/gallery/solaria-2.jpg";
-import solaria3 from "@/assets/gallery/solaria-3.jpg";
-import solaria4 from "@/assets/gallery/solaria-4.jpg";
-import arena1 from "@/assets/gallery/arena-1.jpg";
-import arena2 from "@/assets/gallery/arena-2.jpg";
-import mercado1 from "@/assets/gallery/mercado-1.jpg";
-import cityhub1 from "@/assets/gallery/cityhub-1.jpg";
-import cityhub2 from "@/assets/gallery/cityhub-2.jpg";
-import cityhub3 from "@/assets/gallery/cityhub-3.jpg";
-import cityhub4 from "@/assets/gallery/cityhub-4.jpg";
+import heroImg from "@/assets/hero-building.webp";
+import solaria1 from "@/assets/gallery/solaria-1.webp";
+import solaria2 from "@/assets/gallery/solaria-2.webp";
+import solaria3 from "@/assets/gallery/solaria-3.webp";
+import solaria4 from "@/assets/gallery/solaria-4.webp";
+import arena1 from "@/assets/gallery/arena-1.webp";
+import arena2 from "@/assets/gallery/arena-2.webp";
+import mercado1 from "@/assets/gallery/mercado-1.webp";
+import cityhub1 from "@/assets/gallery/cityhub-1.webp";
+import cityhub2 from "@/assets/gallery/cityhub-2.webp";
+import cityhub3 from "@/assets/gallery/cityhub-3.webp";
+import cityhub4 from "@/assets/gallery/cityhub-4.webp";
 
 const projectTabs = [
   { id: "solaria", label: "سولاريا مول" },

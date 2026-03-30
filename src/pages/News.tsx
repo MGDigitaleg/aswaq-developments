@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { useNewsArticles } from "@/hooks/useNewsArticles";
 import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
-import heroBuilding from "@/assets/hero-building.jpg";
+import heroBuilding from "@/assets/hero-building.webp";
 
 const News = () => {
   const { articles, loading } = useNewsArticles("en");

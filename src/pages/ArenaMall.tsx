@@ -4,10 +4,10 @@ import { MapPin, Building2, Stethoscope, Briefcase, ShoppingBag } from "lucide-r
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
-import arenaImg from "@/assets/arena-mall.jpg";
+import arenaImg from "@/assets/arena-mall.webp";
 import useSEO from "@/hooks/useSEO";
-import arena1 from "@/assets/gallery/arena-1.jpg";
-import arena2 from "@/assets/gallery/arena-2.jpg";
+import arena1 from "@/assets/gallery/arena-1.webp";
+import arena2 from "@/assets/gallery/arena-2.webp";
 
 const galleryImages = [arena1, arena2];
 const galleryVideos = ["buh9BJmWn9A", "unR4JKFXAXE", "6YWp0lGYC3Q", "JFqUABOPOk8", "kVdnKIBWN2A"];

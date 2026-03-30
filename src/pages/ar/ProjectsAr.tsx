@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import useSEO from "@/hooks/useSEO";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
-import cityhubImg from "@/assets/cityhub-mall.jpg";
-import mercadoImg from "@/assets/mercado-mall.jpg";
-import arenaImg from "@/assets/arena-mall.jpg";
-import solariaImg from "@/assets/solaria-mall.jpg";
-import heroImg from "@/assets/hero-building.jpg";
+import cityhubImg from "@/assets/cityhub-mall.webp";
+import mercadoImg from "@/assets/mercado-mall.webp";
+import arenaImg from "@/assets/arena-mall.webp";
+import solariaImg from "@/assets/solaria-mall.webp";
+import heroImg from "@/assets/hero-building.webp";
 
 const projects = [
   {

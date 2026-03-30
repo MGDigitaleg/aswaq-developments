@@ -5,7 +5,7 @@ import { Calendar } from "lucide-react";
 import Layout from "@/components/Layout";
 import CareerApplicationForm from "@/components/CareerApplicationForm";
 import { useCareers } from "@/hooks/useCareers";
-import heroImage from "@/assets/about-hero.jpg";
+import heroImage from "@/assets/about-hero.webp";
 
 const Careers = () => {
   const { careers, loading } = useCareers();
