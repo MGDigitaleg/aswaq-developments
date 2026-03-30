@@ -113,9 +113,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
+            <h3 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
               {isArabic ? "روابط سريعة" : "Quick Links"}
-            </h4>
+            </h3>
             <ul className="space-y-3 font-body">
               {quickLinks.map((link) => (
                 <li key={link.href}>
