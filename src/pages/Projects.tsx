@@ -205,7 +205,7 @@ const Projects = () => {
                     <p className="text-primary-foreground/80 font-body text-sm md:text-base leading-relaxed max-w-sm">
                       {project.description}
                     </p>
-                    <span className="mt-5 text-accent font-semibold text-sm font-body inline-flex items-center gap-1.5">
+                    <span className="mt-5 text-primary-foreground font-semibold text-sm font-body inline-flex items-center gap-1.5">
                       Explore Project <ArrowRight size={14} />
                     </span>
                   </div>
