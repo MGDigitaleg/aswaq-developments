@@ -192,7 +192,7 @@ const Footer = () => {
                 ))}
               </div>
               <span className="text-2xl font-bold text-primary-foreground font-display">4.6</span>
-              <span className="text-sm text-primary-foreground/40 font-body">
+              <span className="text-sm text-primary-foreground/65 font-body">
                 {isArabic ? "بناءً على تقييمات Google" : "based on Google Reviews"}
               </span>
             </div>
@@ -228,12 +228,12 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-4 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-primary-foreground/35 font-body">
+          <p className="text-xs text-primary-foreground/60 font-body">
             © {new Date().getFullYear()} {isArabic ? "أسواق للتطوير العقاري. جميع الحقوق محفوظة." : "ASWAQ Developments. All rights reserved."}
           </p>
-          <p className="text-xs text-primary-foreground/35 font-body">
+          <p className="text-xs text-primary-foreground/60 font-body">
             {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
-            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent underline hover:no-underline">
               MG Digital
             </a>
           </p>
