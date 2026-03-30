@@ -119,8 +119,8 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
           <div className="p-4 bg-primary rounded-xl text-center">
             <p className="text-xs text-primary-foreground/60 font-body mb-1">{isArabic ? "العائد الإجمالي" : "Total ROI"}</p>
             <div className="flex items-center justify-center gap-1.5">
-              <TrendingUp size={16} className="text-accent" />
-              <p className="font-display text-lg font-bold text-accent">{roi}%</p>
+              <TrendingUp size={16} className="text-primary-foreground" />
+              <p className="font-display text-lg font-bold text-primary-foreground">{roi}%</p>
             </div>
           </div>
         </div>

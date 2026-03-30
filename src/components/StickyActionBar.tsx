@@ -65,7 +65,7 @@ const StickyActionBar = () => {
           {actions.map((action) => {
             const content = (
               <div className="flex flex-col items-center gap-1 px-4 py-2 rounded-xl hover:bg-primary-foreground/10 transition-colors duration-200 cursor-pointer">
-                <action.icon size={18} className="text-accent" />
+                <action.icon size={18} className="text-primary-foreground" />
                 <span className="text-[10px] font-body font-medium text-primary-foreground/70">{action.label}</span>
               </div>
             );
