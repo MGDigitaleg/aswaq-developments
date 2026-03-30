@@ -356,7 +356,7 @@ const Navbar = () => {
                       to={link.href}
                       className={`relative text-[12.5px] font-medium tracking-[0.03em] transition-all duration-300 whitespace-nowrap ${
                         active
-                          ? "text-accent"
+                          ? "text-primary-foreground"
                           : "text-primary-foreground/70 hover:text-primary-foreground"
                       }`}
                     >
