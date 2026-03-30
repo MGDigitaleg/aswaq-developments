@@ -36,7 +36,7 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
         <label>
           <span className="flex justify-between text-sm font-body text-foreground mb-2">
             <span>{isArabic ? "سعر الوحدة" : "Unit Price"}</span>
-            <span className="font-semibold text-accent">{formatNum(unitPrice)} EGP</span>
+            <span className="font-semibold text-foreground">{formatNum(unitPrice)} EGP</span>
           </span>
           <input
             type="range"
