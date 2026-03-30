@@ -31,7 +31,7 @@ const CTASection = ({
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="section-divider mb-8 bg-accent" />
+          <div className="section-divider mb-8 bg-primary-foreground/20" />
           <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5 leading-tight max-w-3xl mx-auto">
             {title}
           </h2>

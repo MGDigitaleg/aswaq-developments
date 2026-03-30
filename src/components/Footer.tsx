@@ -233,7 +233,7 @@ const Footer = () => {
           </p>
           <p className="text-xs text-primary-foreground/60 font-body">
             {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
-            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-accent underline hover:no-underline">
+            <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 underline hover:no-underline">
               MG Digital
             </a>
           </p>

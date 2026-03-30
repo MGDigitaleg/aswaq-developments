@@ -38,7 +38,7 @@ const FAQSection = ({ faqs, title = "You Ask, We Answer" }: { faqs: FAQItem[]; t
                   data-cursor-hover
                 >
                   <span className="font-body font-semibold text-foreground pr-4 text-[15px]">{faq.question}</span>
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-accent text-accent-foreground rotate-180" : "bg-muted text-muted-foreground"}`}>
+                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-primary text-primary-foreground rotate-180" : "bg-muted text-muted-foreground"}`}>
                     <ChevronDown size={16} />
                   </div>
                 </button>
