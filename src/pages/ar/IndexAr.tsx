@@ -7,6 +7,7 @@ import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import useSEO from "@/hooks/useSEO";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import heroBg from "@/assets/hero-building.webp";
 import heroMercado from "@/assets/hero-mercado.webp";
 import heroArena from "@/assets/hero-arena.webp";
