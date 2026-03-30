@@ -33,7 +33,7 @@ const About = () => {
     <Layout>
       <JsonLd data={breadcrumbs} />
       {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center pt-[120px] overflow-hidden">
         <video
           autoPlay
           muted

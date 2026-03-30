@@ -33,7 +33,7 @@ const NewsDetailAr = () => {
 
   return (
     <Layout>
-      <section className="relative h-[55vh] min-h-[450px] flex items-end">
+      <section className="relative h-[55vh] min-h-[450px] flex items-end pt-[120px]">
         {article.image && (
           <img src={article.image} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
         )}
