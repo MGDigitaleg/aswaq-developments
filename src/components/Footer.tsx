@@ -168,7 +168,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/50">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-accent" />
+                <MapPin size={16} className="mt-0.5 shrink-0 text-primary-foreground/40" />
                 <span>
                   {isArabic
                     ? "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون"
