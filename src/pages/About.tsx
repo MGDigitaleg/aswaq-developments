@@ -89,8 +89,8 @@ const About = () => {
               transition={{ duration: 0.6 }}
               className="premium-card p-8 md:p-10"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
-                <Eye size={24} className="text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                <Eye size={24} className="text-primary" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">Our Vision</h3>
               <p className="text-muted-foreground font-body leading-relaxed">
