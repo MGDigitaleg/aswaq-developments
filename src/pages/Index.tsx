@@ -489,7 +489,7 @@ const Index = () => {
                 Latest News
               </h2>
             </div>
-            <Link to="/news" className="text-amber-700 font-semibold font-body text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all duration-300">
+            <Link to="/news" className="text-accent font-semibold font-body text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all duration-300">
               View All <ChevronRight size={14} />
             </Link>
           </div>

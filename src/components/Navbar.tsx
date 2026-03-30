@@ -107,11 +107,11 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute top-full left-0 mt-4 w-52 rounded-2xl border py-2 z-50"
             style={{
-              background: 'hsl(var(--navy) / 0.92)',
+              background: 'hsl(226 76% 12% / 0.94)',
               backdropFilter: 'blur(24px) saturate(1.3)',
               WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
-              borderColor: 'hsl(0 0% 100% / 0.08)',
-              boxShadow: '0 20px 50px -12px hsl(227 51% 6% / 0.5), 0 0 0 1px hsl(0 0% 100% / 0.03)',
+              borderColor: 'hsl(39 38% 93% / 0.08)',
+              boxShadow: '0 20px 50px -12px hsl(226 76% 6% / 0.6), 0 0 0 1px hsl(39 38% 93% / 0.03)',
             }}
           >
             {item.children?.map((child) => (
@@ -163,11 +163,11 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-2xl border py-5 px-6 z-50 min-w-[520px]"
             style={{
-              background: 'hsl(var(--navy) / 0.92)',
+              background: 'hsl(226 76% 12% / 0.94)',
               backdropFilter: 'blur(24px) saturate(1.3)',
               WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
-              borderColor: 'hsl(0 0% 100% / 0.08)',
-              boxShadow: '0 20px 50px -12px hsl(227 51% 6% / 0.5), 0 0 0 1px hsl(0 0% 100% / 0.03)',
+              borderColor: 'hsl(39 38% 93% / 0.08)',
+              boxShadow: '0 20px 50px -12px hsl(226 76% 6% / 0.6), 0 0 0 1px hsl(39 38% 93% / 0.03)',
             }}
           >
             <div className="grid grid-cols-3 gap-6">
@@ -317,14 +317,14 @@ const Navbar = () => {
           className="relative rounded-full overflow-visible px-4 lg:px-7 transition-all duration-500"
           style={{
             background: scrolled
-              ? 'hsl(var(--navy) / 0.85)'
-              : 'hsl(var(--navy) / 0.6)',
+              ? 'hsl(226 76% 12% / 0.9)'
+              : 'hsl(226 76% 12% / 0.65)',
             backdropFilter: 'blur(28px) saturate(1.4)',
             WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
-            border: '1px solid hsl(0 0% 100% / 0.08)',
+            border: '1px solid hsl(39 38% 93% / 0.08)',
             boxShadow: scrolled
-              ? '0 8px 40px -8px hsl(227 51% 6% / 0.5), 0 2px 12px -2px hsl(227 51% 6% / 0.3), inset 0 1px 0 0 hsl(0 0% 100% / 0.04)'
-              : '0 4px 24px -4px hsl(227 51% 6% / 0.3), 0 1px 8px -1px hsl(227 51% 6% / 0.15), inset 0 1px 0 0 hsl(0 0% 100% / 0.06)',
+              ? '0 8px 40px -8px hsl(226 76% 6% / 0.6), 0 2px 12px -2px hsl(226 76% 6% / 0.35), inset 0 1px 0 0 hsl(39 38% 93% / 0.04)'
+              : '0 4px 24px -4px hsl(226 76% 6% / 0.35), 0 1px 8px -1px hsl(226 76% 6% / 0.2), inset 0 1px 0 0 hsl(39 38% 93% / 0.06)',
           }}
         >
           {/* Subtle top highlight */}
@@ -393,15 +393,15 @@ const Navbar = () => {
                 to={`${prefix}/contact`}
                 className="relative text-[12px] font-semibold rounded-full transition-all duration-300 font-body overflow-hidden group px-5 py-2"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
-                  color: 'hsl(var(--accent-foreground))',
-                  boxShadow: '0 2px 10px -2px hsl(var(--accent) / 0.35)',
+                  background: 'linear-gradient(135deg, hsl(41 56% 51%) 0%, hsl(41 56% 45%) 100%)',
+                  color: 'hsl(226 76% 12%)',
+                  boxShadow: '0 2px 10px -2px hsl(41 56% 51% / 0.4)',
                 }}
               >
                 <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(135deg, hsl(40 76% 55%) 0%, hsl(var(--accent)) 100%)' }}
+                  style={{ background: 'linear-gradient(135deg, hsl(41 63% 61%) 0%, hsl(41 56% 51%) 100%)' }}
                 />
               </Link>
             </div>
@@ -427,11 +427,11 @@ const Navbar = () => {
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="lg:hidden mt-2 mx-1 rounded-3xl overflow-hidden"
               style={{
-                background: 'hsl(var(--navy) / 0.92)',
+                background: 'hsl(226 76% 12% / 0.94)',
                 backdropFilter: 'blur(28px) saturate(1.4)',
                 WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
-                border: '1px solid hsl(0 0% 100% / 0.07)',
-                boxShadow: '0 12px 40px -8px hsl(227 51% 6% / 0.5)',
+                border: '1px solid hsl(39 38% 93% / 0.07)',
+                boxShadow: '0 12px 40px -8px hsl(226 76% 6% / 0.6)',
               }}
             >
               <nav className="py-4 px-5 flex flex-col gap-0.5">
@@ -454,7 +454,7 @@ const Navbar = () => {
                     </Link>
                   ),
                 )}
-                <div className="h-px my-2" style={{ background: 'hsl(0 0% 100% / 0.06)' }} />
+                <div className="h-px my-2" style={{ background: 'hsl(39 38% 93% / 0.06)' }} />
                 <button
                   onClick={() => { switchLanguage(); setOpen(false); }}
                   className="flex items-center gap-2 text-sm font-medium text-primary-foreground/70 hover:text-accent transition-colors py-3"
@@ -467,8 +467,8 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                   className="text-sm font-semibold rounded-full text-center py-3 mt-1 transition-all duration-300"
                   style={{
-                    background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
-                    color: 'hsl(var(--accent-foreground))',
+                    background: 'linear-gradient(135deg, hsl(41 56% 51%) 0%, hsl(41 56% 45%) 100%)',
+                    color: 'hsl(226 76% 12%)',
                   }}
                 >
                   {isArabic ? "تواصل معنا" : "Contact Us"}
