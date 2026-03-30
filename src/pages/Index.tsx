@@ -161,7 +161,7 @@ const Index = () => {
                   transition={{ delay: 0.8 + i * 0.1 }}
                 >
                   <div className="font-display text-2xl lg:text-3xl font-bold text-accent">{s.value}</div>
-                  <div className="text-[11px] text-primary-foreground/40 font-body tracking-wide">{s.label}</div>
+                  <div className="text-[11px] text-primary-foreground/65 font-body tracking-wide">{s.label}</div>
                 </motion.div>
               ))}
             </div>
