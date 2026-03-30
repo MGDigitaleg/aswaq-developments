@@ -163,7 +163,7 @@ const SolariaMall = () => {
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05, duration: 0.5 }}
                 className="flex items-start gap-3 p-5 bg-background rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
               >
-                <span className="text-accent font-bold text-lg">✓</span>
+                <span className="text-primary font-bold text-lg">✓</span>
                 <p className="text-foreground font-body text-sm leading-relaxed">{item}</p>
               </motion.div>
             ))}
