@@ -112,7 +112,7 @@ const Index = () => {
       <JsonLd data={faqSchemaData} />
 
       {/* Hero — Cinematic Full-Width Slider */}
-      <section className="relative h-screen min-h-[600px] max-h-[1100px] overflow-hidden">
+      <section className="relative min-h-[700px] overflow-hidden" style={{ height: 'calc(100vh + 100px)', maxHeight: '1200px' }}>
         {/* Full-bleed background slider */}
         <AnimatePresence mode="popLayout">
           <motion.div
