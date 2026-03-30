@@ -118,7 +118,7 @@ const IndexAr = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative min-h-[700px] flex items-center justify-center overflow-hidden" style={{ height: 'calc(100vh + 100px)', maxHeight: '1200px' }}>
+      <section className="relative min-h-[700px] flex items-center justify-center pt-[120px] overflow-hidden" style={{ height: 'calc(100vh + 100px)', maxHeight: '1200px' }}>
         <AnimatePresence mode="popLayout">
           <motion.div
             key={currentSlide}

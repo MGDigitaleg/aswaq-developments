@@ -17,7 +17,7 @@ const Careers = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center">
+      <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center pt-[120px]">
         <img src={heroImage} alt="Careers" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 text-center">

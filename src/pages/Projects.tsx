@@ -121,7 +121,7 @@ const Projects = () => {
       {projectSchemas.map((schema, i) => <JsonLd key={i} data={schema} />)}
 
       {/* Hero Banner */}
-      <section className="relative h-[360px] md:h-[440px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[360px] md:h-[440px] flex items-center justify-center pt-[120px] overflow-hidden">
         <img
           src={heroImg}
           alt="ASWAQ Developments Real Estate Projects"

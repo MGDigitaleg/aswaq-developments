@@ -138,7 +138,7 @@ const Index = () => {
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 50%, hsl(var(--navy) / 0.4) 0%, transparent 70%)' }} />
 
         {/* Content overlay container */}
-        <div className="relative z-10 h-full flex items-center">
+        <div className="relative z-10 h-full flex items-center pt-[120px]">
           <div className="container mx-auto px-4 md:px-8 lg:px-12">
             <div className="flex justify-center">
               {/* Glass content card */}

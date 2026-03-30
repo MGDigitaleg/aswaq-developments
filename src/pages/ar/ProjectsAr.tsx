@@ -49,7 +49,7 @@ const ProjectsAr = () => {
 
   return (
     <Layout>
-      <section className="relative h-[320px] md:h-[380px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[320px] md:h-[380px] flex items-center justify-center pt-[120px] overflow-hidden">
         <img src={heroImg} alt="مشاريع أسواق العقارية" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground text-center px-4">
