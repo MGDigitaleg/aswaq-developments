@@ -113,7 +113,7 @@ const ArenaMall = () => {
                 transition={{ delay: i * 0.08 }}
                 className="flex items-start gap-3 p-5 bg-background rounded-lg"
               >
-                <MapPin size={20} className="text-accent shrink-0 mt-0.5" />
+                <MapPin size={20} className="text-primary shrink-0 mt-0.5" />
                 <p className="text-foreground font-body text-sm">{adv}</p>
               </motion.div>
             ))}
@@ -184,7 +184,7 @@ const ArenaMall = () => {
                 transition={{ delay: i * 0.05 }}
                 className="flex items-start gap-3 p-4 bg-background rounded-lg"
               >
-                <span className="text-accent font-bold">✓</span>
+                <span className="text-primary font-bold">✓</span>
                 <p className="text-foreground font-body text-sm">{item}</p>
               </motion.div>
             ))}

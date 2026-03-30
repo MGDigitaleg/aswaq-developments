@@ -89,7 +89,7 @@ const CityHubMall = () => {
             className="max-w-2xl mx-auto p-6 bg-background rounded-lg"
           >
             <div className="flex items-start gap-3">
-              <MapPin size={20} className="text-accent shrink-0 mt-0.5" />
+              <MapPin size={20} className="text-primary shrink-0 mt-0.5" />
               <p className="text-foreground font-body text-sm text-left">
                 Prime placement near major arteries like Suez Road, the Ring Road, and the Gamal Abdel Nasser Axis for effortless connectivity across Cairo.
               </p>
@@ -149,7 +149,7 @@ const CityHubMall = () => {
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
                 className="flex items-start gap-3 p-4 bg-background rounded-lg"
               >
-                <span className="text-accent font-bold">✓</span>
+                <span className="text-primary font-bold">✓</span>
                 <p className="text-foreground font-body text-sm">{item}</p>
               </motion.div>
             ))}

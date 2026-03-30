@@ -116,7 +116,7 @@ const NewsDetail = () => {
                     </div>
                   )}
                   <div className="p-5">
-                    <h3 className="font-display text-base font-bold mt-2 group-hover:text-accent transition-colors line-clamp-2">
+                    <h3 className="font-display text-base font-bold mt-2 group-hover:text-primary transition-colors line-clamp-2">
                       {a.title}
                     </h3>
                   </div>

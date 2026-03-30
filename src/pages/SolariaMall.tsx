@@ -100,7 +100,7 @@ const SolariaMall = () => {
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
                 className="flex items-start gap-3 p-5 bg-background rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
               >
-                <MapPin size={20} className="text-accent shrink-0 mt-0.5" />
+                <MapPin size={20} className="text-primary shrink-0 mt-0.5" />
                 <p className="text-foreground font-body text-sm leading-relaxed">{adv}</p>
               </motion.div>
             ))}

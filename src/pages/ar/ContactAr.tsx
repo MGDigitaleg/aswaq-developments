@@ -27,7 +27,7 @@ const contactInfo = [
     icon: MapPin,
     title: "العنوان",
     detail: "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون",
-    bg: "bg-accent/10",
+    bg: "bg-primary/10",
   },
   {
     icon: Phone,
@@ -39,7 +39,7 @@ const contactInfo = [
     icon: Mail,
     title: "البريد الإلكتروني",
     detail: "marketing@aswaqdev.com",
-    bg: "bg-accent/10",
+    bg: "bg-primary/10",
   },
 ];
 

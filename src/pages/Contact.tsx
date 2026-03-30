@@ -143,7 +143,7 @@ const Contact = () => {
 
               {submitted ? (
                 <div className="text-center py-16 bg-cream rounded-xl border border-border/50">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                     <Mail size={28} className="text-accent" />
                   </div>
                   <p className="font-display text-2xl font-bold text-foreground mb-2">Thank You!</p>

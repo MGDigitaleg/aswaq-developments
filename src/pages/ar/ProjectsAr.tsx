@@ -91,7 +91,7 @@ const ProjectsAr = () => {
                   <div className="absolute inset-0 bg-primary/85 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground mb-4">{project.name}</h3>
                     <p className="text-primary-foreground/80 font-arabic text-sm md:text-base leading-relaxed max-w-sm">{project.description}</p>
-                    <span className="mt-4 text-accent font-semibold text-sm font-arabic">استكشف المشروع ←</span>
+                    <span className="mt-4 text-primary-foreground font-semibold text-sm font-arabic">استكشف المشروع ←</span>
                   </div>
                 </Link>
               </motion.div>

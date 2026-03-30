@@ -63,8 +63,8 @@ const AboutAr = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-lg">
-              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                <Eye size={24} className="text-accent" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Eye size={24} className="text-primary" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">رؤيتنا</h3>
               <p className="text-muted-foreground font-arabic">
@@ -72,8 +72,8 @@ const AboutAr = () => {
               </p>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-lg">
-              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                <Target size={24} className="text-accent" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Target size={24} className="text-primary" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">مهمتنا</h3>
               <p className="text-muted-foreground font-arabic">
@@ -109,7 +109,7 @@ const AboutAr = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
               <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <div className="font-display text-4xl md:text-5xl font-bold text-accent mb-2">{stat.value}</div>
+                <div className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-2">{stat.value}</div>
                 <div className="text-primary-foreground/70 font-arabic text-sm">{stat.label}</div>
               </motion.div>
             ))}
