@@ -92,27 +92,31 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
       <div className="flex items-center gap-1">
         <Link
           to={item.href}
-          className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+          className={`text-[13px] font-medium tracking-[0.04em] transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/75"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={14} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/80"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={12} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/50"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-4 w-56 bg-background rounded-xl border border-border py-2 z-50"
-            style={{ boxShadow: 'var(--shadow-xl)' }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute top-full left-0 mt-5 w-56 rounded-xl border py-2 z-50 backdrop-blur-xl"
+            style={{
+              background: 'hsl(var(--background) / 0.97)',
+              borderColor: 'hsl(var(--border) / 0.6)',
+              boxShadow: '0 20px 50px -12px hsl(227 51% 10% / 0.25), 0 8px 20px -8px hsl(227 51% 10% / 0.12)',
+            }}
           >
             {item.children?.map((child) => (
               <Link
                 key={child.href}
                 to={child.href}
-                className="block px-5 py-2.5 text-sm font-medium text-foreground hover:bg-cream hover:text-accent transition-colors duration-200"
+                className="block px-5 py-2.5 text-[13px] font-medium text-foreground hover:bg-cream hover:text-accent transition-all duration-200"
               >
                 {child.label}
               </Link>
@@ -142,28 +146,32 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
       <div className="flex items-center gap-1">
         <Link
           to={item.href}
-          className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/80"}`}
+          className={`text-[13px] font-medium tracking-[0.04em] transition-colors duration-300 hover:text-accent ${isActive ? "text-accent" : "text-primary-foreground/75"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={14} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/80"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={12} className={`transition-transform duration-300 ${isActive ? "text-accent" : "text-primary-foreground/50"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 bg-background rounded-xl border border-border py-5 px-7 z-50 min-w-[540px]"
-            style={{ boxShadow: 'var(--shadow-xl)' }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-5 rounded-xl border py-6 px-8 z-50 min-w-[560px] backdrop-blur-xl"
+            style={{
+              background: 'hsl(var(--background) / 0.97)',
+              borderColor: 'hsl(var(--border) / 0.6)',
+              boxShadow: '0 20px 50px -12px hsl(227 51% 10% / 0.25), 0 8px 20px -8px hsl(227 51% 10% / 0.12)',
+            }}
           >
-            <div className="grid grid-cols-3 gap-7">
+            <div className="grid grid-cols-3 gap-8">
               {item.children?.map((group) => (
                 <div key={group.href}>
                   <Link
                     to={group.href}
-                    className="block font-display font-bold text-sm text-foreground hover:text-accent transition-colors mb-3 pb-2 border-b border-border"
+                    className="block font-display font-bold text-[13px] text-foreground hover:text-accent transition-colors mb-3 pb-2.5 border-b border-border/60"
                   >
                     {group.label}
                   </Link>
@@ -290,19 +298,36 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-primary/95 backdrop-blur-lg shadow-lg"
-          : "bg-primary"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-700"
+      style={{
+        background: scrolled
+          ? 'linear-gradient(180deg, hsl(227 51% 12% / 0.97) 0%, hsl(227 51% 14% / 0.95) 100%)'
+          : 'linear-gradient(180deg, hsl(227 51% 14%) 0%, hsl(227 51% 16%) 100%)',
+        backdropFilter: scrolled ? 'blur(20px) saturate(1.2)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(1.2)' : 'none',
+        boxShadow: scrolled
+          ? '0 1px 0 0 hsl(var(--accent) / 0.08), 0 8px 32px -8px hsl(227 51% 8% / 0.4)'
+          : '0 1px 0 0 hsl(var(--primary-foreground) / 0.04)',
+      }}
     >
+      {/* Subtle top accent line */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent 10%, hsl(var(--accent) / 0.2) 50%, transparent 90%)' }}
+      />
+
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
-        <Link to={isArabic ? "/ar" : "/"}>
-          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px]" width={200} height={79} />
+        {/* Logo */}
+        <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0">
+          <div
+            className="absolute -inset-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{ background: 'radial-gradient(ellipse at center, hsl(var(--accent) / 0.06), transparent 70%)' }}
+          />
+          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] relative" width={200} height={79} />
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
           {navLinks.map((link) => {
             const active = isPathInTree(location.pathname, link);
             if (!link.children) {
@@ -310,9 +335,16 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-accent ${active ? "text-accent" : "text-primary-foreground/80"}`}
+                  className={`relative text-[13px] font-medium tracking-[0.04em] transition-all duration-300 hover:text-accent ${active ? "text-accent" : "text-primary-foreground/75 hover:text-primary-foreground"}`}
                 >
                   {link.label}
+                  {/* Active indicator dot */}
+                  {active && (
+                    <span
+                      className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
+                      style={{ backgroundColor: 'hsl(var(--accent))', boxShadow: '0 0 6px hsl(var(--accent) / 0.5)' }}
+                    />
+                  )}
                 </Link>
               );
             }
@@ -322,24 +354,38 @@ const Navbar = () => {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
-          
+        {/* Right: Language + CTA */}
+        <div className="hidden lg:flex items-center gap-4">
           <button
             onClick={switchLanguage}
-            className="flex items-center gap-1.5 text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors duration-300"
+            className="flex items-center gap-1.5 text-[13px] font-medium text-primary-foreground/60 hover:text-primary-foreground transition-all duration-300 px-2.5 py-1.5 rounded-md hover:bg-primary-foreground/5"
             aria-label={isArabic ? "Switch to English - EN" : "التبديل إلى العربية - عربي"}
           >
-            <Globe size={16} />
+            <Globe size={14} className="opacity-70" />
             {isArabic ? "EN" : "عربي"}
           </button>
+
+          {/* Separator */}
+          <div className="w-px h-5" style={{ background: 'hsl(var(--primary-foreground) / 0.1)' }} />
+
           <Link
             to={`${prefix}/contact`}
-            className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-md hover:bg-gold-light transition-all duration-300"
+            className="relative text-[13px] font-semibold rounded-md transition-all duration-300 font-body overflow-hidden group px-7 py-2.5"
+            style={{
+              background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
+              color: 'hsl(var(--accent-foreground))',
+              boxShadow: '0 2px 12px -2px hsl(var(--accent) / 0.3)',
+            }}
           >
-            {isArabic ? "تواصل معنا" : "Contact Us"}
+            <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ background: 'linear-gradient(135deg, hsl(40 76% 55%) 0%, hsl(var(--accent)) 100%)' }}
+            />
           </Link>
         </div>
 
+        {/* Mobile toggle */}
         <button onClick={() => setOpen(!open)} className="lg:hidden text-primary-foreground" aria-label="Toggle menu">
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -352,9 +398,10 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-primary border-t border-primary-foreground/10"
+            className="lg:hidden border-t border-primary-foreground/[0.06]"
+            style={{ background: 'linear-gradient(180deg, hsl(227 51% 13%) 0%, hsl(227 51% 15%) 100%)' }}
           >
-            <nav className="container mx-auto py-4 px-4 flex flex-col gap-1">
+            <nav className="container mx-auto py-5 px-4 flex flex-col gap-1">
               {navLinks.map((link) =>
                 link.children ? (
                   <MobileAccordion
@@ -374,9 +421,10 @@ const Navbar = () => {
                   </Link>
                 ),
               )}
+              <div className="h-px my-2" style={{ background: 'hsl(var(--primary-foreground) / 0.06)' }} />
               <button
                 onClick={() => { switchLanguage(); setOpen(false); }}
-                className="flex items-center gap-2 text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors py-3"
+                className="flex items-center gap-2 text-sm font-medium text-primary-foreground/70 hover:text-accent transition-colors py-3"
               >
                 <Globe size={16} />
                 {isArabic ? "English" : "عربي"}
@@ -384,7 +432,11 @@ const Navbar = () => {
               <Link
                 to={`${prefix}/contact`}
                 onClick={() => setOpen(false)}
-                className="bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-md text-center hover:bg-gold-light transition-colors mt-2"
+                className="text-sm font-semibold rounded-md text-center py-3 mt-1 transition-all duration-300"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(40 76% 45%) 100%)',
+                  color: 'hsl(var(--accent-foreground))',
+                }}
               >
                 {isArabic ? "تواصل معنا" : "Contact Us"}
               </Link>
