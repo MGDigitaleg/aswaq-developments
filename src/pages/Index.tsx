@@ -319,7 +319,7 @@ const Index = () => {
                 className="text-center p-6 md:p-8 rounded-xl bg-cream border border-border/50 hover:border-accent/20 transition-all duration-500"
                 style={{ boxShadow: "var(--shadow-sm)" }}
               >
-                <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-2">
+                <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
