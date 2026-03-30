@@ -159,7 +159,7 @@ const Index = () => {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="text-accent font-body font-semibold tracking-[0.35em] uppercase text-[11px] mb-6"
+                  className="text-primary-foreground/60 font-body font-semibold tracking-[0.35em] uppercase text-[11px] mb-6"
                 >
                   ASWAQ Developments
                 </motion.p>
