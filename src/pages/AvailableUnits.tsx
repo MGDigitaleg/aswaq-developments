@@ -121,7 +121,7 @@ const AvailableUnits = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">
+            <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">
               Choose Your Unit
             </p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">

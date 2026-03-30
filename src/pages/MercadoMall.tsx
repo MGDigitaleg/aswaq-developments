@@ -42,7 +42,7 @@ const MercadoMall = () => {
       <section className="bg-primary pt-48 pb-24">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-accent font-body font-medium tracking-widest uppercase text-sm mb-3">ASWAQ Developments</p>
+            <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">ASWAQ Developments</p>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Mercado Mall at El Shorouk</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
               A prime commercial destination designed to meet the growing demand for retail and business spaces in East Cairo.
