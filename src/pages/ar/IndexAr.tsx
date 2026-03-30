@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft } from "lucide-react";
+import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft, ArrowLeft } from "lucide-react";
 import { useLatestNews } from "@/hooks/useNewsArticles";
 import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
