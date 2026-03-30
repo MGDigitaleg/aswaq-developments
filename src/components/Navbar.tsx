@@ -175,7 +175,7 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
                 <div key={group.href}>
                   <Link
                     to={group.href}
-                    className="block font-display font-bold text-[12px] uppercase tracking-wider text-accent/80 hover:text-primary-foreground transition-colors mb-3 pb-2 border-b border-primary-foreground/[0.06]"
+                    className="block font-display font-bold text-[12px] uppercase tracking-wider text-primary-foreground/60 hover:text-primary-foreground transition-colors mb-3 pb-2 border-b border-primary-foreground/[0.06]"
                   >
                     {group.label}
                   </Link>
