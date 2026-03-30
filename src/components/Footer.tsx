@@ -88,7 +88,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand */}
           <div>
-            <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] mb-6" />
+            <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px] mb-6" width={200} height={79} />
             <p className="text-primary-foreground/50 text-sm leading-relaxed font-body mb-6">
               {isArabic
                 ? "شركة تطوير عقاري متطلعة متخصصة في المشاريع التجارية والإدارية والطبية في شرق القاهرة."

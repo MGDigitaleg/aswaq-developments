@@ -298,7 +298,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
         <Link to={isArabic ? "/ar" : "/"}>
-          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px]" />
+          <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[200px]" width={200} height={79} />
         </Link>
 
         {/* Desktop Nav */}
