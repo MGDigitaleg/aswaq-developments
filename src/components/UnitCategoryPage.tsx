@@ -105,7 +105,7 @@ const UnitCategoryPage = ({
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="flex items-start gap-3 p-4 bg-background rounded-lg"
               >
-                <MapPin size={18} className="text-accent shrink-0 mt-0.5" />
+                <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
                 <p className="text-foreground font-body text-sm">{driver}</p>
               </motion.div>
             ))}
