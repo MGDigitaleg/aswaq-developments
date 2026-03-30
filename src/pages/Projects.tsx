@@ -160,7 +160,7 @@ const Projects = () => {
             </p>
             <p className="text-muted-foreground font-body leading-relaxed">
               With a strong focus on mixed-use units in Egypt, ASWAQ Developments offers commercial units across multiple malls where you can explore{" "}
-              <Link to="/units/for-sale" className="text-accent font-semibold underline hover:text-gold-light transition-colors">
+              <Link to="/units/for-sale" className="text-primary font-semibold underline hover:text-secondary transition-colors">
                 available retail spaces in Shorouk City
               </Link>
               , whether it's for both property for sale in Egypt and commercial property for rent, all within well-connected areas in Shorouk City.
