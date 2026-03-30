@@ -134,7 +134,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="relative z-10 text-center px-4"
         >
-          <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Portfolio</p>
+          <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Portfolio</p>
           <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground">
             ASWAQ Developments Real Estate Projects
           </h1>
