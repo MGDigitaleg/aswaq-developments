@@ -50,7 +50,7 @@ const About = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="relative z-10 text-center px-4 max-w-3xl"
         >
-          <p className="text-accent font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Story</p>
+          <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Story</p>
           <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
             About Us
           </h1>
