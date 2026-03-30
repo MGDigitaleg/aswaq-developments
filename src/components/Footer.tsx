@@ -113,9 +113,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
+            <h3 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
               {isArabic ? "روابط سريعة" : "Quick Links"}
-            </h4>
+            </h3>
             <ul className="space-y-3 font-body">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -132,9 +132,9 @@ const Footer = () => {
 
           {/* Our Projects */}
           <div>
-            <h4 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
+            <h3 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
               {isArabic ? "مشاريعنا" : "Our Projects"}
-            </h4>
+            </h3>
             <ul className="space-y-3 font-body">
               {projectLinks.map((project) => (
                 <li key={project.name}>
@@ -151,9 +151,9 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
+            <h3 className="font-display text-sm font-semibold mb-6 text-primary-foreground uppercase tracking-[0.15em]">
               {isArabic ? "تواصل معنا" : "Contact Us"}
-            </h4>
+            </h3>
             <ul className="space-y-4 font-body">
               <li>
                 <a href="tel:19474" className="flex items-center gap-3 text-sm text-primary-foreground/50 hover:text-accent transition-colors duration-300">
