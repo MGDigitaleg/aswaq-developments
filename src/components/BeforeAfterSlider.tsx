@@ -77,7 +77,7 @@ const BeforeAfterSlider = ({
           src={beforeImage}
           alt={beforeLabel}
           className="w-full h-full object-cover"
-          style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : "100%" }}
+          style={{ width: containerWidth ? `${containerWidth}px` : "100%" }}
           draggable={false}
         />
       </div>
