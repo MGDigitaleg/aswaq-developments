@@ -105,12 +105,12 @@ const ContactAr = () => {
 
   return (
     <Layout>
-      <section className="bg-primary pt-48 pb-24">
+      <section className="bg-primary pt-48 pb-24 md:pb-28">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-primary-foreground/60 font-arabic font-medium tracking-widest text-sm mb-3">تواصل معنا</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">اتصل بنا</h1>
-            <p className="text-primary-foreground/70 font-arabic max-w-3xl mx-auto">
+            <p className="text-primary-foreground/60 font-arabic font-semibold tracking-[0.25em] text-xs mb-4">تواصل معنا</p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">اتصل بنا</h1>
+            <p className="text-primary-foreground/70 font-arabic max-w-3xl mx-auto text-base leading-relaxed">
               لديك أسئلة حول مشاريعنا أو الوحدات المتاحة؟ تواصل مع فريقنا وسنساعدك في إيجاد المساحة المثالية.
             </p>
           </motion.div>
