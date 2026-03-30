@@ -23,8 +23,8 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
   return (
     <div className="premium-card p-6 md:p-8">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
-          <Calculator size={20} className="text-accent" />
+        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+          <Calculator size={20} className="text-primary" />
         </div>
         <h3 className="font-display text-lg font-bold text-foreground">
           {isArabic ? "حاسبة العائد على الاستثمار" : "ROI Calculator"}
