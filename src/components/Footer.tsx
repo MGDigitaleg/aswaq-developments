@@ -200,7 +200,7 @@ const Footer = () => {
               href="https://maps.app.goo.gl/6jGACMa9mZKx5sYp9"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-accent hover:underline flex items-center gap-1.5 font-body transition-colors duration-300"
+              className="text-sm text-primary-foreground/60 hover:underline flex items-center gap-1.5 font-body transition-colors duration-300"
             >
               {isArabic ? "اترك تقييم" : "Leave a Review"}
               <ExternalLink size={13} />
