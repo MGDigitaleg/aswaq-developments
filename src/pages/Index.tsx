@@ -432,7 +432,7 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="flex-1 text-center lg:text-left"
             >
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white mb-5">
                 Units Are Selling Fast, Don't Miss Out!
               </h2>
               <p className="text-primary-foreground/70 font-body max-w-2xl mb-6 text-base leading-relaxed">
