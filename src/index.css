@@ -118,13 +118,44 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* --- Headings --- */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     color: hsl(var(--navy));
   }
+  h1, h2 {
+    @apply font-bold tracking-tight;
+  }
+  h3, h4 {
+    @apply font-semibold;
+  }
+  h5, h6 {
+    @apply font-medium uppercase tracking-wider;
+  }
 
-  /* Dark mode heading colors */
+  /* --- Body text --- */
+  p, span, li {
+    color: hsl(var(--navy) / 0.8);
+    @apply leading-relaxed;
+  }
+
+  /* --- Links --- */
+  a {
+    color: hsl(var(--navy));
+    @apply font-medium transition-colors duration-200;
+  }
+  a:hover {
+    color: #1E2A5E;
+  }
+
+  /* Dark mode overrides */
   .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: hsl(var(--foreground));
+  }
+  .dark p, .dark span, .dark li {
+    color: hsl(var(--foreground) / 0.8);
+  }
+  .dark a {
     color: hsl(var(--foreground));
   }
 }
