@@ -291,7 +291,7 @@ const Index = () => {
 
       {/* Stats + About */}
       <section className="section-padding bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[5px]">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
