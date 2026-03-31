@@ -326,10 +326,12 @@ const Navbar = () => {
         style={{ maxWidth: '1320px' }}
         initial={false}
         animate={{
+          y: visible ? 0 : -120,
+          opacity: visible ? 1 : 0,
           paddingTop: scrolled ? '12px' : '14px',
           paddingBottom: scrolled ? '12px' : '14px',
         }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       >
         <div
           className="relative rounded-full overflow-visible px-4 lg:px-7 transition-all duration-500"
