@@ -219,7 +219,7 @@ const Index = () => {
                     { value: "3B+", label: "EGP" },
                   ].map((s, i) => (
                     <div key={s.label} className="text-center">
-                      <div className="font-display text-xl lg:text-2xl font-bold text-primary-foreground" style={{ letterSpacing: '-0.02em' }}><AnimatedCounter value={s.value} className="text-primary-foreground" /></div>
+                      <div className="font-['Montserrat'] text-xl lg:text-2xl font-extrabold tracking-tight text-primary-foreground" style={{ letterSpacing: '-0.02em' }}><AnimatedCounter value={s.value} className="text-primary-foreground" /></div>
                       <div className="text-[10px] text-primary-foreground/45 font-body tracking-[0.15em] uppercase mt-1">{s.label}</div>
                     </div>
                   ))}
@@ -317,7 +317,7 @@ const Index = () => {
                 className="group text-center p-6 md:p-8 rounded-xl bg-background border border-[#0A1128]/5 hover:-translate-y-2 hover:border-[#c89c3c] hover:shadow-[0_10px_30px_rgba(200,156,60,0.15)] transition-all duration-500 ease-out"
                 style={{ boxShadow: '0 4px 20px -4px rgba(10,17,40,0.1)' }}
               >
-                <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">
+                <div className="font-['Montserrat'] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mb-2">
                   <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
