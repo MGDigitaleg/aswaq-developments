@@ -14,16 +14,15 @@ const ContentBlockRenderer = ({ content, fontClass = "font-body" }: Props) => {
       {blocks.map((block, i) => {
         if (block.type === "text") {
           return (
-            <motion.p
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className={`${fontClass} text-foreground/80 leading-relaxed mb-6 text-base md:text-lg`}
-            >
-              {block.text}
-            </motion.p>
+              className={`${fontClass} text-foreground/80 leading-relaxed mb-6 text-base md:text-lg prose prose-headings:font-display prose-headings:text-foreground prose-strong:text-foreground prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 max-w-none`}
+              dangerouslySetInnerHTML={{ __html: block.text.replace(/\n/g, '<br/>') }}
+            />
           );
         }
 
