@@ -278,6 +278,8 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const location = useLocation();
   const navigate = useNavigate();
   const isArabic = location.pathname.startsWith("/ar");
@@ -285,7 +287,23 @@ const Navbar = () => {
   const navLinks = getNavLinks(prefix);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 50);
+
+      if (currentY <= 300) {
+        // Always visible in the first 300px
+        setVisible(true);
+      } else if (currentY < lastScrollY.current) {
+        // Scrolling up → show
+        setVisible(true);
+      } else if (currentY > lastScrollY.current) {
+        // Scrolling down past 300px → hide
+        setVisible(false);
+      }
+
+      lastScrollY.current = currentY;
+    };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
