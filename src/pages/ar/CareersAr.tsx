@@ -89,7 +89,7 @@ const CareersAr = () => {
                     </p>
                     <Link
                       to={`/ar/careers/${career.slug}`}
-                      className="inline-block mt-4 bg-primary text-primary-foreground text-sm font-semibold px-6 py-2 rounded hover:bg-navy-light transition-colors"
+                      className="inline-block mt-4 bg-primary text-primary-foreground text-sm font-semibold px-6 py-2 rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300"
                     >
                       اقرأ المزيد
                     </Link>

@@ -63,7 +63,7 @@ const AboutAr = () => {
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-lg">
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-2xl border border-border/50 shadow-sm">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <Eye size={24} className="text-primary" />
               </div>
@@ -72,7 +72,7 @@ const AboutAr = () => {
                 نبني مستقبلًا عقاريًا مبتكرًا في مصر والشرق الأوسط.
               </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-lg">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-2xl border border-border/50 shadow-sm">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <Target size={24} className="text-primary" />
               </div>

@@ -110,7 +110,7 @@ const ProjectsAr = () => {
             <p className="text-primary-foreground/70 font-arabic leading-relaxed mb-8">
               سواء كنت تبحث عن وحدات تجارية للإيجار أو وحدات متعددة الاستخدامات للبيع، تقدم أسواق فرصًا استراتيجية داخل مولات متطورة بالكامل في مدينة الشروق.
             </p>
-            <Link to="/ar/contact" className="inline-block bg-primary text-primary-foreground px-8 py-3 font-semibold rounded hover:bg-navy-light transition-colors font-arabic">
+            <Link to="/ar/contact" className="inline-block bg-primary text-primary-foreground px-8 py-3 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic">
               استكشف الوحدات المتاحة
             </Link>
           </motion.div>

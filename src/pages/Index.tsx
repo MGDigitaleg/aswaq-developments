@@ -459,7 +459,7 @@ const Index = () => {
               </div>
               <Link
                 to="/units"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body group"
+                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body group"
               >
                 Reserve Your Unit
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

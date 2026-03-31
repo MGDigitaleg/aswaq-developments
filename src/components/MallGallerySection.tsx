@@ -53,7 +53,7 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-xl overflow-hidden shadow-md aspect-[4/3]"
+                    className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-[4/3]"
                   >
                     <img
                       src={src}
@@ -82,7 +82,7 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-xl overflow-hidden shadow-md aspect-video"
+                    className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-video"
                   >
                     <iframe
                       src={`https://www.youtube.com/embed/${videoId}`}

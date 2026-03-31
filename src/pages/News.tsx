@@ -62,7 +62,7 @@ const News = () => {
                 >
                   <Link
                     to={`/news/${article.id}`}
-                    className="group block bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+                    className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out"
                   >
                     {article.image && (
                       <div className="aspect-[16/10] overflow-hidden">

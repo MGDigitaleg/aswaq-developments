@@ -79,7 +79,7 @@ const AvailableUnitsAr = () => {
             {unitTypes.map((type, i) => (
               <motion.div key={type.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`flex flex-col md:flex-row gap-8 items-center ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
                 <div className="md:w-1/2">
-                  <div className="rounded-lg overflow-hidden aspect-[4/3]">
+                  <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-sm">
                     <img src={type.image} alt={type.title} className="w-full h-full object-cover" />
                   </div>
                 </div>
@@ -87,7 +87,7 @@ const AvailableUnitsAr = () => {
                   <span className="text-3xl mb-3 block">{type.icon}</span>
                   <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4">{type.title}</h2>
                   <p className="text-muted-foreground font-arabic leading-relaxed mb-6">{type.description}</p>
-                  <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded hover:bg-gold-light transition-colors font-arabic text-sm">
+                  <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-arabic text-sm">
                     {type.cta}
                   </Link>
                 </div>

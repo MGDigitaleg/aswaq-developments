@@ -139,7 +139,7 @@ const SolariaMall = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {unitTypes.map((type, i) => (
               <motion.div key={type.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex flex-col items-center gap-4 p-6 md:p-8 bg-cream rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
+                className="flex flex-col items-center gap-4 p-6 md:p-8 bg-cream rounded-2xl border border-border/50 hover:border-accent/20 transition-all duration-300"
               >
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
                   <type.icon size={26} className="text-primary" />

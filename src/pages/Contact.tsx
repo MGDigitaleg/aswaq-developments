@@ -142,7 +142,7 @@ const Contact = () => {
               </div>
 
               {submitted ? (
-                <div className="text-center py-16 bg-cream rounded-xl border border-border/50">
+                <div className="text-center py-16 bg-cream rounded-2xl border border-border/50">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                     <Mail size={28} className="text-primary" />
                   </div>
@@ -150,7 +150,7 @@ const Contact = () => {
                   <p className="text-muted-foreground font-body">We've received your inquiry and will get back to you shortly.</p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body"
+                    className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body"
                   >
                     Send Another Inquiry
                   </button>
@@ -270,7 +270,7 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="group bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-navy-light transition-all duration-300 font-body text-sm disabled:opacity-50 inline-flex items-center gap-2"
+                      className="group bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-body text-sm disabled:opacity-50 inline-flex items-center gap-2"
                     >
                       {submitting ? "Sending…" : "Send"}
                       {!submitting && <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}

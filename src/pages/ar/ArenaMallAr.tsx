@@ -56,7 +56,7 @@ const ArenaMallAr = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="rounded-lg overflow-hidden aspect-[4/3]">
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-sm">
                 <img src={arenaImg} alt="أرينا مول" className="w-full h-full object-cover" />
               </div>
             </motion.div>
@@ -82,7 +82,7 @@ const ArenaMallAr = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {locationAdvantages.map((adv, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="flex items-start gap-3 p-5 bg-background rounded-lg"
+                className="flex items-start gap-3 p-5 bg-background rounded-2xl border border-border/50 hover:shadow-md transition-all duration-300"
               >
                 <MapPin size={20} className="text-primary shrink-0 mt-0.5" />
                 <p className="text-foreground font-body text-sm">{adv}</p>
@@ -119,7 +119,7 @@ const ArenaMallAr = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {unitTypes.map((type, i) => (
               <motion.div key={type.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="flex flex-col items-center gap-3 p-6 bg-cream rounded-lg"
+                className="flex flex-col items-center gap-3 p-6 bg-cream rounded-2xl border border-border/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
                   <type.icon size={24} className="text-primary" />
@@ -137,7 +137,7 @@ const ArenaMallAr = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {whyInvest.map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? 20 : -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                className="flex items-start gap-3 p-4 bg-background rounded-lg"
+                className="flex items-start gap-3 p-4 bg-background rounded-2xl border border-border/50 hover:shadow-md transition-all duration-300"
               >
                 <span className="text-primary font-bold">✓</span>
                 <p className="text-foreground font-body text-sm">{item}</p>

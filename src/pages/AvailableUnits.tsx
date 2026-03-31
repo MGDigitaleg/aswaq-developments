@@ -153,7 +153,7 @@ const AvailableUnits = () => {
                 }`}
               >
                 <div className="md:w-1/2">
-                  <div className="rounded-lg overflow-hidden aspect-[4/3]">
+                  <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-sm">
                     <img
                       src={type.image}
                       alt={type.title}
@@ -171,7 +171,7 @@ const AvailableUnits = () => {
                   </p>
                   <Link
                     to={type.link}
-                    className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded hover:bg-gold-light transition-colors font-body text-sm"
+                    className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body text-sm"
                   >
                     {type.cta}
                   </Link>

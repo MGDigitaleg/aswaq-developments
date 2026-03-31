@@ -103,7 +103,7 @@ const UnitCategoryPage = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             {locationDrivers.map((driver, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="flex items-start gap-3 p-4 bg-background rounded-lg"
+                className="flex items-start gap-3 p-4 bg-background rounded-2xl border border-border/50 hover:shadow-md transition-all duration-300"
               >
                 <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
                 <p className="text-foreground font-body text-sm">{driver}</p>

@@ -40,7 +40,7 @@ const CTASection = ({
           </p>
           <Link
             to={resolvedLink}
-            className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-4 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body text-sm md:text-base"
+            className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-4 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body text-sm md:text-base"
             data-cursor-hover
           >
             {buttonText}

@@ -41,7 +41,7 @@ const NewsAr = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {articles.map((article, i) => (
                 <motion.div key={article.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                  <Link to={`/ar/news/${article.id}`} className="group block bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                  <Link to={`/ar/news/${article.id}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out">
                     {article.image && (
                       <div className="aspect-[16/10] overflow-hidden">
                         <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />

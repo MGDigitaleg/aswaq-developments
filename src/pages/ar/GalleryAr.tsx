@@ -103,7 +103,7 @@ const GalleryAr = () => {
                     {currentData.images.length > 0 ? (
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {currentData.images.map((src, i) => (
-                          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.4 }} className="rounded-xl overflow-hidden shadow-md aspect-[4/3]">
+                          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.4 }} className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-[4/3]">
                             <img src={src} alt={`${project.label} صورة ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
                           </motion.div>
                         ))}
@@ -120,7 +120,7 @@ const GalleryAr = () => {
                     {currentData.videos.length > 0 ? (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {currentData.videos.map((videoId, i) => (
-                          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.4 }} className="rounded-xl overflow-hidden shadow-md aspect-video">
+                          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.4 }} className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-video">
                             <iframe src={`https://www.youtube.com/embed/${videoId}`} title={`${project.label} فيديو ${i + 1}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
                           </motion.div>
                         ))}

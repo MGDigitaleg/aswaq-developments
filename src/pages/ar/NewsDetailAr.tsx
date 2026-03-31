@@ -68,7 +68,7 @@ const NewsDetailAr = () => {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-center mb-10">المزيد من الأخبار</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {related.map((a) => (
-                <Link key={a.id} to={`/ar/news/${a.id}`} className="group block bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                <Link key={a.id} to={`/ar/news/${a.id}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out">
                   {a.image && (
                     <div className="aspect-[16/10] overflow-hidden">
                       <img src={a.image} alt={a.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />

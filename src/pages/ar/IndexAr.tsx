@@ -385,7 +385,7 @@ const IndexAr = () => {
                 </Link>
               ))}
             </div>
-            <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-8 py-3 font-semibold rounded hover:bg-gold-light transition-colors font-arabic">
+            <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-8 py-3 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-arabic">
               احجز وحدتك
             </Link>
           </motion.div>
