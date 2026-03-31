@@ -139,15 +139,15 @@ const Index = () => {
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 50%, hsl(var(--navy) / 0.4) 0%, transparent 70%)' }} />
 
         {/* Content overlay container */}
-        <div className="relative z-10 h-full flex items-center pt-[120px]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 h-full flex items-center pt-[100px]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="flex justify-center">
               {/* Glass content card */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full max-w-[580px] rounded-3xl p-8 md:p-12 lg:p-14 text-center"
+                className="w-full max-w-[640px] lg:max-w-[680px] rounded-3xl p-8 md:p-10 lg:p-12 text-center"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--navy) / 0.65) 0%, hsl(var(--navy) / 0.45) 100%)',
                   backdropFilter: 'blur(24px) saturate(1.4)',
