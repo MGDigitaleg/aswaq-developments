@@ -122,7 +122,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className="bg-card rounded-xl shadow-lg p-6 md:p-8 sticky top-24"
+      className="bg-card rounded-2xl border border-border/50 shadow-sm p-6 md:p-8 sticky top-24"
     >
       <h2 className="font-display text-xl font-bold text-foreground mb-6">{title}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
