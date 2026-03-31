@@ -98,7 +98,7 @@ const NewsDetail = () => {
 
       {/* Related Articles */}
       {related.length > 0 && (
-        <section className="py-16 bg-secondary">
+        <section className="py-16 bg-primary-foreground">
           <div className="container mx-auto px-4 lg:px-8">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-center mb-10">
               More News
