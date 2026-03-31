@@ -106,10 +106,10 @@ const ContactAr = () => {
   return (
     <Layout>
       <section className="bg-primary pt-48 pb-24 md:pb-28">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-arabic font-semibold tracking-[0.25em] text-xs mb-4">تواصل معنا</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">اتصل بنا</h1>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-6">اتصل بنا</h1>
             <p className="text-primary-foreground/70 font-arabic max-w-3xl mx-auto text-base leading-relaxed">
               لديك أسئلة حول مشاريعنا أو الوحدات المتاحة؟ تواصل مع فريقنا وسنساعدك في إيجاد المساحة المثالية.
             </p>
@@ -117,17 +117,17 @@ const ContactAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
             <motion.div className="flex-1" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">أرسل لنا استفسارك</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-8 text-center">أرسل لنا استفسارك</h2>
 
               {submitted ? (
-                <div className="text-center py-16 bg-cream rounded-lg">
+                <div className="text-center py-16 bg-cream rounded-2xl">
                   <p className="font-display text-2xl font-bold text-foreground mb-2">شكرًا لك!</p>
                   <p className="text-muted-foreground font-arabic">لقد استلمنا استفسارك وسنرد عليك قريبًا.</p>
-                  <button onClick={() => setSubmitted(false)} className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded hover:bg-gold-light transition-colors font-arabic">
+                  <button onClick={() => setSubmitted(false)} className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-arabic">
                     إرسال استفسار آخر
                   </button>
                 </div>
@@ -196,7 +196,7 @@ const ContactAr = () => {
                   </div>
 
                   <div className="flex items-center justify-start">
-                    <button type="submit" disabled={submitting} className="bg-primary text-primary-foreground px-10 py-3 font-semibold rounded hover:bg-navy-light transition-colors font-arabic text-sm disabled:opacity-50">
+                    <button type="submit" disabled={submitting} className="bg-primary text-primary-foreground px-10 py-3 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic text-sm disabled:opacity-50">
                       {submitting ? "جاري الإرسال…" : "إرسال"}
                     </button>
                   </div>
@@ -206,7 +206,7 @@ const ContactAr = () => {
 
             <motion.div className="lg:w-80 flex flex-col gap-0 shrink-0" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               {contactInfo.map((info, i) => (
-                <div key={info.title} className={`p-6 ${info.bg} ${i === 0 ? "rounded-t-lg" : ""} ${i === contactInfo.length - 1 ? "rounded-b-lg" : ""}`}>
+                <div key={info.title} className={`p-6 ${info.bg} ${i === 0 ? "rounded-t-2xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-2xl" : ""}`}>
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                       <info.icon size={20} className="text-primary" />

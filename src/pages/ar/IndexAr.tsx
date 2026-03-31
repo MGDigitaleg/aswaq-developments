@@ -146,7 +146,7 @@ const IndexAr = () => {
 
         {/* Content overlay container */}
         <div className="relative z-10 h-full flex items-center pt-[120px]">
-          <div className="container mx-auto px-4 md:px-8 lg:px-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center">
               {/* Glass content card */}
               <motion.div
@@ -292,10 +292,10 @@ const IndexAr = () => {
       </section>
 
       {/* Stats + About */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
               أسواق للتطوير العقاري، المطور العقاري الموثوق في مصر
             </motion.h2>
             <p className="text-muted-foreground max-w-3xl mx-auto font-arabic">
@@ -307,7 +307,7 @@ const IndexAr = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, i) => (
-              <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center p-6 rounded-lg bg-cream">
+              <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center p-6 rounded-2xl bg-cream border border-border/50">
                 <div className="font-display text-3xl md:text-4xl font-bold text-primary mb-2"><AnimatedCounter value={stat.value} /></div>
                 <div className="text-sm text-muted-foreground font-arabic">{stat.label}</div>
               </motion.div>
@@ -317,16 +317,16 @@ const IndexAr = () => {
       </section>
 
       {/* Projects */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">
             مشاريعنا في أسواق للتطوير العقاري
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {projects.map((project, i) => (
               <motion.div key={project.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <Link to="/ar/projects" className="group block">
-                  <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
+                  <div className="relative overflow-hidden rounded-2xl aspect-[4/3] shadow-sm">
                     <img src={project.image} alt={project.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -342,9 +342,9 @@ const IndexAr = () => {
       </section>
 
       {/* Why Invest */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">
             لماذا تستثمر مع أسواق للتطوير العقاري
           </motion.h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
@@ -365,7 +365,7 @@ const IndexAr = () => {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
               الوحدات تُباع بسرعة، لا تفوّت الفرصة!
@@ -385,7 +385,7 @@ const IndexAr = () => {
                 </Link>
               ))}
             </div>
-            <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-8 py-3 font-semibold rounded hover:bg-gold-light transition-colors font-arabic">
+            <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-8 py-3 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-arabic">
               احجز وحدتك
             </Link>
           </motion.div>
@@ -393,10 +393,10 @@ const IndexAr = () => {
       </section>
 
       {/* Latest News */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">آخر الأخبار</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">آخر الأخبار</h2>
             <Link to="/ar/news" className="text-primary font-semibold font-arabic text-sm inline-flex items-center gap-1 hover:underline">
               عرض الكل <ChevronLeft size={14} />
             </Link>
@@ -404,7 +404,7 @@ const IndexAr = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {latestNews.map((article, i) => (
               <motion.div key={article.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <Link to={`/ar/news/${article.id}`} className="group block bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                <Link to={`/ar/news/${article.id}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out">
                   {article.image && (
                     <div className="aspect-[16/10] overflow-hidden">
                       <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />

@@ -83,15 +83,15 @@ const Gallery = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground text-center px-4"
+          className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground text-center px-4"
         >
           Gallery
         </motion.h1>
       </section>
 
       {/* Gallery Content */}
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Project Tabs */}
           <Tabs value={activeProject} onValueChange={(v) => { setActiveProject(v); setActiveMedia("images"); }}>
             <div className="flex justify-center mb-10">
@@ -140,7 +140,7 @@ const Gallery = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05, duration: 0.4 }}
-                            className="rounded-xl overflow-hidden shadow-md aspect-[4/3]"
+                            className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-[4/3]"
                           >
                             <img
                               src={src}
@@ -168,7 +168,7 @@ const Gallery = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05, duration: 0.4 }}
-                            className="rounded-xl overflow-hidden shadow-md aspect-video"
+                            className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-video"
                           >
                             <iframe
                               src={`https://www.youtube.com/embed/${videoId}`}

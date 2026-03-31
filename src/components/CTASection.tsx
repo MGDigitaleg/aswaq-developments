@@ -24,7 +24,7 @@ const CTASection = ({
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-secondary/20 to-transparent" />
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-secondary/10 blur-3xl" />
       </div>
-      <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ const CTASection = ({
           </p>
           <Link
             to={resolvedLink}
-            className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-4 font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body text-sm md:text-base"
+            className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-4 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body text-sm md:text-base"
             data-cursor-hover
           >
             {buttonText}

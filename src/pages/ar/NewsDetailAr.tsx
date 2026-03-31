@@ -38,18 +38,18 @@ const NewsDetailAr = () => {
           <img src={article.image} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 pb-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
           <Link to="/ar/news" className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors font-arabic text-sm mb-4">
             <ArrowRight size={16} /> العودة إلى الأخبار
           </Link>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground max-w-3xl">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground max-w-3xl">
             {article.title}
           </motion.h1>
         </div>
       </section>
 
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
           <ContentBlockRenderer content={article.rawContent} fontClass="font-arabic" />
 
           {article.youtubeId && (
@@ -64,11 +64,11 @@ const NewsDetailAr = () => {
 
       {related.length > 0 && (
         <section className="py-16 bg-secondary">
-          <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-center mb-10">المزيد من الأخبار</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {related.map((a) => (
-                <Link key={a.id} to={`/ar/news/${a.id}`} className="group block bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                <Link key={a.id} to={`/ar/news/${a.id}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out">
                   {a.image && (
                     <div className="aspect-[16/10] overflow-hidden">
                       <img src={a.image} alt={a.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />

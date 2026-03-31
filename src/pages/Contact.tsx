@@ -111,10 +111,10 @@ const Contact = () => {
       <JsonLd data={breadcrumbs} />
       {/* Hero */}
       <section className="bg-primary pt-48 pb-24 md:pb-28">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Get In Touch</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">Contact Us</h1>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-6">Contact Us</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
               Have questions about our projects or available units? Reach out to our team and we'll help you find the perfect space.
             </p>
@@ -124,7 +124,7 @@ const Contact = () => {
 
       {/* Form + Contact Info */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
             {/* Form */}
             <motion.div
@@ -136,13 +136,13 @@ const Contact = () => {
             >
               <div className="mb-8">
                 <div className="section-divider mb-5" style={{ marginLeft: 0 }} />
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
                   Send Us Your Inquiry
                 </h2>
               </div>
 
               {submitted ? (
-                <div className="text-center py-16 bg-cream rounded-xl border border-border/50">
+                <div className="text-center py-16 bg-cream rounded-2xl border border-border/50">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                     <Mail size={28} className="text-primary" />
                   </div>
@@ -150,7 +150,7 @@ const Contact = () => {
                   <p className="text-muted-foreground font-body">We've received your inquiry and will get back to you shortly.</p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-md hover:bg-gold-light transition-all duration-300 font-body"
+                    className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body"
                   >
                     Send Another Inquiry
                   </button>
@@ -270,7 +270,7 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="group bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-md hover:bg-navy-light transition-all duration-300 font-body text-sm disabled:opacity-50 inline-flex items-center gap-2"
+                      className="group bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-body text-sm disabled:opacity-50 inline-flex items-center gap-2"
                     >
                       {submitting ? "Sending…" : "Send"}
                       {!submitting && <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
@@ -291,7 +291,7 @@ const Contact = () => {
               {contactInfo.map((info, i) => (
                 <div
                   key={info.title}
-                  className={`p-7 bg-cream ${i === 0 ? "rounded-t-xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-xl" : ""} ${i !== contactInfo.length - 1 ? "border-b border-border/50" : ""}`}
+                  className={`p-7 bg-cream ${i === 0 ? "rounded-t-2xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-2xl" : ""} ${i !== contactInfo.length - 1 ? "border-b border-border/50" : ""}`}
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">

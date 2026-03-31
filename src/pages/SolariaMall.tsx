@@ -51,10 +51,10 @@ const SolariaMall = () => {
     <Layout>
       {/* Hero */}
       <section className="bg-primary pt-48 pb-24 md:pb-28">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">ASWAQ Developments</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">Solaria Mall at El Shorouk</h1>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-6">Solaria Mall at El Shorouk</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
               One of ASWAQ's most ambitious mixed-use properties — a vibrant hub for shopping, services, healthcare, and professional activities spanning 6,600 m².
             </p>
@@ -64,7 +64,7 @@ const SolariaMall = () => {
 
       {/* About */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
@@ -73,7 +73,7 @@ const SolariaMall = () => {
             </motion.div>
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <div className="section-divider mb-5" style={{ marginLeft: 0 }} />
-              <h2 className="font-display text-3xl font-bold text-foreground mb-5">Solaria Mall at El Shorouk</h2>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-5">Solaria Mall at El Shorouk</h2>
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
                 Solaria Mall is one of ASWAQ Developments' most ambitious mixed-use properties, positioned to become a vibrant hub for shopping, services, healthcare, and professional activities in El Shorouk City. Spanning across 6,600 square meters, the mall offers a diverse range of amenities and services.
               </p>
@@ -87,10 +87,10 @@ const SolariaMall = () => {
 
       {/* Location */}
       <section className="section-padding bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="section-divider mb-6" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-5">Solaria Mall Location</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-5">Solaria Mall Location</h2>
             <p className="text-muted-foreground font-body max-w-3xl mx-auto leading-relaxed">
               Strategically situated in El Shorouk City, at University Square near the French University, Solaria Mall enjoys a prominent position drawing consistent visitation.
             </p>
@@ -130,16 +130,16 @@ const SolariaMall = () => {
 
       {/* Units */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="section-divider mb-6" />
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-5">Units Available at Solaria Mall</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-5">Units Available at Solaria Mall</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12 leading-relaxed">
             Explore available units for rent & sale at Solaria Mall ranging from 30 m² to 396 m².
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {unitTypes.map((type, i) => (
               <motion.div key={type.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex flex-col items-center gap-4 p-6 md:p-8 bg-cream rounded-xl border border-border/50 hover:border-accent/20 transition-all duration-300"
+                className="flex flex-col items-center gap-4 p-6 md:p-8 bg-cream rounded-2xl border border-border/50 hover:border-accent/20 transition-all duration-300"
               >
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
                   <type.icon size={26} className="text-primary" />
@@ -153,10 +153,10 @@ const SolariaMall = () => {
 
       {/* Why Invest */}
       <section className="section-padding bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="section-divider mb-6" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Why Invest in Solaria Mall</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">Why Invest in Solaria Mall</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {whyInvest.map((item, i) => (

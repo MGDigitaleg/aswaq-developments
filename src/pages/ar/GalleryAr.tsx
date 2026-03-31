@@ -67,13 +67,13 @@ const GalleryAr = () => {
       <section className="relative h-[320px] md:h-[380px] flex items-center justify-center pt-[120px] overflow-hidden">
         <img src={heroImg} alt="معرض صور أسواق" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground text-center px-4">
+        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground text-center px-4">
           معرض الصور
         </motion.h1>
       </section>
 
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeProject} onValueChange={(v) => { setActiveProject(v); setActiveMedia("images"); }}>
             <div className="flex justify-center mb-10">
               <TabsList className="bg-primary/10 p-1.5 rounded-full gap-1 flex-wrap h-auto">
@@ -103,7 +103,7 @@ const GalleryAr = () => {
                     {currentData.images.length > 0 ? (
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {currentData.images.map((src, i) => (
-                          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.4 }} className="rounded-xl overflow-hidden shadow-md aspect-[4/3]">
+                          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.4 }} className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-[4/3]">
                             <img src={src} alt={`${project.label} صورة ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
                           </motion.div>
                         ))}
@@ -120,7 +120,7 @@ const GalleryAr = () => {
                     {currentData.videos.length > 0 ? (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {currentData.videos.map((videoId, i) => (
-                          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.4 }} className="rounded-xl overflow-hidden shadow-md aspect-video">
+                          <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05, duration: 0.4 }} className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-video">
                             <iframe src={`https://www.youtube.com/embed/${videoId}`} title={`${project.label} فيديو ${i + 1}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
                           </motion.div>
                         ))}

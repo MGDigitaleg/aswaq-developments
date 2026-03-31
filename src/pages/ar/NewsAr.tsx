@@ -22,7 +22,7 @@ const NewsAr = () => {
         <img src={heroBuilding} alt="أخبار أسواق" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 text-center px-4">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-4">
             الأخبار والفعاليات
           </motion.h1>
           <p className="font-arabic text-primary-foreground/80 max-w-xl mx-auto">
@@ -32,7 +32,7 @@ const NewsAr = () => {
       </section>
 
       <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <p className="text-center text-muted-foreground">جاري التحميل...</p>
           ) : articles.length === 0 ? (
@@ -41,7 +41,7 @@ const NewsAr = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {articles.map((article, i) => (
                 <motion.div key={article.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                  <Link to={`/ar/news/${article.id}`} className="group block bg-card rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                  <Link to={`/ar/news/${article.id}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out">
                     {article.image && (
                       <div className="aspect-[16/10] overflow-hidden">
                         <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />

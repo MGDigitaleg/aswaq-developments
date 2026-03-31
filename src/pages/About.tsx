@@ -63,7 +63,7 @@ const About = () => {
 
       {/* About Content */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ const About = () => {
 
       {/* Mission Vision Values */}
       <section className="section-padding bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -119,7 +119,7 @@ const About = () => {
 
       {/* Why Choose Us */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ const About = () => {
             className="mb-14"
           >
             <div className="section-divider mb-6" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
               Why Choose Us?
             </h2>
           </motion.div>
@@ -154,7 +154,7 @@ const About = () => {
 
       {/* Stats Bar */}
       <section className="bg-primary py-20">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
               <motion.div
@@ -164,7 +164,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
-                <div className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-3">
+                <div className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-3">
                   <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-primary-foreground/70 font-body text-sm tracking-wide">{stat.label}</div>

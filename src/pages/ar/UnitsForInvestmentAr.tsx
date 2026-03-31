@@ -55,10 +55,10 @@ const UnitsForInvestmentAr = () => {
   return (
     <Layout>
       <section className="bg-primary py-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">وحدات للاستثمار</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">
               استثمر في عقارات مُعدّة لتحقيق الأداء الأمثل
             </h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
@@ -68,16 +68,16 @@ const UnitsForInvestmentAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-4">أنواع الوحدات الاستثمارية</h2>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground text-center mb-4">أنواع الوحدات الاستثمارية</h2>
           <p className="text-muted-foreground font-body text-center max-w-2xl mx-auto mb-12">
             بمساحات تتراوح من 30 إلى 300 م²، توفر أسواق البيئة المثالية للنجاح.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {unitCategories.map((cat, i) => (
               <motion.div key={cat.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="bg-cream rounded-lg p-8 flex flex-col"
+                className="bg-cream rounded-2xl border border-border/50 p-8 flex flex-col"
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <cat.icon size={24} className="text-primary" />
@@ -90,16 +90,16 @@ const UnitsForInvestmentAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl font-bold text-foreground mb-4">مولاتنا التي تضم وحدات للاستثمار</h2>
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">مولاتنا التي تضم وحدات للاستثمار</h2>
           <p className="text-muted-foreground font-body max-w-2xl mx-auto mb-12">
             تم تطوير كل مول لخدمة مناطق سكنية ذات كثافة عالية، مما يضمن طلباً مستمراً على محلات الإيجار في الشروق والوحدات الإدارية والطبية.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {malls.map((mall, i) => (
               <motion.div key={mall.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                <Link to={mall.link} className="block p-6 bg-background rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link to={mall.link} className="block p-6 bg-background rounded-2xl border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-shadow text-center">
                   <p className="font-display font-bold text-foreground">{mall.name}</p>
                 </Link>
               </motion.div>
@@ -108,9 +108,9 @@ const UnitsForInvestmentAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl font-bold text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري</h2>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {whyChoose.map((item, i) => (
               <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}

@@ -68,7 +68,7 @@ const CareerDetailAr = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground"
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground"
           >
             وظائف
           </motion.h1>
@@ -76,8 +76,8 @@ const CareerDetailAr = () => {
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Application Form */}
             <div className="order-1 lg:order-2">
@@ -118,7 +118,7 @@ const CareerDetailAr = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
                   {career.title_ar || career.title}
                 </h2>
                 <div className="flex items-center gap-2 mt-3 text-sm text-muted-foreground">
