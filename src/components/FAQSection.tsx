@@ -34,7 +34,7 @@ const FAQSection = ({ faqs, title = "You Ask, We Answer" }: { faqs: FAQItem[]; t
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left transition-colors"
+                  className="w-full flex items-center justify-between px-6 py-5 text-left transition-colors bg-muted border-accent border-0"
                   data-cursor-hover
                 >
                   <span className="font-body font-semibold text-foreground pr-4 text-[15px]">{faq.question}</span>
