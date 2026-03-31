@@ -20,13 +20,15 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
     return new Intl.NumberFormat(isArabic ? "ar-EG" : "en-EG").format(Math.round(n));
   }, [isArabic]);
 
+  const numClass = "font-['Montserrat'] font-bold tracking-tight";
+
   return (
-    <div className="premium-card p-6 md:p-8">
+    <div className="bg-[#F2EFE9] rounded-2xl border border-stone-200 p-6 md:p-8 shadow-2xl shadow-black/40">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-          <Calculator size={20} className="text-primary" />
+        <div className="w-10 h-10 rounded-xl bg-[#0A1128]/10 flex items-center justify-center">
+          <Calculator size={20} className="text-[#0A1128]" />
         </div>
-        <h3 className="font-display text-lg font-bold text-foreground">
+        <h3 className="font-display text-lg font-bold text-[#0A1128]">
           {isArabic ? "حاسبة العائد على الاستثمار" : "ROI Calculator"}
         </h3>
       </div>
@@ -34,9 +36,9 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
       <div className="space-y-5">
         {/* Unit Price */}
         <label>
-          <span className="flex justify-between text-sm font-body text-foreground mb-2">
+          <span className="flex justify-between text-sm font-body text-[#0A1128] mb-2">
             <span>{isArabic ? "سعر الوحدة" : "Unit Price"}</span>
-            <span className="font-semibold text-foreground">{formatNum(unitPrice)} EGP</span>
+            <span className={`${numClass} text-[#0A1128]`}>{formatNum(unitPrice)} EGP</span>
           </span>
           <input
             type="range"
@@ -45,15 +47,15 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             step={100000}
             value={unitPrice}
             onChange={(e) => setUnitPrice(Number(e.target.value))}
-            className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
+            className="w-full accent-[#c89c3c] h-1.5 bg-stone-200 rounded-full appearance-none cursor-pointer"
           />
         </label>
 
         {/* Down Payment */}
         <label>
-          <span className="flex justify-between text-sm font-body text-foreground mb-2">
+          <span className="flex justify-between text-sm font-body text-[#0A1128] mb-2">
             <span>{isArabic ? "الدفعة المقدمة" : "Down Payment"}</span>
-            <span className="font-semibold text-foreground">{downPayment}%</span>
+            <span className={`${numClass} text-[#0A1128]`}>{downPayment}%</span>
           </span>
           <input
             type="range"
@@ -62,15 +64,15 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             step={5}
             value={downPayment}
             onChange={(e) => setDownPayment(Number(e.target.value))}
-            className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
+            className="w-full accent-[#c89c3c] h-1.5 bg-stone-200 rounded-full appearance-none cursor-pointer"
           />
         </label>
 
         {/* Monthly Rent */}
         <label>
-          <span className="flex justify-between text-sm font-body text-foreground mb-2">
+          <span className="flex justify-between text-sm font-body text-[#0A1128] mb-2">
             <span>{isArabic ? "الإيجار الشهري المتوقع" : "Expected Monthly Rent"}</span>
-            <span className="font-semibold text-foreground">{formatNum(monthlyRent)} EGP</span>
+            <span className={`${numClass} text-[#0A1128]`}>{formatNum(monthlyRent)} EGP</span>
           </span>
           <input
             type="range"
@@ -79,15 +81,15 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             step={1000}
             value={monthlyRent}
             onChange={(e) => setMonthlyRent(Number(e.target.value))}
-            className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
+            className="w-full accent-[#c89c3c] h-1.5 bg-stone-200 rounded-full appearance-none cursor-pointer"
           />
         </label>
 
         {/* Appreciation */}
         <label>
-          <span className="flex justify-between text-sm font-body text-foreground mb-2">
+          <span className="flex justify-between text-sm font-body text-[#0A1128] mb-2">
             <span>{isArabic ? "معدل الارتفاع السنوي" : "Annual Appreciation"}</span>
-            <span className="font-semibold text-foreground">{appreciation}%</span>
+            <span className={`${numClass} text-[#0A1128]`}>{appreciation}%</span>
           </span>
           <input
             type="range"
@@ -96,35 +98,35 @@ const ROICalculator = ({ isArabic = false }: { isArabic?: boolean }) => {
             step={1}
             value={appreciation}
             onChange={(e) => setAppreciation(Number(e.target.value))}
-            className="w-full accent-[hsl(var(--accent))] h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
+            className="w-full accent-[#c89c3c] h-1.5 bg-stone-200 rounded-full appearance-none cursor-pointer"
           />
         </label>
       </div>
 
       {/* Results */}
-      <div className="mt-6 pt-6 border-t border-border">
+      <div className="mt-6 pt-6 border-t border-stone-300">
         <div className="grid grid-cols-2 gap-4">
-          <div className="p-4 bg-cream rounded-xl text-center">
-            <p className="text-xs text-muted-foreground font-body mb-1">{isArabic ? "الدفعة المقدمة" : "Down Payment"}</p>
-            <p className="font-display text-lg font-bold text-foreground">{formatNum(downPaymentAmount)}</p>
+          <div className="p-4 bg-white border border-stone-200 rounded-xl text-center">
+            <p className="text-xs text-[#0A1128]/60 font-body mb-1">{isArabic ? "الدفعة المقدمة" : "Down Payment"}</p>
+            <p className={`${numClass} text-lg text-[#0A1128]`}>{formatNum(downPaymentAmount)}</p>
           </div>
-          <div className="p-4 bg-cream rounded-xl text-center">
-            <p className="text-xs text-muted-foreground font-body mb-1">{isArabic ? "العائد السنوي" : "Gross Yield"}</p>
-            <p className="font-display text-lg font-bold text-foreground">{grossYield}%</p>
+          <div className="p-4 bg-white border border-stone-200 rounded-xl text-center">
+            <p className="text-xs text-[#0A1128]/60 font-body mb-1">{isArabic ? "العائد السنوي" : "Gross Yield"}</p>
+            <p className={`${numClass} text-lg text-[#0A1128]`}>{grossYield}%</p>
           </div>
-          <div className="p-4 bg-cream rounded-xl text-center">
-            <p className="text-xs text-muted-foreground font-body mb-1">{isArabic ? "القيمة بعد 5 سنوات" : "5-Year Value"}</p>
-            <p className="font-display text-lg font-bold text-foreground">{formatNum(fiveYearValue)}</p>
+          <div className="p-4 bg-white border border-stone-200 rounded-xl text-center">
+            <p className="text-xs text-[#0A1128]/60 font-body mb-1">{isArabic ? "القيمة بعد 5 سنوات" : "5-Year Value"}</p>
+            <p className={`${numClass} text-lg text-[#0A1128]`}>{formatNum(fiveYearValue)}</p>
           </div>
-          <div className="p-4 bg-primary rounded-xl text-center">
-            <p className="text-xs text-primary-foreground/60 font-body mb-1">{isArabic ? "العائد الإجمالي" : "Total ROI"}</p>
+          <div className="p-4 bg-[#0A1128] rounded-xl text-center">
+            <p className="text-xs text-white/60 font-body mb-1">{isArabic ? "العائد الإجمالي" : "Total ROI"}</p>
             <div className="flex items-center justify-center gap-1.5">
-              <TrendingUp size={16} className="text-primary-foreground" />
-              <p className="font-display text-lg font-bold text-primary-foreground">{roi}%</p>
+              <TrendingUp size={16} className="text-[#c89c3c]" />
+              <p className={`${numClass} text-lg text-[#c89c3c]`}>{roi}%</p>
             </div>
           </div>
         </div>
-        <p className="text-[10px] text-muted-foreground/60 font-body mt-4 text-center leading-relaxed">
+        <p className="text-[10px] text-[#0A1128]/40 font-body mt-4 text-center leading-relaxed">
           {isArabic
             ? "* هذه تقديرات تقريبية لأغراض إرشادية فقط. العوائد الفعلية قد تختلف."
             : "* These are approximate estimates for illustrative purposes only. Actual returns may vary."}

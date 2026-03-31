@@ -432,10 +432,10 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="flex-1 text-center lg:text-left"
             >
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white mb-5">
                 Units Are Selling Fast, Don't Miss Out!
               </h2>
-              <p className="text-primary-foreground/70 font-body max-w-2xl mb-6 text-base leading-relaxed">
+              <p className="text-white/80 font-body max-w-2xl mb-6 text-base leading-relaxed">
                 Browse our available units and select what matches your business or investment plan.
               </p>
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
@@ -448,7 +448,7 @@ const Index = () => {
                   <Link
                     key={tag.label}
                     to={tag.href}
-                    className="border border-primary-foreground/20 text-primary-foreground/80 px-5 py-2 rounded-full text-sm font-body hover:bg-primary-foreground/10 hover:border-primary-foreground/40 transition-all duration-300"
+                    className="border border-white/30 text-white/90 px-5 py-2 rounded-full text-sm font-body hover:border-[#c89c3c] hover:text-[#c89c3c] hover:bg-[#c89c3c]/10 transition-colors duration-300"
                   >
                     {tag.label}
                   </Link>
@@ -456,7 +456,7 @@ const Index = () => {
               </div>
               <Link
                 to="/units"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body group"
+                className="inline-flex items-center gap-2 bg-[#c89c3c] text-[#0A1128] px-10 py-3.5 font-semibold rounded-lg hover:bg-white hover:text-[#0A1128] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(200,156,60,0.4)] transition-all duration-300 ease-in-out font-body group"
               >
                 Reserve Your Unit
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
