@@ -173,7 +173,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           value={form.cover_letter}
           onChange={(e) => handleChange("cover_letter", e.target.value)}
           rows={4}
-          className="bg-secondary border-0 resize-y"
+          className="bg-sidebar-accent border-0 resize-y"
         />
 
         <div>
