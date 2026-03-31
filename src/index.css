@@ -142,10 +142,10 @@
   /* --- Links --- */
   a {
     color: hsl(var(--navy));
-    @apply font-medium transition-colors duration-200;
+    @apply font-medium transition-colors duration-300;
   }
   a:hover {
-    color: #1E2A5E;
+    color: #c89c3c;
   }
 
   /* Dark mode overrides */

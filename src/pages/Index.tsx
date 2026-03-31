@@ -314,7 +314,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="text-center p-6 md:p-8 rounded-xl bg-card backdrop-blur-sm border border-stone-200/50 hover:-translate-y-1 transition-all duration-300 ease-in-out"
+                className="group text-center p-6 md:p-8 rounded-xl bg-background border border-[#0A1128]/5 hover:-translate-y-2 hover:border-[#c89c3c] hover:shadow-[0_10px_30px_rgba(200,156,60,0.15)] transition-all duration-500 ease-out"
                 style={{ boxShadow: '0 4px 20px -4px rgba(10,17,40,0.1)' }}
               >
                 <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">
