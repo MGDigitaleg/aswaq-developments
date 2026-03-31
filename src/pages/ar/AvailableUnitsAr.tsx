@@ -56,7 +56,7 @@ const AvailableUnitsAr = () => {
 
   return (
     <Layout>
-      <section className="bg-primary py-24">
+      <section className="bg-primary py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-arabic font-medium tracking-widest text-sm mb-3">اختر وحدتك</p>
@@ -73,7 +73,7 @@ const AvailableUnitsAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {unitTypes.map((type, i) => (
@@ -97,7 +97,7 @@ const AvailableUnitsAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري؟</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

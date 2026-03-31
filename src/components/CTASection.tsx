@@ -18,7 +18,7 @@ const CTASection = ({
   const resolvedLink = buttonLink || (isArabic ? "/ar/contact" : "/contact");
 
   return (
-    <section className="relative bg-primary py-24 md:py-32 overflow-hidden">
+    <section className="relative bg-primary py-14 md:py-20 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-secondary/20 to-transparent" />

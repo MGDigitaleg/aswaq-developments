@@ -114,7 +114,7 @@ const AvailableUnits = () => {
       <JsonLd data={breadcrumbs} />
       <JsonLd data={faqSchemaData} />
       {/* Hero */}
-      <section className="bg-primary py-24">
+      <section className="bg-primary py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -138,7 +138,7 @@ const AvailableUnits = () => {
       </section>
 
       {/* Unit Types */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {unitTypes.map((type, i) => (
@@ -183,7 +183,7 @@ const AvailableUnits = () => {
       </section>
 
       {/* Why Choose */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
             Why Choose ASWAQ Developments?

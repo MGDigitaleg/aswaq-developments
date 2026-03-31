@@ -421,7 +421,7 @@ const Index = () => {
       </section>
 
       {/* Units CTA Banner */}
-      <section className="relative py-28 md:py-32 bg-primary overflow-hidden">
+      <section className="relative py-16 md:py-20 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent" />
         </div>

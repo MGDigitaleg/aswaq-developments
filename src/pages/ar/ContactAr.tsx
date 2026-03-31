@@ -105,7 +105,7 @@ const ContactAr = () => {
 
   return (
     <Layout>
-      <section className="bg-primary pt-48 pb-24 md:pb-28">
+      <section className="bg-primary pt-40 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-arabic font-semibold tracking-[0.25em] text-xs mb-4">تواصل معنا</p>
@@ -117,7 +117,7 @@ const ContactAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
             <motion.div className="flex-1" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>

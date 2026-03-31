@@ -57,7 +57,7 @@ const UnitsForSaleAr = () => {
 
   return (
     <Layout>
-      <section className="bg-primary py-24">
+      <section className="bg-primary py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">وحدات للبيع</p>
@@ -71,7 +71,7 @@ const UnitsForSaleAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground text-center mb-4">أنواع الوحدات للبيع</h2>
           <p className="text-muted-foreground font-body text-center max-w-2xl mx-auto mb-12">
@@ -93,7 +93,7 @@ const UnitsForSaleAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">مولاتنا التي تضم وحدات للبيع</h2>
           <p className="text-muted-foreground font-body max-w-2xl mx-auto mb-12">
@@ -111,7 +111,7 @@ const UnitsForSaleAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">

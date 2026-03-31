@@ -31,7 +31,7 @@ const NewsAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-secondary">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <p className="text-center text-muted-foreground">جاري التحميل...</p>

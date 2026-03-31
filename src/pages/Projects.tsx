@@ -217,7 +217,7 @@ const Projects = () => {
       </section>
 
       {/* Available Units CTA */}
-      <section className="bg-primary py-20 md:py-24">
+      <section className="bg-primary py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -42,7 +42,7 @@ const ArenaMall = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-primary pt-48 pb-24">
+      <section className="bg-primary pt-40 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,7 @@ const ArenaMall = () => {
       </section>
 
       {/* About */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div
@@ -95,7 +95,7 @@ const ArenaMall = () => {
       </section>
 
       {/* Location */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-6">
             Arena Mall Location
@@ -140,7 +140,7 @@ const ArenaMall = () => {
       </section>
 
       {/* Available Units */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
             Commercial Units Available at Arena Mall
@@ -169,7 +169,7 @@ const ArenaMall = () => {
       </section>
 
       {/* Why Invest */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">
             Why Invest in Arena Mall
