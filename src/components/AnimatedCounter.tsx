@@ -43,7 +43,7 @@ const AnimatedCounter = ({ value, duration = 2000, className }: AnimatedCounterP
     requestAnimationFrame(animate);
   }, [isInView, value, duration]);
 
-  return <span ref={ref}>{display}</span>;
+  return <span ref={ref} className={className}>{display}</span>;
 };
 
 export default AnimatedCounter;
