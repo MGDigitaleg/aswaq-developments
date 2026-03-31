@@ -290,7 +290,7 @@ const Index = () => {
       </section>
 
       {/* Stats + About */}
-      <section className="section-padding bg-background">
+      <section className="py-20 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[5px]">
           <div className="text-center mb-16">
             <motion.div
@@ -299,11 +299,11 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="section-divider mb-6" />
+              <div className="w-16 h-1 bg-navy mx-auto mb-6 rounded-full" />
               <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-5 leading-tight">
                 ASWAQ Developments, The Trusted Real Estate Developer in Egypt
               </h2>
-              <p className="text-muted-foreground max-w-3xl mx-auto font-body text-base md:text-lg leading-relaxed">
+              <p className="text-slate-700 max-w-3xl mx-auto font-body text-base md:text-lg leading-relaxed">
                 ASWAQ Developments is a forward-thinking real estate developer specializing in commercial, administrative, and medical projects across East Cairo.
               </p>
             </motion.div>
@@ -317,13 +317,12 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="text-center p-6 md:p-8 rounded-xl bg-cream border border-border/50 hover:border-accent/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out"
-                 style={{ boxShadow: "var(--shadow-sm)" }}
+                className="text-center p-8 md:p-10 rounded-xl bg-white border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out"
               >
-                <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">
+                <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-2">
                   <AnimatedCounter value={stat.value} />
                 </div>
-                <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
+                <div className="text-sm text-slate-500 font-medium font-body">{stat.label}</div>
               </motion.div>
             ))}
           </div>
