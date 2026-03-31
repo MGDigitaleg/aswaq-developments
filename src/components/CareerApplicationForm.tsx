@@ -178,7 +178,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
 
         <div>
           <p className="text-sm text-muted-foreground mb-2">{l.uploadCv}</p>
-          <label className="flex items-center gap-3 cursor-pointer bg-secondary rounded-md px-4 py-3 hover:bg-muted transition-colors">
+          <label className="flex items-center gap-3 cursor-pointer bg-neutral-50 rounded-md px-4 py-3 transition-colors">
             <Upload size={18} className="text-muted-foreground" />
             <span className="text-sm text-muted-foreground truncate">
               {cvFile ? cvFile.name : l.chooseFile}
