@@ -291,7 +291,7 @@ const Contact = () => {
               {contactInfo.map((info, i) => (
                 <div
                   key={info.title}
-                  className={`p-7 bg-cream ${i === 0 ? "rounded-t-xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-xl" : ""} ${i !== contactInfo.length - 1 ? "border-b border-border/50" : ""}`}
+                  className={`p-7 bg-cream ${i === 0 ? "rounded-t-2xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-2xl" : ""} ${i !== contactInfo.length - 1 ? "border-b border-border/50" : ""}`}
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">

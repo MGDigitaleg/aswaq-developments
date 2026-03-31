@@ -199,7 +199,7 @@ const AvailableUnits = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="flex flex-col items-center gap-3 p-6 bg-background rounded-lg"
+                className="flex flex-col items-center gap-3 p-6 bg-background rounded-2xl border border-border/50 shadow-sm"
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
                   <item.icon size={24} className="text-primary" />
