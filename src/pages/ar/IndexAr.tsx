@@ -292,25 +292,25 @@ const IndexAr = () => {
       </section>
 
       {/* Stats + About */}
-      <section className="py-20 md:py-24 bg-[#F2EFE9]">
+      <section className="py-20 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="mx-auto mb-6 w-[60px] h-[2px] bg-[#0A1128]" />
-            <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-[#0A1128] mb-4">
+            <div className="mx-auto mb-6 w-[60px] h-[2px] bg-foreground" />
+            <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
               أسواق للتطوير العقاري، المطور العقاري الموثوق في مصر
             </motion.h2>
-            <p className="text-[#0A1128]/70 max-w-3xl mx-auto font-arabic">
+            <p className="text-muted-foreground max-w-3xl mx-auto font-arabic">
               تعد شركة أسواق للتطوير العقاري مطوراً عقارياً يتطلع للمستقبل، متخصصاً في المشاريع التجارية والإدارية والطبية في منطقة شرق القاهرة. نحن نركز على إنشاء بيئات تجارية متكاملة تلبي احتياجات الأعمال اليوم مع توفير إمكانات استثمارية قوية للمستقبل.
             </p>
-            <p className="text-[#0A1128]/70 max-w-3xl mx-auto font-arabic mt-4">
+            <p className="text-muted-foreground max-w-3xl mx-auto font-arabic mt-4">
               سواء كنت تبحث عن عقار للبيع، أو وحدة للإيجار، أو مشروع متعدد الاستخدامات، فإن "أسواق" تقدم مشاريع في مواقع استراتيجية مدعومة بتخطيط ذكي وتصميم يواكب احتياجات السوق.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, i) => (
-              <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-stone-200/50 hover:-translate-y-1 transition-all duration-300 ease-in-out" style={{ boxShadow: '0 4px 20px -4px rgba(10,17,40,0.1)' }}>
-                <div className="font-display text-3xl md:text-4xl font-bold text-[#0A1128] mb-2"><AnimatedCounter value={stat.value} /></div>
-                <div className="text-sm text-[#0A1128]/70 font-arabic">{stat.label}</div>
+              <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center p-6 rounded-2xl bg-card backdrop-blur-sm border border-stone-200/50 hover:-translate-y-1 transition-all duration-300 ease-in-out" style={{ boxShadow: '0 4px 20px -4px rgba(10,17,40,0.1)' }}>
+                <div className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2"><AnimatedCounter value={stat.value} /></div>
+                <div className="text-sm text-muted-foreground font-arabic">{stat.label}</div>
               </motion.div>
             ))}
           </div>
