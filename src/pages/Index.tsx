@@ -448,7 +448,7 @@ const Index = () => {
                   <Link
                     key={tag.label}
                     to={tag.href}
-                    className="border border-primary-foreground/20 text-primary-foreground/80 px-5 py-2 rounded-full text-sm font-body hover:bg-primary-foreground/10 hover:border-primary-foreground/40 transition-all duration-300"
+                    className="border border-white/30 text-white/90 px-5 py-2 rounded-full text-sm font-body hover:border-[#c89c3c] hover:text-[#c89c3c] hover:bg-[#c89c3c]/10 transition-colors duration-300"
                   >
                     {tag.label}
                   </Link>
