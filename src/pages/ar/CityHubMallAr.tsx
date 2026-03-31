@@ -77,7 +77,7 @@ const CityHubMallAr = () => {
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
             يقع في شارع النوادي بمدينة الشروق، يستفيد من موقعه الاستراتيجي في ممر صاخب. موقعه بالقرب من الطريق الدائري وطريق السويس يسهل الوصول إليه من جميع أنحاء القاهرة.
           </p>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto p-6 bg-background rounded-lg">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto p-6 bg-background rounded-2xl border border-border/50">
             <div className="flex items-start gap-3">
               <MapPin size={20} className="text-primary shrink-0 mt-0.5" />
               <p className="text-foreground font-body text-sm text-right">

@@ -80,7 +80,7 @@ const UnitsForSaleAr = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {unitCategories.map((cat, i) => (
               <motion.div key={cat.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="bg-cream rounded-lg p-8 flex flex-col"
+                className="bg-cream rounded-2xl border border-border/50 p-8 flex flex-col"
               >
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <cat.icon size={24} className="text-primary" />
@@ -102,7 +102,7 @@ const UnitsForSaleAr = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {malls.map((mall, i) => (
               <motion.div key={mall.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                <Link to={mall.link} className="block p-6 bg-background rounded-lg hover:shadow-lg transition-shadow text-center">
+                <Link to={mall.link} className="block p-6 bg-background rounded-2xl border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-shadow text-center">
                   <p className="font-display font-bold text-foreground">{mall.name}</p>
                 </Link>
               </motion.div>

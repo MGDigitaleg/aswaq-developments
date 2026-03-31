@@ -72,7 +72,7 @@ const GalleryAr = () => {
         </motion.h1>
       </section>
 
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeProject} onValueChange={(v) => { setActiveProject(v); setActiveMedia("images"); }}>
             <div className="flex justify-center mb-10">

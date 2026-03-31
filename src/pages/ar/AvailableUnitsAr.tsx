@@ -102,7 +102,7 @@ const AvailableUnitsAr = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري؟</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {whyChoose.map((item, i) => (
-              <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex flex-col items-center gap-3 p-6 bg-background rounded-lg">
+              <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex flex-col items-center gap-3 p-6 bg-background rounded-2xl border border-border/50 shadow-sm">
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
                   <item.icon size={24} className="text-primary" />
                 </div>

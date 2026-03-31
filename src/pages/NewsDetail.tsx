@@ -71,7 +71,7 @@ const NewsDetail = () => {
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
           <ContentBlockRenderer content={article.rawContent} fontClass="font-body" />
 

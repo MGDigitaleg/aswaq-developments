@@ -57,7 +57,7 @@ const ProjectsAr = () => {
         </motion.h1>
       </section>
 
-      <section className="py-16 md:py-20 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center">
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-6">مشاريع عقارية متكاملة في قلب مدينة الشروق</h2>
@@ -78,7 +78,7 @@ const ProjectsAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-secondary">
+      <section className="py-16 md:py-24 bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {projects.map((project, i) => (
@@ -100,7 +100,7 @@ const ProjectsAr = () => {
         </div>
       </section>
 
-      <section className="bg-primary py-16 md:py-20">
+      <section className="bg-primary py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-6">وحدات متاحة للبيع والإيجار</h2>
