@@ -140,7 +140,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex items-center gap-4 p-5 bg-cream rounded-xl text-left border border-border/50 hover:border-secondary/20 transition-all duration-300"
+                className="flex items-center gap-4 p-5 bg-cream rounded-xl text-left border border-border/50 hover:border-accent/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out"
               >
                 <div className="shrink-0 w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
                   <item.icon size={18} className="text-primary" />

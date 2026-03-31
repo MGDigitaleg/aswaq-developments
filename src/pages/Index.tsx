@@ -317,8 +317,8 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="text-center p-6 md:p-8 rounded-xl bg-cream border border-border/50 hover:border-accent/20 transition-all duration-500"
-                style={{ boxShadow: "var(--shadow-sm)" }}
+                className="text-center p-6 md:p-8 rounded-xl bg-cream border border-border/50 hover:border-accent/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out"
+                 style={{ boxShadow: "var(--shadow-sm)" }}
               >
                 <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">
                   <AnimatedCounter value={stat.value} />
