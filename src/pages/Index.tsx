@@ -469,7 +469,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full lg:w-[420px] shrink-0"
+              className="w-full lg:w-[480px] shrink-0"
             >
               <ROICalculator />
             </motion.div>
