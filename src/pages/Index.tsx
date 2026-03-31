@@ -418,27 +418,27 @@ const Index = () => {
       </section>
 
       {/* Units CTA Banner */}
-      <section className="relative py-16 md:py-20 bg-primary overflow-hidden">
+      <section className="relative py-20 md:py-24 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            {/* Left: CTA content */}
+          <div className="flex flex-col items-center text-center gap-12">
+            {/* Top: CTA content */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="flex-1 text-center lg:text-left"
+              className="max-w-3xl mx-auto"
             >
               <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white mb-5">
                 Units Are Selling Fast, Don't Miss Out!
               </h2>
-              <p className="text-white/80 font-body max-w-2xl mb-6 text-base leading-relaxed">
+              <p className="text-white/80 font-body max-w-2xl mx-auto mb-6 text-base leading-relaxed">
                 Browse our available units and select what matches your business or investment plan.
               </p>
-              <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
+              <div className="flex flex-wrap gap-3 justify-center mb-10">
                 {[
                   { label: "Mixed-use Properties", href: "/units" },
                   { label: "Commercial Units", href: "/units/commercial-for-sale" },
@@ -448,7 +448,7 @@ const Index = () => {
                   <Link
                     key={tag.label}
                     to={tag.href}
-                    className="border border-white/30 text-white/90 px-5 py-2 rounded-full text-sm font-body hover:border-[#c89c3c] hover:text-[#c89c3c] hover:bg-[#c89c3c]/10 transition-colors duration-300"
+                    className="border border-white/30 text-white/90 px-6 py-2 rounded-full text-sm font-body hover:border-[#c89c3c] hover:text-[#c89c3c] hover:bg-[#c89c3c]/10 transition-colors duration-300"
                   >
                     {tag.label}
                   </Link>
@@ -456,22 +456,22 @@ const Index = () => {
               </div>
               <Link
                 to="/units"
-                className="inline-flex items-center gap-2 bg-[#c89c3c] text-[#0A1128] px-10 py-3.5 font-semibold rounded-lg hover:bg-white hover:text-[#0A1128] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(200,156,60,0.4)] transition-all duration-300 ease-in-out font-body group"
+                className="inline-flex items-center gap-2 bg-[#c89c3c] text-[#0A1128] px-8 py-3 font-bold rounded-lg hover:bg-white hover:text-[#0A1128] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(200,156,60,0.4)] transition-all duration-300 ease-in-out font-body group"
               >
                 Reserve Your Unit
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
 
-            {/* Right: ROI Calculator */}
+            {/* Bottom: Wide ROI Calculator */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-full lg:w-[480px] shrink-0"
+              className="w-full max-w-5xl mx-auto"
             >
-              <ROICalculator />
+              <ROICalculator wide />
             </motion.div>
           </div>
         </div>
