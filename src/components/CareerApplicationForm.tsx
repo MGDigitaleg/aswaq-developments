@@ -152,7 +152,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           placeholder={l.major}
           value={form.major}
           onChange={(e) => handleChange("major", e.target.value)}
-          className="bg-secondary border-0"
+          className="bg-destructive-foreground border-0 text-white"
         />
 
         {!selectedCareerId && (
