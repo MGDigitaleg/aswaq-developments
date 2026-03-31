@@ -131,7 +131,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           value={form.name}
           onChange={(e) => handleChange("name", e.target.value)}
           required
-          className="bg-secondary border-0"
+          className="bg-secondary border-0 text-white file:bg-transparent"
         />
         <Input
           type="email"
@@ -152,7 +152,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           placeholder={l.major}
           value={form.major}
           onChange={(e) => handleChange("major", e.target.value)}
-          className="bg-secondary border-0"
+          className="bg-destructive-foreground border-0 text-white"
         />
 
         {!selectedCareerId && (
@@ -173,12 +173,12 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           value={form.cover_letter}
           onChange={(e) => handleChange("cover_letter", e.target.value)}
           rows={4}
-          className="bg-secondary border-0 resize-y"
+          className="bg-sidebar-accent border-0 resize-y"
         />
 
         <div>
           <p className="text-sm text-muted-foreground mb-2">{l.uploadCv}</p>
-          <label className="flex items-center gap-3 cursor-pointer bg-secondary rounded-md px-4 py-3 hover:bg-muted transition-colors">
+          <label className="flex items-center gap-3 cursor-pointer bg-neutral-50 rounded-md px-4 py-3 transition-colors">
             <Upload size={18} className="text-muted-foreground" />
             <span className="text-sm text-muted-foreground truncate">
               {cvFile ? cvFile.name : l.chooseFile}
