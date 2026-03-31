@@ -44,7 +44,7 @@ const News = () => {
       </section>
 
       {/* Blog Grid */}
-      <section className="py-16 md:py-24 bg-secondary">
+      <section className="py-16 md:py-24 bg-primary-foreground">
         <div className="container mx-auto px-4 lg:px-8">
           {loading ? (
             <p className="text-center text-muted-foreground">Loading...</p>
