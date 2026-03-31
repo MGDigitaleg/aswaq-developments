@@ -93,7 +93,7 @@ const AboutAr = () => {
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {whyChoose.map((item, i) => (
-              <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex items-center gap-4 p-5 bg-cream rounded-2xl border border-border/50 text-right">
+              <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex items-center gap-4 p-5 bg-cream rounded-2xl border border-border/50 hover:border-accent/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out text-right">
                 <div className="shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                   <item.icon size={18} className="text-primary" />
                 </div>
