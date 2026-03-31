@@ -309,7 +309,7 @@ const IndexAr = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, i) => (
               <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group text-center p-6 rounded-2xl bg-background border border-[#0A1128]/5 hover:-translate-y-2 hover:border-[#c89c3c] hover:shadow-[0_10px_30px_rgba(200,156,60,0.15)] transition-all duration-500 ease-out" style={{ boxShadow: '0 4px 20px -4px rgba(10,17,40,0.1)' }}>
-                <div className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2"><AnimatedCounter value={stat.value} /></div>
+                <div className="font-['Montserrat'] text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-2"><AnimatedCounter value={stat.value} /></div>
                 <div className="text-sm text-muted-foreground font-arabic">{stat.label}</div>
               </motion.div>
             ))}
