@@ -24,7 +24,7 @@ const Careers = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground"
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground"
           >
             Careers
           </motion.h1>
@@ -32,8 +32,8 @@ const Careers = () => {
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-secondary/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Job Listings */}
             <div className="lg:col-span-2 space-y-6">
@@ -48,7 +48,7 @@ const Careers = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="bg-card rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
+                    className="bg-card rounded-2xl border border-border/50 shadow-sm p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out"
                   >
                     <Link to={`/careers/${career.slug}`}>
                       <h3 className="font-display text-lg font-bold text-foreground hover:text-primary transition-colors">
@@ -64,7 +64,7 @@ const Careers = () => {
                     </p>
                     <Link
                       to={`/careers/${career.slug}`}
-                      className="inline-block mt-4 bg-primary text-primary-foreground text-sm font-semibold px-6 py-2 rounded hover:bg-navy-light transition-colors"
+                      className="inline-block mt-4 bg-primary text-primary-foreground text-sm font-semibold px-6 py-2.5 rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300"
                     >
                       Read More
                     </Link>
