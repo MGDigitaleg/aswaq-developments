@@ -456,7 +456,7 @@ const Index = () => {
               </div>
               <Link
                 to="/units"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-3.5 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body group"
+                className="inline-flex items-center gap-2 bg-[#c89c3c] text-[#0A1128] px-10 py-3.5 font-semibold rounded-lg hover:bg-white hover:text-[#0A1128] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(200,156,60,0.4)] transition-all duration-300 ease-in-out font-body group"
               >
                 Reserve Your Unit
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
