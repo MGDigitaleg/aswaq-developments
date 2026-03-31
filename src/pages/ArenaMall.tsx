@@ -43,7 +43,7 @@ const ArenaMall = () => {
     <Layout>
       {/* Hero */}
       <section className="bg-primary pt-48 pb-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ const ArenaMall = () => {
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">
               ASWAQ Developments
             </p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">
               Arena Mall at El Shorouk
             </h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
@@ -63,8 +63,8 @@ const ArenaMall = () => {
       </section>
 
       {/* About */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div
               className="md:w-1/2"
@@ -82,7 +82,7 @@ const ArenaMall = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">Arena Mall at El Shorouk</h2>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">Arena Mall at El Shorouk</h2>
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
                 Arena Mall is a contemporary mixed-use project by ASWAQ Developments, situated in one of El Shorouk City's most strategic locations. It offers a premium environment with a mix of retail, administrative, and medical units.
               </p>
@@ -95,9 +95,9 @@ const ArenaMall = () => {
       </section>
 
       {/* Location */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-6">
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-6">
             Arena Mall Location
           </h2>
           <p className="text-muted-foreground font-body text-center max-w-3xl mx-auto mb-12">
@@ -140,9 +140,9 @@ const ArenaMall = () => {
       </section>
 
       {/* Available Units */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
             Commercial Units Available at Arena Mall
           </h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
@@ -169,9 +169,9 @@ const ArenaMall = () => {
       </section>
 
       {/* Why Invest */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">
             Why Invest in Arena Mall
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">

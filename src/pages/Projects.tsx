@@ -135,7 +135,7 @@ const Projects = () => {
           className="relative z-10 text-center px-4"
         >
           <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Portfolio</p>
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground">
             ASWAQ Developments Real Estate Projects
           </h1>
         </motion.div>
@@ -143,7 +143,7 @@ const Projects = () => {
 
       {/* Intro Section */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -171,7 +171,7 @@ const Projects = () => {
 
       {/* Project Cards with Hover */}
       <section className="section-padding bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {projects.map((project, i) => (
               <motion.div
@@ -218,7 +218,7 @@ const Projects = () => {
 
       {/* Available Units CTA */}
       <section className="bg-primary py-20 md:py-24">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

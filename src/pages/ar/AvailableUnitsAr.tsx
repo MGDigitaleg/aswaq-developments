@@ -57,10 +57,10 @@ const AvailableUnitsAr = () => {
   return (
     <Layout>
       <section className="bg-primary py-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-arabic font-medium tracking-widest text-sm mb-3">اختر وحدتك</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">
               الوحدات المتاحة: استكشف عقارات<br />للبيع والاستثمار والإيجار
             </h1>
             <p className="text-primary-foreground/70 font-arabic max-w-3xl mx-auto mb-4">
@@ -73,8 +73,8 @@ const AvailableUnitsAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {unitTypes.map((type, i) => (
               <motion.div key={type.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`flex flex-col md:flex-row gap-8 items-center ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
@@ -85,7 +85,7 @@ const AvailableUnitsAr = () => {
                 </div>
                 <div className="md:w-1/2">
                   <span className="text-3xl mb-3 block">{type.icon}</span>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">{type.title}</h2>
+                  <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4">{type.title}</h2>
                   <p className="text-muted-foreground font-arabic leading-relaxed mb-6">{type.description}</p>
                   <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded hover:bg-gold-light transition-colors font-arabic text-sm">
                     {type.cta}
@@ -97,9 +97,9 @@ const AvailableUnitsAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري؟</h2>
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري؟</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {whyChoose.map((item, i) => (
               <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex flex-col items-center gap-3 p-6 bg-background rounded-lg">

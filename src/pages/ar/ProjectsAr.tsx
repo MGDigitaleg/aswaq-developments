@@ -52,13 +52,13 @@ const ProjectsAr = () => {
       <section className="relative h-[320px] md:h-[380px] flex items-center justify-center pt-[120px] overflow-hidden">
         <img src={heroImg} alt="مشاريع أسواق العقارية" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground text-center px-4">
+        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground text-center px-4">
           مشاريع أسواق للتطوير العقاري
         </motion.h1>
       </section>
 
       <section className="py-16 md:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center">
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-6">مشاريع عقارية متكاملة في قلب مدينة الشروق</h2>
             <p className="text-muted-foreground font-arabic leading-relaxed mb-6">
@@ -79,7 +79,7 @@ const ProjectsAr = () => {
       </section>
 
       <section className="py-16 md:py-20 bg-secondary">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {projects.map((project, i) => (
               <motion.div key={project.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }}>
@@ -101,7 +101,7 @@ const ProjectsAr = () => {
       </section>
 
       <section className="bg-primary py-16 md:py-20">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-6">وحدات متاحة للبيع والإيجار</h2>
             <p className="text-primary-foreground/70 font-arabic leading-relaxed mb-4">

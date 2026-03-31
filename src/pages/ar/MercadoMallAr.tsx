@@ -40,10 +40,10 @@ const MercadoMallAr = () => {
   return (
     <Layout>
       <section className="bg-primary pt-48 pb-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">شركة أسواق للتطوير العقاري</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">ميركادو مول في مدينة الشروق</h1>
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">ميركادو مول في مدينة الشروق</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
               وجهة تجارية متميزة مصممة لتلبية الطلب المتزايد على مساحات التجزئة والأعمال في شرق القاهرة.
             </p>
@@ -51,8 +51,8 @@ const MercadoMallAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="rounded-lg overflow-hidden aspect-[4/3]">
@@ -60,7 +60,7 @@ const MercadoMallAr = () => {
               </div>
             </motion.div>
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">ميركادو مول بالشروق</h2>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">ميركادو مول بالشروق</h2>
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
                 يُعد ميركادو مول الشروق وجهة تجارية متميزة يقع في موقع استراتيجي ويمتد على ثلاثة طوابق، ويقدم مجموعة واسعة من الوحدات التجارية تبدأ مساحاتها من 24 متر مربع.
               </p>
@@ -72,9 +72,9 @@ const MercadoMallAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-6">موقع ميركادو مول</h2>
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-6">موقع ميركادو مول</h2>
           <p className="text-muted-foreground font-body text-center max-w-3xl mx-auto mb-12">
             يتمتع ميركادو مول بموقع استراتيجي في مدينة الشروق، الحي الثاني غرب، مباشرة أمام بنك القاهرة والمدرسة اليابانية، مما يضمن تدفقاً مستمراً للزوار يومياً.
           </p>
@@ -109,9 +109,9 @@ const MercadoMallAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">الوحدات التجارية المتاحة في ميركادو مول</h2>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">الوحدات التجارية المتاحة في ميركادو مول</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
             استكشف الوحدات المتاحة للإيجار والبيع في ميركادو مول والتي تتراوح مساحاتها من 24 م² إلى 300 م².
           </p>
@@ -130,9 +130,9 @@ const MercadoMallAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">لماذا تستثمر في ميركادو مول</h2>
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">لماذا تستثمر في ميركادو مول</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {whyInvest.map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? 20 : -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}

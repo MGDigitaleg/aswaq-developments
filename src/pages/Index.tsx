@@ -140,7 +140,7 @@ const Index = () => {
 
         {/* Content overlay container */}
         <div className="relative z-10 h-full flex items-center pt-[120px]">
-          <div className="container mx-auto px-4 md:px-8 lg:px-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center">
               {/* Glass content card */}
               <motion.div
@@ -291,7 +291,7 @@ const Index = () => {
 
       {/* Stats + About */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -332,7 +332,7 @@ const Index = () => {
 
       {/* Projects */}
       <section className="section-padding bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -387,7 +387,7 @@ const Index = () => {
 
       {/* Why Invest */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -425,7 +425,7 @@ const Index = () => {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left: CTA content */}
             <motion.div
@@ -482,11 +482,11 @@ const Index = () => {
 
       {/* Latest News */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-14">
             <div>
               <div className="section-divider mb-4" style={{ marginLeft: 0 }} />
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
                 Latest News
               </h2>
             </div>

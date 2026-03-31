@@ -33,7 +33,7 @@ const News = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-4"
+            className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-4"
           >
             News & Events
           </motion.h1>
@@ -45,7 +45,7 @@ const News = () => {
 
       {/* Blog Grid */}
       <section className="py-16 md:py-24 bg-primary-foreground">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <p className="text-center text-muted-foreground">Loading...</p>
           ) : articles.length === 0 ? (

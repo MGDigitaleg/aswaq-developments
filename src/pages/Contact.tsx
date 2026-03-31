@@ -111,10 +111,10 @@ const Contact = () => {
       <JsonLd data={breadcrumbs} />
       {/* Hero */}
       <section className="bg-primary pt-48 pb-24 md:pb-28">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Get In Touch</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">Contact Us</h1>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-6">Contact Us</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
               Have questions about our projects or available units? Reach out to our team and we'll help you find the perfect space.
             </p>
@@ -124,7 +124,7 @@ const Contact = () => {
 
       {/* Form + Contact Info */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
             {/* Form */}
             <motion.div
@@ -136,7 +136,7 @@ const Contact = () => {
             >
               <div className="mb-8">
                 <div className="section-divider mb-5" style={{ marginLeft: 0 }} />
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
+                <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
                   Send Us Your Inquiry
                 </h2>
               </div>

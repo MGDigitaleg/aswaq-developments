@@ -56,10 +56,10 @@ const UnitsForRent = () => {
   return (
     <Layout>
       <section className="bg-primary py-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">Units for Rent</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">
               Flexible Properties Designed for Business Success
             </h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
@@ -69,9 +69,9 @@ const UnitsForRent = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-4">Units for Rent Types</h2>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground text-center mb-4">Units for Rent Types</h2>
           <p className="text-muted-foreground font-body text-center max-w-2xl mx-auto mb-12">
             With units ranging from 30 to 300 m², ASWAQ offers the ideal environment for success.
           </p>
@@ -91,9 +91,9 @@ const UnitsForRent = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl font-bold text-foreground mb-4">Our Malls with Units for Rent</h2>
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">Our Malls with Units for Rent</h2>
           <p className="text-muted-foreground font-body max-w-2xl mx-auto mb-12">
             Each mall is developed to serve high-density residential areas, ensuring continuous demand.
           </p>
@@ -109,9 +109,9 @@ const UnitsForRent = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl font-bold text-foreground mb-12">Why Choose ASWAQ Developments</h2>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-12">Why Choose ASWAQ Developments</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {whyChoose.map((item, i) => (
               <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}

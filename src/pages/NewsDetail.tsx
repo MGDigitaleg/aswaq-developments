@@ -56,14 +56,14 @@ const NewsDetail = () => {
           <img src={article.image} alt={article.title} className="absolute inset-0 w-full h-full object-cover" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
-        <div className="relative z-10 container mx-auto px-4 lg:px-8 pb-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
           <Link to="/news" className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body text-sm mb-4">
             <ArrowLeft size={16} /> Back to News
           </Link>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground max-w-3xl"
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground max-w-3xl"
           >
             {article.title}
           </motion.h1>
@@ -72,7 +72,7 @@ const NewsDetail = () => {
 
       {/* Content */}
       <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
           <ContentBlockRenderer content={article.rawContent} fontClass="font-body" />
 
           {article.youtubeId && (
@@ -99,7 +99,7 @@ const NewsDetail = () => {
       {/* Related Articles */}
       {related.length > 0 && (
         <section className="py-16 bg-primary-foreground">
-          <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-center mb-10">
               More News
             </h2>

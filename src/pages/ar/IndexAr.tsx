@@ -146,7 +146,7 @@ const IndexAr = () => {
 
         {/* Content overlay container */}
         <div className="relative z-10 h-full flex items-center pt-[120px]">
-          <div className="container mx-auto px-4 md:px-8 lg:px-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-center">
               {/* Glass content card */}
               <motion.div
@@ -292,10 +292,10 @@ const IndexAr = () => {
       </section>
 
       {/* Stats + About */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
               أسواق للتطوير العقاري، المطور العقاري الموثوق في مصر
             </motion.h2>
             <p className="text-muted-foreground max-w-3xl mx-auto font-arabic">
@@ -317,9 +317,9 @@ const IndexAr = () => {
       </section>
 
       {/* Projects */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">
             مشاريعنا في أسواق للتطوير العقاري
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -342,9 +342,9 @@ const IndexAr = () => {
       </section>
 
       {/* Why Invest */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">
             لماذا تستثمر مع أسواق للتطوير العقاري
           </motion.h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
@@ -365,7 +365,7 @@ const IndexAr = () => {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent" />
         </div>
-        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
               الوحدات تُباع بسرعة، لا تفوّت الفرصة!
@@ -393,10 +393,10 @@ const IndexAr = () => {
       </section>
 
       {/* Latest News */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">آخر الأخبار</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">آخر الأخبار</h2>
             <Link to="/ar/news" className="text-primary font-semibold font-arabic text-sm inline-flex items-center gap-1 hover:underline">
               عرض الكل <ChevronLeft size={14} />
             </Link>

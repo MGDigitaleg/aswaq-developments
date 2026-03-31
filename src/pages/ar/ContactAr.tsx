@@ -106,10 +106,10 @@ const ContactAr = () => {
   return (
     <Layout>
       <section className="bg-primary pt-48 pb-24 md:pb-28">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-arabic font-semibold tracking-[0.25em] text-xs mb-4">تواصل معنا</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">اتصل بنا</h1>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-6">اتصل بنا</h1>
             <p className="text-primary-foreground/70 font-arabic max-w-3xl mx-auto text-base leading-relaxed">
               لديك أسئلة حول مشاريعنا أو الوحدات المتاحة؟ تواصل مع فريقنا وسنساعدك في إيجاد المساحة المثالية.
             </p>
@@ -117,11 +117,11 @@ const ContactAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
             <motion.div className="flex-1" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8 text-center">أرسل لنا استفسارك</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-8 text-center">أرسل لنا استفسارك</h2>
 
               {submitted ? (
                 <div className="text-center py-16 bg-cream rounded-lg">

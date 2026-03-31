@@ -115,7 +115,7 @@ const AvailableUnits = () => {
       <JsonLd data={faqSchemaData} />
       {/* Hero */}
       <section className="bg-primary py-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -124,7 +124,7 @@ const AvailableUnits = () => {
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">
               Choose Your Unit
             </p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">
               Available Units: Explore Properties for<br />Sale, Investment & Rent
             </h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto mb-4">
@@ -138,8 +138,8 @@ const AvailableUnits = () => {
       </section>
 
       {/* Unit Types */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {unitTypes.map((type, i) => (
               <motion.div
@@ -163,7 +163,7 @@ const AvailableUnits = () => {
                 </div>
                 <div className="md:w-1/2">
                   <span className="text-3xl mb-3 block">{type.icon}</span>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+                  <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4">
                     {type.title}
                   </h2>
                   <p className="text-muted-foreground font-body leading-relaxed mb-6">
@@ -183,9 +183,9 @@ const AvailableUnits = () => {
       </section>
 
       {/* Why Choose */}
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
             Why Choose ASWAQ Developments?
           </h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">

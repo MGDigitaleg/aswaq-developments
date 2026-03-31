@@ -40,10 +40,10 @@ const MercadoMall = () => {
   return (
     <Layout>
       <section className="bg-primary pt-48 pb-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">ASWAQ Developments</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">Mercado Mall at El Shorouk</h1>
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">Mercado Mall at El Shorouk</h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
               A prime commercial destination designed to meet the growing demand for retail and business spaces in East Cairo.
             </p>
@@ -51,8 +51,8 @@ const MercadoMall = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="rounded-lg overflow-hidden aspect-[4/3]">
@@ -60,7 +60,7 @@ const MercadoMall = () => {
               </div>
             </motion.div>
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">Mercado Mall at El Shorouk</h2>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">Mercado Mall at El Shorouk</h2>
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
                 Mercado Mall El Shorouk is a prime commercial destination strategically located in a prime location. The mall spans three floors, offering a wide range of commercial units starting from 24 square meters.
               </p>
@@ -72,9 +72,9 @@ const MercadoMall = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-6">Mercado Mall Location</h2>
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-6">Mercado Mall Location</h2>
           <p className="text-muted-foreground font-body text-center max-w-3xl mx-auto mb-12">
             Strategically located in El Shorouk City – Second District West, directly facing Banque du Caire and the Japanese School, ensuring continuous daily foot traffic and high visibility.
           </p>
@@ -109,9 +109,9 @@ const MercadoMall = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Commercial Units Available at Mercado Mall</h2>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">Commercial Units Available at Mercado Mall</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
             Explore available units for rent & sale at Mercado Mall ranging from 24 m² to 300 m².
           </p>
@@ -130,9 +130,9 @@ const MercadoMall = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-12">Why Invest in Mercado Mall</h2>
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">Why Invest in Mercado Mall</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {whyInvest.map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}

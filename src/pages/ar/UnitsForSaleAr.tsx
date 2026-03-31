@@ -58,10 +58,10 @@ const UnitsForSaleAr = () => {
   return (
     <Layout>
       <section className="bg-primary py-24">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">وحدات للبيع</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">
               امتلك عقاراً مصمماً للنمو
             </h1>
             <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">
@@ -71,9 +71,9 @@ const UnitsForSaleAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-4">أنواع الوحدات للبيع</h2>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground text-center mb-4">أنواع الوحدات للبيع</h2>
           <p className="text-muted-foreground font-body text-center max-w-2xl mx-auto mb-12">
             بمساحات تتراوح من 30 إلى 300 م²، توفر أسواق البيئة المثالية للنجاح.
           </p>
@@ -93,9 +93,9 @@ const UnitsForSaleAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-cream">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl font-bold text-foreground mb-4">مولاتنا التي تضم وحدات للبيع</h2>
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">مولاتنا التي تضم وحدات للبيع</h2>
           <p className="text-muted-foreground font-body max-w-2xl mx-auto mb-12">
             تم تطوير كل مول لخدمة مناطق سكنية ذات كثافة عالية، مما يضمن طلباً مستمراً على العقارات التجارية والإدارية والطبية.
           </p>
@@ -111,9 +111,9 @@ const UnitsForSaleAr = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl font-bold text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري</h2>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-12">لماذا تختار أسواق للتطوير العقاري</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {whyChoose.map((item, i) => (
               <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}

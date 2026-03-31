@@ -24,7 +24,7 @@ const CareersAr = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground"
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground"
           >
             وظائف
           </motion.h1>
@@ -33,7 +33,7 @@ const CareersAr = () => {
 
       {/* Content */}
       <section className="py-16 md:py-20">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Application Form - appears first on RTL */}
             <div className="order-1 lg:order-2">
