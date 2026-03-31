@@ -75,7 +75,7 @@ const UnitCategoryPage = ({
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-primary pt-48 pb-24">
+      <section className="bg-primary pt-40 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">{heroLabel}</p>
@@ -86,7 +86,7 @@ const UnitCategoryPage = ({
       </section>
 
       {/* Intro */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">{introTitle}</h2>
@@ -96,7 +96,7 @@ const UnitCategoryPage = ({
       </section>
 
       {/* Location */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-6">{locationTitle}</h2>
           <p className="text-muted-foreground font-body mb-6">{locationDescription}</p>
@@ -115,7 +115,7 @@ const UnitCategoryPage = ({
       </section>
 
       {/* Malls */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground text-center mb-4">{mallsSectionTitle}</h2>
           {mallsSectionIntro && (

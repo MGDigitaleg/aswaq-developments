@@ -292,7 +292,7 @@ const IndexAr = () => {
       </section>
 
       {/* Stats + About */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
@@ -317,7 +317,7 @@ const IndexAr = () => {
       </section>
 
       {/* Projects */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">
             مشاريعنا في أسواق للتطوير العقاري
@@ -342,7 +342,7 @@ const IndexAr = () => {
       </section>
 
       {/* Why Invest */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">
             لماذا تستثمر مع أسواق للتطوير العقاري
@@ -361,7 +361,7 @@ const IndexAr = () => {
       </section>
 
       {/* Units CTA Banner */}
-      <section className="relative py-24 bg-primary overflow-hidden">
+      <section className="relative py-12 md:py-16 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent" />
         </div>
@@ -393,7 +393,7 @@ const IndexAr = () => {
       </section>
 
       {/* Latest News */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">آخر الأخبار</h2>

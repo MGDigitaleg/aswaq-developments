@@ -49,7 +49,7 @@ const SolariaMallAr = () => {
 
   return (
     <Layout>
-      <section className="bg-primary pt-48 pb-24">
+      <section className="bg-primary pt-40 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">شركة أسواق للتطوير العقاري</p>
@@ -61,7 +61,7 @@ const SolariaMallAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div className="md:w-1/2" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -82,7 +82,7 @@ const SolariaMallAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-6">موقع سولاريا مول</h2>
           <p className="text-muted-foreground font-body text-center max-w-3xl mx-auto mb-12">
@@ -119,7 +119,7 @@ const SolariaMallAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">الوحدات المتاحة في سولاريا مول</h2>
           <p className="text-muted-foreground font-body max-w-3xl mx-auto mb-12">
@@ -140,7 +140,7 @@ const SolariaMallAr = () => {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">لماذا تستثمر في سولاريا مول</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
