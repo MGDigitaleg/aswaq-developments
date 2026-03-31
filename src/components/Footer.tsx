@@ -169,7 +169,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/50">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-primary-foreground/40" />
-                <span>
+                <span className="text-[sidebar-primary-foreground] text-slate-400">
                   {isArabic
                     ? "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون"
                     : "Villa 1/127 - Al-Nsoor complex, Al Moltaqa Neighborhood, Otostrad road - Sheraton"}
