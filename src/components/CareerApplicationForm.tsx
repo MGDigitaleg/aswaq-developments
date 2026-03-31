@@ -131,7 +131,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           value={form.name}
           onChange={(e) => handleChange("name", e.target.value)}
           required
-          className="bg-secondary border-0"
+          className="bg-secondary border-0 text-white"
         />
         <Input
           type="email"
