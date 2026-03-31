@@ -230,7 +230,7 @@ const Index = () => {
         </div>
 
         {/* Slide navigation — bottom center */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 gap-[24px] items-center justify-start flex flex-row mx-0 -my-[15px]">
           {/* Prev */}
           <button
             onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
