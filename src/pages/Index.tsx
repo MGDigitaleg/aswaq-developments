@@ -435,7 +435,7 @@ const Index = () => {
               <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white mb-5">
                 Units Are Selling Fast, Don't Miss Out!
               </h2>
-              <p className="text-primary-foreground/70 font-body max-w-2xl mb-6 text-base leading-relaxed">
+              <p className="text-white/80 font-body max-w-2xl mb-6 text-base leading-relaxed">
                 Browse our available units and select what matches your business or investment plan.
               </p>
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10">
