@@ -160,9 +160,9 @@ const Index = () => {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="text-primary-foreground/60 font-body font-semibold tracking-[0.35em] uppercase text-[11px] mb-6"
+                  className="text-primary-foreground/70 font-body font-light tracking-[0.25em] uppercase text-xs md:text-sm mb-4"
                 >
-                  ASWAQ Developments
+                  ASWAQ Developments and Project Management
                 </motion.p>
 
                 <motion.h1
@@ -172,10 +172,7 @@ const Index = () => {
                   className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground leading-[1.08] mb-6"
                   style={{ letterSpacing: '-0.02em' }}
                 >
-                  Redefining<br />
-                  <span className="italic text-primary-foreground">
-                    Living Excellence
-                  </span>
+                  The Future of Development
                 </motion.h1>
 
                 <motion.p
