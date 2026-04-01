@@ -157,7 +157,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
 
         {!selectedCareerId && (
           <Select value={form.career_id} onValueChange={(v) => handleChange("career_id", v)}>
-            <SelectTrigger className="bg-secondary border-0">
+            <SelectTrigger className="bg-white border-0 text-white">
               <SelectValue placeholder={l.selectPosition} />
             </SelectTrigger>
             <SelectContent>
