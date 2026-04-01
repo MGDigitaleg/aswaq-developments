@@ -89,7 +89,7 @@ const CareersAr = () => {
                     </p>
                     <Link
                       to={`/ar/careers/${career.slug}`}
-                      className="inline-block mt-4 bg-[#D4AF37] text-[#0A1128] text-sm font-bold tracking-wide border border-transparent rounded-lg px-6 py-2 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)]"
+                      className="inline-block mt-4 bg-primary text-primary-foreground text-sm font-semibold px-6 py-2 rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300"
                     >
                       اقرأ المزيد
                     </Link>

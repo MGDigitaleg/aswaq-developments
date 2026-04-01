@@ -171,7 +171,7 @@ const AvailableUnits = () => {
                   </p>
                   <Link
                     to={type.link}
-                    className="inline-block bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-6 py-2.5 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-body text-sm"
+                    className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body text-sm"
                   >
                     {type.cta}
                   </Link>

@@ -192,7 +192,8 @@ const Index = () => {
                 >
                   <Link
                     to="/projects"
-                    className="group bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-8 py-3.5 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-body inline-flex items-center justify-center gap-2"
+                    className="group text-accent-foreground px-8 py-3.5 font-semibold rounded-lg transition-all duration-300 font-body inline-flex items-center justify-center gap-2 bg-[#ffffe6]"
+                    style={{ boxShadow: '0 4px 24px -4px hsl(var(--accent) / 0.4)' }}
                   >
                     Explore Projects
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -475,7 +476,7 @@ const Index = () => {
             >
               <Link
                 to="/units"
-                className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-8 py-3 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-body group"
+                className="inline-flex items-center gap-2 bg-[#c89c3c] text-[#0A1128] px-8 py-3 font-bold rounded-lg hover:bg-white hover:text-[#0A1128] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(200,156,60,0.4)] transition-all duration-300 ease-in-out font-body group"
               >
                 Reserve Your Unit
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
