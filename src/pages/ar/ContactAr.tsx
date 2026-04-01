@@ -127,7 +127,7 @@ const ContactAr = () => {
                 <div className="text-center py-16 bg-cream rounded-2xl">
                   <p className="font-display text-2xl font-bold text-foreground mb-2">شكرًا لك!</p>
                   <p className="text-muted-foreground font-arabic">لقد استلمنا استفسارك وسنرد عليك قريبًا.</p>
-                  <button onClick={() => setSubmitted(false)} className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-arabic">
+                  <button onClick={() => setSubmitted(false)} className="mt-6 bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-6 py-2.5 text-sm transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-arabic">
                     إرسال استفسار آخر
                   </button>
                 </div>
@@ -196,7 +196,7 @@ const ContactAr = () => {
                   </div>
 
                   <div className="flex items-center justify-start">
-                    <button type="submit" disabled={submitting} className="bg-primary text-primary-foreground px-10 py-3 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic text-sm disabled:opacity-50">
+                    <button type="submit" disabled={submitting} className="bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-10 py-3 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-arabic text-sm disabled:opacity-50">
                       {submitting ? "جاري الإرسال…" : "إرسال"}
                     </button>
                   </div>

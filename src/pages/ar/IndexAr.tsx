@@ -197,8 +197,7 @@ const IndexAr = () => {
                 >
                   <Link
                     to="/ar/projects"
-                    className="group bg-accent text-accent-foreground px-8 py-3.5 font-semibold rounded-lg hover:bg-gold-light transition-all duration-300 font-arabic inline-flex items-center justify-center gap-2"
-                    style={{ boxShadow: '0 4px 24px -4px hsl(var(--accent) / 0.4)' }}
+                    className="group bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-8 py-3.5 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-arabic inline-flex items-center justify-center gap-2"
                   >
                     استكشف المشاريع
                     <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
@@ -386,7 +385,7 @@ const IndexAr = () => {
                 </Link>
               ))}
             </div>
-            <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-8 py-3 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-arabic">
+            <Link to="/ar/units" className="inline-block bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-8 py-3 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-arabic">
               احجز وحدتك
             </Link>
           </motion.div>

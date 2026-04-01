@@ -411,18 +411,9 @@ const Navbar = () => {
 
               <Link
                 to={`${prefix}/contact`}
-                className="relative text-[12px] font-semibold rounded-full transition-all duration-300 font-body overflow-hidden group px-5 py-2"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(41 56% 51%) 0%, hsl(41 56% 45%) 100%)',
-                  color: 'hsl(226 76% 12%)',
-                  boxShadow: '0 2px 10px -2px hsl(41 56% 51% / 0.4)',
-                }}
+                className="text-[12px] font-bold tracking-wide rounded-full transition-all duration-300 ease-in-out font-body px-5 py-2 bg-[#D4AF37] text-[#0A1128] border border-transparent hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)]"
               >
-                <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(135deg, hsl(41 63% 61%) 0%, hsl(41 56% 51%) 100%)' }}
-                />
+                {isArabic ? "تواصل معنا" : "Contact Us"}
               </Link>
             </div>
 
@@ -485,11 +476,7 @@ const Navbar = () => {
                 <Link
                   to={`${prefix}/contact`}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-semibold rounded-full text-center py-3 mt-1 transition-all duration-300"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(41 56% 51%) 0%, hsl(41 56% 45%) 100%)',
-                    color: 'hsl(226 76% 12%)',
-                  }}
+                  className="text-sm font-bold tracking-wide rounded-full text-center py-3 mt-1 transition-all duration-300 ease-in-out bg-[#D4AF37] text-[#0A1128] border border-transparent hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)]"
                 >
                   {isArabic ? "تواصل معنا" : "Contact Us"}
                 </Link>
