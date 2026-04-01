@@ -192,7 +192,7 @@ const Index = () => {
                 >
                   <Link
                     to="/projects"
-                    className="group bg-accent text-accent-foreground px-8 py-3.5 font-semibold rounded-lg hover:bg-gold-light transition-all duration-300 font-body inline-flex items-center justify-center gap-2"
+                    className="group text-accent-foreground px-8 py-3.5 font-semibold rounded-lg transition-all duration-300 font-body inline-flex items-center justify-center gap-2 bg-[#ffffe6]"
                     style={{ boxShadow: '0 4px 24px -4px hsl(var(--accent) / 0.4)' }}
                   >
                     Explore Projects
