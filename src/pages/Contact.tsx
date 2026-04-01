@@ -270,7 +270,7 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="group bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-body text-sm disabled:opacity-50 inline-flex items-center gap-2"
+                      className="group bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-10 py-3.5 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-body text-sm disabled:opacity-50 inline-flex items-center gap-2"
                     >
                       {submitting ? "Sending…" : "Send"}
                       {!submitting && <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
