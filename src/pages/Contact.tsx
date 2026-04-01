@@ -110,7 +110,7 @@ const Contact = () => {
     <Layout>
       <JsonLd data={breadcrumbs} />
       {/* Hero */}
-      <section className="bg-primary pt-40 pb-16">
+      <section className="bg-primary pt-40 pb-16 min-h-[450px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Get In Touch</p>

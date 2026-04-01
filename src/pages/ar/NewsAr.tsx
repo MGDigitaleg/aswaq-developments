@@ -18,7 +18,7 @@ const NewsAr = () => {
 
   return (
     <Layout>
-      <section className="relative h-[50vh] min-h-[420px] flex items-center justify-center pt-[120px]">
+      <section className="relative h-[50vh] min-h-[450px] flex items-center justify-center pt-[120px]">
         <img src={heroBuilding} alt="أخبار أسواق" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 text-center px-4">
