@@ -42,7 +42,7 @@ const ArenaMall = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-primary pt-40 pb-16">
+      <section className="bg-primary pt-40 pb-16 min-h-[450px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
