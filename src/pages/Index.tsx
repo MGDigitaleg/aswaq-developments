@@ -192,8 +192,7 @@ const Index = () => {
                 >
                   <Link
                     to="/projects"
-                    className="group text-accent-foreground px-8 py-3.5 font-semibold rounded-lg transition-all duration-300 font-body inline-flex items-center justify-center gap-2 bg-[#ffffe6]"
-                    style={{ boxShadow: '0 4px 24px -4px hsl(var(--accent) / 0.4)' }}
+                    className="group bg-[#D4AF37] text-[#0A1128] font-bold tracking-wide border border-transparent rounded-lg px-8 py-3.5 transition-all duration-300 ease-in-out hover:bg-[#0A1128] hover:text-[#D4AF37] hover:border-[#D4AF37] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)] font-body inline-flex items-center justify-center gap-2"
                   >
                     Explore Projects
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
