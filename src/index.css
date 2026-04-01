@@ -273,15 +273,7 @@
   right: 0;
 }
 
-/* Custom cursor styles - desktop only */
-@media (hover: hover) and (pointer: fine) {
-  .custom-cursor-active {
-    cursor: none;
-  }
-  .custom-cursor-active * {
-    cursor: none;
-  }
-}
+/* Custom cursor disabled */
 
 /* Smooth scroll */
 html {
