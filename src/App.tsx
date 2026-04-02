@@ -116,6 +116,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/why-invest-shorouk" element={<WhyInvestShorouk />} />
+            <Route path="/virtual-tour" element={<VirtualTour />} />
 
             {/* Arabic routes */}
             <Route path="/ar" element={<IndexAr />} />
