@@ -89,36 +89,36 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
 
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <div className="flex items-center gap-1 cursor-pointer">
+      <div className="flex items-center gap-1.5 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-medium tracking-[0.03em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
+          className={`text-[13px] font-medium tracking-[0.02em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-primary-foreground/70" : "text-primary-foreground/40"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-primary-foreground/60" : "text-primary-foreground/35"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 6, scale: 0.97 }}
+            initial={{ opacity: 0, y: 8, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6, scale: 0.97 }}
+            exit={{ opacity: 0, y: 8, scale: 0.97 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-full left-0 mt-4 w-52 rounded-2xl border py-2 z-50"
+            className="absolute top-full left-0 mt-5 w-56 rounded-2xl py-2.5 z-50"
             style={{
-              background: 'hsl(226 76% 12% / 0.94)',
-              backdropFilter: 'blur(24px) saturate(1.3)',
-              WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
-              borderColor: 'hsl(39 38% 93% / 0.08)',
-              boxShadow: '0 20px 50px -12px hsl(226 76% 6% / 0.6), 0 0 0 1px hsl(39 38% 93% / 0.03)',
+              background: 'hsl(226 76% 10% / 0.96)',
+              backdropFilter: 'blur(28px) saturate(1.4)',
+              WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
+              border: '1px solid hsl(39 38% 93% / 0.07)',
+              boxShadow: '0 24px 60px -12px hsl(226 76% 6% / 0.7), 0 0 0 1px hsl(39 38% 93% / 0.03)',
             }}
           >
             {item.children?.map((child) => (
               <Link
                 key={child.href}
                 to={child.href}
-                className="block px-4 py-2.5 text-[12.5px] font-medium text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/[0.04] transition-all duration-200 mx-1.5 rounded-lg"
+                className="block px-5 py-2.5 text-[13px] font-medium text-primary-foreground/60 hover:text-primary-foreground hover:bg-primary-foreground/[0.04] transition-all duration-200 mx-1.5 rounded-lg"
               >
                 {child.label}
               </Link>
@@ -145,37 +145,38 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
 
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <div className="flex items-center gap-1 cursor-pointer">
+      <div className="flex items-center gap-1.5 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-medium tracking-[0.03em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
+          className={`text-[13px] font-medium tracking-[0.02em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-primary-foreground/70" : "text-primary-foreground/40"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-primary-foreground/60" : "text-primary-foreground/35"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 6, scale: 0.97 }}
+            initial={{ opacity: 0, y: 8, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6, scale: 0.97 }}
+            exit={{ opacity: 0, y: 8, scale: 0.97 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-2xl border py-5 px-6 z-50 min-w-[520px]"
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-5 rounded-2xl py-6 px-7 z-50 min-w-[560px]"
             style={{
-              background: 'hsl(226 76% 12% / 0.94)',
-              backdropFilter: 'blur(24px) saturate(1.3)',
-              WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
-              borderColor: 'hsl(39 38% 93% / 0.08)',
-              boxShadow: '0 20px 50px -12px hsl(226 76% 6% / 0.6), 0 0 0 1px hsl(39 38% 93% / 0.03)',
+              background: 'hsl(226 76% 10% / 0.96)',
+              backdropFilter: 'blur(28px) saturate(1.4)',
+              WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
+              border: '1px solid hsl(39 38% 93% / 0.07)',
+              boxShadow: '0 24px 60px -12px hsl(226 76% 6% / 0.7), 0 0 0 1px hsl(39 38% 93% / 0.03)',
             }}
           >
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-7">
               {item.children?.map((group) => (
                 <div key={group.href}>
                   <Link
                     to={group.href}
-                    className="block font-display font-bold text-[12px] uppercase tracking-wider text-primary-foreground/60 hover:text-primary-foreground transition-colors mb-3 pb-2 border-b border-primary-foreground/[0.06]"
+                    className="block font-display font-bold text-[11px] uppercase tracking-[0.15em] mb-4 pb-2.5 border-b transition-colors"
+                    style={{ color: 'hsl(var(--gold) / 0.7)', borderColor: 'hsl(var(--gold) / 0.1)' }}
                   >
                     {group.label}
                   </Link>
@@ -183,7 +184,7 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
                     <Link
                       key={sub.href}
                       to={sub.href}
-                      className="block text-[11.5px] text-primary-foreground/55 hover:text-primary-foreground transition-colors py-1.5"
+                      className="block text-[12px] text-primary-foreground/50 hover:text-primary-foreground transition-colors py-1.5 leading-relaxed"
                     >
                       {sub.label}
                     </Link>
@@ -208,7 +209,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className={`w-full flex items-center justify-between text-sm font-medium py-3 transition-colors ${active ? "text-primary-foreground" : "text-primary-foreground/80"}`}
+        className={`w-full flex items-center justify-between text-sm font-medium py-3.5 transition-colors ${active ? "text-primary-foreground" : "text-primary-foreground/75"}`}
       >
         {item.label}
         <ChevronDown size={16} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
@@ -226,7 +227,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
                 <div key={child.href}>
                   <button
                     onClick={() => setSubOpen(subOpen === child.href ? null : child.href)}
-                    className={`w-full flex items-center justify-between text-sm font-medium py-2.5 transition-colors ${isPathInTree(pathname, child) ? "text-primary-foreground" : "text-primary-foreground/60"}`}
+                    className={`w-full flex items-center justify-between text-sm font-medium py-2.5 transition-colors ${isPathInTree(pathname, child) ? "text-primary-foreground" : "text-primary-foreground/55"}`}
                   >
                     {child.label}
                     <ChevronDown
@@ -247,7 +248,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
                             key={sub.href}
                             to={sub.href}
                             onClick={onClose}
-                            className={`block text-sm py-2 transition-colors ${pathname === sub.href ? "text-primary-foreground" : "text-primary-foreground/50"}`}
+                            className={`block text-sm py-2 transition-colors ${pathname === sub.href ? "text-primary-foreground" : "text-primary-foreground/45"}`}
                           >
                             {sub.label}
                           </Link>
@@ -261,7 +262,7 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
                   key={child.href}
                   to={child.href}
                   onClick={onClose}
-                  className={`block text-sm font-medium py-2.5 transition-colors ${pathname === child.href ? "text-primary-foreground" : "text-primary-foreground/60"}`}
+                  className={`block text-sm font-medium py-2.5 transition-colors ${pathname === child.href ? "text-primary-foreground" : "text-primary-foreground/55"}`}
                 >
                   {child.label}
                 </Link>
@@ -292,13 +293,10 @@ const Navbar = () => {
       setScrolled(currentY > 50);
 
       if (currentY <= 300) {
-        // Always visible in the first 300px
         setVisible(true);
       } else if (currentY < lastScrollY.current) {
-        // Scrolling up → show
         setVisible(true);
       } else if (currentY > lastScrollY.current) {
-        // Scrolling down past 300px → hide
         setVisible(false);
       }
 
@@ -320,53 +318,50 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
-      {/* Floating pill container */}
       <motion.div
         className="pointer-events-auto relative mx-4 lg:mx-8 mt-4 lg:mt-5 w-full"
-        style={{ maxWidth: '1320px' }}
+        style={{ maxWidth: '1360px' }}
         initial={false}
         animate={{
           y: visible ? 0 : -120,
           opacity: visible ? 1 : 0,
-          paddingTop: scrolled ? '12px' : '14px',
-          paddingBottom: scrolled ? '12px' : '14px',
         }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       >
         <div
-          className="relative rounded-full overflow-visible px-4 lg:px-7 transition-all duration-500"
+          className="relative rounded-full overflow-visible px-5 lg:px-8 transition-all duration-500"
           style={{
             background: scrolled
-              ? 'hsl(226 76% 12% / 0.9)'
-              : 'hsl(226 76% 12% / 0.65)',
-            backdropFilter: 'blur(28px) saturate(1.4)',
-            WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
-            border: '1px solid hsl(39 38% 93% / 0.08)',
+              ? 'hsl(226 76% 9% / 0.95)'
+              : 'hsl(226 76% 10% / 0.7)',
+            backdropFilter: 'blur(32px) saturate(1.5)',
+            WebkitBackdropFilter: 'blur(32px) saturate(1.5)',
+            border: `1px solid ${scrolled ? 'hsl(39 38% 93% / 0.06)' : 'hsl(39 38% 93% / 0.08)'}`,
             boxShadow: scrolled
-              ? '0 8px 40px -8px hsl(226 76% 6% / 0.6), 0 2px 12px -2px hsl(226 76% 6% / 0.35), inset 0 1px 0 0 hsl(39 38% 93% / 0.04)'
-              : '0 4px 24px -4px hsl(226 76% 6% / 0.35), 0 1px 8px -1px hsl(226 76% 6% / 0.2), inset 0 1px 0 0 hsl(39 38% 93% / 0.06)',
+              ? '0 8px 40px -8px hsl(226 76% 6% / 0.65), inset 0 1px 0 0 hsl(39 38% 93% / 0.03)'
+              : '0 4px 24px -4px hsl(226 76% 6% / 0.3), inset 0 1px 0 0 hsl(39 38% 93% / 0.05)',
           }}
         >
-          {/* Subtle top highlight */}
+          {/* Subtle gold accent line at top */}
           <div
-            className="absolute top-0 left-[15%] right-[15%] h-px rounded-full"
-            style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--accent) / 0.15), transparent)' }}
+            className="absolute top-0 left-[20%] right-[20%] h-px"
+            style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--gold) / 0.12), transparent)' }}
           />
 
-          <div className="flex items-center justify-between py-2.5 lg:py-3">
+          <div className="flex items-center justify-between py-3 lg:py-3.5">
             {/* Logo */}
             <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0">
               <img
                 src={aswaqLogo}
                 alt="ASWAQ Developments"
-                className="w-[140px] lg:w-[160px] relative transition-opacity duration-300 group-hover:opacity-90"
-                width={160}
-                height={63}
+                className="w-[140px] lg:w-[155px] relative transition-opacity duration-300 group-hover:opacity-90"
+                width={155}
+                height={61}
               />
             </Link>
 
             {/* Desktop Nav — centered */}
-            <nav className="hidden lg:flex items-center gap-4 xl:gap-5 absolute left-1/2 -translate-x-1/2">
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-6 absolute left-1/2 -translate-x-1/2">
               {navLinks.map((link) => {
                 const active = isPathInTree(location.pathname, link);
                 if (!link.children) {
@@ -374,18 +369,18 @@ const Navbar = () => {
                     <Link
                       key={link.href}
                       to={link.href}
-                      className={`relative text-[12.5px] font-medium tracking-[0.03em] transition-all duration-300 whitespace-nowrap ${
+                      className={`relative text-[13px] font-medium tracking-[0.02em] transition-all duration-300 whitespace-nowrap ${
                         active
                           ? "text-primary-foreground"
-                          : "text-primary-foreground/70 hover:text-primary-foreground"
+                          : "text-primary-foreground/65 hover:text-primary-foreground"
                       }`}
                     >
                       {link.label}
                       {active && (
                         <motion.span
                           layoutId="nav-active"
-                          className="absolute -bottom-1 left-0 right-0 h-[1.5px] rounded-full"
-                          style={{ background: 'hsl(var(--accent))' }}
+                          className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
+                          style={{ background: 'hsl(var(--gold))' }}
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
@@ -399,29 +394,32 @@ const Navbar = () => {
             </nav>
 
             {/* Right: Language + CTA */}
-            <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <div className="hidden lg:flex items-center gap-4 shrink-0">
               <button
                 onClick={switchLanguage}
-                className="flex items-center gap-1.5 text-[12px] font-medium text-primary-foreground/50 hover:text-primary-foreground transition-all duration-300 px-2 py-1.5 rounded-full hover:bg-primary-foreground/[0.06]"
+                className="flex items-center gap-1.5 text-[12px] font-medium text-primary-foreground/45 hover:text-primary-foreground transition-all duration-300 px-2.5 py-1.5 rounded-full hover:bg-primary-foreground/[0.05]"
                 aria-label={isArabic ? "Switch to English - EN" : "التبديل إلى العربية - عربي"}
               >
-                <Globe size={13} className="opacity-60" />
+                <Globe size={13} className="opacity-50" />
                 {isArabic ? "EN" : "عربي"}
               </button>
 
+              {/* Divider */}
+              <div className="w-px h-5 bg-primary-foreground/10" />
+
               <Link
                 to={`${prefix}/contact`}
-                className="relative text-[12px] font-semibold rounded-full transition-all duration-300 font-body overflow-hidden group px-5 py-2"
+                className="relative text-[12px] font-semibold rounded-full transition-all duration-300 font-body overflow-hidden group px-6 py-2.5"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(41 56% 51%) 0%, hsl(41 56% 45%) 100%)',
-                  color: 'hsl(226 76% 12%)',
-                  boxShadow: '0 2px 10px -2px hsl(41 56% 51% / 0.4)',
+                  background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(41 56% 45%) 100%)',
+                  color: 'hsl(226 76% 10%)',
+                  boxShadow: '0 2px 12px -2px hsl(var(--gold) / 0.35)',
                 }}
               >
-                <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
+                <span className="relative z-10 tracking-[0.03em]">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(135deg, hsl(41 63% 61%) 0%, hsl(41 56% 51%) 100%)' }}
+                  style={{ background: 'linear-gradient(135deg, hsl(41 63% 61%) 0%, hsl(var(--gold)) 100%)' }}
                 />
               </Link>
             </div>
@@ -429,7 +427,7 @@ const Navbar = () => {
             {/* Mobile toggle */}
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden text-primary-foreground/80 hover:text-primary-foreground transition-colors p-1"
+              className="lg:hidden text-primary-foreground/80 hover:text-primary-foreground transition-colors p-1.5"
               aria-label="Toggle menu"
             >
               {open ? <X size={22} /> : <Menu size={22} />}
@@ -437,7 +435,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu — drops below the pill */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {open && (
             <motion.div
@@ -447,14 +445,14 @@ const Navbar = () => {
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="lg:hidden mt-2 mx-1 rounded-3xl overflow-hidden"
               style={{
-                background: 'hsl(226 76% 12% / 0.94)',
-                backdropFilter: 'blur(28px) saturate(1.4)',
-                WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
-                border: '1px solid hsl(39 38% 93% / 0.07)',
-                boxShadow: '0 12px 40px -8px hsl(226 76% 6% / 0.6)',
+                background: 'hsl(226 76% 9% / 0.96)',
+                backdropFilter: 'blur(32px) saturate(1.5)',
+                WebkitBackdropFilter: 'blur(32px) saturate(1.5)',
+                border: '1px solid hsl(39 38% 93% / 0.06)',
+                boxShadow: '0 16px 48px -8px hsl(226 76% 6% / 0.7)',
               }}
             >
-              <nav className="py-4 px-5 flex flex-col gap-0.5">
+              <nav className="py-5 px-6 flex flex-col gap-0.5">
                 {navLinks.map((link) =>
                   link.children ? (
                     <MobileAccordion
@@ -468,16 +466,16 @@ const Navbar = () => {
                       key={link.href}
                       to={link.href}
                       onClick={() => setOpen(false)}
-                      className={`text-sm font-medium py-3 transition-colors ${location.pathname === link.href ? "text-primary-foreground" : "text-primary-foreground/80"}`}
+                      className={`text-sm font-medium py-3.5 transition-colors ${location.pathname === link.href ? "text-primary-foreground" : "text-primary-foreground/75"}`}
                     >
                       {link.label}
                     </Link>
                   ),
                 )}
-                <div className="h-px my-2" style={{ background: 'hsl(39 38% 93% / 0.06)' }} />
+                <div className="h-px my-3" style={{ background: 'hsl(39 38% 93% / 0.06)' }} />
                 <button
                   onClick={() => { switchLanguage(); setOpen(false); }}
-                  className="flex items-center gap-2 text-sm font-medium text-primary-foreground/70 hover:text-primary-foreground transition-colors py-3"
+                  className="flex items-center gap-2 text-sm font-medium text-primary-foreground/60 hover:text-primary-foreground transition-colors py-3"
                 >
                   <Globe size={16} />
                   {isArabic ? "English" : "عربي"}
@@ -485,10 +483,10 @@ const Navbar = () => {
                 <Link
                   to={`${prefix}/contact`}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-semibold rounded-full text-center py-3 mt-1 transition-all duration-300"
+                  className="text-sm font-semibold rounded-full text-center py-3.5 mt-2 transition-all duration-300 tracking-wide"
                   style={{
-                    background: 'linear-gradient(135deg, hsl(41 56% 51%) 0%, hsl(41 56% 45%) 100%)',
-                    color: 'hsl(226 76% 12%)',
+                    background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(41 56% 45%) 100%)',
+                    color: 'hsl(226 76% 10%)',
                   }}
                 >
                   {isArabic ? "تواصل معنا" : "Contact Us"}
