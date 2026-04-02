@@ -76,7 +76,6 @@ const Contact = () => {
       lang: "en",
     });
     if (!error) {
-      // Send email notification via Pingram
       supabase.functions.invoke('send-pingram-email', {
         body: {
           name: result.data.name,
@@ -97,9 +96,9 @@ const Contact = () => {
   };
 
   const inputClass =
-    "w-full px-4 py-3.5 border border-border rounded-lg bg-background text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/40 transition-all duration-300";
+    "w-full px-4 py-3.5 border border-border/60 rounded-lg bg-card text-foreground font-body text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all duration-300";
   const selectClass =
-    "w-full px-4 py-3.5 border border-border rounded-lg bg-background text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/40 transition-all duration-300 appearance-none cursor-pointer";
+    "w-full px-4 py-3.5 border border-border/60 rounded-lg bg-card text-foreground font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all duration-300 appearance-none cursor-pointer";
 
   const breadcrumbs = buildBreadcrumbSchema([
     { name: "Home", url: "/" },
@@ -110,12 +109,15 @@ const Contact = () => {
     <Layout>
       <JsonLd data={breadcrumbs} />
       {/* Hero */}
-      <section className="bg-primary pt-40 pb-16 min-h-[450px]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Get In Touch</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-6">Contact Us</h1>
-            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto text-base leading-relaxed">
+      <section className="relative bg-primary overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 text-center relative z-10 min-h-[420px] flex flex-col justify-end">
+          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body mb-4 text-primary-foreground/40">Get In Touch</p>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-5 leading-tight">Contact Us</h1>
+            <p className="text-primary-foreground/55 font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
               Have questions about our projects or available units? Reach out to our team and we'll help you find the perfect space.
             </p>
           </motion.div>
@@ -123,7 +125,7 @@ const Contact = () => {
       </section>
 
       {/* Form + Contact Info */}
-      <section className="section-padding bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
             {/* Form */}
@@ -142,22 +144,21 @@ const Contact = () => {
               </div>
 
               {submitted ? (
-                <div className="text-center py-16 bg-cream rounded-2xl border border-border/50">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Mail size={28} className="text-primary" />
+                <div className="text-center py-16 bg-card rounded-2xl border border-border/30" style={{ boxShadow: 'var(--shadow-md)' }}>
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center">
+                    <Mail size={28} className="text-accent" />
                   </div>
                   <p className="font-display text-2xl font-bold text-foreground mb-2">Thank You!</p>
-                  <p className="text-muted-foreground font-body">We've received your inquiry and will get back to you shortly.</p>
+                  <p className="text-muted-foreground font-body text-[15px]">We've received your inquiry and will get back to you shortly.</p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-body"
+                    className="mt-6 btn-premium px-6 py-2.5 text-sm rounded-lg font-body"
                   >
                     Send Another Inquiry
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Row 1: Name + Phone */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <input
@@ -174,7 +175,7 @@ const Contact = () => {
                         <select
                           value={countryCode}
                           onChange={(e) => setCountryCode(e.target.value)}
-                          className="inline-flex items-center px-2 border border-r-0 border-border rounded-l-lg bg-muted text-sm text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-accent/40 appearance-none cursor-pointer min-w-[90px]"
+                          className="inline-flex items-center px-2 border border-r-0 border-border/60 rounded-l-lg bg-muted text-sm text-muted-foreground font-body focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none cursor-pointer min-w-[90px]"
                         >
                           {countryCodes.map((c) => (
                             <option key={`${c.flag}${c.code}`} value={c.code}>
@@ -194,7 +195,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Row 2: Email + Request Type */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <input
@@ -222,7 +222,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Row 3: Unit Type + Preferred Mall */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="relative">
                       <select
@@ -254,7 +253,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Additional Notes */}
                   <div>
                     <textarea
                       placeholder="Additional Notes"
@@ -265,12 +263,11 @@ const Contact = () => {
                     />
                   </div>
 
-                  {/* Submit */}
                   <div className="flex items-center justify-end">
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="group bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-body text-sm disabled:opacity-50 inline-flex items-center gap-2"
+                      className="group btn-premium px-10 py-3.5 text-sm rounded-lg font-body disabled:opacity-50 inline-flex items-center gap-2"
                     >
                       {submitting ? "Sending…" : "Send"}
                       {!submitting && <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
@@ -291,11 +288,11 @@ const Contact = () => {
               {contactInfo.map((info, i) => (
                 <div
                   key={info.title}
-                  className={`p-7 bg-cream ${i === 0 ? "rounded-t-2xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-2xl" : ""} ${i !== contactInfo.length - 1 ? "border-b border-border/50" : ""}`}
+                  className={`p-7 bg-card ${i === 0 ? "rounded-t-2xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-2xl" : ""} ${i !== contactInfo.length - 1 ? "border-b border-border/30" : ""} border border-border/30 ${i > 0 ? "border-t-0" : ""}`}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <info.icon size={20} className="text-primary" />
+                    <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                      <info.icon size={20} className="text-accent" />
                     </div>
                     <div>
                       <h4 className="font-display font-bold text-foreground mb-1.5">{info.title}</h4>
