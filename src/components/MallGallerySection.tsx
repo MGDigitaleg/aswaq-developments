@@ -83,7 +83,8 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-video"
+                    className="rounded-2xl overflow-hidden border border-border/30 aspect-video"
+                    style={{ boxShadow: 'var(--shadow-sm)' }}
                   >
                     <iframe
                       src={`https://www.youtube.com/embed/${videoId}`}
