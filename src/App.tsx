@@ -73,6 +73,7 @@ const ProjectsAr = lazy(() => import("./pages/ar/ProjectsAr"));
 const AvailableUnitsAr = lazy(() => import("./pages/ar/AvailableUnitsAr"));
 const CareersAr = lazy(() => import("./pages/ar/CareersAr"));
 const CareerDetailAr = lazy(() => import("./pages/ar/CareerDetailAr"));
+const WhyInvestShoroukAr = lazy(() => import("./pages/ar/WhyInvestShoroukAr"));
 
 const queryClient = new QueryClient();
 
