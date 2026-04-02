@@ -146,6 +146,7 @@ const App = () => (
             <Route path="/ar/careers" element={<CareersAr />} />
             <Route path="/ar/careers/:slug" element={<CareerDetailAr />} />
             <Route path="/ar/why-invest-shorouk" element={<WhyInvestShoroukAr />} />
+            <Route path="/ar/virtual-tour" element={<VirtualTourAr />} />
 
             {/* Admin routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
