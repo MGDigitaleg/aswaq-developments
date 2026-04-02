@@ -79,7 +79,7 @@ const WhyInvestShorouk = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group text-center p-6 md:p-8 rounded-xl bg-background border border-[#0A1128]/5 hover:-translate-y-2 hover:border-[#c89c3c] hover:shadow-[0_10px_30px_rgba(200,156,60,0.15)] transition-all duration-500 ease-out"
+                className="group text-center p-6 md:p-8 rounded-xl bg-background border border-border/50 hover:-translate-y-2 hover:border-border transition-all duration-500 ease-out"
                 style={{ boxShadow: '0 4px 20px -4px rgba(10,17,40,0.1)' }}
               >
                 <div className="w-12 h-12 rounded-xl bg-cream flex items-center justify-center mx-auto mb-4">

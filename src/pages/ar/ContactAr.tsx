@@ -127,7 +127,7 @@ const ContactAr = () => {
                 <div className="text-center py-16 bg-cream rounded-2xl">
                   <p className="font-display text-2xl font-bold text-foreground mb-2">شكرًا لك!</p>
                   <p className="text-muted-foreground font-arabic">لقد استلمنا استفسارك وسنرد عليك قريبًا.</p>
-                  <button onClick={() => setSubmitted(false)} className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-arabic">
+                  <button onClick={() => setSubmitted(false)} className="mt-6 bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic">
                     إرسال استفسار آخر
                   </button>
                 </div>

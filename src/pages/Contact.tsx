@@ -150,7 +150,7 @@ const Contact = () => {
                   <p className="text-muted-foreground font-body">We've received your inquiry and will get back to you shortly.</p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 bg-accent text-accent-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body"
+                    className="mt-6 bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-body"
                   >
                     Send Another Inquiry
                   </button>

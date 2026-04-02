@@ -31,7 +31,7 @@ const News = () => {
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, hsl(226 76% 6% / 0.4) 0%, hsl(226 76% 6% / 0.75) 100%)' }} />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-40">
           <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-body font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: 'hsl(var(--gold) / 0.75)' }}>Insights & Updates</p>
+            <p className="text-xs font-body font-semibold tracking-[0.25em] uppercase mb-4" <p className="text-xs font-body font-semibold tracking-[0.25em] uppercase mb-4 text-primary-foreground/45">Insights & Updates</p>>Insights & Updates</p>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight max-w-xl">
               News & Events
             </h1>
