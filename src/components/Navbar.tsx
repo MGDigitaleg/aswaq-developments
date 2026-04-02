@@ -4,7 +4,6 @@ import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import aswaqLogo from "@/assets/aswaq-logo.webp";
 
-
 interface NavChild {
   label: string;
   href: string;
@@ -66,7 +65,6 @@ const getNavLinks = (prefix: string): NavItem[] => [
   { label: prefix ? "الأخبار" : "News", href: `${prefix}/news` },
   { label: prefix ? "معرض الصور" : "Gallery", href: `${prefix}/gallery` },
   { label: prefix ? "الوظائف" : "Careers", href: `${prefix}/careers` },
-  { label: prefix ? "تواصل معنا" : "Contact Us", href: `${prefix}/contact` },
 ];
 
 const isPathInTree = (pathname: string, item: NavItem | NavChild): boolean => {
@@ -84,41 +82,41 @@ const SimpleDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }
     setOpen(true);
   };
   const handleLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+    timeoutRef.current = setTimeout(() => setOpen(false), 120);
   };
 
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <div className="flex items-center gap-1.5 cursor-pointer">
+      <div className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[13px] font-medium tracking-[0.02em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
+          className={`text-[13px] font-medium tracking-[0.01em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/60"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-primary-foreground/60" : "text-primary-foreground/35"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${isActive ? "text-primary-foreground/50" : "text-primary-foreground/30"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-full left-0 mt-5 w-56 rounded-2xl py-2.5 z-50"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-0 mt-4 w-52 rounded-xl py-2 z-50"
             style={{
-              background: 'hsl(226 76% 10% / 0.96)',
-              backdropFilter: 'blur(28px) saturate(1.4)',
-              WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
-              border: '1px solid hsl(39 38% 93% / 0.07)',
-              boxShadow: '0 24px 60px -12px hsl(226 76% 6% / 0.7), 0 0 0 1px hsl(39 38% 93% / 0.03)',
+              background: 'hsl(226 76% 8% / 0.97)',
+              backdropFilter: 'blur(24px) saturate(1.3)',
+              WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
+              border: '1px solid hsl(0 0% 100% / 0.06)',
+              boxShadow: '0 20px 48px -12px hsl(226 76% 4% / 0.6)',
             }}
           >
             {item.children?.map((child) => (
               <Link
                 key={child.href}
                 to={child.href}
-                className="block px-5 py-2.5 text-[13px] font-medium text-primary-foreground/60 hover:text-primary-foreground hover:bg-primary-foreground/[0.04] transition-all duration-200 mx-1.5 rounded-lg"
+                className="block px-4 py-2.5 text-[12.5px] font-medium text-primary-foreground/55 hover:text-primary-foreground hover:bg-primary-foreground/[0.04] transition-all duration-150 mx-1.5 rounded-lg"
               >
                 {child.label}
               </Link>
@@ -140,43 +138,43 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
     setOpen(true);
   };
   const handleLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+    timeoutRef.current = setTimeout(() => setOpen(false), 120);
   };
 
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <div className="flex items-center gap-1.5 cursor-pointer">
+      <div className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[13px] font-medium tracking-[0.02em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
+          className={`text-[13px] font-medium tracking-[0.01em] transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/60"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={11} className={`transition-transform duration-300 ${isActive ? "text-primary-foreground/60" : "text-primary-foreground/35"} ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${isActive ? "text-primary-foreground/50" : "text-primary-foreground/30"} ${open ? "rotate-180" : ""}`} />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-5 rounded-2xl py-6 px-7 z-50 min-w-[560px]"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl py-5 px-6 z-50 min-w-[520px]"
             style={{
-              background: 'hsl(226 76% 10% / 0.96)',
-              backdropFilter: 'blur(28px) saturate(1.4)',
-              WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
-              border: '1px solid hsl(39 38% 93% / 0.07)',
-              boxShadow: '0 24px 60px -12px hsl(226 76% 6% / 0.7), 0 0 0 1px hsl(39 38% 93% / 0.03)',
+              background: 'hsl(226 76% 8% / 0.97)',
+              backdropFilter: 'blur(24px) saturate(1.3)',
+              WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
+              border: '1px solid hsl(0 0% 100% / 0.06)',
+              boxShadow: '0 20px 48px -12px hsl(226 76% 4% / 0.6)',
             }}
           >
-            <div className="grid grid-cols-3 gap-7">
+            <div className="grid grid-cols-3 gap-6">
               {item.children?.map((group) => (
                 <div key={group.href}>
                   <Link
                     to={group.href}
-                    className="block font-display font-bold text-[11px] uppercase tracking-[0.15em] mb-4 pb-2.5 border-b transition-colors"
-                    style={{ color: 'hsl(var(--gold) / 0.7)', borderColor: 'hsl(var(--gold) / 0.1)' }}
+                    className="block font-body font-semibold text-[10px] uppercase tracking-[0.14em] mb-3 pb-2 border-b transition-colors"
+                    style={{ color: 'hsl(var(--gold) / 0.65)', borderColor: 'hsl(var(--gold) / 0.1)' }}
                   >
                     {group.label}
                   </Link>
@@ -184,7 +182,7 @@ const MegaMenu = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
                     <Link
                       key={sub.href}
                       to={sub.href}
-                      className="block text-[12px] text-primary-foreground/50 hover:text-primary-foreground transition-colors py-1.5 leading-relaxed"
+                      className="block text-[12px] text-primary-foreground/45 hover:text-primary-foreground transition-colors py-1.5 leading-relaxed"
                     >
                       {sub.label}
                     </Link>
@@ -209,10 +207,10 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className={`w-full flex items-center justify-between text-sm font-medium py-3.5 transition-colors ${active ? "text-primary-foreground" : "text-primary-foreground/75"}`}
+        className={`w-full flex items-center justify-between text-[15px] font-medium py-3 transition-colors ${active ? "text-primary-foreground" : "text-primary-foreground/70"}`}
       >
         {item.label}
-        <ChevronDown size={16} className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+        <ChevronDown size={15} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} text-primary-foreground/30`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -220,54 +218,60 @@ const MobileAccordion = ({ item, pathname, onClose }: { item: NavItem; pathname:
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden pl-4"
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
           >
-            {item.children?.map((child) =>
-              child.children ? (
-                <div key={child.href}>
-                  <button
-                    onClick={() => setSubOpen(subOpen === child.href ? null : child.href)}
-                    className={`w-full flex items-center justify-between text-sm font-medium py-2.5 transition-colors ${isPathInTree(pathname, child) ? "text-primary-foreground" : "text-primary-foreground/55"}`}
+            <div className="pl-4 border-l border-primary-foreground/[0.06]">
+              {item.children?.map((child) =>
+                child.children ? (
+                  <div key={child.href}>
+                    <button
+                      onClick={() => setSubOpen(subOpen === child.href ? null : child.href)}
+                      className={`w-full flex items-center justify-between text-[14px] font-medium py-2.5 transition-colors ${isPathInTree(pathname, child) ? "text-primary-foreground" : "text-primary-foreground/50"}`}
+                    >
+                      {child.label}
+                      <ChevronDown
+                        size={13}
+                        className={`transition-transform duration-200 ${subOpen === child.href ? "rotate-180" : ""} text-primary-foreground/25`}
+                      />
+                    </button>
+                    <AnimatePresence>
+                      {subOpen === child.href && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pl-4 border-l border-primary-foreground/[0.04]">
+                            {child.children.map((sub) => (
+                              <Link
+                                key={sub.href}
+                                to={sub.href}
+                                onClick={onClose}
+                                className={`block text-[13px] py-2 transition-colors ${pathname === sub.href ? "text-primary-foreground" : "text-primary-foreground/40"}`}
+                              >
+                                {sub.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    key={child.href}
+                    to={child.href}
+                    onClick={onClose}
+                    className={`block text-[14px] font-medium py-2.5 transition-colors ${pathname === child.href ? "text-primary-foreground" : "text-primary-foreground/50"}`}
                   >
                     {child.label}
-                    <ChevronDown
-                      size={14}
-                      className={`transition-transform duration-300 ${subOpen === child.href ? "rotate-180" : ""}`}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {subOpen === child.href && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden pl-4"
-                      >
-                        {child.children.map((sub) => (
-                          <Link
-                            key={sub.href}
-                            to={sub.href}
-                            onClick={onClose}
-                            className={`block text-sm py-2 transition-colors ${pathname === sub.href ? "text-primary-foreground" : "text-primary-foreground/45"}`}
-                          >
-                            {sub.label}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <Link
-                  key={child.href}
-                  to={child.href}
-                  onClick={onClose}
-                  className={`block text-sm font-medium py-2.5 transition-colors ${pathname === child.href ? "text-primary-foreground" : "text-primary-foreground/55"}`}
-                >
-                  {child.label}
-                </Link>
-              ),
-            )}
+                  </Link>
+                ),
+              )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -290,13 +294,13 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
-      setScrolled(currentY > 50);
+      setScrolled(currentY > 40);
 
-      if (currentY <= 300) {
+      if (currentY <= 200) {
         setVisible(true);
-      } else if (currentY < lastScrollY.current) {
+      } else if (currentY < lastScrollY.current - 4) {
         setVisible(true);
-      } else if (currentY > lastScrollY.current) {
+      } else if (currentY > lastScrollY.current + 4) {
         setVisible(false);
       }
 
@@ -319,49 +323,49 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
       <motion.div
-        className="pointer-events-auto relative mx-4 lg:mx-8 mt-4 lg:mt-5 w-full"
-        style={{ maxWidth: '1360px' }}
+        className="pointer-events-auto relative mx-3 lg:mx-6 mt-3 lg:mt-4 w-full"
+        style={{ maxWidth: '1320px' }}
         initial={false}
         animate={{
-          y: visible ? 0 : -120,
+          y: visible ? 0 : -100,
           opacity: visible ? 1 : 0,
         }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
       >
         <div
-          className="relative rounded-full overflow-visible px-5 lg:px-8 transition-all duration-500"
+          className="relative rounded-2xl overflow-visible transition-all duration-500"
           style={{
             background: scrolled
-              ? 'hsl(226 76% 9% / 0.95)'
-              : 'hsl(226 76% 10% / 0.7)',
-            backdropFilter: 'blur(32px) saturate(1.5)',
-            WebkitBackdropFilter: 'blur(32px) saturate(1.5)',
-            border: `1px solid ${scrolled ? 'hsl(39 38% 93% / 0.06)' : 'hsl(39 38% 93% / 0.08)'}`,
+              ? 'hsl(226 76% 7% / 0.96)'
+              : 'hsl(226 76% 9% / 0.75)',
+            backdropFilter: 'blur(28px) saturate(1.4)',
+            WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
+            border: `1px solid ${scrolled ? 'hsl(0 0% 100% / 0.05)' : 'hsl(0 0% 100% / 0.07)'}`,
             boxShadow: scrolled
-              ? '0 8px 40px -8px hsl(226 76% 6% / 0.65), inset 0 1px 0 0 hsl(39 38% 93% / 0.03)'
-              : '0 4px 24px -4px hsl(226 76% 6% / 0.3), inset 0 1px 0 0 hsl(39 38% 93% / 0.05)',
+              ? '0 8px 32px -6px hsl(226 76% 4% / 0.5), inset 0 1px 0 0 hsl(0 0% 100% / 0.03)'
+              : '0 4px 20px -4px hsl(226 76% 4% / 0.25)',
           }}
         >
-          {/* Subtle gold accent line at top */}
+          {/* Gold accent line */}
           <div
-            className="absolute top-0 left-[20%] right-[20%] h-px"
-            style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--gold) / 0.12), transparent)' }}
+            className="absolute top-0 left-[25%] right-[25%] h-px opacity-60"
+            style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15), transparent)' }}
           />
 
-          <div className="flex items-center justify-between py-3 lg:py-3.5">
+          <div className="flex items-center justify-between px-5 lg:px-7 py-3 lg:py-3">
             {/* Logo */}
             <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0">
               <img
                 src={aswaqLogo}
                 alt="ASWAQ Developments"
-                className="w-[140px] lg:w-[155px] relative transition-opacity duration-300 group-hover:opacity-90"
-                width={155}
-                height={61}
+                className="w-[130px] lg:w-[145px] relative transition-opacity duration-300 group-hover:opacity-85"
+                width={145}
+                height={57}
               />
             </Link>
 
             {/* Desktop Nav — centered */}
-            <nav className="hidden lg:flex items-center gap-5 xl:gap-6 absolute left-1/2 -translate-x-1/2">
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-5 absolute left-1/2 -translate-x-1/2">
               {navLinks.map((link) => {
                 const active = isPathInTree(location.pathname, link);
                 if (!link.children) {
@@ -369,19 +373,19 @@ const Navbar = () => {
                     <Link
                       key={link.href}
                       to={link.href}
-                      className={`relative text-[13px] font-medium tracking-[0.02em] transition-all duration-300 whitespace-nowrap ${
+                      className={`relative text-[13px] font-medium tracking-[0.01em] transition-all duration-300 whitespace-nowrap ${
                         active
                           ? "text-primary-foreground"
-                          : "text-primary-foreground/65 hover:text-primary-foreground"
+                          : "text-primary-foreground/60 hover:text-primary-foreground"
                       }`}
                     >
                       {link.label}
                       {active && (
                         <motion.span
                           layoutId="nav-active"
-                          className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
+                          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full"
                           style={{ background: 'hsl(var(--gold))' }}
-                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
                         />
                       )}
                     </Link>
@@ -394,32 +398,31 @@ const Navbar = () => {
             </nav>
 
             {/* Right: Language + CTA */}
-            <div className="hidden lg:flex items-center gap-4 shrink-0">
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
               <button
                 onClick={switchLanguage}
-                className="flex items-center gap-1.5 text-[12px] font-medium text-primary-foreground/45 hover:text-primary-foreground transition-all duration-300 px-2.5 py-1.5 rounded-full hover:bg-primary-foreground/[0.05]"
+                className="flex items-center gap-1.5 text-[11px] font-semibold text-primary-foreground/40 hover:text-primary-foreground/80 transition-all duration-300 px-3 py-1.5 rounded-lg hover:bg-primary-foreground/[0.04] uppercase tracking-wider"
                 aria-label={isArabic ? "Switch to English - EN" : "التبديل إلى العربية - عربي"}
               >
-                <Globe size={13} className="opacity-50" />
+                <Globe size={12} className="opacity-40" />
                 {isArabic ? "EN" : "عربي"}
               </button>
 
-              {/* Divider */}
-              <div className="w-px h-5 bg-primary-foreground/10" />
+              <div className="w-px h-4 bg-primary-foreground/8" />
 
               <Link
                 to={`${prefix}/contact`}
-                className="relative text-[12px] font-semibold rounded-full transition-all duration-300 font-body overflow-hidden group px-6 py-2.5"
+                className="relative text-[12px] font-bold tracking-[0.04em] rounded-lg transition-all duration-300 font-body overflow-hidden group px-7 py-2.5"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(41 56% 45%) 100%)',
-                  color: 'hsl(226 76% 10%)',
-                  boxShadow: '0 2px 12px -2px hsl(var(--gold) / 0.35)',
+                  background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(41 56% 42%) 100%)',
+                  color: 'hsl(226 76% 8%)',
+                  boxShadow: '0 2px 10px -2px hsl(var(--gold) / 0.3)',
                 }}
               >
-                <span className="relative z-10 tracking-[0.03em]">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
+                <span className="relative z-10">{isArabic ? "تواصل معنا" : "Contact Us"}</span>
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(135deg, hsl(41 63% 61%) 0%, hsl(var(--gold)) 100%)' }}
+                  style={{ background: 'linear-gradient(135deg, hsl(41 63% 58%) 0%, hsl(var(--gold)) 100%)' }}
                 />
               </Link>
             </div>
@@ -427,7 +430,7 @@ const Navbar = () => {
             {/* Mobile toggle */}
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden text-primary-foreground/80 hover:text-primary-foreground transition-colors p-1.5"
+              className="lg:hidden text-primary-foreground/70 hover:text-primary-foreground transition-colors p-2"
               aria-label="Toggle menu"
             >
               {open ? <X size={22} /> : <Menu size={22} />}
@@ -439,20 +442,20 @@ const Navbar = () => {
         <AnimatePresence>
           {open && (
             <motion.div
-              initial={{ opacity: 0, y: -8, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -8, scale: 0.98 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden mt-2 mx-1 rounded-3xl overflow-hidden"
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="lg:hidden mt-2 mx-0.5 rounded-2xl overflow-hidden"
               style={{
-                background: 'hsl(226 76% 9% / 0.96)',
-                backdropFilter: 'blur(32px) saturate(1.5)',
-                WebkitBackdropFilter: 'blur(32px) saturate(1.5)',
-                border: '1px solid hsl(39 38% 93% / 0.06)',
-                boxShadow: '0 16px 48px -8px hsl(226 76% 6% / 0.7)',
+                background: 'hsl(226 76% 7% / 0.97)',
+                backdropFilter: 'blur(28px) saturate(1.4)',
+                WebkitBackdropFilter: 'blur(28px) saturate(1.4)',
+                border: '1px solid hsl(0 0% 100% / 0.05)',
+                boxShadow: '0 16px 40px -8px hsl(226 76% 4% / 0.6)',
               }}
             >
-              <nav className="py-5 px-6 flex flex-col gap-0.5">
+              <nav className="py-4 px-5 flex flex-col">
                 {navLinks.map((link) =>
                   link.children ? (
                     <MobileAccordion
@@ -466,27 +469,32 @@ const Navbar = () => {
                       key={link.href}
                       to={link.href}
                       onClick={() => setOpen(false)}
-                      className={`text-sm font-medium py-3.5 transition-colors ${location.pathname === link.href ? "text-primary-foreground" : "text-primary-foreground/75"}`}
+                      className={`text-[15px] font-medium py-3 transition-colors ${location.pathname === link.href ? "text-primary-foreground" : "text-primary-foreground/70"}`}
                     >
                       {link.label}
                     </Link>
                   ),
                 )}
-                <div className="h-px my-3" style={{ background: 'hsl(39 38% 93% / 0.06)' }} />
-                <button
-                  onClick={() => { switchLanguage(); setOpen(false); }}
-                  className="flex items-center gap-2 text-sm font-medium text-primary-foreground/60 hover:text-primary-foreground transition-colors py-3"
-                >
-                  <Globe size={16} />
-                  {isArabic ? "English" : "عربي"}
-                </button>
+
+                <div className="h-px my-3" style={{ background: 'hsl(0 0% 100% / 0.05)' }} />
+
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => { switchLanguage(); setOpen(false); }}
+                    className="flex items-center gap-2 text-[13px] font-semibold text-primary-foreground/50 hover:text-primary-foreground transition-colors py-2.5 flex-1"
+                  >
+                    <Globe size={15} className="opacity-50" />
+                    {isArabic ? "English" : "عربي"}
+                  </button>
+                </div>
+
                 <Link
                   to={`${prefix}/contact`}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-semibold rounded-full text-center py-3.5 mt-2 transition-all duration-300 tracking-wide"
+                  className="text-[13px] font-bold rounded-xl text-center py-3.5 mt-3 transition-all duration-300 tracking-wide"
                   style={{
-                    background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(41 56% 45%) 100%)',
-                    color: 'hsl(226 76% 10%)',
+                    background: 'linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(41 56% 42%) 100%)',
+                    color: 'hsl(226 76% 8%)',
                   }}
                 >
                   {isArabic ? "تواصل معنا" : "Contact Us"}
