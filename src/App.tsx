@@ -35,6 +35,7 @@ const Gallery = lazy(() => import("./pages/Gallery"));
 const Careers = lazy(() => import("./pages/Careers"));
 const CareerDetail = lazy(() => import("./pages/CareerDetail"));
 const WhyInvestShorouk = lazy(() => import("./pages/WhyInvestShorouk"));
+const VirtualTour = lazy(() => import("./pages/VirtualTour"));
 const NewsDetailRedirect = lazy(() => import("./components/NewsDetailRedirect"));
 const NewsDetailArabicRedirect = lazy(() => import("./components/NewsDetailArabicRedirect"));
 const WorksRedirect = lazy(() => import("./components/WorksRedirect"));
