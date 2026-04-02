@@ -418,6 +418,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Trusted By */}
+      <TrustedBySection lang="en" />
+
       {/* Units CTA Banner */}
       <section className="relative py-20 md:py-24 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-10">

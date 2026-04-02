@@ -362,6 +362,9 @@ const IndexAr = () => {
         </div>
       </section>
 
+      {/* Trusted By */}
+      <TrustedBySection lang="ar" />
+
       {/* Units CTA Banner */}
       <section className="relative py-12 md:py-16 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-10">
