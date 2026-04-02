@@ -53,7 +53,8 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-[4/3]"
+                    className="rounded-2xl overflow-hidden border border-border/30 aspect-[4/3]"
+                    style={{ boxShadow: 'var(--shadow-sm)' }}
                   >
                     <img
                       src={src}
