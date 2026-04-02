@@ -87,7 +87,7 @@ const AvailableUnitsAr = () => {
                   <span className="text-3xl mb-3 block">{type.icon}</span>
                   <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4">{type.title}</h2>
                   <p className="text-muted-foreground font-arabic leading-relaxed mb-6">{type.description}</p>
-                  <Link to="/ar/units" <Link to="/ar/units" className="inline-block bg-primary text-primary-foreground px-6 py-2.5 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic text-sm">>
+                  <Link to="/ar/units" className="inline-block bg-primary text-primary-foreground px-6 py-2.5 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic text-sm">
                     {type.cta}
                   </Link>
                 </div>
