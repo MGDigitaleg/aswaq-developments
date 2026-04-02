@@ -147,7 +147,7 @@ const IndexAr = () => {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, hsl(226 76% 6% / 0.5) 0%, hsl(226 76% 6% / 0.15) 35%, hsl(226 76% 6% / 0.6) 75%, hsl(226 76% 6% / 0.85) 100%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, hsl(226 63% 6% / 0.5) 0%, hsl(226 63% 6% / 0.15) 35%, hsl(226 63% 6% / 0.6) 75%, hsl(226 63% 6% / 0.88) 100%)' }} />
 
         <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -156,8 +156,7 @@ const IndexAr = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="font-arabic text-[11px] md:text-xs tracking-[0.15em] font-semibold mb-5"
-                style={{ color: 'hsl(var(--gold) / 0.8)' }}
+                className="font-arabic text-[11px] md:text-xs tracking-[0.15em] font-semibold mb-5 text-primary-foreground/50"
               >
                 أسواق للتطوير العقاري وإدارة المشروعات
               </motion.p>
@@ -169,7 +168,7 @@ const IndexAr = () => {
                 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-[1.15] mb-5"
               >
                 4 مولات بارزة{" "}
-                <span className="block text-primary-foreground/70 text-3xl md:text-4xl lg:text-[2.75rem] mt-1">
+                <span className="block text-primary-foreground/60 text-3xl md:text-4xl lg:text-[2.75rem] mt-1">
                   في الشروق، شرق القاهرة
                 </span>
               </motion.h1>
@@ -178,7 +177,7 @@ const IndexAr = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
-                className="text-primary-foreground/55 font-arabic text-sm md:text-[15px] leading-[1.9] mb-8 max-w-lg"
+                className="text-primary-foreground/50 font-arabic text-sm md:text-[15px] leading-[1.9] mb-8 max-w-lg"
               >
                 مشاريع تجارية وإدارية وطبية متميزة مدعومة بأكثر من 20 عامًا من الخبرة واستثمارات تتجاوز 3 مليارات جنيه.
               </motion.p>
@@ -234,10 +233,7 @@ const IndexAr = () => {
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1.5" : "w-1.5 h-1.5 hover:bg-primary-foreground/50"}`}
-                style={{
-                  backgroundColor: i === currentSlide ? 'hsl(var(--gold))' : 'hsl(0 0% 100% / 0.25)',
-                }}
+                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1.5 bg-primary-foreground/80" : "w-1.5 h-1.5 bg-primary-foreground/25 hover:bg-primary-foreground/50"}`}
                 aria-label={`الانتقال إلى الشريحة ${i + 1}`}
               />
             ))}
@@ -259,7 +255,7 @@ const IndexAr = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="group text-center p-6 md:p-8 rounded-2xl bg-card border border-border/40 hover:-translate-y-1 hover:border-accent/30 transition-all duration-500 ease-out"
+                className="group text-center p-6 md:p-8 rounded-2xl bg-card border border-border/40 hover:-translate-y-1 hover:border-navy/15 transition-all duration-500 ease-out"
                 style={{ boxShadow: 'var(--shadow-sm)' }}
               >
                 <div className="font-['Montserrat'] text-3xl md:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground mb-2">
@@ -290,7 +286,7 @@ const IndexAr = () => {
               </p>
               <Link
                 to="/ar/about"
-                className="inline-flex items-center gap-2 text-sm font-semibold font-arabic text-foreground hover:text-accent transition-colors duration-300 group"
+                className="inline-flex items-center gap-2 text-sm font-semibold font-arabic text-foreground hover:text-navy-rich transition-colors duration-300 group"
               >
                 اعرف المزيد عن أسواق
                 <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
@@ -341,7 +337,7 @@ const IndexAr = () => {
             </div>
             <Link
               to="/ar/projects"
-              className="inline-flex items-center gap-2 text-sm font-semibold font-arabic text-foreground hover:text-accent transition-colors duration-300 group shrink-0"
+              className="inline-flex items-center gap-2 text-sm font-semibold font-arabic text-foreground hover:text-navy-rich transition-colors duration-300 group shrink-0"
             >
               عرض جميع المشاريع <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
             </Link>
@@ -366,11 +362,11 @@ const IndexAr = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                      <span className="inline-block text-[10px] font-arabic font-semibold tracking-[0.08em] text-accent mb-2">{project.tag}</span>
+                      <span className="inline-block text-[10px] font-arabic font-semibold tracking-[0.08em] text-primary-foreground/50 mb-2">{project.tag}</span>
                       <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground mb-1.5">
                         {project.name}
                       </h3>
-                      <p className="text-primary-foreground/55 text-sm font-arabic line-clamp-2 max-w-md">{project.description}</p>
+                      <p className="text-primary-foreground/50 text-sm font-arabic line-clamp-2 max-w-md">{project.description}</p>
                     </div>
                   </div>
                 </Link>
@@ -397,11 +393,11 @@ const IndexAr = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <span className="inline-block text-[10px] font-arabic font-semibold tracking-[0.08em] text-accent mb-2">{project.tag}</span>
+                      <span className="inline-block text-[10px] font-arabic font-semibold tracking-[0.08em] text-primary-foreground/50 mb-2">{project.tag}</span>
                       <h3 className="font-display text-lg md:text-xl font-bold text-primary-foreground mb-1">
                         {project.name}
                       </h3>
-                      <p className="text-primary-foreground/55 text-sm font-arabic line-clamp-2">{project.description}</p>
+                      <p className="text-primary-foreground/50 text-sm font-arabic line-clamp-2">{project.description}</p>
                     </div>
                   </div>
                 </Link>
@@ -435,11 +431,11 @@ const IndexAr = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.5 }}
-                className="group text-center p-6 md:p-7 rounded-2xl bg-card border border-border/30 hover:border-accent/20 transition-all duration-500"
+                className="group text-center p-6 md:p-7 rounded-2xl bg-card border border-border/30 hover:border-navy/12 transition-all duration-500"
                 style={{ boxShadow: 'var(--shadow-sm)' }}
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/15 transition-colors duration-300">
-                  <item.icon size={22} className="text-accent" />
+                <div className="w-12 h-12 rounded-xl bg-navy/[0.06] flex items-center justify-center mx-auto mb-4 group-hover:bg-navy/[0.1] transition-colors duration-300">
+                  <item.icon size={22} className="text-navy" />
                 </div>
                 <h3 className="font-display text-sm font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="text-xs text-muted-foreground font-arabic leading-relaxed">{item.text}</p>
@@ -454,8 +450,8 @@ const IndexAr = () => {
 
       {/* ═══════════════ UNITS CTA + ROI ═══════════════ */}
       <section className="relative py-20 md:py-28 bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0 bg-gradient-to-br from-steel/20 to-transparent" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center gap-12">
@@ -466,11 +462,11 @@ const IndexAr = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto"
             >
-              <p className="text-[10px] font-semibold tracking-[0.15em] font-arabic text-accent mb-4">متاح الآن</p>
+              <p className="text-[10px] font-semibold tracking-[0.15em] font-arabic text-primary-foreground/45 mb-4">متاح الآن</p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5 leading-tight">
                 الوحدات تُباع بسرعة، لا تفوّت الفرصة
               </h2>
-              <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto mb-8 text-[15px] leading-relaxed">
+              <p className="text-primary-foreground/50 font-arabic max-w-2xl mx-auto mb-8 text-[15px] leading-relaxed">
                 تصفح وحداتنا المتاحة واختر ما يناسب خطتك التجارية أو الاستثمارية.
               </p>
               <div className="flex flex-wrap gap-2.5 justify-center">
@@ -483,7 +479,7 @@ const IndexAr = () => {
                   <Link
                     key={tag.label}
                     to={tag.href}
-                    className="border border-primary-foreground/15 text-primary-foreground/65 px-5 py-2 rounded-full text-[13px] font-arabic font-medium hover:border-accent/50 hover:text-accent transition-colors duration-300"
+                    className="border border-primary-foreground/15 text-primary-foreground/60 px-5 py-2 rounded-full text-[13px] font-arabic font-medium hover:border-primary-foreground/30 hover:text-primary-foreground/80 transition-colors duration-300"
                   >
                     {tag.label}
                   </Link>
@@ -509,7 +505,7 @@ const IndexAr = () => {
             >
               <Link
                 to="/ar/units"
-                className="btn-premium px-9 py-4 text-sm rounded-lg font-arabic group"
+                className="inline-flex items-center gap-2 border border-primary-foreground/25 text-primary-foreground px-9 py-4 text-sm rounded-lg font-arabic font-semibold group hover:bg-primary-foreground/[0.08] hover:border-primary-foreground/40 transition-all duration-300"
               >
                 احجز وحدتك
                 <ArrowLeft size={15} className="transition-transform group-hover:-translate-x-1" />
@@ -529,7 +525,7 @@ const IndexAr = () => {
                 آخر الأخبار
               </h2>
             </div>
-            <Link to="/ar/news" className="text-foreground font-semibold font-arabic text-sm inline-flex items-center gap-1.5 hover:gap-2.5 hover:text-accent transition-all duration-300 group">
+            <Link to="/ar/news" className="text-foreground font-semibold font-arabic text-sm inline-flex items-center gap-1.5 hover:gap-2.5 hover:text-navy-rich transition-all duration-300 group">
               عرض الكل <ChevronLeft size={14} className="transition-transform group-hover:-translate-x-0.5" />
             </Link>
           </div>
@@ -544,7 +540,7 @@ const IndexAr = () => {
               >
                 <Link
                   to={`/ar/news/${article.id}`}
-                  className="group block rounded-2xl overflow-hidden bg-card border border-border/30 hover:border-accent/15 transition-all duration-500 hover:-translate-y-1"
+                  className="group block rounded-2xl overflow-hidden bg-card border border-border/30 hover:border-navy/10 transition-all duration-500 hover:-translate-y-1"
                   style={{ boxShadow: 'var(--shadow-sm)' }}
                 >
                   {article.image && (
@@ -561,11 +557,11 @@ const IndexAr = () => {
                     </div>
                   )}
                   <div className="p-5 md:p-6">
-                    <h3 className="font-display text-base md:text-lg font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-2 leading-snug">
+                    <h3 className="font-display text-base md:text-lg font-semibold text-foreground group-hover:text-navy-rich transition-colors line-clamp-2 leading-snug">
                       {article.title}
                     </h3>
                     <p className="text-sm text-muted-foreground font-arabic mt-2.5 line-clamp-2 leading-relaxed">{article.excerpt}</p>
-                    <span className="inline-flex items-center gap-1.5 text-[13px] text-foreground mt-4 font-arabic font-semibold group-hover:gap-2 group-hover:text-accent transition-all duration-300">
+                    <span className="inline-flex items-center gap-1.5 text-[13px] text-foreground mt-4 font-arabic font-semibold group-hover:gap-2 group-hover:text-navy-rich transition-all duration-300">
                       اقرأ المزيد <ChevronLeft size={13} />
                     </span>
                   </div>

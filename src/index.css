@@ -6,53 +6,51 @@
 
 @layer base {
   :root {
-    --background: 36 23% 93%;
+    --background: 36 23% 95%;
     --foreground: 226 63% 10%;
 
-    --card: 36 20% 96%;
+    --card: 36 18% 97%;
     --card-foreground: 226 63% 10%;
 
-    --popover: 36 23% 93%;
+    --popover: 36 23% 95%;
     --popover-foreground: 226 63% 10%;
 
     --primary: 226 63% 10%;
-    --primary-foreground: 36 23% 93%;
+    --primary-foreground: 36 23% 95%;
 
-    --secondary: 228 72% 19%;
-    --secondary-foreground: 36 23% 93%;
+    --secondary: 220 18% 92%;
+    --secondary-foreground: 226 63% 10%;
 
-    --muted: 36 18% 89%;
-    --muted-foreground: 226 42% 28%;
+    --muted: 36 14% 90%;
+    --muted-foreground: 226 30% 35%;
 
-    --accent: 41 56% 51%;
-    --accent-foreground: 224 72% 12%;
+    --accent: 215 30% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 38 20% 86%;
-    --input: 38 20% 86%;
-    --ring: 224 72% 12%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 226 63% 10%;
 
     --radius: 0.5rem;
 
     /* Custom tokens */
     --navy: 226 63% 10%;
-    --navy-light: 228 72% 19%;
-    --navy-rich: 226 66% 28%;
-    --gold: 41 56% 51%;
-    --gold-light: 41 63% 61%;
-    --cream: 36 23% 93%;
-    --ivory: 36 20% 96%;
+    --navy-light: 228 50% 18%;
+    --navy-rich: 226 50% 25%;
+    --steel: 215 30% 50%;
+    --steel-light: 215 25% 62%;
+    --cream: 36 23% 95%;
+    --ivory: 36 18% 97%;
 
     /* Premium elevation tokens */
-    --shadow-sm: 0 1px 2px 0 hsl(224 72% 12% / 0.06);
-    --shadow-md: 0 4px 16px -2px hsl(224 72% 12% / 0.1), 0 2px 4px -2px hsl(224 72% 12% / 0.05);
-    --shadow-lg: 0 8px 30px -4px hsl(224 72% 12% / 0.14), 0 4px 8px -4px hsl(224 72% 12% / 0.07);
-    --shadow-xl: 0 20px 50px -8px hsl(224 72% 12% / 0.2), 0 8px 16px -8px hsl(224 72% 12% / 0.1);
-    --shadow-gold: 0 4px 20px -4px hsl(41 56% 51% / 0.25);
-    --shadow-premium: 0 25px 60px -12px hsl(224 72% 12% / 0.25), 0 12px 20px -8px hsl(224 72% 12% / 0.12);
-    --shadow-gold-glow: 0 0 30px -5px hsl(41 56% 51% / 0.2);
+    --shadow-sm: 0 1px 2px 0 hsl(226 63% 10% / 0.05);
+    --shadow-md: 0 4px 16px -2px hsl(226 63% 10% / 0.08), 0 2px 4px -2px hsl(226 63% 10% / 0.04);
+    --shadow-lg: 0 8px 30px -4px hsl(226 63% 10% / 0.12), 0 4px 8px -4px hsl(226 63% 10% / 0.06);
+    --shadow-xl: 0 20px 50px -8px hsl(226 63% 10% / 0.16), 0 8px 16px -8px hsl(226 63% 10% / 0.08);
+    --shadow-premium: 0 25px 60px -12px hsl(226 63% 10% / 0.2), 0 12px 20px -8px hsl(226 63% 10% / 0.1);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -67,36 +65,34 @@
   .dark {
     --background: 224 80% 6%;
     --foreground: 38 38% 93%;
-    --card: 224 72% 10%;
+    --card: 224 60% 9%;
     --card-foreground: 38 38% 93%;
-    --popover: 224 72% 10%;
+    --popover: 224 60% 9%;
     --popover-foreground: 38 38% 93%;
-    --primary: 41 56% 51%;
+    --primary: 215 30% 55%;
     --primary-foreground: 224 72% 8%;
-    --secondary: 228 72% 14%;
+    --secondary: 224 50% 14%;
     --secondary-foreground: 38 38% 93%;
-    --muted: 224 60% 14%;
+    --muted: 224 50% 14%;
     --muted-foreground: 38 20% 60%;
-    --accent: 41 56% 51%;
+    --accent: 215 30% 55%;
     --accent-foreground: 224 72% 8%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 95%;
-    --border: 224 50% 18%;
-    --input: 224 50% 18%;
-    --ring: 41 56% 51%;
-    --cream: 224 60% 12%;
-    --ivory: 224 50% 14%;
-    --navy: 41 56% 51%;
-    --navy-light: 41 63% 61%;
-    --navy-rich: 226 66% 28%;
-    --gold: 41 56% 55%;
-    --gold-light: 41 63% 65%;
+    --border: 224 40% 18%;
+    --input: 224 40% 18%;
+    --ring: 215 30% 55%;
+    --cream: 224 50% 10%;
+    --ivory: 224 45% 12%;
+    --navy: 215 30% 55%;
+    --navy-light: 215 25% 62%;
+    --navy-rich: 226 50% 25%;
+    --steel: 215 30% 55%;
+    --steel-light: 215 25% 65%;
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.15);
     --shadow-md: 0 4px 16px -2px hsl(0 0% 0% / 0.25), 0 2px 4px -2px hsl(0 0% 0% / 0.12);
     --shadow-lg: 0 8px 30px -4px hsl(0 0% 0% / 0.35), 0 4px 8px -4px hsl(0 0% 0% / 0.18);
     --shadow-xl: 0 20px 50px -8px hsl(0 0% 0% / 0.45), 0 8px 16px -8px hsl(0 0% 0% / 0.22);
-    --shadow-gold: 0 4px 20px -4px hsl(41 56% 51% / 0.2);
-    --shadow-gold-glow: 0 0 30px -5px hsl(41 56% 51% / 0.15);
     --shadow-premium: 0 25px 60px -12px hsl(0 0% 0% / 0.5), 0 12px 20px -8px hsl(0 0% 0% / 0.25);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -137,7 +133,7 @@
 
   /* --- Body text --- */
   p, span, li {
-    color: hsl(var(--navy) / 0.8);
+    color: hsl(var(--navy) / 0.75);
     @apply leading-relaxed;
   }
 
@@ -147,7 +143,7 @@
     @apply font-medium transition-colors duration-300;
   }
   a:hover {
-    color: #c89c3c;
+    color: hsl(var(--navy-rich));
   }
 
   /* Dark mode overrides */
@@ -184,47 +180,47 @@
   /* Premium card hover */
   .premium-card {
     @apply rounded-xl border border-border/50 bg-card transition-all duration-500 ease-out;
-    box-shadow: 0 4px 20px -4px rgba(10,17,40,0.08);
+    box-shadow: 0 4px 20px -4px rgba(10,17,40,0.06);
   }
   .premium-card:hover {
-    box-shadow: 0 12px 40px -8px rgba(10,17,40,0.15), 0 0 0 1px hsl(var(--gold) / 0.1);
-    border-color: hsl(var(--gold) / 0.2);
+    box-shadow: 0 12px 40px -8px rgba(10,17,40,0.12), 0 0 0 1px hsl(var(--navy) / 0.08);
+    border-color: hsl(var(--navy) / 0.12);
     transform: translateY(-6px);
   }
 
   /* Institutional card — more subtle, corporate feel */
   .institutional-card {
     @apply rounded-2xl bg-card border border-border/30 transition-all duration-500 ease-out;
-    box-shadow: 0 2px 12px -2px rgba(10,17,40,0.06);
+    box-shadow: 0 2px 12px -2px rgba(10,17,40,0.05);
   }
   .institutional-card:hover {
-    box-shadow: 0 16px 48px -12px rgba(10,17,40,0.12);
-    border-color: hsl(var(--gold) / 0.15);
+    box-shadow: 0 16px 48px -12px rgba(10,17,40,0.1);
+    border-color: hsl(var(--navy) / 0.1);
     transform: translateY(-4px);
   }
 
-  /* Gold accent underline */
+  /* Subtle underline accent */
   .gold-underline {
     @apply relative inline-block;
   }
   .gold-underline::after {
     content: '';
     @apply absolute bottom-0 left-0 w-12 h-0.5;
-    background: hsl(var(--gold));
+    background: hsl(var(--navy));
   }
 
-  /* Section divider — refined gold accent */
+  /* Section divider — refined navy accent */
   .section-divider {
     @apply mx-auto;
     width: 48px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--navy) / 0.25), transparent);
   }
 
   /* Section label — uppercase tracking */
   .section-label {
     @apply text-xs font-semibold tracking-[0.2em] uppercase font-body;
-    color: hsl(var(--gold));
+    color: hsl(var(--steel));
   }
 
   /* Premium gradient overlay for hero images */
@@ -258,16 +254,17 @@
     transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
   }
 
-  /* Premium button — gold gradient */
+  /* Premium button — navy filled */
   .btn-premium {
     @apply relative inline-flex items-center gap-2 font-semibold rounded-lg transition-all duration-300 overflow-hidden;
-    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(41 56% 45%) 100%);
-    color: hsl(226 76% 12%);
-    box-shadow: 0 4px 16px -4px hsl(var(--gold) / 0.4);
+    background: hsl(var(--navy));
+    color: hsl(var(--cream));
+    box-shadow: 0 4px 16px -4px hsl(var(--navy) / 0.3);
   }
   .btn-premium:hover {
-    box-shadow: 0 8px 24px -4px hsl(var(--gold) / 0.5);
+    box-shadow: 0 8px 24px -4px hsl(var(--navy) / 0.4);
     transform: translateY(-1px);
+    background: hsl(var(--navy-light));
   }
 
   /* Premium button — outline on dark */
