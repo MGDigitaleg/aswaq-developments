@@ -16,11 +16,11 @@ import heroMercado from "@/assets/hero-mercado.webp";
 import heroArena from "@/assets/hero-arena.webp";
 import heroSolaria from "@/assets/hero-solaria.webp";
 import cityhubImg from "@/assets/cityhub-mall.webp";
-
-const heroSlides = [heroBg, heroMercado, heroArena, heroSolaria];
 import mercadoImg from "@/assets/mercado-mall.webp";
 import arenaImg from "@/assets/arena-mall.webp";
 import solariaImg from "@/assets/solaria-mall.webp";
+
+const heroSlides = [heroBg, heroMercado, heroArena, heroSolaria];
 
 const stats = [
   { value: "20+", label: "Years of Expertise" },
@@ -32,32 +32,36 @@ const stats = [
 const projects = [
   {
     name: "City Hub Mall",
+    slug: "city-hub-mall",
     image: cityhubImg,
     description: "A premier commercial development strategically located in a prime area of Shorouk City.",
   },
   {
     name: "Mercado Mall",
+    slug: "mercado-mall",
     image: mercadoImg,
     description: "The largest fully-serviced commercial mall in El Shorouk, spanning three floors.",
   },
   {
     name: "Arena Mall",
+    slug: "arena-mall",
     image: arenaImg,
     description: "A modern, mixed-use service mall offering commercial, administrative, and medical units.",
   },
   {
     name: "Solaria Mall",
+    slug: "solaria-mall",
     image: solariaImg,
     description: "An architectural gem covering 6,400 m² with upscale retail and medical facilities.",
   },
 ];
 
 const whyInvest = [
-  { icon: MapPin, text: "Prime East Cairo Locations" },
-  { icon: Layers, text: "Flexible Payment Plans" },
-  { icon: Building2, text: "Wide Range of Unit Sizes" },
-  { icon: TrendingUp, text: "High ROI & Strong Demand" },
-  { icon: ShieldCheck, text: "Professional Property Management" },
+  { icon: MapPin, title: "Prime Locations", text: "Strategic positions in East Cairo's fastest-growing corridor" },
+  { icon: Layers, title: "Flexible Plans", text: "Payment plans designed for investors and business owners" },
+  { icon: Building2, title: "Diverse Units", text: "Commercial, administrative & medical — from 30 to 300 m²" },
+  { icon: TrendingUp, title: "High ROI", text: "Strong rental demand and consistent property appreciation" },
+  { icon: ShieldCheck, title: "Full Management", text: "Professional property management for hassle-free ownership" },
 ];
 
 const faqs = [
@@ -113,9 +117,8 @@ const Index = () => {
       <JsonLd data={websiteSchema} />
       <JsonLd data={faqSchemaData} />
 
-      {/* Hero — Cinematic Full-Width Slider */}
+      {/* ═══════════════ HERO ═══════════════ */}
       <section className="relative min-h-[700px] overflow-hidden" style={{ height: 'calc(100vh + 50px)', maxHeight: '1000px' }}>
-        {/* Full-bleed background slider */}
         <AnimatePresence mode="popLayout">
           <motion.div
             key={currentSlide}
@@ -139,11 +142,10 @@ const Index = () => {
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, hsl(var(--navy) / 0.35) 0%, hsl(var(--navy) / 0.15) 40%, hsl(var(--navy) / 0.5) 100%)' }} />
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 30% 50%, hsl(var(--navy) / 0.4) 0%, transparent 70%)' }} />
 
-        {/* Content overlay container */}
+        {/* Content */}
         <div className="relative z-10 h-full flex items-center pt-[100px]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="flex justify-center">
-              {/* Glass content card */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -193,17 +195,16 @@ const Index = () => {
                 >
                   <Link
                     to="/projects"
-                    className="group text-accent-foreground px-8 py-3.5 font-semibold rounded-lg transition-all duration-300 font-body inline-flex items-center justify-center gap-2 bg-[#ffffe6]"
-                    style={{ boxShadow: '0 4px 24px -4px hsl(var(--accent) / 0.4)' }}
+                    className="btn-premium px-8 py-3.5 text-sm rounded-lg font-body inline-flex items-center justify-center gap-2"
                   >
                     Explore Projects
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
                     to="/about"
-                    className="border border-primary-foreground/20 text-primary-foreground/90 px-8 py-3.5 font-semibold rounded-lg hover:bg-primary-foreground/10 hover:border-primary-foreground/35 transition-all duration-300 font-body text-center"
+                    className="btn-outline-light px-8 py-3.5 text-sm rounded-lg font-body text-center"
                   >
-                    Learn More About ASWAQ Developments
+                    Learn More About ASWAQ
                   </Link>
                 </motion.div>
 
@@ -218,9 +219,11 @@ const Index = () => {
                     { value: "20+", label: "Years" },
                     { value: "15+", label: "Projects" },
                     { value: "3B+", label: "EGP" },
-                  ].map((s, i) => (
+                  ].map((s) => (
                     <div key={s.label} className="text-center">
-                      <div className="font-['Montserrat'] text-xl lg:text-2xl font-extrabold tracking-tight text-primary-foreground" style={{ letterSpacing: '-0.02em' }}><AnimatedCounter value={s.value} className="text-primary-foreground" /></div>
+                      <div className="font-['Montserrat'] text-xl lg:text-2xl font-extrabold tracking-tight text-primary-foreground" style={{ letterSpacing: '-0.02em' }}>
+                        <AnimatedCounter value={s.value} className="text-primary-foreground" />
+                      </div>
                       <div className="text-[10px] text-primary-foreground/45 font-body tracking-[0.15em] uppercase mt-1">{s.label}</div>
                     </div>
                   ))}
@@ -230,31 +233,22 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Slide navigation — bottom center */}
+        {/* Slide navigation */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 gap-[24px] items-center justify-start flex flex-row mx-0 -my-[15px]">
-          {/* Prev */}
           <button
             onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
             className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-            style={{
-              background: 'hsl(0 0% 100% / 0.1)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid hsl(0 0% 100% / 0.12)',
-            }}
+            style={{ background: 'hsl(0 0% 100% / 0.1)', backdropFilter: 'blur(8px)', border: '1px solid hsl(0 0% 100% / 0.12)' }}
             aria-label="Previous slide"
           >
             <ChevronRight size={18} className="text-primary-foreground/80 rotate-180" />
           </button>
-
-          {/* Dots */}
           <div className="flex gap-2">
             {heroSlides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`rounded-full transition-all duration-500 ${
-                  i === currentSlide ? "w-8 h-2" : "w-2 h-2 hover:bg-primary-foreground/50"
-                }`}
+                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-8 h-2" : "w-2 h-2 hover:bg-primary-foreground/50"}`}
                 style={{
                   backgroundColor: i === currentSlide ? 'hsl(var(--accent))' : 'hsl(0 0% 100% / 0.3)',
                   boxShadow: i === currentSlide ? '0 0 14px hsl(var(--accent) / 0.5)' : 'none',
@@ -263,16 +257,10 @@ const Index = () => {
               />
             ))}
           </div>
-
-          {/* Next */}
           <button
             onClick={nextSlide}
             className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-            style={{
-              background: 'hsl(0 0% 100% / 0.1)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid hsl(0 0% 100% / 0.12)',
-            }}
+            style={{ background: 'hsl(0 0% 100% / 0.1)', backdropFilter: 'blur(8px)', border: '1px solid hsl(0 0% 100% / 0.12)' }}
             aria-label="Next slide"
           >
             <ChevronRight size={18} className="text-primary-foreground/80" />
@@ -287,9 +275,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats + About */}
+      {/* ═══════════════ STATS + ABOUT ═══════════════ */}
       <section className="py-20 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-[5px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -297,9 +285,9 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="mx-auto mb-6 w-[60px] h-[2px] bg-foreground" />
+              <p className="section-label mb-4">Established Excellence</p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-5 leading-tight">
-                ASWAQ Developments, The Trusted Real Estate Developer in Egypt
+                The Trusted Real Estate Developer in Egypt
               </h2>
               <p className="text-muted-foreground max-w-3xl mx-auto font-body text-base md:text-lg leading-relaxed">
                 ASWAQ Developments is a forward-thinking real estate developer specializing in commercial, administrative, and medical projects across East Cairo.
@@ -315,8 +303,8 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="group text-center p-6 md:p-8 rounded-xl bg-background border border-[#0A1128]/5 hover:-translate-y-2 hover:border-[#c89c3c] hover:shadow-[0_10px_30px_rgba(200,156,60,0.15)] transition-all duration-500 ease-out"
-                style={{ boxShadow: '0 4px 20px -4px rgba(10,17,40,0.1)' }}
+                className="group text-center p-6 md:p-8 rounded-xl bg-background border border-border/50 hover:-translate-y-2 hover:border-accent/40 transition-all duration-500 ease-out"
+                style={{ boxShadow: 'var(--shadow-sm)' }}
               >
                 <div className="font-['Montserrat'] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground mb-2">
                   <AnimatedCounter value={stat.value} />
@@ -328,7 +316,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Projects */}
+      {/* ═══════════════ PROJECTS ═══════════════ */}
       <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -338,9 +326,9 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-14"
           >
-            <div className="section-divider mb-6" />
+            <p className="section-label mb-4">Our Portfolio</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground">
-              Our Projects at ASWAQ Developments
+              4 Landmark Malls in Shorouk City
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -352,7 +340,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
-                <Link to="/projects" className="group block">
+                <Link to={`/projects/${project.slug}`} className="group block">
                   <div className="relative overflow-hidden rounded-xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-md)' }}>
                     <img
                       src={project.image}
@@ -366,7 +354,6 @@ const Index = () => {
                         {project.name}
                       </h3>
                     </div>
-                    {/* Hover overlay */}
                     <div className="absolute inset-0 bg-primary/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
                       <span className="text-primary-foreground font-body font-semibold text-sm inline-flex items-center gap-1.5">
                         View Project <ArrowRight size={14} />
@@ -380,38 +367,48 @@ const Index = () => {
               </motion.div>
             ))}
           </div>
+          <div className="text-center mt-10">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 text-sm font-semibold font-body text-foreground hover:text-accent transition-colors duration-300"
+            >
+              View All Projects <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Why Invest */}
+      {/* ═══════════════ WHY INVEST ═══════════════ */}
       <section className="section-padding bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-14"
+            className="text-center mb-14"
           >
-            <div className="section-divider mb-6" />
+            <p className="section-label mb-4">Investment Advantages</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground">
               Why Invest with ASWAQ Developments
             </h2>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
             {whyInvest.map((item, i) => (
               <motion.div
-                key={item.text}
+                key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex flex-col items-center gap-4 p-5"
+                className="group text-center p-6 rounded-2xl bg-card border border-border/30 hover:border-accent/20 transition-all duration-500"
+                style={{ boxShadow: 'var(--shadow-sm)' }}
               >
-                <div className="w-16 h-16 rounded-2xl bg-cream flex items-center justify-center border border-border/50 transition-all duration-300 hover:border-secondary/30 hover:shadow-[var(--shadow-md)]">
-                  <item.icon size={26} className="text-primary" />
+                <div className="w-14 h-14 rounded-2xl bg-cream flex items-center justify-center mx-auto mb-4 border border-border/50 group-hover:border-accent/30 transition-colors duration-300">
+                  <item.icon size={24} className="text-foreground" />
                 </div>
-                <p className="text-sm font-medium text-foreground font-body leading-snug">{item.text}</p>
+                <h3 className="font-display text-sm font-bold text-foreground mb-1.5">{item.title}</h3>
+                <p className="text-xs text-muted-foreground font-body leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
           </div>
@@ -421,14 +418,13 @@ const Index = () => {
       {/* Trusted By */}
       <TrustedBySection lang="en" />
 
-      {/* Units CTA Banner */}
+      {/* ═══════════════ UNITS CTA + ROI ═══════════════ */}
       <section className="relative py-20 md:py-24 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center gap-12">
-            {/* Top: CTA content */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -436,10 +432,11 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto"
             >
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white mb-5">
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase font-body text-accent mb-4">Available Now</p>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5">
                 Units Are Selling Fast, Don't Miss Out!
               </h2>
-              <p className="text-white/80 font-body max-w-2xl mx-auto mb-6 text-base leading-relaxed">
+              <p className="text-primary-foreground/70 font-body max-w-2xl mx-auto mb-6 text-base leading-relaxed">
                 Browse our available units and select what matches your business or investment plan.
               </p>
               <div className="flex flex-wrap gap-3 justify-center mb-10">
@@ -452,7 +449,7 @@ const Index = () => {
                   <Link
                     key={tag.label}
                     to={tag.href}
-                    className="border border-white/30 text-white/90 px-6 py-2 rounded-full text-sm font-body hover:border-[#c89c3c] hover:text-[#c89c3c] hover:bg-[#c89c3c]/10 transition-colors duration-300"
+                    className="border border-primary-foreground/20 text-primary-foreground/80 px-6 py-2 rounded-full text-sm font-body hover:border-accent hover:text-accent hover:bg-accent/10 transition-colors duration-300"
                   >
                     {tag.label}
                   </Link>
@@ -460,7 +457,6 @@ const Index = () => {
               </div>
             </motion.div>
 
-            {/* Bottom: Wide ROI Calculator */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -471,7 +467,6 @@ const Index = () => {
               <ROICalculator wide />
             </motion.div>
 
-            {/* CTA Button below calculator */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -480,7 +475,7 @@ const Index = () => {
             >
               <Link
                 to="/units"
-                className="inline-flex items-center gap-2 bg-[#c89c3c] text-[#0A1128] px-8 py-3 font-bold rounded-lg hover:bg-white hover:text-[#0A1128] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(200,156,60,0.4)] transition-all duration-300 ease-in-out font-body group"
+                className="btn-premium px-8 py-3.5 text-sm rounded-lg font-body group"
               >
                 Reserve Your Unit
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -490,17 +485,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Latest News */}
+      {/* ═══════════════ LATEST NEWS ═══════════════ */}
       <section className="section-padding bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-14">
             <div>
-              <div className="section-divider mb-4" style={{ marginLeft: 0 }} />
+              <p className="section-label mb-3">Insights & Updates</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
                 Latest News
               </h2>
             </div>
-            <Link to="/news" className="text-primary font-semibold font-body text-sm inline-flex items-center gap-1.5 hover:gap-2.5 transition-all duration-300">
+            <Link to="/news" className="text-foreground font-semibold font-body text-sm inline-flex items-center gap-1.5 hover:gap-2.5 hover:text-accent transition-all duration-300">
               View All <ChevronRight size={14} />
             </Link>
           </div>
@@ -529,11 +524,11 @@ const Index = () => {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="font-display text-lg font-semibold text-foreground mt-1 group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="font-display text-lg font-semibold text-foreground mt-1 group-hover:text-accent transition-colors line-clamp-2">
                       {article.title}
                     </h3>
                     <p className="text-sm text-muted-foreground font-body mt-3 line-clamp-2 leading-relaxed">{article.excerpt}</p>
-                    <span className="inline-flex items-center gap-1.5 text-sm text-primary mt-4 font-body font-semibold group-hover:gap-2.5 transition-all duration-300">
+                    <span className="inline-flex items-center gap-1.5 text-sm text-foreground mt-4 font-body font-semibold group-hover:gap-2.5 group-hover:text-accent transition-all duration-300">
                       Read More <ChevronRight size={14} />
                     </span>
                   </div>
