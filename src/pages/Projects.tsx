@@ -138,7 +138,7 @@ const Projects = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-xs font-body font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: 'hsl(var(--gold) / 0.75)' }}>Our Portfolio</p>
+            <p className="text-xs font-body font-semibold tracking-[0.25em] uppercase mb-4 text-primary-foreground/45">Our Portfolio</p>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight max-w-2xl">
               ASWAQ Developments Real Estate Projects
             </h1>

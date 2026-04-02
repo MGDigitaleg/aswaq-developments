@@ -56,7 +56,7 @@ const SolariaMall = () => {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 text-center relative z-10 min-h-[420px] flex flex-col justify-end">
           <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body mb-4" style={{ color: 'hsl(var(--gold) / 0.7)' }}>ASWAQ Developments</p>
+            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body mb-4 text-primary-foreground/40">ASWAQ Developments</p>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-5 leading-tight">Solaria Mall at El Shorouk</h1>
             <p className="text-primary-foreground/55 font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
               One of ASWAQ's most ambitious mixed-use properties — a vibrant hub for shopping, services, healthcare, and professional activities spanning 6,600 m².
