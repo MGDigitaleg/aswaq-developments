@@ -35,7 +35,7 @@ const StarRating = ({ rating }: { rating: number }) => (
       <Star
         key={i}
         size={13}
-        className={i < rating ? "fill-accent text-accent" : "text-primary-foreground/15"}
+        className={i < rating ? "fill-steel text-steel" : "text-primary-foreground/15"}
       />
     ))}
   </div>
@@ -95,7 +95,7 @@ const Footer = () => {
       {/* Pre-footer CTA stripe */}
       <div
         className="border-b border-primary-foreground/[0.06]"
-        style={{ background: 'linear-gradient(135deg, hsl(226 76% 12%) 0%, hsl(228 72% 15%) 100%)' }}
+        style={{ background: 'linear-gradient(135deg, hsl(226 63% 11%) 0%, hsl(228 50% 14%) 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
@@ -236,7 +236,7 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={16} className={i < 5 ? "fill-accent text-accent" : "text-primary-foreground/20"} />
+                  <Star key={i} size={16} className={i < 5 ? "fill-steel text-steel" : "text-primary-foreground/20"} />
                 ))}
               </div>
               <span className="text-xl font-bold text-primary-foreground font-['Montserrat']">4.6</span>

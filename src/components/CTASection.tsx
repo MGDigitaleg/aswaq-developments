@@ -21,8 +21,8 @@ const CTASection = ({
     <section className="relative bg-primary py-14 md:py-20 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-secondary/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-secondary/10 blur-3xl" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-secondary/10 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-secondary/5 blur-3xl" />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <motion.div
@@ -31,16 +31,16 @@ const CTASection = ({
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="section-divider mb-8 bg-primary-foreground/20" />
+          <div className="section-divider mb-8 bg-primary-foreground/15" />
           <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5 leading-tight max-w-3xl mx-auto">
             {title}
           </h2>
-          <p className="text-primary-foreground/60 font-body max-w-2xl mx-auto mb-10 text-base md:text-lg leading-relaxed">
+          <p className="text-primary-foreground/55 font-body max-w-2xl mx-auto mb-10 text-base md:text-lg leading-relaxed">
             {subtitle}
           </p>
           <Link
             to={resolvedLink}
-            className="group inline-flex items-center gap-2 bg-accent text-accent-foreground px-10 py-4 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-body text-sm md:text-base"
+            className="group inline-flex items-center gap-2 border border-primary-foreground/25 text-primary-foreground px-10 py-4 font-semibold rounded-lg hover:bg-primary-foreground/[0.08] hover:border-primary-foreground/40 transition-all duration-300 font-body text-sm md:text-base"
             data-cursor-hover
           >
             {buttonText}
