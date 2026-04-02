@@ -25,7 +25,7 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
   return (
     <div className="bg-card rounded-2xl border border-border p-6 md:p-8 lg:p-12" style={{ boxShadow: 'var(--shadow-xl)' }}>
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+        <div className="w-10 h-10 rounded-xl bg-primary/[0.06] flex items-center justify-center">
           <Calculator size={20} className="text-primary" />
         </div>
         <h3 className={`font-display text-lg font-bold text-foreground ${fontClass}`}>
@@ -49,7 +49,7 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
               step={100000}
               value={unitPrice}
               onChange={(e) => setUnitPrice(Number(e.target.value))}
-              className="w-full accent-accent h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
+              className="w-full accent-primary h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
             />
           </label>
 
@@ -66,7 +66,7 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
               step={5}
               value={downPayment}
               onChange={(e) => setDownPayment(Number(e.target.value))}
-              className="w-full accent-accent h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
+              className="w-full accent-primary h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
             />
           </label>
 
@@ -83,7 +83,7 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
               step={1000}
               value={monthlyRent}
               onChange={(e) => setMonthlyRent(Number(e.target.value))}
-              className="w-full accent-accent h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
+              className="w-full accent-primary h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
             />
           </label>
 
@@ -100,7 +100,7 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
               step={1}
               value={appreciation}
               onChange={(e) => setAppreciation(Number(e.target.value))}
-              className="w-full accent-accent h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
+              className="w-full accent-primary h-1.5 bg-muted rounded-full appearance-none cursor-pointer"
             />
           </label>
         </div>
@@ -124,8 +124,8 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
             <div className="p-4 bg-primary rounded-xl text-center">
               <p className={`text-xs text-primary-foreground/60 ${fontClass} mb-1`}>{isArabic ? "العائد الإجمالي" : "Total ROI"}</p>
               <div className="flex items-center justify-center gap-1.5">
-                <TrendingUp size={16} className="text-accent" />
-                <p className={`${numClass} text-lg text-accent`}>{roi}%</p>
+                <TrendingUp size={16} className="text-primary-foreground" />
+                <p className={`${numClass} text-lg text-primary-foreground`}>{roi}%</p>
               </div>
             </div>
           </div>

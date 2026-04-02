@@ -148,7 +148,7 @@ const Index = () => {
         </AnimatePresence>
 
         {/* Cinematic overlays */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, hsl(226 76% 6% / 0.5) 0%, hsl(226 76% 6% / 0.15) 35%, hsl(226 76% 6% / 0.6) 75%, hsl(226 76% 6% / 0.85) 100%)' }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, hsl(226 63% 6% / 0.5) 0%, hsl(226 63% 6% / 0.15) 35%, hsl(226 63% 6% / 0.6) 75%, hsl(226 63% 6% / 0.88) 100%)' }} />
 
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-24">
@@ -158,8 +158,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="font-body text-[11px] md:text-xs tracking-[0.3em] uppercase mb-5"
-                style={{ color: 'hsl(var(--gold) / 0.8)' }}
+                className="font-body text-[11px] md:text-xs tracking-[0.3em] uppercase mb-5 text-primary-foreground/50"
               >
                 ASWAQ Developments & Project Management
               </motion.p>
@@ -172,7 +171,7 @@ const Index = () => {
                 style={{ letterSpacing: '-0.02em' }}
               >
                 4 Landmark Malls{" "}
-                <span className="block text-primary-foreground/70 text-3xl md:text-4xl lg:text-[2.75rem] mt-1">
+                <span className="block text-primary-foreground/60 text-3xl md:text-4xl lg:text-[2.75rem] mt-1">
                   in El Shorouk, East Cairo
                 </span>
               </motion.h1>
@@ -181,7 +180,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
-                className="text-primary-foreground/55 font-body text-sm md:text-[15px] leading-[1.8] mb-8 max-w-lg"
+                className="text-primary-foreground/50 font-body text-sm md:text-[15px] leading-[1.8] mb-8 max-w-lg"
               >
                 Premium commercial, administrative & medical developments backed by 20+ years of expertise and 3+ billion EGP in investments.
               </motion.p>
@@ -239,10 +238,7 @@ const Index = () => {
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1.5" : "w-1.5 h-1.5 hover:bg-primary-foreground/50"}`}
-                style={{
-                  backgroundColor: i === currentSlide ? 'hsl(var(--gold))' : 'hsl(0 0% 100% / 0.25)',
-                }}
+                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1.5 bg-primary-foreground/80" : "w-1.5 h-1.5 bg-primary-foreground/25 hover:bg-primary-foreground/50"}`}
                 aria-label={`Go to slide ${i + 1}`}
               />
             ))}
@@ -265,7 +261,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="group text-center p-6 md:p-8 rounded-2xl bg-card border border-border/40 hover:-translate-y-1 hover:border-accent/30 transition-all duration-500 ease-out"
+                className="group text-center p-6 md:p-8 rounded-2xl bg-card border border-border/40 hover:-translate-y-1 hover:border-navy/15 transition-all duration-500 ease-out"
                 style={{ boxShadow: 'var(--shadow-sm)' }}
               >
                 <div className="font-['Montserrat'] text-3xl md:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground mb-2">
@@ -296,7 +292,7 @@ const Index = () => {
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 text-sm font-semibold font-body text-foreground hover:text-accent transition-colors duration-300 group"
+                className="inline-flex items-center gap-2 text-sm font-semibold font-body text-foreground hover:text-navy-rich transition-colors duration-300 group"
               >
                 Learn More About ASWAQ
                 <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -311,7 +307,7 @@ const Index = () => {
               className="relative"
             >
               <div className="grid grid-cols-2 gap-3">
-                {projects.slice(0, 4).map((p, i) => (
+                {projects.slice(0, 4).map((p) => (
                   <Link
                     key={p.slug}
                     to={`/projects/${p.slug}`}
@@ -347,7 +343,7 @@ const Index = () => {
             </div>
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 text-sm font-semibold font-body text-foreground hover:text-accent transition-colors duration-300 group shrink-0"
+              className="inline-flex items-center gap-2 text-sm font-semibold font-body text-foreground hover:text-navy-rich transition-colors duration-300 group shrink-0"
             >
               View All Projects <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </Link>
@@ -373,11 +369,11 @@ const Index = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                      <span className="inline-block text-[10px] font-body font-semibold tracking-[0.12em] uppercase text-accent mb-2">{project.tag}</span>
+                      <span className="inline-block text-[10px] font-body font-semibold tracking-[0.12em] uppercase text-primary-foreground/50 mb-2">{project.tag}</span>
                       <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground mb-1.5">
                         {project.name}
                       </h3>
-                      <p className="text-primary-foreground/55 text-sm font-body line-clamp-2 max-w-md">{project.description}</p>
+                      <p className="text-primary-foreground/50 text-sm font-body line-clamp-2 max-w-md">{project.description}</p>
                     </div>
                   </div>
                 </Link>
@@ -404,11 +400,11 @@ const Index = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <span className="inline-block text-[10px] font-body font-semibold tracking-[0.12em] uppercase text-accent mb-2">{project.tag}</span>
+                      <span className="inline-block text-[10px] font-body font-semibold tracking-[0.12em] uppercase text-primary-foreground/50 mb-2">{project.tag}</span>
                       <h3 className="font-display text-lg md:text-xl font-bold text-primary-foreground mb-1">
                         {project.name}
                       </h3>
-                      <p className="text-primary-foreground/55 text-sm font-body line-clamp-2">{project.description}</p>
+                      <p className="text-primary-foreground/50 text-sm font-body line-clamp-2">{project.description}</p>
                     </div>
                   </div>
                 </Link>
@@ -442,11 +438,11 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.5 }}
-                className="group text-center p-6 md:p-7 rounded-2xl bg-card border border-border/30 hover:border-accent/20 transition-all duration-500"
+                className="group text-center p-6 md:p-7 rounded-2xl bg-card border border-border/30 hover:border-navy/12 transition-all duration-500"
                 style={{ boxShadow: 'var(--shadow-sm)' }}
               >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/15 transition-colors duration-300">
-                  <item.icon size={22} className="text-accent" />
+                <div className="w-12 h-12 rounded-xl bg-navy/[0.06] flex items-center justify-center mx-auto mb-4 group-hover:bg-navy/[0.1] transition-colors duration-300">
+                  <item.icon size={22} className="text-navy" />
                 </div>
                 <h3 className="font-display text-sm font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="text-xs text-muted-foreground font-body leading-relaxed">{item.text}</p>
@@ -461,8 +457,8 @@ const Index = () => {
 
       {/* ═══════════════ UNITS CTA + ROI ═══════════════ */}
       <section className="relative py-20 md:py-28 bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0 bg-gradient-to-br from-steel/20 to-transparent" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center gap-12">
@@ -473,11 +469,11 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl mx-auto"
             >
-              <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body text-accent mb-4">Available Now</p>
+              <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body text-primary-foreground/45 mb-4">Available Now</p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5 leading-tight">
                 Units Are Selling Fast, Don't Miss Out
               </h2>
-              <p className="text-primary-foreground/55 font-body max-w-2xl mx-auto mb-8 text-[15px] leading-relaxed">
+              <p className="text-primary-foreground/50 font-body max-w-2xl mx-auto mb-8 text-[15px] leading-relaxed">
                 Browse our available units and select what matches your business or investment plan.
               </p>
               <div className="flex flex-wrap gap-2.5 justify-center">
@@ -490,7 +486,7 @@ const Index = () => {
                   <Link
                     key={tag.label}
                     to={tag.href}
-                    className="border border-primary-foreground/15 text-primary-foreground/65 px-5 py-2 rounded-full text-[13px] font-body font-medium hover:border-accent/50 hover:text-accent transition-colors duration-300"
+                    className="border border-primary-foreground/15 text-primary-foreground/60 px-5 py-2 rounded-full text-[13px] font-body font-medium hover:border-primary-foreground/30 hover:text-primary-foreground/80 transition-colors duration-300"
                   >
                     {tag.label}
                   </Link>
@@ -516,7 +512,7 @@ const Index = () => {
             >
               <Link
                 to="/units"
-                className="btn-premium px-9 py-4 text-sm rounded-lg font-body group"
+                className="inline-flex items-center gap-2 border border-primary-foreground/25 text-primary-foreground px-9 py-4 text-sm rounded-lg font-body font-semibold group hover:bg-primary-foreground/[0.08] hover:border-primary-foreground/40 transition-all duration-300"
               >
                 Reserve Your Unit
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
@@ -536,7 +532,7 @@ const Index = () => {
                 Latest News
               </h2>
             </div>
-            <Link to="/news" className="text-foreground font-semibold font-body text-sm inline-flex items-center gap-1.5 hover:gap-2.5 hover:text-accent transition-all duration-300 group">
+            <Link to="/news" className="text-foreground font-semibold font-body text-sm inline-flex items-center gap-1.5 hover:gap-2.5 hover:text-navy-rich transition-all duration-300 group">
               View All <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
@@ -551,7 +547,7 @@ const Index = () => {
               >
                 <Link
                   to={`/news/${article.id}`}
-                  className="group block rounded-2xl overflow-hidden bg-card border border-border/30 hover:border-accent/15 transition-all duration-500 hover:-translate-y-1"
+                  className="group block rounded-2xl overflow-hidden bg-card border border-border/30 hover:border-navy/10 transition-all duration-500 hover:-translate-y-1"
                   style={{ boxShadow: 'var(--shadow-sm)' }}
                 >
                   <div className="aspect-[16/10] overflow-hidden">
@@ -566,11 +562,11 @@ const Index = () => {
                     />
                   </div>
                   <div className="p-5 md:p-6">
-                    <h3 className="font-display text-base md:text-lg font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-2 leading-snug">
+                    <h3 className="font-display text-base md:text-lg font-semibold text-foreground group-hover:text-navy-rich transition-colors line-clamp-2 leading-snug">
                       {article.title}
                     </h3>
                     <p className="text-sm text-muted-foreground font-body mt-2.5 line-clamp-2 leading-relaxed">{article.excerpt}</p>
-                    <span className="inline-flex items-center gap-1.5 text-[13px] text-foreground mt-4 font-body font-semibold group-hover:gap-2 group-hover:text-accent transition-all duration-300">
+                    <span className="inline-flex items-center gap-1.5 text-[13px] text-foreground mt-4 font-body font-semibold group-hover:gap-2 group-hover:text-navy-rich transition-all duration-300">
                       Read More <ChevronRight size={13} />
                     </span>
                   </div>
