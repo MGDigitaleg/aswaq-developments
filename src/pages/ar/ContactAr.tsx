@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowLeft } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import Layout from "@/components/Layout";
 import { countryCodes } from "@/data/countryCodes";
+import useSEO from "@/hooks/useSEO";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "الاسم مطلوب").max(100),
@@ -18,7 +19,7 @@ const contactSchema = z.object({
 
 type ContactForm = z.infer<typeof contactSchema>;
 
-const requestTypes = ["استفسار", "حجز موعد", "طلب سعر"];
+const requestTypes = ["شراء", "استثمار", "إيجار", "استشارة"];
 const unitTypes = ["تجاري", "إداري", "طبي"];
 const malls = ["سولاريا مول", "أرينا مول", "ميركادو مول", "سيتي هب مول"];
 
@@ -27,23 +28,22 @@ const contactInfo = [
     icon: MapPin,
     title: "العنوان",
     detail: "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون",
-    bg: "bg-primary/10",
   },
   {
     icon: Phone,
     title: "الخط الساخن",
     detail: "19474",
-    bg: "bg-primary/5",
   },
   {
     icon: Mail,
     title: "البريد الإلكتروني",
     detail: "marketing@aswaqdev.com",
-    bg: "bg-primary/10",
   },
 ];
 
 const ContactAr = () => {
+  useSEO("اتصل بنا | أسواق للتطوير العقاري", "تواصل مع فريق أسواق للتطوير العقاري. لديك أسئلة حول مشاريعنا أو الوحدات المتاحة؟ نحن هنا لمساعدتك.");
+
   const [form, setForm] = useState<Partial<ContactForm>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -78,7 +78,6 @@ const ContactAr = () => {
       lang: "ar",
     });
     if (!error) {
-      // Send email notification via Pingram
       supabase.functions.invoke('send-pingram-email', {
         body: {
           name: result.data.name,
@@ -99,38 +98,52 @@ const ContactAr = () => {
   };
 
   const inputClass =
-    "w-full px-4 py-3 border border-border rounded-md bg-background text-foreground font-arabic text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all";
+    "w-full px-4 py-3.5 border border-border/60 rounded-xl bg-card text-foreground font-arabic text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent/40 transition-all";
   const selectClass =
-    "w-full px-4 py-3 border border-border rounded-md bg-background text-foreground font-arabic text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all appearance-none cursor-pointer";
+    "w-full px-4 py-3.5 border border-border/60 rounded-xl bg-card text-foreground font-arabic text-sm focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent/40 transition-all appearance-none cursor-pointer";
 
   return (
     <Layout>
-      <section className="bg-primary pt-40 pb-16 min-h-[450px]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-primary-foreground/60 font-arabic font-semibold tracking-[0.25em] text-xs mb-4">تواصل معنا</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-6">اتصل بنا</h1>
-            <p className="text-primary-foreground/70 font-arabic max-w-3xl mx-auto text-base leading-relaxed">
+      {/* Hero */}
+      <section className="relative bg-primary overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 text-center relative z-10 min-h-[350px] flex flex-col justify-end">
+          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-arabic mb-4 text-primary-foreground/40">تواصل معنا</p>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-5 leading-tight">اتصل بنا</h1>
+            <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
               لديك أسئلة حول مشاريعنا أو الوحدات المتاحة؟ تواصل مع فريقنا وسنساعدك في إيجاد المساحة المثالية.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-background">
+      {/* Form Section */}
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
-            <motion.div className="flex-1" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-8 text-center">أرسل لنا استفسارك</h2>
+            <motion.div className="flex-1" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <div className="section-divider mb-6" style={{ marginLeft: 'auto', marginRight: 0 }} />
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">أرسل لنا استفسارك</h2>
 
               {submitted ? (
-                <div className="text-center py-16 bg-cream rounded-2xl">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-16 bg-cream rounded-2xl border border-border/30"
+                  style={{ boxShadow: 'var(--shadow-sm)' }}
+                >
+                  <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
+                    <Mail size={28} className="text-accent" />
+                  </div>
                   <p className="font-display text-2xl font-bold text-foreground mb-2">شكرًا لك!</p>
-                  <p className="text-muted-foreground font-arabic">لقد استلمنا استفسارك وسنرد عليك قريبًا.</p>
-                  <button onClick={() => setSubmitted(false)} className="mt-6 bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic">
+                  <p className="text-muted-foreground font-arabic text-[15px]">لقد استلمنا استفسارك وسنرد عليك قريبًا.</p>
+                  <button onClick={() => setSubmitted(false)} className="mt-6 inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3 text-sm font-semibold rounded-xl hover:opacity-90 transition-all duration-300 font-arabic">
                     إرسال استفسار آخر
                   </button>
-                </div>
+                </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -144,7 +157,7 @@ const ContactAr = () => {
                         <select
                           value={countryCode}
                           onChange={(e) => setCountryCode(e.target.value)}
-                          className="inline-flex items-center px-2 border border-l-0 border-border rounded-l-md bg-muted text-sm text-muted-foreground font-arabic focus:outline-none focus:ring-2 focus:ring-accent/50 appearance-none cursor-pointer min-w-[90px]"
+                          className="inline-flex items-center px-2 border border-l-0 border-border/60 rounded-l-xl bg-muted text-sm text-muted-foreground font-arabic focus:outline-none focus:ring-2 focus:ring-accent/30 appearance-none cursor-pointer min-w-[90px]"
                         >
                           {countryCodes.map((c) => (
                             <option key={`${c.flag}${c.code}`} value={c.code}>
@@ -192,32 +205,41 @@ const ContactAr = () => {
                   </div>
 
                   <div>
-                    <textarea placeholder="ملاحظات إضافية" rows={5} value={form.notes || ""} onChange={(e) => handleChange("notes", e.target.value)} className={`${inputClass} resize-y`} />
+                    <textarea placeholder="ملاحظات إضافية" rows={4} value={form.notes || ""} onChange={(e) => handleChange("notes", e.target.value)} className={`${inputClass} resize-y`} />
                   </div>
 
-                  <div className="flex items-center justify-start">
-                    <button type="submit" disabled={submitting} className="bg-primary text-primary-foreground px-10 py-3 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic text-sm disabled:opacity-50">
+                  <div className="flex items-center justify-center">
+                    <button type="submit" disabled={submitting} className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-10 py-3.5 font-semibold rounded-xl hover:opacity-90 transition-all duration-300 font-arabic text-sm disabled:opacity-50">
                       {submitting ? "جاري الإرسال…" : "إرسال"}
+                      {!submitting && <ArrowLeft size={16} />}
                     </button>
                   </div>
                 </form>
               )}
             </motion.div>
 
-            <motion.div className="lg:w-80 flex flex-col gap-0 shrink-0" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              {contactInfo.map((info, i) => (
-                <div key={info.title} className={`p-6 ${info.bg} ${i === 0 ? "rounded-t-2xl" : ""} ${i === contactInfo.length - 1 ? "rounded-b-2xl" : ""}`}>
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <info.icon size={20} className="text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="font-display font-bold text-foreground mb-1">{info.title}</h4>
-                      <p className="text-muted-foreground font-arabic text-sm leading-relaxed">{info.detail}</p>
+            <motion.div
+              className="lg:w-80 shrink-0"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <div className="bg-card rounded-2xl border border-border/30 overflow-hidden" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                {contactInfo.map((info, i) => (
+                  <div key={info.title} className={`p-6 ${i < contactInfo.length - 1 ? "border-b border-border/20" : ""}`}>
+                    <div className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                        <info.icon size={18} className="text-accent" />
+                      </div>
+                      <div>
+                        <h4 className="font-display font-bold text-foreground mb-1 text-sm">{info.title}</h4>
+                        <p className="text-muted-foreground font-arabic text-sm leading-relaxed">{info.detail}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
