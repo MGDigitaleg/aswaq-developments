@@ -25,27 +25,27 @@ const projectTabs = [
 
 const galleryData: Record<string, { images: string[]; videos: string[] }> = {
   solaria: {
-    images: [solaria1, solaria2, solaria3, solaria4],
+    images: [solaria4, solaria3, solaria2, solaria1],
     videos: [
-      "pnchRd-AAwg", "5zo6Nh69DoU", "21h59Aidbss", "lDb2srq3prQ", "9xWD4rjaFz4",
-      "PtXQ7ekGibo", "NjbdYDPeErM", "IFGQuVc1Qh4", "boE6pqIItFE", "Xf8AUcMltIQ",
-      "Yq2XDpp2UNU", "7_I97gYQrho", "Hqv9KliWT1s", "BrDGv2SxZXI", "Y4lN13Cas5c",
-      "vDInqD_HcKU", "cepHBQGE7J0", "9ejGoFF4Jrk", "urvheJNfRdQ", "Z2s5k9hBR5s",
-      "lIwPvTA4kl8", "5Vg0nxFPN2s", "giAo0wIirns", "bWMNLhNUWic", "l6kA_Ya2tW8",
-      "-vQ52O22iwM", "0SPxL2rY3Dc", "ntpGQTMyq3Q", "8YDCm1TmTQ0",
+      "8YDCm1TmTQ0", "ntpGQTMyq3Q", "0SPxL2rY3Dc", "-vQ52O22iwM", "l6kA_Ya2tW8",
+      "bWMNLhNUWic", "giAo0wIirns", "5Vg0nxFPN2s", "lIwPvTA4kl8", "Z2s5k9hBR5s",
+      "urvheJNfRdQ", "9ejGoFF4Jrk", "cepHBQGE7J0", "vDInqD_HcKU", "Y4lN13Cas5c",
+      "BrDGv2SxZXI", "Hqv9KliWT1s", "7_I97gYQrho", "Yq2XDpp2UNU", "Xf8AUcMltIQ",
+      "boE6pqIItFE", "IFGQuVc1Qh4", "NjbdYDPeErM", "PtXQ7ekGibo", "9xWD4rjaFz4",
+      "lDb2srq3prQ", "21h59Aidbss", "5zo6Nh69DoU", "pnchRd-AAwg",
     ],
   },
   arena: {
-    images: [arena1, arena2],
-    videos: ["buh9BJmWn9A", "unR4JKFXAXE", "6YWp0lGYC3Q", "JFqUABOPOk8", "kVdnKIBWN2A"],
+    images: [arena2, arena1],
+    videos: ["kVdnKIBWN2A", "JFqUABOPOk8", "6YWp0lGYC3Q", "unR4JKFXAXE", "buh9BJmWn9A"],
   },
   mercado: {
     images: [mercado1],
-    videos: ["fHgVO2698Jw", "_QHKwyMozZw", "hUGvrHMnmoY"],
+    videos: ["hUGvrHMnmoY", "_QHKwyMozZw", "fHgVO2698Jw"],
   },
   cityhub: {
-    images: [cityhub1, cityhub2, cityhub3, cityhub4],
-    videos: ["9pl-SiE0VVk", "868YMiO0LJc", "82mVbp9nB6U", "VIvmPBqrLnk"],
+    images: [cityhub4, cityhub3, cityhub2, cityhub1],
+    videos: ["VIvmPBqrLnk", "82mVbp9nB6U", "868YMiO0LJc", "9pl-SiE0VVk"],
   },
 };
 
