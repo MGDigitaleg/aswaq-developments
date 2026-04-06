@@ -17,7 +17,7 @@ const galleryVideos = [
   "Yq2XDpp2UNU", "7_I97gYQrho", "Hqv9KliWT1s", "BrDGv2SxZXI", "Y4lN13Cas5c",
   "vDInqD_HcKU", "cepHBQGE7J0", "9ejGoFF4Jrk", "urvheJNfRdQ", "Z2s5k9hBR5s",
   "lIwPvTA4kl8", "5Vg0nxFPN2s", "giAo0wIirns", "bWMNLhNUWic", "l6kA_Ya2tW8",
-  "-vQ52O22iwM", "0SPxL2rY3Dc", "ntpGQTMyq3Q",
+  "-vQ52O22iwM", "0SPxL2rY3Dc", "ntpGQTMyq3Q", "8YDCm1TmTQ0",
 ];
 
 const unitTypes = [
