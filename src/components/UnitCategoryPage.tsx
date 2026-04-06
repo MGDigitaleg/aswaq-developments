@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -75,74 +75,62 @@ const UnitCategoryPage = ({
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 text-center relative z-10 min-h-[420px] flex flex-col justify-end">
-          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body mb-4" style={{ color: 'hsl(var(--gold) / 0.7)' }}>{heroLabel}</p>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-5 leading-tight max-w-3xl mx-auto">{heroTitle}</h1>
-            <p className="text-primary-foreground/55 font-body max-w-2xl mx-auto text-[15px] leading-relaxed">{heroDescription}</p>
+      <section className="bg-primary pt-40 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <p className="text-primary-foreground/60 font-body font-medium tracking-widest uppercase text-sm mb-3">{heroLabel}</p>
+            <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-6">{heroTitle}</h1>
+            <p className="text-primary-foreground/70 font-body max-w-3xl mx-auto">{heroDescription}</p>
           </motion.div>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <div className="section-divider mb-8" style={{ marginLeft: 0 }} />
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">{introTitle}</h2>
-            <p className="text-muted-foreground font-body text-[15px] leading-[1.9]">{introDescription}</p>
+      <section className="py-12 md:py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-4">{introTitle}</h2>
+            <p className="text-muted-foreground font-body leading-relaxed">{introDescription}</p>
           </motion.div>
         </div>
       </section>
 
       {/* Location */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">{locationTitle}</h2>
-          <p className="text-muted-foreground font-body text-[15px] leading-[1.9] mb-8">{locationDescription}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <section className="py-12 md:py-16 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground mb-6">{locationTitle}</h2>
+          <p className="text-muted-foreground font-body mb-6">{locationDescription}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             {locationDrivers.map((driver, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.4 }}
-                className="flex items-start gap-3 p-4 md:p-5 bg-card rounded-xl border border-border/30 hover:border-accent/15 transition-all duration-300"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="flex items-start gap-3 p-4 bg-background rounded-2xl border border-border/50 hover:shadow-md transition-all duration-300"
               >
-                <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin size={15} className="text-accent" />
-                </div>
-                <p className="text-foreground font-body text-sm leading-relaxed">{driver}</p>
+                <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
+                <p className="text-foreground font-body text-sm">{driver}</p>
               </motion.div>
             ))}
           </div>
-          <p className="text-muted-foreground font-body text-sm italic leading-relaxed">{locationConclusion}</p>
+          <p className="text-muted-foreground font-body italic">{locationConclusion}</p>
         </div>
       </section>
 
       {/* Malls */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">Our Properties</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">{mallsSectionTitle}</h2>
-            {mallsSectionIntro && (
-              <p className="text-muted-foreground font-body text-[15px] max-w-3xl mx-auto mt-4 leading-relaxed">{mallsSectionIntro}</p>
-            )}
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground text-center mb-4">{mallsSectionTitle}</h2>
+          {mallsSectionIntro && (
+            <p className="text-muted-foreground font-body text-center max-w-3xl mx-auto mb-12">{mallsSectionIntro}</p>
+          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-8">
             {malls.map((mall, i) => (
-              <motion.div key={mall.name} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="bg-card rounded-2xl p-7 md:p-8 border border-border/30 hover:border-accent/15 transition-all duration-500"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
+              <motion.div key={mall.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                className="bg-cream rounded-lg p-8"
               >
-                <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-3">{mall.name}</h3>
-                <p className="text-muted-foreground font-body text-sm leading-[1.8] mb-4">{mall.description}</p>
-                <p className="text-foreground font-body font-semibold text-sm mb-5">{mall.sizes}</p>
-                <Link to={mall.href} className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-foreground transition-colors font-body group">
-                  {mallLinkText || "View Mall Details"}
-                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                <h3 className="font-display text-xl font-bold text-foreground mb-3">{mall.name}</h3>
+                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">{mall.description}</p>
+                <p className="text-foreground font-body font-semibold text-sm mb-4">{mall.sizes}</p>
+                <Link to={mall.href} className="inline-block text-sm font-semibold text-primary hover:text-secondary transition-colors font-body">
+                  {mallLinkText || "View Mall Details →"}
                 </Link>
               </motion.div>
             ))}

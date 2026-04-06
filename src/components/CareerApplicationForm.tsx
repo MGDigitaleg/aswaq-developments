@@ -131,7 +131,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           value={form.name}
           onChange={(e) => handleChange("name", e.target.value)}
           required
-          className="bg-white border-0 text-white"
+          className="bg-secondary border-0 text-white file:bg-transparent"
         />
         <Input
           type="email"
@@ -139,25 +139,25 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           value={form.email}
           onChange={(e) => handleChange("email", e.target.value)}
           required
-          className="bg-white border-0 text-white"
+          className="bg-secondary border-0"
         />
         <Input
           placeholder={l.phone}
           value={form.phone}
           onChange={(e) => handleChange("phone", e.target.value)}
           required
-          className="bg-white border-0 text-white"
+          className="bg-secondary border-0"
         />
         <Input
           placeholder={l.major}
           value={form.major}
           onChange={(e) => handleChange("major", e.target.value)}
-          className="bg-white border-0 text-white"
+          className="bg-destructive-foreground border-0 text-white"
         />
 
         {!selectedCareerId && (
           <Select value={form.career_id} onValueChange={(v) => handleChange("career_id", v)}>
-            <SelectTrigger className="bg-white border-0 text-white">
+            <SelectTrigger className="bg-secondary border-0">
               <SelectValue placeholder={l.selectPosition} />
             </SelectTrigger>
             <SelectContent>
@@ -173,7 +173,7 @@ const CareerApplicationForm = ({ careers, selectedCareerId, title = "Apply For J
           value={form.cover_letter}
           onChange={(e) => handleChange("cover_letter", e.target.value)}
           rows={4}
-          className="bg-white border-0 text-white resize-y"
+          className="bg-sidebar-accent border-0 resize-y"
         />
 
         <div>
