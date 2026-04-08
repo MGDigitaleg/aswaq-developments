@@ -121,7 +121,7 @@ const Footer = () => {
 
           {/* Projects + Units */}
           <div>
-            <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/70 uppercase tracking-[0.2em]">
+            <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/80 uppercase tracking-[0.2em]">
               {isArabic ? "مشاريعنا" : "Our Projects"}
             </h3>
             <ul className={`space-y-3 ${fontClass}`}>
