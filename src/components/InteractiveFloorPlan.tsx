@@ -309,10 +309,10 @@ const floorsData: FloorData[] = [
     id: "rf", label: "Roof Floor", shortLabel: "RF", image: floorRF,
     description: "Exclusive rooftop spaces with open-air potential — ideal for restaurants, lounges, and premium F&B concepts.",
     units: [
-      u("rf-01","R-01","29 m²","F&B","Available", 54,26, 8,7),
-      u("rf-02","R-02","148 m²","F&B","Available", 48,36, 18,20),
-      u("rf-03","R-03","59 m²","F&B","Available", 30,58, 7,15),
-      u("rf-04","R-04","39 m²","F&B","Available", 30,75, 10,8),
+      u("rf-01","R-01","29 m²","F&B","Available", 54,27, 7,6),
+      u("rf-02","R-02","148 m²","F&B","Available", 47,39, 17,17),
+      u("rf-03","R-03","59 m²","F&B","Available", 32,58, 6,14),
+      u("rf-04","R-04","39 m²","F&B","Available", 31,74, 9,7),
     ],
   },
 ];
