@@ -167,7 +167,7 @@ const Footer = () => {
                   marketing@aswaqdev.com
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-[13px] text-primary-foreground/45">
+              <li className="flex items-start gap-3 text-[13px] text-primary-foreground/55">
                 <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.10] flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin size={14} className="text-primary-foreground/50" />
                 </div>
