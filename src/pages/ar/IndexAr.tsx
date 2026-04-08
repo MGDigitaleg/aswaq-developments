@@ -382,8 +382,8 @@ const IndexAr = () => {
         </div>
       </section>
 
-      {/* ═══════════════ سولاريا — FEATURED / HERO ═══════════════ */}
-      <section className="pb-2 md:pb-3 bg-cream">
+      {/* ═══════════════ سولاريا — FLAGSHIP HERO ═══════════════ */}
+      <section className="pb-1 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -392,35 +392,32 @@ const IndexAr = () => {
             transition={{ duration: 0.7 }}
           >
             <Link to={`/ar/projects/${editorialProjects[0].slug}`} className="group block">
-              <div className="relative overflow-hidden rounded-2xl aspect-[2/1] md:aspect-[2.5/1]" style={{ boxShadow: 'var(--shadow-xl)' }}>
-                <img
-                  src={editorialProjects[0].image}
-                  alt={`${editorialProjects[0].name} - أسواق للتطوير العقاري`}
-                  className="w-full h-full object-cover transition-transform duration-[1.4s] group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, hsl(232 78% 10% / 0.92) 0%, hsl(232 78% 10% / 0.65) 40%, hsl(232 78% 10% / 0.25) 70%, transparent 100%)' }} />
-                <div className="absolute bottom-0 right-0 p-7 md:p-10 lg:p-14 max-w-lg">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-[72px] h-[72px] md:w-[88px] md:h-[88px] rounded-xl bg-white/95 border border-white/20 flex items-center justify-center p-2.5" style={{ boxShadow: '0 4px 24px hsl(0 0% 0% / 0.18)' }}>
-                      <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
+              <div className="relative overflow-hidden rounded-2xl aspect-[2/1] md:aspect-[2.4/1]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+                <img src={editorialProjects[0].image} alt={`${editorialProjects[0].name} - أسواق للتطوير العقاري`} className="w-full h-full object-cover transition-transform duration-[1.4s] group-hover:scale-[1.03]" loading="lazy" />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, hsl(232 78% 8% / 0.94) 0%, hsl(232 78% 10% / 0.7) 35%, hsl(232 78% 10% / 0.2) 65%, transparent 100%)' }} />
+                <div className="absolute inset-y-0 right-0 flex items-center p-7 md:p-10 lg:p-14">
+                  <div className="max-w-md">
+                    <div className="flex items-start gap-5 mb-5">
+                      <div className="w-20 h-20 md:w-24 md:h-24 lg:w-[104px] lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-3 shrink-0" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
+                        <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
+                      </div>
+                      <div className="pt-1">
+                        <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-primary-foreground/40 mb-1.5">
+                          {editorialProjects[0].tag}
+                        </span>
+                        <h3 className="font-display text-[1.75rem] md:text-[2.25rem] lg:text-[2.5rem] font-bold text-primary-foreground leading-[1.02]" style={{ letterSpacing: '-0.01em' }}>
+                          {editorialProjects[0].name}
+                        </h3>
+                      </div>
                     </div>
-                    <div>
-                      <span className="block text-[9px] font-arabic font-bold tracking-[0.2em] text-primary-foreground/40 mb-1">
-                        {editorialProjects[0].tag}
-                      </span>
-                      <h3 className="font-display text-2xl md:text-[2rem] lg:text-[2.25rem] font-bold text-primary-foreground leading-[1.05]">
-                        {editorialProjects[0].name}
-                      </h3>
-                    </div>
+                    <p className="text-primary-foreground/55 text-[13px] md:text-[14px] font-arabic leading-[1.7] mb-6">
+                      {editorialProjects[0].description}
+                    </p>
+                    <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.15em] px-7 py-3 rounded-lg bg-primary-foreground/[0.08] border border-primary-foreground/20 text-primary-foreground/90 group-hover:bg-primary-foreground/15 group-hover:border-primary-foreground/40 transition-all duration-300 backdrop-blur-sm">
+                      {editorialProjects[0].cta}
+                      <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1.5" />
+                    </span>
                   </div>
-                  <p className="text-primary-foreground/55 text-[13px] md:text-[14px] font-arabic leading-[1.7] mb-5 max-w-sm">
-                    {editorialProjects[0].description}
-                  </p>
-                  <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.12em] px-6 py-3 rounded-lg border border-primary-foreground/25 text-primary-foreground/85 group-hover:bg-primary-foreground/10 group-hover:border-primary-foreground/45 transition-all duration-300">
-                    {editorialProjects[0].cta}
-                    <ArrowLeft size={12} className="transition-transform group-hover:-translate-x-1.5" />
-                  </span>
                 </div>
               </div>
             </Link>
@@ -428,8 +425,8 @@ const IndexAr = () => {
         </div>
       </section>
 
-      {/* ═══════════════ أرينا — CONTENT RIGHT / IMAGE LEFT ═══════════════ */}
-      <section className="py-14 md:py-20 bg-cream">
+      {/* ═══════════════ أرينا — IMAGE LEFT / TEXT RIGHT ═══════════════ */}
+      <section className="py-10 md:py-14 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -437,38 +434,31 @@ const IndexAr = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link to={`/ar/projects/${editorialProjects[1].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
-              {/* Image */}
-              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
-                <img
-                  src={editorialProjects[1].image}
-                  alt={`${editorialProjects[1].name} - أسواق للتطوير العقاري`}
-                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
+            <Link to={`/ar/projects/${editorialProjects[1].slug}`} className="group grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-8 items-center">
+              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[6/5]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+                <img src={editorialProjects[1].image} alt={`${editorialProjects[1].name} - أسواق للتطوير العقاري`} className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" loading="lazy" />
               </div>
-              {/* Content */}
-              <div className="order-2 lg:order-1 py-2 lg:pl-4">
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center p-1.5" style={{ boxShadow: 'var(--shadow-md)' }}>
+              <div className="order-2 lg:order-1 lg:pl-2">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-[68px] h-[68px] md:w-20 md:h-20 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1.5 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
                     <img src={editorialProjects[1].logo} alt="" className="w-full h-full object-contain" />
                   </div>
-                  <div>
-                    <span className="block text-[9px] font-arabic font-bold tracking-[0.2em] text-foreground/30 mb-0.5">
+                  <div className="pt-0.5">
+                    <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-foreground/30 mb-1">
                       {editorialProjects[1].tag}
                     </span>
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-foreground leading-tight">
+                    <h3 className="font-display text-[1.5rem] md:text-[1.75rem] font-bold text-foreground leading-[1.08]">
                       {editorialProjects[1].name}
                     </h3>
                   </div>
                 </div>
-                <p className="text-muted-foreground text-[14px] font-arabic leading-[1.75] mb-1.5 max-w-md">
+                <p className="text-muted-foreground text-[14px] font-arabic leading-[1.7] mb-1">
                   {editorialProjects[1].description}
                 </p>
-                <p className="text-[11px] font-arabic text-foreground/30 tracking-wide mb-5 flex items-center gap-1.5">
-                  <MapPin size={11} /> {editorialProjects[1].location}
+                <p className="text-[11px] font-arabic text-foreground/28 tracking-wide mb-5 flex items-center gap-1.5">
+                  <MapPin size={10} /> {editorialProjects[1].location}
                 </p>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.12em] px-6 py-3 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/35 group-hover:text-foreground transition-all duration-300">
+                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.15em] px-6 py-2.5 rounded-lg border border-foreground/12 text-foreground/55 group-hover:border-foreground/30 group-hover:text-foreground group-hover:bg-foreground/[0.03] transition-all duration-300">
                   {editorialProjects[1].cta}
                   <ArrowLeft size={12} className="transition-transform group-hover:-translate-x-1.5" />
                 </span>
@@ -478,8 +468,8 @@ const IndexAr = () => {
         </div>
       </section>
 
-      {/* ═══════════════ ميركادو — IMAGE RIGHT / CONTENT LEFT ═══════════════ */}
-      <section className="py-14 md:py-20 bg-background">
+      {/* ═══════════════ ميركادو — TEXT RIGHT / IMAGE LEFT ═══════════════ */}
+      <section className="py-10 md:py-14 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -487,38 +477,31 @@ const IndexAr = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link to={`/ar/projects/${editorialProjects[2].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
-              {/* Image */}
-              <div className="relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
-                <img
-                  src={editorialProjects[2].image}
-                  alt={`${editorialProjects[2].name} - أسواق للتطوير العقاري`}
-                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
+            <Link to={`/ar/projects/${editorialProjects[2].slug}`} className="group grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-6 lg:gap-8 items-center">
+              <div className="relative overflow-hidden rounded-2xl aspect-[6/5]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+                <img src={editorialProjects[2].image} alt={`${editorialProjects[2].name} - أسواق للتطوير العقاري`} className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" loading="lazy" />
               </div>
-              {/* Content */}
-              <div className="py-2 lg:pr-4">
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center px-2 py-2.5" style={{ boxShadow: 'var(--shadow-md)' }}>
+              <div className="lg:pr-2">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-[68px] h-[68px] md:w-20 md:h-20 rounded-xl bg-white border border-border/40 flex items-center justify-center px-2 py-2.5 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
                     <img src={editorialProjects[2].logo} alt="" className="w-full h-full object-contain" />
                   </div>
-                  <div>
-                    <span className="block text-[9px] font-arabic font-bold tracking-[0.2em] text-foreground/30 mb-0.5">
+                  <div className="pt-0.5">
+                    <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-foreground/30 mb-1">
                       {editorialProjects[2].tag}
                     </span>
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-foreground leading-tight">
+                    <h3 className="font-display text-[1.5rem] md:text-[1.75rem] font-bold text-foreground leading-[1.08]">
                       {editorialProjects[2].name}
                     </h3>
                   </div>
                 </div>
-                <p className="text-muted-foreground text-[14px] font-arabic leading-[1.75] mb-1.5 max-w-md">
+                <p className="text-muted-foreground text-[14px] font-arabic leading-[1.7] mb-1">
                   {editorialProjects[2].description}
                 </p>
-                <p className="text-[11px] font-arabic text-foreground/30 tracking-wide mb-5 flex items-center gap-1.5">
-                  <MapPin size={11} /> {editorialProjects[2].location}
+                <p className="text-[11px] font-arabic text-foreground/28 tracking-wide mb-5 flex items-center gap-1.5">
+                  <MapPin size={10} /> {editorialProjects[2].location}
                 </p>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.12em] px-6 py-3 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/35 group-hover:text-foreground transition-all duration-300">
+                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.15em] px-6 py-2.5 rounded-lg border border-foreground/12 text-foreground/55 group-hover:border-foreground/30 group-hover:text-foreground group-hover:bg-foreground/[0.03] transition-all duration-300">
                   {editorialProjects[2].cta}
                   <ArrowLeft size={12} className="transition-transform group-hover:-translate-x-1.5" />
                 </span>
@@ -528,8 +511,8 @@ const IndexAr = () => {
         </div>
       </section>
 
-      {/* ═══════════════ سيتي هب — FRAMED CONTENT / IMAGE LEFT ═══════════════ */}
-      <section className="py-14 md:py-20 pb-20 md:pb-24 bg-background">
+      {/* ═══════════════ سيتي هب — IMMERSIVE OVERLAY ═══════════════ */}
+      <section className="py-10 md:py-14 pb-16 md:pb-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -537,41 +520,41 @@ const IndexAr = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link to={`/ar/projects/${editorialProjects[3].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
-              {/* Image */}
-              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
-                <img
-                  src={editorialProjects[3].image}
-                  alt={`${editorialProjects[3].name} - أسواق للتطوير العقاري`}
-                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
-              </div>
-              {/* Content — framed treatment */}
-              <div className="order-2 lg:order-1 py-6 px-6 md:py-8 md:px-8 rounded-2xl border border-border/30" style={{ background: 'hsl(var(--ivory) / 0.5)' }}>
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center p-2" style={{ boxShadow: 'var(--shadow-md)' }}>
-                    <img src={editorialProjects[3].logo} alt="" className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <span className="block text-[9px] font-arabic font-bold tracking-[0.2em] text-foreground/30 mb-0.5">
-                      {editorialProjects[3].tag}
+            <Link to={`/ar/projects/${editorialProjects[3].slug}`} className="group block">
+              <div className="relative overflow-hidden rounded-2xl aspect-[2/1] md:aspect-[2.8/1]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+                <img src={editorialProjects[3].image} alt={`${editorialProjects[3].name} - أسواق للتطوير العقاري`} className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" loading="lazy" />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.88) 0%, hsl(232 78% 10% / 0.45) 50%, hsl(232 78% 10% / 0.15) 100%)' }} />
+                <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
+                  <div className="flex items-center gap-5">
+                    <div className="w-[68px] h-[68px] md:w-20 md:h-20 rounded-xl bg-white/95 border border-white/20 flex items-center justify-center p-2 shrink-0" style={{ boxShadow: '0 6px 24px hsl(0 0% 0% / 0.18)' }}>
+                      <img src={editorialProjects[3].logo} alt="" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-primary-foreground/40 mb-1">
+                        {editorialProjects[3].tag}
+                      </span>
+                      <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground leading-tight mb-1">
+                        {editorialProjects[3].name}
+                      </h3>
+                      <p className="text-primary-foreground/45 text-[13px] font-arabic leading-[1.6] max-w-lg hidden md:block">
+                        {editorialProjects[3].description}
+                      </p>
+                    </div>
+                    <span className="hidden md:inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.15em] px-7 py-3 rounded-lg bg-primary-foreground/[0.08] border border-primary-foreground/20 text-primary-foreground/90 group-hover:bg-primary-foreground/15 group-hover:border-primary-foreground/40 transition-all duration-300 backdrop-blur-sm shrink-0">
+                      {editorialProjects[3].cta}
+                      <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1.5" />
                     </span>
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-foreground leading-tight">
-                      {editorialProjects[3].name}
-                    </h3>
+                  </div>
+                  <div className="md:hidden mt-3">
+                    <p className="text-primary-foreground/45 text-[13px] font-arabic leading-[1.6] mb-4">
+                      {editorialProjects[3].description}
+                    </p>
+                    <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.15em] px-6 py-2.5 rounded-lg bg-primary-foreground/[0.08] border border-primary-foreground/20 text-primary-foreground/90">
+                      {editorialProjects[3].cta}
+                      <ArrowLeft size={12} />
+                    </span>
                   </div>
                 </div>
-                <p className="text-muted-foreground text-[14px] font-arabic leading-[1.75] mb-1.5 max-w-md">
-                  {editorialProjects[3].description}
-                </p>
-                <p className="text-[11px] font-arabic text-foreground/30 tracking-wide mb-5 flex items-center gap-1.5">
-                  <MapPin size={11} /> {editorialProjects[3].location}
-                </p>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.12em] px-6 py-3 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/35 group-hover:text-foreground transition-all duration-300">
-                  {editorialProjects[3].cta}
-                  <ArrowLeft size={12} className="transition-transform group-hover:-translate-x-1.5" />
-                </span>
               </div>
             </Link>
           </motion.div>
