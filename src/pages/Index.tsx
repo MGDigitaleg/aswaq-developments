@@ -9,6 +9,7 @@ import CTASection from "@/components/CTASection";
 import ROICalculator from "@/components/ROICalculator";
 import TrustedBySection from "@/components/TrustedBySection";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
 import heroBg from "@/assets/hero-building.webp";
@@ -371,6 +372,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════ MERCADO TENANTS ═══════════════ */}
+      <MercadoTenantsSection />
 
       {/* ═══════════════ PORTFOLIO HEADER ═══════════════ */}
       <section className="pt-20 md:pt-28 pb-6 md:pb-8 bg-cream">
