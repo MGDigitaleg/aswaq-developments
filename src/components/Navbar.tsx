@@ -3,10 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe, ArrowRight, ArrowLeft, Building2, Store, Briefcase, HeartPulse } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import aswaqLogo from "@/assets/aswaq-logo.webp";
-import cityHubLogo from "@/assets/logos/city-hub-mall.jpg";
-import mercadoLogo from "@/assets/logos/mercado-mall.png";
-import arenaLogo from "@/assets/logos/arena-mall.png";
-import solariaLogo from "@/assets/logos/solaria-mall.png";
+import cityHubLogo from "@/assets/logos/city-hub-mall-clean.png";
+import mercadoLogo from "@/assets/logos/mercado-mall-clean.png";
+import arenaLogo from "@/assets/logos/arena-mall-clean.png";
+import solariaLogo from "@/assets/logos/solaria-mall-clean.png";
 
 interface NavChild {
   label: string;
@@ -130,7 +130,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[460px]"
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[520px]"
             style={dropdownStyle}
           >
             {/* Section label */}
@@ -149,14 +149,14 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                   <Link
                     key={child.href}
                     to={child.href}
-                    className="group flex items-start gap-3 p-3.5 rounded-lg transition-all duration-200 hover:bg-foreground/[0.05] border border-transparent hover:border-border/40"
+                    className="group flex items-start gap-3.5 p-3.5 rounded-xl transition-all duration-200 hover:bg-foreground/[0.04] border border-transparent hover:border-border/30"
                   >
-                    {/* Mall logo */}
-                    <div className="w-11 h-11 rounded-lg bg-white border border-border/50 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/70 group-hover:shadow-sm transition-all">
+                    {/* Mall logo — premium container */}
+                    <div className="w-[72px] h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/60 group-hover:shadow-md transition-all duration-200 p-2.5">
                       {meta ? (
-                        <img src={meta.logo} alt={child.label} className="w-9 h-9 object-contain" loading="lazy" />
+                        <img src={meta.logo} alt={child.label} className="w-full h-full object-contain" loading="lazy" />
                       ) : (
-                        <Building2 size={16} className="text-foreground/40" />
+                        <Building2 size={22} className="text-foreground/40" />
                       )}
                     </div>
 
