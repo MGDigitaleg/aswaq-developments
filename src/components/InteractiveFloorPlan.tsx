@@ -147,16 +147,16 @@ const floorsData: FloorData[] = [
       // ── Center-lower: 57 ──
       u("gf-57","57","44 m²","Retail","Available", 42,58, 7,5),
       // ── Bottom-left: 58-63 ──
-      u("gf-58","58","77 m²","Retail","Available", 36,72, 8,7),
-      u("gf-59","59","73 m²","Retail","Available", 30,70, 8,7),
-      u("gf-60","60","75 m²","Retail","Available", 24,73, 8,6),
-      u("gf-61","61","79 m²","Retail","Available", 26,65, 8,7),
-      u("gf-62","62","125 m²","Retail","Available", 14,62, 11,11),
-      u("gf-63","63","47 m²","Retail","Available", 23,57, 6,6),
+      u("gf-58","58","77 m²","Retail","Available", 36,70, 8,7),
+      u("gf-59","59","73 m²","Retail","Available", 30,68, 8,7),
+      u("gf-60","60","75 m²","Retail","Available", 24,71, 8,6),
+      u("gf-61","61","79 m²","Retail","Available", 26,63, 8,7),
+      u("gf-62","62","125 m²","Retail","Available", 14,60, 11,11),
+      u("gf-63","63","47 m²","Retail","Available", 23,55, 6,6),
       // ── Bottom-center/right: 64-66 ──
-      u("gf-64","64","83 m²","Retail","Available", 48,73, 10,7),
-      u("gf-65","65","87 m²","Retail","Available", 48,80, 10,7),
-      u("gf-66","66","107 m²","Retail","Available", 46,87, 12,8),
+      u("gf-64","64","83 m²","Retail","Available", 48,71, 10,7),
+      u("gf-65","65","87 m²","Retail","Available", 48,78, 10,7),
+      u("gf-66","66","107 m²","Retail","Available", 46,85, 12,8),
     ],
   },
   {
