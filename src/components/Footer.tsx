@@ -193,7 +193,7 @@ const Footer = () => {
                 ))}
               </div>
               <span className="text-lg font-bold text-primary-foreground/90 font-['Montserrat']">4.6</span>
-              <span className={`text-[12px] text-primary-foreground/50 ${fontClass}`}>
+              <span className={`text-[12px] text-primary-foreground/60 ${fontClass}`}>
                 {isArabic ? "بناءً على تقييمات Google" : "based on Google Reviews"}
               </span>
             </div>
