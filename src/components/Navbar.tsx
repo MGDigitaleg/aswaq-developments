@@ -130,7 +130,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[460px]"
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[520px]"
             style={dropdownStyle}
           >
             {/* Section label */}
