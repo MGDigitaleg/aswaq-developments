@@ -109,7 +109,7 @@ const MercadoTenantsSection = ({ isArabic = false }: Props) => {
               <img
                 src={tenant.logo}
                 alt={tenant.name}
-                className="max-w-[62%] max-h-[52%] object-contain opacity-75 hover:opacity-100 transition-opacity duration-400"
+                className="max-w-[62%] max-h-[52%] object-contain opacity-90 hover:opacity-100 transition-opacity duration-400"
                 loading="lazy"
                 draggable={false}
               />
