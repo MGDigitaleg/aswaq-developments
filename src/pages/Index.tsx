@@ -20,6 +20,7 @@ import cityhubImg from "@/assets/cityhub-mall.webp";
 import mercadoImg from "@/assets/mercado-mall.webp";
 import arenaImg from "@/assets/arena-mall.webp";
 import solariaImg from "@/assets/solaria-mall.webp";
+import solariaPositioning from "@/assets/solaria-positioning.webp";
 import solariaLogo from "@/assets/logos/solaria-mall-clean.png";
 import arenaLogo from "@/assets/logos/arena-mall-clean.png";
 import mercadoLogo from "@/assets/logos/mercado-mall-clean.png";
