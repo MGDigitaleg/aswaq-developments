@@ -126,7 +126,7 @@ const Footer = () => {
             </h3>
             <ul className={`space-y-3 ${fontClass}`}>
               {projectLinks.map((p) => (
-                <li key={p.name}><Link to={p.href} className="text-[13px] text-primary-foreground/55 hover:text-primary-foreground/90 transition-colors duration-300">{p.name}</Link></li>
+                <li key={p.name}><Link to={p.href} className="text-[13px] text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300">{p.name}</Link></li>
               ))}
             </ul>
             <h3 className="font-body text-[10px] font-bold mt-8 mb-4 text-primary-foreground/70 uppercase tracking-[0.2em]">
