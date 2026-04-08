@@ -284,69 +284,107 @@ const IndexAr = () => {
         </div>
       </section>
 
-      {/* ═══════════════ ABOUT / BRAND INTRO ═══════════════ */}
-      <section className="py-20 md:py-28 bg-background">
+      {/* ═══════════════ MARKET POSITIONING — FLAGSHIP ═══════════════ */}
+      <section className="py-24 md:py-32 lg:py-36 bg-background" dir="rtl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            {/* Image — order-2 on desktop for RTL */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Image Column — first on desktop RTL */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="relative order-2 lg:order-1"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.9, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+              className="relative order-1 lg:order-2"
             >
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
-                <img src={cityhubImg} alt="أسواق للتطوير العقاري - مطور عقاري متميز" className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
-              </div>
-              {/* Floating credential */}
               <div
-                className="absolute -bottom-6 -right-4 md:right-6 rounded-xl px-6 py-4"
+                className="relative overflow-hidden rounded-xl aspect-[4/3]"
+                style={{ boxShadow: '0 20px 60px -15px hsl(0 0% 0% / 0.15)' }}
+              >
+                <motion.img
+                  src={solariaImg}
+                  alt="أسواق للتطوير العقاري - عقارات تجارية استراتيجية"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  whileHover={{ scale: 1.025 }}
+                  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
+              </div>
+
+              {/* Floating Stats Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="absolute -bottom-7 right-5 md:right-8 rounded-xl px-7 py-5"
                 style={{
-                  background: 'hsl(var(--ivory))',
-                  boxShadow: 'var(--shadow-lg)',
-                  border: '1px solid hsl(var(--border) / 0.5)',
+                  background: 'hsl(var(--ivory) / 0.97)',
+                  backdropFilter: 'blur(12px)',
+                  boxShadow: '0 8px 32px hsl(0 0% 0% / 0.08), 0 1px 3px hsl(0 0% 0% / 0.04)',
+                  border: '1px solid hsl(var(--border) / 0.35)',
                 }}
               >
-                <div className="flex items-center gap-4">
-                  <div className="text-center">
-                    <div className="font-['Montserrat'] text-2xl font-extrabold text-foreground" style={{ letterSpacing: '-0.02em' }}>4</div>
-                    <div className="text-[9px] text-muted-foreground font-arabic">مولات بارزة</div>
+                <div className="flex items-center gap-6">
+                  <div>
+                    <div className="font-['Montserrat'] text-[1.5rem] font-extrabold text-foreground leading-none mb-1" style={{ letterSpacing: '-0.03em' }}>
+                      <AnimatedCounter value="4+" className="text-foreground" />
+                    </div>
+                    <div className="text-[9px] text-muted-foreground/70 font-arabic tracking-[0.12em]">
+                      مشاريع بارزة
+                    </div>
                   </div>
-                  <div className="w-px h-8 bg-border/60" />
-                  <div className="text-center">
-                    <div className="font-['Montserrat'] text-2xl font-extrabold text-foreground" style={{ letterSpacing: '-0.02em' }}>20+</div>
-                    <div className="text-[9px] text-muted-foreground font-arabic">سنة خبرة</div>
+                  <div className="w-px h-10 bg-border/40" />
+                  <div>
+                    <div className="font-['Montserrat'] text-[1.5rem] font-extrabold text-foreground leading-none mb-1" style={{ letterSpacing: '-0.03em' }}>
+                      <AnimatedCounter value="20+" className="text-foreground" />
+                    </div>
+                    <div className="text-[9px] text-muted-foreground/70 font-arabic tracking-[0.12em]">
+                      سنة من الخبرة السوقية
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
 
-            {/* Text — order-1 on desktop for RTL */}
+            {/* Text Column */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="order-1 lg:order-2"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="order-2 lg:order-1"
             >
-              <p className="section-label mb-5">تميّز راسخ</p>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-foreground mb-6 leading-[1.2]">
-                المطور العقاري الموثوق في مصر
-              </h2>
-              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.85] mb-4">
-                تعد شركة أسواق للتطوير العقاري مطوراً عقارياً يتطلع للمستقبل، متخصصاً في المشاريع التجارية والإدارية والطبية في منطقة شرق القاهرة.
-              </p>
-              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.85] mb-8">
-                سواء كنت تبحث عن عقار للبيع، أو وحدة للإيجار، أو مشروع متعدد الاستخدامات، فإن "أسواق" تقدم مشاريع في مواقع استراتيجية مدعومة بتخطيط ذكي وتصميم يواكب احتياجات السوق.
-              </p>
-              <Link
-                to="/ar/about"
-                className="btn-outline-dark px-6 py-2.5 text-[12.5px] rounded-lg font-arabic group"
+              <p
+                className="text-[10px] font-arabic font-semibold tracking-[0.2em] mb-8"
+                style={{ color: 'hsl(var(--steel))' }}
               >
-                اعرف المزيد عن أسواق
-                <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1" />
+                مكانة سوقية
+              </p>
+              <h2
+                className="font-display text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground leading-[1.15] mb-7"
+                style={{ letterSpacing: '-0.015em' }}
+              >
+                من التواجد العقاري
+                <br />
+                إلى{" "}
+                <span className="text-navy-rich">القوة السوقية</span>
+              </h2>
+              <div className="space-y-4 mb-10">
+                <p className="text-muted-foreground font-arabic text-[14.5px] leading-[2] max-w-lg">
+                  أسواق لا تبني عقارات فحسب — بل تصنع مواقع سوقية استراتيجية.
+                </p>
+                <p className="text-muted-foreground font-arabic text-[14.5px] leading-[2] max-w-lg">
+                  كل مشروع مصمم لتعزيز الحضور التجاري، وزيادة القيمة السوقية، وتحويل المواقع المتميزة إلى ميزة استثمارية طويلة الأمد.
+                </p>
+              </div>
+              <Link
+                to="/ar/projects"
+                className="inline-flex items-center gap-2.5 font-arabic text-[12px] font-semibold tracking-[0.06em] px-7 py-3.5 rounded-lg bg-primary text-primary-foreground transition-all duration-400 hover:-translate-y-0.5 group"
+                style={{ boxShadow: '0 4px 20px hsl(232 78% 10% / 0.18)' }}
+              >
+                استكشف مشاريعنا
+                <ArrowLeft size={13} className="transition-transform duration-300 group-hover:-translate-x-1" />
               </Link>
             </motion.div>
           </div>
