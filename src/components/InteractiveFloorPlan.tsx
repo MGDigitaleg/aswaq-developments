@@ -654,7 +654,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                   {(["Available", "Reserved", "Sold"] as UnitStatus[]).map((s) => (
                     <div key={s} className="flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full" style={{ background: statusColors[s] }} />
-                      <span className="text-[8px] font-body text-muted-foreground">{s}</span>
+                      <span className={`text-[8px] text-muted-foreground ${isRtl ? "font-arabic" : "font-body"}`}>{t[s]}</span>
                     </div>
                   ))}
                 </div>
