@@ -13,6 +13,8 @@ import agroNova from "@/assets/tenants/agro-nova.png";
 import bim from "@/assets/tenants/bim.png";
 import townBakery from "@/assets/tenants/town-bakery.png";
 import mamlaka from "@/assets/tenants/mamlaka.png";
+import monginis from "@/assets/tenants/monginis.png";
+import arkan from "@/assets/tenants/arkan.png";
 
 interface Tenant {
   name: string;
@@ -21,9 +23,11 @@ interface Tenant {
 
 const tenants: Tenant[] = [
   { name: "BIM", logo: bim },
+  { name: "Monginis", logo: monginis },
   { name: "Fire Grill", logo: fireGrill },
   { name: "PastaCup", logo: pastacup },
   { name: "City Phone Store", logo: cityPhone },
+  { name: "Arkan Cafe & Nuts", logo: arkan },
   { name: "Town Bakery", logo: townBakery },
   { name: "Zero Haircuts & Shaves", logo: zero },
   { name: "Tarek Saeed", logo: tarekSaeed },
