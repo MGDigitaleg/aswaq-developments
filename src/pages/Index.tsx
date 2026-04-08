@@ -456,7 +456,7 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link to={`/projects/${editorialProjects[1].slug}`} className="group grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-6 lg:gap-8 items-center">
+            <Link to={`/projects/${editorialProjects[1].slug}`} className="group grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-5 lg:gap-7 items-center">
               <div className="order-2 lg:order-1 lg:pr-2">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-[68px] h-[68px] md:w-20 md:h-20 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1.5 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
