@@ -209,47 +209,51 @@ const floorsData: FloorData[] = [
     id: "2f", label: "Second Floor", shortLabel: "2F", image: floor2F,
     description: "Mixed-use medical and administrative zone with professional atmosphere and natural light. Units from 12 m² to 108 m².",
     units: [
-      // Top-right: 201-202
-      u("2f-202","202","122 m²","Administrative","Available", 77,3, 12,11),
-      u("2f-201","201","46 m²","Administrative","Available", 85,12, 8,7),
-      // Right strip: 203-209
-      u("2f-203","203","37 m²","Medical","Available", 78,20, 7,7),
-      u("2f-204","204","37 m²","Medical","Available", 78,29, 7,7),
-      u("2f-205","205","37 m²","Medical","Available", 78,38, 7,7),
-      u("2f-206","206","37 m²","Medical","Reserved", 78,47, 7,7),
-      u("2f-207","207","37 m²","Medical","Available", 78,56, 7,7),
-      u("2f-208","208","39 m²","Medical","Available", 78,65, 7,7),
-      u("2f-209","209","66 m²","Administrative","Available", 86,47, 8,10),
-      // Right mid column: 210-216
-      u("2f-210","210","49 m²","Administrative","Available", 86,66, 8,6.5),
-      u("2f-211","211","49 m²","Administrative","Available", 86,74, 8,6.5),
-      u("2f-212","212","49 m²","Medical","Available", 86,82, 8,6.5),
-      u("2f-213","213","49 m²","Administrative","Available", 86,90, 8,6.5),
-      u("2f-214","214","49 m²","Administrative","Sold", 86,98, 8,6.5),
-      u("2f-215","215","49 m²","Medical","Available", 86,106, 8,6.5),
-      u("2f-216","216","69 m²","Administrative","Available", 78,106, 8,10),
-      // Upper center: 217-224
-      u("2f-217","217","88 m²","Administrative","Available", 56,15, 10,12),
-      u("2f-220","220","46 m²","Administrative","Available", 56,28, 7,7),
-      u("2f-221","221","38 m²","Medical","Available", 56,37, 7,6.5),
-      u("2f-222","222","78 m²","Medical","Available", 56,47, 8,11),
-      u("2f-223","223","39 m²","Administrative","Available", 40,57, 8,10),
-      u("2f-224","224","70 m²","Administrative","Available", 40,69, 9,9),
-      u("2f-225","225","86 m²","Administrative","Available", 83,0, 9,0.1),
-      u("2f-226","226","121 m²","Medical","Available", 57,78, 12,11),
-      // Left / lower clusters: 227-235
-      u("2f-227","227","63 m²","Administrative","Reserved", 49,78, 8,10),
-      u("2f-228","228","63 m²","Administrative","Available", 42,78, 7,10),
-      u("2f-229","229","38 m²","Medical","Available", 37,70, 6,7),
-      u("2f-230","230","38 m²","Administrative","Available", 42,88, 6,7),
-      u("2f-231","231","54 m²","Administrative","Available", 42,95, 7,7),
-      u("2f-232","232","43 m²","Administrative","Available", 42,107, 7,7),
-      u("2f-233","233","104 m²","Administrative","Available", 42,117, 9,12),
-      u("2f-234","234","108 m²","Administrative","Available", 12,92, 13,12),
-      u("2f-235","235","74 m²","Medical","Available", 12,80, 12,10),
-      // Bottom-right: 218-219
-      u("2f-218","218","221 m²","Medical","Available", 78,120, 16,18),
-      u("2f-219","219","80 m²","Administrative","Available", 56,8, 8,10),
+      // Top block: 202, 201
+      u("2f-202","202","122 m²","Administrative","Available", 62,6, 14,12),
+      u("2f-201","201","46 m²","Administrative","Available", 78,10, 7,8),
+      // Center-right strip: 203-208
+      u("2f-203","203","36 m²","Medical","Available", 66,20, 7,6),
+      u("2f-204","204","37 m²","Medical","Available", 66,27, 7,6),
+      u("2f-205","205","37 m²","Medical","Available", 66,34, 7,6),
+      u("2f-206","206","37 m²","Medical","Reserved", 66,41, 7,5.5),
+      u("2f-207","207","37 m²","Medical","Available", 66,47, 7,5.5),
+      u("2f-208","208","39 m²","Medical","Available", 66,53, 7,6),
+      u("2f-209","209","66 m²","Administrative","Available", 75,36, 9,11),
+      // Far-right strip: 210-215
+      u("2f-210","210","49 m²","Administrative","Available", 82,48, 7,5),
+      u("2f-211","211","49 m²","Administrative","Available", 82,53.5, 7,5),
+      u("2f-212","212","49 m²","Medical","Available", 82,59, 7,5),
+      u("2f-213","213","49 m²","Administrative","Available", 82,64.5, 7,5),
+      u("2f-214","214","49 m²","Administrative","Sold", 82,70, 7,5),
+      u("2f-215","215","49 m²","Medical","Available", 82,75.5, 7,5),
+      // Right lower: 216-218
+      u("2f-216","216","69 m²","Administrative","Available", 80,81, 9,6),
+      u("2f-217","217","55 m²","Administrative","Available", 80,88, 9,6),
+      u("2f-218","218","221 m²","Medical","Available", 78,94, 12,6),
+      // Left upper column: 219-222
+      u("2f-219","219","80 m²","Administrative","Available", 48,14, 8,7),
+      u("2f-220","220","46 m²","Administrative","Available", 48,26, 7,7),
+      u("2f-221","221","38 m²","Medical","Available", 48,35, 7,6),
+      u("2f-222","222","78 m²","Medical","Available", 48,44, 8,10),
+      // Center block: 223-224
+      u("2f-223","223","39 m²","Administrative","Available", 36,38, 8,7),
+      u("2f-224","224","70 m²","Administrative","Available", 42,35, 9,8),
+      // Center-lower block: 225-228
+      u("2f-225","225","86 m²","Administrative","Available", 50,42, 10,7),
+      u("2f-226","226","121 m²","Medical","Available", 48,49, 12,9),
+      u("2f-227","227","63 m²","Administrative","Reserved", 46,42, 8,7),
+      u("2f-228","228","63 m²","Administrative","Available", 38,42, 7,7),
+      // Left lower: 229-233
+      u("2f-229","229","38 m²","Medical","Available", 34,42, 6,6),
+      u("2f-230","230","38 m²","Administrative","Available", 36,55, 6,6),
+      u("2f-231","231","40 m²","Administrative","Available", 36,61, 7,6),
+      u("2f-232","232","43 m²","Administrative","Available", 36,70, 7,7),
+      u("2f-233","233","104 m²","Administrative","Available", 34,78, 9,10),
+      // Far left: 234-236
+      u("2f-234","234","108 m²","Administrative","Available", 12,62, 13,12),
+      u("2f-235","235","74 m²","Medical","Available", 14,50, 12,10),
+      u("2f-236","236","54 m²","Administrative","Available", 22,55, 7,7),
     ],
   },
   {
