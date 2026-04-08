@@ -338,7 +338,7 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ PORTFOLIO HEADER ═══════════════ */}
-      <section className="pt-20 md:pt-28 pb-6 md:pb-10 bg-cream">
+      <section className="pt-20 md:pt-28 pb-6 md:pb-8 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -367,7 +367,7 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ SOLARIA — FEATURED / HERO TREATMENT ═══════════════ */}
-      <section className="pb-6 md:pb-8 bg-cream">
+      <section className="pb-4 md:pb-6 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -376,30 +376,30 @@ const Index = () => {
             transition={{ duration: 0.7 }}
           >
             <Link to={`/projects/${editorialProjects[0].slug}`} className="group block">
-              <div className="relative overflow-hidden rounded-2xl aspect-[21/9] md:aspect-[2.4/1]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+              <div className="relative overflow-hidden rounded-2xl aspect-[2/1] md:aspect-[2.6/1]" style={{ boxShadow: 'var(--shadow-xl)' }}>
                 <img
                   src={editorialProjects[0].image}
                   alt={`${editorialProjects[0].name} - ASWAQ Developments`}
                   className="w-full h-full object-cover transition-transform duration-[1.4s] group-hover:scale-[1.03]"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-8 md:p-12 max-w-xl">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/95 border border-white/20 flex items-center justify-center p-2 mb-5" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.12)' }}>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-primary/10" />
+                <div className="absolute bottom-0 left-0 p-7 md:p-10 lg:p-12 max-w-xl">
+                  <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-xl bg-white/95 border border-white/20 flex items-center justify-center p-2 mb-4" style={{ boxShadow: '0 4px 20px hsl(0 0% 0% / 0.15)' }}>
                     <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
                   </div>
-                  <span className="inline-block text-[9px] font-body font-bold tracking-[0.18em] uppercase text-primary-foreground/50 mb-2">
+                  <span className="inline-block text-[9px] font-body font-bold tracking-[0.2em] uppercase text-primary-foreground/45 mb-1.5">
                     {editorialProjects[0].tag}
                   </span>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-2 leading-tight">
+                  <h3 className="font-display text-2xl md:text-[2rem] font-bold text-primary-foreground mb-2 leading-tight">
                     {editorialProjects[0].name}
                   </h3>
-                  <p className="text-primary-foreground/55 text-[13.5px] font-body leading-relaxed mb-5 max-w-md">
+                  <p className="text-primary-foreground/50 text-[13px] font-body leading-relaxed mb-5 max-w-md">
                     {editorialProjects[0].description}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-[12px] font-bold font-body text-primary-foreground/70 group-hover:text-primary-foreground transition-colors tracking-wide uppercase">
+                  <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.12em] uppercase px-5 py-2.5 rounded-lg border border-primary-foreground/25 text-primary-foreground/80 group-hover:bg-primary-foreground/10 group-hover:border-primary-foreground/40 transition-all duration-300">
                     {editorialProjects[0].cta}
-                    <ArrowRight size={13} className="transition-transform group-hover:translate-x-1.5" />
+                    <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
                   </span>
                 </div>
               </div>
@@ -408,8 +408,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════════ ARENA — IMAGE RIGHT / CONTENT LEFT ═══════════════ */}
-      <section className="py-10 md:py-16 bg-cream">
+      {/* ═══════════════ ARENA — CONTENT LEFT / IMAGE RIGHT ═══════════════ */}
+      <section className="py-12 md:py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -417,31 +417,31 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link to={`/projects/${editorialProjects[1].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+            <Link to={`/projects/${editorialProjects[1].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Content */}
-              <div className="order-2 lg:order-1">
-                <div className="w-12 h-12 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1.5 mb-5" style={{ boxShadow: 'var(--shadow-sm)' }}>
+              <div className="order-2 lg:order-1 py-2">
+                <div className="w-14 h-14 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1 mb-4" style={{ boxShadow: 'var(--shadow-sm)' }}>
                   <img src={editorialProjects[1].logo} alt="" className="w-full h-full object-contain" />
                 </div>
-                <span className="inline-block text-[9px] font-body font-bold tracking-[0.18em] uppercase text-foreground/35 mb-3">
+                <span className="inline-block text-[9px] font-body font-bold tracking-[0.2em] uppercase text-foreground/30 mb-2">
                   {editorialProjects[1].tag}
                 </span>
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 leading-tight">
+                <h3 className="font-display text-2xl md:text-[1.75rem] font-bold text-foreground mb-3 leading-tight">
                   {editorialProjects[1].name}
                 </h3>
-                <p className="text-muted-foreground text-[14px] font-body leading-[1.8] mb-2 max-w-md">
+                <p className="text-muted-foreground text-[14px] font-body leading-[1.75] mb-1.5 max-w-md">
                   {editorialProjects[1].description}
                 </p>
-                <p className="text-[11px] font-body text-foreground/35 tracking-wide mb-6 flex items-center gap-1.5">
+                <p className="text-[11px] font-body text-foreground/30 tracking-wide mb-5 flex items-center gap-1.5">
                   <MapPin size={11} /> {editorialProjects[1].location}
                 </p>
-                <span className="inline-flex items-center gap-2 text-[12px] font-bold font-body text-foreground/60 group-hover:text-foreground transition-colors tracking-wide uppercase">
+                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.12em] uppercase px-5 py-2.5 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/30 group-hover:text-foreground transition-all duration-300">
                   {editorialProjects[1].cta}
-                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1.5" />
+                  <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
               {/* Image */}
-              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[5/4]" style={{ boxShadow: 'var(--shadow-xl)' }}>
                 <img
                   src={editorialProjects[1].image}
                   alt={`${editorialProjects[1].name} - ASWAQ Developments`}
@@ -455,7 +455,7 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ MERCADO — IMAGE LEFT / CONTENT RIGHT ═══════════════ */}
-      <section className="py-10 md:py-16 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -463,9 +463,9 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link to={`/projects/${editorialProjects[2].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+            <Link to={`/projects/${editorialProjects[2].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Image */}
-              <div className="relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+              <div className="relative overflow-hidden rounded-2xl aspect-[5/4]" style={{ boxShadow: 'var(--shadow-xl)' }}>
                 <img
                   src={editorialProjects[2].image}
                   alt={`${editorialProjects[2].name} - ASWAQ Developments`}
@@ -474,25 +474,25 @@ const Index = () => {
                 />
               </div>
               {/* Content */}
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-white border border-border/40 flex items-center justify-center px-1.5 py-2" style={{ boxShadow: 'var(--shadow-sm)' }}>
+              <div className="py-2">
+                <div className="w-14 h-14 rounded-xl bg-white border border-border/40 flex items-center justify-center px-1.5 py-2 mb-4" style={{ boxShadow: 'var(--shadow-sm)' }}>
                   <img src={editorialProjects[2].logo} alt="" className="w-full h-full object-contain" />
                 </div>
-                <span className="inline-block text-[9px] font-body font-bold tracking-[0.18em] uppercase text-foreground/35 mb-3 mt-5">
+                <span className="inline-block text-[9px] font-body font-bold tracking-[0.2em] uppercase text-foreground/30 mb-2">
                   {editorialProjects[2].tag}
                 </span>
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 leading-tight">
+                <h3 className="font-display text-2xl md:text-[1.75rem] font-bold text-foreground mb-3 leading-tight">
                   {editorialProjects[2].name}
                 </h3>
-                <p className="text-muted-foreground text-[14px] font-body leading-[1.8] mb-2 max-w-md">
+                <p className="text-muted-foreground text-[14px] font-body leading-[1.75] mb-1.5 max-w-md">
                   {editorialProjects[2].description}
                 </p>
-                <p className="text-[11px] font-body text-foreground/35 tracking-wide mb-6 flex items-center gap-1.5">
+                <p className="text-[11px] font-body text-foreground/30 tracking-wide mb-5 flex items-center gap-1.5">
                   <MapPin size={11} /> {editorialProjects[2].location}
                 </p>
-                <span className="inline-flex items-center gap-2 text-[12px] font-bold font-body text-foreground/60 group-hover:text-foreground transition-colors tracking-wide uppercase">
+                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.12em] uppercase px-5 py-2.5 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/30 group-hover:text-foreground transition-all duration-300">
                   {editorialProjects[2].cta}
-                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1.5" />
+                  <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>
@@ -500,8 +500,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════════ CITY HUB — COMPACT FEATURE CARD ═══════════════ */}
-      <section className="py-10 md:py-16 pb-20 md:pb-28 bg-background">
+      {/* ═══════════════ CITY HUB — CONTENT LEFT / IMAGE RIGHT ═══════════════ */}
+      <section className="py-12 md:py-16 pb-20 md:pb-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -509,31 +509,31 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link to={`/projects/${editorialProjects[3].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+            <Link to={`/projects/${editorialProjects[3].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Content */}
-              <div className="order-2 lg:order-1">
-                <div className="w-12 h-12 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1.5 mb-5" style={{ boxShadow: 'var(--shadow-sm)' }}>
+              <div className="order-2 lg:order-1 py-2">
+                <div className="w-14 h-14 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1.5 mb-4" style={{ boxShadow: 'var(--shadow-sm)' }}>
                   <img src={editorialProjects[3].logo} alt="" className="w-full h-full object-contain" />
                 </div>
-                <span className="inline-block text-[9px] font-body font-bold tracking-[0.18em] uppercase text-foreground/35 mb-3">
+                <span className="inline-block text-[9px] font-body font-bold tracking-[0.2em] uppercase text-foreground/30 mb-2">
                   {editorialProjects[3].tag}
                 </span>
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 leading-tight">
+                <h3 className="font-display text-2xl md:text-[1.75rem] font-bold text-foreground mb-3 leading-tight">
                   {editorialProjects[3].name}
                 </h3>
-                <p className="text-muted-foreground text-[14px] font-body leading-[1.8] mb-2 max-w-md">
+                <p className="text-muted-foreground text-[14px] font-body leading-[1.75] mb-1.5 max-w-md">
                   {editorialProjects[3].description}
                 </p>
-                <p className="text-[11px] font-body text-foreground/35 tracking-wide mb-6 flex items-center gap-1.5">
+                <p className="text-[11px] font-body text-foreground/30 tracking-wide mb-5 flex items-center gap-1.5">
                   <MapPin size={11} /> {editorialProjects[3].location}
                 </p>
-                <span className="inline-flex items-center gap-2 text-[12px] font-bold font-body text-foreground/60 group-hover:text-foreground transition-colors tracking-wide uppercase">
+                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.12em] uppercase px-5 py-2.5 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/30 group-hover:text-foreground transition-all duration-300">
                   {editorialProjects[3].cta}
-                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1.5" />
+                  <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
               {/* Image */}
-              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[5/4]" style={{ boxShadow: 'var(--shadow-xl)' }}>
                 <img
                   src={editorialProjects[3].image}
                   alt={`${editorialProjects[3].name} - ASWAQ Developments`}
@@ -545,8 +545,6 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* ═══════════════ WHY EL SHOROUK ═══════════════ */}
       <section className="py-20 md:py-28 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
