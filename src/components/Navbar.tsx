@@ -22,7 +22,7 @@ interface NavItem {
   dropdownType?: "simple" | "tabbed";
 }
 
-/* Project metadata with logos for the rich Projects dropdown */
+/* Project metadata with logos */
 const projectMeta: Record<string, { type: string; typeAr: string; desc: string; descAr: string; logo: string }> = {
   "city-hub-mall": { type: "Mixed-Use", typeAr: "متعدد الاستخدامات", desc: "Premium retail & office destination", descAr: "وجهة تجارية وإدارية متميزة", logo: cityHubLogo },
   "mercado-mall": { type: "Commercial", typeAr: "تجاري", desc: "Modern commercial hub", descAr: "مركز تجاري عصري", logo: mercadoLogo },
@@ -100,14 +100,16 @@ const dropdownStyle = {
   boxShadow: '0 16px 48px -12px hsl(222 47% 10% / 0.18), 0 6px 16px -6px hsl(222 47% 10% / 0.08)',
 };
 
-/* ── Projects Dropdown — Rich Mega Menu ── */
+/* ══════════════════════════════════════════════════
+   Projects Dropdown — Premium Portfolio Mega Menu
+   ══════════════════════════════════════════════════ */
 const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActive: boolean; isArabic: boolean }) => {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const handleEnter = () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); setOpen(true); };
-  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 150); };
+  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 180); };
 
-  const projects = item.children?.filter((_, i) => i > 0) || []; // skip "All Projects"
+  const projects = item.children?.filter((_, i) => i > 0) || [];
   const allProjectsLink = item.children?.[0];
 
   return (
@@ -124,15 +126,22 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 6 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 6 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[380px] p-4"
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[460px]"
             style={dropdownStyle}
           >
-            {/* Project cards */}
-            <div className="grid grid-cols-2 gap-2.5">
+            {/* Section label */}
+            <div className="px-5 pt-4 pb-2">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/40 font-body">
+                {isArabic ? "محفظة المشاريع" : "Our Portfolio"}
+              </p>
+            </div>
+
+            {/* 2x2 project cards with real logos */}
+            <div className="grid grid-cols-2 gap-1.5 px-3 pb-2">
               {projects.map((child) => {
                 const slug = child.href.split('/').pop() || '';
                 const meta = projectMeta[slug];
@@ -140,42 +149,47 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                   <Link
                     key={child.href}
                     to={child.href}
-                    className="group flex flex-col gap-1.5 p-3 rounded-lg transition-all duration-200 hover:bg-foreground/[0.06] border border-transparent hover:border-border/50"
+                    className="group flex items-start gap-3 p-3.5 rounded-lg transition-all duration-200 hover:bg-foreground/[0.05] border border-transparent hover:border-border/40"
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-md bg-foreground/[0.05] border border-border/40 flex items-center justify-center shrink-0 group-hover:bg-foreground/[0.10] transition-colors">
-                        <Building2 size={13} className="text-foreground/50 group-hover:text-foreground/75 transition-colors" />
-                      </div>
-                      <div>
-                        <p className="text-[12.5px] font-semibold text-foreground/85 group-hover:text-foreground transition-colors leading-tight">
-                          {child.label}
-                        </p>
-                        {meta && (
-                          <p className="text-[10px] font-medium text-foreground/45 uppercase tracking-wider mt-0.5">
-                            {isArabic ? meta.typeAr : meta.type}
-                          </p>
-                        )}
-                      </div>
+                    {/* Mall logo */}
+                    <div className="w-11 h-11 rounded-lg bg-white border border-border/50 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/70 group-hover:shadow-sm transition-all">
+                      {meta ? (
+                        <img src={meta.logo} alt={child.label} className="w-9 h-9 object-contain" loading="lazy" />
+                      ) : (
+                        <Building2 size={16} className="text-foreground/40" />
+                      )}
                     </div>
-                    {meta && (
-                      <p className="text-[11px] text-foreground/50 leading-snug">
-                        {isArabic ? meta.descAr : meta.desc}
+
+                    {/* Project info */}
+                    <div className="min-w-0 flex-1 pt-0.5">
+                      <p className="text-[13px] font-bold text-foreground/90 group-hover:text-foreground transition-colors leading-tight">
+                        {child.label}
                       </p>
-                    )}
+                      {meta && (
+                        <p className="text-[9.5px] font-bold text-foreground/40 uppercase tracking-[0.14em] mt-1 font-body">
+                          {isArabic ? meta.typeAr : meta.type}
+                        </p>
+                      )}
+                      {meta && (
+                        <p className="text-[11px] text-foreground/50 leading-snug mt-1 group-hover:text-foreground/65 transition-colors">
+                          {isArabic ? meta.descAr : meta.desc}
+                        </p>
+                      )}
+                    </div>
                   </Link>
                 );
               })}
             </div>
 
-            {/* All Projects link */}
+            {/* All Projects footer */}
             {allProjectsLink && (
-              <div className="border-t border-border/40 mt-3 pt-2.5">
+              <div className="border-t border-border/40 mx-3 mt-1">
                 <Link
                   to={allProjectsLink.href}
-                  className="flex items-center gap-1.5 px-3 py-2 text-[11.5px] font-semibold text-foreground/60 hover:text-foreground transition-colors rounded-md hover:bg-foreground/[0.05]"
+                  className="flex items-center justify-between px-3.5 py-3 text-[12px] font-bold text-foreground/55 hover:text-foreground transition-colors rounded-b-lg hover:bg-foreground/[0.03] font-body"
                 >
-                  {allProjectsLink.label}
-                  {isArabic ? <ArrowLeft size={10} /> : <ArrowRight size={10} />}
+                  <span>{allProjectsLink.label}</span>
+                  {isArabic ? <ArrowLeft size={11} /> : <ArrowRight size={11} />}
                 </Link>
               </div>
             )}
@@ -186,15 +200,18 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
   );
 };
 
-/* ── Units Tabbed Dropdown — Improved ── */
+/* ══════════════════════════════════════════════════
+   Units Dropdown — Premium Tabbed Architecture
+   ══════════════════════════════════════════════════ */
 const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActive: boolean; isArabic: boolean }) => {
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const handleEnter = () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); setOpen(true); };
-  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 150); setActiveTab(0); };
+  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 180); setActiveTab(0); };
 
   const tabs = item.children || [];
+  const unitIcons = [Store, Briefcase, HeartPulse];
 
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
@@ -210,59 +227,64 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 6 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 6 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[300px]"
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[340px]"
             style={dropdownStyle}
           >
-            {/* Tabs */}
-            <div className="flex border-b border-border/40 px-1.5 pt-1.5">
+            {/* Section label */}
+            <div className="px-5 pt-4 pb-1">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/40 font-body">
+                {isArabic ? "تصفح الوحدات" : "Browse Units"}
+              </p>
+            </div>
+
+            {/* Pill-style tabs */}
+            <div className="flex mx-4 mt-2 rounded-lg p-0.5" style={{ background: 'hsl(232 78% 10% / 0.04)' }}>
               {tabs.map((tab, i) => (
                 <button
                   key={tab.href}
                   onMouseEnter={() => setActiveTab(i)}
                   onClick={() => setActiveTab(i)}
-                  className={`flex-1 text-[11.5px] font-bold font-body py-3 px-2.5 transition-all duration-200 rounded-t-lg relative ${
+                  className={`flex-1 text-[11.5px] font-bold font-body py-2.5 px-3 transition-all duration-200 rounded-md ${
                     activeTab === i
-                      ? "text-foreground"
-                      : "text-foreground/45 hover:text-foreground/70"
+                      ? "text-foreground bg-white shadow-sm"
+                      : "text-foreground/45 hover:text-foreground/65"
                   }`}
                 >
                   {tab.label}
-                  {activeTab === i && (
-                    <motion.span
-                      layoutId="units-tab-indicator"
-                      className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full"
-                      style={{ background: 'hsl(232 78% 10% / 0.35)' }}
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
                 </button>
               ))}
             </div>
 
-            {/* Tab content */}
-            <div className="py-2.5 px-2">
-              {tabs[activeTab]?.children?.map((sub) => (
-                <Link
-                  key={sub.href}
-                  to={sub.href}
-                  className="block px-4 py-2.5 text-[12.5px] font-medium text-foreground/65 hover:text-foreground hover:bg-foreground/[0.06] transition-all duration-200 rounded-lg"
-                >
-                  {sub.label}
-                </Link>
-              ))}
+            {/* Unit type links with icons */}
+            <div className="py-3 px-3">
+              {tabs[activeTab]?.children?.map((sub, idx) => {
+                const Icon = unitIcons[idx] || Store;
+                return (
+                  <Link
+                    key={sub.href}
+                    to={sub.href}
+                    className="group flex items-center gap-3 px-3.5 py-3 text-[13px] font-medium text-foreground/65 hover:text-foreground hover:bg-foreground/[0.05] transition-all duration-200 rounded-lg"
+                  >
+                    <div className="w-8 h-8 rounded-md bg-foreground/[0.04] border border-border/30 flex items-center justify-center shrink-0 group-hover:bg-foreground/[0.08] group-hover:border-border/50 transition-all">
+                      <Icon size={14} className="text-foreground/40 group-hover:text-foreground/70 transition-colors" />
+                    </div>
+                    <span>{sub.label}</span>
+                  </Link>
+                );
+              })}
 
               {/* View all */}
               <div className="border-t border-border/30 mt-2 pt-2 mx-1">
                 <Link
                   to={item.href}
-                  className="flex items-center gap-1.5 px-3 py-2.5 text-[11.5px] font-bold text-foreground/55 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.05] font-body"
+                  className="flex items-center justify-between px-3 py-2.5 text-[12px] font-bold text-foreground/50 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.04] font-body"
                 >
-                  {isArabic ? "عرض جميع الوحدات" : "View All Units"}
-                  {isArabic ? <ArrowLeft size={10} /> : <ArrowRight size={10} />}
+                  <span>{isArabic ? "عرض جميع الوحدات" : "View All Units"}</span>
+                  {isArabic ? <ArrowLeft size={11} /> : <ArrowRight size={11} />}
                 </Link>
               </div>
             </div>
@@ -549,7 +571,6 @@ const Navbar = () => {
               }}
             >
               <nav className="py-4 px-5 flex flex-col">
-                {/* Primary links */}
                 {primaryLinks.map((link) =>
                   link.children ? (
                     <MobileAccordion
@@ -571,7 +592,6 @@ const Navbar = () => {
                   ),
                 )}
 
-                {/* Secondary links */}
                 <div className="h-px my-2.5" style={{ background: 'hsl(0 0% 100% / 0.06)' }} />
                 <div className="flex gap-5 py-2.5">
                   {secondaryLinks.map((link) => (
@@ -588,7 +608,6 @@ const Navbar = () => {
 
                 <div className="h-px my-2.5" style={{ background: 'hsl(0 0% 100% / 0.06)' }} />
 
-                {/* Language row */}
                 <div className="flex items-center gap-3 pt-1.5">
                   <button
                     onClick={() => { switchLanguage(); setOpen(false); }}
