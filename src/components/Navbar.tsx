@@ -255,7 +255,7 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
               <div className="border-t border-border/30 mt-2 pt-2 mx-1">
                 <Link
                   to={item.href}
-                  className="flex items-center gap-1.5 px-3 py-2.5 text-[11.5px] font-bold text-foreground/45 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.03] font-body"
+                  className="flex items-center gap-1.5 px-3 py-2.5 text-[11.5px] font-bold text-foreground/55 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.05] font-body"
                 >
                   {isArabic ? "عرض جميع الوحدات" : "View All Units"}
                   {isArabic ? <ArrowLeft size={10} /> : <ArrowRight size={10} />}
