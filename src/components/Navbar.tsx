@@ -1,8 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronDown, Globe, ArrowRight, ArrowLeft, Building2 } from "lucide-react";
+import { Menu, X, ChevronDown, Globe, ArrowRight, ArrowLeft, Building2, Store, Briefcase, HeartPulse } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import aswaqLogo from "@/assets/aswaq-logo.webp";
+import cityHubLogo from "@/assets/logos/city-hub-mall.jpg";
+import mercadoLogo from "@/assets/logos/mercado-mall.png";
+import arenaLogo from "@/assets/logos/arena-mall.png";
+import solariaLogo from "@/assets/logos/solaria-mall.png";
 
 interface NavChild {
   label: string;
