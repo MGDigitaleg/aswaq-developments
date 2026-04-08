@@ -147,7 +147,7 @@ const Index = () => {
                 className="flex items-center gap-3 mb-5"
               >
                 <div className="w-7 h-px bg-primary-foreground/25" />
-                <p className="font-body text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-primary-foreground/50 font-semibold">
+                <p className="font-body text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-primary-foreground/60 font-semibold">
                   ASWAQ Developments & Project Management
                 </p>
               </motion.div>
