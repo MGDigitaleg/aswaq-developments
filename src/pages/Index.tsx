@@ -266,72 +266,107 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════════ ABOUT / BRAND INTRO ═══════════════ */}
-      <section className="py-20 md:py-28 bg-background">
+      {/* ═══════════════ MARKET POSITIONING — FLAGSHIP ═══════════════ */}
+      <section className="py-24 md:py-32 lg:py-36 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Text Column */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-px bg-steel/40" />
-                <p className="section-label">Established Excellence</p>
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-foreground mb-6 leading-[1.08]">
-                The Trusted Real Estate{" "}
-                <span className="text-navy-rich">Developer</span> in Egypt
-              </h2>
-              <p className="text-muted-foreground font-body text-[15px] leading-[1.85] mb-4">
-                ASWAQ Developments is a forward-thinking real estate developer specializing in commercial, administrative, and medical projects across East Cairo.
-              </p>
-              <p className="text-muted-foreground font-body text-[15px] leading-[1.85] mb-8">
-                Whether you're searching for property for sale, a unit for rent, or a mixed-use investment opportunity, ASWAQ delivers projects in strategic locations backed by smart planning and market-driven design.
-              </p>
-              <Link
-                to="/about"
-                className="btn-outline-dark px-6 py-2.5 text-[12.5px] rounded-lg font-body group"
+              <p
+                className="text-[10px] font-body font-semibold tracking-[0.35em] uppercase mb-8"
+                style={{ color: 'hsl(var(--steel))' }}
               >
-                Learn More About ASWAQ
-                <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                Market Positioning
+              </p>
+              <h2
+                className="font-display text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground leading-[1.06] mb-7"
+                style={{ letterSpacing: '-0.025em' }}
+              >
+                From Real Estate
+                <br />
+                Presence to{" "}
+                <span className="text-navy-rich">Market Power</span>
+              </h2>
+              <div className="space-y-4 mb-10">
+                <p className="text-muted-foreground font-body text-[14.5px] leading-[1.9] max-w-lg">
+                  ASWAQ doesn't just build properties — it creates strategic market positions.
+                </p>
+                <p className="text-muted-foreground font-body text-[14.5px] leading-[1.9] max-w-lg">
+                  Each development is designed to elevate visibility, strengthen commercial value, and turn prime locations into long-term investment advantage.
+                </p>
+              </div>
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2.5 font-body text-[12px] font-semibold tracking-[0.08em] uppercase px-7 py-3.5 rounded-lg bg-primary text-primary-foreground transition-all duration-400 hover:-translate-y-0.5 group"
+                style={{ boxShadow: '0 4px 20px hsl(232 78% 10% / 0.18)' }}
+              >
+                Explore Our Projects
+                <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </motion.div>
 
-            {/* Single strong image composition instead of mall grid */}
+            {/* Image Column */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.9, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
-                <img src={cityhubImg} alt="ASWAQ Developments - Premium Real Estate" className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
-              </div>
-              {/* Floating credential */}
               <div
-                className="absolute -bottom-6 -left-4 md:left-6 rounded-xl px-6 py-4"
+                className="relative overflow-hidden rounded-xl aspect-[4/3]"
+                style={{ boxShadow: '0 20px 60px -15px hsl(0 0% 0% / 0.15)' }}
+              >
+                <motion.img
+                  src={solariaImg}
+                  alt="ASWAQ Developments - Strategic Commercial Real Estate"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  whileHover={{ scale: 1.025 }}
+                  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
+              </div>
+
+              {/* Floating Stats Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="absolute -bottom-7 left-5 md:left-8 rounded-xl px-7 py-5"
                 style={{
-                  background: 'hsl(var(--ivory))',
-                  boxShadow: 'var(--shadow-lg)',
-                  border: '1px solid hsl(var(--border) / 0.5)',
+                  background: 'hsl(var(--ivory) / 0.97)',
+                  backdropFilter: 'blur(12px)',
+                  boxShadow: '0 8px 32px hsl(0 0% 0% / 0.08), 0 1px 3px hsl(0 0% 0% / 0.04)',
+                  border: '1px solid hsl(var(--border) / 0.35)',
                 }}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-6">
                   <div>
-                    <div className="font-['Montserrat'] text-2xl font-extrabold text-foreground" style={{ letterSpacing: '-0.02em' }}>4</div>
-                    <div className="text-[9px] text-muted-foreground font-body tracking-[0.1em] uppercase">Landmark Malls</div>
+                    <div className="font-['Montserrat'] text-[1.5rem] font-extrabold text-foreground leading-none mb-1" style={{ letterSpacing: '-0.03em' }}>
+                      <AnimatedCounter value="4+" className="text-foreground" />
+                    </div>
+                    <div className="text-[9px] text-muted-foreground/70 font-body tracking-[0.12em] uppercase">
+                      Landmark Developments
+                    </div>
                   </div>
-                  <div className="w-px h-8 bg-border/60" />
+                  <div className="w-px h-10 bg-border/40" />
                   <div>
-                    <div className="font-['Montserrat'] text-2xl font-extrabold text-foreground" style={{ letterSpacing: '-0.02em' }}>20+</div>
-                    <div className="text-[9px] text-muted-foreground font-body tracking-[0.1em] uppercase">Years Active</div>
+                    <div className="font-['Montserrat'] text-[1.5rem] font-extrabold text-foreground leading-none mb-1" style={{ letterSpacing: '-0.03em' }}>
+                      <AnimatedCounter value="20+" className="text-foreground" />
+                    </div>
+                    <div className="text-[9px] text-muted-foreground/70 font-body tracking-[0.12em] uppercase">
+                      Years of Market Experience
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -550,85 +585,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════════ MARKET POSITIONING ═══════════════ */}
-      <section className="py-20 md:py-28 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-8 h-px bg-steel/40" />
-                <p className="section-label">Market Positioning</p>
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-foreground mb-6 leading-[1.06]" style={{ letterSpacing: '-0.015em' }}>
-                From Real Estate Presence to{" "}
-                <span className="text-navy-rich">Market Power</span>
-              </h2>
-              <p className="text-muted-foreground font-body text-[15px] leading-[1.85] mb-4">
-                ASWAQ doesn't just build properties — we build strategic positions. Every development is designed to amplify your market presence and deliver compounding returns.
-              </p>
-              <p className="text-muted-foreground font-body text-[15px] leading-[1.85] mb-8">
-                Our projects transform prime locations into high-value commercial ecosystems — where smart investors and forward-thinking businesses gain lasting competitive advantage.
-              </p>
-              <Link
-                to="/projects"
-                className="btn-outline-dark px-7 py-3 text-[12.5px] rounded-lg font-body group inline-flex items-center gap-2"
-              >
-                Explore Our Projects
-                <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.97 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="relative"
-            >
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
-                <motion.img
-                  src={solariaImg}
-                  alt="ASWAQ Developments - Strategic Commercial Real Estate"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.8 }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent" />
-              </div>
-              <div
-                className="absolute -bottom-6 left-4 md:left-8 rounded-xl px-6 py-4"
-                style={{
-                  background: 'hsl(var(--ivory))',
-                  boxShadow: '0 12px 40px hsl(0 0% 0% / 0.12)',
-                  border: '1px solid hsl(var(--border) / 0.5)',
-                }}
-              >
-                <div className="flex items-center gap-5">
-                  <div>
-                    <div className="font-['Montserrat'] text-2xl font-extrabold text-foreground" style={{ letterSpacing: '-0.02em' }}>
-                      <AnimatedCounter value="4+" className="text-foreground" />
-                    </div>
-                    <div className="text-[9px] text-muted-foreground font-body tracking-[0.1em] uppercase">Landmark Developments</div>
-                  </div>
-                  <div className="w-px h-9 bg-border/60" />
-                  <div>
-                    <div className="font-['Montserrat'] text-2xl font-extrabold text-foreground" style={{ letterSpacing: '-0.02em' }}>
-                      <AnimatedCounter value="20+" className="text-foreground" />
-                    </div>
-                    <div className="text-[9px] text-muted-foreground font-body tracking-[0.1em] uppercase">Years of Market Experience</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       <section className="py-20 md:py-28 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
