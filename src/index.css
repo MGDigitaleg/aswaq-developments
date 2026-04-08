@@ -257,8 +257,10 @@
     color: hsl(var(--primary-foreground) / 0.85);
   }
   .btn-outline-light:hover {
-    border-color: hsl(var(--primary-foreground) / 0.35);
-    background: hsl(var(--primary-foreground) / 0.06);
+    border-color: hsl(var(--primary-foreground) / 0.45);
+    background: hsl(var(--primary-foreground) / 0.10);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px -4px hsl(0 0% 100% / 0.08);
   }
 
   /* ─── Outline button on light ─── */
