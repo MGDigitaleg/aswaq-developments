@@ -534,7 +534,7 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ CITY HUB — IMMERSIVE OVERLAY ═══════════════ */}
-      <section className="py-10 md:py-14 pb-16 md:pb-20 bg-background">
+      <section className="py-8 md:py-11 pb-14 md:pb-18 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -548,7 +548,7 @@ const Index = () => {
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.88) 0%, hsl(232 78% 10% / 0.45) 50%, hsl(232 78% 10% / 0.15) 100%)' }} />
                 <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
                   <div className="flex items-center gap-5">
-                    <div className="w-[68px] h-[68px] md:w-20 md:h-20 rounded-xl bg-white/95 border border-white/20 flex items-center justify-center p-2 shrink-0" style={{ boxShadow: '0 6px 24px hsl(0 0% 0% / 0.18)' }}>
+                    <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white/95 border border-white/20 flex items-center justify-center p-1.5 shrink-0" style={{ boxShadow: '0 6px 24px hsl(0 0% 0% / 0.18)' }}>
                       <img src={editorialProjects[3].logo} alt="" className="w-full h-full object-contain" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -562,7 +562,7 @@ const Index = () => {
                         {editorialProjects[3].description}
                       </p>
                     </div>
-                    <span className="hidden md:inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-7 py-3 rounded-lg bg-primary-foreground/[0.08] border border-primary-foreground/20 text-primary-foreground/90 group-hover:bg-primary-foreground/15 group-hover:border-primary-foreground/40 transition-all duration-300 backdrop-blur-sm shrink-0">
+                    <span className="hidden md:inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-7 py-3 rounded-lg bg-primary-foreground/[0.1] border border-primary-foreground/25 text-primary-foreground/90 group-hover:bg-primary-foreground/18 group-hover:border-primary-foreground/45 transition-all duration-300 backdrop-blur-sm shrink-0">
                       {editorialProjects[3].cta}
                       <ArrowRight size={13} className="transition-transform group-hover:translate-x-1.5" />
                     </span>
@@ -571,7 +571,7 @@ const Index = () => {
                     <p className="text-primary-foreground/45 text-[13px] font-body leading-[1.6] mb-4">
                       {editorialProjects[3].description}
                     </p>
-                    <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-6 py-2.5 rounded-lg bg-primary-foreground/[0.08] border border-primary-foreground/20 text-primary-foreground/90">
+                    <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-6 py-2.5 rounded-lg bg-primary-foreground/[0.1] border border-primary-foreground/25 text-primary-foreground/90">
                       {editorialProjects[3].cta}
                       <ArrowRight size={12} />
                     </span>
