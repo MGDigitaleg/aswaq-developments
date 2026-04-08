@@ -1,192 +1,781 @@
-import { motion } from "framer-motion";
-import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, CheckCircle2 } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import {
+  MapPin, ShoppingBag, Stethoscope, Briefcase, Building2,
+  ChevronDown, ArrowRight, Play, X, Layers, Eye, DoorOpen,
+  Maximize2, Phone, Mail
+} from "lucide-react";
 import Layout from "@/components/Layout";
-import CTASection from "@/components/CTASection";
-import MallGallerySection from "@/components/MallGallerySection";
-import solariaImg from "@/assets/solaria-mall.webp";
 import useSEO from "@/hooks/useSEO";
+
+import solariaImg from "@/assets/solaria-mall.webp";
+import heroImg from "@/assets/hero-solaria.webp";
 import solaria1 from "@/assets/gallery/solaria-1.webp";
 import solaria2 from "@/assets/gallery/solaria-2.webp";
 import solaria3 from "@/assets/gallery/solaria-3.webp";
 import solaria4 from "@/assets/gallery/solaria-4.webp";
+import solariaPositioning from "@/assets/solaria-positioning.webp";
 
-const galleryImages = [solaria4, solaria3, solaria2, solaria1];
-const galleryVideos = [
-  "8YDCm1TmTQ0", "ntpGQTMyq3Q", "0SPxL2rY3Dc", "-vQ52O22iwM", "l6kA_Ya2tW8",
-  "bWMNLhNUWic", "giAo0wIirns", "5Vg0nxFPN2s", "lIwPvTA4kl8", "Z2s5k9hBR5s",
-  "urvheJNfRdQ", "9ejGoFF4Jrk", "cepHBQGE7J0", "vDInqD_HcKU", "Y4lN13Cas5c",
-  "BrDGv2SxZXI", "Hqv9KliWT1s", "7_I97gYQrho", "Yq2XDpp2UNU", "Xf8AUcMltIQ",
-  "boE6pqIItFE", "IFGQuVc1Qh4", "NjbdYDPeErM", "PtXQ7ekGibo", "9xWD4rjaFz4",
-  "lDb2srq3prQ", "21h59Aidbss", "5zo6Nh69DoU", "pnchRd-AAwg",
+/* ─── Data ─── */
+
+const floors = [
+  {
+    id: "gf",
+    label: "Ground Floor",
+    shortLabel: "GF",
+    description: "Prime retail frontage with direct street access and maximum visibility. Ideal for flagship stores, banks, and high-traffic commercial brands.",
+    units: 12,
+    areaRange: "45–180 m²",
+    types: ["Retail", "Showrooms"],
+    image: solaria1,
+  },
+  {
+    id: "1f",
+    label: "First Floor",
+    shortLabel: "1F",
+    description: "Versatile commercial spaces suited for clinics, professional offices, and service-oriented businesses with elevator access.",
+    units: 14,
+    areaRange: "30–120 m²",
+    types: ["Medical", "Administrative"],
+    image: solaria2,
+  },
+  {
+    id: "2f",
+    label: "Second Floor",
+    shortLabel: "2F",
+    description: "Dedicated medical and administrative zone with quiet, professional atmosphere. Perfect for specialist clinics and consulting firms.",
+    units: 16,
+    areaRange: "30–96 m²",
+    types: ["Medical", "Offices"],
+    image: solaria3,
+  },
+  {
+    id: "3f",
+    label: "Third Floor",
+    shortLabel: "3F",
+    description: "Upper-level administrative suites offering panoramic views and premium positioning for corporate tenants.",
+    units: 10,
+    areaRange: "50–396 m²",
+    types: ["Administrative", "Corporate"],
+    image: solaria4,
+  },
+  {
+    id: "rf",
+    label: "Roof Floor",
+    shortLabel: "RF",
+    description: "Exclusive rooftop spaces with open-air potential. Ideal for restaurants, lounges, and leisure concepts with skyline views.",
+    units: 4,
+    areaRange: "80–200 m²",
+    types: ["F&B", "Leisure"],
+    image: solariaPositioning,
+  },
 ];
 
-const unitTypes = [
-  { icon: ShoppingBag, label: "Retail shops and showrooms" },
-  { icon: Stethoscope, label: "Medical clinics and healthcare units" },
-  { icon: Briefcase, label: "Corporate and administrative offices" },
-  { icon: Building2, label: "Flexible business units" },
+const hotspots = [
+  { id: "retail", label: "Retail Zone", icon: ShoppingBag, x: "18%", y: "62%", description: "Ground-level storefronts with direct street access and high visibility." },
+  { id: "medical", label: "Medical Wing", icon: Stethoscope, x: "75%", y: "38%", description: "Dedicated healthcare floors with private entrances and elevator access." },
+  { id: "offices", label: "Office Suites", icon: Briefcase, x: "55%", y: "22%", description: "Upper-floor corporate spaces with panoramic views and premium finishes." },
+  { id: "entrance", label: "Main Entrance", icon: DoorOpen, x: "48%", y: "82%", description: "Grand double-height lobby with architectural statement and wayfinding." },
+  { id: "views", label: "Skyline Views", icon: Eye, x: "82%", y: "15%", description: "Unobstructed views from the upper floors across El Shorouk's landscape." },
 ];
 
-const locationAdvantages = [
-  "Prime frontage facing the 7th & 8th districts and key urban arteries",
-  "Close proximity to educational institutions, residential developments, and major roads",
-  "Easy accessibility from Cairo Ring Road, Suez Road, and nearby cities",
-  "High daily exposure thanks to mixed daytime and evening activity flows",
+const unitCategories = [
+  { icon: ShoppingBag, label: "Commercial", count: "24 units", area: "45–180 m²", floor: "GF – 1F", status: "Available" },
+  { icon: Stethoscope, label: "Medical", count: "18 units", area: "30–96 m²", floor: "1F – 2F", status: "Available" },
+  { icon: Briefcase, label: "Administrative", count: "14 units", area: "50–396 m²", floor: "2F – 3F", status: "Available" },
+  { icon: Building2, label: "Corporate", count: "6 units", area: "120–396 m²", floor: "3F – RF", status: "Limited" },
 ];
 
-const whyInvest = [
-  "Strategic urban location in El Shorouk City with strong day-round activity",
-  "Mixed-use design accommodating retail, healthcare, and offices",
-  "Flexible commercial unit sizes suitable for diverse industries",
-  "Modern architecture and professional environment",
-  "Access to major transportation routes and surrounding communities",
-  "Competitive prices with investor-friendly payment plans",
-  "Fully serviced: parking, security, surveillance, elevators, and plaza areas",
+const landmarks = [
+  { name: "French University in Egypt", distance: "2 min" },
+  { name: "Cairo Ring Road", distance: "8 min" },
+  { name: "Suez Road", distance: "10 min" },
+  { name: "Royal City Compound", distance: "3 min" },
+  { name: "El Shorouk City Center", distance: "5 min" },
+  { name: "New Cairo", distance: "15 min" },
 ];
+
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+};
 
 const SolariaMall = () => {
-  useSEO("Solaria Mall | Mixed-Use Properties for Rent in El Shorouk", "Select prime commercial units for rent at Solaria Mall El Shorouk. Find ideal spaces for retail, offices, and profitable property investment in Egypt.");
+  useSEO(
+    "Solaria Mall | Flagship Mixed-Use Destination in El Shorouk",
+    "Discover Solaria Mall — a landmark commercial, medical, and administrative development by ASWAQ in El Shorouk City. Explore premium units from 30 to 396 m²."
+  );
+
+  const [activeFloor, setActiveFloor] = useState("gf");
+  const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+
+  const currentFloor = floors.find((f) => f.id === activeFloor)!;
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+      {/* ═══════════════════════════════════════════
+          1. HERO — Cinematic Fullscreen
+      ═══════════════════════════════════════════ */}
+      <section className="relative h-screen min-h-[600px] max-h-[1000px] overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroImg}
+            alt="Solaria Mall architectural facade"
+            className="w-full h-full object-cover"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(
+                to bottom,
+                hsl(var(--navy) / 0.25) 0%,
+                hsl(var(--navy) / 0.10) 40%,
+                hsl(var(--navy) / 0.50) 75%,
+                hsl(var(--navy) / 0.92) 100%
+              )`,
+            }}
+          />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 text-center relative z-10 min-h-[420px] flex flex-col justify-end">
-          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body mb-4 text-primary-foreground/40">ASWAQ Developments</p>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-5 leading-tight">Solaria Mall at El Shorouk</h1>
-            <p className="text-primary-foreground/55 font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
-              One of ASWAQ's most ambitious mixed-use properties — a vibrant hub for shopping, services, healthcare, and professional activities spanning 6,600 m².
+
+        <div className="relative z-10 h-full flex flex-col justify-end pb-16 md:pb-24 px-6 sm:px-10 lg:px-16">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl"
+          >
+            <p
+              className="text-[10px] font-body font-semibold tracking-[0.35em] uppercase mb-5"
+              style={{ color: "hsl(var(--primary-foreground) / 0.45)" }}
+            >
+              ASWAQ Developments
             </p>
+            <h1
+              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] mb-6"
+              style={{ color: "hsl(var(--primary-foreground))", letterSpacing: "-0.025em" }}
+            >
+              Solaria Mall
+            </h1>
+            <p
+              className="font-body text-[15px] md:text-[17px] leading-[1.8] max-w-xl"
+              style={{ color: "hsl(var(--primary-foreground) / 0.55)" }}
+            >
+              A landmark destination for retail, healthcare, and corporate excellence in El Shorouk City.
+            </p>
+          </motion.div>
+
+          {/* Scroll cue */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          >
+            <span className="text-[9px] font-body tracking-[0.3em] uppercase" style={{ color: "hsl(var(--primary-foreground) / 0.3)" }}>
+              Scroll
+            </span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronDown size={16} style={{ color: "hsl(var(--primary-foreground) / 0.3)" }} />
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* About */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={solariaImg} alt="Solaria Mall - ASWAQ Developments El Shorouk" className="w-full h-full object-cover" />
+      {/* ═══════════════════════════════════════════
+          2. BRAND STATEMENT — Split Layout
+      ═══════════════════════════════════════════ */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div {...fadeUp}>
+              <div className="relative">
+                <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-premium)" }}>
+                  <img
+                    src={solariaImg}
+                    alt="Solaria Mall exterior"
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                </div>
+                {/* Stats plaque */}
+                <div
+                  className="absolute -bottom-6 -right-4 md:-right-8 rounded-xl px-6 py-5 glass"
+                  style={{ boxShadow: "var(--shadow-lg)" }}
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="text-center">
+                      <p className="font-display text-2xl md:text-3xl font-bold text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}>6,600</p>
+                      <p className="text-[10px] font-body tracking-[0.15em] uppercase text-muted-foreground mt-1">m² Total</p>
+                    </div>
+                    <div className="w-px h-10" style={{ background: "hsl(var(--border))" }} />
+                    <div className="text-center">
+                      <p className="font-display text-2xl md:text-3xl font-bold text-foreground" style={{ fontFamily: "'Montserrat', sans-serif" }}>5</p>
+                      <p className="text-[10px] font-body tracking-[0.15em] uppercase text-muted-foreground mt-1">Floors</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <div className="section-divider mb-6" style={{ marginLeft: 0, marginRight: 'auto' }} />
-              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">Solaria Mall at El Shorouk</h2>
-              <p className="text-muted-foreground font-body text-[15px] leading-[1.9] mb-4">
-                Solaria Mall is one of ASWAQ Developments' most ambitious mixed-use properties, positioned to become a vibrant hub for shopping, services, healthcare, and professional activities in El Shorouk City. Spanning across 6,600 square meters, the mall offers a diverse range of amenities and services.
+
+            <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 } as const}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+                <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
+                  About the Project
+                </p>
+              </div>
+              <h2
+                className="font-display text-3xl md:text-4xl lg:text-[2.6rem] font-bold text-foreground leading-[1.1] mb-6"
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                Not Just a Mall.{" "}
+                <span style={{ color: "hsl(var(--steel))" }}>A Commercial Landmark.</span>
+              </h2>
+              <p className="text-muted-foreground font-body text-[15px] leading-[1.9] mb-5">
+                Solaria Mall is ASWAQ Developments' most ambitious mixed-use destination — a vibrant ecosystem for retail, medical, and corporate activity spanning 6,600 m² in the heart of El Shorouk City.
               </p>
-              <p className="text-muted-foreground font-body text-[15px] leading-[1.9]">
-                With its modern architectural identity and strategic placement near key landmarks, Solaria Mall meets the rising demand for commercial, business, and versatile properties in Egypt.
+              <p className="text-muted-foreground font-body text-[15px] leading-[1.9] mb-8">
+                With its modern architectural identity, strategic placement near the French University, and diverse unit offerings from 30 to 396 m², Solaria meets the rising demand for premium commercial spaces in Egypt.
               </p>
+              <Link
+                to="/contact"
+                className="btn-premium px-8 py-3.5 text-[12px] font-body tracking-[0.1em] uppercase"
+              >
+                Request Brochure
+                <ArrowRight size={14} />
+              </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Location */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">Strategic Position</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">Solaria Mall Location</h2>
-            <p className="text-muted-foreground font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
-              Strategically situated in El Shorouk City, at University Square near the French University, Solaria Mall enjoys a prominent position drawing consistent visitation.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {locationAdvantages.map((adv, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.4 }}
-                className="flex items-start gap-3 p-4 md:p-5 bg-card rounded-xl border border-border/30 hover:border-accent/15 transition-all duration-300"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
-              >
-                <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin size={15} className="text-accent" />
-                </div>
-                <p className="text-foreground font-body text-sm leading-relaxed">{adv}</p>
-              </motion.div>
-            ))}
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-12 max-w-4xl mx-auto rounded-2xl overflow-hidden"
-            style={{ boxShadow: 'var(--shadow-lg)' }}
-          >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450.0642863994053!2d31.60202829678954!3d30.14957799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581d004de29bd9%3A0x677ac037657c4a19!2sSolaria%20Mall!5e0!3m2!1sen!2seg!4v1772535772662!5m2!1sen!2seg"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Solaria Mall Location"
-              className="w-full"
-            />
+      {/* ═══════════════════════════════════════════
+          3. INTERACTIVE EXTERIOR VIEWER
+      ═══════════════════════════════════════════ */}
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp} className="text-center mb-12 md:mb-16">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+              <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
+                Explore the Building
+              </p>
+              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-[1.1]" style={{ letterSpacing: "-0.02em" }}>
+              Architectural Overview
+            </h2>
+          </motion.div>
+
+          <motion.div {...fadeUp} className="relative max-w-5xl mx-auto">
+            <div className="rounded-2xl overflow-hidden relative" style={{ boxShadow: "var(--shadow-xl)" }}>
+              <img
+                src={solaria4}
+                alt="Solaria Mall building overview"
+                className="w-full aspect-[16/10] object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to top, hsl(var(--navy) / 0.3), transparent 40%)" }}
+              />
+
+              {/* Hotspots */}
+              {hotspots.map((spot) => (
+                <button
+                  key={spot.id}
+                  onClick={() => setActiveHotspot(activeHotspot === spot.id ? null : spot.id)}
+                  className="absolute group z-20"
+                  style={{ left: spot.x, top: spot.y, transform: "translate(-50%, -50%)" }}
+                >
+                  <span
+                    className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full transition-all duration-500"
+                    style={{
+                      background: activeHotspot === spot.id
+                        ? "hsl(var(--navy))"
+                        : "hsl(var(--ivory) / 0.85)",
+                      boxShadow: "0 4px 20px hsl(var(--navy) / 0.25)",
+                      border: `1.5px solid ${activeHotspot === spot.id ? "hsl(var(--navy))" : "hsl(var(--navy) / 0.15)"}`,
+                    }}
+                  >
+                    <spot.icon
+                      size={15}
+                      style={{
+                        color: activeHotspot === spot.id
+                          ? "hsl(var(--primary-foreground))"
+                          : "hsl(var(--navy))",
+                      }}
+                    />
+                  </span>
+                  {/* Pulse ring */}
+                  <span
+                    className="absolute inset-0 rounded-full animate-ping"
+                    style={{
+                      background: "hsl(var(--navy) / 0.1)",
+                      animationDuration: "3s",
+                    }}
+                  />
+                </button>
+              ))}
+            </div>
+
+            {/* Side panel */}
+            <AnimatePresence>
+              {activeHotspot && (() => {
+                const spot = hotspots.find((h) => h.id === activeHotspot);
+                if (!spot) return null;
+                return (
+                  <motion.div
+                    key={spot.id}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute top-4 right-4 md:top-8 md:right-8 w-64 md:w-72 rounded-xl p-5 glass z-30"
+                    style={{ boxShadow: "var(--shadow-xl)" }}
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "hsl(var(--navy) / 0.08)" }}>
+                          <spot.icon size={14} style={{ color: "hsl(var(--navy))" }} />
+                        </div>
+                        <h4 className="font-display text-sm font-bold text-foreground">{spot.label}</h4>
+                      </div>
+                      <button onClick={() => setActiveHotspot(null)} className="p-1 rounded-md transition-colors hover:bg-muted">
+                        <X size={14} className="text-muted-foreground" />
+                      </button>
+                    </div>
+                    <p className="text-muted-foreground font-body text-[13px] leading-[1.7]">{spot.description}</p>
+                  </motion.div>
+                );
+              })()}
+            </AnimatePresence>
           </motion.div>
         </div>
       </section>
 
-      {/* Units */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="section-label mb-3">Available Spaces</p>
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">Units Available at Solaria Mall</h2>
-          <p className="text-muted-foreground font-body max-w-2xl mx-auto mb-12 text-[15px] leading-relaxed">
-            Explore available units for rent & sale at Solaria Mall ranging from 30 m² to 396 m².
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-            {unitTypes.map((type, i) => (
-              <motion.div key={type.label} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.4 }}
-                className="flex flex-col items-center gap-4 p-6 md:p-7 bg-card rounded-2xl border border-border/30 hover:border-accent/15 transition-all duration-300"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
+      {/* ═══════════════════════════════════════════
+          4. FLOOR NAVIGATOR
+      ═══════════════════════════════════════════ */}
+      <section className="py-20 md:py-28 bg-background">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp} className="text-center mb-12 md:mb-16">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+              <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
+                Floor by Floor
+              </p>
+              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-[1.1]" style={{ letterSpacing: "-0.02em" }}>
+              Navigate Every Level
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Floor selector */}
+            <div className="lg:col-span-3">
+              <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+                {floors.map((floor) => (
+                  <button
+                    key={floor.id}
+                    onClick={() => setActiveFloor(floor.id)}
+                    className="flex-shrink-0 group relative px-5 py-4 rounded-xl text-left transition-all duration-500"
+                    style={{
+                      background: activeFloor === floor.id ? "hsl(var(--navy))" : "transparent",
+                      border: `1px solid ${activeFloor === floor.id ? "hsl(var(--navy))" : "hsl(var(--border) / 0.5)"}`,
+                    }}
+                  >
+                    <p
+                      className="font-body text-[11px] font-semibold tracking-[0.15em] uppercase"
+                      style={{
+                        color: activeFloor === floor.id
+                          ? "hsl(var(--primary-foreground) / 0.5)"
+                          : "hsl(var(--steel))",
+                      }}
+                    >
+                      {floor.shortLabel}
+                    </p>
+                    <p
+                      className="font-display text-sm font-bold mt-1"
+                      style={{
+                        color: activeFloor === floor.id
+                          ? "hsl(var(--primary-foreground))"
+                          : "hsl(var(--foreground))",
+                      }}
+                    >
+                      {floor.label}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Floor visual */}
+            <div className="lg:col-span-5">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentFloor.id}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-2xl overflow-hidden"
+                  style={{ boxShadow: "var(--shadow-lg)" }}
+                >
+                  <img
+                    src={currentFloor.image}
+                    alt={`${currentFloor.label} — Solaria Mall`}
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Floor info */}
+            <div className="lg:col-span-4">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentFloor.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <Layers size={16} style={{ color: "hsl(var(--steel))" }} />
+                    <p className="text-[10px] font-body font-semibold tracking-[0.25em] uppercase" style={{ color: "hsl(var(--steel))" }}>
+                      {currentFloor.shortLabel} — Details
+                    </p>
+                  </div>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+                    {currentFloor.label}
+                  </h3>
+                  <p className="text-muted-foreground font-body text-[14px] leading-[1.85] mb-8">
+                    {currentFloor.description}
+                  </p>
+
+                  <div className="space-y-4 mb-8">
+                    {[
+                      { label: "Units Available", value: currentFloor.units.toString() },
+                      { label: "Area Range", value: currentFloor.areaRange },
+                      { label: "Unit Types", value: currentFloor.types.join(" · ") },
+                    ].map((stat) => (
+                      <div key={stat.label} className="flex items-center justify-between pb-3" style={{ borderBottom: "1px solid hsl(var(--border) / 0.4)" }}>
+                        <span className="text-[12px] font-body tracking-[0.05em] text-muted-foreground uppercase">{stat.label}</span>
+                        <span className="font-body text-[14px] font-semibold text-foreground">{stat.value}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Link to="/contact" className="btn-outline-dark px-6 py-3 text-[11px] font-body tracking-[0.12em] uppercase rounded-lg">
+                    Inquire About {currentFloor.shortLabel}
+                    <ArrowRight size={13} />
+                  </Link>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          5. AVAILABLE UNITS
+      ═══════════════════════════════════════════ */}
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp} className="text-center mb-12 md:mb-16">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+              <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
+                Available Spaces
+              </p>
+              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-[1.1] mb-4" style={{ letterSpacing: "-0.02em" }}>
+              Units at Solaria Mall
+            </h2>
+            <p className="text-muted-foreground font-body text-[14px] leading-[1.7] max-w-lg mx-auto">
+              From boutique retail spaces to full-floor corporate suites — find the perfect unit for your business.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            {unitCategories.map((cat, i) => (
+              <motion.div
+                key={cat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="group rounded-2xl p-6 md:p-7 border transition-all duration-500"
+                style={{
+                  background: "hsl(var(--card))",
+                  borderColor: "hsl(var(--border) / 0.35)",
+                  boxShadow: "var(--shadow-sm)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = "var(--shadow-lg)";
+                  e.currentTarget.style.borderColor = "hsl(var(--navy) / 0.1)";
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = "var(--shadow-sm)";
+                  e.currentTarget.style.borderColor = "hsl(var(--border) / 0.35)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
               >
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
-                  <type.icon size={24} className="text-accent" />
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  style={{ background: "hsl(var(--navy) / 0.06)" }}
+                >
+                  <cat.icon size={20} style={{ color: "hsl(var(--navy))" }} />
                 </div>
-                <p className="font-semibold text-foreground font-body text-sm text-center">{type.label}</p>
+                <h3 className="font-display text-lg font-bold text-foreground mb-1">{cat.label}</h3>
+                <p className="text-muted-foreground font-body text-[13px] mb-5">{cat.count}</p>
+                <div className="space-y-2.5">
+                  {[
+                    { label: "Area", value: cat.area },
+                    { label: "Floor", value: cat.floor },
+                    { label: "Status", value: cat.status },
+                  ].map((detail) => (
+                    <div key={detail.label} className="flex justify-between">
+                      <span className="text-[11px] font-body text-muted-foreground uppercase tracking-[0.08em]">{detail.label}</span>
+                      <span
+                        className="text-[12px] font-body font-semibold"
+                        style={{
+                          color: detail.label === "Status" && detail.value === "Limited"
+                            ? "hsl(30 80% 50%)"
+                            : "hsl(var(--foreground))",
+                        }}
+                      >
+                        {detail.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
+
+          <motion.div {...fadeUp} className="text-center mt-10">
+            <Link to="/units" className="btn-outline-dark px-8 py-3.5 text-[11px] font-body tracking-[0.12em] uppercase rounded-lg">
+              View All Available Units
+              <ArrowRight size={13} />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* Why Invest */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">Investment Value</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">Why Invest in Solaria Mall</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {whyInvest.map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05, duration: 0.4 }}
-                className="flex items-start gap-3 p-4 md:p-5 bg-card rounded-xl border border-border/30 hover:border-accent/15 transition-all duration-300"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
+      {/* ═══════════════════════════════════════════
+          6. LOCATION INTELLIGENCE
+      ═══════════════════════════════════════════ */}
+      <section className="py-20 md:py-28 bg-background">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <motion.div {...fadeUp}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+                <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
+                  Strategic Position
+                </p>
+              </div>
+              <h2
+                className="font-display text-3xl md:text-4xl font-bold text-foreground leading-[1.1] mb-5"
+                style={{ letterSpacing: "-0.02em" }}
               >
-                <CheckCircle2 size={18} className="text-accent shrink-0 mt-0.5" />
-                <p className="text-foreground font-body text-sm leading-relaxed">{item}</p>
-              </motion.div>
-            ))}
+                Location Value
+              </h2>
+              <p className="text-muted-foreground font-body text-[14px] leading-[1.85] mb-8">
+                Strategically positioned at University Square in El Shorouk City, adjacent to the French University in Egypt — one of the area's highest-traffic intersections.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                {landmarks.map((lm, i) => (
+                  <motion.div
+                    key={lm.name}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05, duration: 0.4 }}
+                    className="flex items-center justify-between py-3 px-4 rounded-lg"
+                    style={{ background: "hsl(var(--cream))" }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <MapPin size={13} style={{ color: "hsl(var(--steel))" }} />
+                      <span className="font-body text-[13px] text-foreground">{lm.name}</span>
+                    </div>
+                    <span
+                      className="font-body text-[12px] font-semibold px-2.5 py-1 rounded-md"
+                      style={{ background: "hsl(var(--navy) / 0.06)", color: "hsl(var(--navy))" }}
+                    >
+                      {lm.distance}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              <a
+                href="https://maps.google.com/?q=Solaria+Mall+El+Shorouk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline-dark px-6 py-3 text-[11px] font-body tracking-[0.12em] uppercase rounded-lg"
+              >
+                Open in Google Maps
+                <ArrowRight size={13} />
+              </a>
+            </motion.div>
+
+            <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 } as const}>
+              <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-lg)" }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450.0642863994053!2d31.60202829678954!3d30.14957799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581d004de29bd9%3A0x677ac037657c4a19!2sSolaria%20Mall!5e0!3m2!1sen!2seg!4v1772535772662!5m2!1sen!2seg"
+                  width="100%"
+                  height="480"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Solaria Mall Location"
+                  className="w-full"
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <MallGallerySection mallName="Solaria Mall" images={galleryImages} videos={galleryVideos} />
+      {/* ═══════════════════════════════════════════
+          7. PROJECT FILM
+      ═══════════════════════════════════════════ */}
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
+          <motion.div {...fadeUp} className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+              <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
+                Project Film
+              </p>
+              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-[1.1]" style={{ letterSpacing: "-0.02em" }}>
+              Experience Solaria
+            </h2>
+          </motion.div>
 
-      <CTASection
-        title="Invest in Solaria Mall Today"
-        subtitle="Secure your commercial unit in a high-foot-traffic mixed-use project in El Shorouk City with flexible spaces, strategic design, and robust rental demand."
-        buttonText="Request Unit Details"
-        buttonLink="/contact"
-      />
+          <motion.div
+            {...fadeUp}
+            className="relative rounded-2xl overflow-hidden cursor-pointer group"
+            style={{ boxShadow: "var(--shadow-premium)" }}
+            onClick={() => setVideoPlaying(true)}
+          >
+            {!videoPlaying ? (
+              <>
+                <img
+                  src={solaria4}
+                  alt="Solaria Mall project film thumbnail"
+                  className="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <div
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{ background: "hsl(var(--navy) / 0.35)" }}
+                >
+                  <div
+                    className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110"
+                    style={{
+                      background: "hsl(var(--ivory) / 0.9)",
+                      boxShadow: "0 8px 40px hsl(var(--navy) / 0.3)",
+                    }}
+                  >
+                    <Play size={28} className="ml-1" style={{ color: "hsl(var(--navy))" }} fill="hsl(var(--navy))" />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <iframe
+                src="https://www.youtube.com/embed/8YDCm1TmTQ0?autoplay=1&rel=0&modestbranding=1"
+                title="Solaria Mall Project Film"
+                className="w-full aspect-video"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              />
+            )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          8. FINAL CTA
+      ═══════════════════════════════════════════ */}
+      <section
+        className="relative py-24 md:py-32 overflow-hidden"
+        style={{ background: "hsl(var(--navy))" }}
+      >
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-0 right-0 w-1/2 h-full"
+            style={{ background: "linear-gradient(to left, hsl(var(--primary-foreground) / 0.03), transparent)" }}
+          />
+        </div>
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 text-center relative z-10">
+          <motion.div {...fadeUp}>
+            <div className="section-divider mb-8" style={{ background: "linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.12), transparent)" }} />
+            <h2
+              className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.08] mb-5"
+              style={{ color: "hsl(var(--primary-foreground))", letterSpacing: "-0.02em" }}
+            >
+              Your Next Investment{" "}
+              <span style={{ color: "hsl(var(--primary-foreground) / 0.5)" }}>Starts Here</span>
+            </h2>
+            <p
+              className="font-body text-[15px] leading-[1.8] max-w-xl mx-auto mb-10"
+              style={{ color: "hsl(var(--primary-foreground) / 0.5)" }}
+            >
+              Secure your unit at Solaria Mall — El Shorouk's most ambitious commercial destination with flexible spaces and premium positioning.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="btn-outline-light px-8 py-4 text-[12px] font-body tracking-[0.12em] uppercase rounded-lg"
+              >
+                Request Brochure
+                <ArrowRight size={14} />
+              </Link>
+              <Link
+                to="/contact"
+                className="btn-outline-light px-8 py-4 text-[12px] font-body tracking-[0.12em] uppercase rounded-lg"
+              >
+                Check Availability
+                <Maximize2 size={14} />
+              </Link>
+            </div>
+
+            {/* Contact shortcut */}
+            <div className="flex items-center justify-center gap-6 mt-10">
+              <a
+                href="tel:19474"
+                className="flex items-center gap-2 text-[12px] font-body transition-colors"
+                style={{ color: "hsl(var(--primary-foreground) / 0.4)" }}
+              >
+                <Phone size={13} /> 19474
+              </a>
+              <div className="w-px h-4" style={{ background: "hsl(var(--primary-foreground) / 0.12)" }} />
+              <a
+                href="mailto:info@aswaq-developments.com"
+                className="flex items-center gap-2 text-[12px] font-body transition-colors"
+                style={{ color: "hsl(var(--primary-foreground) / 0.4)" }}
+              >
+                <Mail size={13} /> info@aswaq-developments.com
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </Layout>
   );
 };
