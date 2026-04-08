@@ -254,14 +254,15 @@
   /* ─── Outline button on dark ─── */
   .btn-outline-light {
     @apply inline-flex items-center gap-2 font-semibold rounded-lg transition-all duration-300;
-    border: 1px solid hsl(var(--primary-foreground) / 0.18);
-    color: hsl(var(--primary-foreground) / 0.85);
+    border: 1px solid hsl(var(--primary-foreground) / 0.25);
+    color: hsl(var(--primary-foreground) / 0.90);
   }
   .btn-outline-light:hover {
-    border-color: hsl(var(--primary-foreground) / 0.45);
-    background: hsl(var(--primary-foreground) / 0.10);
+    border-color: hsl(var(--primary-foreground) / 0.55);
+    background: hsl(var(--primary-foreground) / 0.12);
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px -4px hsl(0 0% 100% / 0.08);
+    box-shadow: 0 4px 16px -4px hsl(0 0% 100% / 0.10);
+    color: hsl(var(--primary-foreground));
   }
 
   /* ─── Outline button on light ─── */
