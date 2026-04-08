@@ -38,7 +38,7 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-primary h-1 bg-muted rounded-full appearance-none cursor-pointer"
+        className="w-full h-1.5 rounded-full appearance-none cursor-pointer roi-slider"
       />
     </label>
   );
