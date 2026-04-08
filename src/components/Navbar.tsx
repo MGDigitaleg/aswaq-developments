@@ -22,12 +22,12 @@ interface NavItem {
   dropdownType?: "simple" | "tabbed";
 }
 
-/* Project metadata with logos */
-const projectMeta: Record<string, { type: string; typeAr: string; desc: string; descAr: string; logo: string }> = {
-  "city-hub-mall": { type: "Mixed-Use", typeAr: "متعدد الاستخدامات", desc: "Premium retail & office destination", descAr: "وجهة تجارية وإدارية متميزة", logo: cityHubLogo },
-  "mercado-mall": { type: "Commercial", typeAr: "تجاري", desc: "Modern commercial hub", descAr: "مركز تجاري عصري", logo: mercadoLogo },
-  "arena-mall": { type: "Retail & Medical", typeAr: "تجاري وطبي", desc: "Integrated retail & medical complex", descAr: "مجمع تجاري وطبي متكامل", logo: arenaLogo },
-  "solaria-mall": { type: "Premium Commercial", typeAr: "تجاري متميز", desc: "Refined commercial landmark", descAr: "معلم تجاري رائد", logo: solariaLogo },
+/* Project metadata with logos + optical padding per logo */
+const projectMeta: Record<string, { type: string; typeAr: string; desc: string; descAr: string; logo: string; logoPad: string }> = {
+  "city-hub-mall": { type: "Mixed-Use", typeAr: "متعدد الاستخدامات", desc: "Premium retail & office destination", descAr: "وجهة تجارية وإدارية متميزة", logo: cityHubLogo, logoPad: "p-2" },
+  "mercado-mall": { type: "Commercial", typeAr: "تجاري", desc: "Modern commercial hub", descAr: "مركز تجاري عصري", logo: mercadoLogo, logoPad: "p-3" },
+  "arena-mall": { type: "Retail & Medical", typeAr: "تجاري وطبي", desc: "Integrated retail & medical complex", descAr: "مجمع تجاري وطبي متكامل", logo: arenaLogo, logoPad: "p-3" },
+  "solaria-mall": { type: "Premium Commercial", typeAr: "تجاري متميز", desc: "Refined commercial landmark", descAr: "معلم تجاري رائد", logo: solariaLogo, logoPad: "p-2" },
 };
 
 const getNavLinks = (prefix: string): NavItem[] => [
@@ -152,7 +152,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                     className="group flex items-start gap-3.5 p-3.5 rounded-xl transition-all duration-200 hover:bg-foreground/[0.04] border border-transparent hover:border-border/30"
                   >
                     {/* Mall logo — premium container */}
-                    <div className="w-[72px] h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/60 group-hover:shadow-md transition-all duration-200 p-2.5">
+                    <div className={`w-[72px] h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/60 group-hover:shadow-md transition-all duration-200 ${meta?.logoPad || 'p-2.5'}`}>
                       {meta ? (
                         <img src={meta.logo} alt={child.label} className="w-full h-full object-contain" loading="lazy" />
                       ) : (
