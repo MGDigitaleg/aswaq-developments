@@ -147,7 +147,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                           {child.label}
                         </p>
                         {meta && (
-                          <p className="text-[10px] font-medium text-foreground/35 uppercase tracking-wider mt-0.5">
+                          <p className="text-[10px] font-medium text-foreground/45 uppercase tracking-wider mt-0.5">
                             {isArabic ? meta.typeAr : meta.type}
                           </p>
                         )}
