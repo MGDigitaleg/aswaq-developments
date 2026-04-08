@@ -152,7 +152,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                     className="group flex items-start gap-3.5 p-3.5 rounded-xl transition-all duration-200 hover:bg-foreground/[0.04] border border-transparent hover:border-border/30"
                   >
                     {/* Mall logo — premium container */}
-                    <div className="w-[72px] h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/60 group-hover:shadow-md transition-all duration-200 p-2.5">
+                    <div className={`w-[72px] h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/60 group-hover:shadow-md transition-all duration-200 ${meta?.logoPad || 'p-2.5'}`}>
                       {meta ? (
                         <img src={meta.logo} alt={child.label} className="w-full h-full object-contain" loading="lazy" />
                       ) : (
