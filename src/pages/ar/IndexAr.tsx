@@ -286,9 +286,9 @@ const IndexAr = () => {
       </section>
 
       {/* ═══════════════ MARKET POSITIONING — FLAGSHIP ═══════════════ */}
-      <section className="py-20 md:py-26 lg:py-30 bg-background" dir="rtl">
+      <section className="py-16 md:py-22 lg:py-28 bg-background" dir="rtl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.9fr] gap-10 lg:gap-14 items-center">
             {/* Image Column */}
             <motion.div
               initial={{ opacity: 0, y: 28 }}
@@ -298,18 +298,19 @@ const IndexAr = () => {
               className="relative order-1 lg:order-2"
             >
               <div
-                className="relative overflow-hidden rounded-lg aspect-[4/3]"
-                style={{ boxShadow: '0 20px 60px -16px hsl(232 30% 10% / 0.10), 0 4px 12px -4px hsl(232 30% 10% / 0.04)' }}
+                className="relative overflow-hidden rounded-lg aspect-[16/10]"
+                style={{ boxShadow: '0 24px 64px -16px hsl(232 30% 10% / 0.12), 0 6px 16px -6px hsl(232 30% 10% / 0.05)' }}
               >
                 <motion.img
-                  src={solariaImg}
-                  alt="أسواق للتطوير العقاري - عقارات تجارية استراتيجية"
-                  className="w-full h-full object-cover object-center"
+                  src={solariaPositioning}
+                  alt="أسواق للتطوير العقاري - سولاريا مول"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: '50% 35%' }}
                   loading="lazy"
                   whileHover={{ scale: 1.015 }}
                   transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
                 />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.06) 0%, transparent 35%)' }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.08) 0%, transparent 40%)' }} />
               </div>
 
               {/* Stats Card */}
@@ -318,28 +319,28 @@ const IndexAr = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="absolute -bottom-5 right-4 md:right-6 rounded-md px-4.5 py-2.5"
+                className="absolute -bottom-4 right-4 md:right-5 rounded-md px-4 py-2"
                 style={{
                   background: 'hsl(var(--ivory) / 0.97)',
                   backdropFilter: 'blur(20px)',
-                  boxShadow: '0 2px 12px hsl(0 0% 0% / 0.04), 0 0 0 1px hsl(var(--border) / 0.15)',
+                  boxShadow: '0 2px 12px hsl(0 0% 0% / 0.04), 0 0 0 1px hsl(var(--border) / 0.12)',
                 }}
               >
                 <div className="flex items-center gap-4">
                   <div>
-                    <div className="font-['Montserrat'] text-[1.1rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
+                    <div className="font-['Montserrat'] text-[1.05rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
                       <AnimatedCounter value="4+" className="text-foreground" />
                     </div>
-                    <div className="text-[7.5px] text-muted-foreground/50 font-arabic tracking-[0.12em] leading-tight">
+                    <div className="text-[7px] text-muted-foreground/50 font-arabic tracking-[0.12em] leading-tight">
                       مشاريع بارزة
                     </div>
                   </div>
-                  <div className="w-px h-6 bg-foreground/[0.06]" />
+                  <div className="w-px h-5 bg-foreground/[0.06]" />
                   <div>
-                    <div className="font-['Montserrat'] text-[1.1rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
+                    <div className="font-['Montserrat'] text-[1.05rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
                       <AnimatedCounter value="20+" className="text-foreground" />
                     </div>
-                    <div className="text-[7.5px] text-muted-foreground/50 font-arabic tracking-[0.12em] leading-tight">
+                    <div className="text-[7px] text-muted-foreground/50 font-arabic tracking-[0.12em] leading-tight">
                       سنة من الخبرة
                     </div>
                   </div>
