@@ -162,7 +162,7 @@ const Index = () => {
                 Building Landmark
                 <br />
                 Destinations
-                <span className="block text-primary-foreground/50 text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] mt-2 font-display font-medium" style={{ letterSpacing: '-0.01em' }}>
+                <span className="block text-primary-foreground/60 text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] mt-2 font-display font-medium" style={{ letterSpacing: '-0.01em' }}>
                   in El Shorouk, East Cairo
                 </span>
               </motion.h1>
