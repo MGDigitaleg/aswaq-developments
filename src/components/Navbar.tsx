@@ -117,11 +117,11 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
       <button className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
+          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/75"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/50" : "text-primary-foreground/35"}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/60" : "text-primary-foreground/45"}`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -218,11 +218,11 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
       <button className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
+          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/75"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/50" : "text-primary-foreground/35"}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/60" : "text-primary-foreground/45"}`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -491,7 +491,7 @@ const Navbar = () => {
                     className={`relative text-[12.5px] font-semibold tracking-wide transition-all duration-300 whitespace-nowrap ${
                       active
                         ? "text-primary-foreground"
-                        : "text-primary-foreground/70 hover:text-primary-foreground"
+                        : "text-primary-foreground/75 hover:text-primary-foreground"
                     }`}
                   >
                     {link.label}
@@ -518,8 +518,8 @@ const Navbar = () => {
                         to={link.href}
                         className={`text-[11.5px] font-medium tracking-wide transition-all duration-300 whitespace-nowrap ${
                           active
-                            ? "text-primary-foreground/80"
-                            : "text-primary-foreground/50 hover:text-primary-foreground/80"
+                            ? "text-primary-foreground/85"
+                            : "text-primary-foreground/55 hover:text-primary-foreground/85"
                         }`}
                       >
                         {link.label}
@@ -534,7 +534,7 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center gap-3 shrink-0">
               <button
                 onClick={switchLanguage}
-                className="flex items-center gap-1.5 text-[11.5px] font-bold text-primary-foreground/55 hover:text-primary-foreground/90 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-primary-foreground/[0.08] tracking-[0.05em] border border-primary-foreground/[0.08] hover:border-primary-foreground/[0.18]"
+                className="flex items-center gap-1.5 text-[11.5px] font-bold text-primary-foreground/60 hover:text-primary-foreground transition-all duration-300 px-3 py-2 rounded-lg hover:bg-primary-foreground/[0.10] tracking-[0.05em] border border-primary-foreground/[0.10] hover:border-primary-foreground/[0.22]"
                 aria-label={isArabic ? "Switch to English" : "التبديل إلى العربية"}
               >
                 <Globe size={12} className="opacity-60" />

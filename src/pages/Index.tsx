@@ -147,7 +147,7 @@ const Index = () => {
                 className="flex items-center gap-3 mb-5"
               >
                 <div className="w-7 h-px bg-primary-foreground/25" />
-                <p className="font-body text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-primary-foreground/50 font-semibold">
+                <p className="font-body text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-primary-foreground/60 font-semibold">
                   ASWAQ Developments & Project Management
                 </p>
               </motion.div>
@@ -162,7 +162,7 @@ const Index = () => {
                 Building Landmark
                 <br />
                 Destinations
-                <span className="block text-primary-foreground/50 text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] mt-2 font-display font-medium" style={{ letterSpacing: '-0.01em' }}>
+                <span className="block text-primary-foreground/60 text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] mt-2 font-display font-medium" style={{ letterSpacing: '-0.01em' }}>
                   in El Shorouk, East Cairo
                 </span>
               </motion.h1>
@@ -171,7 +171,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="text-primary-foreground/50 font-body text-sm md:text-[15px] leading-[1.8] mb-8 max-w-md"
+                className="text-primary-foreground/60 font-body text-sm md:text-[15px] leading-[1.8] mb-8 max-w-md"
               >
                 4 landmark malls delivering premium commercial, administrative & medical developments — backed by 20+ years of expertise.
               </motion.p>
@@ -207,12 +207,12 @@ const Index = () => {
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1 bg-primary-foreground/60" : "w-1 h-1 bg-primary-foreground/20 hover:bg-primary-foreground/35"}`}
+                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1 bg-primary-foreground/70" : "w-1 h-1 bg-primary-foreground/25 hover:bg-primary-foreground/40"}`}
                 aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
-          <span className="text-[9px] text-primary-foreground/20 font-['Montserrat'] font-semibold tabular-nums">
+          <span className="text-[9px] text-primary-foreground/30 font-['Montserrat'] font-semibold tabular-nums">
             {String(currentSlide + 1).padStart(2, '0')}/{String(heroSlides.length).padStart(2, '0')}
           </span>
         </div>
@@ -239,7 +239,7 @@ const Index = () => {
                 <span className="font-['Montserrat'] text-lg md:text-xl font-extrabold text-primary-foreground tracking-tight">
                   <AnimatedCounter value={stat.value} className="text-primary-foreground" />
                 </span>
-                <span className="text-[10px] md:text-[11px] text-primary-foreground/30 font-body tracking-[0.08em] uppercase leading-tight">
+                <span className="text-[10px] md:text-[11px] text-primary-foreground/40 font-body tracking-[0.08em] uppercase leading-tight">
                   {stat.label}
                 </span>
                 {i < 3 && <div className="hidden md:block w-px h-6 bg-primary-foreground/[0.06] ml-4" />}

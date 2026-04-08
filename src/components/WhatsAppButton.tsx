@@ -10,10 +10,10 @@ const WhatsAppButton = () => {
       aria-label="Contact us on WhatsApp"
       className="fixed bottom-20 right-6 z-50 rounded-2xl p-4 transition-all duration-300 hover:scale-105"
       style={{
-        background: 'hsl(145 52% 42%)',
+        background: 'hsl(152 32% 36%)',
         color: 'white',
-        boxShadow: '0 6px 20px -4px hsl(145 52% 35% / 0.35), 0 2px 8px -2px hsl(145 52% 35% / 0.15)',
-        border: '1px solid hsl(145 52% 48% / 0.3)',
+        boxShadow: '0 6px 20px -4px hsl(152 32% 28% / 0.30), 0 2px 8px -2px hsl(152 32% 28% / 0.12)',
+        border: '1px solid hsl(152 32% 42% / 0.25)',
       }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}

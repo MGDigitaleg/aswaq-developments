@@ -84,7 +84,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2 lg:pr-10">
             <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[170px] mb-7" width={170} height={67} />
-            <p className={`text-primary-foreground/55 text-sm leading-[1.85] ${fontClass} mb-8 max-w-sm`}>
+            <p className={`text-primary-foreground/65 text-sm leading-[1.85] ${fontClass} mb-8 max-w-sm`}>
               {isArabic
                 ? "شركة تطوير عقاري رائدة متخصصة في المشاريع التجارية والإدارية والطبية في شرق القاهرة. أكثر من 20 عاماً من التميز في مدينة الشروق."
                 : "A leading real estate developer specializing in commercial, administrative, and medical projects across East Cairo. Over 20 years of excellence in Shorouk City."}
@@ -96,7 +96,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.10] flex items-center justify-center text-primary-foreground/55 hover:bg-primary-foreground/[0.12] hover:text-primary-foreground/90 hover:border-primary-foreground/20 transition-all duration-300"
+                  className="w-9 h-9 rounded-lg bg-primary-foreground/[0.07] border border-primary-foreground/[0.12] flex items-center justify-center text-primary-foreground/60 hover:bg-primary-foreground/[0.14] hover:text-primary-foreground hover:border-primary-foreground/25 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={15} />
@@ -107,13 +107,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/70 uppercase tracking-[0.2em]">
+            <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/80 uppercase tracking-[0.2em]">
               {isArabic ? "روابط سريعة" : "Quick Links"}
             </h3>
             <ul className={`space-y-3 ${fontClass}`}>
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-[13px] text-primary-foreground/55 hover:text-primary-foreground/90 transition-colors duration-300">{link.label}</Link>
+                  <Link to={link.href} className="text-[13px] text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300">{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -121,55 +121,55 @@ const Footer = () => {
 
           {/* Projects + Units */}
           <div>
-            <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/70 uppercase tracking-[0.2em]">
+            <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/80 uppercase tracking-[0.2em]">
               {isArabic ? "مشاريعنا" : "Our Projects"}
             </h3>
             <ul className={`space-y-3 ${fontClass}`}>
               {projectLinks.map((p) => (
-                <li key={p.name}><Link to={p.href} className="text-[13px] text-primary-foreground/55 hover:text-primary-foreground/90 transition-colors duration-300">{p.name}</Link></li>
+                <li key={p.name}><Link to={p.href} className="text-[13px] text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300">{p.name}</Link></li>
               ))}
             </ul>
-            <h3 className="font-body text-[10px] font-bold mt-8 mb-4 text-primary-foreground/70 uppercase tracking-[0.2em]">
+            <h3 className="font-body text-[10px] font-bold mt-8 mb-4 text-primary-foreground/80 uppercase tracking-[0.2em]">
               {isArabic ? "الوحدات" : "Units"}
             </h3>
             <ul className={`space-y-3 ${fontClass}`}>
               {unitLinks.map((u) => (
-                <li key={u.href}><Link to={u.href} className="text-[13px] text-primary-foreground/55 hover:text-primary-foreground/90 transition-colors duration-300">{u.name}</Link></li>
+                <li key={u.href}><Link to={u.href} className="text-[13px] text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300">{u.name}</Link></li>
               ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/70 uppercase tracking-[0.2em]">
+            <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/80 uppercase tracking-[0.2em]">
               {isArabic ? "تواصل معنا" : "Contact Us"}
             </h3>
             <ul className={`space-y-5 ${fontClass}`}>
               {/* Hotline — prominent */}
               <li>
                 <a href="tel:19474" className="flex items-center gap-3 group transition-colors duration-300">
-                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.10] flex items-center justify-center shrink-0 group-hover:bg-primary-foreground/[0.10] transition-colors">
-                    <Phone size={14} className="text-primary-foreground/60" />
+                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.07] border border-primary-foreground/[0.12] flex items-center justify-center shrink-0 group-hover:bg-primary-foreground/[0.12] transition-colors">
+                    <Phone size={14} className="text-primary-foreground/65" />
                   </div>
                   <div>
-                    <span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/50 mb-0.5">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/55 mb-0.5">
                       {isArabic ? "الخط الساخن" : "Hotline"}
                     </span>
-                    <span className="font-['Montserrat'] font-extrabold text-[16px] text-primary-foreground/90">19474</span>
+                    <span className="font-['Montserrat'] font-extrabold text-[16px] text-primary-foreground">19474</span>
                   </div>
                 </a>
               </li>
               <li>
-                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-[13px] text-primary-foreground/55 hover:text-primary-foreground/90 transition-colors duration-300">
-                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.10] flex items-center justify-center shrink-0">
-                    <Mail size={14} className="text-primary-foreground/60" />
+                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-[13px] text-primary-foreground/65 hover:text-primary-foreground transition-colors duration-300">
+                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.07] border border-primary-foreground/[0.12] flex items-center justify-center shrink-0">
+                    <Mail size={14} className="text-primary-foreground/65" />
                   </div>
                   marketing@aswaqdev.com
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-[13px] text-primary-foreground/55">
-                <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.10] flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin size={14} className="text-primary-foreground/60" />
+              <li className="flex items-start gap-3 text-[13px] text-primary-foreground/65">
+                <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.07] border border-primary-foreground/[0.12] flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin size={14} className="text-primary-foreground/65" />
                 </div>
                 <span className="leading-relaxed">
                   {isArabic
@@ -193,7 +193,7 @@ const Footer = () => {
                 ))}
               </div>
               <span className="text-lg font-bold text-primary-foreground/90 font-['Montserrat']">4.6</span>
-              <span className={`text-[12px] text-primary-foreground/50 ${fontClass}`}>
+              <span className={`text-[12px] text-primary-foreground/60 ${fontClass}`}>
                 {isArabic ? "بناءً على تقييمات Google" : "based on Google Reviews"}
               </span>
             </div>
@@ -201,7 +201,7 @@ const Footer = () => {
               href="https://maps.app.goo.gl/6jGACMa9mZKx5sYp9"
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-[12px] text-primary-foreground/50 hover:text-primary-foreground/80 flex items-center gap-1.5 ${fontClass} transition-colors duration-300`}
+              className={`text-[12px] text-primary-foreground/55 hover:text-primary-foreground/85 flex items-center gap-1.5 ${fontClass} transition-colors duration-300`}
             >
               {isArabic ? "اترك تقييم" : "Leave a Review"}
               <ExternalLink size={11} />
@@ -212,13 +212,13 @@ const Footer = () => {
             {reviews.map((review, i) => (
               <div
                 key={i}
-                className="bg-primary-foreground/[0.03] rounded-xl p-4.5 border border-primary-foreground/[0.06] hover:border-primary-foreground/[0.10] transition-all duration-300"
+                className="bg-primary-foreground/[0.04] rounded-xl p-4.5 border border-primary-foreground/[0.07] hover:border-primary-foreground/[0.14] transition-all duration-300"
               >
                 <StarRating rating={review.rating} />
-                <p className={`text-[12.5px] text-primary-foreground/55 mt-2.5 mb-3 ${fontClass} leading-relaxed min-h-[36px]`}>
+                <p className={`text-[12.5px] text-primary-foreground/65 mt-2.5 mb-3 ${fontClass} leading-relaxed min-h-[36px]`}>
                   "{isArabic ? review.textAr : review.text}"
                 </p>
-                <p className={`text-[12px] font-semibold text-primary-foreground/75 ${fontClass}`}>{review.name}</p>
+                <p className={`text-[12px] font-semibold text-primary-foreground/85 ${fontClass}`}>{review.name}</p>
               </div>
             ))}
           </div>
@@ -228,10 +228,10 @@ const Footer = () => {
       {/* Bottom */}
       <div className="border-t border-primary-foreground/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className={`text-[11px] text-primary-foreground/40 ${fontClass}`}>
+          <p className={`text-[11px] text-primary-foreground/50 ${fontClass}`}>
             © {new Date().getFullYear()} {isArabic ? "أسواق للتطوير العقاري. جميع الحقوق محفوظة." : "ASWAQ Developments. All rights reserved."}
           </p>
-          <p className={`text-[11px] text-primary-foreground/40 ${fontClass}`}>
+          <p className={`text-[11px] text-primary-foreground/50 ${fontClass}`}>
             {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
             <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/55 underline hover:no-underline">MG Digital</a>
           </p>
