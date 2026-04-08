@@ -152,7 +152,7 @@ const Footer = () => {
                     <Phone size={14} className="text-primary-foreground/50" />
                   </div>
                   <div>
-                    <span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/40 mb-0.5">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/50 mb-0.5">
                       {isArabic ? "الخط الساخن" : "Hotline"}
                     </span>
                     <span className="font-['Montserrat'] font-extrabold text-[16px] text-primary-foreground/90">19474</span>
