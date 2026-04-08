@@ -148,21 +148,21 @@ const Footer = () => {
               {/* Hotline — prominent */}
               <li>
                 <a href="tel:19474" className="flex items-center gap-3 group transition-colors duration-300">
-                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.10] flex items-center justify-center shrink-0 group-hover:bg-primary-foreground/[0.10] transition-colors">
-                    <Phone size={14} className="text-primary-foreground/60" />
+                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.07] border border-primary-foreground/[0.12] flex items-center justify-center shrink-0 group-hover:bg-primary-foreground/[0.12] transition-colors">
+                    <Phone size={14} className="text-primary-foreground/65" />
                   </div>
                   <div>
-                    <span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/50 mb-0.5">
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/55 mb-0.5">
                       {isArabic ? "الخط الساخن" : "Hotline"}
                     </span>
-                    <span className="font-['Montserrat'] font-extrabold text-[16px] text-primary-foreground/90">19474</span>
+                    <span className="font-['Montserrat'] font-extrabold text-[16px] text-primary-foreground">19474</span>
                   </div>
                 </a>
               </li>
               <li>
-                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-[13px] text-primary-foreground/55 hover:text-primary-foreground/90 transition-colors duration-300">
-                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.10] flex items-center justify-center shrink-0">
-                    <Mail size={14} className="text-primary-foreground/60" />
+                <a href="mailto:marketing@aswaqdev.com" className="flex items-center gap-3 text-[13px] text-primary-foreground/65 hover:text-primary-foreground transition-colors duration-300">
+                  <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.07] border border-primary-foreground/[0.12] flex items-center justify-center shrink-0">
+                    <Mail size={14} className="text-primary-foreground/65" />
                   </div>
                   marketing@aswaqdev.com
                 </a>
