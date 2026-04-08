@@ -317,3 +317,43 @@ html {
     scroll-behavior: auto;
   }
 }
+
+/* ─── Premium Range Slider ─── */
+.roi-slider {
+  background: hsl(var(--border));
+}
+.roi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: hsl(var(--navy));
+  border: 3px solid hsl(var(--cream));
+  box-shadow: 0 2px 8px hsl(var(--navy) / 0.25);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+.roi-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 12px hsl(var(--navy) / 0.4);
+}
+.roi-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: hsl(var(--navy));
+  border: 3px solid hsl(var(--cream));
+  box-shadow: 0 2px 8px hsl(var(--navy) / 0.25);
+  cursor: pointer;
+}
+.dark .roi-slider {
+  background: hsl(var(--border));
+}
+.dark .roi-slider::-webkit-slider-thumb {
+  background: hsl(var(--accent));
+  border-color: hsl(var(--card));
+}
+.dark .roi-slider::-moz-range-thumb {
+  background: hsl(var(--accent));
+  border-color: hsl(var(--card));
+}

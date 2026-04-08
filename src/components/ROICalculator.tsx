@@ -45,7 +45,7 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
 
   return (
     <div
-      className="bg-card rounded-2xl border border-border p-7 md:p-10 lg:p-12"
+      className="rounded-2xl border p-7 md:p-10 lg:p-12 bg-card border-border"
       style={{ boxShadow: 'var(--shadow-xl)' }}
     >
       <div className="flex items-center gap-3 mb-8">
