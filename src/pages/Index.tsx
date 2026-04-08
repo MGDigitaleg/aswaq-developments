@@ -268,9 +268,9 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ MARKET POSITIONING — FLAGSHIP ═══════════════ */}
-      <section className="py-16 md:py-22 lg:py-28 bg-background">
+      <section className="py-14 md:py-20 lg:py-26 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.2fr] gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.25fr] gap-8 lg:gap-12 items-center">
             {/* Text Column */}
             <motion.div
               initial={{ opacity: 0, y: 28 }}
@@ -310,7 +310,7 @@ const Index = () => {
               </Link>
             </motion.div>
 
-            {/* Image Column — larger, more dominant */}
+            {/* Image Column — dominant architectural facade */}
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -319,49 +319,49 @@ const Index = () => {
               className="relative"
             >
               <div
-                className="relative overflow-hidden rounded-lg aspect-[16/10]"
-                style={{ boxShadow: '0 24px 64px -16px hsl(232 30% 10% / 0.12), 0 6px 16px -6px hsl(232 30% 10% / 0.05)' }}
+                className="relative overflow-hidden rounded-lg aspect-[3/2]"
+                style={{ boxShadow: '0 28px 72px -18px hsl(232 30% 10% / 0.14), 0 8px 20px -8px hsl(232 30% 10% / 0.06)' }}
               >
                 <motion.img
                   src={solariaPositioning}
                   alt="Solaria Mall — ASWAQ Developments Flagship Project"
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: '50% 35%' }}
+                  style={{ objectPosition: '35% 55%' }}
                   loading="lazy"
                   whileHover={{ scale: 1.015 }}
                   transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
                 />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.08) 0%, transparent 40%)' }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.10) 0%, transparent 45%)' }} />
               </div>
 
-              {/* Stats Card — integrated bottom-left plaque */}
+              {/* Stats Card — slim plaque */}
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="absolute -bottom-4 left-4 md:left-5 rounded-md px-4 py-2"
+                className="absolute -bottom-3.5 left-4 md:left-5 rounded-md px-3.5 py-1.5"
                 style={{
                   background: 'hsl(var(--ivory) / 0.97)',
                   backdropFilter: 'blur(20px)',
-                  boxShadow: '0 2px 12px hsl(0 0% 0% / 0.04), 0 0 0 1px hsl(var(--border) / 0.12)',
+                  boxShadow: '0 2px 10px hsl(0 0% 0% / 0.04), 0 0 0 1px hsl(var(--border) / 0.10)',
                 }}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3.5">
                   <div>
-                    <div className="font-['Montserrat'] text-[1.05rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
+                    <div className="font-['Montserrat'] text-[0.95rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
                       <AnimatedCounter value="4+" className="text-foreground" />
                     </div>
-                    <div className="text-[7px] text-muted-foreground/50 font-body tracking-[0.16em] uppercase leading-tight">
+                    <div className="text-[6.5px] text-muted-foreground/50 font-body tracking-[0.16em] uppercase leading-tight">
                       Landmark Developments
                     </div>
                   </div>
-                  <div className="w-px h-5 bg-foreground/[0.06]" />
+                  <div className="w-px h-4 bg-foreground/[0.06]" />
                   <div>
-                    <div className="font-['Montserrat'] text-[1.05rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
+                    <div className="font-['Montserrat'] text-[0.95rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
                       <AnimatedCounter value="20+" className="text-foreground" />
                     </div>
-                    <div className="text-[7px] text-muted-foreground/50 font-body tracking-[0.16em] uppercase leading-tight">
+                    <div className="text-[6.5px] text-muted-foreground/50 font-body tracking-[0.16em] uppercase leading-tight">
                       Years of Experience
                     </div>
                   </div>
