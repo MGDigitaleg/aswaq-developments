@@ -212,7 +212,7 @@ const Index = () => {
               />
             ))}
           </div>
-          <span className="text-[9px] text-primary-foreground/20 font-['Montserrat'] font-semibold tabular-nums">
+          <span className="text-[9px] text-primary-foreground/30 font-['Montserrat'] font-semibold tabular-nums">
             {String(currentSlide + 1).padStart(2, '0')}/{String(heroSlides.length).padStart(2, '0')}
           </span>
         </div>
