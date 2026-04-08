@@ -435,7 +435,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                   <button
                     key={floor.id}
                     onClick={() => setActiveFloor(floor.id)}
-                    className="flex-shrink-0 relative px-3 py-2 rounded-lg text-left transition-all duration-300"
+                    className={`flex-shrink-0 relative px-3 py-2 rounded-lg ${isRtl ? "text-right" : "text-left"} transition-all duration-300`}
                     style={{
                       background: isActive ? "hsl(var(--navy))" : "transparent",
                       border: `1px solid ${isActive ? "transparent" : "hsl(var(--border) / 0.2)"}`,
@@ -443,23 +443,23 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                   >
                     <div className="flex items-baseline gap-2">
                       <span
-                        className="font-display text-[12px] font-bold"
+                        className={`text-[12px] font-bold ${isRtl ? "font-arabic" : "font-display"}`}
                         style={{ color: isActive ? "hsl(var(--primary-foreground))" : "hsl(var(--foreground))" }}
                       >
-                        {floor.shortLabel}
+                        {isRtl ? (floorLabelsAr[floor.id]?.shortLabel || floor.shortLabel) : floor.shortLabel}
                       </span>
                       <span
-                        className="hidden lg:inline text-[10px] font-body"
+                        className={`hidden lg:inline text-[10px] ${isRtl ? "font-arabic" : "font-body"}`}
                         style={{ color: isActive ? "hsl(var(--primary-foreground) / 0.6)" : "hsl(var(--steel))" }}
                       >
-                        {floor.label}
+                        {isRtl ? (floorLabelsAr[floor.id]?.label || floor.label) : floor.label}
                       </span>
                     </div>
                     <p
-                      className="text-[8px] font-body mt-0.5 tracking-wide"
+                      className={`text-[8px] mt-0.5 tracking-wide ${isRtl ? "font-arabic" : "font-body"}`}
                       style={{ color: isActive ? "hsl(var(--primary-foreground) / 0.4)" : "hsl(var(--steel) / 0.5)" }}
                     >
-                      {floor.units.length} units
+                      {floor.units.length} {t.units}
                     </p>
                   </button>
                 );
