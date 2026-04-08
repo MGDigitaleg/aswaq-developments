@@ -245,7 +245,7 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
                 <Link
                   key={sub.href}
                   to={sub.href}
-                  className="block px-4 py-2.5 text-[12.5px] font-medium text-foreground/55 hover:text-foreground hover:bg-foreground/[0.04] transition-all duration-200 rounded-lg"
+                  className="block px-4 py-2.5 text-[12.5px] font-medium text-foreground/65 hover:text-foreground hover:bg-foreground/[0.06] transition-all duration-200 rounded-lg"
                 >
                   {sub.label}
                 </Link>
