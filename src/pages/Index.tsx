@@ -538,22 +538,19 @@ const Index = () => {
                     </h3>
                   </div>
                 </div>
-                <h3 className="font-display text-2xl md:text-[1.75rem] font-bold text-foreground mb-3 leading-tight">
-                  {editorialProjects[3].name}
-                </h3>
                 <p className="text-muted-foreground text-[14px] font-body leading-[1.75] mb-1.5 max-w-md">
                   {editorialProjects[3].description}
                 </p>
                 <p className="text-[11px] font-body text-foreground/30 tracking-wide mb-5 flex items-center gap-1.5">
                   <MapPin size={11} /> {editorialProjects[3].location}
                 </p>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.12em] uppercase px-5 py-2.5 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/30 group-hover:text-foreground transition-all duration-300">
+                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.12em] uppercase px-6 py-3 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/35 group-hover:text-foreground transition-all duration-300">
                   {editorialProjects[3].cta}
-                  <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                  <ArrowRight size={12} className="transition-transform group-hover:translate-x-1.5" />
                 </span>
               </div>
               {/* Image */}
-              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[5/4]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
                 <img
                   src={editorialProjects[3].image}
                   alt={`${editorialProjects[3].name} - ASWAQ Developments`}
