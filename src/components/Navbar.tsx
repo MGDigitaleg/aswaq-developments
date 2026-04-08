@@ -111,7 +111,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
       <button className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
+          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
         >
           {item.label}
         </Link>
