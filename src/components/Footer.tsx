@@ -212,7 +212,7 @@ const Footer = () => {
             {reviews.map((review, i) => (
               <div
                 key={i}
-                className="bg-primary-foreground/[0.03] rounded-xl p-4.5 border border-primary-foreground/[0.06] hover:border-primary-foreground/[0.10] transition-all duration-300"
+                className="bg-primary-foreground/[0.04] rounded-xl p-4.5 border border-primary-foreground/[0.07] hover:border-primary-foreground/[0.14] transition-all duration-300"
               >
                 <StarRating rating={review.rating} />
                 <p className={`text-[12.5px] text-primary-foreground/55 mt-2.5 mb-3 ${fontClass} leading-relaxed min-h-[36px]`}>
