@@ -67,7 +67,7 @@ const Footer = () => {
             <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground mb-1">
               {isArabic ? "ابدأ رحلتك العقارية اليوم" : "Start Your Real Estate Journey Today"}
             </h3>
-            <p className={`text-primary-foreground/50 text-sm ${fontClass}`}>
+            <p className={`text-primary-foreground/55 text-sm ${fontClass}`}>
               {isArabic ? "اكتشف وحدات تجارية وإدارية وطبية متميزة في مدينة الشروق." : "Discover premium commercial, administrative & medical units in Shorouk City."}
             </p>
           </div>
