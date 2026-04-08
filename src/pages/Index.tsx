@@ -267,99 +267,99 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ MARKET POSITIONING — FLAGSHIP ═══════════════ */}
-      <section className="py-20 md:py-28 lg:py-32 bg-background">
+      <section className="py-20 md:py-26 lg:py-30 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-center">
             {/* Text Column */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               <p
-                className="text-[10px] font-body font-semibold tracking-[0.35em] uppercase mb-7"
+                className="text-[9.5px] font-body font-semibold tracking-[0.4em] uppercase mb-6"
                 style={{ color: 'hsl(var(--steel))' }}
               >
                 Market Positioning
               </p>
               <h2
-                className="font-display text-[1.75rem] md:text-[2.15rem] lg:text-[2.5rem] font-bold text-foreground leading-[1.12] mb-8"
-                style={{ letterSpacing: '-0.02em' }}
+                className="font-display text-[1.65rem] md:text-[2rem] lg:text-[2.35rem] font-bold text-foreground leading-[1.1] mb-7 max-w-[420px]"
+                style={{ letterSpacing: '-0.025em' }}
               >
-                From Real Estate Presence
+                From Real Estate
                 <br />
-                to <span className="text-navy-rich">Market Power</span>
+                Presence to{' '}
+                <span className="text-navy-rich" style={{ letterSpacing: '-0.03em' }}>Market Power</span>
               </h2>
-              <div className="space-y-3.5 mb-11">
-                <p className="text-muted-foreground font-body text-[14px] leading-[1.85] max-w-md">
+              <div className="space-y-3 mb-10">
+                <p className="text-muted-foreground font-body text-[13.5px] leading-[1.85] max-w-[400px]">
                   ASWAQ doesn't just build properties — it creates strategic market positions.
                 </p>
-                <p className="text-muted-foreground font-body text-[14px] leading-[1.85] max-w-md">
+                <p className="text-muted-foreground/80 font-body text-[13.5px] leading-[1.85] max-w-[400px]">
                   Each development is designed to elevate visibility, strengthen commercial value, and turn prime locations into long-term investment advantage.
                 </p>
               </div>
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 font-body text-[11.5px] font-semibold tracking-[0.1em] uppercase px-6 py-3 rounded-lg border border-foreground/15 text-foreground hover:border-foreground/35 hover:bg-foreground/[0.03] transition-all duration-300 group"
+                className="inline-flex items-center gap-2.5 font-body text-[11px] font-semibold tracking-[0.14em] uppercase px-5.5 py-2.5 rounded-md border border-foreground/12 text-foreground/80 hover:text-foreground hover:border-foreground/30 transition-all duration-400 group"
               >
                 Explore Our Projects
-                <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-1 opacity-60 group-hover:opacity-100" />
+                <ArrowRight size={11} className="transition-all duration-400 group-hover:translate-x-1 opacity-50 group-hover:opacity-90" />
               </Link>
             </motion.div>
 
             {/* Image Column */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="relative"
             >
               <div
-                className="relative overflow-hidden rounded-xl aspect-[4/3]"
-                style={{ boxShadow: '0 16px 48px -12px hsl(0 0% 0% / 0.12)' }}
+                className="relative overflow-hidden rounded-lg aspect-[4/3]"
+                style={{ boxShadow: '0 20px 60px -16px hsl(232 30% 10% / 0.10), 0 4px 12px -4px hsl(232 30% 10% / 0.04)' }}
               >
                 <motion.img
                   src={solariaImg}
                   alt="ASWAQ Developments - Strategic Commercial Real Estate"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                   loading="lazy"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.015 }}
+                  transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.06) 0%, transparent 35%)' }} />
               </div>
 
               {/* Stats Card */}
               <motion.div
-                initial={{ opacity: 0, y: 14 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.35 }}
-                className="absolute -bottom-6 left-5 md:left-7 rounded-lg px-5 py-3.5"
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="absolute -bottom-5 left-4 md:left-6 rounded-md px-4.5 py-2.5"
                 style={{
-                  background: 'hsl(var(--ivory) / 0.96)',
-                  backdropFilter: 'blur(16px)',
-                  boxShadow: '0 4px 20px hsl(0 0% 0% / 0.06)',
-                  border: '1px solid hsl(var(--border) / 0.3)',
+                  background: 'hsl(var(--ivory) / 0.97)',
+                  backdropFilter: 'blur(20px)',
+                  boxShadow: '0 2px 12px hsl(0 0% 0% / 0.04), 0 0 0 1px hsl(var(--border) / 0.15)',
                 }}
               >
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-4">
                   <div>
-                    <div className="font-['Montserrat'] text-[1.25rem] font-extrabold text-foreground leading-none mb-0.5" style={{ letterSpacing: '-0.03em' }}>
+                    <div className="font-['Montserrat'] text-[1.1rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
                       <AnimatedCounter value="4+" className="text-foreground" />
                     </div>
-                    <div className="text-[8px] text-muted-foreground/60 font-body tracking-[0.14em] uppercase">
+                    <div className="text-[7.5px] text-muted-foreground/50 font-body tracking-[0.16em] uppercase leading-tight">
                       Landmark Developments
                     </div>
                   </div>
-                  <div className="w-px h-8 bg-border/30" />
+                  <div className="w-px h-6 bg-foreground/[0.06]" />
                   <div>
-                    <div className="font-['Montserrat'] text-[1.25rem] font-extrabold text-foreground leading-none mb-0.5" style={{ letterSpacing: '-0.03em' }}>
+                    <div className="font-['Montserrat'] text-[1.1rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
                       <AnimatedCounter value="20+" className="text-foreground" />
                     </div>
-                    <div className="text-[8px] text-muted-foreground/60 font-body tracking-[0.14em] uppercase">
+                    <div className="text-[7.5px] text-muted-foreground/50 font-body tracking-[0.16em] uppercase leading-tight">
                       Years of Experience
                     </div>
                   </div>
