@@ -3,6 +3,7 @@ import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, CheckCircle2 } 
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
+import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
 import solariaImg from "@/assets/solaria-mall.webp";
 import useSEO from "@/hooks/useSEO";
 import solaria1 from "@/assets/gallery/solaria-1.webp";
@@ -178,6 +179,8 @@ const SolariaMallAr = () => {
           </div>
         </div>
       </section>
+
+      <InteractiveFloorPlan lang="ar" />
 
       <MallGallerySection mallName="سولاريا مول" images={galleryImages} videos={galleryVideos} lang="ar" />
 
