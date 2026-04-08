@@ -171,7 +171,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="text-primary-foreground/50 font-body text-sm md:text-[15px] leading-[1.8] mb-8 max-w-md"
+                className="text-primary-foreground/60 font-body text-sm md:text-[15px] leading-[1.8] mb-8 max-w-md"
               >
                 4 landmark malls delivering premium commercial, administrative & medical developments — backed by 20+ years of expertise.
               </motion.p>
