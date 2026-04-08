@@ -491,7 +491,7 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ MERCADO — IMAGE LEFT / TEXT RIGHT ═══════════════ */}
-      <section className="py-10 md:py-14 bg-background">
+      <section className="py-8 md:py-11 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -499,16 +499,16 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Link to={`/projects/${editorialProjects[2].slug}`} className="group grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-8 items-center">
-              <div className="relative overflow-hidden rounded-2xl aspect-[6/5]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+            <Link to={`/projects/${editorialProjects[2].slug}`} className="group grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-5 lg:gap-7 items-center">
+              <div className="relative overflow-hidden rounded-2xl aspect-[5/4]" style={{ boxShadow: 'var(--shadow-xl)' }}>
                 <img src={editorialProjects[2].image} alt={`${editorialProjects[2].name} - ASWAQ Developments`} className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" loading="lazy" />
               </div>
               <div className="lg:pl-2">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-[68px] h-[68px] md:w-20 md:h-20 rounded-xl bg-white border border-border/40 flex items-center justify-center px-2 py-2.5 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
+                <div className="flex items-start gap-4 mb-3.5">
+                  <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white border border-border/40 flex items-center justify-center px-2 py-2 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
                     <img src={editorialProjects[2].logo} alt="" className="w-full h-full object-contain" />
                   </div>
-                  <div className="pt-0.5">
+                  <div className="pt-1">
                     <span className="block text-[9px] font-body font-bold tracking-[0.25em] uppercase text-foreground/30 mb-1">
                       {editorialProjects[2].tag}
                     </span>
@@ -523,7 +523,7 @@ const Index = () => {
                 <p className="text-[11px] font-body text-foreground/28 tracking-wide mb-5 flex items-center gap-1.5">
                   <MapPin size={10} /> {editorialProjects[2].location}
                 </p>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-6 py-2.5 rounded-lg border border-foreground/12 text-foreground/55 group-hover:border-foreground/30 group-hover:text-foreground group-hover:bg-foreground/[0.03] transition-all duration-300">
+                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-6 py-2.5 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/35 group-hover:text-foreground group-hover:bg-foreground/[0.03] group-hover:shadow-sm transition-all duration-300">
                   {editorialProjects[2].cta}
                   <ArrowRight size={12} className="transition-transform group-hover:translate-x-1.5" />
                 </span>
