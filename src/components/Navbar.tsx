@@ -130,18 +130,18 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[520px]"
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-2xl z-50 w-[540px]"
             style={dropdownStyle}
           >
             {/* Section label */}
-            <div className="px-5 pt-4 pb-2">
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/40 font-body">
+            <div className="px-6 pt-5 pb-1">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/35 font-body">
                 {isArabic ? "محفظة المشاريع" : "Our Portfolio"}
               </p>
             </div>
 
-            {/* 2x2 project cards with real logos */}
-            <div className="grid grid-cols-2 gap-1.5 px-3 pb-2">
+            {/* 2x2 project cards */}
+            <div className="grid grid-cols-2 gap-2 px-4 py-3">
               {projects.map((child) => {
                 const slug = child.href.split('/').pop() || '';
                 const meta = projectMeta[slug];
@@ -149,32 +149,37 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                   <Link
                     key={child.href}
                     to={child.href}
-                    className="group flex items-start gap-3.5 p-3.5 rounded-xl transition-all duration-200 hover:bg-foreground/[0.04] border border-transparent hover:border-border/30"
+                    className="group flex items-center gap-4 p-4 rounded-xl transition-all duration-250 bg-transparent hover:bg-white/70 border border-transparent hover:border-border/30 hover:shadow-[0_4px_20px_-6px_hsl(222_47%_10%/0.1)] cursor-pointer"
                   >
                     {/* Mall logo — premium container */}
-                    <div className={`w-[72px] h-[72px] rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/60 group-hover:shadow-md transition-all duration-200 ${meta?.logoPad || 'p-2.5'}`}>
+                    <div className={`w-[64px] h-[64px] rounded-xl bg-white border border-border/30 flex items-center justify-center shrink-0 overflow-hidden group-hover:border-border/50 group-hover:shadow-sm transition-all duration-250 ${meta?.logoPad || 'p-2'}`}>
                       {meta ? (
                         <img src={meta.logo} alt={child.label} className="w-full h-full object-contain" loading="lazy" />
                       ) : (
-                        <Building2 size={22} className="text-foreground/40" />
+                        <Building2 size={20} className="text-foreground/40" />
                       )}
                     </div>
 
                     {/* Project info */}
-                    <div className="min-w-0 flex-1 pt-0.5">
-                      <p className="text-[13px] font-bold text-foreground/90 group-hover:text-foreground transition-colors leading-tight">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[13.5px] font-bold text-foreground/85 group-hover:text-foreground transition-colors leading-tight tracking-[-0.01em]">
                         {child.label}
                       </p>
                       {meta && (
-                        <p className="text-[9.5px] font-bold text-foreground/40 uppercase tracking-[0.14em] mt-1 font-body">
+                        <p className="text-[9px] font-bold text-foreground/35 uppercase tracking-[0.16em] mt-1.5 font-body">
                           {isArabic ? meta.typeAr : meta.type}
                         </p>
                       )}
                       {meta && (
-                        <p className="text-[11px] text-foreground/50 leading-snug mt-1 group-hover:text-foreground/65 transition-colors">
+                        <p className="text-[11px] text-foreground/45 leading-snug mt-1 group-hover:text-foreground/60 transition-colors">
                           {isArabic ? meta.descAr : meta.desc}
                         </p>
                       )}
+                    </div>
+
+                    {/* Hover arrow indicator */}
+                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-200 shrink-0 translate-x-[-4px] group-hover:translate-x-0">
+                      {isArabic ? <ArrowLeft size={12} className="text-foreground/30" /> : <ArrowRight size={12} className="text-foreground/30" />}
                     </div>
                   </Link>
                 );
@@ -183,13 +188,15 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
 
             {/* All Projects footer */}
             {allProjectsLink && (
-              <div className="border-t border-border/40 mx-3 mt-1">
+              <div className="border-t border-border/25 mx-5 mt-1">
                 <Link
                   to={allProjectsLink.href}
-                  className="flex items-center justify-between px-3.5 py-3 text-[12px] font-bold text-foreground/55 hover:text-foreground transition-colors rounded-b-lg hover:bg-foreground/[0.03] font-body"
+                  className="group/footer flex items-center justify-between px-3 py-3.5 text-[11.5px] font-bold text-foreground/45 hover:text-foreground/75 transition-all duration-200 rounded-b-xl hover:bg-foreground/[0.03] font-body"
                 >
                   <span>{allProjectsLink.label}</span>
-                  {isArabic ? <ArrowLeft size={11} /> : <ArrowRight size={11} />}
+                  <span className="transition-transform duration-200 group-hover/footer:translate-x-0.5">
+                    {isArabic ? <ArrowLeft size={11} /> : <ArrowRight size={11} />}
+                  </span>
                 </Link>
               </div>
             )}
