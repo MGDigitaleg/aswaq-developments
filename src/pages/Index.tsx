@@ -239,7 +239,7 @@ const Index = () => {
                 <span className="font-['Montserrat'] text-lg md:text-xl font-extrabold text-primary-foreground tracking-tight">
                   <AnimatedCounter value={stat.value} className="text-primary-foreground" />
                 </span>
-                <span className="text-[10px] md:text-[11px] text-primary-foreground/30 font-body tracking-[0.08em] uppercase leading-tight">
+                <span className="text-[10px] md:text-[11px] text-primary-foreground/40 font-body tracking-[0.08em] uppercase leading-tight">
                   {stat.label}
                 </span>
                 {i < 3 && <div className="hidden md:block w-px h-6 bg-primary-foreground/[0.06] ml-4" />}
