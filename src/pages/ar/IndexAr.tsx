@@ -353,8 +353,8 @@ const IndexAr = () => {
         </div>
       </section>
 
-      {/* ═══════════════ 4 LANDMARK MALLS ═══════════════ */}
-      <section className="py-20 md:py-28 bg-cream">
+      {/* ═══════════════ PORTFOLIO HEADER ═══════════════ */}
+      <section className="pt-20 md:pt-28 pb-8 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -364,8 +364,11 @@ const IndexAr = () => {
             className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14"
           >
             <div>
-              <p className="section-label mb-4">محفظة مشاريعنا</p>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-foreground leading-tight">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-px bg-steel/40" />
+                <p className="section-label">محفظة مشاريعنا</p>
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-foreground leading-[1.08]">
                 4 مولات بارزة في مدينة الشروق
               </h2>
             </div>
@@ -376,65 +379,186 @@ const IndexAr = () => {
               عرض جميع المشاريع <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1" />
             </Link>
           </motion.div>
+        </div>
+      </section>
 
-          {/* Featured project large */}
+      {/* ═══════════════ سولاريا — FEATURED / HERO ═══════════════ */}
+      <section className="pb-6 md:pb-8 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <Link to={`/ar/projects/${editorialProjects[0].slug}`} className="group block">
+              <div className="relative overflow-hidden rounded-2xl aspect-[21/9] md:aspect-[2.4/1]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+                <img
+                  src={editorialProjects[0].image}
+                  alt={`${editorialProjects[0].name} - أسواق للتطوير العقاري`}
+                  className="w-full h-full object-cover transition-transform duration-[1.4s] group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-l from-primary/85 via-primary/40 to-transparent" />
+                <div className="absolute bottom-0 right-0 p-8 md:p-12 max-w-xl">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/95 border border-white/20 flex items-center justify-center p-2 mb-5" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.12)' }}>
+                    <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
+                  </div>
+                  <span className="inline-block text-[9px] font-arabic font-bold tracking-[0.18em] text-primary-foreground/50 mb-2">
+                    {editorialProjects[0].tag}
+                  </span>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-2 leading-tight">
+                    {editorialProjects[0].name}
+                  </h3>
+                  <p className="text-primary-foreground/55 text-[13.5px] font-arabic leading-relaxed mb-5 max-w-md">
+                    {editorialProjects[0].description}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-[12px] font-bold font-arabic text-primary-foreground/70 group-hover:text-primary-foreground transition-colors tracking-wide">
+                    {editorialProjects[0].cta}
+                    <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1.5" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════ أرينا — CONTENT RIGHT / IMAGE LEFT ═══════════════ */}
+      <section className="py-10 md:py-16 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-4"
           >
-            <Link to={`/ar/projects/${projects[0].slug}`} className="group block">
-              <div className="relative overflow-hidden rounded-2xl aspect-[21/9]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+            <Link to={`/ar/projects/${editorialProjects[1].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+              {/* Image */}
+              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
                 <img
-                  src={projects[0].image}
-                  alt={`${projects[0].name} - أسواق للتطوير العقاري`}
-                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                  src={editorialProjects[1].image}
+                  alt={`${editorialProjects[1].name} - أسواق للتطوير العقاري`}
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-l from-primary/80 via-primary/25 to-transparent" />
-                <div className="absolute bottom-0 right-0 p-7 md:p-10 max-w-lg">
-                  <span className="inline-block text-[9px] font-arabic font-semibold tracking-[0.08em] text-primary-foreground/40 mb-2">{projects[0].tag}</span>
-                  <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground mb-1.5">
-                    {projects[0].name}
-                  </h3>
-                  <p className="text-primary-foreground/45 text-[13px] font-arabic leading-relaxed">{projects[0].description}</p>
+              </div>
+              {/* Content */}
+              <div className="order-2 lg:order-1">
+                <div className="w-12 h-12 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1 mb-5" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                  <img src={editorialProjects[1].logo} alt="" className="w-full h-full object-contain" />
                 </div>
+                <span className="inline-block text-[9px] font-arabic font-bold tracking-[0.18em] text-foreground/35 mb-3">
+                  {editorialProjects[1].tag}
+                </span>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 leading-tight">
+                  {editorialProjects[1].name}
+                </h3>
+                <p className="text-muted-foreground text-[14px] font-arabic leading-[1.8] mb-2 max-w-md">
+                  {editorialProjects[1].description}
+                </p>
+                <p className="text-[11px] font-arabic text-foreground/35 tracking-wide mb-6 flex items-center gap-1.5">
+                  <MapPin size={11} /> {editorialProjects[1].location}
+                </p>
+                <span className="inline-flex items-center gap-2 text-[12px] font-bold font-arabic text-foreground/60 group-hover:text-foreground transition-colors tracking-wide">
+                  {editorialProjects[1].cta}
+                  <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1.5" />
+                </span>
               </div>
             </Link>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {projects.slice(1).map((project, i) => (
-              <motion.div
-                key={project.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-              >
-                <Link to={`/ar/projects/${project.slug}`} className="group block">
-                  <div className="relative overflow-hidden rounded-2xl aspect-[4/5]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                    <img
-                      src={project.image}
-                      alt={`${project.name} - أسواق للتطوير العقاري`}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/15 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                      <span className="inline-block text-[9px] font-arabic font-semibold tracking-[0.08em] text-primary-foreground/38 mb-1.5">{project.tag}</span>
-                      <h3 className="font-display text-lg font-bold text-primary-foreground mb-1">
-                        {project.name}
-                      </h3>
-                      <p className="text-primary-foreground/40 text-[12px] font-arabic line-clamp-2 leading-relaxed">{project.description}</p>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+      {/* ═══════════════ ميركادو — IMAGE RIGHT / CONTENT LEFT ═══════════════ */}
+      <section className="py-10 md:py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Link to={`/ar/projects/${editorialProjects[2].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+              {/* Image */}
+              <div className="relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+                <img
+                  src={editorialProjects[2].image}
+                  alt={`${editorialProjects[2].name} - أسواق للتطوير العقاري`}
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+              </div>
+              {/* Content */}
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-white border border-border/40 flex items-center justify-center px-1.5 py-2" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                  <img src={editorialProjects[2].logo} alt="" className="w-full h-full object-contain" />
+                </div>
+                <span className="inline-block text-[9px] font-arabic font-bold tracking-[0.18em] text-foreground/35 mb-3 mt-5">
+                  {editorialProjects[2].tag}
+                </span>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 leading-tight">
+                  {editorialProjects[2].name}
+                </h3>
+                <p className="text-muted-foreground text-[14px] font-arabic leading-[1.8] mb-2 max-w-md">
+                  {editorialProjects[2].description}
+                </p>
+                <p className="text-[11px] font-arabic text-foreground/35 tracking-wide mb-6 flex items-center gap-1.5">
+                  <MapPin size={11} /> {editorialProjects[2].location}
+                </p>
+                <span className="inline-flex items-center gap-2 text-[12px] font-bold font-arabic text-foreground/60 group-hover:text-foreground transition-colors tracking-wide">
+                  {editorialProjects[2].cta}
+                  <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1.5" />
+                </span>
+              </div>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════ سيتي هب — CONTENT RIGHT / IMAGE LEFT ═══════════════ */}
+      <section className="py-10 md:py-16 pb-20 md:pb-28 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Link to={`/ar/projects/${editorialProjects[3].slug}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+              {/* Image */}
+              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[4/3]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+                <img
+                  src={editorialProjects[3].image}
+                  alt={`${editorialProjects[3].name} - أسواق للتطوير العقاري`}
+                  className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+              </div>
+              {/* Content */}
+              <div className="order-2 lg:order-1">
+                <div className="w-12 h-12 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1.5 mb-5" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                  <img src={editorialProjects[3].logo} alt="" className="w-full h-full object-contain" />
+                </div>
+                <span className="inline-block text-[9px] font-arabic font-bold tracking-[0.18em] text-foreground/35 mb-3">
+                  {editorialProjects[3].tag}
+                </span>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3 leading-tight">
+                  {editorialProjects[3].name}
+                </h3>
+                <p className="text-muted-foreground text-[14px] font-arabic leading-[1.8] mb-2 max-w-md">
+                  {editorialProjects[3].description}
+                </p>
+                <p className="text-[11px] font-arabic text-foreground/35 tracking-wide mb-6 flex items-center gap-1.5">
+                  <MapPin size={11} /> {editorialProjects[3].location}
+                </p>
+                <span className="inline-flex items-center gap-2 text-[12px] font-bold font-arabic text-foreground/60 group-hover:text-foreground transition-colors tracking-wide">
+                  {editorialProjects[3].cta}
+                  <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1.5" />
+                </span>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
