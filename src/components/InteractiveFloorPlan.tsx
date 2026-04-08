@@ -312,8 +312,46 @@ const floorsData: FloorData[] = [
   },
 ];
 
+/* ─── i18n ─── */
+const i18n = {
+  en: {
+    tag: "Floor by Floor", title: "Navigate Every Level",
+    desc: "Explore units across five levels. Hover to preview — click to inquire.",
+    units: "units", availability: "Availability", view: "View",
+    unitDetail: "Unit Detail", unit: "Unit", area: "Area", type: "Type", floor: "Floor",
+    inquire: "Inquire About This Unit", viewAll: "View All Units",
+    contactLink: "/contact", unitsLink: "/available-units",
+    Available: "Available", Reserved: "Reserved", Sold: "Sold",
+    types: { Retail: "Retail", Medical: "Medical", Administrative: "Administrative", "F&B": "F&B", Service: "Service" } as Record<UnitType, string>,
+  },
+  ar: {
+    tag: "طابق بطابق", title: "استكشف كل مستوى",
+    desc: "تصفّح الوحدات عبر خمسة طوابق. مرر للمعاينة — انقر للاستفسار.",
+    units: "وحدة", availability: "الإتاحة", view: "العرض",
+    unitDetail: "تفاصيل الوحدة", unit: "الوحدة", area: "المساحة", type: "النوع", floor: "الطابق",
+    inquire: "استفسر عن هذه الوحدة", viewAll: "عرض جميع الوحدات",
+    contactLink: "/ar/contact", unitsLink: "/ar/available-units",
+    Available: "متاح", Reserved: "محجوز", Sold: "مباع",
+    types: { Retail: "تجاري", Medical: "طبي", Administrative: "إداري", "F&B": "مأكولات", Service: "خدمي" } as Record<UnitType, string>,
+  },
+};
+
+const floorLabelsAr: Record<string, { label: string; shortLabel: string; description: string }> = {
+  gf: { label: "الدور الأرضي", shortLabel: "أرضي", description: "واجهات تجارية رئيسية بوصول مباشر من الشارع ورؤية تجارية قصوى. 66 وحدة من 26 م² إلى 125 م²." },
+  "1f": { label: "الدور الأول", shortLabel: "أول", description: "مساحات تجارية متعددة الاستخدامات. عيادات ومكاتب مهنية. 32 وحدة من 40 م² إلى 276 م²." },
+  "2f": { label: "الدور الثاني", shortLabel: "ثاني", description: "منطقة طبية وإدارية مختلطة بأجواء مهنية وإضاءة طبيعية. وحدات من 12 م² إلى 108 م²." },
+  "3f": { label: "الدور الثالث", shortLabel: "ثالث", description: "مكاتب إدارية متميزة وعيادات تخصصية ذات إطلالة بانورامية. وحدات من 28 م² إلى 198 م²." },
+  rf: { label: "الروف", shortLabel: "روف", description: "مساحات حصرية بإطلالات بانورامية وتهوية طبيعية. وحدات من 42 م² إلى 167 م²." },
+};
+
 /* ─── Component ─── */
-const InteractiveFloorPlan = () => {
+interface InteractiveFloorPlanProps {
+  lang?: "en" | "ar";
+}
+
+const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
+  const t = i18n[lang];
+  const isRtl = lang === "ar";
   const [activeFloor, setActiveFloor] = useState("gf");
   const [hoveredUnit, setHoveredUnit] = useState<string | null>(null);
   const [selectedUnit, setSelectedUnit] = useState<FloorUnit | null>(null);
@@ -324,6 +362,10 @@ const InteractiveFloorPlan = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentFloor = floorsData.find((f) => f.id === activeFloor)!;
+  const arFloor = isRtl ? floorLabelsAr[currentFloor.id] : null;
+  const floorLabel = arFloor?.label || currentFloor.label;
+  const floorShort = arFloor?.shortLabel || currentFloor.shortLabel;
+  const floorDesc = arFloor?.description || currentFloor.description;
 
   const resetView = useCallback(() => { setZoom(1); setPan({ x: 0, y: 0 }); }, []);
 
