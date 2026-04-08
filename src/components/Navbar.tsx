@@ -22,12 +22,12 @@ interface NavItem {
   dropdownType?: "simple" | "tabbed";
 }
 
-/* Project metadata for the rich Projects dropdown */
-const projectMeta: Record<string, { type: string; typeAr: string; desc: string; descAr: string }> = {
-  "city-hub-mall": { type: "Mixed-Use", typeAr: "متعدد الاستخدامات", desc: "Premium retail & office destination", descAr: "وجهة تجارية وإدارية متميزة" },
-  "mercado-mall": { type: "Commercial", typeAr: "تجاري", desc: "Modern commercial hub", descAr: "مركز تجاري عصري" },
-  "arena-mall": { type: "Retail & Medical", typeAr: "تجاري وطبي", desc: "Integrated retail & medical complex", descAr: "مجمع تجاري وطبي متكامل" },
-  "solaria-mall": { type: "Commercial", typeAr: "تجاري", desc: "Flagship commercial landmark", descAr: "معلم تجاري رائد" },
+/* Project metadata with logos for the rich Projects dropdown */
+const projectMeta: Record<string, { type: string; typeAr: string; desc: string; descAr: string; logo: string }> = {
+  "city-hub-mall": { type: "Mixed-Use", typeAr: "متعدد الاستخدامات", desc: "Premium retail & office destination", descAr: "وجهة تجارية وإدارية متميزة", logo: cityHubLogo },
+  "mercado-mall": { type: "Commercial", typeAr: "تجاري", desc: "Modern commercial hub", descAr: "مركز تجاري عصري", logo: mercadoLogo },
+  "arena-mall": { type: "Retail & Medical", typeAr: "تجاري وطبي", desc: "Integrated retail & medical complex", descAr: "مجمع تجاري وطبي متكامل", logo: arenaLogo },
+  "solaria-mall": { type: "Premium Commercial", typeAr: "تجاري متميز", desc: "Refined commercial landmark", descAr: "معلم تجاري رائد", logo: solariaLogo },
 };
 
 const getNavLinks = (prefix: string): NavItem[] => [
