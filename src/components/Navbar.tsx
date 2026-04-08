@@ -223,7 +223,7 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
                   className={`flex-1 text-[11.5px] font-bold font-body py-3 px-2.5 transition-all duration-200 rounded-t-lg relative ${
                     activeTab === i
                       ? "text-foreground"
-                      : "text-foreground/40 hover:text-foreground/60"
+                      : "text-foreground/45 hover:text-foreground/70"
                   }`}
                 >
                   {tab.label}
