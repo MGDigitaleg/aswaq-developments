@@ -468,8 +468,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
 
             {/* Legend */}
             <div className="hidden lg:flex flex-col gap-2 mt-5 pt-4" style={{ borderTop: "1px solid hsl(var(--border) / 0.15)" }}>
-              <p className="text-[8px] font-body font-semibold tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--steel) / 0.6)" }}>
-                Availability
+              <p className={`text-[8px] font-semibold tracking-[0.2em] uppercase mb-1 ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.6)" }}>
+                {t.availability}
               </p>
               {([
                 ["Available", available],
@@ -478,7 +478,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
               ] as [UnitStatus, number][]).map(([s, count]) => (
                 <div key={s} className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-sm" style={{ background: statusColors[s], opacity: 0.8 }} />
-                  <span className="text-[10px] font-body text-muted-foreground flex-1">{s}</span>
+                  <span className={`text-[10px] text-muted-foreground flex-1 ${isRtl ? "font-arabic" : "font-body"}`}>{t[s]}</span>
                   <span className="text-[10px] font-body" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: "hsl(var(--steel))" }}>
                     {count}
                   </span>
@@ -488,8 +488,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
 
             {/* Zoom controls */}
             <div className="hidden lg:flex flex-col gap-1 mt-4 pt-4" style={{ borderTop: "1px solid hsl(var(--border) / 0.15)" }}>
-              <p className="text-[8px] font-body font-semibold tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--steel) / 0.6)" }}>
-                View
+              <p className={`text-[8px] font-semibold tracking-[0.2em] uppercase mb-1 ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.6)" }}>
+                {t.view}
               </p>
               <div className="flex gap-1">
                 <button
