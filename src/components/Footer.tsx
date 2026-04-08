@@ -215,7 +215,7 @@ const Footer = () => {
                 className="bg-primary-foreground/[0.03] rounded-xl p-4.5 border border-primary-foreground/[0.06] hover:border-primary-foreground/[0.10] transition-all duration-300"
               >
                 <StarRating rating={review.rating} />
-                <p className={`text-[12.5px] text-primary-foreground/50 mt-2.5 mb-3 ${fontClass} leading-relaxed min-h-[36px]`}>
+                <p className={`text-[12.5px] text-primary-foreground/55 mt-2.5 mb-3 ${fontClass} leading-relaxed min-h-[36px]`}>
                   "{isArabic ? review.textAr : review.text}"
                 </p>
                 <p className={`text-[12px] font-semibold text-primary-foreground/70 ${fontClass}`}>{review.name}</p>
