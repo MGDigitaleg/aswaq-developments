@@ -218,11 +218,11 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
       <button className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
+          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/75"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/50" : "text-primary-foreground/35"}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/60" : "text-primary-foreground/45"}`} />
       </button>
       <AnimatePresence>
         {open && (
