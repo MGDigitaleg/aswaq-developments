@@ -268,14 +268,14 @@
   /* ─── Outline button on light ─── */
   .btn-outline-dark {
     @apply inline-flex items-center gap-2 font-semibold rounded-lg transition-all duration-300;
-    border: 1px solid hsl(var(--navy) / 0.15);
+    border: 1px solid hsl(var(--navy) / 0.20);
     color: hsl(var(--navy));
   }
   .btn-outline-dark:hover {
-    border-color: hsl(var(--navy) / 0.35);
-    background: hsl(var(--navy) / 0.05);
+    border-color: hsl(var(--navy) / 0.45);
+    background: hsl(var(--navy) / 0.06);
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px -4px hsl(var(--navy) / 0.12);
+    box-shadow: 0 4px 16px -4px hsl(var(--navy) / 0.15);
   }
 
   /* Reduced motion */
