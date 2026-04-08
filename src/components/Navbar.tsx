@@ -26,7 +26,7 @@ interface NavItem {
 const projectMeta: Record<string, { type: string; typeAr: string; desc: string; descAr: string; logo: string; logoPad: string }> = {
   "city-hub-mall": { type: "Mixed-Use", typeAr: "متعدد الاستخدامات", desc: "Premium retail & office destination", descAr: "وجهة تجارية وإدارية متميزة", logo: cityHubLogo, logoPad: "p-2" },
   "mercado-mall": { type: "Commercial", typeAr: "تجاري", desc: "Modern commercial hub", descAr: "مركز تجاري عصري", logo: mercadoLogo, logoPad: "p-3" },
-  "arena-mall": { type: "Retail & Medical", typeAr: "تجاري وطبي", desc: "Integrated retail & medical complex", descAr: "مجمع تجاري وطبي متكامل", logo: arenaLogo, logoPad: "p-3" },
+  "arena-mall": { type: "Retail & Medical", typeAr: "تجاري وطبي", desc: "Integrated retail & medical complex", descAr: "مجمع تجاري وطبي متكامل", logo: arenaLogo, logoPad: "p-1.5" },
   "solaria-mall": { type: "Premium Commercial", typeAr: "تجاري متميز", desc: "Refined commercial landmark", descAr: "معلم تجاري رائد", logo: solariaLogo, logoPad: "p-2" },
 };
 
