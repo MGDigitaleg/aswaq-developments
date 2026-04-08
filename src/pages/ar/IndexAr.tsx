@@ -9,6 +9,7 @@ import CTASection from "@/components/CTASection";
 import ROICalculator from "@/components/ROICalculator";
 import TrustedBySection from "@/components/TrustedBySection";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
 import heroBg from "@/assets/hero-building.webp";
