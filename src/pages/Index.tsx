@@ -207,7 +207,7 @@ const Index = () => {
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1 bg-primary-foreground/60" : "w-1 h-1 bg-primary-foreground/20 hover:bg-primary-foreground/35"}`}
+                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1 bg-primary-foreground/70" : "w-1 h-1 bg-primary-foreground/25 hover:bg-primary-foreground/40"}`}
                 aria-label={`Go to slide ${i + 1}`}
               />
             ))}
