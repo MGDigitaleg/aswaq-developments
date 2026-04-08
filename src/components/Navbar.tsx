@@ -115,7 +115,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
         >
           {item.label}
         </Link>
-        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/40" : "text-primary-foreground/25"}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/50" : "text-primary-foreground/35"}`} />
       </button>
       <AnimatePresence>
         {open && (
