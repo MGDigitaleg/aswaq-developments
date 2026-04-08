@@ -400,7 +400,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
   const sold = currentFloor.units.filter((u) => u.status === "Sold").length;
 
   return (
-    <section className="py-20 md:py-28" style={{ background: "hsl(var(--ivory))" }}>
+    <section className="py-20 md:py-28" style={{ background: "hsl(var(--ivory))" }} dir={isRtl ? "rtl" : "ltr"}>
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -412,16 +412,16 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.35)" }} />
-            <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
-              Floor by Floor
+            <p className={`text-[10px] font-semibold tracking-[0.3em] uppercase ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel))" }}>
+              {t.tag}
             </p>
             <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.35)" }} />
           </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-[1.1]" style={{ letterSpacing: "-0.02em" }}>
-            Navigate Every Level
+          <h2 className={`font-display text-3xl md:text-4xl font-bold text-foreground leading-[1.1] ${isRtl ? "font-arabic" : ""}`} style={{ letterSpacing: isRtl ? "0" : "-0.02em" }}>
+            {t.title}
           </h2>
-          <p className="text-muted-foreground font-body text-[13px] mt-3 max-w-md mx-auto leading-relaxed">
-            Explore units across five levels. Hover to preview — click to inquire.
+          <p className={`text-muted-foreground text-[13px] mt-3 max-w-md mx-auto leading-relaxed ${isRtl ? "font-arabic" : "font-body"}`}>
+            {t.desc}
           </p>
         </motion.div>
 
