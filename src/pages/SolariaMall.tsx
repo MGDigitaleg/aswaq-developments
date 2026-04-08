@@ -223,7 +223,7 @@ const SolariaMall = () => {
               </div>
             </motion.div>
 
-            <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }}>
+            <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 } as const}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
                 <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
