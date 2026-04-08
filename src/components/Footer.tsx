@@ -113,7 +113,7 @@ const Footer = () => {
             <ul className={`space-y-3 ${fontClass}`}>
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-[13px] text-primary-foreground/45 hover:text-primary-foreground/80 transition-colors duration-300">{link.label}</Link>
+                  <Link to={link.href} className="text-[13px] text-primary-foreground/55 hover:text-primary-foreground/90 transition-colors duration-300">{link.label}</Link>
                 </li>
               ))}
             </ul>
