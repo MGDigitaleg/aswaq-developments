@@ -483,7 +483,7 @@ const Navbar = () => {
               {/* Secondary links — lighter weight */}
               {secondaryLinks.length > 0 && (
                 <>
-                  <div className="w-px h-3.5 bg-primary-foreground/[0.08]" />
+                  <div className="w-px h-3.5 bg-primary-foreground/[0.12]" />
                   {secondaryLinks.map((link) => {
                     const active = isPathInTree(location.pathname, link);
                     return (
