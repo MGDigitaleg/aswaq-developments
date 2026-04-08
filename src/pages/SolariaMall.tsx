@@ -11,11 +11,7 @@ import useSEO from "@/hooks/useSEO";
 
 import solariaImg from "@/assets/solaria-mall.webp";
 import heroImg from "@/assets/hero-solaria.webp";
-import solaria1 from "@/assets/gallery/solaria-1.webp";
-import solaria2 from "@/assets/gallery/solaria-2.webp";
-import solaria3 from "@/assets/gallery/solaria-3.webp";
 import solaria4 from "@/assets/gallery/solaria-4.webp";
-import solariaPositioning from "@/assets/solaria-positioning.webp";
 import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
 
 /* ─── Data ─── */
