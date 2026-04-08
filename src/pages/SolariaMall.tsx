@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   MapPin, ShoppingBag, Stethoscope, Briefcase, Building2,
-  ChevronDown, ArrowRight, Play, X, Layers, Eye, DoorOpen,
+  ChevronDown, ArrowRight, Play, X, Eye, DoorOpen,
   Maximize2, Phone, Mail
 } from "lucide-react";
 import Layout from "@/components/Layout";
@@ -11,66 +11,10 @@ import useSEO from "@/hooks/useSEO";
 
 import solariaImg from "@/assets/solaria-mall.webp";
 import heroImg from "@/assets/hero-solaria.webp";
-import solaria1 from "@/assets/gallery/solaria-1.webp";
-import solaria2 from "@/assets/gallery/solaria-2.webp";
-import solaria3 from "@/assets/gallery/solaria-3.webp";
 import solaria4 from "@/assets/gallery/solaria-4.webp";
-import solariaPositioning from "@/assets/solaria-positioning.webp";
+import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
 
 /* ─── Data ─── */
-
-const floors = [
-  {
-    id: "gf",
-    label: "Ground Floor",
-    shortLabel: "GF",
-    description: "Prime retail frontage with direct street access and maximum visibility. Ideal for flagship stores, banks, and high-traffic commercial brands.",
-    units: 12,
-    areaRange: "45–180 m²",
-    types: ["Retail", "Showrooms"],
-    image: solaria1,
-  },
-  {
-    id: "1f",
-    label: "First Floor",
-    shortLabel: "1F",
-    description: "Versatile commercial spaces suited for clinics, professional offices, and service-oriented businesses with elevator access.",
-    units: 14,
-    areaRange: "30–120 m²",
-    types: ["Medical", "Administrative"],
-    image: solaria2,
-  },
-  {
-    id: "2f",
-    label: "Second Floor",
-    shortLabel: "2F",
-    description: "Dedicated medical and administrative zone with quiet, professional atmosphere. Perfect for specialist clinics and consulting firms.",
-    units: 16,
-    areaRange: "30–96 m²",
-    types: ["Medical", "Offices"],
-    image: solaria3,
-  },
-  {
-    id: "3f",
-    label: "Third Floor",
-    shortLabel: "3F",
-    description: "Upper-level administrative suites offering panoramic views and premium positioning for corporate tenants.",
-    units: 10,
-    areaRange: "50–396 m²",
-    types: ["Administrative", "Corporate"],
-    image: solaria4,
-  },
-  {
-    id: "rf",
-    label: "Roof Floor",
-    shortLabel: "RF",
-    description: "Exclusive rooftop spaces with open-air potential. Ideal for restaurants, lounges, and leisure concepts with skyline views.",
-    units: 4,
-    areaRange: "80–200 m²",
-    types: ["F&B", "Leisure"],
-    image: solariaPositioning,
-  },
-];
 
 const hotspots = [
   { id: "retail", label: "Retail Zone", icon: ShoppingBag, x: "18%", y: "62%", description: "Ground-level storefronts with direct street access and high visibility." },
@@ -109,11 +53,8 @@ const SolariaMall = () => {
     "Discover Solaria Mall — a landmark commercial, medical, and administrative development by ASWAQ in El Shorouk City. Explore premium units from 30 to 396 m²."
   );
 
-  const [activeFloor, setActiveFloor] = useState("gf");
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
-
-  const currentFloor = floors.find((f) => f.id === activeFloor)!;
 
   return (
     <Layout>
@@ -360,129 +301,9 @@ const SolariaMall = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          4. FLOOR NAVIGATOR
+          4. INTERACTIVE FLOOR PLAN
       ═══════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 bg-background">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-12 md:mb-16">
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
-              <p className="text-[10px] font-body font-semibold tracking-[0.3em] uppercase" style={{ color: "hsl(var(--steel))" }}>
-                Floor by Floor
-              </p>
-              <div className="w-8 h-px" style={{ background: "hsl(var(--steel) / 0.4)" }} />
-            </div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-[1.1]" style={{ letterSpacing: "-0.02em" }}>
-              Navigate Every Level
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-            {/* Floor selector */}
-            <div className="lg:col-span-3">
-              <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
-                {floors.map((floor) => (
-                  <button
-                    key={floor.id}
-                    onClick={() => setActiveFloor(floor.id)}
-                    className="flex-shrink-0 group relative px-5 py-4 rounded-xl text-left transition-all duration-500"
-                    style={{
-                      background: activeFloor === floor.id ? "hsl(var(--navy))" : "transparent",
-                      border: `1px solid ${activeFloor === floor.id ? "hsl(var(--navy))" : "hsl(var(--border) / 0.5)"}`,
-                    }}
-                  >
-                    <p
-                      className="font-body text-[11px] font-semibold tracking-[0.15em] uppercase"
-                      style={{
-                        color: activeFloor === floor.id
-                          ? "hsl(var(--primary-foreground) / 0.5)"
-                          : "hsl(var(--steel))",
-                      }}
-                    >
-                      {floor.shortLabel}
-                    </p>
-                    <p
-                      className="font-display text-sm font-bold mt-1"
-                      style={{
-                        color: activeFloor === floor.id
-                          ? "hsl(var(--primary-foreground))"
-                          : "hsl(var(--foreground))",
-                      }}
-                    >
-                      {floor.label}
-                    </p>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Floor visual */}
-            <div className="lg:col-span-5">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentFloor.id}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="rounded-2xl overflow-hidden"
-                  style={{ boxShadow: "var(--shadow-lg)" }}
-                >
-                  <img
-                    src={currentFloor.image}
-                    alt={`${currentFloor.label} — Solaria Mall`}
-                    className="w-full aspect-[4/3] object-cover"
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Floor info */}
-            <div className="lg:col-span-4">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentFloor.id}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Layers size={16} style={{ color: "hsl(var(--steel))" }} />
-                    <p className="text-[10px] font-body font-semibold tracking-[0.25em] uppercase" style={{ color: "hsl(var(--steel))" }}>
-                      {currentFloor.shortLabel} — Details
-                    </p>
-                  </div>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
-                    {currentFloor.label}
-                  </h3>
-                  <p className="text-muted-foreground font-body text-[14px] leading-[1.85] mb-8">
-                    {currentFloor.description}
-                  </p>
-
-                  <div className="space-y-4 mb-8">
-                    {[
-                      { label: "Units Available", value: currentFloor.units.toString() },
-                      { label: "Area Range", value: currentFloor.areaRange },
-                      { label: "Unit Types", value: currentFloor.types.join(" · ") },
-                    ].map((stat) => (
-                      <div key={stat.label} className="flex items-center justify-between pb-3" style={{ borderBottom: "1px solid hsl(var(--border) / 0.4)" }}>
-                        <span className="text-[12px] font-body tracking-[0.05em] text-muted-foreground uppercase">{stat.label}</span>
-                        <span className="font-body text-[14px] font-semibold text-foreground">{stat.value}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Link to="/contact" className="btn-outline-dark px-6 py-3 text-[11px] font-body tracking-[0.12em] uppercase rounded-lg">
-                    Inquire About {currentFloor.shortLabel}
-                    <ArrowRight size={13} />
-                  </Link>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
-      </section>
+      <InteractiveFloorPlan />
 
       {/* ═══════════════════════════════════════════
           5. AVAILABLE UNITS
