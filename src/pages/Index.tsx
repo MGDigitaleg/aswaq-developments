@@ -373,6 +373,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══════════════ MERCADO TENANTS ═══════════════ */}
+      <MercadoTenantsSection />
+
       {/* ═══════════════ PORTFOLIO HEADER ═══════════════ */}
       <section className="pt-20 md:pt-28 pb-6 md:pb-8 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
