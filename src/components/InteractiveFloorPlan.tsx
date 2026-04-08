@@ -666,9 +666,9 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
           <AnimatePresence>
             {selectedUnit && (
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: isRtl ? -20 : 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
+                exit={{ opacity: 0, x: isRtl ? -20 : 20 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="lg:col-span-4"
               >
@@ -684,11 +684,11 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <p className="text-[8px] font-body font-semibold tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--steel) / 0.6)" }}>
-                        {currentFloor.shortLabel} · Unit Detail
+                      <p className={`text-[8px] font-semibold tracking-[0.2em] uppercase mb-1 ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.6)" }}>
+                        {floorShort} · {t.unitDetail}
                       </p>
-                      <h3 className="font-display text-lg font-bold text-foreground">
-                        Unit {selectedUnit.number}
+                      <h3 className={`text-lg font-bold text-foreground ${isRtl ? "font-arabic" : "font-display"}`}>
+                        {t.unit} {selectedUnit.number}
                       </h3>
                     </div>
                     <button
@@ -701,7 +701,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
 
                   {/* Status badge */}
                   <span
-                    className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[8px] font-body font-semibold tracking-wider uppercase mb-4"
+                    className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[8px] font-semibold tracking-wider uppercase mb-4 ${isRtl ? "font-arabic" : "font-body"}`}
                     style={{
                       background: `${statusColors[selectedUnit.status]}10`,
                       color: statusColors[selectedUnit.status],
@@ -709,28 +709,28 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                     }}
                   >
                     <span className="w-1.5 h-1.5 rounded-full" style={{ background: statusColors[selectedUnit.status] }} />
-                    {selectedUnit.status}
+                    {t[selectedUnit.status]}
                   </span>
 
                   {/* Details */}
                   <div className="space-y-0 mb-5">
                     {[
-                      { label: "Unit", value: selectedUnit.number },
-                      { label: "Area", value: selectedUnit.area },
-                      { label: "Type", value: selectedUnit.type },
-                      { label: "Floor", value: currentFloor.label },
+                      { label: t.unit, value: selectedUnit.number },
+                      { label: t.area, value: selectedUnit.area },
+                      { label: t.type, value: t.types[selectedUnit.type] },
+                      { label: t.floor, value: floorLabel },
                     ].map((item, i) => (
                       <div
                         key={item.label}
                         className="flex items-center justify-between py-2.5"
                         style={{ borderBottom: i < 3 ? "1px solid hsl(var(--border) / 0.1)" : "none" }}
                       >
-                        <span className="text-[9px] font-body tracking-[0.08em] text-muted-foreground uppercase">
+                        <span className={`text-[9px] tracking-[0.08em] text-muted-foreground uppercase ${isRtl ? "font-arabic" : "font-body"}`}>
                           {item.label}
                         </span>
                         <span
                           className="text-[11px] font-semibold text-foreground"
-                          style={{ fontFamily: item.label === "Area" ? "'Montserrat', sans-serif" : "inherit" }}
+                          style={{ fontFamily: item.label === t.area ? "'Montserrat', sans-serif" : "inherit" }}
                         >
                           {item.value}
                         </span>
@@ -739,25 +739,25 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                   </div>
 
                   {/* Floor description */}
-                  <p className="text-[11px] font-body leading-[1.7] mb-5" style={{ color: "hsl(var(--steel))" }}>
-                    {currentFloor.description}
+                  <p className={`text-[11px] leading-[1.7] mb-5 ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel))" }}>
+                    {floorDesc}
                   </p>
 
                   {/* CTAs */}
                   <div className="space-y-2">
                     <Link
-                      to="/contact"
-                      className="btn-premium w-full justify-center px-4 py-2 text-[9px] font-body tracking-[0.14em] uppercase"
+                      to={t.contactLink}
+                      className={`btn-premium w-full justify-center px-4 py-2 text-[9px] tracking-[0.14em] uppercase ${isRtl ? "font-arabic" : "font-body"}`}
                     >
-                      Inquire About This Unit
-                      <ArrowRight size={11} />
+                      {t.inquire}
+                      <ArrowRight size={11} className={isRtl ? "rotate-180" : ""} />
                     </Link>
                     <Link
-                      to="/available-units"
-                      className="btn-outline-dark w-full justify-center px-4 py-2 text-[9px] font-body tracking-[0.14em] uppercase rounded-lg"
+                      to={t.unitsLink}
+                      className={`btn-outline-dark w-full justify-center px-4 py-2 text-[9px] tracking-[0.14em] uppercase rounded-lg ${isRtl ? "font-arabic" : "font-body"}`}
                     >
-                      View All Units
-                      <ArrowRight size={11} />
+                      {t.viewAll}
+                      <ArrowRight size={11} className={isRtl ? "rotate-180" : ""} />
                     </Link>
                   </div>
                 </div>
