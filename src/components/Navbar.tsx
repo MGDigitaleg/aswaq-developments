@@ -139,8 +139,8 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                     className="group flex flex-col gap-1.5 p-3 rounded-lg transition-all duration-200 hover:bg-foreground/[0.06] border border-transparent hover:border-border/50"
                   >
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-md bg-foreground/[0.04] border border-border/30 flex items-center justify-center shrink-0 group-hover:bg-foreground/[0.07] transition-colors">
-                        <Building2 size={13} className="text-foreground/40 group-hover:text-foreground/65 transition-colors" />
+                      <div className="w-7 h-7 rounded-md bg-foreground/[0.05] border border-border/40 flex items-center justify-center shrink-0 group-hover:bg-foreground/[0.10] transition-colors">
+                        <Building2 size={13} className="text-foreground/50 group-hover:text-foreground/75 transition-colors" />
                       </div>
                       <div>
                         <p className="text-[12.5px] font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
