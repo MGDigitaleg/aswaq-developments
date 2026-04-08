@@ -270,8 +270,10 @@
     color: hsl(var(--navy));
   }
   .btn-outline-dark:hover {
-    border-color: hsl(var(--navy) / 0.3);
-    background: hsl(var(--navy) / 0.03);
+    border-color: hsl(var(--navy) / 0.35);
+    background: hsl(var(--navy) / 0.05);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px -4px hsl(var(--navy) / 0.12);
   }
 
   /* Reduced motion */
