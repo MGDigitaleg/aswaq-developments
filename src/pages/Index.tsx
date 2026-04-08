@@ -477,7 +477,7 @@ const Index = () => {
                 <p className="text-[11px] font-body text-foreground/28 tracking-wide mb-5 flex items-center gap-1.5">
                   <MapPin size={10} /> {editorialProjects[1].location}
                 </p>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-6 py-2.5 rounded-lg border border-foreground/12 text-foreground/55 group-hover:border-foreground/30 group-hover:text-foreground group-hover:bg-foreground/[0.03] transition-all duration-300">
+                <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-6 py-2.5 rounded-lg border border-foreground/15 text-foreground/60 group-hover:border-foreground/35 group-hover:text-foreground group-hover:bg-foreground/[0.03] group-hover:shadow-sm transition-all duration-300">
                   {editorialProjects[1].cta}
                   <ArrowRight size={12} className="transition-transform group-hover:translate-x-1.5" />
                 </span>
