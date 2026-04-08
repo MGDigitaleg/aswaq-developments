@@ -335,35 +335,36 @@ const Index = () => {
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.10) 0%, transparent 45%)' }} />
               </div>
 
-              {/* Stats Card — slim plaque */}
+              {/* Stats Card — inset plaque */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="absolute -bottom-3.5 left-4 md:left-5 rounded-md px-3.5 py-1.5"
+                className="absolute bottom-3 left-3 md:bottom-4 md:left-4 rounded-md px-3 py-1.5"
                 style={{
-                  background: 'hsl(var(--ivory) / 0.97)',
-                  backdropFilter: 'blur(20px)',
-                  boxShadow: '0 2px 10px hsl(0 0% 0% / 0.04), 0 0 0 1px hsl(var(--border) / 0.10)',
+                  background: 'hsl(0 0% 100% / 0.88)',
+                  backdropFilter: 'blur(24px) saturate(1.3)',
+                  WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
+                  boxShadow: '0 1px 6px hsl(0 0% 0% / 0.06), 0 0 0 1px hsl(0 0% 100% / 0.15)',
                 }}
               >
-                <div className="flex items-center gap-3.5">
+                <div className="flex items-center gap-3">
                   <div>
-                    <div className="font-['Montserrat'] text-[0.95rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
+                    <div className="font-['Montserrat'] text-[0.85rem] font-extrabold leading-none mb-px" style={{ letterSpacing: '-0.04em', color: 'hsl(232 78% 10%)' }}>
                       <AnimatedCounter value="4+" className="text-foreground" />
                     </div>
-                    <div className="text-[6.5px] text-muted-foreground/50 font-body tracking-[0.16em] uppercase leading-tight">
-                      Landmark Developments
+                    <div className="text-[6px] font-body tracking-[0.18em] uppercase leading-tight" style={{ color: 'hsl(232 20% 40% / 0.6)' }}>
+                      Developments
                     </div>
                   </div>
-                  <div className="w-px h-4 bg-foreground/[0.06]" />
+                  <div className="w-px h-3.5" style={{ background: 'hsl(232 20% 40% / 0.1)' }} />
                   <div>
-                    <div className="font-['Montserrat'] text-[0.95rem] font-extrabold text-foreground leading-none mb-px" style={{ letterSpacing: '-0.04em' }}>
+                    <div className="font-['Montserrat'] text-[0.85rem] font-extrabold leading-none mb-px" style={{ letterSpacing: '-0.04em', color: 'hsl(232 78% 10%)' }}>
                       <AnimatedCounter value="20+" className="text-foreground" />
                     </div>
-                    <div className="text-[6.5px] text-muted-foreground/50 font-body tracking-[0.16em] uppercase leading-tight">
-                      Years of Experience
+                    <div className="text-[6px] font-body tracking-[0.18em] uppercase leading-tight" style={{ color: 'hsl(232 20% 40% / 0.6)' }}>
+                      Years
                     </div>
                   </div>
                 </div>
