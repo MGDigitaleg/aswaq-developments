@@ -448,7 +448,7 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ ARENA — TEXT LEFT / IMAGE RIGHT ═══════════════ */}
-      <section className="py-10 md:py-14 bg-cream">
+      <section className="py-8 md:py-11 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
