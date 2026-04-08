@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronDown, Globe, ArrowRight, ArrowLeft } from "lucide-react";
+import { Menu, X, ChevronDown, Globe, ArrowRight, ArrowLeft, Building2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import aswaqLogo from "@/assets/aswaq-logo.webp";
 
@@ -17,6 +17,14 @@ interface NavItem {
   priority?: "primary" | "secondary";
   dropdownType?: "simple" | "tabbed";
 }
+
+/* Project metadata for the rich Projects dropdown */
+const projectMeta: Record<string, { type: string; typeAr: string; desc: string; descAr: string }> = {
+  "city-hub-mall": { type: "Mixed-Use", typeAr: "متعدد الاستخدامات", desc: "Premium retail & office destination", descAr: "وجهة تجارية وإدارية متميزة" },
+  "mercado-mall": { type: "Commercial", typeAr: "تجاري", desc: "Modern commercial hub", descAr: "مركز تجاري عصري" },
+  "arena-mall": { type: "Retail & Medical", typeAr: "تجاري وطبي", desc: "Integrated retail & medical complex", descAr: "مجمع تجاري وطبي متكامل" },
+  "solaria-mall": { type: "Commercial", typeAr: "تجاري", desc: "Flagship commercial landmark", descAr: "معلم تجاري رائد" },
+};
 
 const getNavLinks = (prefix: string): NavItem[] => [
   { label: prefix ? "الرئيسية" : "Home", href: `${prefix}/`, priority: "primary" },
@@ -85,50 +93,88 @@ const dropdownStyle = {
   backdropFilter: 'blur(20px) saturate(1.2)',
   WebkitBackdropFilter: 'blur(20px) saturate(1.2)',
   border: '1px solid hsl(230 15% 86% / 0.6)',
-  boxShadow: '0 12px 36px -8px hsl(222 47% 10% / 0.12), 0 4px 12px -4px hsl(222 47% 10% / 0.06)',
+  boxShadow: '0 16px 48px -12px hsl(222 47% 10% / 0.18), 0 6px 16px -6px hsl(222 47% 10% / 0.08)',
 };
 
-/* ── Projects Dropdown (compact) ── */
-const ProjectsDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
+/* ── Projects Dropdown — Rich Mega Menu ── */
+const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActive: boolean; isArabic: boolean }) => {
   const [open, setOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const handleEnter = () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); setOpen(true); };
-  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 120); };
+  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 150); };
+
+  const projects = item.children?.filter((_, i) => i > 0) || []; // skip "All Projects"
+  const allProjectsLink = item.children?.[0];
 
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12px] font-medium tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/50"}`}
+          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={9} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/30" : "text-primary-foreground/18"}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/40" : "text-primary-foreground/25"}`} />
       </button>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 4 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 4 }}
-            transition={{ duration: 0.12, ease: "easeOut" }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 rounded-lg py-1.5 z-50"
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[380px] p-4"
             style={dropdownStyle}
           >
-            {item.children?.map((child, i) => (
-              <Link
-                key={child.href}
-                to={child.href}
-                className={`block px-4 py-2 text-[12px] font-medium transition-all duration-200 rounded mx-1 ${
-                  i === 0
-                    ? "text-foreground/80 hover:text-foreground hover:bg-foreground/[0.04] border-b border-border/30 mb-0.5 pb-2.5"
-                    : "text-foreground/55 hover:text-foreground hover:bg-foreground/[0.04]"
-                }`}
-              >
-                {child.label}
-              </Link>
-            ))}
+            {/* Project cards */}
+            <div className="grid grid-cols-2 gap-2.5">
+              {projects.map((child) => {
+                const slug = child.href.split('/').pop() || '';
+                const meta = projectMeta[slug];
+                return (
+                  <Link
+                    key={child.href}
+                    to={child.href}
+                    className="group flex flex-col gap-1.5 p-3 rounded-lg transition-all duration-200 hover:bg-foreground/[0.04] border border-transparent hover:border-border/40"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-md bg-foreground/[0.04] border border-border/30 flex items-center justify-center shrink-0 group-hover:bg-foreground/[0.07] transition-colors">
+                        <Building2 size={13} className="text-foreground/40 group-hover:text-foreground/65 transition-colors" />
+                      </div>
+                      <div>
+                        <p className="text-[12.5px] font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
+                          {child.label}
+                        </p>
+                        {meta && (
+                          <p className="text-[10px] font-medium text-foreground/35 uppercase tracking-wider mt-0.5">
+                            {isArabic ? meta.typeAr : meta.type}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    {meta && (
+                      <p className="text-[11px] text-foreground/40 leading-snug">
+                        {isArabic ? meta.descAr : meta.desc}
+                      </p>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* All Projects link */}
+            {allProjectsLink && (
+              <div className="border-t border-border/40 mt-3 pt-2.5">
+                <Link
+                  to={allProjectsLink.href}
+                  className="flex items-center gap-1.5 px-3 py-2 text-[11.5px] font-semibold text-foreground/50 hover:text-foreground transition-colors rounded-md hover:bg-foreground/[0.03]"
+                >
+                  {allProjectsLink.label}
+                  {isArabic ? <ArrowLeft size={10} /> : <ArrowRight size={10} />}
+                </Link>
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -136,13 +182,13 @@ const ProjectsDropdown = ({ item, isActive }: { item: NavItem; isActive: boolean
   );
 };
 
-/* ── Units Tabbed Dropdown ── */
+/* ── Units Tabbed Dropdown — Improved ── */
 const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActive: boolean; isArabic: boolean }) => {
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const handleEnter = () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); setOpen(true); };
-  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 120); setActiveTab(0); };
+  const handleLeave = () => { timeoutRef.current = setTimeout(() => setOpen(false), 150); setActiveTab(0); };
 
   const tabs = item.children || [];
 
@@ -151,57 +197,65 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
       <button className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12px] font-medium tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/50"}`}
+          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={9} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/30" : "text-primary-foreground/18"}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/40" : "text-primary-foreground/25"}`} />
       </button>
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 4 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 4 }}
-            transition={{ duration: 0.12, ease: "easeOut" }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-3 rounded-lg z-50 w-[260px]"
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-4 rounded-xl z-50 w-[300px]"
             style={dropdownStyle}
           >
             {/* Tabs */}
-            <div className="flex border-b border-border/40 px-1 pt-1">
+            <div className="flex border-b border-border/40 px-1.5 pt-1.5">
               {tabs.map((tab, i) => (
                 <button
                   key={tab.href}
                   onMouseEnter={() => setActiveTab(i)}
                   onClick={() => setActiveTab(i)}
-                  className={`flex-1 text-[11px] font-semibold font-body py-2.5 px-2 transition-all duration-200 rounded-t-md ${
+                  className={`flex-1 text-[11.5px] font-bold font-body py-3 px-2.5 transition-all duration-200 rounded-t-lg relative ${
                     activeTab === i
-                      ? "text-foreground bg-foreground/[0.04] border-b-2 border-foreground/20"
-                      : "text-foreground/40 hover:text-foreground/65"
+                      ? "text-foreground"
+                      : "text-foreground/40 hover:text-foreground/60"
                   }`}
                 >
                   {tab.label}
+                  {activeTab === i && (
+                    <motion.span
+                      layoutId="units-tab-indicator"
+                      className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full"
+                      style={{ background: 'hsl(232 78% 10% / 0.25)' }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
                 </button>
               ))}
             </div>
 
             {/* Tab content */}
-            <div className="py-2 px-1">
+            <div className="py-2.5 px-2">
               {tabs[activeTab]?.children?.map((sub) => (
                 <Link
                   key={sub.href}
                   to={sub.href}
-                  className="block px-3.5 py-2 text-[12px] font-medium text-foreground/55 hover:text-foreground hover:bg-foreground/[0.04] transition-all duration-200 rounded mx-0.5"
+                  className="block px-4 py-2.5 text-[12.5px] font-medium text-foreground/55 hover:text-foreground hover:bg-foreground/[0.04] transition-all duration-200 rounded-lg"
                 >
                   {sub.label}
                 </Link>
               ))}
 
               {/* View all */}
-              <div className="border-t border-border/30 mt-1.5 pt-1.5 mx-0.5">
+              <div className="border-t border-border/30 mt-2 pt-2 mx-1">
                 <Link
                   to={item.href}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-semibold text-foreground/45 hover:text-foreground transition-colors rounded font-body`}
+                  className="flex items-center gap-1.5 px-3 py-2.5 text-[11.5px] font-bold text-foreground/45 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.03] font-body"
                 >
                   {isArabic ? "عرض جميع الوحدات" : "View All Units"}
                   {isArabic ? <ArrowLeft size={10} /> : <ArrowRight size={10} />}
@@ -226,10 +280,10 @@ const MobileAccordion = ({ item, pathname, onClose, isArabic }: { item: NavItem;
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className={`w-full flex items-center justify-between text-[14px] font-medium py-3 transition-colors ${active ? "text-primary-foreground" : "text-primary-foreground/55"}`}
+        className={`w-full flex items-center justify-between text-[15px] font-semibold py-3.5 transition-colors ${active ? "text-primary-foreground" : "text-primary-foreground/60"}`}
       >
         {item.label}
-        <ChevronDown size={12} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} text-primary-foreground/18`} />
+        <ChevronDown size={13} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} text-primary-foreground/25`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -240,18 +294,17 @@ const MobileAccordion = ({ item, pathname, onClose, isArabic }: { item: NavItem;
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className={`${isArabic ? 'pr-4 border-r mr-1' : 'pl-4 border-l ml-1'} border-primary-foreground/[0.06]`}>
+            <div className={`${isArabic ? 'pr-4 border-r mr-1' : 'pl-4 border-l ml-1'} border-primary-foreground/[0.08] pb-2`}>
               {isTabbed ? (
-                // For Units: show groups with sub-items
                 <>
                   {item.children?.map((group) => (
                     <div key={group.href}>
                       <button
                         onClick={() => setSubOpen(subOpen === group.href ? null : group.href)}
-                        className={`w-full flex items-center justify-between text-[13px] font-medium py-2 transition-colors ${isPathInTree(pathname, group) ? "text-primary-foreground" : "text-primary-foreground/40"}`}
+                        className={`w-full flex items-center justify-between text-[13.5px] font-semibold py-2.5 transition-colors ${isPathInTree(pathname, group) ? "text-primary-foreground" : "text-primary-foreground/45"}`}
                       >
                         {group.label}
-                        <ChevronDown size={10} className={`transition-transform duration-200 ${subOpen === group.href ? "rotate-180" : ""} text-primary-foreground/15`} />
+                        <ChevronDown size={11} className={`transition-transform duration-200 ${subOpen === group.href ? "rotate-180" : ""} text-primary-foreground/20`} />
                       </button>
                       <AnimatePresence>
                         {subOpen === group.href && (
@@ -262,13 +315,13 @@ const MobileAccordion = ({ item, pathname, onClose, isArabic }: { item: NavItem;
                             transition={{ duration: 0.18 }}
                             className="overflow-hidden"
                           >
-                            <div className={`${isArabic ? 'pr-3 border-r' : 'pl-3 border-l'} border-primary-foreground/[0.04]`}>
+                            <div className={`${isArabic ? 'pr-3 border-r' : 'pl-3 border-l'} border-primary-foreground/[0.06] pb-1`}>
                               {group.children?.map((sub) => (
                                 <Link
                                   key={sub.href}
                                   to={sub.href}
                                   onClick={onClose}
-                                  className={`block text-[12px] py-1.5 transition-colors ${pathname === sub.href ? "text-primary-foreground" : "text-primary-foreground/30"}`}
+                                  className={`block text-[13px] py-2 transition-colors ${pathname === sub.href ? "text-primary-foreground" : "text-primary-foreground/35 hover:text-primary-foreground/60"}`}
                                 >
                                   {sub.label}
                                 </Link>
@@ -282,19 +335,18 @@ const MobileAccordion = ({ item, pathname, onClose, isArabic }: { item: NavItem;
                   <Link
                     to={item.href}
                     onClick={onClose}
-                    className="block text-[12px] font-medium text-primary-foreground/30 py-2 mt-1 border-t border-primary-foreground/[0.04]"
+                    className="block text-[12.5px] font-semibold text-primary-foreground/35 hover:text-primary-foreground/60 py-2.5 mt-1 border-t border-primary-foreground/[0.06] transition-colors"
                   >
                     {isArabic ? "عرض جميع الوحدات" : "View All Units"}
                   </Link>
                 </>
               ) : (
-                // For Projects: simple list
                 item.children?.map((child) => (
                   <Link
                     key={child.href}
                     to={child.href}
                     onClick={onClose}
-                    className={`block text-[13px] font-medium py-2 transition-colors ${pathname === child.href ? "text-primary-foreground" : "text-primary-foreground/38"}`}
+                    className={`block text-[13.5px] font-medium py-2.5 transition-colors ${pathname === child.href ? "text-primary-foreground" : "text-primary-foreground/40 hover:text-primary-foreground/70"}`}
                   >
                     {child.label}
                   </Link>
@@ -322,7 +374,6 @@ const Navbar = () => {
   const prefix = isArabic ? "/ar" : "";
   const navLinks = getNavLinks(prefix);
 
-  // Primary links only for desktop nav
   const primaryLinks = navLinks.filter(l => l.priority === "primary");
   const secondaryLinks = navLinks.filter(l => l.priority === "secondary");
 
@@ -372,13 +423,13 @@ const Navbar = () => {
           style={{
             background: scrolled
               ? 'hsl(222 47% 7% / 0.97)'
-              : 'hsl(222 47% 8% / 0.75)',
+              : 'hsl(222 47% 8% / 0.80)',
             backdropFilter: 'blur(24px) saturate(1.3)',
             WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
-            border: `1px solid hsl(0 0% 100% / ${scrolled ? '0.03' : '0.05'})`,
+            border: `1px solid hsl(0 0% 100% / ${scrolled ? '0.04' : '0.06'})`,
             boxShadow: scrolled
-              ? '0 4px 20px -4px hsl(222 47% 4% / 0.4)'
-              : '0 2px 16px -4px hsl(222 47% 4% / 0.12)',
+              ? '0 4px 24px -4px hsl(222 47% 4% / 0.45)'
+              : '0 2px 16px -4px hsl(222 47% 4% / 0.15)',
             transition: 'background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease',
           }}
         >
@@ -394,37 +445,34 @@ const Navbar = () => {
               />
             </Link>
 
-            {/* Desktop Nav — primary links only */}
+            {/* Desktop Nav — primary links */}
             <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
               {primaryLinks.map((link) => {
                 const active = isPathInTree(location.pathname, link);
 
-                // Tabbed dropdown for Units
                 if (link.dropdownType === "tabbed") {
                   return <UnitsTabbedDropdown key={link.href} item={link} isActive={active} isArabic={isArabic} />;
                 }
 
-                // Simple dropdown for Projects
                 if (link.dropdownType === "simple") {
-                  return <ProjectsDropdown key={link.href} item={link} isActive={active} />;
+                  return <ProjectsDropdown key={link.href} item={link} isActive={active} isArabic={isArabic} />;
                 }
 
-                // Plain link
                 return (
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={`relative text-[12px] font-medium tracking-wide transition-all duration-300 whitespace-nowrap ${
+                    className={`relative text-[12.5px] font-semibold tracking-wide transition-all duration-300 whitespace-nowrap ${
                       active
                         ? "text-primary-foreground"
-                        : "text-primary-foreground/50 hover:text-primary-foreground/85"
+                        : "text-primary-foreground/65 hover:text-primary-foreground"
                     }`}
                   >
                     {link.label}
                     {active && (
                       <motion.span
                         layoutId="nav-indicator"
-                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0.5 h-0.5 rounded-full bg-primary-foreground/40"
+                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-foreground/50"
                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
@@ -435,17 +483,17 @@ const Navbar = () => {
               {/* Secondary links — lighter weight */}
               {secondaryLinks.length > 0 && (
                 <>
-                  <div className="w-px h-3 bg-primary-foreground/[0.06]" />
+                  <div className="w-px h-3.5 bg-primary-foreground/[0.08]" />
                   {secondaryLinks.map((link) => {
                     const active = isPathInTree(location.pathname, link);
                     return (
                       <Link
                         key={link.href}
                         to={link.href}
-                        className={`text-[11px] font-medium tracking-wide transition-all duration-300 whitespace-nowrap ${
+                        className={`text-[11.5px] font-medium tracking-wide transition-all duration-300 whitespace-nowrap ${
                           active
-                            ? "text-primary-foreground/70"
-                            : "text-primary-foreground/30 hover:text-primary-foreground/55"
+                            ? "text-primary-foreground/75"
+                            : "text-primary-foreground/40 hover:text-primary-foreground/70"
                         }`}
                       >
                         {link.label}
@@ -456,14 +504,14 @@ const Navbar = () => {
               )}
             </nav>
 
-            {/* Right: Language + CTA */}
-            <div className="hidden lg:flex items-center gap-2.5 shrink-0">
+            {/* Right: Language switch */}
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
               <button
                 onClick={switchLanguage}
-                className="flex items-center gap-1 text-[11px] font-semibold text-primary-foreground/35 hover:text-primary-foreground/65 transition-all duration-300 px-2.5 py-1.5 rounded-md hover:bg-primary-foreground/[0.04] tracking-[0.06em]"
+                className="flex items-center gap-1.5 text-[11.5px] font-bold text-primary-foreground/45 hover:text-primary-foreground/80 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-primary-foreground/[0.06] tracking-[0.05em] border border-primary-foreground/[0.06] hover:border-primary-foreground/[0.12]"
                 aria-label={isArabic ? "Switch to English" : "التبديل إلى العربية"}
               >
-                <Globe size={11} className="opacity-50" />
+                <Globe size={12} className="opacity-60" />
                 {isArabic ? "EN" : "عربي"}
               </button>
             </div>
@@ -471,10 +519,10 @@ const Navbar = () => {
             {/* Mobile toggle */}
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden text-primary-foreground/50 hover:text-primary-foreground transition-colors p-1"
+              className="lg:hidden text-primary-foreground/60 hover:text-primary-foreground transition-colors p-1"
               aria-label="Toggle menu"
             >
-              {open ? <X size={19} /> : <Menu size={19} />}
+              {open ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -492,11 +540,11 @@ const Navbar = () => {
                 background: 'hsl(222 47% 7% / 0.97)',
                 backdropFilter: 'blur(24px) saturate(1.3)',
                 WebkitBackdropFilter: 'blur(24px) saturate(1.3)',
-                border: '1px solid hsl(0 0% 100% / 0.04)',
+                border: '1px solid hsl(0 0% 100% / 0.05)',
                 boxShadow: '0 12px 32px -8px hsl(222 47% 4% / 0.45)',
               }}
             >
-              <nav className="py-3.5 px-4.5 flex flex-col">
+              <nav className="py-4 px-5 flex flex-col">
                 {/* Primary links */}
                 {primaryLinks.map((link) =>
                   link.children ? (
@@ -512,37 +560,37 @@ const Navbar = () => {
                       key={link.href}
                       to={link.href}
                       onClick={() => setOpen(false)}
-                      className={`text-[14px] font-medium py-3 transition-colors ${location.pathname === link.href ? "text-primary-foreground" : "text-primary-foreground/55"}`}
+                      className={`text-[15px] font-semibold py-3.5 transition-colors ${location.pathname === link.href ? "text-primary-foreground" : "text-primary-foreground/60 active:text-primary-foreground"}`}
                     >
                       {link.label}
                     </Link>
                   ),
                 )}
 
-                {/* Secondary links — smaller */}
-                <div className="h-px my-2" style={{ background: 'hsl(0 0% 100% / 0.04)' }} />
-                <div className="flex gap-4 py-2">
+                {/* Secondary links */}
+                <div className="h-px my-2.5" style={{ background: 'hsl(0 0% 100% / 0.06)' }} />
+                <div className="flex gap-5 py-2.5">
                   {secondaryLinks.map((link) => (
                     <Link
                       key={link.href}
                       to={link.href}
                       onClick={() => setOpen(false)}
-                      className={`text-[12px] font-medium transition-colors ${location.pathname === link.href ? "text-primary-foreground/65" : "text-primary-foreground/30"}`}
+                      className={`text-[13px] font-medium transition-colors ${location.pathname === link.href ? "text-primary-foreground/70" : "text-primary-foreground/35 active:text-primary-foreground/60"}`}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </div>
 
-                <div className="h-px my-2" style={{ background: 'hsl(0 0% 100% / 0.04)' }} />
+                <div className="h-px my-2.5" style={{ background: 'hsl(0 0% 100% / 0.06)' }} />
 
-                {/* Language + CTA row */}
-                <div className="flex items-center gap-3 pt-1">
+                {/* Language row */}
+                <div className="flex items-center gap-3 pt-1.5">
                   <button
                     onClick={() => { switchLanguage(); setOpen(false); }}
-                    className="flex items-center gap-1.5 text-[12px] font-semibold text-primary-foreground/35 hover:text-primary-foreground transition-colors py-2"
+                    className="flex items-center gap-1.5 text-[13px] font-bold text-primary-foreground/45 hover:text-primary-foreground transition-colors py-2.5 px-3 rounded-lg border border-primary-foreground/[0.08]"
                   >
-                    <Globe size={12} className="opacity-40" />
+                    <Globe size={13} className="opacity-50" />
                     {isArabic ? "English" : "عربي"}
                   </button>
                 </div>
