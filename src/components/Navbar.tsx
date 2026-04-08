@@ -465,7 +465,7 @@ const Navbar = () => {
                     className={`relative text-[12.5px] font-semibold tracking-wide transition-all duration-300 whitespace-nowrap ${
                       active
                         ? "text-primary-foreground"
-                        : "text-primary-foreground/65 hover:text-primary-foreground"
+                        : "text-primary-foreground/70 hover:text-primary-foreground"
                     }`}
                   >
                     {link.label}
