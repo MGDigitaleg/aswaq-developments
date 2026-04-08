@@ -111,11 +111,11 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
       <button className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
+          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/40" : "text-primary-foreground/25"}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/50" : "text-primary-foreground/35"}`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -136,25 +136,25 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                   <Link
                     key={child.href}
                     to={child.href}
-                    className="group flex flex-col gap-1.5 p-3 rounded-lg transition-all duration-200 hover:bg-foreground/[0.04] border border-transparent hover:border-border/40"
+                    className="group flex flex-col gap-1.5 p-3 rounded-lg transition-all duration-200 hover:bg-foreground/[0.06] border border-transparent hover:border-border/50"
                   >
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-md bg-foreground/[0.04] border border-border/30 flex items-center justify-center shrink-0 group-hover:bg-foreground/[0.07] transition-colors">
-                        <Building2 size={13} className="text-foreground/40 group-hover:text-foreground/65 transition-colors" />
+                      <div className="w-7 h-7 rounded-md bg-foreground/[0.05] border border-border/40 flex items-center justify-center shrink-0 group-hover:bg-foreground/[0.10] transition-colors">
+                        <Building2 size={13} className="text-foreground/50 group-hover:text-foreground/75 transition-colors" />
                       </div>
                       <div>
-                        <p className="text-[12.5px] font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
+                        <p className="text-[12.5px] font-semibold text-foreground/85 group-hover:text-foreground transition-colors leading-tight">
                           {child.label}
                         </p>
                         {meta && (
-                          <p className="text-[10px] font-medium text-foreground/35 uppercase tracking-wider mt-0.5">
+                          <p className="text-[10px] font-medium text-foreground/45 uppercase tracking-wider mt-0.5">
                             {isArabic ? meta.typeAr : meta.type}
                           </p>
                         )}
                       </div>
                     </div>
                     {meta && (
-                      <p className="text-[11px] text-foreground/40 leading-snug">
+                      <p className="text-[11px] text-foreground/50 leading-snug">
                         {isArabic ? meta.descAr : meta.desc}
                       </p>
                     )}
@@ -168,7 +168,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
               <div className="border-t border-border/40 mt-3 pt-2.5">
                 <Link
                   to={allProjectsLink.href}
-                  className="flex items-center gap-1.5 px-3 py-2 text-[11.5px] font-semibold text-foreground/50 hover:text-foreground transition-colors rounded-md hover:bg-foreground/[0.03]"
+                  className="flex items-center gap-1.5 px-3 py-2 text-[11.5px] font-semibold text-foreground/60 hover:text-foreground transition-colors rounded-md hover:bg-foreground/[0.05]"
                 >
                   {allProjectsLink.label}
                   {isArabic ? <ArrowLeft size={10} /> : <ArrowRight size={10} />}
@@ -197,11 +197,11 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
       <button className="flex items-center gap-1 cursor-pointer">
         <Link
           to={item.href}
-          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/65"}`}
+          className={`text-[12.5px] font-semibold tracking-wide transition-colors duration-300 hover:text-primary-foreground ${isActive ? "text-primary-foreground" : "text-primary-foreground/70"}`}
         >
           {item.label}
         </Link>
-        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/40" : "text-primary-foreground/25"}`} />
+        <ChevronDown size={10} className={`transition-transform duration-200 ${open ? "rotate-180" : ""} ${isActive ? "text-primary-foreground/50" : "text-primary-foreground/35"}`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -223,7 +223,7 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
                   className={`flex-1 text-[11.5px] font-bold font-body py-3 px-2.5 transition-all duration-200 rounded-t-lg relative ${
                     activeTab === i
                       ? "text-foreground"
-                      : "text-foreground/40 hover:text-foreground/60"
+                      : "text-foreground/45 hover:text-foreground/70"
                   }`}
                 >
                   {tab.label}
@@ -231,7 +231,7 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
                     <motion.span
                       layoutId="units-tab-indicator"
                       className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full"
-                      style={{ background: 'hsl(232 78% 10% / 0.25)' }}
+                      style={{ background: 'hsl(232 78% 10% / 0.35)' }}
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -245,7 +245,7 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
                 <Link
                   key={sub.href}
                   to={sub.href}
-                  className="block px-4 py-2.5 text-[12.5px] font-medium text-foreground/55 hover:text-foreground hover:bg-foreground/[0.04] transition-all duration-200 rounded-lg"
+                  className="block px-4 py-2.5 text-[12.5px] font-medium text-foreground/65 hover:text-foreground hover:bg-foreground/[0.06] transition-all duration-200 rounded-lg"
                 >
                   {sub.label}
                 </Link>
@@ -255,7 +255,7 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
               <div className="border-t border-border/30 mt-2 pt-2 mx-1">
                 <Link
                   to={item.href}
-                  className="flex items-center gap-1.5 px-3 py-2.5 text-[11.5px] font-bold text-foreground/45 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.03] font-body"
+                  className="flex items-center gap-1.5 px-3 py-2.5 text-[11.5px] font-bold text-foreground/55 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.05] font-body"
                 >
                   {isArabic ? "عرض جميع الوحدات" : "View All Units"}
                   {isArabic ? <ArrowLeft size={10} /> : <ArrowRight size={10} />}
@@ -465,7 +465,7 @@ const Navbar = () => {
                     className={`relative text-[12.5px] font-semibold tracking-wide transition-all duration-300 whitespace-nowrap ${
                       active
                         ? "text-primary-foreground"
-                        : "text-primary-foreground/65 hover:text-primary-foreground"
+                        : "text-primary-foreground/70 hover:text-primary-foreground"
                     }`}
                   >
                     {link.label}
@@ -483,7 +483,7 @@ const Navbar = () => {
               {/* Secondary links — lighter weight */}
               {secondaryLinks.length > 0 && (
                 <>
-                  <div className="w-px h-3.5 bg-primary-foreground/[0.08]" />
+                  <div className="w-px h-3.5 bg-primary-foreground/[0.12]" />
                   {secondaryLinks.map((link) => {
                     const active = isPathInTree(location.pathname, link);
                     return (
@@ -492,8 +492,8 @@ const Navbar = () => {
                         to={link.href}
                         className={`text-[11.5px] font-medium tracking-wide transition-all duration-300 whitespace-nowrap ${
                           active
-                            ? "text-primary-foreground/75"
-                            : "text-primary-foreground/40 hover:text-primary-foreground/70"
+                            ? "text-primary-foreground/80"
+                            : "text-primary-foreground/50 hover:text-primary-foreground/80"
                         }`}
                       >
                         {link.label}
@@ -508,7 +508,7 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center gap-3 shrink-0">
               <button
                 onClick={switchLanguage}
-                className="flex items-center gap-1.5 text-[11.5px] font-bold text-primary-foreground/45 hover:text-primary-foreground/80 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-primary-foreground/[0.06] tracking-[0.05em] border border-primary-foreground/[0.06] hover:border-primary-foreground/[0.12]"
+                className="flex items-center gap-1.5 text-[11.5px] font-bold text-primary-foreground/55 hover:text-primary-foreground/90 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-primary-foreground/[0.08] tracking-[0.05em] border border-primary-foreground/[0.08] hover:border-primary-foreground/[0.18]"
                 aria-label={isArabic ? "Switch to English" : "التبديل إلى العربية"}
               >
                 <Globe size={12} className="opacity-60" />
