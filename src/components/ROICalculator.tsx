@@ -38,14 +38,14 @@ const ROICalculator = ({ isArabic = false, wide = false }: { isArabic?: boolean;
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-primary h-1 bg-muted rounded-full appearance-none cursor-pointer"
+        className="w-full h-1.5 rounded-full appearance-none cursor-pointer roi-slider"
       />
     </label>
   );
 
   return (
     <div
-      className="bg-card rounded-2xl border border-border p-7 md:p-10 lg:p-12"
+      className="rounded-2xl border p-7 md:p-10 lg:p-12 bg-card border-border"
       style={{ boxShadow: 'var(--shadow-xl)' }}
     >
       <div className="flex items-center gap-3 mb-8">
