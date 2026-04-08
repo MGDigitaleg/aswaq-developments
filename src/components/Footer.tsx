@@ -149,7 +149,7 @@ const Footer = () => {
               <li>
                 <a href="tel:19474" className="flex items-center gap-3 group transition-colors duration-300">
                   <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.06] border border-primary-foreground/[0.10] flex items-center justify-center shrink-0 group-hover:bg-primary-foreground/[0.10] transition-colors">
-                    <Phone size={14} className="text-primary-foreground/50" />
+                    <Phone size={14} className="text-primary-foreground/60" />
                   </div>
                   <div>
                     <span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/50 mb-0.5">
