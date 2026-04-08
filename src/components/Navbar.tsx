@@ -143,7 +143,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                         <Building2 size={13} className="text-foreground/50 group-hover:text-foreground/75 transition-colors" />
                       </div>
                       <div>
-                        <p className="text-[12.5px] font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
+                        <p className="text-[12.5px] font-semibold text-foreground/85 group-hover:text-foreground transition-colors leading-tight">
                           {child.label}
                         </p>
                         {meta && (
