@@ -57,11 +57,8 @@ const SolariaMall = () => {
     "Discover Solaria Mall — a landmark commercial, medical, and administrative development by ASWAQ in El Shorouk City. Explore premium units from 30 to 396 m²."
   );
 
-  const [activeFloor, setActiveFloor] = useState("gf");
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
   const [videoPlaying, setVideoPlaying] = useState(false);
-
-  const currentFloor = floors.find((f) => f.id === activeFloor)!;
 
   return (
     <Layout>
