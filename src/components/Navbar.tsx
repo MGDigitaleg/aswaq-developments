@@ -508,7 +508,7 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center gap-3 shrink-0">
               <button
                 onClick={switchLanguage}
-                className="flex items-center gap-1.5 text-[11.5px] font-bold text-primary-foreground/45 hover:text-primary-foreground/80 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-primary-foreground/[0.06] tracking-[0.05em] border border-primary-foreground/[0.06] hover:border-primary-foreground/[0.12]"
+                className="flex items-center gap-1.5 text-[11.5px] font-bold text-primary-foreground/55 hover:text-primary-foreground/90 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-primary-foreground/[0.08] tracking-[0.05em] border border-primary-foreground/[0.08] hover:border-primary-foreground/[0.18]"
                 aria-label={isArabic ? "Switch to English" : "التبديل إلى العربية"}
               >
                 <Globe size={12} className="opacity-60" />
