@@ -632,15 +632,15 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           >
                             <div className="flex items-center gap-1.5">
                               <Icon size={9} style={{ color: "hsl(var(--navy))" }} />
-                              <span className="font-display text-[10px] font-bold text-foreground">
-                                Unit {unit.number}
+                              <span className={`text-[10px] font-bold text-foreground ${isRtl ? "font-arabic" : "font-display"}`}>
+                                {t.unit} {unit.number}
                               </span>
-                              <span className="w-1.5 h-1.5 rounded-full ml-1" style={{ background: statusColors[unit.status] }} />
+                              <span className={`w-1.5 h-1.5 rounded-full ${isRtl ? "mr-1" : "ml-1"}`} style={{ background: statusColors[unit.status] }} />
                             </div>
-                            <div className="flex gap-2 text-[8px] font-body text-muted-foreground mt-0.5">
+                            <div className={`flex gap-2 text-[8px] text-muted-foreground mt-0.5 ${isRtl ? "font-arabic" : "font-body"}`}>
                               <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600 }}>{unit.area}</span>
                               <span>·</span>
-                              <span>{unit.type}</span>
+                              <span>{t.types[unit.type]}</span>
                             </div>
                           </div>
                         </motion.div>
