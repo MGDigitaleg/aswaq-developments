@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   MapPin, ShoppingBag, Stethoscope, Briefcase, Building2,
-  ChevronDown, ArrowRight, Play, X, Layers, Eye, DoorOpen,
+  ChevronDown, ArrowRight, Play, X, Eye, DoorOpen,
   Maximize2, Phone, Mail
 } from "lucide-react";
 import Layout from "@/components/Layout";
