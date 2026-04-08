@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, X, Layers, ShoppingBag, Stethoscope,
-  Briefcase, Building2, Coffee
+  ArrowRight, X, ShoppingBag, Stethoscope,
+  Briefcase, Building2, Coffee, ZoomIn, ZoomOut, Maximize2
 } from "lucide-react";
-import floorPlanImg from "@/assets/solaria-floorplans.png";
+
+import floorGF from "@/assets/floorplans/GF.png";
+import floor1F from "@/assets/floorplans/1F.png";
+import floor2F from "@/assets/floorplans/2F.png";
+import floor3F from "@/assets/floorplans/3F.png";
+import floorRF from "@/assets/floorplans/RF.png";
 
 /* ─── Types ─── */
-
-type UnitType = "Retail" | "Medical" | "Administrative" | "Corporate" | "F&B" | "Showroom" | "Service";
+type UnitType = "Retail" | "Medical" | "Administrative" | "F&B" | "Service";
 type UnitStatus = "Available" | "Reserved" | "Sold";
 
 interface FloorUnit {
@@ -18,11 +22,8 @@ interface FloorUnit {
   area: string;
   type: UnitType;
   status: UnitStatus;
-  /** SVG polygon points as percentage coords "x1,y1 x2,y2 ..." */
-  points: string;
-  /** Center position for tooltip anchoring */
-  cx: number;
-  cy: number;
+  /** x, y, w, h as % of image */
+  x: number; y: number; w: number; h: number;
 }
 
 interface FloorData {
@@ -30,14 +31,13 @@ interface FloorData {
   label: string;
   shortLabel: string;
   description: string;
-  unitCount: number;
-  sliceIndex: number;
+  image: string;
   units: FloorUnit[];
 }
 
 const typeIcons: Record<UnitType, typeof ShoppingBag> = {
-  Retail: ShoppingBag, Showroom: ShoppingBag, Medical: Stethoscope,
-  Administrative: Briefcase, Corporate: Building2, "F&B": Coffee, Service: Briefcase,
+  Retail: ShoppingBag, Medical: Stethoscope,
+  Administrative: Briefcase, "F&B": Coffee, Service: Building2,
 };
 
 const statusColors: Record<UnitStatus, string> = {
@@ -46,117 +46,315 @@ const statusColors: Record<UnitStatus, string> = {
   Sold: "hsl(0 0% 58%)",
 };
 
-/* ─── Floor Data with polygon-mapped units ─── */
-/* Coordinates are % within each floor's visible plan area.
-   The building has a roughly triangular footprint — apex top-left, widening toward bottom-right.
-   Units are positioned to match the architectural plan layout. */
+const statusFills: Record<UnitStatus, { base: string; hover: string; stroke: string }> = {
+  Available: {
+    base: "rgba(46,139,87,0.06)",
+    hover: "rgba(46,139,87,0.18)",
+    stroke: "rgba(46,139,87,0.45)",
+  },
+  Reserved: {
+    base: "rgba(200,165,50,0.06)",
+    hover: "rgba(200,165,50,0.18)",
+    stroke: "rgba(200,165,50,0.45)",
+  },
+  Sold: {
+    base: "rgba(140,140,140,0.06)",
+    hover: "rgba(140,140,140,0.18)",
+    stroke: "rgba(140,140,140,0.45)",
+  },
+};
 
+/* ─── Helper: make a unit ─── */
+const u = (
+  id: string, number: string, area: string,
+  type: UnitType, status: UnitStatus,
+  x: number, y: number, w: number, h: number
+): FloorUnit => ({ id, number, area, type, status, x, y, w, h });
+
+/* ─── Floor Data — real units from architectural plans ─── */
 const floorsData: FloorData[] = [
   {
-    id: "gf", label: "Ground Floor", shortLabel: "GF", sliceIndex: 0, unitCount: 12,
-    description: "Prime retail frontage with direct street access, high footfall, and maximum commercial visibility.",
+    id: "gf", label: "Ground Floor", shortLabel: "GF", image: floorGF,
+    description: "Prime retail frontage with direct street access and maximum commercial visibility. 66 units from 26 m² to 125 m².",
     units: [
-      // Top row — small retail units along the upper-left edge
-      { id: "gf-01", number: "G-01", area: "42 m²", type: "Retail", status: "Available", points: "12,22 22,18 28,22 28,30 12,30", cx: 20, cy: 25 },
-      { id: "gf-02", number: "G-02", area: "38 m²", type: "Retail", status: "Available", points: "28,18 38,15 44,20 44,30 28,30 28,22", cx: 36, cy: 24 },
-      { id: "gf-03", number: "G-03", area: "55 m²", type: "Retail", status: "Reserved", points: "44,15 58,12 58,30 44,30 44,20", cx: 51, cy: 22 },
-      // Middle-left cluster — green retail units
-      { id: "gf-04", number: "G-04", area: "86 m²", type: "Retail", status: "Available", points: "8,30 22,30 22,44 8,44", cx: 15, cy: 37 },
-      { id: "gf-05", number: "G-05", area: "64 m²", type: "Retail", status: "Available", points: "22,30 36,30 36,44 22,44", cx: 29, cy: 37 },
-      { id: "gf-06", number: "G-06", area: "72 m²", type: "Showroom", status: "Available", points: "36,30 52,30 52,44 36,44", cx: 44, cy: 37 },
-      // Center corridor area units
-      { id: "gf-07", number: "G-07", area: "120 m²", type: "Showroom", status: "Available", points: "52,22 68,22 68,44 52,44 52,30", cx: 60, cy: 34 },
-      // Bottom-left units
-      { id: "gf-08", number: "G-08", area: "45 m²", type: "Retail", status: "Sold", points: "5,44 18,44 18,56 5,56", cx: 12, cy: 50 },
-      { id: "gf-09", number: "G-09", area: "68 m²", type: "Retail", status: "Available", points: "18,44 34,44 34,56 18,56", cx: 26, cy: 50 },
-      { id: "gf-10", number: "G-10", area: "95 m²", type: "Service", status: "Available", points: "34,44 52,44 52,60 34,60", cx: 43, cy: 52 },
-      // Right side — large retail / showroom
-      { id: "gf-11", number: "G-11", area: "180 m²", type: "Retail", status: "Available", points: "68,22 82,22 82,50 68,50", cx: 75, cy: 36 },
-      { id: "gf-12", number: "G-12", area: "48 m²", type: "Retail", status: "Reserved", points: "52,50 68,50 68,64 52,64", cx: 60, cy: 57 },
+      // Top-right cluster: units 01-03
+      u("gf-01","01","73 m²","Retail","Available", 73.5,13, 8,7),
+      u("gf-02","02","49 m²","Retail","Available", 65,13, 8,6.5),
+      u("gf-03","03","47 m²","Retail","Available", 57,14, 7.5,6),
+      // Right upper: 04-07
+      u("gf-04","04","79 m²","Retail","Available", 69,22, 10,8),
+      u("gf-05","05","49 m²","Retail","Available", 62,22, 7,6.5),
+      u("gf-06","06","50 m²","Retail","Available", 80,22, 6.5,6.5),
+      u("gf-07","07","50 m²","Retail","Available", 80,29, 6.5,6.5),
+      // Right strip: 08-13
+      u("gf-08","08","43 m²","Retail","Available", 72,30, 7,5.5),
+      u("gf-09","09","40 m²","Retail","Available", 80,36, 6.5,5.5),
+      u("gf-10","10","61 m²","Retail","Available", 72,36, 7.5,6),
+      u("gf-11","11","40 m²","Retail","Available", 80,42, 6.5,5.5),
+      u("gf-12","12","45 m²","Retail","Available", 72,42, 7.5,5.5),
+      u("gf-13","13","26 m²","Retail","Available", 80,48, 6.5,4.5),
+      // Right lower strip: 14-21
+      u("gf-14","14","47 m²","Retail","Reserved", 72,48, 7.5,5.5),
+      u("gf-15","15","29 m²","Retail","Available", 80,54, 6.5,4.5),
+      u("gf-16","16","47 m²","Retail","Available", 72,54, 7.5,5.5),
+      u("gf-17","17","29 m²","Retail","Available", 80,59.5, 6.5,4.5),
+      u("gf-18","18","47 m²","Retail","Available", 72,60, 7.5,5.5),
+      u("gf-19","19","29 m²","Retail","Available", 80,64.5, 6.5,4.5),
+      u("gf-20","20","47 m²","Retail","Available", 72,66, 7.5,5.5),
+      u("gf-21","21","29 m²","Retail","Available", 80,70, 6.5,4.5),
+      // Bottom-right: 22-28
+      u("gf-22","22","68 m²","Retail","Available", 72,72, 8,6),
+      u("gf-23","23","43 m²","Retail","Available", 80,75.5, 7,5.5),
+      u("gf-24","24","64 m²","Retail","Available", 73,78.5, 7.5,6),
+      u("gf-25","25","77 m²","Retail","Available", 80,81, 7,6.5),
+      u("gf-26","26","75 m²","Retail","Reserved", 80,87.5, 7,6),
+      u("gf-27","27","79 m²","Retail","Available", 68,86, 10,6),
+      u("gf-28","28","75 m²","Retail","Available", 80,93, 7,5),
+      // Top rows: 29-36
+      u("gf-29","29","40 m²","Retail","Available", 47,13, 5.5,5.5),
+      u("gf-30","30","43 m²","Retail","Available", 42,14, 5,5.5),
+      u("gf-31","31","32 m²","Retail","Available", 50,19.5, 5,5),
+      u("gf-32","32","43 m²","Retail","Available", 43,20, 6,5),
+      u("gf-33","33","43 m²","Retail","Available", 49,25, 5,5),
+      u("gf-34","34","34 m²","Retail","Available", 55,25, 5,5),
+      u("gf-35","35","42 m²","Retail","Available", 49,30, 5,5),
+      u("gf-36","36","42 m²","Retail","Available", 43,30, 5.5,5.5),
+      // Center: 37-47
+      u("gf-37","37","67 m²","Retail","Available", 55,30, 8,6),
+      u("gf-38","38","60 m²","Retail","Available", 63,35, 7,6),
+      u("gf-39","39","62 m²","Retail","Available", 55,36, 7.5,5.5),
+      u("gf-40","40","39 m²","Retail","Available", 39,23, 5,5),
+      u("gf-41","41","39 m²","Retail","Available", 37,30, 5.5,5.5),
+      u("gf-42","42","58 m²","Retail","Available", 38,36, 7,6),
+      u("gf-43","43","52 m²","Retail","Available", 45,40, 7,5.5),
+      u("gf-44","44","48 m²","Retail","Available", 38,43, 6.5,5.5),
+      u("gf-45","45","50 m²","Retail","Available", 45,46, 6,5.5),
+      u("gf-46","46","49 m²","Retail","Available", 55,48, 6,5.5),
+      u("gf-47","47","51 m²","Retail","Available", 49,48, 6,5.5),
+      // Left-center: 48-56
+      u("gf-48","48","46 m²","Retail","Available", 42,52, 6,5),
+      u("gf-49","49","49 m²","Retail","Available", 34,50, 7,5.5),
+      u("gf-50","50","49 m²","Retail","Available", 37,44, 6,5.5),
+      u("gf-51","51","51 m²","Retail","Available", 30,43, 6.5,5.5),
+      u("gf-52","52","49 m²","Retail","Available", 23,41, 6.5,6),
+      u("gf-53","53","45 m²","Retail","Sold", 25,36, 6,5.5),
+      u("gf-54","54","48 m²","Retail","Available", 27,50, 6,5.5),
+      u("gf-55","55","102 m²","Retail","Available", 38,56, 9,7),
+      u("gf-56","56","49 m²","Retail","Available", 27,56, 5.5,5.5),
+      // Bottom-left: 57-66
+      u("gf-57","57","44 m²","Retail","Available", 37,64, 6,5),
+      u("gf-58","58","77 m²","Retail","Available", 33,73, 8,6.5),
+      u("gf-59","59","73 m²","Retail","Available", 28,69, 7,6),
+      u("gf-60","60","75 m²","Retail","Available", 22,73, 7,5.5),
+      u("gf-61","61","79 m²","Retail","Available", 23,62, 6.5,6),
+      u("gf-62","62","125 m²","Retail","Available", 12,58, 10,9),
+      u("gf-63","63","47 m²","Retail","Available", 23,54, 5.5,5.5),
+      u("gf-64","64","83 m²","Retail","Available", 48,73, 10,7),
+      u("gf-65","65","97 m²","Retail","Available", 43,80, 9,7),
+      u("gf-66","66","107 m²","Retail","Available", 43,87, 10,7.5),
     ],
   },
   {
-    id: "1f", label: "First Floor", shortLabel: "1F", sliceIndex: 1, unitCount: 14,
-    description: "Versatile commercial and medical spaces with dedicated access, suited for clinics and professional offices.",
+    id: "1f", label: "First Floor", shortLabel: "1F", image: floor1F,
+    description: "Versatile commercial spaces with dedicated access. Clinics and professional offices. 32 units from 40 m² to 276 m².",
     units: [
-      { id: "1f-01", number: "1-01", area: "42 m²", type: "Medical", status: "Available", points: "14,20 26,17 26,30 14,30", cx: 20, cy: 24 },
-      { id: "1f-02", number: "1-02", area: "38 m²", type: "Medical", status: "Available", points: "26,17 38,14 44,18 44,30 26,30", cx: 35, cy: 23 },
-      { id: "1f-03", number: "1-03", area: "56 m²", type: "Administrative", status: "Reserved", points: "44,14 58,12 58,30 44,30", cx: 51, cy: 22 },
-      { id: "1f-04", number: "1-04", area: "30 m²", type: "Medical", status: "Available", points: "10,30 22,30 22,42 10,42", cx: 16, cy: 36 },
-      { id: "1f-05", number: "1-05", area: "45 m²", type: "Medical", status: "Available", points: "22,30 36,30 36,42 22,42", cx: 29, cy: 36 },
-      { id: "1f-06", number: "1-06", area: "68 m²", type: "Administrative", status: "Available", points: "36,30 52,30 52,42 36,42", cx: 44, cy: 36 },
-      { id: "1f-07", number: "1-07", area: "35 m²", type: "Medical", status: "Sold", points: "52,24 66,24 66,42 52,42", cx: 59, cy: 33 },
-      { id: "1f-08", number: "1-08", area: "50 m²", type: "Administrative", status: "Available", points: "7,42 20,42 20,54 7,54", cx: 14, cy: 48 },
-      { id: "1f-09", number: "1-09", area: "90 m²", type: "Administrative", status: "Available", points: "20,42 38,42 38,56 20,56", cx: 29, cy: 49 },
-      { id: "1f-10", number: "1-10", area: "44 m²", type: "Medical", status: "Available", points: "38,42 52,42 52,56 38,56", cx: 45, cy: 49 },
-      { id: "1f-11", number: "1-11", area: "52 m²", type: "Administrative", status: "Available", points: "52,42 66,42 66,56 52,56", cx: 59, cy: 49 },
-      { id: "1f-12", number: "1-12", area: "48 m²", type: "Medical", status: "Available", points: "66,28 80,28 80,44 66,44", cx: 73, cy: 36 },
-      { id: "1f-13", number: "1-13", area: "36 m²", type: "Medical", status: "Reserved", points: "5,54 18,54 18,64 5,64", cx: 12, cy: 59 },
-      { id: "1f-14", number: "1-14", area: "120 m²", type: "Administrative", status: "Available", points: "18,54 42,54 42,66 18,66", cx: 30, cy: 60 },
+      // Top-right: 101-102
+      u("1f-101","101","95 m²","Retail","Available", 73,12, 9,8),
+      u("1f-102","102","75 m²","Retail","Available", 61,12, 10,8),
+      // Right strip: 103-110
+      u("1f-103","103","57 m²","Retail","Available", 72,30, 8,6),
+      u("1f-104","104","53 m²","Retail","Available", 72,36.5, 8,5.5),
+      u("1f-105","105","53 m²","Retail","Available", 72,42.5, 8,5.5),
+      u("1f-106","106","53 m²","Retail","Reserved", 72,48.5, 8,5.5),
+      u("1f-107","107","53 m²","Retail","Available", 72,54.5, 8,5.5),
+      u("1f-108","108","53 m²","Retail","Available", 72,60.5, 8,5.5),
+      u("1f-109","109","53 m²","Retail","Available", 72,66.5, 8,5.5),
+      u("1f-110","110","77 m²","Retail","Available", 72,73, 8,6.5),
+      // Left upper column: 113-118
+      u("1f-113","113","75 m²","Retail","Available", 45,12, 8,6.5),
+      u("1f-114","114","82 m²","Retail","Available", 42,20, 9,7),
+      u("1f-115","115","51 m²","Retail","Available", 42,28, 7,5.5),
+      u("1f-116","116","52 m²","Retail","Available", 42,34, 7,5.5),
+      u("1f-117","117","43 m²","Retail","Available", 52,28, 7,5),
+      u("1f-118","118","40 m²","Retail","Sold", 52,34, 6,5),
+      // Center: 119-125
+      u("1f-119","119","99 m²","Retail","Available", 38,30, 9,7),
+      u("1f-120","120","50 m²","Retail","Available", 40,40, 6.5,5.5),
+      u("1f-121","121","55 m²","Retail","Available", 40,46, 7,5.5),
+      u("1f-122","122","57 m²","Retail","Available", 53,44, 7.5,6),
+      u("1f-123","123","48 m²","Retail","Available", 45,50, 6.5,5.5),
+      u("1f-124","124","52 m²","Retail","Available", 39,50, 6,5.5),
+      u("1f-125","125","117 m²","Retail","Available", 29,48, 9.5,7),
+      // Left lower: 126-132
+      u("1f-126","126","49 m²","Retail","Available", 39,57, 6,5),
+      u("1f-127","127","54 m²","Retail","Available", 37,63, 6.5,5),
+      u("1f-128","128","49 m²","Retail","Available", 33,72, 6,5),
+      u("1f-129","129","52 m²","Retail","Available", 33,78, 6.5,5.5),
+      u("1f-130","130","88 m²","Retail","Available", 32,84, 8,6),
+      u("1f-131","131","250 m²","Retail","Available", 14,58, 13,10),
+      u("1f-132","132","276 m²","Retail","Available", 47,80, 13,9),
+      // Bottom-right: 111-112
+      u("1f-111","111","91 m²","Retail","Available", 74,82, 8,7),
+      u("1f-112","112","187 m²","Retail","Available", 67,90, 12,7),
     ],
   },
   {
-    id: "2f", label: "Second Floor", shortLabel: "2F", sliceIndex: 2, unitCount: 16,
-    description: "Dedicated medical and administrative zone with quiet, professional atmosphere and natural light.",
+    id: "2f", label: "Second Floor", shortLabel: "2F", image: floor2F,
+    description: "Mixed-use medical and administrative zone with professional atmosphere and natural light. Units from 12 m² to 108 m².",
     units: [
-      { id: "2f-01", number: "2-01", area: "36 m²", type: "Medical", status: "Available", points: "14,20 26,17 26,30 14,30", cx: 20, cy: 24 },
-      { id: "2f-02", number: "2-02", area: "30 m²", type: "Medical", status: "Available", points: "26,17 38,15 38,30 26,30", cx: 32, cy: 23 },
-      { id: "2f-03", number: "2-03", area: "48 m²", type: "Medical", status: "Available", points: "38,14 54,12 54,30 38,30", cx: 46, cy: 22 },
-      { id: "2f-04", number: "2-04", area: "42 m²", type: "Administrative", status: "Reserved", points: "54,12 68,14 68,30 54,30", cx: 61, cy: 22 },
-      { id: "2f-05", number: "2-05", area: "34 m²", type: "Medical", status: "Available", points: "10,30 22,30 22,42 10,42", cx: 16, cy: 36 },
-      { id: "2f-06", number: "2-06", area: "38 m²", type: "Medical", status: "Available", points: "22,30 36,30 36,42 22,42", cx: 29, cy: 36 },
-      { id: "2f-07", number: "2-07", area: "56 m²", type: "Administrative", status: "Available", points: "36,30 52,30 52,42 36,42", cx: 44, cy: 36 },
-      { id: "2f-08", number: "2-08", area: "44 m²", type: "Medical", status: "Sold", points: "52,24 66,24 66,42 52,42", cx: 59, cy: 33 },
-      { id: "2f-09", number: "2-09", area: "30 m²", type: "Medical", status: "Available", points: "7,42 20,42 20,52 7,52", cx: 14, cy: 47 },
-      { id: "2f-10", number: "2-10", area: "32 m²", type: "Medical", status: "Available", points: "20,42 34,42 34,52 20,52", cx: 27, cy: 47 },
-      { id: "2f-11", number: "2-11", area: "62 m²", type: "Administrative", status: "Available", points: "34,42 52,42 52,54 34,54", cx: 43, cy: 48 },
-      { id: "2f-12", number: "2-12", area: "40 m²", type: "Medical", status: "Available", points: "52,42 66,42 66,54 52,54", cx: 59, cy: 48 },
-      { id: "2f-13", number: "2-13", area: "50 m²", type: "Medical", status: "Reserved", points: "5,52 20,52 20,64 5,64", cx: 13, cy: 58 },
-      { id: "2f-14", number: "2-14", area: "96 m²", type: "Administrative", status: "Available", points: "20,52 42,52 42,66 20,66", cx: 31, cy: 59 },
-      { id: "2f-15", number: "2-15", area: "38 m²", type: "Medical", status: "Available", points: "42,52 58,52 58,64 42,64", cx: 50, cy: 58 },
-      { id: "2f-16", number: "2-16", area: "46 m²", type: "Medical", status: "Available", points: "66,30 80,30 80,44 66,44", cx: 73, cy: 37 },
+      // Top-right: 201-202
+      u("2f-202","202","122 m²","Administrative","Available", 72,10, 10,8),
+      u("2f-201","201","46 m²","Administrative","Available", 73,20, 8,6),
+      // Right strip: 203-209
+      u("2f-203","203","37 m²","Medical","Available", 74,28, 7,5),
+      u("2f-204","204","37 m²","Medical","Available", 74,33.5, 7,5),
+      u("2f-205","205","37 m²","Medical","Available", 74,39, 7,5),
+      u("2f-206","206","37 m²","Medical","Reserved", 74,44.5, 7,5),
+      u("2f-207","207","37 m²","Medical","Available", 74,50, 7,5),
+      u("2f-208","208","39 m²","Medical","Available", 74,55.5, 7,5.5),
+      u("2f-209","209","66 m²","Administrative","Available", 78,28, 7,8),
+      // Right mid column: 210-216
+      u("2f-210","210","49 m²","Administrative","Available", 78,62, 7,5.5),
+      u("2f-211","211","49 m²","Administrative","Available", 78,68, 7,5.5),
+      u("2f-212","212","49 m²","Medical","Available", 78,74, 7,5.5),
+      u("2f-213","213","49 m²","Administrative","Available", 78,80, 7,5.5),
+      u("2f-214","214","49 m²","Administrative","Sold", 78,86, 7,5.5),
+      u("2f-215","215","49 m²","Medical","Available", 78,92, 7,5),
+      u("2f-216","216","69 m²","Administrative","Available", 72,88, 7,6.5),
+      // Upper center: 217-222
+      u("2f-217","217","88 m²","Administrative","Available", 50,17, 9,7),
+      u("2f-220","220","46 m²","Administrative","Available", 48,28, 7,5.5),
+      u("2f-221","221","38 m²","Medical","Available", 48,34, 6.5,5),
+      u("2f-222","222","78 m²","Medical","Available", 55,38, 8,6),
+      u("2f-223","223","39 m²","Administrative","Available", 42,40, 6,5),
+      // Center: 224-229
+      u("2f-224","224","70 m²","Administrative","Available", 42,48, 8,6),
+      u("2f-225","225","86 m²","Administrative","Available", 50,52, 9,6.5),
+      u("2f-226","226","12 m²","Medical","Available", 46,56, 4,3.5),
+      u("2f-227","227","43 m²","Administrative","Reserved", 40,56, 6,5),
+      u("2f-228","228","63 m²","Administrative","Available", 36,56, 7,6),
+      u("2f-229","229","38 m²","Medical","Available", 28,56, 6,5),
+      // Bottom-left: 230-235
+      u("2f-230","230","38 m²","Administrative","Available", 32,68, 6,5),
+      u("2f-231","231","54 m²","Administrative","Available", 28,64, 7,5.5),
+      u("2f-232","232","43 m²","Administrative","Available", 37,80, 6.5,5),
+      u("2f-233","233","104 m²","Administrative","Available", 35,86, 9,7),
+      u("2f-234","234","108 m²","Administrative","Available", 22,72, 9,7),
+      u("2f-235","235","74 m²","Medical","Available", 14,62, 8,6.5),
+      // Bottom-right: 218-219
+      u("2f-218","218","221 m²","Medical","Available", 74,94, 10,5),
+      u("2f-219","219","43 m²","Administrative","Available", 68,82, 7,5.5),
     ],
   },
   {
-    id: "3f", label: "Third Floor", shortLabel: "3F", sliceIndex: 3, unitCount: 10,
-    description: "Upper-level administrative suites with panoramic views, premium finishes, and corporate-grade infrastructure.",
+    id: "3f", label: "Third Floor", shortLabel: "3F", image: floor3F,
+    description: "Upper-level administrative and medical suites with panoramic views and premium finishes. Units from 37 m² to 121 m².",
     units: [
-      { id: "3f-01", number: "3-01", area: "80 m²", type: "Administrative", status: "Available", points: "14,20 30,16 30,34 14,34", cx: 22, cy: 26 },
-      { id: "3f-02", number: "3-02", area: "65 m²", type: "Administrative", status: "Available", points: "30,16 46,13 46,34 30,34", cx: 38, cy: 24 },
-      { id: "3f-03", number: "3-03", area: "120 m²", type: "Corporate", status: "Reserved", points: "46,13 66,16 66,34 46,34", cx: 56, cy: 24 },
-      { id: "3f-04", number: "3-04", area: "50 m²", type: "Administrative", status: "Available", points: "10,34 24,34 24,48 10,48", cx: 17, cy: 41 },
-      { id: "3f-05", number: "3-05", area: "72 m²", type: "Administrative", status: "Available", points: "24,34 42,34 42,48 24,48", cx: 33, cy: 41 },
-      { id: "3f-06", number: "3-06", area: "396 m²", type: "Corporate", status: "Available", points: "42,34 72,34 72,58 42,58", cx: 57, cy: 46 },
-      { id: "3f-07", number: "3-07", area: "58 m²", type: "Administrative", status: "Available", points: "7,48 22,48 22,60 7,60", cx: 15, cy: 54 },
-      { id: "3f-08", number: "3-08", area: "90 m²", type: "Administrative", status: "Sold", points: "22,48 42,48 42,62 22,62", cx: 32, cy: 55 },
-      { id: "3f-09", number: "3-09", area: "110 m²", type: "Corporate", status: "Available", points: "5,60 28,60 28,72 5,72", cx: 17, cy: 66 },
-      { id: "3f-10", number: "3-10", area: "75 m²", type: "Administrative", status: "Available", points: "28,60 48,60 48,72 28,72", cx: 38, cy: 66 },
+      // Top-right: 301-302
+      u("3f-302","302","122 m²","Administrative","Available", 72,10, 10,8),
+      u("3f-301","301","46 m²","Administrative","Available", 73,20, 8,6),
+      // Right strip: 303-309
+      u("3f-303","303","36 m²","Medical","Available", 65,25, 7,5.5),
+      u("3f-304","304","37 m²","Medical","Available", 74,28, 7,5),
+      u("3f-305","305","37 m²","Medical","Available", 74,34, 7,5),
+      u("3f-306","306","37 m²","Medical","Reserved", 74,40, 7,5),
+      u("3f-307","307","37 m²","Medical","Available", 74,46, 7,5),
+      u("3f-308","308","39 m²","Medical","Available", 74,52, 7,5),
+      u("3f-309","309","66 m²","Administrative","Available", 78,28, 7,8),
+      // Right column: 310-316
+      u("3f-310","310","49 m²","Administrative","Available", 78,58, 7,5.5),
+      u("3f-311","311","49 m²","Administrative","Available", 78,64, 7,5.5),
+      u("3f-312","312","49 m²","Medical","Available", 78,70, 7,5.5),
+      u("3f-313","313","49 m²","Administrative","Sold", 78,76, 7,5.5),
+      u("3f-314","314","49 m²","Administrative","Available", 78,82, 7,5.5),
+      u("3f-315","315","49 m²","Medical","Available", 78,88, 7,5),
+      u("3f-316","316","89 m²","Administrative","Available", 72,84, 7,7),
+      // Upper center: 319-322
+      u("3f-319","319","80 m²","Administrative","Available", 45,17, 9,7),
+      u("3f-320","320","46 m²","Administrative","Available", 48,26, 7,5.5),
+      u("3f-321","321","38 m²","Medical","Available", 48,32, 6.5,5),
+      u("3f-322","322","78 m²","Medical","Available", 55,36, 8,6),
+      // Center: 323-329
+      u("3f-323","323","99 m²","Administrative","Reserved", 40,38, 9,7),
+      u("3f-324","324","70 m²","Administrative","Available", 42,48, 8,6),
+      u("3f-325","325","86 m²","Administrative","Available", 50,52, 9,6.5),
+      u("3f-326","326","121 m²","Administrative","Available", 50,60, 10,7),
+      u("3f-327","327","63 m²","Administrative","Available", 38,58, 7,5.5),
+      u("3f-328","328","83 m²","Administrative","Available", 34,56, 7.5,6),
+      u("3f-329","329","38 m²","Medical","Available", 30,54, 6,5),
+      // Left-bottom: 330-336
+      u("3f-330","330","38 m²","Administrative","Available", 32,66, 6,5),
+      u("3f-331","331","40 m²","Administrative","Available", 35,73, 6.5,5),
+      u("3f-332","332","43 m²","Administrative","Available", 37,80, 6.5,5),
+      u("3f-333","333","104 m²","Administrative","Available", 35,86, 9,7),
+      u("3f-334","334","108 m²","Administrative","Available", 22,72, 9,7),
+      u("3f-335","335","34 m²","Medical","Sold", 14,63, 6,5.5),
+      u("3f-336","336","54 m²","Administrative","Available", 20,63, 6.5,5.5),
+      // Bottom-right: 317-318
+      u("3f-317","317","55 m²","Medical","Available", 72,92, 7,5),
+      u("3f-318","318","221 m²","Medical","Available", 74,96, 10,4),
     ],
   },
   {
-    id: "rf", label: "Roof Floor", shortLabel: "RF", sliceIndex: 4, unitCount: 4,
+    id: "rf", label: "Roof Floor", shortLabel: "RF", image: floorRF,
     description: "Exclusive rooftop spaces with open-air potential — ideal for restaurants, lounges, and premium F&B concepts.",
     units: [
-      { id: "rf-01", number: "R-01", area: "200 m²", type: "F&B", status: "Available", points: "16,18 44,14 44,38 16,38", cx: 30, cy: 26 },
-      { id: "rf-02", number: "R-02", area: "150 m²", type: "F&B", status: "Available", points: "44,14 72,18 72,38 44,38", cx: 58, cy: 26 },
-      { id: "rf-03", number: "R-03", area: "80 m²", type: "F&B", status: "Reserved", points: "12,38 36,38 36,56 12,56", cx: 24, cy: 47 },
-      { id: "rf-04", number: "R-04", area: "120 m²", type: "F&B", status: "Available", points: "36,38 66,38 66,58 36,58", cx: 51, cy: 48 },
+      u("rf-01","R-01","29 m²","F&B","Available", 45,18, 7,9),
+      u("rf-02","R-02","148 m²","F&B","Available", 46,28, 13,12),
+      u("rf-03","R-03","59 m²","F&B","Available", 32,48, 6,12),
+      u("rf-04","R-04","39 m²","F&B","Available", 35,62, 7,8),
     ],
   },
 ];
 
 /* ─── Component ─── */
-
 const InteractiveFloorPlan = () => {
   const [activeFloor, setActiveFloor] = useState("gf");
   const [hoveredUnit, setHoveredUnit] = useState<string | null>(null);
   const [selectedUnit, setSelectedUnit] = useState<FloorUnit | null>(null);
+  const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const panStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const currentFloor = floorsData.find((f) => f.id === activeFloor)!;
 
+  const resetView = useCallback(() => { setZoom(1); setPan({ x: 0, y: 0 }); }, []);
+
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault();
+    setZoom((z) => Math.min(3, Math.max(1, z - e.deltaY * 0.002)));
+  }, []);
+
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (zoom <= 1) return;
+    setIsPanning(true);
+    panStart.current = { x: e.clientX, y: e.clientY, panX: pan.x, panY: pan.y };
+  }, [zoom, pan]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isPanning) return;
+    const dx = e.clientX - panStart.current.x;
+    const dy = e.clientY - panStart.current.y;
+    setPan({ x: panStart.current.panX + dx, y: panStart.current.panY + dy });
+  }, [isPanning]);
+
+  const handleMouseUp = useCallback(() => setIsPanning(false), []);
+
+  useEffect(() => {
+    resetView();
+    setSelectedUnit(null);
+  }, [activeFloor, resetView]);
+
+  // Stats
+  const available = currentFloor.units.filter((u) => u.status === "Available").length;
+  const reserved = currentFloor.units.filter((u) => u.status === "Reserved").length;
+  const sold = currentFloor.units.filter((u) => u.status === "Sold").length;
+
   return (
     <section className="py-20 md:py-28" style={{ background: "hsl(var(--ivory))" }}>
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -180,63 +378,100 @@ const InteractiveFloorPlan = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
           {/* ── Floor Selector ── */}
           <div className="lg:col-span-2">
-            <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+            <div className="flex lg:flex-col gap-1 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
               {floorsData.map((floor) => {
                 const isActive = activeFloor === floor.id;
                 return (
                   <button
                     key={floor.id}
-                    onClick={() => { setActiveFloor(floor.id); setSelectedUnit(null); }}
-                    className="flex-shrink-0 relative px-3.5 py-2.5 rounded-lg text-left transition-all duration-400"
+                    onClick={() => setActiveFloor(floor.id)}
+                    className="flex-shrink-0 relative px-3 py-2 rounded-lg text-left transition-all duration-300"
                     style={{
                       background: isActive ? "hsl(var(--navy))" : "transparent",
-                      border: `1px solid ${isActive ? "transparent" : "hsl(var(--border) / 0.3)"}`,
+                      border: `1px solid ${isActive ? "transparent" : "hsl(var(--border) / 0.2)"}`,
                     }}
                   >
                     <div className="flex items-baseline gap-2">
                       <span
-                        className="font-display text-[13px] font-bold"
+                        className="font-display text-[12px] font-bold"
                         style={{ color: isActive ? "hsl(var(--primary-foreground))" : "hsl(var(--foreground))" }}
                       >
                         {floor.shortLabel}
                       </span>
                       <span
-                        className="hidden lg:inline text-[11px] font-body"
-                        style={{ color: isActive ? "hsl(var(--primary-foreground) / 0.55)" : "hsl(var(--steel))" }}
+                        className="hidden lg:inline text-[10px] font-body"
+                        style={{ color: isActive ? "hsl(var(--primary-foreground) / 0.6)" : "hsl(var(--steel))" }}
                       >
                         {floor.label}
                       </span>
                     </div>
                     <p
-                      className="text-[9px] font-body mt-0.5 tracking-wide"
-                      style={{ color: isActive ? "hsl(var(--primary-foreground) / 0.35)" : "hsl(var(--steel) / 0.6)" }}
+                      className="text-[8px] font-body mt-0.5 tracking-wide"
+                      style={{ color: isActive ? "hsl(var(--primary-foreground) / 0.4)" : "hsl(var(--steel) / 0.5)" }}
                     >
-                      {floor.unitCount} units
+                      {floor.units.length} units
                     </p>
-                    {isActive && (
-                      <motion.div
-                        layoutId="floor-indicator"
-                        className="absolute inset-0 rounded-lg"
-                        style={{ background: "hsl(var(--navy))", zIndex: -1 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                      />
-                    )}
                   </button>
                 );
               })}
             </div>
 
             {/* Legend */}
-            <div className="hidden lg:flex flex-col gap-2 mt-6 pt-5" style={{ borderTop: "1px solid hsl(var(--border) / 0.2)" }}>
-              {(["Available", "Reserved", "Sold"] as UnitStatus[]).map((s) => (
+            <div className="hidden lg:flex flex-col gap-2 mt-5 pt-4" style={{ borderTop: "1px solid hsl(var(--border) / 0.15)" }}>
+              <p className="text-[8px] font-body font-semibold tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--steel) / 0.6)" }}>
+                Availability
+              </p>
+              {([
+                ["Available", available],
+                ["Reserved", reserved],
+                ["Sold", sold],
+              ] as [UnitStatus, number][]).map(([s, count]) => (
                 <div key={s} className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full" style={{ background: statusColors[s] }} />
-                  <span className="text-[10px] font-body text-muted-foreground">{s}</span>
+                  <span className="w-2.5 h-2.5 rounded-sm" style={{ background: statusColors[s], opacity: 0.8 }} />
+                  <span className="text-[10px] font-body text-muted-foreground flex-1">{s}</span>
+                  <span className="text-[10px] font-body" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: "hsl(var(--steel))" }}>
+                    {count}
+                  </span>
                 </div>
               ))}
+            </div>
+
+            {/* Zoom controls */}
+            <div className="hidden lg:flex flex-col gap-1 mt-4 pt-4" style={{ borderTop: "1px solid hsl(var(--border) / 0.15)" }}>
+              <p className="text-[8px] font-body font-semibold tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--steel) / 0.6)" }}>
+                View
+              </p>
+              <div className="flex gap-1">
+                <button
+                  onClick={() => setZoom((z) => Math.min(3, z + 0.3))}
+                  className="flex items-center justify-center w-7 h-7 rounded-md transition-colors hover:bg-muted/60"
+                  style={{ border: "1px solid hsl(var(--border) / 0.2)" }}
+                >
+                  <ZoomIn size={12} className="text-muted-foreground" />
+                </button>
+                <button
+                  onClick={() => setZoom((z) => Math.max(1, z - 0.3))}
+                  className="flex items-center justify-center w-7 h-7 rounded-md transition-colors hover:bg-muted/60"
+                  style={{ border: "1px solid hsl(var(--border) / 0.2)" }}
+                >
+                  <ZoomOut size={12} className="text-muted-foreground" />
+                </button>
+                <button
+                  onClick={resetView}
+                  className="flex items-center justify-center w-7 h-7 rounded-md transition-colors hover:bg-muted/60"
+                  style={{ border: "1px solid hsl(var(--border) / 0.2)" }}
+                >
+                  <Maximize2 size={12} className="text-muted-foreground" />
+                </button>
+              </div>
+              {zoom > 1 && (
+                <p className="text-[9px] font-body text-muted-foreground mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                  {Math.round(zoom * 100)}%
+                </p>
+              )}
             </div>
           </div>
 
@@ -248,75 +483,68 @@ const InteractiveFloorPlan = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="relative rounded-xl overflow-hidden"
+                transition={{ duration: 0.35 }}
+                className="relative rounded-xl overflow-hidden select-none"
                 style={{
-                  background: "#f5f3ef",
+                  background: "#f7f5f1",
                   boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.06)",
-                  border: "1px solid hsl(var(--border) / 0.15)",
+                  border: "1px solid hsl(var(--border) / 0.12)",
+                  cursor: zoom > 1 ? (isPanning ? "grabbing" : "grab") : "default",
                 }}
+                ref={containerRef}
+                onWheel={handleWheel}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
               >
-                {/* Floor plan image — full bleed, clipped to correct slice */}
-                <div className="relative w-full" style={{ paddingBottom: "130%" }}>
-                  <div className="absolute inset-0 overflow-hidden">
-                    <img
-                      src={floorPlanImg}
-                      alt={`${currentFloor.label} — Solaria Mall`}
-                      className="absolute h-full object-cover"
-                      style={{
-                        width: "500%",
-                        left: `${-currentFloor.sliceIndex * 100}%`,
-                        top: 0,
-                      }}
-                    />
-                  </div>
+                <div
+                  className="relative w-full transition-transform duration-200 ease-out"
+                  style={{
+                    transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
+                    transformOrigin: "center center",
+                  }}
+                >
+                  {/* Floor plan image */}
+                  <img
+                    src={currentFloor.image}
+                    alt={`${currentFloor.label} — Solaria Mall`}
+                    className="w-full h-auto block"
+                    draggable={false}
+                  />
 
-                  {/* SVG overlay with polygon units */}
+                  {/* Unit overlays */}
                   <svg
                     className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 100 80"
-                    preserveAspectRatio="xMidYMid meet"
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
                     style={{ pointerEvents: "none" }}
                   >
                     {currentFloor.units.map((unit) => {
                       const isHovered = hoveredUnit === unit.id;
                       const isSelected = selectedUnit?.id === unit.id;
                       const isActive = isHovered || isSelected;
-
-                      const baseFill = unit.status === "Sold"
-                        ? "rgba(140,140,140,0.08)"
-                        : unit.status === "Reserved"
-                          ? "rgba(200,165,50,0.06)"
-                          : "rgba(25,50,100,0.04)";
-
-                      const activeFill = unit.status === "Sold"
-                        ? "rgba(140,140,140,0.22)"
-                        : unit.status === "Reserved"
-                          ? "rgba(200,165,50,0.18)"
-                          : "rgba(25,50,100,0.14)";
-
-                      const activeStroke = unit.status === "Sold"
-                        ? "rgba(140,140,140,0.5)"
-                        : unit.status === "Reserved"
-                          ? "rgba(200,165,50,0.5)"
-                          : "rgba(25,50,100,0.4)";
+                      const fills = statusFills[unit.status];
 
                       return (
-                        <polygon
+                        <rect
                           key={unit.id}
-                          points={unit.points}
-                          fill={isActive ? activeFill : baseFill}
-                          stroke={isActive ? activeStroke : "rgba(25,50,100,0.05)"}
-                          strokeWidth={isSelected ? "0.4" : "0.2"}
+                          x={unit.x}
+                          y={unit.y}
+                          width={unit.w}
+                          height={unit.h}
+                          rx="0.3"
+                          fill={isActive ? fills.hover : fills.base}
+                          stroke={isActive ? fills.stroke : "transparent"}
+                          strokeWidth={isSelected ? "0.35" : "0.2"}
                           style={{
                             cursor: "pointer",
                             pointerEvents: "all",
-                            transition: "fill 0.35s ease, stroke 0.35s ease",
-                            filter: isHovered ? "drop-shadow(0 0 4px rgba(25,50,100,0.12))" : "none",
+                            transition: "fill 0.25s ease, stroke 0.25s ease",
                           }}
                           onMouseEnter={() => setHoveredUnit(unit.id)}
                           onMouseLeave={() => setHoveredUnit(null)}
-                          onClick={() => setSelectedUnit(unit)}
+                          onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
                         />
                       );
                     })}
@@ -324,46 +552,45 @@ const InteractiveFloorPlan = () => {
 
                   {/* Tooltip */}
                   <AnimatePresence>
-                    {hoveredUnit && !selectedUnit && (() => {
+                    {hoveredUnit && (() => {
                       const unit = currentFloor.units.find((u) => u.id === hoveredUnit);
                       if (!unit) return null;
                       const Icon = typeIcons[unit.type];
+                      const tipX = Math.min(Math.max(unit.x + unit.w / 2, 10), 90);
+                      const tipY = unit.y;
 
                       return (
                         <motion.div
                           key={unit.id}
-                          initial={{ opacity: 0, y: 3 }}
+                          initial={{ opacity: 0, y: 4 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 3 }}
-                          transition={{ duration: 0.15 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.12 }}
                           className="absolute z-30 pointer-events-none"
                           style={{
-                            left: `${Math.min(Math.max(unit.cx, 12), 88)}%`,
-                            top: `${Math.max((unit.cy / 80) * 100 - 3, 2)}%`,
-                            transform: "translate(-50%, -100%)",
+                            left: `${tipX}%`,
+                            top: `${tipY}%`,
+                            transform: "translate(-50%, -105%)",
                           }}
                         >
                           <div
-                            className="rounded-md px-3 py-2"
+                            className="rounded-md px-2.5 py-1.5"
                             style={{
-                              background: "rgba(255,253,248,0.92)",
-                              backdropFilter: "blur(12px)",
-                              boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
-                              border: "1px solid rgba(0,0,0,0.06)",
-                              minWidth: "130px",
+                              background: "rgba(255,253,248,0.94)",
+                              backdropFilter: "blur(14px)",
+                              boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                              border: "1px solid rgba(0,0,0,0.05)",
+                              whiteSpace: "nowrap",
                             }}
                           >
-                            <div className="flex items-center gap-1.5 mb-1">
-                              <Icon size={10} style={{ color: "hsl(var(--navy))" }} />
-                              <span className="font-display text-[11px] font-bold text-foreground">
-                                {unit.number}
+                            <div className="flex items-center gap-1.5">
+                              <Icon size={9} style={{ color: "hsl(var(--navy))" }} />
+                              <span className="font-display text-[10px] font-bold text-foreground">
+                                Unit {unit.number}
                               </span>
-                              <span className="ml-auto flex items-center gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full" style={{ background: statusColors[unit.status] }} />
-                                <span className="text-[8px] font-body" style={{ color: statusColors[unit.status] }}>{unit.status}</span>
-                              </span>
+                              <span className="w-1.5 h-1.5 rounded-full ml-1" style={{ background: statusColors[unit.status] }} />
                             </div>
-                            <div className="flex gap-3 text-[9px] font-body text-muted-foreground">
+                            <div className="flex gap-2 text-[8px] font-body text-muted-foreground mt-0.5">
                               <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600 }}>{unit.area}</span>
                               <span>·</span>
                               <span>{unit.type}</span>
@@ -376,11 +603,11 @@ const InteractiveFloorPlan = () => {
                 </div>
 
                 {/* Mobile legend */}
-                <div className="flex lg:hidden items-center justify-center gap-5 py-2.5" style={{ borderTop: "1px solid hsl(var(--border) / 0.15)" }}>
+                <div className="flex lg:hidden items-center justify-center gap-4 py-2" style={{ borderTop: "1px solid hsl(var(--border) / 0.12)" }}>
                   {(["Available", "Reserved", "Sold"] as UnitStatus[]).map((s) => (
                     <div key={s} className="flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full" style={{ background: statusColors[s] }} />
-                      <span className="text-[9px] font-body text-muted-foreground">{s}</span>
+                      <span className="text-[8px] font-body text-muted-foreground">{s}</span>
                     </div>
                   ))}
                 </div>
@@ -392,28 +619,28 @@ const InteractiveFloorPlan = () => {
           <AnimatePresence>
             {selectedUnit && (
               <motion.div
-                initial={{ opacity: 0, x: 24 }}
+                initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 24 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="lg:col-span-4"
               >
                 <div
-                  className="rounded-xl p-5 md:p-6 h-full"
+                  className="rounded-xl p-5 h-full"
                   style={{
-                    background: "rgba(255,253,248,0.7)",
+                    background: "rgba(255,253,248,0.75)",
                     backdropFilter: "blur(20px)",
-                    border: "1px solid hsl(var(--border) / 0.2)",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.03), 0 8px 28px rgba(0,0,0,0.06)",
+                    border: "1px solid hsl(var(--border) / 0.15)",
+                    boxShadow: "0 1px 2px rgba(0,0,0,0.02), 0 6px 24px rgba(0,0,0,0.05)",
                   }}
                 >
                   {/* Header */}
-                  <div className="flex items-start justify-between mb-5">
+                  <div className="flex items-start justify-between mb-4">
                     <div>
-                      <p className="text-[9px] font-body font-semibold tracking-[0.2em] uppercase mb-1.5" style={{ color: "hsl(var(--steel))" }}>
+                      <p className="text-[8px] font-body font-semibold tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--steel) / 0.6)" }}>
                         {currentFloor.shortLabel} · Unit Detail
                       </p>
-                      <h3 className="font-display text-xl font-bold text-foreground">
+                      <h3 className="font-display text-lg font-bold text-foreground">
                         Unit {selectedUnit.number}
                       </h3>
                     </div>
@@ -421,25 +648,25 @@ const InteractiveFloorPlan = () => {
                       onClick={() => setSelectedUnit(null)}
                       className="p-1 rounded-md transition-colors hover:bg-muted/50"
                     >
-                      <X size={14} className="text-muted-foreground" />
+                      <X size={13} className="text-muted-foreground" />
                     </button>
                   </div>
 
-                  {/* Status */}
+                  {/* Status badge */}
                   <span
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[9px] font-body font-semibold tracking-wider uppercase mb-5"
+                    className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[8px] font-body font-semibold tracking-wider uppercase mb-4"
                     style={{
-                      background: `${statusColors[selectedUnit.status]}12`,
+                      background: `${statusColors[selectedUnit.status]}10`,
                       color: statusColors[selectedUnit.status],
-                      border: `1px solid ${statusColors[selectedUnit.status]}25`,
+                      border: `1px solid ${statusColors[selectedUnit.status]}20`,
                     }}
                   >
                     <span className="w-1.5 h-1.5 rounded-full" style={{ background: statusColors[selectedUnit.status] }} />
                     {selectedUnit.status}
                   </span>
 
-                  {/* Details grid */}
-                  <div className="space-y-0 mb-6">
+                  {/* Details */}
+                  <div className="space-y-0 mb-5">
                     {[
                       { label: "Unit", value: selectedUnit.number },
                       { label: "Area", value: selectedUnit.area },
@@ -448,14 +675,14 @@ const InteractiveFloorPlan = () => {
                     ].map((item, i) => (
                       <div
                         key={item.label}
-                        className="flex items-center justify-between py-3"
-                        style={{ borderBottom: i < 3 ? "1px solid hsl(var(--border) / 0.15)" : "none" }}
+                        className="flex items-center justify-between py-2.5"
+                        style={{ borderBottom: i < 3 ? "1px solid hsl(var(--border) / 0.1)" : "none" }}
                       >
-                        <span className="text-[10px] font-body tracking-[0.08em] text-muted-foreground uppercase">
+                        <span className="text-[9px] font-body tracking-[0.08em] text-muted-foreground uppercase">
                           {item.label}
                         </span>
                         <span
-                          className="text-[12px] font-semibold text-foreground"
+                          className="text-[11px] font-semibold text-foreground"
                           style={{ fontFamily: item.label === "Area" ? "'Montserrat', sans-serif" : "inherit" }}
                         >
                           {item.value}
@@ -464,26 +691,26 @@ const InteractiveFloorPlan = () => {
                     ))}
                   </div>
 
-                  {/* Description */}
-                  <p className="text-muted-foreground font-body text-[12px] leading-[1.7] mb-6" style={{ color: "hsl(var(--steel))" }}>
+                  {/* Floor description */}
+                  <p className="text-[11px] font-body leading-[1.7] mb-5" style={{ color: "hsl(var(--steel))" }}>
                     {currentFloor.description}
                   </p>
 
                   {/* CTAs */}
-                  <div className="space-y-2.5">
+                  <div className="space-y-2">
                     <Link
                       to="/contact"
-                      className="btn-premium w-full justify-center px-5 py-2.5 text-[10px] font-body tracking-[0.14em] uppercase"
+                      className="btn-premium w-full justify-center px-4 py-2 text-[9px] font-body tracking-[0.14em] uppercase"
                     >
                       Inquire About This Unit
-                      <ArrowRight size={12} />
+                      <ArrowRight size={11} />
                     </Link>
                     <Link
                       to="/available-units"
-                      className="btn-outline-dark w-full justify-center px-5 py-2.5 text-[10px] font-body tracking-[0.14em] uppercase rounded-lg"
+                      className="btn-outline-dark w-full justify-center px-4 py-2 text-[9px] font-body tracking-[0.14em] uppercase rounded-lg"
                     >
                       View All Units
-                      <ArrowRight size={12} />
+                      <ArrowRight size={11} />
                     </Link>
                   </div>
                 </div>
