@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Eye, Target, Heart, Award, Clock, Building2 } from "lucide-react";
+import { CheckCircle2, Eye, Target, Heart, Award, Clock, Building2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import useSEO from "@/hooks/useSEO";
@@ -12,7 +12,7 @@ const whyChoose = [
   { icon: Heart, text: "400+ Satisfied Clients" },
   { icon: Target, text: "Investments Exceeding 3 Billion EGP" },
   { icon: Clock, text: "Delivered Projects Ahead of Schedule" },
-  { icon: CheckCircle, text: "Owned & Managed by ASWAQ for Guaranteed Quality" },
+  { icon: CheckCircle2, text: "Owned & Managed by ASWAQ for Guaranteed Quality" },
 ];
 
 const stats = [
@@ -51,19 +51,19 @@ const About = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="relative z-10 text-center px-4 max-w-3xl"
         >
-          <p className="text-primary-foreground/60 font-body font-semibold tracking-[0.25em] uppercase text-xs mb-4">Our Story</p>
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-6">
+          <p className="text-primary-foreground/40 font-body font-semibold tracking-[0.25em] uppercase text-[10px] mb-4">Our Story</p>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
             About Us
           </h1>
-          <p className="text-primary-foreground/80 font-body max-w-2xl mx-auto text-base leading-relaxed">
+          <p className="text-primary-foreground/55 font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
             ASWAQ Developments, established in 2019, represents a strategic milestone built on more than 20 years of proven success across residential, commercial, industrial, and resort sectors.
           </p>
         </motion.div>
       </section>
 
       {/* About Content */}
-      <section className="section-padding bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ const About = () => {
             className="text-center"
           >
             <div className="section-divider mb-8" />
-            <p className="text-muted-foreground font-body leading-relaxed text-lg">
+            <p className="text-muted-foreground font-body leading-[1.9] text-[15px]">
               Formed in partnership with real estate firms active since 2002, ASWAQ was created to streamline the management of existing and future projects, enhance profitability, and exceed client expectations while opening new markets with diverse investment and employment opportunities. Since its inception, ASWAQ has continued to thrive by delivering high-quality Residential, Commercial, Administrative, and Medical projects.
             </p>
           </motion.div>
@@ -80,21 +80,22 @@ const About = () => {
       </section>
 
       {/* Mission Vision Values */}
-      <section className="section-padding bg-cream">
+      <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="premium-card p-8 md:p-10"
+              className="bg-card rounded-2xl border border-border/30 p-8 md:p-10"
+              style={{ boxShadow: 'var(--shadow-sm)' }}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <Eye size={24} className="text-primary" />
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
+                <Eye size={24} className="text-accent" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">Our Vision</h3>
-              <p className="text-muted-foreground font-body leading-relaxed">
+              <p className="text-muted-foreground font-body leading-relaxed text-[15px]">
                 Solidifying our legacy in the industry by delivering excellence and innovation in real estate development across Egypt and the Middle East.
               </p>
             </motion.div>
@@ -103,13 +104,14 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="premium-card p-8 md:p-10"
+              className="bg-card rounded-2xl border border-border/30 p-8 md:p-10"
+              style={{ boxShadow: 'var(--shadow-sm)' }}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <Target size={24} className="text-primary" />
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
+                <Target size={24} className="text-accent" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">Our Mission</h3>
-              <p className="text-muted-foreground font-body leading-relaxed">
+              <p className="text-muted-foreground font-body leading-relaxed text-[15px]">
                 To deliver promises of excellence and trustworthy investments through innovation in the Egyptian and Middle Eastern markets by offering the perfect investment opportunities for all. We are committed to achieving the highest standards through cutting-edge products and exceptional management.
               </p>
             </motion.div>
@@ -118,7 +120,7 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -127,23 +129,24 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="mb-14"
           >
-            <div className="section-divider mb-6" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            <p className="section-label mb-3">Our Strengths</p>
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
               Why Choose Us?
             </h2>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {whyChoose.map((item, i) => (
               <motion.div
                 key={item.text}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="flex items-center gap-4 p-5 bg-cream rounded-xl text-left border border-border/50 hover:border-accent/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out"
+                transition={{ delay: i * 0.06, duration: 0.4 }}
+                className="flex items-center gap-4 p-5 bg-card rounded-xl text-left border border-border/30 hover:border-accent/15 hover:-translate-y-1 transition-all duration-300"
+                style={{ boxShadow: 'var(--shadow-sm)' }}
               >
-                <div className="shrink-0 w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <item.icon size={18} className="text-primary" />
+                <div className="shrink-0 w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center">
+                  <item.icon size={18} className="text-accent" />
                 </div>
                 <span className="font-body font-medium text-foreground text-sm">{item.text}</span>
               </motion.div>
@@ -153,7 +156,7 @@ const About = () => {
       </section>
 
       {/* Stats Bar */}
-      <section className="bg-primary py-12 md:py-16">
+      <section className="bg-primary py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
@@ -164,10 +167,10 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
-                <div className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary-foreground mb-3">
+                <div className="font-['Montserrat'] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary-foreground mb-3">
                   <AnimatedCounter value={stat.value} />
                 </div>
-                <div className="text-primary-foreground/70 font-body text-sm tracking-wide">{stat.label}</div>
+                <div className="text-primary-foreground/45 font-body text-sm tracking-wide">{stat.label}</div>
               </motion.div>
             ))}
           </div>

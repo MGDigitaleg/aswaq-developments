@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Eye, Target, Heart, Award, Clock, Building2 } from "lucide-react";
+import { CheckCircle2, Eye, Target, Heart, Award, Clock, Building2 } from "lucide-react";
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
-import aboutHero from "@/assets/about-hero.webp";
 import useSEO from "@/hooks/useSEO";
 import AnimatedCounter from "@/components/AnimatedCounter";
 
@@ -12,7 +11,7 @@ const whyChoose = [
   { icon: Heart, text: "أكثر من 400 عميل واثق بنا، نفتخر ببناء علاقات مستدامة مع شركائنا" },
   { icon: Target, text: "استثمارات تتخطى 3 مليارات جنيه مصري تضمن استمرارية وتطور مشاريعنا" },
   { icon: Clock, text: "أعمال سابقة وتصديق بالتسليم قبل الموعد بأعلى معايير الانضباط" },
-  { icon: CheckCircle, text: "إدارة وتشغيل مباشر بواسطة شركة أسواق لضمان استدامة قيمة وحداتك" },
+  { icon: CheckCircle2, text: "إدارة وتشغيل مباشر بواسطة شركة أسواق لضمان استدامة قيمة وحداتك" },
 ];
 
 const stats = [
@@ -38,46 +37,74 @@ const AboutAr = () => {
         >
           <source src="/videos/about-hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-primary/70" />
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="relative z-10 text-center px-4 max-w-3xl">
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-primary-foreground mb-6">من نحن</h1>
-          <p className="text-primary-foreground/80 font-arabic max-w-2xl mx-auto">
+        <div className="absolute inset-0 hero-gradient" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="relative z-10 text-center px-4 max-w-3xl"
+        >
+          <p className="text-primary-foreground/40 font-arabic font-semibold tracking-[0.25em] uppercase text-[10px] mb-4">قصتنا</p>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
+            من نحن
+          </h1>
+          <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
             نحن في مجال الاستثمار العقاري واحدة من الشركات الرائدة في السوق المصري. نبني المستقبل بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا.
           </p>
         </motion.div>
       </section>
 
       {/* About Content */}
-      <section className="py-12 md:py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-muted-foreground font-arabic leading-relaxed text-lg text-center mb-6">
-            نحن لسنا مجرد مطور عقاري، بل نمتد بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا، ونجاح شركائنا في الاستثمار المستدام.
-          </motion.p>
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-muted-foreground font-arabic leading-relaxed text-lg text-center">
-            لقد ركزنا جهودنا منذ انطلاقنا في الشروق، في منطقة شرق القاهرة، حيث نقدم مشاريع عقارية متكاملة تخدم قطاعات التجزئة والإدارة والطب.
-          </motion.p>
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="section-divider mb-8" />
+            <p className="text-muted-foreground font-arabic leading-[1.9] text-[15px]">
+              نحن لسنا مجرد مطور عقاري، بل نمتد بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا، ونجاح شركائنا في الاستثمار المستدام. لقد ركزنا جهودنا منذ انطلاقنا في الشروق، في منطقة شرق القاهرة، حيث نقدم مشاريع عقارية متكاملة تخدم قطاعات التجزئة والإدارة والطب.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Mission Vision */}
-      <section className="py-12 md:py-16 bg-cream">
+      <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-2xl border border-border/50 shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <Eye size={24} className="text-primary" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-card rounded-2xl border border-border/30 p-8 md:p-10"
+              style={{ boxShadow: 'var(--shadow-sm)' }}
+            >
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
+                <Eye size={24} className="text-accent" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">رؤيتنا</h3>
-              <p className="text-muted-foreground font-arabic">
+              <p className="text-muted-foreground font-arabic leading-relaxed text-[15px]">
                 نبني مستقبلًا عقاريًا مبتكرًا في مصر والشرق الأوسط.
               </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-background p-8 rounded-2xl border border-border/50 shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <Target size={24} className="text-primary" />
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-card rounded-2xl border border-border/30 p-8 md:p-10"
+              style={{ boxShadow: 'var(--shadow-sm)' }}
+            >
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
+                <Target size={24} className="text-accent" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">مهمتنا</h3>
-              <p className="text-muted-foreground font-arabic">
+              <p className="text-muted-foreground font-arabic leading-relaxed text-[15px]">
                 هدفنا توفير فرص استثمارية مثالية عبر منتجات عقارية متطورة وإدارة احترافية تضع ثقتكم في المقام الأول.
               </p>
             </motion.div>
@@ -86,16 +113,33 @@ const AboutAr = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-12 md:py-16 bg-background">
+      <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">
-            لماذا تختار "أسواق" كشريك في استثمارك العقاري؟
-          </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-14"
+          >
+            <p className="section-label mb-3">نقاط قوتنا</p>
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+              لماذا تختار "أسواق" كشريك في استثمارك العقاري؟
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {whyChoose.map((item, i) => (
-              <motion.div key={item.text} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex items-center gap-4 p-5 bg-cream rounded-2xl border border-border/50 hover:border-accent/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out text-right">
-                <div className="shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <item.icon size={18} className="text-primary" />
+              <motion.div
+                key={item.text}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.4 }}
+                className="flex items-center gap-4 p-5 bg-card rounded-xl text-right border border-border/30 hover:border-accent/15 hover:-translate-y-1 transition-all duration-300"
+                style={{ boxShadow: 'var(--shadow-sm)' }}
+              >
+                <div className="shrink-0 w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center">
+                  <item.icon size={18} className="text-accent" />
                 </div>
                 <span className="font-arabic font-medium text-foreground text-sm">{item.text}</span>
               </motion.div>
@@ -105,13 +149,21 @@ const AboutAr = () => {
       </section>
 
       {/* Stats Bar */}
-      <section className="bg-primary py-16">
+      <section className="bg-primary py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
-              <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <div className="font-display text-4xl md:text-5xl font-bold tracking-tight text-primary-foreground mb-2"><AnimatedCounter value={stat.value} /></div>
-                <div className="text-primary-foreground/70 font-arabic text-sm">{stat.label}</div>
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+              >
+                <div className="font-['Montserrat'] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary-foreground mb-3">
+                  <AnimatedCounter value={stat.value} />
+                </div>
+                <div className="text-primary-foreground/45 font-arabic text-sm tracking-wide">{stat.label}</div>
               </motion.div>
             ))}
           </div>

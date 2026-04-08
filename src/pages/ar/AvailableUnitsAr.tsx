@@ -56,7 +56,7 @@ const AvailableUnitsAr = () => {
 
   return (
     <Layout>
-      <section className="bg-primary py-12 md:py-16">
+      <section className="bg-primary pt-40 pb-16 min-h-[450px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-primary-foreground/60 font-arabic font-medium tracking-widest text-sm mb-3">اختر وحدتك</p>
@@ -87,7 +87,7 @@ const AvailableUnitsAr = () => {
                   <span className="text-3xl mb-3 block">{type.icon}</span>
                   <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4">{type.title}</h2>
                   <p className="text-muted-foreground font-arabic leading-relaxed mb-6">{type.description}</p>
-                  <Link to="/ar/units" className="inline-block bg-accent text-accent-foreground px-6 py-2.5 font-semibold rounded-lg hover:bg-gold-light hover:shadow-md transition-all duration-300 font-arabic text-sm">
+                  <Link to="/ar/units" className="inline-block bg-primary text-primary-foreground px-6 py-2.5 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic text-sm">
                     {type.cta}
                   </Link>
                 </div>

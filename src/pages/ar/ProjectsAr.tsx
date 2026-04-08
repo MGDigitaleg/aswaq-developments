@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 import useSEO from "@/hooks/useSEO";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
@@ -14,25 +15,29 @@ const projects = [
     name: "سولاريا مول",
     image: solariaImg,
     href: "/ar/projects/solaria-mall",
-    description: "أحد أرقى مشاريع التطوير العقاري بمدينة الشروق. مصمم ليكون وجهة شاملة تضم مساحات تجزئة قوية وعيادات طبية عالمية المستوى. الخيار الأمثل للباحثين عن عقارات تجارية للبيع.",
+    tag: "تجزئة وطبي",
+    description: "أحد أرقى مشاريع التطوير العقاري بمدينة الشروق. مصمم ليكون وجهة شاملة تضم مساحات تجزئة قوية وعيادات طبية عالمية المستوى.",
   },
   {
     name: "أرينا مول",
     image: arenaImg,
     href: "/ar/projects/arena-mall",
-    description: "مشروع متعدد الاستخدامات يقع في موقع استراتيجي. المول يوفر وحدات إدارية وطبية وتجارية بمساحات مرنة، ويعد وجهة استثمارية قوية تجمع بين الموقع المتميز والكثافة الزوارية.",
+    tag: "تجاري وطبي",
+    description: "مشروع متعدد الاستخدامات يقع في موقع استراتيجي. المول يوفر وحدات إدارية وطبية وتجارية بمساحات مرنة.",
   },
   {
     name: "ميركادو مول",
     image: mercadoImg,
     href: "/ar/projects/mercado-mall",
-    description: "أكبر مول خدمات متكامل في مدينة الشروق. إذا كنت تبحث عن محلات للإيجار أو مساحات تجارية، فإن ميركادو يوفر لك بيئة عمل مثالية تستهدف جمهوراً عريضاً يضمن نجاح أي نشاط تجاري.",
+    tag: "متعدد الاستخدامات",
+    description: "أكبر مول خدمات متكامل في مدينة الشروق. يوفر بيئة عمل مثالية تستهدف جمهوراً عريضاً يضمن نجاح أي نشاط تجاري.",
   },
   {
     name: "سيتي هب مول",
     image: cityhubImg,
     href: "/ar/projects/city-hub-mall",
-    description: "يقع في منطقة النوادي بمدينة الشروق، ويقدم وحدات تجارية للإيجار وعقارات للبيع تتميز بتخطيط ذكي. الخيار الأفضل لمن يبحث عن استثمار عقاري طويل الأمد يضمن نمو القيمة الرأسمالية.",
+    tag: "تجاري وتجزئة",
+    description: "يقع في منطقة النوادي بمدينة الشروق، ويقدم وحدات تجارية للإيجار وعقارات للبيع تتميز بتخطيط ذكي.",
   },
 ];
 
@@ -49,49 +54,71 @@ const ProjectsAr = () => {
 
   return (
     <Layout>
-      <section className="relative h-[320px] md:h-[380px] flex items-center justify-center pt-[120px] overflow-hidden">
-        <img src={heroImg} alt="مشاريع أسواق العقارية" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-primary/70" />
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative z-10 font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground text-center px-4">
-          مشاريع أسواق للتطوير العقاري
-        </motion.h1>
+      {/* Hero */}
+      <section className="relative min-h-[420px] md:min-h-[480px] flex items-end pb-16 md:pb-20 overflow-hidden">
+        <img src={heroImg} alt="مشاريع أسواق العقارية في الشروق" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, hsl(226 76% 6% / 0.4) 0%, hsl(226 76% 6% / 0.75) 100%)' }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-40">
+          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <p className="text-xs font-arabic font-semibold tracking-[0.12em] mb-4" style={{ color: 'hsl(var(--gold) / 0.75)' }}>محفظة مشاريعنا</p>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground leading-tight max-w-2xl">
+              مشاريع أسواق للتطوير العقاري
+            </h1>
+          </motion.div>
+        </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center">
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-6">مشاريع عقارية متكاملة في قلب مدينة الشروق</h2>
-            <p className="text-muted-foreground font-arabic leading-relaxed mb-6">
-              تعتبر مشاريع شركة أسواق للتطوير العقاري علامة فارقة في مجال الاستثمار العقاري في مصر، حيث نقدم حلولاً عقارية متكاملة تلبي احتياجات المستثمرين وأصحاب الأعمال. نحن نتخصص في تطوير وحدات متعددة الاستخدامات في مصر تجمع بين الحداثة والعائد الربحي المرتفع.
+      {/* Intro */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center">
+            <div className="section-divider mb-8" />
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-foreground">مشاريع عقارية متكاملة في قلب مدينة الشروق</h2>
+            <p className="text-muted-foreground font-arabic text-[15px] leading-[1.9] mb-5">
+              تعتبر مشاريع شركة أسواق للتطوير العقاري علامة فارقة في مجال الاستثمار العقاري في مصر، حيث نقدم حلولاً عقارية متكاملة تلبي احتياجات المستثمرين وأصحاب الأعمال.
             </p>
-            <p className="text-muted-foreground font-arabic leading-relaxed mb-6">
-              سواء كنت تبحث عن عقارات للبيع في الشروق أو تهدف إلى العثور على وحدات تجارية للإيجار في أكثر المناطق حيوية، فإن مشاريعنا توفر لك المساحة المثالية للانطلاق بنشاطك التجاري.
-            </p>
-            <p className="text-muted-foreground font-arabic leading-relaxed">
+            <p className="text-muted-foreground font-arabic text-[15px] leading-[1.9]">
               مع تركيزنا القوي على توفير وحدات متعددة الاستخدامات في مصر، تقدم شركة أسواق وحدات تجارية عبر مجموعة من{" "}
-              <Link to="/ar/units/for-sale" className="text-primary font-semibold underline hover:text-secondary transition-colors">
+              <Link to="/ar/units/for-sale" className="text-accent font-semibold hover:underline transition-colors">
                 المولات المتميزة في مدينة الشروق
               </Link>
-              . سواء كنت تبحث عن عقارات للبيع في مصر أو وحدات تجارية للإيجار في أكثر المناطق حيوية بمدينة الشروق.
+              .
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-secondary">
+      {/* Project Showcase */}
+      <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {projects.map((project, i) => (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+            {projects.slice(0, 2).map((project, i) => (
               <motion.div key={project.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }}>
-                <Link to={project.href} className="group block relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow aspect-[4/3]">
-                  <img src={project.image} alt={project.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex items-end p-6 transition-opacity duration-300 group-hover:opacity-0">
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground">{project.name}</h3>
+                <Link to={project.href} className="group block relative rounded-2xl overflow-hidden aspect-[16/10]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                  <img src={project.image} alt={`${project.name} - أسواق للتطوير العقاري`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <span className="inline-block text-[10px] font-arabic font-semibold tracking-[0.08em] text-accent mb-2">{project.tag}</span>
+                    <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground mb-2">{project.name}</h3>
+                    <p className="text-primary-foreground/55 text-sm font-arabic line-clamp-2 max-w-md">{project.description}</p>
+                    <span className="inline-flex items-center gap-1.5 text-primary-foreground/70 font-arabic font-semibold text-sm mt-3 group-hover:gap-2.5 transition-all duration-300">
+                      استكشف المشروع <ArrowLeft size={14} />
+                    </span>
                   </div>
-                  <div className="absolute inset-0 bg-primary/85 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-primary-foreground mb-4">{project.name}</h3>
-                    <p className="text-primary-foreground/80 font-arabic text-sm md:text-base leading-relaxed max-w-sm">{project.description}</p>
-                    <span className="mt-4 text-primary-foreground font-semibold text-sm font-arabic">استكشف المشروع ←</span>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {projects.slice(2).map((project, i) => (
+              <motion.div key={project.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }}>
+                <Link to={project.href} className="group block relative rounded-2xl overflow-hidden aspect-[16/10]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                  <img src={project.image} alt={`${project.name} - أسواق للتطوير العقاري`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <span className="inline-block text-[10px] font-arabic font-semibold tracking-[0.08em] text-accent mb-2">{project.tag}</span>
+                    <h3 className="font-display text-lg md:text-xl font-bold text-primary-foreground mb-1.5">{project.name}</h3>
+                    <p className="text-primary-foreground/55 text-sm font-arabic line-clamp-2">{project.description}</p>
                   </div>
                 </Link>
               </motion.div>
@@ -100,19 +127,32 @@ const ProjectsAr = () => {
         </div>
       </section>
 
-      <section className="bg-primary py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-foreground mb-6">وحدات متاحة للبيع والإيجار</h2>
-            <p className="text-primary-foreground/70 font-arabic leading-relaxed mb-4">
+      {/* Available Units CTA */}
+      <section className="relative py-20 md:py-28 bg-primary overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]">
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <p className="text-[10px] font-semibold tracking-[0.15em] font-arabic text-accent mb-4">متاح الآن</p>
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-primary-foreground mb-6 leading-tight">
+              وحدات متاحة للبيع والإيجار
+            </h2>
+            <p className="text-primary-foreground/55 font-arabic text-[15px] leading-[1.9] mb-4">
               عبر مشاريع أسواق، تتوفر مجموعة متنوعة من الوحدات لتناسب احتياجات الأعمال والاستثمار المختلفة. تتراوح مساحاتنا من 24 م² إلى 300 م².
             </p>
-            <p className="text-primary-foreground/70 font-arabic leading-relaxed mb-8">
+            <p className="text-primary-foreground/55 font-arabic text-[15px] leading-[1.9] mb-10">
               سواء كنت تبحث عن وحدات تجارية للإيجار أو وحدات متعددة الاستخدامات للبيع، تقدم أسواق فرصًا استراتيجية داخل مولات متطورة بالكامل في مدينة الشروق.
             </p>
-            <Link to="/ar/contact" className="inline-block bg-primary text-primary-foreground px-8 py-3 font-semibold rounded-lg hover:bg-navy-light hover:shadow-md transition-all duration-300 font-arabic">
-              استكشف الوحدات المتاحة
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link to="/ar/units" className="btn-premium px-9 py-4 text-sm rounded-lg font-arabic group inline-flex items-center justify-center gap-2">
+                استكشف الوحدات المتاحة
+                <ArrowLeft size={15} className="transition-transform group-hover:-translate-x-1" />
+              </Link>
+              <Link to="/ar/contact" className="btn-outline-light px-9 py-4 text-sm rounded-lg font-arabic text-center">
+                اطلب استشارة
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

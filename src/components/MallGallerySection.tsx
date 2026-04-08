@@ -17,7 +17,7 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
   if (images.length === 0 && videos.length === 0) return null;
 
   return (
-    <section className="py-12 md:py-16 bg-background">
+    <section className="py-16 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground text-center mb-12">
           {isAr ? `معرض ${mallName}` : `${mallName} Gallery`}
@@ -53,7 +53,8 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-[4/3]"
+                    className="rounded-2xl overflow-hidden border border-border/30 aspect-[4/3]"
+                    style={{ boxShadow: 'var(--shadow-sm)' }}
                   >
                     <img
                       src={src}
@@ -82,7 +83,8 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-2xl overflow-hidden shadow-sm border border-border/50 aspect-video"
+                    className="rounded-2xl overflow-hidden border border-border/30 aspect-video"
+                    style={{ boxShadow: 'var(--shadow-sm)' }}
                   >
                     <iframe
                       src={`https://www.youtube.com/embed/${videoId}`}

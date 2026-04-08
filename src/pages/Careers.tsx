@@ -17,7 +17,7 @@ const Careers = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-[40vh] min-h-[300px] flex items-center justify-center pt-[120px]">
+      <section className="relative h-[40vh] min-h-[450px] flex items-center justify-center pt-[120px]">
         <img src={heroImage} alt="Careers" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 text-center">
@@ -32,7 +32,7 @@ const Careers = () => {
       </section>
 
       {/* Content */}
-      <section className="py-12 md:py-16 bg-secondary/30">
+      <section className="py-12 md:py-16 bg-zinc-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Job Listings */}
