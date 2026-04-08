@@ -16,61 +16,9 @@ import solaria2 from "@/assets/gallery/solaria-2.webp";
 import solaria3 from "@/assets/gallery/solaria-3.webp";
 import solaria4 from "@/assets/gallery/solaria-4.webp";
 import solariaPositioning from "@/assets/solaria-positioning.webp";
+import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
 
 /* ─── Data ─── */
-
-const floors = [
-  {
-    id: "gf",
-    label: "Ground Floor",
-    shortLabel: "GF",
-    description: "Prime retail frontage with direct street access and maximum visibility. Ideal for flagship stores, banks, and high-traffic commercial brands.",
-    units: 12,
-    areaRange: "45–180 m²",
-    types: ["Retail", "Showrooms"],
-    image: solaria1,
-  },
-  {
-    id: "1f",
-    label: "First Floor",
-    shortLabel: "1F",
-    description: "Versatile commercial spaces suited for clinics, professional offices, and service-oriented businesses with elevator access.",
-    units: 14,
-    areaRange: "30–120 m²",
-    types: ["Medical", "Administrative"],
-    image: solaria2,
-  },
-  {
-    id: "2f",
-    label: "Second Floor",
-    shortLabel: "2F",
-    description: "Dedicated medical and administrative zone with quiet, professional atmosphere. Perfect for specialist clinics and consulting firms.",
-    units: 16,
-    areaRange: "30–96 m²",
-    types: ["Medical", "Offices"],
-    image: solaria3,
-  },
-  {
-    id: "3f",
-    label: "Third Floor",
-    shortLabel: "3F",
-    description: "Upper-level administrative suites offering panoramic views and premium positioning for corporate tenants.",
-    units: 10,
-    areaRange: "50–396 m²",
-    types: ["Administrative", "Corporate"],
-    image: solaria4,
-  },
-  {
-    id: "rf",
-    label: "Roof Floor",
-    shortLabel: "RF",
-    description: "Exclusive rooftop spaces with open-air potential. Ideal for restaurants, lounges, and leisure concepts with skyline views.",
-    units: 4,
-    areaRange: "80–200 m²",
-    types: ["F&B", "Leisure"],
-    image: solariaPositioning,
-  },
-];
 
 const hotspots = [
   { id: "retail", label: "Retail Zone", icon: ShoppingBag, x: "18%", y: "62%", description: "Ground-level storefronts with direct street access and high visibility." },
