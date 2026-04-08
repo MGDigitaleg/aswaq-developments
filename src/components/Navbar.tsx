@@ -168,7 +168,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
               <div className="border-t border-border/40 mt-3 pt-2.5">
                 <Link
                   to={allProjectsLink.href}
-                  className="flex items-center gap-1.5 px-3 py-2 text-[11.5px] font-semibold text-foreground/50 hover:text-foreground transition-colors rounded-md hover:bg-foreground/[0.03]"
+                  className="flex items-center gap-1.5 px-3 py-2 text-[11.5px] font-semibold text-foreground/60 hover:text-foreground transition-colors rounded-md hover:bg-foreground/[0.05]"
                 >
                   {allProjectsLink.label}
                   {isArabic ? <ArrowLeft size={10} /> : <ArrowRight size={10} />}
