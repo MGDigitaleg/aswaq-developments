@@ -84,7 +84,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2 lg:pr-10">
             <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[170px] mb-7" width={170} height={67} />
-            <p className={`text-primary-foreground/55 text-sm leading-[1.85] ${fontClass} mb-8 max-w-sm`}>
+            <p className={`text-primary-foreground/65 text-sm leading-[1.85] ${fontClass} mb-8 max-w-sm`}>
               {isArabic
                 ? "شركة تطوير عقاري رائدة متخصصة في المشاريع التجارية والإدارية والطبية في شرق القاهرة. أكثر من 20 عاماً من التميز في مدينة الشروق."
                 : "A leading real estate developer specializing in commercial, administrative, and medical projects across East Cairo. Over 20 years of excellence in Shorouk City."}
