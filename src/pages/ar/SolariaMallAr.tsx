@@ -180,6 +180,8 @@ const SolariaMallAr = () => {
         </div>
       </section>
 
+      <InteractiveFloorPlan lang="ar" />
+
       <MallGallerySection mallName="سولاريا مول" images={galleryImages} videos={galleryVideos} lang="ar" />
 
       <CTASection
