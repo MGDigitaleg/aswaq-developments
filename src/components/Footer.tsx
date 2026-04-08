@@ -228,7 +228,7 @@ const Footer = () => {
       {/* Bottom */}
       <div className="border-t border-primary-foreground/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className={`text-[11px] text-primary-foreground/35 ${fontClass}`}>
+          <p className={`text-[11px] text-primary-foreground/40 ${fontClass}`}>
             © {new Date().getFullYear()} {isArabic ? "أسواق للتطوير العقاري. جميع الحقوق محفوظة." : "ASWAQ Developments. All rights reserved."}
           </p>
           <p className={`text-[11px] text-primary-foreground/35 ${fontClass}`}>
