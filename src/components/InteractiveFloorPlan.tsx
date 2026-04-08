@@ -121,9 +121,9 @@ const floorsData: FloorData[] = [
       u("gf-35","35","34 m²","Retail","Available", 53,32, 7,5),
       u("gf-36","36","42 m²","Retail","Available", 44,32, 8,5),
       // ── Center: 37-39 ──
-      u("gf-37","37","67 m²","Retail","Available", 50,38, 10,6),
-      u("gf-38","38","60 m²","Retail","Available", 58,40, 8,5),
-      u("gf-39","39","62 m²","Retail","Available", 50,40, 8,5),
+      u("gf-37","37","67 m²","Retail","Available", 51,37, 9,5),
+      u("gf-38","38","60 m²","Retail","Available", 57,39, 8,5),
+      u("gf-39","39","62 m²","Retail","Available", 55,39, 6,5),
       // ── Upper-left: 40-42 ──
       u("gf-40","40","39 m²","Retail","Available", 39,23, 5,5),
       u("gf-41","41","39 m²","Retail","Available", 38,29, 5.5,5),
