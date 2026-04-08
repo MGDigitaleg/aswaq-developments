@@ -518,8 +518,8 @@ const Navbar = () => {
                         to={link.href}
                         className={`text-[11.5px] font-medium tracking-wide transition-all duration-300 whitespace-nowrap ${
                           active
-                            ? "text-primary-foreground/80"
-                            : "text-primary-foreground/50 hover:text-primary-foreground/80"
+                            ? "text-primary-foreground/85"
+                            : "text-primary-foreground/55 hover:text-primary-foreground/85"
                         }`}
                       >
                         {link.label}
