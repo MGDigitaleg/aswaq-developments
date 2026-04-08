@@ -482,7 +482,7 @@ const Index = () => {
                   <ArrowRight size={12} className="transition-transform group-hover:translate-x-1.5" />
                 </span>
               </div>
-              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[6/5]" style={{ boxShadow: 'var(--shadow-xl)' }}>
+              <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl aspect-[5/4]" style={{ boxShadow: 'var(--shadow-xl)' }}>
                 <img src={editorialProjects[1].image} alt={`${editorialProjects[1].name} - ASWAQ Developments`} className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" loading="lazy" />
               </div>
             </Link>
