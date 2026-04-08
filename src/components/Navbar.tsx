@@ -3,10 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe, ArrowRight, ArrowLeft, Building2, Store, Briefcase, HeartPulse } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import aswaqLogo from "@/assets/aswaq-logo.webp";
-import cityHubLogo from "@/assets/logos/city-hub-mall.jpg";
-import mercadoLogo from "@/assets/logos/mercado-mall.png";
-import arenaLogo from "@/assets/logos/arena-mall.png";
-import solariaLogo from "@/assets/logos/solaria-mall.png";
+import cityHubLogo from "@/assets/logos/city-hub-mall-clean.png";
+import mercadoLogo from "@/assets/logos/mercado-mall-clean.png";
+import arenaLogo from "@/assets/logos/arena-mall-clean.png";
+import solariaLogo from "@/assets/logos/solaria-mall-clean.png";
 
 interface NavChild {
   label: string;
