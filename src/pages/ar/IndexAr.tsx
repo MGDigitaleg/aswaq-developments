@@ -285,62 +285,62 @@ const IndexAr = () => {
       </section>
 
       {/* ═══════════════ MARKET POSITIONING — FLAGSHIP ═══════════════ */}
-      <section className="py-24 md:py-32 lg:py-36 bg-background" dir="rtl">
+      <section className="py-20 md:py-28 lg:py-32 bg-background" dir="rtl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Image Column — first on desktop RTL */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            {/* Image Column */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="relative order-1 lg:order-2"
             >
               <div
                 className="relative overflow-hidden rounded-xl aspect-[4/3]"
-                style={{ boxShadow: '0 20px 60px -15px hsl(0 0% 0% / 0.15)' }}
+                style={{ boxShadow: '0 16px 48px -12px hsl(0 0% 0% / 0.12)' }}
               >
                 <motion.img
                   src={solariaImg}
                   alt="أسواق للتطوير العقاري - عقارات تجارية استراتيجية"
                   className="w-full h-full object-cover"
                   loading="lazy"
-                  whileHover={{ scale: 1.025 }}
-                  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent" />
               </div>
 
-              {/* Floating Stats Card */}
+              {/* Stats Card */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.4 }}
-                className="absolute -bottom-7 right-5 md:right-8 rounded-xl px-7 py-5"
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="absolute -bottom-6 right-5 md:right-7 rounded-lg px-5 py-3.5"
                 style={{
-                  background: 'hsl(var(--ivory) / 0.97)',
-                  backdropFilter: 'blur(12px)',
-                  boxShadow: '0 8px 32px hsl(0 0% 0% / 0.08), 0 1px 3px hsl(0 0% 0% / 0.04)',
-                  border: '1px solid hsl(var(--border) / 0.35)',
+                  background: 'hsl(var(--ivory) / 0.96)',
+                  backdropFilter: 'blur(16px)',
+                  boxShadow: '0 4px 20px hsl(0 0% 0% / 0.06)',
+                  border: '1px solid hsl(var(--border) / 0.3)',
                 }}
               >
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-5">
                   <div>
-                    <div className="font-['Montserrat'] text-[1.5rem] font-extrabold text-foreground leading-none mb-1" style={{ letterSpacing: '-0.03em' }}>
+                    <div className="font-['Montserrat'] text-[1.25rem] font-extrabold text-foreground leading-none mb-0.5" style={{ letterSpacing: '-0.03em' }}>
                       <AnimatedCounter value="4+" className="text-foreground" />
                     </div>
-                    <div className="text-[9px] text-muted-foreground/70 font-arabic tracking-[0.12em]">
+                    <div className="text-[8px] text-muted-foreground/60 font-arabic tracking-[0.12em]">
                       مشاريع بارزة
                     </div>
                   </div>
-                  <div className="w-px h-10 bg-border/40" />
+                  <div className="w-px h-8 bg-border/30" />
                   <div>
-                    <div className="font-['Montserrat'] text-[1.5rem] font-extrabold text-foreground leading-none mb-1" style={{ letterSpacing: '-0.03em' }}>
+                    <div className="font-['Montserrat'] text-[1.25rem] font-extrabold text-foreground leading-none mb-0.5" style={{ letterSpacing: '-0.03em' }}>
                       <AnimatedCounter value="20+" className="text-foreground" />
                     </div>
-                    <div className="text-[9px] text-muted-foreground/70 font-arabic tracking-[0.12em]">
-                      سنة من الخبرة السوقية
+                    <div className="text-[8px] text-muted-foreground/60 font-arabic tracking-[0.12em]">
+                      سنة من الخبرة
                     </div>
                   </div>
                 </div>
@@ -349,42 +349,40 @@ const IndexAr = () => {
 
             {/* Text Column */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="order-2 lg:order-1"
             >
               <p
-                className="text-[10px] font-arabic font-semibold tracking-[0.2em] mb-8"
+                className="text-[10px] font-arabic font-semibold tracking-[0.2em] mb-7"
                 style={{ color: 'hsl(var(--steel))' }}
               >
                 مكانة سوقية
               </p>
               <h2
-                className="font-display text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground leading-[1.15] mb-7"
-                style={{ letterSpacing: '-0.015em' }}
+                className="font-display text-[1.75rem] md:text-[2.15rem] lg:text-[2.5rem] font-bold text-foreground leading-[1.2] mb-8"
+                style={{ letterSpacing: '-0.01em' }}
               >
                 من التواجد العقاري
                 <br />
-                إلى{" "}
-                <span className="text-navy-rich">القوة السوقية</span>
+                إلى <span className="text-navy-rich">القوة السوقية</span>
               </h2>
-              <div className="space-y-4 mb-10">
-                <p className="text-muted-foreground font-arabic text-[14.5px] leading-[2] max-w-lg">
+              <div className="space-y-3.5 mb-11">
+                <p className="text-muted-foreground font-arabic text-[14px] leading-[1.95] max-w-md">
                   أسواق لا تبني عقارات فحسب — بل تصنع مواقع سوقية استراتيجية.
                 </p>
-                <p className="text-muted-foreground font-arabic text-[14.5px] leading-[2] max-w-lg">
+                <p className="text-muted-foreground font-arabic text-[14px] leading-[1.95] max-w-md">
                   كل مشروع مصمم لتعزيز الحضور التجاري، وزيادة القيمة السوقية، وتحويل المواقع المتميزة إلى ميزة استثمارية طويلة الأمد.
                 </p>
               </div>
               <Link
                 to="/ar/projects"
-                className="inline-flex items-center gap-2.5 font-arabic text-[12px] font-semibold tracking-[0.06em] px-7 py-3.5 rounded-lg bg-primary text-primary-foreground transition-all duration-400 hover:-translate-y-0.5 group"
-                style={{ boxShadow: '0 4px 20px hsl(232 78% 10% / 0.18)' }}
+                className="inline-flex items-center gap-2 font-arabic text-[11.5px] font-semibold tracking-[0.06em] px-6 py-3 rounded-lg border border-foreground/15 text-foreground hover:border-foreground/35 hover:bg-foreground/[0.03] transition-all duration-300 group"
               >
                 استكشف مشاريعنا
-                <ArrowLeft size={13} className="transition-transform duration-300 group-hover:-translate-x-1" />
+                <ArrowLeft size={12} className="transition-transform duration-300 group-hover:-translate-x-1 opacity-60 group-hover:opacity-100" />
               </Link>
             </motion.div>
           </div>
