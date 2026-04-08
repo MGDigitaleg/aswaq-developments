@@ -458,11 +458,11 @@ const Index = () => {
           >
             <Link to={`/projects/${editorialProjects[1].slug}`} className="group grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-5 lg:gap-7 items-center">
               <div className="order-2 lg:order-1 lg:pr-2">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-[68px] h-[68px] md:w-20 md:h-20 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1.5 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
+                <div className="flex items-start gap-4 mb-3.5">
+                  <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white border border-border/40 flex items-center justify-center p-1 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
                     <img src={editorialProjects[1].logo} alt="" className="w-full h-full object-contain" />
                   </div>
-                  <div className="pt-0.5">
+                  <div className="pt-1">
                     <span className="block text-[9px] font-body font-bold tracking-[0.25em] uppercase text-foreground/30 mb-1">
                       {editorialProjects[1].tag}
                     </span>
