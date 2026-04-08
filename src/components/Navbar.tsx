@@ -231,7 +231,7 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
                     <motion.span
                       layoutId="units-tab-indicator"
                       className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full"
-                      style={{ background: 'hsl(232 78% 10% / 0.25)' }}
+                      style={{ background: 'hsl(232 78% 10% / 0.35)' }}
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
