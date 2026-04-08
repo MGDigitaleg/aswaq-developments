@@ -154,7 +154,7 @@ const ProjectsDropdown = ({ item, isActive, isArabic }: { item: NavItem; isActiv
                       </div>
                     </div>
                     {meta && (
-                      <p className="text-[11px] text-foreground/40 leading-snug">
+                      <p className="text-[11px] text-foreground/50 leading-snug">
                         {isArabic ? meta.descAr : meta.desc}
                       </p>
                     )}
