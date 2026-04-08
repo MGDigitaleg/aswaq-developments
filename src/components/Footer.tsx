@@ -231,7 +231,7 @@ const Footer = () => {
           <p className={`text-[11px] text-primary-foreground/40 ${fontClass}`}>
             © {new Date().getFullYear()} {isArabic ? "أسواق للتطوير العقاري. جميع الحقوق محفوظة." : "ASWAQ Developments. All rights reserved."}
           </p>
-          <p className={`text-[11px] text-primary-foreground/35 ${fontClass}`}>
+          <p className={`text-[11px] text-primary-foreground/40 ${fontClass}`}>
             {isArabic ? "تطوير بواسطة" : "Developed By"}{" "}
             <a href="https://mg.digital/" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/50 underline hover:no-underline">MG Digital</a>
           </p>
