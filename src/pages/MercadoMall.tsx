@@ -3,7 +3,6 @@ import { MapPin, ShoppingBag, TrendingUp, Store, Wrench, CheckCircle2 } from "lu
 import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
-import MercadoFloorPlan from "@/components/MercadoFloorPlan";
 import mercadoImg from "@/assets/mercado-mall.webp";
 import useSEO from "@/hooks/useSEO";
 import mercado1 from "@/assets/gallery/mercado-1.webp";
@@ -169,8 +168,6 @@ const MercadoMall = () => {
           </div>
         </div>
       </section>
-
-      <MercadoFloorPlan lang="en" />
 
       <MallGallerySection mallName="Mercado Mall" images={galleryImages} videos={galleryVideos} />
 
