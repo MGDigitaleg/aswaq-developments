@@ -45,6 +45,7 @@ const i18n = {
     Available: "متاح", Reserved: "محجوز", Sold: "مباع",
     filterLabel: "تصفية", resetFilters: "إعادة",
     allTypes: "كل الأنواع", allStatuses: "كل الحالات",
+    miniMap: "نظرة عامة",
     types: { Retail: "تجاري", Medical: "طبي", Administrative: "إداري", "F&B": "مأكولات", Service: "خدمي" } as Record<UnitType, string>,
   },
 };
