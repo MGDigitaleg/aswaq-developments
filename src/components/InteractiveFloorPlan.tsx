@@ -483,7 +483,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const labelScale = isActive && !isDimmed ? 1.25 : 1;
 
                       return (
-                        <g key={unit.id} opacity={isDimmed ? 0.07 : 1}>
+                        <g key={unit.id} style={{ opacity: isDimmed ? 0.06 : 1, transition: "opacity 0.4s ease" }}>
                           {/* Outer glow stroke for active state */}
                           {isActive && !isDimmed && (
                             <polygon
@@ -501,8 +501,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           {/* Main polygon */}
                           <polygon
                             points={unit.points}
-                            fill={isDimmed ? "rgba(200,200,200,0.08)" : isActive ? fills.hover : fills.base}
-                            fillOpacity={isDimmed ? 0.3 : 1}
+                            fill={isDimmed ? "transparent" : isActive ? fills.hover : fills.base}
+                            fillOpacity={isDimmed ? 0 : 1}
                             stroke={isDimmed ? "hsl(222, 10%, 60%)" : isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
                             strokeWidth={isDimmed ? 0.3 : isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
@@ -528,7 +528,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                               transformOrigin: `${unit.cx}px ${unit.cy}px`,
                               transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease",
                             }}
-                            opacity={isDimmed ? 0.3 : isActive ? 1 : 0.65}
+                            opacity={isDimmed ? 0 : isActive ? 1 : 0.65}
                             onMouseEnter={() => !isDimmed && setHoveredUnit(unit.id)}
                             onMouseLeave={() => setHoveredUnit(null)}
                             onClick={(e) => { e.stopPropagation(); if (!isDimmed) setSelectedUnit(unit); }}
