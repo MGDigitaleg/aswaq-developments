@@ -518,15 +518,19 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                             onClick={(e) => { e.stopPropagation(); if (!isDimmed) setSelectedUnit(unit); }}
                           />
 
-                          {/* Unit label with scale on hover */}
+                          {/* Unit label with scale on hover — clickable */}
                           <g
                             style={{
-                              pointerEvents: "none",
+                              pointerEvents: isDimmed ? "none" : "all",
+                              cursor: isDimmed ? "default" : "pointer",
                               transform: `translate(${unit.cx}px, ${unit.cy}px) scale(${labelScale})`,
                               transformOrigin: `${unit.cx}px ${unit.cy}px`,
                               transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease",
                             }}
                             opacity={isDimmed ? 0.3 : isActive ? 1 : 0.65}
+                            onMouseEnter={() => !isDimmed && setHoveredUnit(unit.id)}
+                            onMouseLeave={() => setHoveredUnit(null)}
+                            onClick={(e) => { e.stopPropagation(); if (!isDimmed) setSelectedUnit(unit); }}
                           >
                             <text
                               x={unit.cx}
