@@ -32,6 +32,7 @@ const i18n = {
     Available: "Available", Reserved: "Reserved", Sold: "Sold",
     filterLabel: "Filter", resetFilters: "Reset",
     allTypes: "All Types", allStatuses: "All Statuses",
+    miniMap: "Overview",
     types: { Retail: "Retail", Medical: "Medical", Administrative: "Admin", "F&B": "F&B", Service: "Service" } as Record<UnitType, string>,
   },
   ar: {
