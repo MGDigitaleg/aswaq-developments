@@ -52,7 +52,7 @@ const gfUnits: FloorUnit[] = [
   u("gf","03","47 m²","Retail","Available",   1130,285, 62,110),
 
   // ── Right wing center (04) ──
-  u("gf","04","79 m²","Retail","Available",   1320,400, 195,170),
+  u("gf","04","79 m²","Retail","Available",   1370,410, 140,120),
 
   // ── Right east strip (05–28) ──
   u("gf","05","49 m²","Retail","Available",   1320,607, 125,60),
@@ -66,15 +66,15 @@ const gfUnits: FloorUnit[] = [
   u("gf","13","28 m²","Retail","Available",   1483,886, 74,60),
   u("gf","14","47 m²","Retail","Available",   1349,956, 124,58),
   u("gf","15","29 m²","Retail","Available",   1483,956, 74,58),
-  u("gf","16","47 m²","Retail","Available",   1349,1025, 63,58),
-  u("gf","17","29 m²","Retail","Available",   1419,1025, 55,58),
+  u("gf","16","47 m²","Retail","Available",   1349,1025, 80,58),
+  u("gf","17","29 m²","Retail","Available",   1435,1025, 55,58),
   u("gf","18","47 m²","Retail","Available",   1349,1094, 124,58),
   u("gf","19","29 m²","Retail","Available",   1483,1094, 74,58),
   u("gf","20","47 m²","Retail","Available",   1349,1164, 124,90),
   u("gf","21","29 m²","Retail","Available",   1483,1164, 74,90),
   u("gf","22","68 m²","Retail","Available",   1349,1264, 109,88),
   u("gf","23","43 m²","Retail","Available",   1467,1264, 90,88),
-  u("gf","24","64 m²","Retail","Available",   1349,1370, 210,60),
+  u("gf","24","64 m²","Retail","Available",   1349,1370, 160,60),
   u("gf","25","77 m²","Retail","Available",   1349,1441, 100,58),
   u("gf","26","75 m²","Retail","Available",   1456,1444, 98,55),
   u("gf","27","79 m²","Retail","Reserved",    1349,1511, 97,55),
@@ -93,7 +93,7 @@ const gfUnits: FloorUnit[] = [
   // ── Left wing mid (37–39) ──
   u("gf","37","67 m²","Retail","Available",   1032,678, 88,128),
   u("gf","38","60 m²","Retail","Available",   1132,678, 58,126),
-  u("gf","39","62 m²","Retail","Available",   1256,918, 31,128),
+  u("gf","39","62 m²","Retail","Available",   1240,918, 55,128),
 
   // ── Center units (40–42) ──
   u("gf","40","39 m²","Retail","Available",   827,459, 72,79),
@@ -111,7 +111,7 @@ const gfUnits: FloorUnit[] = [
   u("gf","50","49 m²","Retail","Available",   509,886, 128,58),
   u("gf","51","51 m²","Retail","Available",   719,886, 59,127),
   u("gf","52","49 m²","Retail","Available",   785,747, 72,58),
-  u("gf","53","45 m²","Retail","Available",   337,963, 75,79),
+  u("gf","53","45 m²","Retail","Available",   340,960, 72,75),
   u("gf","54","48 m²","Retail","Available",   507,1023, 76,57),
   u("gf","55","102 m²","Retail","Available",  579,1091, 125,130),
   u("gf","56","51 m²","Retail","Available",   509,1091, 58,61),
