@@ -285,26 +285,30 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                             onMouseLeave={() => setHoveredUnit(null)}
                             onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
                           />
-                          <text
-                            x={unit.cx}
-                            y={unit.cy}
-                            textAnchor="middle"
-                            dominantBaseline="central"
-                            fontSize={(() => {
-                              const unitCount = currentFloor.units.length;
-                              const base = Math.min(currentFloor.viewBoxW, currentFloor.viewBoxH);
-                              if (unitCount <= 5) return base * 0.022;
-                              if (unitCount <= 35) return base * 0.014;
-                              return base * 0.009;
-                            })()}
-                            fontWeight={700}
-                            fontFamily="'Montserrat', sans-serif"
-                            fill="hsl(222, 47%, 15%)"
-                            opacity={isActive ? 1 : 0.7}
-                            style={{ pointerEvents: "none", transition: "opacity 0.2s ease" }}
-                          >
-                            {unit.number}
-                          </text>
+                          {(() => {
+                            const unitCount = currentFloor.units.length;
+                            const base = Math.min(currentFloor.viewBoxW, currentFloor.viewBoxH);
+                            const numSize = unitCount <= 5 ? base * 0.022 : unitCount <= 35 ? base * 0.014 : base * 0.009;
+                            const areaSize = numSize * 0.7;
+                            const gap = numSize * 0.6;
+                            return (
+                              <text
+                                x={unit.cx}
+                                y={unit.cy}
+                                textAnchor="middle"
+                                fill="hsl(222, 47%, 15%)"
+                                opacity={isActive ? 1 : 0.7}
+                                style={{ pointerEvents: "none", transition: "opacity 0.2s ease" }}
+                              >
+                                <tspan x={unit.cx} dy={-gap / 2} fontSize={numSize} fontWeight={700} fontFamily="'Montserrat', sans-serif">
+                                  {unit.number}
+                                </tspan>
+                                <tspan x={unit.cx} dy={gap} fontSize={areaSize} fontWeight={500} fontFamily="'Montserrat', sans-serif" fillOpacity={0.75}>
+                                  {unit.area}
+                                </tspan>
+                              </text>
+                            );
+                          })()}
                         </g>
                       );
                     })}
