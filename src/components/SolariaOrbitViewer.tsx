@@ -156,14 +156,14 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     setIsDragging(false);
   }, []);
 
-  // Subtle idle drift animation
+  // Subtle idle drift — very gentle rotation when not interacting
   useEffect(() => {
     if (!loaded || isDragging || isHovering) return;
 
     let frame = 0;
     const interval = setInterval(() => {
       frame++;
-      if (frame % 80 === 0) {
+      if (frame % 120 === 0) {
         setFrame(frameRef.current + 1);
       }
     }, 50);
