@@ -826,7 +826,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                   {/* CTAs */}
                   <div className="space-y-2">
                     <Link
-                      to={t.contactLink}
+                      to={`${t.contactLink}?unit=${selectedUnit.number}&type=${encodeURIComponent(selectedUnit.type)}&mall=Solaria+Mall`}
                       className={`btn-premium w-full justify-center px-4 py-2 text-[9px] tracking-[0.14em] uppercase ${isRtl ? "font-arabic" : "font-body"}`}
                     >
                       {t.inquire}

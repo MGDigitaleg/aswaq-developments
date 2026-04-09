@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 import { z } from "zod";
@@ -42,11 +43,28 @@ const contactInfo = [
 ];
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
   const [form, setForm] = useState<Partial<ContactForm>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [countryCode, setCountryCode] = useState("+20");
+
+  // Pre-fill form from query params (e.g. from floor plan "Inquire" CTA)
+  useEffect(() => {
+    const unit = searchParams.get("unit");
+    const type = searchParams.get("type");
+    const mall = searchParams.get("mall");
+    const prefill: Partial<ContactForm> = {};
+    if (type) {
+      const typeMap: Record<string, string> = { Retail: "Commercial", Medical: "Medical", Admin: "Administrative" };
+      const mapped = typeMap[type] || type;
+      if (unitTypes.includes(mapped)) prefill.unitType = mapped;
+    }
+    if (mall && malls.includes(mall)) prefill.preferredMall = mall;
+    if (unit) prefill.notes = `Inquiry about Unit ${unit}`;
+    if (Object.keys(prefill).length > 0) setForm(prev => ({ ...prev, ...prefill }));
+  }, [searchParams]);
 
   const handleChange = (field: keyof ContactForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
