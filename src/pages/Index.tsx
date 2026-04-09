@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronRight, ArrowRight, Landmark, Train, GraduationCap, HeartPulse } from "lucide-react";
-import SolariaVideoLightbox from "@/components/SolariaVideoLightbox";
+import SolariaOrbitViewer from "@/components/SolariaOrbitViewer";
 import { useLatestNews } from "@/hooks/useNewsArticles";
 import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
@@ -407,7 +407,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ═══════════════ SOLARIA — FLAGSHIP VIDEO HERO ═══════════════ */}
+      {/* ═══════════════ SOLARIA — FLAGSHIP INTERACTIVE EXTERIOR ═══════════════ */}
       <section className="pb-1 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -416,11 +416,11 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            {/* Video Lightbox */}
-            <div className="relative">
-              <SolariaVideoLightbox />
+            {/* Interactive Orbit Viewer */}
+            <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: '0 32px 80px -16px hsl(232 78% 8% / 0.18), 0 12px 28px -8px hsl(232 78% 8% / 0.08)' }}>
+              <SolariaOrbitViewer className="aspect-[2/1] md:aspect-[2.4/1]" />
 
-              {/* Overlay content — desktop only (hidden on mobile due to tight aspect ratio) */}
+              {/* Desktop overlay content */}
               <div className="absolute inset-y-0 left-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none">
                 <div className="max-w-md">
                   <div className="flex items-start gap-5 mb-5">
@@ -448,9 +448,14 @@ const Index = () => {
                   </Link>
                 </div>
               </div>
+
+              {/* Gradient overlay for text readability */}
+              <div className="absolute inset-0 pointer-events-none hidden md:block" style={{
+                background: 'linear-gradient(to right, hsl(232 78% 8% / 0.75) 0%, hsl(232 78% 10% / 0.45) 30%, hsl(232 78% 10% / 0.08) 55%, transparent 100%)'
+              }} />
             </div>
 
-            {/* Mobile content — below the video card */}
+            {/* Mobile content — below the orbit viewer */}
             <div className="md:hidden mt-5 px-1">
               <div className="flex items-start gap-4 mb-3">
                 <div className="w-16 h-16 rounded-xl bg-white border border-border/40 flex items-center justify-center p-2 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
