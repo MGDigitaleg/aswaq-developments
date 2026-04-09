@@ -77,21 +77,27 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     drawFrame(frame);
   }, [drawFrame]);
 
-  // Inertia animation loop
+  // Inertia animation loop — smoother decay for premium feel
   useEffect(() => {
     let running = true;
-    const decay = 0.92;
-    const minVelocity = 0.05;
+    const decay = 0.94;
+    const minVelocity = 0.03;
+    let accum = 0;
 
     const tick = () => {
       if (!running) return;
 
       if (!isDragging && Math.abs(velocityRef.current) > minVelocity) {
         velocityRef.current *= decay;
-        const newFrame = frameRef.current + velocityRef.current;
-        setFrame(Math.round(newFrame));
+        accum += velocityRef.current;
+        const steps = Math.trunc(accum);
+        if (steps !== 0) {
+          accum -= steps;
+          setFrame(frameRef.current + steps);
+        }
       } else if (!isDragging) {
         velocityRef.current = 0;
+        accum = 0;
       }
 
       rafRef.current = requestAnimationFrame(tick);
@@ -131,7 +137,7 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     if (!container) return;
 
     const dx = e.clientX - dragStartXRef.current;
-    const sensitivity = TOTAL_FRAMES / container.offsetWidth * 0.8;
+    const sensitivity = TOTAL_FRAMES / container.offsetWidth * 0.65;
     const newFrame = dragStartFrameRef.current + Math.round(dx * sensitivity);
     setFrame(newFrame);
 
@@ -150,14 +156,14 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     setIsDragging(false);
   }, []);
 
-  // Subtle idle drift animation
+  // Subtle idle drift — very gentle rotation when not interacting
   useEffect(() => {
     if (!loaded || isDragging || isHovering) return;
 
     let frame = 0;
     const interval = setInterval(() => {
       frame++;
-      if (frame % 80 === 0) {
+      if (frame % 120 === 0) {
         setFrame(frameRef.current + 1);
       }
     }, 50);
@@ -184,10 +190,11 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
       {/* Radial glow following mouse */}
       {loaded && isHovering && (
         <div
-          className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300"
+          className="absolute inset-0 z-[1] pointer-events-none"
           style={{
-            opacity: isDragging ? 0.6 : 0.35,
-            background: `radial-gradient(circle 280px at ${glowPos.x}% ${glowPos.y}%, hsl(45 30% 90% / 0.12), transparent 70%)`,
+            opacity: isDragging ? 0.5 : 0.3,
+            background: `radial-gradient(ellipse 320px 240px at ${glowPos.x}% ${glowPos.y}%, hsl(40 25% 92% / 0.14), transparent 70%)`,
+            transition: 'opacity 0.4s ease',
           }}
         />
       )}
