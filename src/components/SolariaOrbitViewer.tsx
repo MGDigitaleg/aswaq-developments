@@ -168,9 +168,10 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   return (
     <div
       ref={containerRef}
+      data-hide-cursor
       className={`relative overflow-hidden select-none ${className}`}
       style={{
-        cursor: isDragging ? "grabbing" : "grab",
+        cursor: "none",
         touchAction: "none",
       }}
       onPointerDown={handlePointerDown}
@@ -180,6 +181,16 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => { setIsHovering(false); setIsDragging(false); }}
     >
+      {/* Radial glow following mouse */}
+      {loaded && isHovering && (
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300"
+          style={{
+            opacity: isDragging ? 0.6 : 0.35,
+            background: `radial-gradient(circle 280px at ${glowPos.x}% ${glowPos.y}%, hsl(45 30% 90% / 0.12), transparent 70%)`,
+          }}
+        />
+      )}
       {/* Canvas renderer */}
       <canvas
         ref={canvasRef}
