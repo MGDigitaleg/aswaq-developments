@@ -312,22 +312,22 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           {/* Main polygon */}
                           <polygon
                             points={unit.points}
-                            fill={isActive ? fills.hover : fills.base}
+                            fill={isActive ? fills.hover : unit.status === "Available" && !isActive ? fills.stroke : fills.base}
                             stroke={isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
                             strokeWidth={isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
                             strokeOpacity={isActive ? 1 : 0.08}
-                          className={!isActive && unit.status === "Available" ? "unit-breathe" : undefined}
-                          style={{
-                            cursor: "pointer",
-                            pointerEvents: "all",
-                            transition: "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease",
-                            fillOpacity: isActive ? undefined : unit.status === "Available" ? undefined : undefined,
-                          }}
-                          onMouseEnter={() => setHoveredUnit(unit.id)}
-                          onMouseLeave={() => setHoveredUnit(null)}
-                          onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
-                        />
+                            className={!isActive && unit.status === "Available" ? "unit-breathe" : undefined}
+                            style={{
+                              cursor: "pointer",
+                              pointerEvents: "all",
+                              transition: isActive ? "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease" : undefined,
+                              ...(isActive || unit.status !== "Available" ? {} : { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${Math.random() * 3}s` }),
+                            }}
+                            onMouseEnter={() => setHoveredUnit(unit.id)}
+                            onMouseLeave={() => setHoveredUnit(null)}
+                            onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
+                          />
 
                           {/* Unit label with scale on hover */}
                           <g
