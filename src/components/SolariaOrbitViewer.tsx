@@ -77,21 +77,27 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     drawFrame(frame);
   }, [drawFrame]);
 
-  // Inertia animation loop
+  // Inertia animation loop — smoother decay for premium feel
   useEffect(() => {
     let running = true;
-    const decay = 0.92;
-    const minVelocity = 0.05;
+    const decay = 0.94;
+    const minVelocity = 0.03;
+    let accum = 0;
 
     const tick = () => {
       if (!running) return;
 
       if (!isDragging && Math.abs(velocityRef.current) > minVelocity) {
         velocityRef.current *= decay;
-        const newFrame = frameRef.current + velocityRef.current;
-        setFrame(Math.round(newFrame));
+        accum += velocityRef.current;
+        const steps = Math.trunc(accum);
+        if (steps !== 0) {
+          accum -= steps;
+          setFrame(frameRef.current + steps);
+        }
       } else if (!isDragging) {
         velocityRef.current = 0;
+        accum = 0;
       }
 
       rafRef.current = requestAnimationFrame(tick);
