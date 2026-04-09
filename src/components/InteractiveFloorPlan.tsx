@@ -262,7 +262,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                     preserveAspectRatio="xMidYMid meet"
                     style={{ pointerEvents: "none" }}
                   >
-                    {/* Defs for glow filter */}
+                    {/* Defs for glow filter + breathing animation */}
                     <defs>
                       <filter id="unitGlow" x="-20%" y="-20%" width="140%" height="140%">
                         <feGaussianBlur stdDeviation="4" result="blur" />
@@ -272,6 +272,13 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                         </feMerge>
                       </filter>
                     </defs>
+                    <style>{`
+                      @keyframes unitBreathe {
+                        0%, 100% { fill-opacity: 0.12; }
+                        50% { fill-opacity: 0.28; }
+                      }
+                      .unit-breathe { animation: unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite; }
+                    `}</style>
 
                     {currentFloor.units.map((unit) => {
                       const isHovered = hoveredUnit === unit.id;
