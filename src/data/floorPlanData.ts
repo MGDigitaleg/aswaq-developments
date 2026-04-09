@@ -333,6 +333,27 @@ import f2Img from "@/assets/floorplans/2F_clean.png";
 import f3Img from "@/assets/floorplans/3F_clean.png";
 import rfImg from "@/assets/floorplans/RF_clean.png";
 
+/* ─── Compatibility aliases ─── */
+export const floorLabelsAr: Record<string, string> = {
+  gf: "الطابق الأرضي",
+  "1f": "الطابق الأول",
+  "2f": "الطابق الثاني",
+  "3f": "الطابق الثالث",
+  rf: "الروف",
+};
+
+export const statusColors: Record<UnitStatus, string> = {
+  Available: "#22c55e",
+  Reserved: "#eab308",
+  Sold: "#ef4444",
+};
+
+export const statusFills: Record<UnitStatus, string> = {
+  Available: "rgba(34,197,94,0.25)",
+  Reserved: "rgba(234,179,8,0.25)",
+  Sold: "rgba(239,68,68,0.25)",
+};
+
 export const floors: FloorData[] = [
   {
     id: "gf",
