@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SolariaOrbitViewer from "@/components/SolariaOrbitViewer";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft, ArrowLeft, Landmark, Train, GraduationCap, HeartPulse } from "lucide-react";
 import { useLatestNews } from "@/hooks/useNewsArticles";
@@ -433,36 +434,71 @@ const IndexAr = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <Link to={`/ar/projects/${editorialProjects[0].slug}`} className="group block">
-              <div className="relative overflow-hidden rounded-2xl aspect-[2/1] md:aspect-[2.4/1]" style={{ boxShadow: 'var(--shadow-xl)' }}>
-                <img src={editorialProjects[0].image} alt={`${editorialProjects[0].name} - أسواق للتطوير العقاري`} className="w-full h-full object-cover transition-transform duration-[1.4s] group-hover:scale-[1.03]" loading="lazy" />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, hsl(232 78% 8% / 0.94) 0%, hsl(232 78% 10% / 0.7) 35%, hsl(232 78% 10% / 0.2) 65%, transparent 100%)' }} />
-                <div className="absolute inset-y-0 right-0 flex items-center p-7 md:p-10 lg:p-14">
-                  <div className="max-w-md">
-                    <div className="flex items-start gap-5 mb-5">
-                      <div className="w-20 h-20 md:w-24 md:h-24 lg:w-[104px] lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-3 shrink-0" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
-                        <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="pt-1">
-                        <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-primary-foreground/40 mb-1.5">
-                          {editorialProjects[0].tag}
-                        </span>
-                        <h3 className="font-display text-[1.75rem] md:text-[2.25rem] lg:text-[2.5rem] font-bold text-primary-foreground leading-[1.02]" style={{ letterSpacing: '-0.01em' }}>
-                          {editorialProjects[0].name}
-                        </h3>
-                      </div>
+            {/* Interactive Orbit Viewer */}
+            <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: '0 32px 80px -16px hsl(232 78% 8% / 0.18), 0 12px 28px -8px hsl(232 78% 8% / 0.08)' }}>
+              <SolariaOrbitViewer className="aspect-[2/1] md:aspect-[2.4/1]" />
+
+              {/* Desktop overlay content — RTL: aligned right */}
+              <div className="absolute inset-y-0 right-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none">
+                <div className="max-w-md text-right">
+                  <div className="flex items-start gap-5 mb-5 flex-row-reverse justify-end">
+                    <div className="pt-1">
+                      <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-primary-foreground/40 mb-1.5">
+                        {editorialProjects[0].tag}
+                      </span>
+                      <h3 className="font-display text-[2.25rem] lg:text-[2.5rem] font-bold text-primary-foreground leading-[1.02]" style={{ letterSpacing: '-0.01em' }}>
+                        {editorialProjects[0].name}
+                      </h3>
                     </div>
-                    <p className="text-primary-foreground/55 text-[13px] md:text-[14px] font-arabic leading-[1.7] mb-6">
-                      {editorialProjects[0].description}
-                    </p>
-                    <span className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.15em] px-7 py-3 rounded-lg bg-primary-foreground/[0.08] border border-primary-foreground/20 text-primary-foreground/90 group-hover:bg-primary-foreground/15 group-hover:border-primary-foreground/40 transition-all duration-300 backdrop-blur-sm">
-                      {editorialProjects[0].cta}
-                      <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1.5" />
-                    </span>
+                    <div className="w-24 lg:w-[104px] h-24 lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-3 shrink-0 pointer-events-auto" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
+                      <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
+                    </div>
                   </div>
+                  <p className="text-primary-foreground/55 text-[14px] font-arabic leading-[1.7] mb-6">
+                    {editorialProjects[0].description}
+                  </p>
+                  <Link
+                    to={`/ar/projects/${editorialProjects[0].slug}`}
+                    className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.15em] px-7 py-3 rounded-lg bg-primary-foreground/[0.08] border border-primary-foreground/20 text-primary-foreground/90 hover:bg-primary-foreground/15 hover:border-primary-foreground/40 transition-all duration-300 backdrop-blur-sm pointer-events-auto"
+                  >
+                    {editorialProjects[0].cta}
+                    <ArrowLeft size={13} className="transition-transform group-hover:-translate-x-1.5" />
+                  </Link>
                 </div>
               </div>
-            </Link>
+
+              {/* Gradient overlay for text readability — RTL: gradient from right */}
+              <div className="absolute inset-0 pointer-events-none hidden md:block" style={{
+                background: 'linear-gradient(to left, hsl(232 78% 8% / 0.75) 0%, hsl(232 78% 10% / 0.45) 30%, hsl(232 78% 10% / 0.08) 55%, transparent 100%)'
+              }} />
+            </div>
+
+            {/* Mobile content — below the orbit viewer */}
+            <div className="md:hidden mt-5 px-1">
+              <div className="flex items-start gap-4 mb-3 flex-row-reverse">
+                <div className="w-16 h-16 rounded-xl bg-white border border-border/40 flex items-center justify-center p-2 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
+                  <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
+                </div>
+                <div className="pt-0.5 text-right">
+                  <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-foreground/30 mb-1">
+                    {editorialProjects[0].tag}
+                  </span>
+                  <h3 className="font-display text-[1.5rem] font-bold text-foreground leading-[1.08]">
+                    {editorialProjects[0].name}
+                  </h3>
+                </div>
+              </div>
+              <p className="text-muted-foreground text-[13px] font-arabic leading-[1.7] mb-4 text-right">
+                {editorialProjects[0].description}
+              </p>
+              <Link
+                to={`/ar/projects/${editorialProjects[0].slug}`}
+                className="inline-flex items-center gap-2.5 text-[11px] font-bold font-arabic tracking-[0.15em] px-6 py-2.5 rounded-lg border border-foreground/15 text-foreground/60 hover:border-foreground/35 hover:text-foreground transition-all duration-300"
+              >
+                {editorialProjects[0].cta}
+                <ArrowLeft size={12} className="transition-transform" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
