@@ -280,7 +280,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       .unit-breathe { animation: unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite; }
                     `}</style>
 
-                    {currentFloor.units.map((unit) => {
+                    {currentFloor.units.map((unit, unitIndex) => {
                       const isHovered = hoveredUnit === unit.id;
                       const isSelected = selectedUnit?.id === unit.id;
                       const isActive = isHovered || isSelected;
