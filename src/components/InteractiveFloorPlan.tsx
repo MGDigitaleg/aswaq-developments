@@ -558,19 +558,21 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                         (unit.cx / currentFloor.viewBoxW) * 100, 8
                       ), 92);
                       const tipY = (unit.cy / currentFloor.viewBoxH) * 100;
+                      // Offset above the unit label; scale offset inversely with zoom so it doesn't drift
+                      const yOffset = 28 / zoom;
 
                       return (
                         <motion.div
                           key={unit.id}
-                          initial={{ opacity: 0, y: 4 }}
+                          initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
                           transition={{ duration: 0.12 }}
                           className="absolute z-30 pointer-events-none"
                           style={{
                             left: `${tipX}%`,
-                            top: `${tipY}%`,
-                            transform: "translate(-50%, -105%)",
+                            top: `calc(${tipY}% - ${yOffset}px)`,
+                            transform: "translate(-50%, -100%)",
                           }}
                         >
                           <div
