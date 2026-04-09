@@ -48,6 +48,8 @@ const i18n = {
     filterLabel: "تصفية", resetFilters: "إعادة",
     allTypes: "كل الأنواع", allStatuses: "كل الحالات",
     miniMap: "نظرة عامة",
+    searchPlaceholder: "رقم الوحدة",
+    searchNoResult: "لم يتم العثور على وحدة",
     types: { Retail: "تجاري", Medical: "طبي", Administrative: "إداري", "F&B": "مأكولات", Service: "خدمي" } as Record<UnitType, string>,
   },
 };
