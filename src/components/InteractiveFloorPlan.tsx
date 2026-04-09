@@ -317,15 +317,17 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                             strokeWidth={isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
                             strokeOpacity={isActive ? 1 : 0.08}
-                            style={{
-                              cursor: "pointer",
-                              pointerEvents: "all",
-                              transition: "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease",
-                            }}
-                            onMouseEnter={() => setHoveredUnit(unit.id)}
-                            onMouseLeave={() => setHoveredUnit(null)}
-                            onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
-                          />
+                          className={!isActive && unit.status === "Available" ? "unit-breathe" : undefined}
+                          style={{
+                            cursor: "pointer",
+                            pointerEvents: "all",
+                            transition: "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease",
+                            fillOpacity: isActive ? undefined : unit.status === "Available" ? undefined : undefined,
+                          }}
+                          onMouseEnter={() => setHoveredUnit(unit.id)}
+                          onMouseLeave={() => setHoveredUnit(null)}
+                          onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
+                        />
 
                           {/* Unit label with scale on hover */}
                           <g
