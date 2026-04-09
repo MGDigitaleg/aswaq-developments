@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight, X, ShoppingBag, Stethoscope,
   Briefcase, Building2, Coffee, ZoomIn, ZoomOut, Maximize2,
+  Filter, RotateCcw,
 } from "lucide-react";
 import {
   floorsData, floorLabelsAr, statusColors, statusFills,
@@ -17,6 +18,9 @@ const typeIcons: Record<UnitType, typeof ShoppingBag> = {
 };
 
 /* ─── i18n ─── */
+const allTypes: UnitType[] = ["Retail", "Medical", "Administrative", "F&B", "Service"];
+const allStatuses: UnitStatus[] = ["Available", "Reserved", "Sold"];
+
 const i18n = {
   en: {
     tag: "Floor by Floor", title: "Navigate Every Level",
@@ -26,7 +30,9 @@ const i18n = {
     inquire: "Inquire About This Unit", viewAll: "View All Units",
     contactLink: "/contact", unitsLink: "/available-units",
     Available: "Available", Reserved: "Reserved", Sold: "Sold",
-    types: { Retail: "Retail", Medical: "Medical", Administrative: "Administrative", "F&B": "F&B", Service: "Service" } as Record<UnitType, string>,
+    filterLabel: "Filter", resetFilters: "Reset",
+    allTypes: "All Types", allStatuses: "All Statuses",
+    types: { Retail: "Retail", Medical: "Medical", Administrative: "Admin", "F&B": "F&B", Service: "Service" } as Record<UnitType, string>,
   },
   ar: {
     tag: "طابق بطابق", title: "استكشف كل مستوى",
@@ -36,6 +42,8 @@ const i18n = {
     inquire: "استفسر عن هذه الوحدة", viewAll: "عرض جميع الوحدات",
     contactLink: "/ar/contact", unitsLink: "/ar/available-units",
     Available: "متاح", Reserved: "محجوز", Sold: "مباع",
+    filterLabel: "تصفية", resetFilters: "إعادة",
+    allTypes: "كل الأنواع", allStatuses: "كل الحالات",
     types: { Retail: "تجاري", Medical: "طبي", Administrative: "إداري", "F&B": "مأكولات", Service: "خدمي" } as Record<UnitType, string>,
   },
 };
@@ -54,6 +62,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
+  const [filterType, setFilterType] = useState<UnitType | null>(null);
+  const [filterStatus, setFilterStatus] = useState<UnitStatus | null>(null);
   const panStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
 
   const currentFloor = floorsData.find((f) => f.id === activeFloor)!;
@@ -90,6 +100,16 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
     setHoveredUnit(null);
   }, [activeFloor, resetView]);
 
+  // Filter logic
+  const unitMatches = useCallback((u: FloorUnit) => {
+    if (filterType && u.type !== filterType) return false;
+    if (filterStatus && u.status !== filterStatus) return false;
+    return true;
+  }, [filterType, filterStatus]);
+
+  const hasFilters = filterType !== null || filterStatus !== null;
+  const matchCount = currentFloor.units.filter(unitMatches).length;
+
   // Stats
   const available = currentFloor.units.filter((u) => u.status === "Available").length;
   const reserved = currentFloor.units.filter((u) => u.status === "Reserved").length;
@@ -120,6 +140,106 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
             {t.desc}
           </p>
         </motion.div>
+
+        {/* ── Filter Toolbar ── */}
+        <div
+          className="flex flex-wrap items-center gap-2 mb-4 px-1"
+        >
+          <div className="flex items-center gap-1.5 mr-1">
+            <Filter size={11} style={{ color: "hsl(var(--steel) / 0.5)" }} />
+            <span className={`text-[9px] font-semibold tracking-[0.15em] uppercase ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.6)" }}>
+              {t.filterLabel}
+            </span>
+          </div>
+
+          {/* Type filters */}
+          <button
+            onClick={() => setFilterType(null)}
+            className={`px-2.5 py-1 rounded-md text-[9px] font-semibold tracking-wide transition-all duration-200 ${isRtl ? "font-arabic" : "font-body"}`}
+            style={{
+              background: filterType === null ? "hsl(var(--navy))" : "transparent",
+              color: filterType === null ? "hsl(var(--primary-foreground))" : "hsl(var(--steel))",
+              border: `1px solid ${filterType === null ? "transparent" : "hsl(var(--border) / 0.25)"}`,
+            }}
+          >
+            {t.allTypes}
+          </button>
+          {allTypes.map((type) => {
+            const Icon = typeIcons[type];
+            const isActive = filterType === type;
+            const count = currentFloor.units.filter((u) => u.type === type).length;
+            if (count === 0) return null;
+            return (
+              <button
+                key={type}
+                onClick={() => setFilterType(isActive ? null : type)}
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[9px] font-semibold tracking-wide transition-all duration-200 ${isRtl ? "font-arabic" : "font-body"}`}
+                style={{
+                  background: isActive ? "hsl(var(--navy))" : "transparent",
+                  color: isActive ? "hsl(var(--primary-foreground))" : "hsl(var(--steel))",
+                  border: `1px solid ${isActive ? "transparent" : "hsl(var(--border) / 0.25)"}`,
+                }}
+              >
+                <Icon size={9} />
+                {t.types[type]}
+                <span style={{ opacity: 0.5 }}>({count})</span>
+              </button>
+            );
+          })}
+
+          <div className="w-px h-4 mx-1" style={{ background: "hsl(var(--border) / 0.2)" }} />
+
+          {/* Status filters */}
+          <button
+            onClick={() => setFilterStatus(null)}
+            className={`px-2.5 py-1 rounded-md text-[9px] font-semibold tracking-wide transition-all duration-200 ${isRtl ? "font-arabic" : "font-body"}`}
+            style={{
+              background: filterStatus === null ? "hsl(var(--navy))" : "transparent",
+              color: filterStatus === null ? "hsl(var(--primary-foreground))" : "hsl(var(--steel))",
+              border: `1px solid ${filterStatus === null ? "transparent" : "hsl(var(--border) / 0.25)"}`,
+            }}
+          >
+            {t.allStatuses}
+          </button>
+          {allStatuses.map((status) => {
+            const isActive = filterStatus === status;
+            const count = currentFloor.units.filter((u) => u.status === status).length;
+            if (count === 0) return null;
+            return (
+              <button
+                key={status}
+                onClick={() => setFilterStatus(isActive ? null : status)}
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[9px] font-semibold tracking-wide transition-all duration-200 ${isRtl ? "font-arabic" : "font-body"}`}
+                style={{
+                  background: isActive ? "hsl(var(--navy))" : "transparent",
+                  color: isActive ? "hsl(var(--primary-foreground))" : "hsl(var(--steel))",
+                  border: `1px solid ${isActive ? "transparent" : "hsl(var(--border) / 0.25)"}`,
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: statusColors[status], opacity: isActive ? 1 : 0.7 }} />
+                {t[status]}
+                <span style={{ opacity: 0.5 }}>({count})</span>
+              </button>
+            );
+          })}
+
+          {hasFilters && (
+            <>
+              <div className="w-px h-4 mx-1" style={{ background: "hsl(var(--border) / 0.2)" }} />
+              <button
+                onClick={() => { setFilterType(null); setFilterStatus(null); }}
+                className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-[9px] font-semibold transition-all duration-200 hover:bg-muted/40 ${isRtl ? "font-arabic" : "font-body"}`}
+                style={{ color: "hsl(var(--steel) / 0.7)" }}
+              >
+                <RotateCcw size={8} />
+                {t.resetFilters}
+              </button>
+              <span className={`text-[9px] ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.5)", fontFamily: "'Montserrat', sans-serif" }}>
+                {matchCount}/{currentFloor.units.length}
+              </span>
+            </>
+          )}
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
           {/* ── Floor Selector ── */}
@@ -281,6 +401,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                     `}</style>
 
                     {currentFloor.units.map((unit, unitIndex) => {
+                      const matches = unitMatches(unit);
+                      const isDimmed = hasFilters && !matches;
                       const isHovered = hoveredUnit === unit.id;
                       const isSelected = selectedUnit?.id === unit.id;
                       const isActive = isHovered || isSelected;
@@ -291,12 +413,12 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const numSize = unitCount <= 5 ? base * 0.022 : unitCount <= 35 ? base * 0.014 : base * 0.009;
                       const areaSize = numSize * 0.7;
                       const gap = numSize * 0.6;
-                      const labelScale = isActive ? 1.25 : 1;
+                      const labelScale = isActive && !isDimmed ? 1.25 : 1;
 
                       return (
-                        <g key={unit.id}>
+                        <g key={unit.id} style={{ opacity: isDimmed ? 0.15 : 1, transition: "opacity 0.3s ease" }}>
                           {/* Outer glow stroke for active state */}
-                          {isActive && (
+                          {isActive && !isDimmed && (
                             <polygon
                               points={unit.points}
                               fill="none"
@@ -312,21 +434,21 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           {/* Main polygon */}
                           <polygon
                             points={unit.points}
-                            fill={isActive ? fills.hover : unit.status === "Available" && !isActive ? fills.stroke : fills.base}
-                            stroke={isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
-                            strokeWidth={isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
+                            fill={isDimmed ? "hsl(222, 10%, 70%)" : isActive ? fills.hover : unit.status === "Available" && !isActive ? fills.stroke : fills.base}
+                            stroke={isDimmed ? "hsl(222, 10%, 60%)" : isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
+                            strokeWidth={isDimmed ? 0.3 : isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
-                            strokeOpacity={isActive ? 1 : 0.08}
-                            className={!isActive && unit.status === "Available" ? "unit-breathe" : undefined}
+                            strokeOpacity={isDimmed ? 0.15 : isActive ? 1 : 0.08}
+                            className={!isActive && !isDimmed && unit.status === "Available" ? "unit-breathe" : undefined}
                             style={{
-                              cursor: "pointer",
-                              pointerEvents: "all",
-                              transition: isActive ? "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease" : undefined,
-                              ...(isActive || unit.status !== "Available" ? {} : { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${(unitIndex * 0.4) % 3}s` }),
+                              cursor: isDimmed ? "default" : "pointer",
+                              pointerEvents: isDimmed ? "none" : "all",
+                              transition: "fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease, stroke-opacity 0.3s ease",
+                              ...(!isDimmed && !isActive && unit.status === "Available" ? { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${(unitIndex * 0.4) % 3}s` } : {}),
                             }}
-                            onMouseEnter={() => setHoveredUnit(unit.id)}
+                            onMouseEnter={() => !isDimmed && setHoveredUnit(unit.id)}
                             onMouseLeave={() => setHoveredUnit(null)}
-                            onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
+                            onClick={(e) => { e.stopPropagation(); if (!isDimmed) setSelectedUnit(unit); }}
                           />
 
                           {/* Unit label with scale on hover */}
@@ -335,15 +457,15 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                               pointerEvents: "none",
                               transform: `translate(${unit.cx}px, ${unit.cy}px) scale(${labelScale})`,
                               transformOrigin: `${unit.cx}px ${unit.cy}px`,
-                              transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease",
+                              transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease",
                             }}
-                            opacity={isActive ? 1 : 0.65}
+                            opacity={isDimmed ? 0.3 : isActive ? 1 : 0.65}
                           >
                             <text
                               x={unit.cx}
                               y={unit.cy}
                               textAnchor="middle"
-                              fill={isActive ? "hsl(222, 47%, 11%)" : "hsl(222, 47%, 18%)"}
+                              fill={isDimmed ? "hsl(222, 10%, 50%)" : isActive ? "hsl(222, 47%, 11%)" : "hsl(222, 47%, 18%)"}
                             >
                               <tspan x={unit.cx} dy={-gap / 2} fontSize={numSize} fontWeight={isActive ? 800 : 700} fontFamily="'Montserrat', sans-serif">
                                 {unit.number}
