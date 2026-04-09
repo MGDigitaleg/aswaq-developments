@@ -100,6 +100,16 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
     setHoveredUnit(null);
   }, [activeFloor, resetView]);
 
+  // Filter logic
+  const unitMatches = useCallback((u: FloorUnit) => {
+    if (filterType && u.type !== filterType) return false;
+    if (filterStatus && u.status !== filterStatus) return false;
+    return true;
+  }, [filterType, filterStatus]);
+
+  const hasFilters = filterType !== null || filterStatus !== null;
+  const matchCount = currentFloor.units.filter(unitMatches).length;
+
   // Stats
   const available = currentFloor.units.filter((u) => u.status === "Available").length;
   const reserved = currentFloor.units.filter((u) => u.status === "Reserved").length;
@@ -130,6 +140,106 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
             {t.desc}
           </p>
         </motion.div>
+
+        {/* ── Filter Toolbar ── */}
+        <div
+          className="flex flex-wrap items-center gap-2 mb-4 px-1"
+        >
+          <div className="flex items-center gap-1.5 mr-1">
+            <Filter size={11} style={{ color: "hsl(var(--steel) / 0.5)" }} />
+            <span className={`text-[9px] font-semibold tracking-[0.15em] uppercase ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.6)" }}>
+              {t.filterLabel}
+            </span>
+          </div>
+
+          {/* Type filters */}
+          <button
+            onClick={() => setFilterType(null)}
+            className={`px-2.5 py-1 rounded-md text-[9px] font-semibold tracking-wide transition-all duration-200 ${isRtl ? "font-arabic" : "font-body"}`}
+            style={{
+              background: filterType === null ? "hsl(var(--navy))" : "transparent",
+              color: filterType === null ? "hsl(var(--primary-foreground))" : "hsl(var(--steel))",
+              border: `1px solid ${filterType === null ? "transparent" : "hsl(var(--border) / 0.25)"}`,
+            }}
+          >
+            {t.allTypes}
+          </button>
+          {allTypes.map((type) => {
+            const Icon = typeIcons[type];
+            const isActive = filterType === type;
+            const count = currentFloor.units.filter((u) => u.type === type).length;
+            if (count === 0) return null;
+            return (
+              <button
+                key={type}
+                onClick={() => setFilterType(isActive ? null : type)}
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[9px] font-semibold tracking-wide transition-all duration-200 ${isRtl ? "font-arabic" : "font-body"}`}
+                style={{
+                  background: isActive ? "hsl(var(--navy))" : "transparent",
+                  color: isActive ? "hsl(var(--primary-foreground))" : "hsl(var(--steel))",
+                  border: `1px solid ${isActive ? "transparent" : "hsl(var(--border) / 0.25)"}`,
+                }}
+              >
+                <Icon size={9} />
+                {t.types[type]}
+                <span style={{ opacity: 0.5 }}>({count})</span>
+              </button>
+            );
+          })}
+
+          <div className="w-px h-4 mx-1" style={{ background: "hsl(var(--border) / 0.2)" }} />
+
+          {/* Status filters */}
+          <button
+            onClick={() => setFilterStatus(null)}
+            className={`px-2.5 py-1 rounded-md text-[9px] font-semibold tracking-wide transition-all duration-200 ${isRtl ? "font-arabic" : "font-body"}`}
+            style={{
+              background: filterStatus === null ? "hsl(var(--navy))" : "transparent",
+              color: filterStatus === null ? "hsl(var(--primary-foreground))" : "hsl(var(--steel))",
+              border: `1px solid ${filterStatus === null ? "transparent" : "hsl(var(--border) / 0.25)"}`,
+            }}
+          >
+            {t.allStatuses}
+          </button>
+          {allStatuses.map((status) => {
+            const isActive = filterStatus === status;
+            const count = currentFloor.units.filter((u) => u.status === status).length;
+            if (count === 0) return null;
+            return (
+              <button
+                key={status}
+                onClick={() => setFilterStatus(isActive ? null : status)}
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[9px] font-semibold tracking-wide transition-all duration-200 ${isRtl ? "font-arabic" : "font-body"}`}
+                style={{
+                  background: isActive ? "hsl(var(--navy))" : "transparent",
+                  color: isActive ? "hsl(var(--primary-foreground))" : "hsl(var(--steel))",
+                  border: `1px solid ${isActive ? "transparent" : "hsl(var(--border) / 0.25)"}`,
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: statusColors[status], opacity: isActive ? 1 : 0.7 }} />
+                {t[status]}
+                <span style={{ opacity: 0.5 }}>({count})</span>
+              </button>
+            );
+          })}
+
+          {hasFilters && (
+            <>
+              <div className="w-px h-4 mx-1" style={{ background: "hsl(var(--border) / 0.2)" }} />
+              <button
+                onClick={() => { setFilterType(null); setFilterStatus(null); }}
+                className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-[9px] font-semibold transition-all duration-200 hover:bg-muted/40 ${isRtl ? "font-arabic" : "font-body"}`}
+                style={{ color: "hsl(var(--steel) / 0.7)" }}
+              >
+                <RotateCcw size={8} />
+                {t.resetFilters}
+              </button>
+              <span className={`text-[9px] ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.5)", fontFamily: "'Montserrat', sans-serif" }}>
+                {matchCount}/{currentFloor.units.length}
+              </span>
+            </>
+          )}
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
           {/* ── Floor Selector ── */}
