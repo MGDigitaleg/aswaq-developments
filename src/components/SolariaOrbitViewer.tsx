@@ -23,6 +23,7 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   const [loadProgress, setLoadProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
 
   // Inertia state
   const velocityRef = useRef(0);

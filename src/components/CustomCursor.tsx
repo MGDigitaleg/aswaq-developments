@@ -29,6 +29,11 @@ const CustomCursor = () => {
 
     const checkHover = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      const hideCursor = target.closest("[data-hide-cursor]");
+      if (hideCursor) {
+        setIsVisible(false);
+        return;
+      }
       const interactive = target.closest("a, button, [role='button'], input, select, textarea, [data-cursor-hover]");
       setIsHovering(!!interactive);
     };
