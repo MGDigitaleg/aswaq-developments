@@ -277,8 +277,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           height={unit.h}
                           rx={4}
                           fill={isActive ? fills.hover : fills.base}
-                          stroke={isActive ? fills.stroke : fills.stroke}
-                          strokeWidth={isSelected ? 3 : 1.5}
+                          stroke={isActive ? fills.stroke : "transparent"}
+                          strokeWidth={isSelected ? 3 : 2}
                           style={{
                             cursor: "pointer",
                             pointerEvents: "all",
