@@ -269,16 +269,13 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const fills = statusFills[unit.status];
 
                       return (
-                        <rect
+                        <polygon
                           key={unit.id}
-                          x={unit.x}
-                          y={unit.y}
-                          width={unit.w}
-                          height={unit.h}
-                          rx={4}
+                          points={unit.points}
                           fill={isActive ? fills.hover : fills.base}
                           stroke={isActive ? fills.stroke : "transparent"}
                           strokeWidth={isSelected ? 3 : 2}
+                          strokeLinejoin="round"
                           style={{
                             cursor: "pointer",
                             pointerEvents: "all",
