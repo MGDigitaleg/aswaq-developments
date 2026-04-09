@@ -420,23 +420,23 @@ const Index = () => {
             <div className="relative">
               <SolariaVideoLightbox />
 
-              {/* Overlay content — positioned over the video preview */}
-              <div className="absolute inset-y-0 left-0 flex items-center p-7 md:p-10 lg:p-14 z-[5] pointer-events-none">
+              {/* Overlay content — desktop only (hidden on mobile due to tight aspect ratio) */}
+              <div className="absolute inset-y-0 left-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none">
                 <div className="max-w-md">
                   <div className="flex items-start gap-5 mb-5">
-                    <div className="w-20 h-20 md:w-24 md:h-24 lg:w-[104px] lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-3 shrink-0 pointer-events-auto" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
+                    <div className="w-24 lg:w-[104px] h-24 lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-3 shrink-0 pointer-events-auto" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
                       <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
                     </div>
                     <div className="pt-1">
                       <span className="block text-[9px] font-body font-bold tracking-[0.25em] uppercase text-primary-foreground/40 mb-1.5">
                         {editorialProjects[0].tag}
                       </span>
-                      <h3 className="font-display text-[1.75rem] md:text-[2.25rem] lg:text-[2.5rem] font-bold text-primary-foreground leading-[1.02]" style={{ letterSpacing: '-0.01em' }}>
+                      <h3 className="font-display text-[2.25rem] lg:text-[2.5rem] font-bold text-primary-foreground leading-[1.02]" style={{ letterSpacing: '-0.01em' }}>
                         {editorialProjects[0].name}
                       </h3>
                     </div>
                   </div>
-                  <p className="text-primary-foreground/55 text-[13px] md:text-[14px] font-body leading-[1.7] mb-6">
+                  <p className="text-primary-foreground/55 text-[14px] font-body leading-[1.7] mb-6">
                     {editorialProjects[0].description}
                   </p>
                   <Link
@@ -448,6 +448,33 @@ const Index = () => {
                   </Link>
                 </div>
               </div>
+            </div>
+
+            {/* Mobile content — below the video card */}
+            <div className="md:hidden mt-5 px-1">
+              <div className="flex items-start gap-4 mb-3">
+                <div className="w-16 h-16 rounded-xl bg-white border border-border/40 flex items-center justify-center p-2 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
+                  <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
+                </div>
+                <div className="pt-0.5">
+                  <span className="block text-[9px] font-body font-bold tracking-[0.25em] uppercase text-foreground/30 mb-1">
+                    {editorialProjects[0].tag}
+                  </span>
+                  <h3 className="font-display text-[1.5rem] font-bold text-foreground leading-[1.08]">
+                    {editorialProjects[0].name}
+                  </h3>
+                </div>
+              </div>
+              <p className="text-muted-foreground text-[13px] font-body leading-[1.7] mb-4">
+                {editorialProjects[0].description}
+              </p>
+              <Link
+                to={`/projects/${editorialProjects[0].slug}`}
+                className="inline-flex items-center gap-2.5 text-[11px] font-bold font-body tracking-[0.15em] uppercase px-6 py-2.5 rounded-lg border border-foreground/15 text-foreground/60 hover:border-foreground/35 hover:text-foreground transition-all duration-300"
+              >
+                {editorialProjects[0].cta}
+                <ArrowRight size={12} className="transition-transform" />
+              </Link>
             </div>
           </motion.div>
         </div>
