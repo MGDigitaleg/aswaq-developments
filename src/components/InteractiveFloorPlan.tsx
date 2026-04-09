@@ -567,17 +567,24 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const labelScale = isActive && !isDimmed ? 1.25 : 1;
 
                       if (isDimmed) {
-                        // Dimmed: cover with semi-opaque white to mask the background image color
+                        // Dimmed: two-layer overlay for stronger washout
                         return (
-                          <g key={unit.id}>
+                          <g key={unit.id} style={{ pointerEvents: "none" }}>
+                            {/* First layer: solid color matching floor plan background */}
                             <polygon
                               points={unit.points}
-                              fill="rgba(247,245,241,0.82)"
-                              stroke="hsl(222, 10%, 80%)"
-                              strokeWidth={0.4}
+                              fill="rgba(245,242,237,0.88)"
+                              stroke="none"
                               strokeLinejoin="round"
-                              strokeOpacity={0.4}
-                              style={{ pointerEvents: "none" }}
+                            />
+                            {/* Second layer: subtle grey tint to further desaturate */}
+                            <polygon
+                              points={unit.points}
+                              fill="rgba(200,195,188,0.25)"
+                              stroke="hsl(222, 8%, 78%)"
+                              strokeWidth={0.3}
+                              strokeLinejoin="round"
+                              strokeOpacity={0.5}
                             />
                           </g>
                         );
