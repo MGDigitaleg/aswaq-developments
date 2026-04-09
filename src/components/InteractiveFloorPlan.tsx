@@ -551,7 +551,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const isDimmed = hasFilters && !matches;
                       const isHovered = hoveredUnit === unit.id;
                       const isSelected = selectedUnit?.id === unit.id;
-                      const isActive = isHovered || isSelected;
+                      const isSearchMatch = searchHighlight === unit.id;
+                      const isActive = isHovered || isSelected || isSearchMatch;
                       const fills = statusFills[unit.status];
 
                       const unitCount = currentFloor.units.length;
