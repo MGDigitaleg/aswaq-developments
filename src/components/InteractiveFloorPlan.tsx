@@ -262,53 +262,88 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                     preserveAspectRatio="xMidYMid meet"
                     style={{ pointerEvents: "none" }}
                   >
+                    {/* Defs for glow filter */}
+                    <defs>
+                      <filter id="unitGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+
                     {currentFloor.units.map((unit) => {
                       const isHovered = hoveredUnit === unit.id;
                       const isSelected = selectedUnit?.id === unit.id;
                       const isActive = isHovered || isSelected;
                       const fills = statusFills[unit.status];
 
+                      const unitCount = currentFloor.units.length;
+                      const base = Math.min(currentFloor.viewBoxW, currentFloor.viewBoxH);
+                      const numSize = unitCount <= 5 ? base * 0.022 : unitCount <= 35 ? base * 0.014 : base * 0.009;
+                      const areaSize = numSize * 0.7;
+                      const gap = numSize * 0.6;
+                      const labelScale = isActive ? 1.25 : 1;
+
                       return (
                         <g key={unit.id}>
+                          {/* Outer glow stroke for active state */}
+                          {isActive && (
+                            <polygon
+                              points={unit.points}
+                              fill="none"
+                              stroke={fills.stroke}
+                              strokeWidth={5}
+                              strokeLinejoin="round"
+                              strokeOpacity={0.25}
+                              filter="url(#unitGlow)"
+                              style={{ pointerEvents: "none" }}
+                            />
+                          )}
+
+                          {/* Main polygon */}
                           <polygon
                             points={unit.points}
                             fill={isActive ? fills.hover : fills.base}
-                            stroke={isActive ? fills.stroke : "transparent"}
-                            strokeWidth={isSelected ? 3 : 2}
+                            stroke={isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
+                            strokeWidth={isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
+                            strokeOpacity={isActive ? 1 : 0.08}
                             style={{
                               cursor: "pointer",
                               pointerEvents: "all",
-                              transition: "fill 0.2s ease, stroke 0.2s ease",
+                              transition: "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease",
                             }}
                             onMouseEnter={() => setHoveredUnit(unit.id)}
                             onMouseLeave={() => setHoveredUnit(null)}
                             onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
                           />
-                          {(() => {
-                            const unitCount = currentFloor.units.length;
-                            const base = Math.min(currentFloor.viewBoxW, currentFloor.viewBoxH);
-                            const numSize = unitCount <= 5 ? base * 0.022 : unitCount <= 35 ? base * 0.014 : base * 0.009;
-                            const areaSize = numSize * 0.7;
-                            const gap = numSize * 0.6;
-                            return (
-                              <text
-                                x={unit.cx}
-                                y={unit.cy}
-                                textAnchor="middle"
-                                fill="hsl(222, 47%, 15%)"
-                                opacity={isActive ? 1 : 0.7}
-                                style={{ pointerEvents: "none", transition: "opacity 0.2s ease" }}
-                              >
-                                <tspan x={unit.cx} dy={-gap / 2} fontSize={numSize} fontWeight={700} fontFamily="'Montserrat', sans-serif">
-                                  {unit.number}
-                                </tspan>
-                                <tspan x={unit.cx} dy={gap} fontSize={areaSize} fontWeight={500} fontFamily="'Montserrat', sans-serif" fillOpacity={0.75}>
-                                  {unit.area}
-                                </tspan>
-                              </text>
-                            );
-                          })()}
+
+                          {/* Unit label with scale on hover */}
+                          <g
+                            style={{
+                              pointerEvents: "none",
+                              transform: `translate(${unit.cx}px, ${unit.cy}px) scale(${labelScale})`,
+                              transformOrigin: `${unit.cx}px ${unit.cy}px`,
+                              transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease",
+                            }}
+                            opacity={isActive ? 1 : 0.65}
+                          >
+                            <text
+                              x={unit.cx}
+                              y={unit.cy}
+                              textAnchor="middle"
+                              fill={isActive ? "hsl(222, 47%, 11%)" : "hsl(222, 47%, 18%)"}
+                            >
+                              <tspan x={unit.cx} dy={-gap / 2} fontSize={numSize} fontWeight={isActive ? 800 : 700} fontFamily="'Montserrat', sans-serif">
+                                {unit.number}
+                              </tspan>
+                              <tspan x={unit.cx} dy={gap} fontSize={areaSize} fontWeight={500} fontFamily="'Montserrat', sans-serif" fillOpacity={isActive ? 0.9 : 0.7}>
+                                {unit.area}
+                              </tspan>
+                            </text>
+                          </g>
                         </g>
                       );
                     })}
