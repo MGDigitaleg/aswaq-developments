@@ -338,6 +338,71 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                 </p>
               )}
             </div>
+
+            {/* ── Mini-Map Overview ── */}
+            <div className="hidden lg:block mt-4 pt-4" style={{ borderTop: "1px solid hsl(var(--border) / 0.15)" }}>
+              <p className={`text-[8px] font-semibold tracking-[0.2em] uppercase mb-2 ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.6)" }}>
+                {t.miniMap}
+              </p>
+              <div className="flex flex-col gap-1.5">
+                {floorsData.map((floor) => {
+                  const isActive = activeFloor === floor.id;
+                  const floorAvail = floor.units.filter((u) => u.status === "Available").length;
+                  const floorReserved = floor.units.filter((u) => u.status === "Reserved").length;
+                  const floorSold = floor.units.filter((u) => u.status === "Sold").length;
+                  const total = floor.units.length;
+                  const availPct = total ? (floorAvail / total) * 100 : 0;
+                  const reservedPct = total ? (floorReserved / total) * 100 : 0;
+                  const soldPct = total ? (floorSold / total) * 100 : 0;
+
+                  return (
+                    <button
+                      key={floor.id}
+                      onClick={() => setActiveFloor(floor.id)}
+                      className="group relative rounded-md overflow-hidden transition-all duration-250"
+                      style={{
+                        background: isActive ? "hsl(var(--navy) / 0.06)" : "transparent",
+                        border: `1px solid ${isActive ? "hsl(var(--navy) / 0.15)" : "hsl(var(--border) / 0.1)"}`,
+                        padding: "5px 6px",
+                      }}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span
+                          className={`text-[8px] font-bold ${isRtl ? "font-arabic" : "font-display"}`}
+                          style={{ color: isActive ? "hsl(var(--navy))" : "hsl(var(--foreground) / 0.7)" }}
+                        >
+                          {isRtl ? (floorLabelsAr[floor.id]?.shortLabel || floor.shortLabel) : floor.shortLabel}
+                        </span>
+                        <span
+                          className="text-[7px] font-body"
+                          style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, color: "hsl(var(--steel) / 0.5)" }}
+                        >
+                          {total}
+                        </span>
+                      </div>
+                      {/* Density bar */}
+                      <div
+                        className="flex w-full rounded-full overflow-hidden"
+                        style={{ height: 3, background: "hsl(var(--border) / 0.1)" }}
+                      >
+                        <div
+                          className="transition-all duration-500"
+                          style={{ width: `${availPct}%`, background: statusColors.Available, opacity: 0.8 }}
+                        />
+                        <div
+                          className="transition-all duration-500"
+                          style={{ width: `${reservedPct}%`, background: statusColors.Reserved, opacity: 0.8 }}
+                        />
+                        <div
+                          className="transition-all duration-500"
+                          style={{ width: `${soldPct}%`, background: statusColors.Sold, opacity: 0.8 }}
+                        />
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* ── Interactive Plan ── */}
