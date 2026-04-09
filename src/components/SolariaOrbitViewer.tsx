@@ -117,9 +117,17 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   }, []);
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
-    if (!isDragging) return;
-
+    // Track glow position always
     const container = containerRef.current;
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      setGlowPos({
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100,
+      });
+    }
+
+    if (!isDragging) return;
     if (!container) return;
 
     const dx = e.clientX - dragStartXRef.current;
