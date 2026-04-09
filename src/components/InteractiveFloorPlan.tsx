@@ -543,6 +543,10 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                         0%, 100% { fill-opacity: 0.12; }
                         50% { fill-opacity: 0.28; }
                       }
+                      @keyframes searchPulse {
+                        0%, 100% { stroke-opacity: 1; stroke-dashoffset: 0; }
+                        50% { stroke-opacity: 0.4; stroke-dashoffset: 12; }
+                      }
                       .unit-breathe { animation: unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite; }
                     `}</style>
 
