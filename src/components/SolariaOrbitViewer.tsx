@@ -23,6 +23,7 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   const [loadProgress, setLoadProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
 
   // Inertia state
   const velocityRef = useRef(0);
@@ -116,9 +117,17 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   }, []);
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
-    if (!isDragging) return;
-
+    // Track glow position always
     const container = containerRef.current;
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      setGlowPos({
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100,
+      });
+    }
+
+    if (!isDragging) return;
     if (!container) return;
 
     const dx = e.clientX - dragStartXRef.current;
@@ -159,9 +168,10 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   return (
     <div
       ref={containerRef}
+      data-hide-cursor
       className={`relative overflow-hidden select-none ${className}`}
       style={{
-        cursor: isDragging ? "grabbing" : "grab",
+        cursor: "none",
         touchAction: "none",
       }}
       onPointerDown={handlePointerDown}
@@ -171,6 +181,16 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => { setIsHovering(false); setIsDragging(false); }}
     >
+      {/* Radial glow following mouse */}
+      {loaded && isHovering && (
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300"
+          style={{
+            opacity: isDragging ? 0.6 : 0.35,
+            background: `radial-gradient(circle 280px at ${glowPos.x}% ${glowPos.y}%, hsl(45 30% 90% / 0.12), transparent 70%)`,
+          }}
+        />
+      )}
       {/* Canvas renderer */}
       <canvas
         ref={canvasRef}
