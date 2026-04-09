@@ -290,7 +290,13 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                             y={unit.cy}
                             textAnchor="middle"
                             dominantBaseline="central"
-                            fontSize={Math.min(currentFloor.viewBoxW, currentFloor.viewBoxH) * 0.012}
+                            fontSize={(() => {
+                              const unitCount = currentFloor.units.length;
+                              const base = Math.min(currentFloor.viewBoxW, currentFloor.viewBoxH);
+                              if (unitCount <= 5) return base * 0.022;
+                              if (unitCount <= 35) return base * 0.014;
+                              return base * 0.009;
+                            })()}
                             fontWeight={700}
                             fontFamily="'Montserrat', sans-serif"
                             fill="hsl(222, 47%, 15%)"
