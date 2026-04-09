@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SolariaOrbitViewer from "@/components/SolariaOrbitViewer";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft, ArrowLeft, Landmark, Train, GraduationCap, HeartPulse } from "lucide-react";
 import { useLatestNews } from "@/hooks/useNewsArticles";
