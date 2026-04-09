@@ -137,7 +137,7 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     if (!container) return;
 
     const dx = e.clientX - dragStartXRef.current;
-    const sensitivity = TOTAL_FRAMES / container.offsetWidth * 0.8;
+    const sensitivity = TOTAL_FRAMES / container.offsetWidth * 0.65;
     const newFrame = dragStartFrameRef.current + Math.round(dx * sensitivity);
     setFrame(newFrame);
 
