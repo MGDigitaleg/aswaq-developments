@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight, X, ShoppingBag, Stethoscope,
   Briefcase, Building2, Coffee, ZoomIn, ZoomOut, Maximize2,
-  Filter, RotateCcw,
+  Filter, RotateCcw, Search,
 } from "lucide-react";
 import {
   floorsData, floorLabelsAr, statusColors, statusFills,
@@ -33,6 +33,8 @@ const i18n = {
     filterLabel: "Filter", resetFilters: "Reset",
     allTypes: "All Types", allStatuses: "All Statuses",
     miniMap: "Overview",
+    searchPlaceholder: "Unit #",
+    searchNoResult: "No unit found",
     types: { Retail: "Retail", Medical: "Medical", Administrative: "Admin", "F&B": "F&B", Service: "Service" } as Record<UnitType, string>,
   },
   ar: {
@@ -46,6 +48,8 @@ const i18n = {
     filterLabel: "تصفية", resetFilters: "إعادة",
     allTypes: "كل الأنواع", allStatuses: "كل الحالات",
     miniMap: "نظرة عامة",
+    searchPlaceholder: "رقم الوحدة",
+    searchNoResult: "لم يتم العثور على وحدة",
     types: { Retail: "تجاري", Medical: "طبي", Administrative: "إداري", "F&B": "مأكولات", Service: "خدمي" } as Record<UnitType, string>,
   },
 };
@@ -66,6 +70,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
   const [isPanning, setIsPanning] = useState(false);
   const [filterType, setFilterType] = useState<UnitType | null>(null);
   const [filterStatus, setFilterStatus] = useState<UnitStatus | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchHighlight, setSearchHighlight] = useState<string | null>(null);
   const panStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
 
   const currentFloor = floorsData.find((f) => f.id === activeFloor)!;
@@ -100,7 +106,57 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
     resetView();
     setSelectedUnit(null);
     setHoveredUnit(null);
+    setSearchQuery("");
+    setSearchHighlight(null);
   }, [activeFloor, resetView]);
+
+  // Search logic — find unit across all floors, switch floor if needed, zoom + highlight
+  const handleSearch = useCallback((query: string) => {
+    setSearchQuery(query);
+    if (!query.trim()) {
+      setSearchHighlight(null);
+      return;
+    }
+    const q = query.trim().toLowerCase();
+    // Search current floor first
+    const onCurrent = currentFloor.units.find((u) => u.number.toLowerCase() === q);
+    if (onCurrent) {
+      setSearchHighlight(onCurrent.id);
+      setSelectedUnit(onCurrent);
+      // Pan & zoom to unit
+      const container = document.querySelector('[data-floor-viewport]') as HTMLElement | null;
+      if (container) {
+        const vw = container.clientWidth;
+        const vh = container.clientHeight;
+        const scaleX = vw / currentFloor.viewBoxW;
+        const scaleY = vh / currentFloor.viewBoxH;
+        const s = Math.min(scaleX, scaleY);
+        const targetZoom = Math.min(2.5, Math.max(1.8, 1 / s * 0.5));
+        setZoom(targetZoom);
+        setPan({
+          x: vw / 2 - onCurrent.cx * s * targetZoom,
+          y: vh / 2 - onCurrent.cy * s * targetZoom,
+        });
+      }
+      return;
+    }
+    // Search all floors
+    for (const floor of floorsData) {
+      if (floor.id === activeFloor) continue;
+      const found = floor.units.find((u) => u.number.toLowerCase() === q);
+      if (found) {
+        setActiveFloor(floor.id);
+        // Delay highlight after floor switch
+        setTimeout(() => {
+          setSearchHighlight(found.id);
+          setSelectedUnit(found);
+          setSearchQuery(query);
+        }, 100);
+        return;
+      }
+    }
+    setSearchHighlight(null);
+  }, [currentFloor, activeFloor]);
 
   // Filter logic
   const unitMatches = useCallback((u: FloorUnit) => {
@@ -147,6 +203,29 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
         <div
           className="flex flex-wrap items-center gap-2 mb-4 px-1"
         >
+          {/* Search input */}
+          <div className="relative flex items-center">
+            <Search size={11} className="absolute left-2 pointer-events-none" style={{ color: "hsl(var(--steel) / 0.45)" }} />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+              placeholder={t.searchPlaceholder}
+              className={`w-[72px] focus:w-[100px] transition-all duration-300 pl-6 pr-1.5 py-1 rounded-md text-[9px] font-semibold tracking-wide outline-none ${isRtl ? "font-arabic pr-6 pl-1.5" : "font-body"}`}
+              style={{
+                background: "hsl(var(--navy) / 0.04)",
+                color: "hsl(var(--foreground))",
+                border: `1px solid ${searchHighlight ? "hsl(var(--navy) / 0.3)" : "hsl(var(--border) / 0.25)"}`,
+              }}
+            />
+            {searchQuery && !searchHighlight && (
+              <span className="absolute -bottom-4 left-0 text-[8px] whitespace-nowrap" style={{ color: "hsl(var(--destructive))" }}>
+                {t.searchNoResult}
+              </span>
+            )}
+          </div>
+
+          <div className="w-px h-4 mx-0.5" style={{ background: "hsl(var(--border) / 0.2)" }} />
           <div className="flex items-center gap-1.5 mr-1">
             <Filter size={11} style={{ color: "hsl(var(--steel) / 0.5)" }} />
             <span className={`text-[9px] font-semibold tracking-[0.15em] uppercase ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.6)" }}>
@@ -464,6 +543,10 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                         0%, 100% { fill-opacity: 0.12; }
                         50% { fill-opacity: 0.28; }
                       }
+                      @keyframes searchPulse {
+                        0%, 100% { stroke-opacity: 1; stroke-dashoffset: 0; }
+                        50% { stroke-opacity: 0.4; stroke-dashoffset: 12; }
+                      }
                       .unit-breathe { animation: unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite; }
                     `}</style>
 
@@ -472,7 +555,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const isDimmed = hasFilters && !matches;
                       const isHovered = hoveredUnit === unit.id;
                       const isSelected = selectedUnit?.id === unit.id;
-                      const isActive = isHovered || isSelected;
+                      const isSearchMatch = searchHighlight === unit.id;
+                      const isActive = isHovered || isSelected || isSearchMatch;
                       const fills = statusFills[unit.status];
 
                       const unitCount = currentFloor.units.length;
@@ -512,6 +596,19 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                               strokeOpacity={0.25}
                               filter="url(#unitGlow)"
                               style={{ pointerEvents: "none" }}
+                            />
+                          )}
+
+                          {/* Search highlight pulsing ring */}
+                          {isSearchMatch && (
+                            <polygon
+                              points={unit.points}
+                              fill="none"
+                              stroke="hsl(222, 47%, 30%)"
+                              strokeWidth={4}
+                              strokeLinejoin="round"
+                              strokeDasharray="8 4"
+                              style={{ pointerEvents: "none", animation: "searchPulse 1.5s ease-in-out infinite" }}
                             />
                           )}
 
