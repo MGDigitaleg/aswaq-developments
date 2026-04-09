@@ -269,22 +269,37 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const fills = statusFills[unit.status];
 
                       return (
-                        <polygon
-                          key={unit.id}
-                          points={unit.points}
-                          fill={isActive ? fills.hover : fills.base}
-                          stroke={isActive ? fills.stroke : "transparent"}
-                          strokeWidth={isSelected ? 3 : 2}
-                          strokeLinejoin="round"
-                          style={{
-                            cursor: "pointer",
-                            pointerEvents: "all",
-                            transition: "fill 0.2s ease, stroke 0.2s ease",
-                          }}
-                          onMouseEnter={() => setHoveredUnit(unit.id)}
-                          onMouseLeave={() => setHoveredUnit(null)}
-                          onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
-                        />
+                        <g key={unit.id}>
+                          <polygon
+                            points={unit.points}
+                            fill={isActive ? fills.hover : fills.base}
+                            stroke={isActive ? fills.stroke : "transparent"}
+                            strokeWidth={isSelected ? 3 : 2}
+                            strokeLinejoin="round"
+                            style={{
+                              cursor: "pointer",
+                              pointerEvents: "all",
+                              transition: "fill 0.2s ease, stroke 0.2s ease",
+                            }}
+                            onMouseEnter={() => setHoveredUnit(unit.id)}
+                            onMouseLeave={() => setHoveredUnit(null)}
+                            onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
+                          />
+                          <text
+                            x={unit.cx}
+                            y={unit.cy}
+                            textAnchor="middle"
+                            dominantBaseline="central"
+                            fontSize={Math.min(currentFloor.viewBoxW, currentFloor.viewBoxH) * 0.012}
+                            fontWeight={700}
+                            fontFamily="'Montserrat', sans-serif"
+                            fill="hsl(222, 47%, 15%)"
+                            opacity={isActive ? 1 : 0.7}
+                            style={{ pointerEvents: "none", transition: "opacity 0.2s ease" }}
+                          >
+                            {unit.number}
+                          </text>
+                        </g>
                       );
                     })}
                   </svg>
