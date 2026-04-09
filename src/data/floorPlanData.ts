@@ -275,9 +275,9 @@ export const statusColors: Record<UnitStatus, string> = {
 };
 
 export const statusFills: Record<UnitStatus, { base: string; hover: string; stroke: string }> = {
-  Available: { base: "rgba(34,197,94,0.18)", hover: "rgba(34,197,94,0.45)", stroke: "#22c55e" },
-  Reserved: { base: "rgba(234,179,8,0.18)", hover: "rgba(234,179,8,0.45)", stroke: "#eab308" },
-  Sold: { base: "rgba(239,68,68,0.18)", hover: "rgba(239,68,68,0.45)", stroke: "#ef4444" },
+  Available: { base: "rgba(255,0,0,0.35)", hover: "rgba(255,0,0,0.55)", stroke: "#ff0000" },
+  Reserved: { base: "rgba(234,179,8,0.35)", hover: "rgba(234,179,8,0.55)", stroke: "#eab308" },
+  Sold: { base: "rgba(239,68,68,0.35)", hover: "rgba(239,68,68,0.55)", stroke: "#ef4444" },
 };
 
 /* ─── Floor Definitions ─── */
