@@ -334,12 +334,12 @@ import f3Img from "@/assets/floorplans/3F_clean.png";
 import rfImg from "@/assets/floorplans/RF_clean.png";
 
 /* ─── Compatibility aliases ─── */
-export const floorLabelsAr: Record<string, string> = {
-  gf: "الطابق الأرضي",
-  "1f": "الطابق الأول",
-  "2f": "الطابق الثاني",
-  "3f": "الطابق الثالث",
-  rf: "الروف",
+export const floorLabelsAr: Record<string, { label: string; shortLabel: string; description: string }> = {
+  gf: { label: "الطابق الأرضي", shortLabel: "أرضي", description: "66 وحدة تجارية" },
+  "1f": { label: "الطابق الأول", shortLabel: "أول", description: "32 وحدة تجارية" },
+  "2f": { label: "الطابق الثاني", shortLabel: "ثاني", description: "36 وحدة طبية وإدارية" },
+  "3f": { label: "الطابق الثالث", shortLabel: "ثالث", description: "36 وحدة طبية وإدارية" },
+  rf: { label: "الروف", shortLabel: "روف", description: "3 وحدات مطاعم" },
 };
 
 export const statusColors: Record<UnitStatus, string> = {
