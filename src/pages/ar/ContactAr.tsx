@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, ArrowLeft } from "lucide-react";
 import { z } from "zod";
@@ -44,11 +45,32 @@ const contactInfo = [
 const ContactAr = () => {
   useSEO("اتصل بنا | أسواق للتطوير العقاري", "تواصل مع فريق أسواق للتطوير العقاري. لديك أسئلة حول مشاريعنا أو الوحدات المتاحة؟ نحن هنا لمساعدتك.");
 
+  const [searchParams] = useSearchParams();
   const [form, setForm] = useState<Partial<ContactForm>>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [countryCode, setCountryCode] = useState("+20");
+
+  // Pre-fill form from query params (e.g. from floor plan "Inquire" CTA)
+  useEffect(() => {
+    const unit = searchParams.get("unit");
+    const type = searchParams.get("type");
+    const mall = searchParams.get("mall");
+    const prefill: Partial<ContactForm> = {};
+    if (type) {
+      const typeMap: Record<string, string> = { Retail: "تجاري", Medical: "طبي", Admin: "إداري" };
+      const mapped = typeMap[type] || type;
+      if (unitTypes.includes(mapped)) prefill.unitType = mapped;
+    }
+    if (mall) {
+      const mallMap: Record<string, string> = { "Solaria Mall": "سولاريا مول", "Arena Mall": "أرينا مول", "Mercado Mall": "ميركادو مول", "City Hub Mall": "سيتي هب مول" };
+      const mapped = mallMap[mall] || mall;
+      if (malls.includes(mapped)) prefill.preferredMall = mapped;
+    }
+    if (unit) prefill.notes = `استفسار عن الوحدة ${unit}`;
+    if (Object.keys(prefill).length > 0) setForm(prev => ({ ...prev, ...prefill }));
+  }, [searchParams]);
 
   const handleChange = (field: keyof ContactForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
