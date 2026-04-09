@@ -299,8 +299,10 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       if (!unit) return null;
                       const Icon = typeIcons[unit.type];
                       // Convert pixel coords to percentage for tooltip positioning
-                      const tipX = Math.min(Math.max(unit.x + unit.w / 2, 8), 92);
-                      const tipY = unit.y;
+                      const tipX = Math.min(Math.max(
+                        ((unit.x + unit.w / 2) / currentFloor.viewBoxW) * 100, 8
+                      ), 92);
+                      const tipY = (unit.y / currentFloor.viewBoxH) * 100;
 
                       return (
                         <motion.div
