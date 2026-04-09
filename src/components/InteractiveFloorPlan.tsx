@@ -258,7 +258,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                   {/* SVG overlay — viewBox matches native image pixels */}
                   <svg
                     className="absolute inset-0 w-full h-full"
-                    viewBox="0 0 100 100"
+                    viewBox={`0 0 ${currentFloor.viewBoxW} ${currentFloor.viewBoxH}`}
                     preserveAspectRatio="xMidYMid meet"
                     style={{ pointerEvents: "none" }}
                   >
