@@ -258,7 +258,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                   {/* SVG overlay — viewBox matches native image pixels */}
                   <svg
                     className="absolute inset-0 w-full h-full"
-                    viewBox={`0 0 ${currentFloor.viewBoxW} ${currentFloor.viewBoxH}`}
+                    viewBox="0 0 100 100"
                     preserveAspectRatio="xMidYMid meet"
                     style={{ pointerEvents: "none" }}
                   >
@@ -299,10 +299,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       if (!unit) return null;
                       const Icon = typeIcons[unit.type];
                       // Convert pixel coords to percentage for tooltip positioning
-                      const tipX = Math.min(Math.max(
-                        ((unit.x + unit.w / 2) / currentFloor.viewBoxW) * 100, 8
-                      ), 92);
-                      const tipY = (unit.y / currentFloor.viewBoxH) * 100;
+                      const tipX = Math.min(Math.max(unit.x + unit.w / 2, 8), 92);
+                      const tipY = unit.y;
 
                       return (
                         <motion.div
