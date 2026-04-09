@@ -501,7 +501,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           {/* Main polygon */}
                           <polygon
                             points={unit.points}
-                            fill={isDimmed ? "hsl(222, 10%, 70%)" : isActive ? fills.hover : unit.status === "Available" && !isActive ? fills.stroke : fills.base}
+                            fill={isDimmed ? "rgba(200,200,200,0.08)" : isActive ? fills.hover : fills.base}
+                            fillOpacity={isDimmed ? 0.3 : 1}
                             stroke={isDimmed ? "hsl(222, 10%, 60%)" : isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
                             strokeWidth={isDimmed ? 0.3 : isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
