@@ -262,7 +262,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                     preserveAspectRatio="xMidYMid meet"
                     style={{ pointerEvents: "none" }}
                   >
-                    {/* Defs for glow filter */}
+                    {/* Defs for glow filter + breathing animation */}
                     <defs>
                       <filter id="unitGlow" x="-20%" y="-20%" width="140%" height="140%">
                         <feGaussianBlur stdDeviation="4" result="blur" />
@@ -272,8 +272,15 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                         </feMerge>
                       </filter>
                     </defs>
+                    <style>{`
+                      @keyframes unitBreathe {
+                        0%, 100% { fill-opacity: 0.12; }
+                        50% { fill-opacity: 0.28; }
+                      }
+                      .unit-breathe { animation: unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite; }
+                    `}</style>
 
-                    {currentFloor.units.map((unit) => {
+                    {currentFloor.units.map((unit, unitIndex) => {
                       const isHovered = hoveredUnit === unit.id;
                       const isSelected = selectedUnit?.id === unit.id;
                       const isActive = isHovered || isSelected;
@@ -305,15 +312,17 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           {/* Main polygon */}
                           <polygon
                             points={unit.points}
-                            fill={isActive ? fills.hover : fills.base}
+                            fill={isActive ? fills.hover : unit.status === "Available" && !isActive ? fills.stroke : fills.base}
                             stroke={isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
                             strokeWidth={isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
                             strokeOpacity={isActive ? 1 : 0.08}
+                            className={!isActive && unit.status === "Available" ? "unit-breathe" : undefined}
                             style={{
                               cursor: "pointer",
                               pointerEvents: "all",
-                              transition: "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease",
+                              transition: isActive ? "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease" : undefined,
+                              ...(isActive || unit.status !== "Available" ? {} : { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${(unitIndex * 0.4) % 3}s` }),
                             }}
                             onMouseEnter={() => setHoveredUnit(unit.id)}
                             onMouseLeave={() => setHoveredUnit(null)}
