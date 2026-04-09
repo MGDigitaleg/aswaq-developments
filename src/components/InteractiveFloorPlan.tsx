@@ -482,10 +482,27 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const gap = numSize * 0.6;
                       const labelScale = isActive && !isDimmed ? 1.25 : 1;
 
+                      if (isDimmed) {
+                        // Dimmed: render only a faint gray outline, no fill, no label
+                        return (
+                          <g key={unit.id}>
+                            <polygon
+                              points={unit.points}
+                              fill="transparent"
+                              stroke="hsl(222, 10%, 75%)"
+                              strokeWidth={0.4}
+                              strokeLinejoin="round"
+                              strokeOpacity={0.3}
+                              style={{ pointerEvents: "none" }}
+                            />
+                          </g>
+                        );
+                      }
+
                       return (
-                        <g key={unit.id} style={{ opacity: isDimmed ? 0.06 : 1, transition: "opacity 0.4s ease" }}>
+                        <g key={unit.id}>
                           {/* Outer glow stroke for active state */}
-                          {isActive && !isDimmed && (
+                          {isActive && (
                             <polygon
                               points={unit.points}
                               fill="none"
@@ -501,43 +518,42 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           {/* Main polygon */}
                           <polygon
                             points={unit.points}
-                            fill={isDimmed ? "transparent" : isActive ? fills.hover : fills.base}
-                            fillOpacity={isDimmed ? 0 : 1}
-                            stroke={isDimmed ? "hsl(222, 10%, 60%)" : isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
-                            strokeWidth={isDimmed ? 0.3 : isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
+                            fill={isActive ? fills.hover : fills.base}
+                            stroke={isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
+                            strokeWidth={isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
-                            strokeOpacity={isDimmed ? 0.15 : isActive ? 1 : 0.08}
-                            className={!isActive && !isDimmed && unit.status === "Available" ? "unit-breathe" : undefined}
+                            strokeOpacity={isActive ? 1 : 0.08}
+                            className={!isActive && unit.status === "Available" ? "unit-breathe" : undefined}
                             style={{
-                              cursor: isDimmed ? "default" : "pointer",
-                              pointerEvents: isDimmed ? "none" : "all",
+                              cursor: "pointer",
+                              pointerEvents: "all",
                               transition: "fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease, stroke-opacity 0.3s ease",
-                              ...(!isDimmed && !isActive && unit.status === "Available" ? { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${(unitIndex * 0.4) % 3}s` } : {}),
+                              ...(!isActive && unit.status === "Available" ? { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${(unitIndex * 0.4) % 3}s` } : {}),
                             }}
-                            onMouseEnter={() => !isDimmed && setHoveredUnit(unit.id)}
+                            onMouseEnter={() => setHoveredUnit(unit.id)}
                             onMouseLeave={() => setHoveredUnit(null)}
-                            onClick={(e) => { e.stopPropagation(); if (!isDimmed) setSelectedUnit(unit); }}
+                            onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
                           />
 
-                          {/* Unit label with scale on hover — clickable */}
+                          {/* Unit label — clickable */}
                           <g
                             style={{
-                              pointerEvents: isDimmed ? "none" : "all",
-                              cursor: isDimmed ? "default" : "pointer",
+                              pointerEvents: "all",
+                              cursor: "pointer",
                               transform: `translate(${unit.cx}px, ${unit.cy}px) scale(${labelScale})`,
                               transformOrigin: `${unit.cx}px ${unit.cy}px`,
                               transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease",
                             }}
-                            opacity={isDimmed ? 0 : isActive ? 1 : 0.65}
-                            onMouseEnter={() => !isDimmed && setHoveredUnit(unit.id)}
+                            opacity={isActive ? 1 : 0.65}
+                            onMouseEnter={() => setHoveredUnit(unit.id)}
                             onMouseLeave={() => setHoveredUnit(null)}
-                            onClick={(e) => { e.stopPropagation(); if (!isDimmed) setSelectedUnit(unit); }}
+                            onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
                           >
                             <text
                               x={unit.cx}
                               y={unit.cy}
                               textAnchor="middle"
-                              fill={isDimmed ? "hsl(222, 10%, 50%)" : isActive ? "hsl(222, 47%, 11%)" : "hsl(222, 47%, 18%)"}
+                              fill={isActive ? "hsl(222, 47%, 11%)" : "hsl(222, 47%, 18%)"}
                             >
                               <tspan x={unit.cx} dy={-gap / 2} fontSize={numSize} fontWeight={isActive ? 800 : 700} fontFamily="'Montserrat', sans-serif">
                                 {unit.number}
