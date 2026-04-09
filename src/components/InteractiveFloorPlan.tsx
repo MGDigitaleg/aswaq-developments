@@ -33,6 +33,8 @@ const i18n = {
     filterLabel: "Filter", resetFilters: "Reset",
     allTypes: "All Types", allStatuses: "All Statuses",
     miniMap: "Overview",
+    searchPlaceholder: "Unit #",
+    searchNoResult: "No unit found",
     types: { Retail: "Retail", Medical: "Medical", Administrative: "Admin", "F&B": "F&B", Service: "Service" } as Record<UnitType, string>,
   },
   ar: {
