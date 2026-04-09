@@ -416,9 +416,9 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const labelScale = isActive && !isDimmed ? 1.25 : 1;
 
                       return (
-                        <g key={unit.id}>
+                        <g key={unit.id} style={{ opacity: isDimmed ? 0.15 : 1, transition: "opacity 0.3s ease" }}>
                           {/* Outer glow stroke for active state */}
-                          {isActive && (
+                          {isActive && !isDimmed && (
                             <polygon
                               points={unit.points}
                               fill="none"
@@ -434,21 +434,21 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                           {/* Main polygon */}
                           <polygon
                             points={unit.points}
-                            fill={isActive ? fills.hover : unit.status === "Available" && !isActive ? fills.stroke : fills.base}
-                            stroke={isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
-                            strokeWidth={isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
+                            fill={isDimmed ? "hsl(222, 10%, 70%)" : isActive ? fills.hover : unit.status === "Available" && !isActive ? fills.stroke : fills.base}
+                            stroke={isDimmed ? "hsl(222, 10%, 60%)" : isActive ? fills.stroke : "hsl(222, 47%, 15%)"}
+                            strokeWidth={isDimmed ? 0.3 : isSelected ? 3.5 : isHovered ? 2.5 : 0.5}
                             strokeLinejoin="round"
-                            strokeOpacity={isActive ? 1 : 0.08}
-                            className={!isActive && unit.status === "Available" ? "unit-breathe" : undefined}
+                            strokeOpacity={isDimmed ? 0.15 : isActive ? 1 : 0.08}
+                            className={!isActive && !isDimmed && unit.status === "Available" ? "unit-breathe" : undefined}
                             style={{
-                              cursor: "pointer",
-                              pointerEvents: "all",
-                              transition: isActive ? "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease" : undefined,
-                              ...(isActive || unit.status !== "Available" ? {} : { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${(unitIndex * 0.4) % 3}s` }),
+                              cursor: isDimmed ? "default" : "pointer",
+                              pointerEvents: isDimmed ? "none" : "all",
+                              transition: "fill 0.3s ease, stroke 0.3s ease, stroke-width 0.3s ease, stroke-opacity 0.3s ease",
+                              ...(!isDimmed && !isActive && unit.status === "Available" ? { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${(unitIndex * 0.4) % 3}s` } : {}),
                             }}
-                            onMouseEnter={() => setHoveredUnit(unit.id)}
+                            onMouseEnter={() => !isDimmed && setHoveredUnit(unit.id)}
                             onMouseLeave={() => setHoveredUnit(null)}
-                            onClick={(e) => { e.stopPropagation(); setSelectedUnit(unit); }}
+                            onClick={(e) => { e.stopPropagation(); if (!isDimmed) setSelectedUnit(unit); }}
                           />
 
                           {/* Unit label with scale on hover */}
@@ -457,15 +457,15 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                               pointerEvents: "none",
                               transform: `translate(${unit.cx}px, ${unit.cy}px) scale(${labelScale})`,
                               transformOrigin: `${unit.cx}px ${unit.cy}px`,
-                              transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease",
+                              transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease",
                             }}
-                            opacity={isActive ? 1 : 0.65}
+                            opacity={isDimmed ? 0.3 : isActive ? 1 : 0.65}
                           >
                             <text
                               x={unit.cx}
                               y={unit.cy}
                               textAnchor="middle"
-                              fill={isActive ? "hsl(222, 47%, 11%)" : "hsl(222, 47%, 18%)"}
+                              fill={isDimmed ? "hsl(222, 10%, 50%)" : isActive ? "hsl(222, 47%, 11%)" : "hsl(222, 47%, 18%)"}
                             >
                               <tspan x={unit.cx} dy={-gap / 2} fontSize={numSize} fontWeight={isActive ? 800 : 700} fontFamily="'Montserrat', sans-serif">
                                 {unit.number}
