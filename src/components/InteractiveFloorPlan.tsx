@@ -106,7 +106,57 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
     resetView();
     setSelectedUnit(null);
     setHoveredUnit(null);
+    setSearchQuery("");
+    setSearchHighlight(null);
   }, [activeFloor, resetView]);
+
+  // Search logic — find unit across all floors, switch floor if needed, zoom + highlight
+  const handleSearch = useCallback((query: string) => {
+    setSearchQuery(query);
+    if (!query.trim()) {
+      setSearchHighlight(null);
+      return;
+    }
+    const q = query.trim().toLowerCase();
+    // Search current floor first
+    const onCurrent = currentFloor.units.find((u) => u.number.toLowerCase() === q);
+    if (onCurrent) {
+      setSearchHighlight(onCurrent.id);
+      setSelectedUnit(onCurrent);
+      // Pan & zoom to unit
+      const container = document.querySelector('[data-floor-viewport]') as HTMLElement | null;
+      if (container) {
+        const vw = container.clientWidth;
+        const vh = container.clientHeight;
+        const scaleX = vw / currentFloor.viewBoxW;
+        const scaleY = vh / currentFloor.viewBoxH;
+        const s = Math.min(scaleX, scaleY);
+        const targetZoom = Math.min(2.5, Math.max(1.8, 1 / s * 0.5));
+        setZoom(targetZoom);
+        setPan({
+          x: vw / 2 - onCurrent.cx * s * targetZoom,
+          y: vh / 2 - onCurrent.cy * s * targetZoom,
+        });
+      }
+      return;
+    }
+    // Search all floors
+    for (const floor of floorsData) {
+      if (floor.id === activeFloor) continue;
+      const found = floor.units.find((u) => u.number.toLowerCase() === q);
+      if (found) {
+        setActiveFloor(floor.id);
+        // Delay highlight after floor switch
+        setTimeout(() => {
+          setSearchHighlight(found.id);
+          setSelectedUnit(found);
+          setSearchQuery(query);
+        }, 100);
+        return;
+      }
+    }
+    setSearchHighlight(null);
+  }, [currentFloor, activeFloor]);
 
   // Filter logic
   const unitMatches = useCallback((u: FloorUnit) => {
