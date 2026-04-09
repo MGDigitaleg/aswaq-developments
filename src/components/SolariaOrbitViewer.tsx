@@ -190,10 +190,11 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
       {/* Radial glow following mouse */}
       {loaded && isHovering && (
         <div
-          className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300"
+          className="absolute inset-0 z-[1] pointer-events-none"
           style={{
-            opacity: isDragging ? 0.6 : 0.35,
-            background: `radial-gradient(circle 280px at ${glowPos.x}% ${glowPos.y}%, hsl(45 30% 90% / 0.12), transparent 70%)`,
+            opacity: isDragging ? 0.5 : 0.3,
+            background: `radial-gradient(ellipse 320px 240px at ${glowPos.x}% ${glowPos.y}%, hsl(40 25% 92% / 0.14), transparent 70%)`,
+            transition: 'opacity 0.4s ease',
           }}
         />
       )}
