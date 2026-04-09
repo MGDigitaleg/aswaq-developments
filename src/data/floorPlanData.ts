@@ -261,7 +261,6 @@ import f2Img from "@/assets/floorplans/2F_clean.png";
 import f3Img from "@/assets/floorplans/3F_clean.png";
 import rfImg from "@/assets/floorplans/RF_clean.png";
 
-
 export const floors: FloorData[] = [
   { id: "gf", label: "Ground Floor", shortLabel: "GF", description: "66 Retail units", image: gfImg, viewBoxW: 1648, viewBoxH: 1809, units: gfUnits },
   { id: "1f", label: "First Floor", shortLabel: "1F", description: "37 Retail units", image: f1Img, viewBoxW: 1595, viewBoxH: 1754, units: f1Units },
