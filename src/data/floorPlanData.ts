@@ -406,3 +406,5 @@ export const floors: FloorData[] = [
     units: rfUnits,
   },
 ];
+
+export const floorsData = floors;
