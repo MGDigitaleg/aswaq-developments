@@ -322,7 +322,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                               cursor: "pointer",
                               pointerEvents: "all",
                               transition: isActive ? "fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, stroke-opacity 0.25s ease" : undefined,
-                              ...(isActive || unit.status !== "Available" ? {} : { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${Math.random() * 3}s` }),
+                              ...(isActive || unit.status !== "Available" ? {} : { animation: `unitBreathe 3s cubic-bezier(0.4,0,0.6,1) infinite ${(unitIndex * 0.4) % 3}s` }),
                             }}
                             onMouseEnter={() => setHoveredUnit(unit.id)}
                             onMouseLeave={() => setHoveredUnit(null)}
