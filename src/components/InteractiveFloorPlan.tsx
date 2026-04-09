@@ -483,16 +483,16 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const labelScale = isActive && !isDimmed ? 1.25 : 1;
 
                       if (isDimmed) {
-                        // Dimmed: render only a faint gray outline, no fill, no label
+                        // Dimmed: cover with semi-opaque white to mask the background image color
                         return (
                           <g key={unit.id}>
                             <polygon
                               points={unit.points}
-                              fill="transparent"
-                              stroke="hsl(222, 10%, 75%)"
+                              fill="rgba(247,245,241,0.82)"
+                              stroke="hsl(222, 10%, 80%)"
                               strokeWidth={0.4}
                               strokeLinejoin="round"
-                              strokeOpacity={0.3}
+                              strokeOpacity={0.4}
                               style={{ pointerEvents: "none" }}
                             />
                           </g>
