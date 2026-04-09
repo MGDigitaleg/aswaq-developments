@@ -18,6 +18,9 @@ const typeIcons: Record<UnitType, typeof ShoppingBag> = {
 };
 
 /* ─── i18n ─── */
+const allTypes: UnitType[] = ["Retail", "Medical", "Administrative", "F&B", "Service"];
+const allStatuses: UnitStatus[] = ["Available", "Reserved", "Sold"];
+
 const i18n = {
   en: {
     tag: "Floor by Floor", title: "Navigate Every Level",
@@ -27,7 +30,9 @@ const i18n = {
     inquire: "Inquire About This Unit", viewAll: "View All Units",
     contactLink: "/contact", unitsLink: "/available-units",
     Available: "Available", Reserved: "Reserved", Sold: "Sold",
-    types: { Retail: "Retail", Medical: "Medical", Administrative: "Administrative", "F&B": "F&B", Service: "Service" } as Record<UnitType, string>,
+    filterLabel: "Filter", resetFilters: "Reset",
+    allTypes: "All Types", allStatuses: "All Statuses",
+    types: { Retail: "Retail", Medical: "Medical", Administrative: "Admin", "F&B": "F&B", Service: "Service" } as Record<UnitType, string>,
   },
   ar: {
     tag: "طابق بطابق", title: "استكشف كل مستوى",
@@ -37,6 +42,8 @@ const i18n = {
     inquire: "استفسر عن هذه الوحدة", viewAll: "عرض جميع الوحدات",
     contactLink: "/ar/contact", unitsLink: "/ar/available-units",
     Available: "متاح", Reserved: "محجوز", Sold: "مباع",
+    filterLabel: "تصفية", resetFilters: "إعادة",
+    allTypes: "كل الأنواع", allStatuses: "كل الحالات",
     types: { Retail: "تجاري", Medical: "طبي", Administrative: "إداري", "F&B": "مأكولات", Service: "خدمي" } as Record<UnitType, string>,
   },
 };
