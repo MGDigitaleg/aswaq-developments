@@ -483,7 +483,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const labelScale = isActive && !isDimmed ? 1.25 : 1;
 
                       return (
-                        <g key={unit.id} style={{ opacity: isDimmed ? 0.15 : 1, transition: "opacity 0.3s ease" }}>
+                        <g key={unit.id} style={{ opacity: isDimmed ? 0.08 : 1, transition: "opacity 0.4s ease", filter: isDimmed ? "grayscale(1)" : "none" }}>
                           {/* Outer glow stroke for active state */}
                           {isActive && !isDimmed && (
                             <polygon
