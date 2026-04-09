@@ -203,6 +203,29 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
         <div
           className="flex flex-wrap items-center gap-2 mb-4 px-1"
         >
+          {/* Search input */}
+          <div className="relative flex items-center">
+            <Search size={11} className="absolute left-2 pointer-events-none" style={{ color: "hsl(var(--steel) / 0.45)" }} />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+              placeholder={t.searchPlaceholder}
+              className={`w-[72px] focus:w-[100px] transition-all duration-300 pl-6 pr-1.5 py-1 rounded-md text-[9px] font-semibold tracking-wide outline-none ${isRtl ? "font-arabic pr-6 pl-1.5" : "font-body"}`}
+              style={{
+                background: "hsl(var(--navy) / 0.04)",
+                color: "hsl(var(--foreground))",
+                border: `1px solid ${searchHighlight ? "hsl(var(--navy) / 0.3)" : "hsl(var(--border) / 0.25)"}`,
+              }}
+            />
+            {searchQuery && !searchHighlight && (
+              <span className="absolute -bottom-4 left-0 text-[8px] whitespace-nowrap" style={{ color: "hsl(var(--destructive))" }}>
+                {t.searchNoResult}
+              </span>
+            )}
+          </div>
+
+          <div className="w-px h-4 mx-0.5" style={{ background: "hsl(var(--border) / 0.2)" }} />
           <div className="flex items-center gap-1.5 mr-1">
             <Filter size={11} style={{ color: "hsl(var(--steel) / 0.5)" }} />
             <span className={`text-[9px] font-semibold tracking-[0.15em] uppercase ${isRtl ? "font-arabic" : "font-body"}`} style={{ color: "hsl(var(--steel) / 0.6)" }}>
