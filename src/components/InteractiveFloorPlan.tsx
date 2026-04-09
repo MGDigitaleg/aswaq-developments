@@ -595,6 +595,19 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                             />
                           )}
 
+                          {/* Search highlight pulsing ring */}
+                          {isSearchMatch && (
+                            <polygon
+                              points={unit.points}
+                              fill="none"
+                              stroke="hsl(222, 47%, 30%)"
+                              strokeWidth={4}
+                              strokeLinejoin="round"
+                              strokeDasharray="8 4"
+                              style={{ pointerEvents: "none", animation: "searchPulse 1.5s ease-in-out infinite" }}
+                            />
+                          )}
+
                           {/* Main polygon */}
                           <polygon
                             points={unit.points}
