@@ -62,6 +62,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
+  const [filterType, setFilterType] = useState<UnitType | null>(null);
+  const [filterStatus, setFilterStatus] = useState<UnitStatus | null>(null);
   const panStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
 
   const currentFloor = floorsData.find((f) => f.id === activeFloor)!;
