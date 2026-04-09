@@ -401,6 +401,8 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                     `}</style>
 
                     {currentFloor.units.map((unit, unitIndex) => {
+                      const matches = unitMatches(unit);
+                      const isDimmed = hasFilters && !matches;
                       const isHovered = hoveredUnit === unit.id;
                       const isSelected = selectedUnit?.id === unit.id;
                       const isActive = isHovered || isSelected;
@@ -411,7 +413,7 @@ const InteractiveFloorPlan = ({ lang = "en" }: InteractiveFloorPlanProps) => {
                       const numSize = unitCount <= 5 ? base * 0.022 : unitCount <= 35 ? base * 0.014 : base * 0.009;
                       const areaSize = numSize * 0.7;
                       const gap = numSize * 0.6;
-                      const labelScale = isActive ? 1.25 : 1;
+                      const labelScale = isActive && !isDimmed ? 1.25 : 1;
 
                       return (
                         <g key={unit.id}>
