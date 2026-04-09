@@ -348,10 +348,10 @@ export const statusColors: Record<UnitStatus, string> = {
   Sold: "#ef4444",
 };
 
-export const statusFills: Record<UnitStatus, string> = {
-  Available: "rgba(34,197,94,0.25)",
-  Reserved: "rgba(234,179,8,0.25)",
-  Sold: "rgba(239,68,68,0.25)",
+export const statusFills: Record<UnitStatus, { base: string; hover: string; stroke: string }> = {
+  Available: { base: "rgba(34,197,94,0.18)", hover: "rgba(34,197,94,0.45)", stroke: "#22c55e" },
+  Reserved: { base: "rgba(234,179,8,0.18)", hover: "rgba(234,179,8,0.45)", stroke: "#eab308" },
+  Sold: { base: "rgba(239,68,68,0.18)", hover: "rgba(239,68,68,0.45)", stroke: "#ef4444" },
 };
 
 export const floors: FloorData[] = [
