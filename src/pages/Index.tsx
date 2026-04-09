@@ -418,7 +418,7 @@ const Index = () => {
           >
             {/* Interactive Orbit Viewer */}
             <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: '0 32px 80px -16px hsl(232 78% 8% / 0.18), 0 12px 28px -8px hsl(232 78% 8% / 0.08)' }}>
-              <SolariaOrbitViewer className="aspect-[2/1] md:aspect-[2.4/1]" />
+              <SolariaOrbitViewer className="aspect-[16/9] md:aspect-[2/1]" />
 
               {/* Desktop overlay content */}
               <div className="absolute inset-y-0 left-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none">
