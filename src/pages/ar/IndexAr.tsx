@@ -15,7 +15,7 @@ import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
 import heroSolariaNight from "@/assets/gallery/solaria-night.webp";
-import heroArenaNight from "@/assets/arena-premium/arena-night-render.jpg";
+import heroArenaNight from "@/assets/gallery/arena-2.webp";
 import heroMercadoNight from "@/assets/gallery/mercado-5.webp";
 import heroCityhubFountain from "@/assets/gallery/cityhub-2.webp";
 import heroCityhub from "@/assets/hero-cityhub.webp";
