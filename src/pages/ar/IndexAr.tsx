@@ -236,7 +236,7 @@ const IndexAr = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.65 }}
-                className="flex flex-col sm:flex-row gap-3"
+                className="flex flex-col sm:flex-row gap-3 justify-end"
               >
                 <Link
                   to="/ar/projects"
