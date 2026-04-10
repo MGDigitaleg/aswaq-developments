@@ -452,7 +452,7 @@ const Index = () => {
           >
             {/* Cinematic Solaria Aerial — Living Video */}
             <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: '0 32px 80px -16px hsl(232 78% 8% / 0.18), 0 12px 28px -8px hsl(232 78% 8% / 0.08)' }}>
-              <div className="aspect-[4/3] md:aspect-[2/1] relative">
+              <div className="aspect-[4/3] md:aspect-[12/7] relative">
                 <video
                   autoPlay
                   loop
