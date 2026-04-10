@@ -14,7 +14,7 @@ interface SolariaOrbitViewerProps {
   onFrameChange?: (frame: number, isDragging: boolean) => void;
 }
 
-const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
+const SolariaOrbitViewer = ({ className = "", onFrameChange }: SolariaOrbitViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
