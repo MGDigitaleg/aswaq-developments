@@ -27,7 +27,7 @@ const AboutAr = () => {
   return (
     <Layout>
       {/* Hero — clean cinematic video, no text overlay */}
-      <section className="relative h-[60vh] min-h-[420px] overflow-hidden">
+      <section className="relative aspect-video max-h-[75vh] overflow-hidden">
         <video
           autoPlay
           muted
