@@ -20,6 +20,7 @@ import Layout from "@/components/Layout";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useSEO from "@/hooks/useSEO";
+import Lightbox from "@/components/Lightbox";
 
 import heroImage from "@/assets/arena-premium/arena-night-render.jpg";
 import snapshotImage from "@/assets/arena-premium/arena-render-main.jpg";
