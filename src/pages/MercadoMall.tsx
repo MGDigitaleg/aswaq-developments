@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, CheckCircle2, MapPin, ShoppingBag, UtensilsCrossed,
@@ -20,20 +20,17 @@ import realCourtyard from "@/assets/gallery/mercado-real-courtyard.webp";
 import realWide from "@/assets/gallery/mercado-real-wide.webp";
 import realStairs from "@/assets/gallery/mercado-real-stairs.webp";
 
-// 3D Renders (optimized WebP)
-import render1 from "@/assets/gallery/mercado-1.webp";
+// 3D Renders (optimized WebP — only those actually displayed)
 import render2 from "@/assets/gallery/mercado-2.webp";
 import render3 from "@/assets/gallery/mercado-3.webp";
 import render4 from "@/assets/gallery/mercado-4.webp";
 import render5 from "@/assets/gallery/mercado-5.webp";
 import render6 from "@/assets/gallery/mercado-6.webp";
 import render7 from "@/assets/gallery/mercado-7.webp";
-import render8 from "@/assets/gallery/mercado-8.webp";
-import render9 from "@/assets/gallery/mercado-9.webp";
 
-/* ── Animation presets ── */
-const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-60px" } };
-const imgReveal = { initial: { opacity: 0, scale: 1.04 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, margin: "-40px" as const }, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } };
+/* ── Animation presets (CSS-friendly, no useScroll overhead) ── */
+const fadeUp = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-60px" as const } };
+const imgReveal = { initial: { opacity: 0, scale: 1.03 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, margin: "-40px" as const }, transition: { duration: 0.7 } };
 
 /* ── Data ── */
 const snapshotStats = [
@@ -93,24 +90,7 @@ const galleryMap: Record<GalleryTab, string[]> = {
   aerial: [render2, render6],
   night: [render4, render5],
 };
-const allGalleryImages = [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render1, render2, render3, render4, render5, render6, render7, render8, render9];
-
-/* ── Parallax image component ── */
-const ParallaxImage = ({ src, alt, className = "", priority = false }: { src: string; alt: string; className?: string; priority?: boolean }) => {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  return (
-    <motion.div className={`overflow-hidden ${className}`} style={{ y }} {...imgReveal}>
-      <img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover"
-        loading={priority ? "eager" : "lazy"}
-        decoding={priority ? "sync" : "async"}
-      />
-    </motion.div>
-  );
-};
+const allGalleryImages = [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render2, render3, render4, render5, render6, render7];
 
 const MercadoMall = () => {
   useSEO(
