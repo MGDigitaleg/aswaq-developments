@@ -144,35 +144,41 @@ const Index = () => {
 
       {/* ═══════════════ HERO ═══════════════ */}
       <section className="relative min-h-[550px] overflow-hidden" style={{ height: '100vh', maxHeight: '900px' }}>
-        <AnimatePresence mode="popLayout">
+        {/* All slides rendered for preloading, only active one visible */}
+        {heroSlides.map((slide, idx) => (
           <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+            key={idx}
+            initial={false}
+            animate={{ 
+              opacity: idx === currentSlide ? 1 : 0,
+              scale: idx === currentSlide ? 1 : 1.05,
+            }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
+            style={{ zIndex: idx === currentSlide ? 1 : 0 }}
           >
-            <img
-              src={heroSlides[currentSlide].image}
-              alt={`ASWAQ Developments - ${heroSlides[currentSlide].label}`}
-              className="w-full h-full object-cover object-center"
-              fetchPriority={currentSlide === 0 ? "high" : "auto"}
-              loading={currentSlide === 0 ? "eager" : "lazy"}
+            <motion.img
+              src={slide.image}
+              alt={`ASWAQ Developments - ${slide.label}`}
+              className={`w-full h-full object-cover ${slide.objectPos}`}
+              fetchPriority={idx === 0 ? "high" : "auto"}
+              loading={idx === 0 ? "eager" : "lazy"}
+              animate={idx === currentSlide ? { scale: [1, 1.08] } : {}}
+              transition={{ duration: 6.5, ease: "linear" }}
             />
           </motion.div>
-        </AnimatePresence>
+        ))}
 
-        {/* Strong left-to-right gradient for text readability */}
-        <div className="absolute inset-0 pointer-events-none" style={{
+        {/* Cinematic gradient overlay */}
+        <div className="absolute inset-0 pointer-events-none z-[2]" style={{
           background: `
-            linear-gradient(to right, hsl(222 47% 5% / 0.88) 0%, hsl(222 47% 5% / 0.72) 30%, hsl(222 47% 5% / 0.35) 55%, hsl(222 47% 5% / 0.08) 80%, transparent 100%),
-            linear-gradient(to top, hsl(222 47% 5% / 0.75) 0%, transparent 40%)
+            linear-gradient(to right, hsl(222 47% 5% / 0.90) 0%, hsl(222 47% 5% / 0.74) 28%, hsl(222 47% 5% / 0.38) 52%, hsl(222 47% 5% / 0.10) 78%, transparent 100%),
+            linear-gradient(to top, hsl(222 47% 5% / 0.80) 0%, hsl(222 47% 5% / 0.15) 35%, transparent 60%)
           `
         }} />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-end pb-14 md:pb-18 lg:pb-20">
+        <div className="relative z-10 h-full flex flex-col justify-end pb-14 md:pb-20 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="max-w-xl">
               <motion.div
@@ -235,19 +241,34 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Slide indicators */}
-        <div className="absolute bottom-6 right-4 md:right-10 z-20 flex items-center gap-3">
-          <div className="flex gap-1.5">
-            {heroSlides.map((_, i) => (
+        {/* Premium slide indicators with progress bars */}
+        <div className="absolute bottom-6 right-4 md:right-10 z-20 flex items-center gap-4">
+          <div className="flex gap-2">
+            {heroSlides.map((slide, i) => (
               <button
                 key={i}
-                onClick={() => setCurrentSlide(i)}
-                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1 bg-primary-foreground/70" : "w-1 h-1 bg-primary-foreground/25 hover:bg-primary-foreground/40"}`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
+                onClick={() => { setCurrentSlide(i); setProgress(0); }}
+                className="group flex flex-col items-center gap-1.5"
+                aria-label={`Go to slide ${i + 1} - ${slide.label}`}
+              >
+                <span className={`text-[8px] font-['Montserrat'] font-semibold tracking-wider uppercase transition-all duration-500 ${i === currentSlide ? 'text-primary-foreground/70' : 'text-primary-foreground/0 group-hover:text-primary-foreground/30'}`}>
+                  {slide.label.split(' ')[0]}
+                </span>
+                <div className="relative w-8 md:w-12 h-[2px] bg-primary-foreground/15 rounded-full overflow-hidden">
+                  {i === currentSlide && (
+                    <div
+                      className="absolute inset-y-0 left-0 bg-primary-foreground/70 rounded-full"
+                      style={{ width: `${progress * 100}%` }}
+                    />
+                  )}
+                  {i < currentSlide && (
+                    <div className="absolute inset-0 bg-primary-foreground/40 rounded-full" />
+                  )}
+                </div>
+              </button>
             ))}
           </div>
-          <span className="text-[9px] text-primary-foreground/30 font-['Montserrat'] font-semibold tabular-nums">
+          <span className="text-[9px] text-primary-foreground/25 font-['Montserrat'] font-semibold tabular-nums">
             {String(currentSlide + 1).padStart(2, '0')}/{String(heroSlides.length).padStart(2, '0')}
           </span>
         </div>
