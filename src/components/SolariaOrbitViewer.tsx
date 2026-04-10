@@ -80,7 +80,8 @@ const SolariaOrbitViewer = ({ className = "", onFrameChange }: SolariaOrbitViewe
     frameRef.current = frame;
     setCurrentFrame(frame);
     drawFrame(frame);
-  }, [drawFrame]);
+    onFrameChange?.(frame, isDragging);
+  }, [drawFrame, onFrameChange, isDragging]);
 
   // Auto-rotate on first load — slow sweep through ~12 frames then stop
   useEffect(() => {
