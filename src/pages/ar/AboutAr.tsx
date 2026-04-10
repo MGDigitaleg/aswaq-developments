@@ -42,28 +42,70 @@ const AboutAr = () => {
         }} />
       </section>
 
-      {/* Intro — title + description moved below hero */}
-      <section className="py-12 md:py-18 bg-primary">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center"
-          >
-            <p className="text-primary-foreground/40 font-arabic font-semibold tracking-[0.25em] text-[10px] mb-4">قصتنا</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-              من نحن
-            </h1>
-            <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed mb-10">
-              نحن في مجال الاستثمار العقاري واحدة من الشركات الرائدة في السوق المصري. نبني المستقبل بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا.
-            </p>
-            <div className="w-12 h-px bg-primary-foreground/15 mx-auto mb-10" />
-            <p className="text-primary-foreground/45 font-arabic leading-[1.9] text-[15px] max-w-3xl mx-auto">
-              نحن لسنا مجرد مطور عقاري، بل نمتد بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا، ونجاح شركائنا في الاستثمار المستدام. لقد ركزنا جهودنا منذ انطلاقنا في الشروق، في منطقة شرق القاهرة، حيث نقدم مشاريع عقارية متكاملة تخدم قطاعات التجزئة والإدارة والطب.
-            </p>
-          </motion.div>
+      {/* Intro — editorial split layout */}
+      <section className="py-14 md:py-20 bg-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            {/* Right column — title + stats (RTL) */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-5 lg:sticky lg:top-32"
+            >
+              <p className="text-primary-foreground/40 font-arabic font-semibold tracking-[0.15em] text-[10px] mb-4">قصتنا</p>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-primary-foreground leading-[1.15] mb-6">
+                من نحن
+              </h1>
+              <div className="w-12 h-px bg-primary-foreground/15 mb-6" />
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { val: "+20", label: "سنة خبرة" },
+                  { val: "+15", label: "مشروع ناجح" },
+                  { val: "+3B", label: "جنيه استثمارات" },
+                  { val: "+400", label: "عميل راضٍ" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.15 + i * 0.06, duration: 0.4 }}
+                    className="p-4 rounded-xl border border-primary-foreground/[0.07] bg-primary-foreground/[0.03]"
+                  >
+                    <span className="font-['Montserrat'] text-2xl font-extrabold text-primary-foreground block mb-0.5">{s.val}</span>
+                    <span className="text-primary-foreground/40 text-[11px] font-arabic">{s.label}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Left column — body text (RTL) */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="lg:col-span-7 space-y-8"
+            >
+              <p className="text-primary-foreground/60 font-arabic text-[17px] md:text-[18px] leading-[2] first-letter:text-4xl first-letter:font-display first-letter:font-bold first-letter:text-primary-foreground first-letter:float-right first-letter:ml-2 first-letter:mt-1">
+                نحن في مجال الاستثمار العقاري واحدة من الشركات الرائدة في السوق المصري. نبني المستقبل بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا.
+              </p>
+              <div className="w-full h-px bg-primary-foreground/[0.06]" />
+              <p className="text-primary-foreground/45 font-arabic text-[15px] leading-[2]">
+                نحن لسنا مجرد مطور عقاري، بل نمتد بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا، ونجاح شركائنا في الاستثمار المستدام.
+              </p>
+              <p className="text-primary-foreground/45 font-arabic text-[15px] leading-[2]">
+                لقد ركزنا جهودنا منذ انطلاقنا في الشروق، في منطقة شرق القاهرة، حيث نقدم مشاريع عقارية متكاملة تخدم قطاعات التجزئة والإدارة والطب.
+              </p>
+              <div className="relative pr-5 border-r-2 border-accent/30">
+                <p className="font-display text-primary-foreground/70 text-[16px] md:text-[17px] italic leading-relaxed">
+                  "بناء التميز ليس مجرد هدف — إنه إرثنا."
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
