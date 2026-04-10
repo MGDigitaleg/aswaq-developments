@@ -36,6 +36,26 @@ const Lightbox = ({ images, open, startIndex = 0, onClose }: LightboxProps) => {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  // Swipe gesture support
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (!touchStart.current) return;
+    const dx = e.changedTouches[0].clientX - touchStart.current.x;
+    const dy = e.changedTouches[0].clientY - touchStart.current.y;
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+    if (absDx > 50 && absDx > absDy) {
+      if (dx > 0) prev();
+      else next();
+    }
+    touchStart.current = null;
+  }, [prev, next]);
+
   return (
     <AnimatePresence>
       {open && (
