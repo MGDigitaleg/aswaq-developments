@@ -13,7 +13,7 @@ const FAQSection = ({ faqs, title = "You Ask, We Answer" }: { faqs: FAQItem[]; t
   return (
     <section className="section-padding bg-cream">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
+        <div className="text-center mb-10">
           <div className="section-divider mb-6" />
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
             {title}

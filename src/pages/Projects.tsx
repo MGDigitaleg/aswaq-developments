@@ -147,7 +147,7 @@ const Projects = () => {
       </section>
 
       {/* Intro */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -175,7 +175,7 @@ const Projects = () => {
       </section>
 
       {/* Project Showcase */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
             {projects.slice(0, 2).map((project, i) => (
@@ -246,7 +246,7 @@ const Projects = () => {
       </section>
 
       {/* Available Units CTA */}
-      <section className="relative py-20 md:py-28 bg-primary overflow-hidden">
+      <section className="relative py-14 md:py-20 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]">
           <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
         </div>

@@ -45,7 +45,7 @@ const MercadoTenantsSection = ({ isArabic = false }: Props) => {
   const loopTenants = [...tenants, ...tenants];
 
   return (
-    <section className="py-16 md:py-24 bg-background overflow-hidden">
+    <section className="py-12 md:py-18 bg-background overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

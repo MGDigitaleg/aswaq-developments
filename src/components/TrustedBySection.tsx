@@ -23,7 +23,7 @@ const TrustedBySection = ({ lang = "en" }: TrustedBySectionProps) => {
   const fontClass = isArabic ? "font-arabic" : "font-body";
 
   return (
-    <section className="py-14 md:py-18 bg-cream border-t border-border/30">
+    <section className="py-10 md:py-14 bg-cream border-t border-border/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 15 }}

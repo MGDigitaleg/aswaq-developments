@@ -47,7 +47,7 @@ const NewsAr = () => {
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="flex justify-center py-20">

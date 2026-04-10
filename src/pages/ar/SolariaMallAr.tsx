@@ -160,7 +160,7 @@ const SolariaMallAr = () => {
       </section>
 
       {/* About */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="order-2 lg:order-1">
@@ -183,7 +183,7 @@ const SolariaMallAr = () => {
       </section>
 
       {/* 360° Architectural Explorer */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
             <p className="section-label mb-3">استكشف المبنى</p>
@@ -202,7 +202,7 @@ const SolariaMallAr = () => {
       </section>
 
       {/* Location */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="section-label mb-3">الموقع الاستراتيجي</p>
@@ -248,7 +248,7 @@ const SolariaMallAr = () => {
       </section>
 
       {/* Units */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="section-label mb-3">المساحات المتاحة</p>
           <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">الوحدات المتاحة في سولاريا مول</h2>
@@ -272,7 +272,7 @@ const SolariaMallAr = () => {
       </section>
 
       {/* Why Invest */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="section-label mb-3">القيمة الاستثمارية</p>
