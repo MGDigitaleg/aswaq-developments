@@ -40,7 +40,7 @@ const editorialProjects = [
   {
     name: "سولاريا مول",
     slug: "solaria-mall",
-    image: heroSolaria,
+    image: heroSolariaNight,
     logo: solariaLogo,
     tag: "تجزئة وطبي",
     location: "مدينة الشروق، شرق القاهرة",
@@ -50,7 +50,7 @@ const editorialProjects = [
   {
     name: "أرينا مول",
     slug: "arena-mall",
-    image: heroArena,
+    image: heroArenaNight,
     logo: arenaLogo,
     tag: "تجاري وطبي",
     location: "مدينة الشروق، شرق القاهرة",
@@ -60,7 +60,7 @@ const editorialProjects = [
   {
     name: "ميركادو مول",
     slug: "mercado-mall",
-    image: heroMercado,
+    image: heroMercadoNight,
     logo: mercadoLogo,
     tag: "متعدد الاستخدامات",
     location: "مدينة الشروق، شرق القاهرة",

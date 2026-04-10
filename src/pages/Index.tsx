@@ -40,7 +40,7 @@ const editorialProjects = [
   {
     name: "Solaria Mall",
     slug: "solaria-mall",
-    image: heroSolaria,
+    image: heroSolariaNight,
     logo: solariaLogo,
     tag: "Premium Commercial",
     location: "El Shorouk City, East Cairo",
@@ -50,7 +50,7 @@ const editorialProjects = [
   {
     name: "Arena Mall",
     slug: "arena-mall",
-    image: heroArena,
+    image: heroArenaNight,
     logo: arenaLogo,
     tag: "Retail & Medical",
     location: "El Shorouk City, East Cairo",
@@ -60,7 +60,7 @@ const editorialProjects = [
   {
     name: "Mercado Mall",
     slug: "mercado-mall",
-    image: heroMercado,
+    image: heroMercadoNight,
     logo: mercadoLogo,
     tag: "Commercial",
     location: "El Shorouk City, East Cairo",
