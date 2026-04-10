@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, CheckCircle2, ChevronDown, ArrowLeft, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
 
 import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
 import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
 import solariaImg from "@/assets/solaria-mall.webp";
+import heroImg from "@/assets/hero-solaria.webp";
 import useSEO from "@/hooks/useSEO";
 import solaria1 from "@/assets/gallery/solaria-1.webp";
 import solaria2 from "@/assets/gallery/solaria-2.webp";
@@ -58,18 +60,101 @@ const SolariaMallAr = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+      {/* Hero — Cinematic Fullscreen */}
+      <section className="relative h-screen min-h-[600px] max-h-[1000px] overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.img
+            src={heroImg}
+            alt="سولاريا مول - واجهة معمارية"
+            className="w-full h-full object-cover will-change-transform"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 12, ease: "easeOut" }}
+          />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, hsl(var(--navy) / 0.20) 0%, transparent 35%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, hsl(var(--navy) / 0.55) 75%, hsl(var(--navy) / 0.95) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, hsl(var(--navy) / 0.35) 0%, transparent 50%)' }} />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 40%, hsl(var(--navy) / 0.25) 100%)' }} />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 text-center relative z-10 min-h-[420px] flex flex-col justify-end">
-          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-[10px] font-semibold tracking-[0.12em] font-arabic mb-4" style={{ color: 'hsl(var(--gold) / 0.7)' }}>أسواق للتطوير العقاري</p>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-5 leading-tight">سولاريا مول في مدينة الشروق</h1>
-            <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto text-[15px] leading-[1.9]">
-              أحد أكثر المشاريع الطموحة لشركة أسواق للتطوير العقاري، مصمم ليكون مركزاً حيوياً للتسوق والخدمات والرعاية الصحية والأنشطة المهنية على مساحة 6,600 متر مربع.
+
+        {/* Status Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="absolute top-28 md:top-32 left-6 sm:left-10 lg:left-16 z-20"
+        >
+          <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-primary-foreground/15" style={{
+            background: 'hsl(var(--navy) / 0.55)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+          }}>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: 'hsl(152 45% 50%)' }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: 'hsl(152 45% 50%)' }} />
+            </span>
+            <span className="text-[11px] font-arabic font-semibold tracking-wide" style={{ color: 'hsl(var(--primary-foreground) / 0.90)' }}>
+              متاح الآن للحجز
+            </span>
+          </div>
+        </motion.div>
+
+        <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-6 sm:px-10 lg:px-16">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl mr-0 ml-auto text-right"
+          >
+            <p className="text-[10px] font-arabic font-semibold tracking-[0.12em] mb-5" style={{ color: 'hsl(var(--primary-foreground) / 0.45)' }}>
+              أسواق للتطوير العقاري
             </p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mb-6" style={{ color: 'hsl(var(--primary-foreground))', letterSpacing: '-0.015em' }}>
+              سولاريا مول
+            </h1>
+            <p className="font-arabic text-[15px] md:text-[17px] leading-[1.9] max-w-xl mr-0 ml-auto mb-8" style={{ color: 'hsl(var(--primary-foreground) / 0.60)' }}>
+              وجهة رائدة للتجارة والرعاية الصحية والأعمال في مدينة الشروق.
+            </p>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-4 justify-end"
+            >
+              <Link
+                to="/ar/units/for-sale"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg text-[13px] font-arabic font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  background: 'hsl(var(--primary-foreground))',
+                  color: 'hsl(var(--navy))',
+                  boxShadow: '0 4px 20px -4px hsl(0 0% 100% / 0.15)',
+                }}
+              >
+                احجز وحدتك
+                <ArrowLeft size={14} />
+              </Link>
+              <a href="tel:19474" className="btn-outline-light px-6 py-3.5 text-[13px] rounded-lg font-arabic">
+                <Phone size={14} />
+                اتصل 19474
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll cue */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.8, duration: 0.8 }}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          >
+            <span className="text-[9px] font-arabic tracking-wide" style={{ color: 'hsl(var(--primary-foreground) / 0.3)' }}>
+              اسحب للأسفل
+            </span>
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+              <ChevronDown size={16} style={{ color: 'hsl(var(--primary-foreground) / 0.3)' }} />
+            </motion.div>
           </motion.div>
         </div>
       </section>
