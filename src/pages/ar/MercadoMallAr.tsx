@@ -11,7 +11,8 @@ import Lightbox from "@/components/Lightbox";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 
-// 3D Renders — primary visual language (aspirational, cinematic, premium)
+// 3D Renders
+import render1 from "@/assets/gallery/mercado-1.webp";
 import render2 from "@/assets/gallery/mercado-2.webp";
 import render3 from "@/assets/gallery/mercado-3.webp";
 import render4 from "@/assets/gallery/mercado-4.webp";
@@ -19,8 +20,7 @@ import render5 from "@/assets/gallery/mercado-5.webp";
 import render6 from "@/assets/gallery/mercado-6.webp";
 import render7 from "@/assets/gallery/mercado-7.webp";
 
-// Real photos — proof of operational activity
-import realTower from "@/assets/gallery/mercado-real-tower.webp";
+// Real photos
 import realRetail from "@/assets/gallery/mercado-real-retail.webp";
 import realCorner from "@/assets/gallery/mercado-real-corner.webp";
 import realCorridor from "@/assets/gallery/mercado-real-corridor.webp";
@@ -75,18 +75,25 @@ const investorPoints = [
   "ثقة أكبر مقارنة بالمشاريع المفاهيمية فقط",
 ];
 
-type GalleryTab = "vision" | "active" | "night";
+type GalleryTab = "vision" | "retail" | "exterior" | "real";
 const galleryTabs: { key: GalleryTab; label: string }[] = [
   { key: "vision", label: "الرؤية ثلاثية الأبعاد" },
-  { key: "active", label: "واقعي ونشط" },
-  { key: "night", label: "ليلي وأجواء" },
+  { key: "retail", label: "تجربة التجزئة" },
+  { key: "exterior", label: "الخارجي والحضور" },
+  { key: "real", label: "التشغيل الفعلي" },
 ];
 const galleryMap: Record<GalleryTab, string[]> = {
-  vision: [render3, render7, render2, render6],
-  active: [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor],
-  night: [render4, render5],
+  vision: [render2, render3, render1, render6, render7],
+  retail: [render5, realCourtyard, realCorridor],
+  exterior: [render3, render4, render6, realCorner],
+  real: [realRetail, realCorridor, realCourtyard, realWide, realStairs],
 };
-const allGalleryImages = [render3, render7, render2, render6, realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render4, render5];
+const allGalleryImages = [
+  render2, render3, render1, render6, render7,
+  render5, realCourtyard, realCorridor,
+  render4, realCorner,
+  realRetail, realWide, realStairs,
+];
 
 const MercadoMallAr = () => {
   useSEO(
@@ -106,7 +113,7 @@ const MercadoMallAr = () => {
 
   return (
     <Layout>
-      {/* ─── 1. HERO ─── */}
+      {/* ─── 1. HERO — Strongest night render ─── */}
       <section className="relative bg-primary overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[85vh]">
         <motion.div
           className="absolute inset-0"
@@ -114,7 +121,7 @@ const MercadoMallAr = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: "easeOut" }}
         >
-          <img src={render3} alt="ميركادو مول — وجهة تجارية متميزة" className="w-full h-full object-cover object-center" fetchPriority="high" decoding="sync" />
+          <img src={render7} alt="ميركادو مول — وجهة تجارية متميزة" className="w-full h-full object-cover object-center" fetchPriority="high" decoding="sync" />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 md:via-primary/60 to-primary/10 md:to-primary/20" />
         <div className="absolute inset-0 bg-gradient-to-l from-primary/70 md:from-primary/80 via-primary/20 md:via-primary/30 to-transparent" />
@@ -149,7 +156,7 @@ const MercadoMallAr = () => {
         </div>
       </section>
 
-      {/* ─── 2. QUICK SNAPSHOT ─── */}
+      {/* ─── 2. QUICK SNAPSHOT — Daytime front exterior ─── */}
       <section id="snapshot" className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -175,50 +182,60 @@ const MercadoMallAr = () => {
             </motion.div>
             <motion.div {...imgReveal}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={render7} alt="ميركادو مول — وجهة تجارية فعّالة في الشروق" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+                <img src={render3} alt="ميركادو مول — واجهة خارجية نهارية" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── 3. WHY MERCADO WORKS ─── */}
+      {/* ─── 3. WHY MERCADO WORKS — Corner exterior ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
-            <p className="section-label mb-3">ميزة ميركادو</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">لماذا ينجح ميركادو</h2>
-            <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
-              يجمع ميركادو مول بين سهولة الوصول والتعرض التجاري الواضح وبيئة مستأجرين نشطة — مما يخلق عرضاً أقوى للأعمال التي تريد العمل ضمن وجهة مثبتة بدلاً من وجهة تخمينية.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {whyCards.map((card, i) => (
-              <motion.div key={card.title} {...fadeUp} transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="p-6 md:p-7 bg-card rounded-2xl border border-border/30 hover:border-accent/15 transition-all duration-300 group"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/15 transition-colors duration-300">
-                  <card.icon size={22} className="text-accent" />
-                </div>
-                <h3 className="font-display text-base font-bold text-foreground mb-2">{card.title}</h3>
-                <p className="text-muted-foreground font-arabic text-[13px] leading-relaxed">{card.desc}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
+              <p className="section-label mb-3">ميزة ميركادو</p>
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">لماذا ينجح ميركادو</h2>
+              <p className="text-muted-foreground font-arabic max-w-2xl text-[15px] leading-relaxed mb-8">
+                يجمع ميركادو مول بين سهولة الوصول والتعرض التجاري الواضح وبيئة مستأجرين نشطة — مما يخلق عرضاً أقوى للأعمال التي تريد العمل ضمن وجهة مثبتة بدلاً من وجهة تخمينية.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {whyCards.map((card, i) => (
+                  <motion.div key={card.title} {...fadeUp} transition={{ delay: i * 0.08, duration: 0.4 }}
+                    className="p-5 bg-card rounded-xl border border-border/30 hover:border-accent/15 transition-all duration-300 group"
+                    style={{ boxShadow: 'var(--shadow-sm)' }}
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors duration-300">
+                      <card.icon size={20} className="text-accent" />
+                    </div>
+                    <h3 className="font-display text-sm font-bold text-foreground mb-1.5">{card.title}</h3>
+                    <p className="text-muted-foreground font-arabic text-[12px] leading-relaxed">{card.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div {...imgReveal}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={render6} alt="ميركادو مول — منظور زاوية خارجية" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── 4. ACTIVE BRANDS / TENANT MIX ─── */}
+      {/* ─── 4. ACTIVE BRANDS ─── */}
       <MercadoTenantsSection isArabic />
 
-      {/* ─── 5. BUILT AROUND DAILY MOVEMENT ─── */}
+      {/* ─── 5. DAILY MOVEMENT — Internal walkway + courtyard ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={render2} alt="حركة التجزئة في ميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] mb-4" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={render5} alt="ممر داخلي نهاري في ميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              </div>
+              <div className="rounded-xl overflow-hidden aspect-[16/7]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                <img src={realCourtyard} alt="فناء ميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
@@ -242,7 +259,7 @@ const MercadoMallAr = () => {
         </div>
       </section>
 
-      {/* ─── 6. ARCHITECTURAL / EXPERIENCE ─── */}
+      {/* ─── 6. ARCHITECTURAL — Courtyard/elevator + exterior supports ─── */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -259,15 +276,23 @@ const MercadoMallAr = () => {
               </p>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={render6} alt="التجربة المعمارية لميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] mb-4" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={render1} alt="الفناء المركزي والمصعد في ميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                  <img src={render3} alt="واجهة ميركادو مول" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                  <img src={render6} alt="زاوية ميركادو مول" className="w-full h-full object-cover" loading="lazy" />
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── 7. COMMERCIAL OPPORTUNITY ─── */}
+      {/* ─── 7. COMMERCIAL OPPORTUNITY — Aerial render ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
@@ -276,6 +301,11 @@ const MercadoMallAr = () => {
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
               مع مساحات وحدات تبدأ من 29 متر مربع ومجموعة من خيارات المواقع عبر المول، يوفر ميركادو فرصاً للمفاهيم الناشئة والمشغلين الراسخين الراغبين في النمو بالشروق.
             </p>
+          </motion.div>
+          <motion.div {...imgReveal} className="mb-12">
+            <div className="rounded-2xl overflow-hidden aspect-[21/9] max-w-4xl mx-auto" style={{ boxShadow: 'var(--shadow-lg)' }}>
+              <img src={render2} alt="ميركادو مول من الأعلى" className="w-full h-full object-cover" loading="lazy" />
+            </div>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
             {commercialCards.map((card, i) => (
@@ -348,7 +378,7 @@ const MercadoMallAr = () => {
         </div>
       </section>
 
-      {/* ─── 9. CURATED GALLERY ─── */}
+      {/* ─── 9. CURATED GALLERY — 4 tabs ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-12">
@@ -359,7 +389,7 @@ const MercadoMallAr = () => {
             </p>
           </motion.div>
           <div className="flex justify-center mb-10">
-            <div className="flex bg-background rounded-lg p-1 gap-1 border border-border/30" style={{ boxShadow: 'var(--shadow-sm)' }}>
+            <div className="flex flex-wrap justify-center bg-background rounded-lg p-1 gap-1 border border-border/30" style={{ boxShadow: 'var(--shadow-sm)' }}>
               {galleryTabs.map((tab) => (
                 <button
                   key={tab.key}
@@ -389,7 +419,7 @@ const MercadoMallAr = () => {
         </div>
       </section>
 
-      {/* ─── 10. INVESTMENT VALUE ─── */}
+      {/* ─── 10. OPERATIONAL PROOF — Real photos grid ─── */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -417,18 +447,28 @@ const MercadoMallAr = () => {
               </p>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={realRetail} alt="فرصة استثمارية في ميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              <div className="space-y-3">
+                <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                  <img src={realRetail} alt="واجهة متجر نشطة في ميركادو مول" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                    <img src={realCorridor} alt="ممر ميركادو مول" className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                    <img src={realCourtyard} alt="فناء ميركادو مول" className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── 11. FINAL CTA ─── */}
+      {/* ─── 11. FINAL CTA — Strongest night render ─── */}
       <section className="relative bg-primary py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={render4} alt="" className="w-full h-full object-cover opacity-[0.06]" loading="lazy" />
+          <img src={render7} alt="" className="w-full h-full object-cover opacity-[0.06]" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/70" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
