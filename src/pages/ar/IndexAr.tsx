@@ -14,27 +14,11 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
-import heroBg from "@/assets/hero-building.webp";
-import heroMercado from "@/assets/hero-mercado.webp";
-import heroArena from "@/assets/hero-arena.webp";
-import heroSolaria from "@/assets/hero-solaria.webp";
+import heroSolariaNight from "@/assets/gallery/solaria-night.webp";
+import heroArenaNight from "@/assets/arena-premium/arena-night-render.jpg";
+import heroMercadoNight from "@/assets/gallery/mercado-1.webp";
+import heroCityhubFountain from "@/assets/gallery/cityhub-2.webp";
 import heroCityhub from "@/assets/hero-cityhub.webp";
-import cityhubImg from "@/assets/cityhub-mall.webp";
-import mercadoImg from "@/assets/mercado-mall.webp";
-import arenaImg from "@/assets/arena-mall.webp";
-import solariaImg from "@/assets/solaria-mall.webp";
-import solariaPositioning from "@/assets/solaria-positioning.webp";
-import solariaLogo from "@/assets/logos/solaria-mall-clean.png";
-import arenaLogo from "@/assets/logos/arena-mall-clean.png";
-import mercadoLogo from "@/assets/logos/mercado-mall-clean.png";
-import cityHubLogo from "@/assets/logos/city-hub-mall-clean.png";
-
-const heroSlides = [
-  { image: heroBg, label: "سيتي هب مول" },
-  { image: heroMercado, label: "ميركادو مول" },
-  { image: heroArena, label: "أرينا مول" },
-  { image: heroSolaria, label: "سولاريا مول" },
-];
 
 const editorialProjects = [
   {
