@@ -11,7 +11,15 @@ import Lightbox from "@/components/Lightbox";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 
-// Real photos (cropped & optimized WebP)
+// 3D Renders — primary visual language (aspirational, cinematic, premium)
+import render2 from "@/assets/gallery/mercado-2.webp";
+import render3 from "@/assets/gallery/mercado-3.webp";
+import render4 from "@/assets/gallery/mercado-4.webp";
+import render5 from "@/assets/gallery/mercado-5.webp";
+import render6 from "@/assets/gallery/mercado-6.webp";
+import render7 from "@/assets/gallery/mercado-7.webp";
+
+// Real photos — proof of operational activity
 import realTower from "@/assets/gallery/mercado-real-tower.webp";
 import realRetail from "@/assets/gallery/mercado-real-retail.webp";
 import realCorner from "@/assets/gallery/mercado-real-corner.webp";
@@ -19,15 +27,6 @@ import realCorridor from "@/assets/gallery/mercado-real-corridor.webp";
 import realCourtyard from "@/assets/gallery/mercado-real-courtyard.webp";
 import realWide from "@/assets/gallery/mercado-real-wide.webp";
 import realStairs from "@/assets/gallery/mercado-real-stairs.webp";
-import heroCinematic from "@/assets/gallery/mercado-hero-cinematic.webp";
-
-// 3D Renders (optimized WebP — only those actually displayed)
-import render2 from "@/assets/gallery/mercado-2.webp";
-import render3 from "@/assets/gallery/mercado-3.webp";
-import render4 from "@/assets/gallery/mercado-4.webp";
-import render5 from "@/assets/gallery/mercado-5.webp";
-import render6 from "@/assets/gallery/mercado-6.webp";
-import render7 from "@/assets/gallery/mercado-7.webp";
 
 /* ── Animation presets (CSS-friendly, no useScroll overhead) ── */
 const fadeUp = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-60px" as const } };
@@ -78,20 +77,18 @@ const investorPoints = [
   "More confidence than concept-only projects",
 ];
 
-type GalleryTab = "exterior" | "retail" | "aerial" | "night";
+type GalleryTab = "vision" | "active" | "night";
 const galleryTabs: { key: GalleryTab; label: string }[] = [
-  { key: "exterior", label: "Exterior" },
-  { key: "retail", label: "Retail Experience" },
-  { key: "aerial", label: "Aerial View" },
+  { key: "vision", label: "3D Vision" },
+  { key: "active", label: "Real & Active" },
   { key: "night", label: "Night & Ambience" },
 ];
 const galleryMap: Record<GalleryTab, string[]> = {
-  exterior: [realCorner, realTower, render3, render7],
-  retail: [realRetail, realCourtyard, realWide, realCorridor],
-  aerial: [render2, render6],
+  vision: [render3, render7, render2, render6],
+  active: [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor],
   night: [render4, render5],
 };
-const allGalleryImages = [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render2, render3, render4, render5, render6, render7];
+const allGalleryImages = [render3, render7, render2, render6, realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render4, render5];
 
 const MercadoMall = () => {
   useSEO(
@@ -99,7 +96,7 @@ const MercadoMall = () => {
     "Looking for commercial property for rent? Invest in Mercado Mall El Shorouk, offering retail units for sale & rent at flexible prices."
   );
 
-  const [activeTab, setActiveTab] = useState<GalleryTab>("exterior");
+  const [activeTab, setActiveTab] = useState<GalleryTab>("vision");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -121,9 +118,9 @@ const MercadoMall = () => {
           transition={{ duration: 10, ease: "easeOut" }}
         >
           <img
-            src={heroCinematic}
-            alt=""
-            className="w-full h-full object-cover object-center md:object-right-top"
+            src={render3}
+            alt="Mercado Mall — Premium commercial destination"
+            className="w-full h-full object-cover object-center"
             fetchPriority="high"
             decoding="sync"
           />
@@ -205,7 +202,7 @@ const MercadoMall = () => {
             </motion.div>
             <motion.div {...imgReveal}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={realCorner} alt="Mercado Mall — Operational commercial destination in El Shorouk" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+                <img src={render7} alt="Mercado Mall — Operational commercial destination in El Shorouk" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
           </div>
@@ -248,7 +245,7 @@ const MercadoMall = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div {...imgReveal}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={realCourtyard} alt="Mercado Mall interior retail circulation" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+                <img src={render2} alt="Mercado Mall circulation and retail movement" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
@@ -290,7 +287,7 @@ const MercadoMall = () => {
             </motion.div>
             <motion.div {...imgReveal} className="order-1 lg:order-2">
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={realTower} alt="Mercado Mall architectural experience" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+                <img src={render6} alt="Mercado Mall architectural experience" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
           </div>
