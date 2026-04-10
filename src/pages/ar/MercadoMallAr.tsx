@@ -120,7 +120,7 @@ const MercadoMallAr = () => {
           <img src={heroCinematic} alt="" className="w-full h-full object-cover object-center md:object-left-top" fetchPriority="high" decoding="sync" />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 md:via-primary/60 to-primary/10 md:to-primary/20" />
-        <div className="absolute inset-0 bg-gradient-to-l from-primary/80 via-primary/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-l from-primary/70 md:from-primary/80 via-primary/20 md:via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-primary to-transparent" />
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-primary/40 to-transparent" />
 
