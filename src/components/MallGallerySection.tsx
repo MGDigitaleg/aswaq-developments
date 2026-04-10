@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ImageIcon, Film } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import Lightbox from "@/components/Lightbox";
 
 interface MallGallerySectionProps {
   mallName: string;
@@ -12,6 +13,8 @@ interface MallGallerySectionProps {
 
 const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGallerySectionProps) => {
   const [activeMedia, setActiveMedia] = useState("images");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
   const isAr = lang === "ar";
 
   if (images.length === 0 && videos.length === 0) return null;
@@ -53,8 +56,9 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-2xl overflow-hidden border border-border/30 aspect-[4/3]"
+                    className="rounded-2xl overflow-hidden border border-border/30 aspect-[4/3] cursor-pointer"
                     style={{ boxShadow: 'var(--shadow-sm)' }}
+                    onClick={() => { setLightboxIndex(i); setLightboxOpen(true); }}
                   >
                     <img
                       src={src}
@@ -105,6 +109,7 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
           </TabsContent>
         </Tabs>
       </div>
+      <Lightbox images={images} open={lightboxOpen} startIndex={lightboxIndex} onClose={() => setLightboxOpen(false)} />
     </section>
   );
 };
