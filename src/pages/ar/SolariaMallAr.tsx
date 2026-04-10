@@ -10,8 +10,15 @@ import solaria1 from "@/assets/gallery/solaria-1.webp";
 import solaria2 from "@/assets/gallery/solaria-2.webp";
 import solaria3 from "@/assets/gallery/solaria-3.webp";
 import solaria4 from "@/assets/gallery/solaria-4.webp";
+import solariaNight from "@/assets/gallery/solaria-night.webp";
+import solariaBirdEntrance from "@/assets/gallery/solaria-bird-entrance.webp";
+import solariaOutroDay from "@/assets/gallery/solaria-outro-day.webp";
+import solariaCam16 from "@/assets/gallery/solaria-cam16.webp";
+import solariaIntro from "@/assets/gallery/solaria-intro.webp";
+import solariaCube from "@/assets/gallery/solaria-cube.webp";
+import solariaOutro from "@/assets/gallery/solaria-outro.webp";
 
-const galleryImages = [solaria4, solaria3, solaria2, solaria1];
+const galleryImages = [solariaNight, solariaBirdEntrance, solariaIntro, solariaCube, solariaOutro, solariaOutroDay, solariaCam16, solaria4, solaria3, solaria2, solaria1];
 const galleryVideos = [
   "8YDCm1TmTQ0", "ntpGQTMyq3Q", "0SPxL2rY3Dc", "-vQ52O22iwM", "l6kA_Ya2tW8",
   "bWMNLhNUWic", "giAo0wIirns", "5Vg0nxFPN2s", "lIwPvTA4kl8", "Z2s5k9hBR5s",

@@ -12,7 +12,20 @@ import useSEO from "@/hooks/useSEO";
 import solariaImg from "@/assets/solaria-mall.webp";
 import heroImg from "@/assets/hero-solaria.webp";
 import solaria4 from "@/assets/gallery/solaria-4.webp";
+import solaria3 from "@/assets/gallery/solaria-3.webp";
+import solaria2 from "@/assets/gallery/solaria-2.webp";
+import solaria1 from "@/assets/gallery/solaria-1.webp";
+import solariaNight from "@/assets/gallery/solaria-night.webp";
+import solariaBirdEntrance from "@/assets/gallery/solaria-bird-entrance.webp";
+import solariaOutroDay from "@/assets/gallery/solaria-outro-day.webp";
+import solariaCam16 from "@/assets/gallery/solaria-cam16.webp";
+import solariaIntro from "@/assets/gallery/solaria-intro.webp";
+import solariaCube from "@/assets/gallery/solaria-cube.webp";
+import solariaOutro from "@/assets/gallery/solaria-outro.webp";
 import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
+import MallGallerySection from "@/components/MallGallerySection";
+
+const solariaGalleryImages = [solariaNight, solariaBirdEntrance, solariaIntro, solariaCube, solariaOutro, solariaOutroDay, solariaCam16, solaria4, solaria3, solaria2, solaria1];
 
 /* ─── Data ─── */
 
@@ -529,6 +542,19 @@ const SolariaMall = () => {
           </motion.div>
         </div>
       </section>
+
+      <MallGallerySection
+        mallName="Solaria Mall"
+        images={solariaGalleryImages}
+        videos={[
+          "8YDCm1TmTQ0", "ntpGQTMyq3Q", "0SPxL2rY3Dc", "-vQ52O22iwM", "l6kA_Ya2tW8",
+          "bWMNLhNUWic", "giAo0wIirns", "5Vg0nxFPN2s", "lIwPvTA4kl8", "Z2s5k9hBR5s",
+          "urvheJNfRdQ", "9ejGoFF4Jrk", "cepHBQGE7J0", "vDInqD_HcKU", "Y4lN13Cas5c",
+          "BrDGv2SxZXI", "Hqv9KliWT1s", "7_I97gYQrho", "Yq2XDpp2UNU", "Xf8AUcMltIQ",
+          "boE6pqIItFE", "IFGQuVc1Qh4", "NjbdYDPeErM", "PtXQ7ekGibo", "9xWD4rjaFz4",
+          "lDb2srq3prQ", "21h59Aidbss", "5zo6Nh69DoU", "pnchRd-AAwg",
+        ]}
+      />
 
       {/* ═══════════════════════════════════════════
           8. FINAL CTA
