@@ -110,10 +110,26 @@ const ArenaMall = () => {
       ════════════════════════════════════════════ */}
       <section className="relative flex min-h-screen items-end overflow-hidden bg-primary">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="ARENA Mall premium night exterior" className="h-full w-full object-cover" fetchPriority="high" />
+          <motion.img src={heroImage} alt="ARENA Mall premium night exterior" className="h-full w-full object-cover will-change-transform" fetchPriority="high" initial={{ scale: 1.06 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "easeOut" }} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--primary) / 0.3) 0%, hsl(var(--primary) / 0.5) 40%, hsl(var(--primary) / 0.88) 75%, hsl(var(--primary) / 0.97) 100%)" }} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, hsl(var(--primary) / 0.7) 0%, transparent 60%)" }} />
         </div>
+
+        {/* Status Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="absolute top-28 md:top-32 right-6 sm:right-10 lg:right-16 z-20"
+        >
+          <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-primary-foreground/15" style={{ background: 'hsl(var(--navy) / 0.55)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: 'hsl(45 85% 55%)' }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: 'hsl(45 85% 55%)' }} />
+            </span>
+            <span className="text-[11px] font-body font-semibold tracking-[0.12em] uppercase" style={{ color: 'hsl(var(--primary-foreground) / 0.90)' }}>Under Construction</span>
+          </div>
+        </motion.div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-20 pt-40 sm:px-6 md:pb-28 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} className="max-w-3xl">
