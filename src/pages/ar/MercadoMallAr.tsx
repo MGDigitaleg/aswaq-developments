@@ -109,35 +109,42 @@ const MercadoMallAr = () => {
   return (
     <Layout>
       {/* ─── 1. HERO ─── */}
-      <section className="relative bg-primary overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="relative bg-primary overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[80vh]">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 8, ease: "easeOut" }}
+        >
           <img src={realWide} alt="" className="w-full h-full object-cover" style={{ filter: "brightness(0.35) contrast(1.1) saturate(1.15)" }} fetchPriority="high" decoding="sync" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/60" />
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 md:pt-48 pb-20 md:pb-28 relative z-10">
-          <div className="max-w-3xl mr-auto">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase font-body mb-5 text-primary-foreground/35">
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-l from-primary/60 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary to-transparent" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-44 md:pt-52 pb-24 md:pb-32 relative z-10 flex flex-col justify-end min-h-[inherit]">
+          <div className="max-w-2xl mr-auto">
+            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
+              <p className="text-[9px] font-semibold tracking-[0.4em] uppercase font-body mb-6 text-primary-foreground/30">
                 شركة أسواق للتطوير العقاري — وجهة تجارية فعّالة
               </p>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[4.2rem] font-bold text-primary-foreground mb-4 leading-[1.15]" style={{ letterSpacing: '-0.01em' }}>
-                ميركادو مول<br />مدينة الشروق
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-bold text-primary-foreground leading-[1.12] mb-5" style={{ letterSpacing: '-0.01em' }}>
+                ميركادو مول
+                <br />
+                <span className="text-primary-foreground/60">مدينة الشروق</span>
               </h1>
-              <p className="text-primary-foreground/45 font-arabic text-sm md:text-[15px] mb-6">
-                وجهة تجزئة فعّالة في قلب مدينة الشروق
-              </p>
-              <p className="text-primary-foreground/50 font-arabic text-[15px] md:text-base leading-[1.95] max-w-xl mb-10">
-                ميركادو مول وجهة تجارية متكاملة الخدمات مصممة لتلبية احتياجات مجتمعات الشروق النابضة بالحياة. مع علامات تجارية فعّالة ووحدات جاهزة للتشغيل وحركة يومية قوية، يوفر بيئة مثبتة لنمو التجزئة والأعمال الحديثة.
-              </p>
-              <div className="flex flex-wrap gap-3">
+              <motion.p className="text-primary-foreground/45 font-arabic text-[15px] md:text-base leading-[1.95] max-w-lg mb-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>
+                وجهة تجارية متكاملة الخدمات مع علامات تجارية فعّالة ووحدات جاهزة للتشغيل وحركة يومية قوية — بيئة مثبتة لنمو التجزئة والأعمال الحديثة.
+              </motion.p>
+              <motion.div className="flex flex-wrap gap-3" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.1 }}>
                 <a href="#snapshot" className="btn-outline-light px-8 py-3.5 text-[12px] rounded-lg font-body group">
                   اكتشف ميركادو
                   <ArrowRight size={13} className="transition-transform group-hover:-translate-x-1 rotate-180" />
                 </a>
-                <Link to="/ar/contact" className="inline-flex items-center gap-2 px-8 py-3.5 text-[12px] font-body font-semibold tracking-[0.08em] uppercase rounded-lg border border-primary-foreground/15 text-primary-foreground/60 hover:text-primary-foreground hover:border-primary-foreground/30 transition-all duration-300">
+                <Link to="/ar/contact" className="inline-flex items-center gap-2 px-8 py-3.5 text-[12px] font-body font-semibold tracking-[0.08em] uppercase rounded-lg border border-primary-foreground/12 text-primary-foreground/50 hover:text-primary-foreground hover:border-primary-foreground/25 transition-all duration-400">
                   طلب تفاصيل الوحدة
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
