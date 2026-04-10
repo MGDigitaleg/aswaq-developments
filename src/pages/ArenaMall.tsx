@@ -89,6 +89,16 @@ const ArenaMall = () => {
     "Explore ARENA Mall El Shorouk by ASWAQ Developments — a premium mixed-use destination for retail, clinics, offices, and investor-led business opportunity."
   );
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (images: string[], index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
     <Layout>
       {/* ════════════════════════════════════════════
