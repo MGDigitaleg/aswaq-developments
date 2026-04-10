@@ -35,18 +35,18 @@ const About = () => {
     <Layout>
       <JsonLd data={breadcrumbs} />
       {/* Hero — clean cinematic video, no text overlay */}
-      <section className="relative aspect-video max-h-[75vh] overflow-hidden">
+      <section className="relative aspect-video max-h-[75vh] overflow-hidden bg-primary">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-contain"
         >
           <source src="/videos/about-hero.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: 'linear-gradient(to top, hsl(222 47% 5% / 0.6) 0%, transparent 50%)'
+          background: 'linear-gradient(to top, hsl(222 47% 5% / 0.4) 0%, transparent 40%)'
         }} />
       </section>
 
