@@ -12,6 +12,7 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
+import unitsCTABg from "@/assets/units-cta-bg.jpg";
 import heroSolariaNight from "@/assets/gallery/solaria-night.webp";
 import heroArenaNight from "@/assets/gallery/arena-2.webp";
 import heroMercadoNight from "@/assets/gallery/mercado-5.webp";
@@ -773,9 +774,11 @@ const IndexAr = () => {
 
 
       {/* ═══════════════ UNITS CTA ═══════════════ */}
-      <section className="relative py-14 md:py-20 bg-primary overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-primary-foreground/[0.02] to-transparent" />
+      <section className="relative py-20 md:py-28 bg-primary overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={unitsCTABg} alt="" className="w-full h-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-primary/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-primary/40" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center gap-8">
