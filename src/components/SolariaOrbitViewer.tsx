@@ -146,6 +146,8 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     e.preventDefault();
     setIsDragging(true);
+    setHasAutoRotated(true); // Stop auto-rotate on interaction
+    clearTimeout(autoRotateRef.current);
     velocityRef.current = 0;
     dragStartXRef.current = e.clientX;
     dragStartFrameRef.current = frameRef.current;
