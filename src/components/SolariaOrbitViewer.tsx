@@ -88,15 +88,19 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     const totalSteps = TOTAL_FRAMES;
     let step = 0;
 
-    // Ease-in-out: slow start, fast middle, slow end
+    // Ease-in with dramatic deceleration at end
     const getInterval = (s: number) => {
       const t = s / totalSteps; // 0→1
-      // Cosine ease-in-out: slow at edges, fast in the middle
-      const ease = 0.5 - 0.5 * Math.cos(Math.PI * t);
-      // Map ease (0→1→0 speed curve) to interval: slow=220ms, fast=60ms
-      const slow = 220;
-      const fast = 60;
-      return slow - ease * (slow - fast);
+      // Cubic ease-out: gentle start, long dramatic deceleration
+      const ease = t < 0.3
+        ? t / 0.3 * 0.8  // Quick ramp up in first 30%
+        : 0.8 + 0.2 * ((t - 0.3) / 0.7); // Slow crawl for remaining 70%
+      // Exponential slowdown at the tail end
+      const tailFactor = t > 0.7 ? Math.pow((t - 0.7) / 0.3, 2) : 0;
+      const slow = 350;
+      const fast = 55;
+      const base = fast + ease * (slow - fast);
+      return base + tailFactor * 250; // Extra drag at the very end
     };
 
     const tick = () => {
