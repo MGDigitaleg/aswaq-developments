@@ -105,7 +105,7 @@ const ArenaMallAr = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="absolute top-28 md:top-32 left-6 sm:left-10 lg:left-16 z-20"
+          className="absolute top-28 md:top-32 right-6 sm:right-10 lg:right-16 z-20"
         >
           <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-primary-foreground/15" style={{ background: 'hsl(var(--navy) / 0.55)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
             <span className="relative flex h-2.5 w-2.5">
@@ -117,7 +117,7 @@ const ArenaMallAr = () => {
         </motion.div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-20 pt-40 sm:px-6 md:pb-28 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} className="max-w-3xl">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} className="max-w-3xl ml-auto text-right">
             <p className="mb-6 text-[11px] font-arabic font-semibold tracking-[0.2em] text-primary-foreground/50">
               شركة أسواق للتطوير العقاري — الشروق
             </p>
@@ -131,7 +131,7 @@ const ArenaMallAr = () => {
             <p className="mb-10 max-w-xl text-base font-arabic leading-8 text-primary-foreground/55">
               وجهة تجارية عصرية متعددة الاستخدامات، صُممت للعلامات التجارية الطموحة والعيادات والشركات التي تسعى لحضور متميز وقيمة طويلة الأمد.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row justify-end">
               <Link to="/ar/contact" className="btn-premium justify-center px-8 py-4 text-sm font-arabic">
                 طلب الكتيب <ArrowLeft size={16} />
               </Link>

@@ -85,7 +85,7 @@ const CityHubMallAr = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="absolute top-28 md:top-32 left-6 sm:left-10 lg:left-16 z-20"
+          className="absolute top-28 md:top-32 right-6 sm:right-10 lg:right-16 z-20"
         >
           <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-primary-foreground/15" style={{ background: 'hsl(var(--navy) / 0.55)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
             <span className="relative flex h-2.5 w-2.5">
