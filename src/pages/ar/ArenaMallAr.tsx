@@ -27,6 +27,8 @@ import snapshotImage from "@/assets/arena-premium/arena-render-main.jpg";
 import visionRender from "@/assets/arena-premium/arena-render-angle.jpg";
 import lifestyleRender from "@/assets/arena-premium/arena-back-render.jpg";
 import aerialRender from "@/assets/arena-premium/arena-aerial-render.jpg";
+const aerialNight = "/arena/arena-3d-aerial-night.jpg";
+const streetNight = "/arena/arena-3d-street-night.jpg";
 import facadeWide from "@/assets/arena-premium/arena-construction-wide.jpg";
 import facadeDetail from "@/assets/arena-premium/arena-construction-facade.jpg";
 import siteOffice from "@/assets/arena-premium/arena-construction-site-office.jpg";
@@ -65,7 +67,7 @@ const investorReasons = [
 ];
 
 const galleryTabs = {
-  vision: [heroImage, snapshotImage, visionRender, aerialRender, lifestyleRender],
+  vision: [heroImage, snapshotImage, visionRender, aerialRender, lifestyleRender, aerialNight, streetNight],
   progress: [facadeWide, facadeDetail, siteOffice, distanceShot, courtyardShot],
   presence: [facadeDetail, snapshotImage, courtyardShot, heroImage],
 };
