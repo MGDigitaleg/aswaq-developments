@@ -112,27 +112,27 @@ const MercadoMall = () => {
   return (
     <Layout>
       {/* ─── 1. HERO — Cinematic, immersive ─── */}
-      <section className="relative bg-primary overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[80vh]">
-        {/* Deep background with parallax */}
+      <section className="relative bg-primary overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[85vh]">
+        {/* Pre-graded cinematic image — no runtime CSS filters needed */}
         <motion.div
           className="absolute inset-0"
-          initial={{ scale: 1.08 }}
+          initial={{ scale: 1.06 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 8, ease: "easeOut" }}
+          transition={{ duration: 10, ease: "easeOut" }}
         >
           <img
-            src={realWide}
+            src={heroCinematic}
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-right-top"
             fetchPriority="high"
             decoding="sync"
-            style={{ filter: "brightness(0.35) contrast(1.1) saturate(1.15)" }}
           />
         </motion.div>
-        {/* Atmospheric gradient layers */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary to-transparent" />
+        {/* Layered depth: bottom anchor + left text zone + top vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-primary/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-primary to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-primary/40 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-44 md:pt-52 pb-24 md:pb-32 relative z-10 flex flex-col justify-end min-h-[inherit]">
           <div className="max-w-2xl">
