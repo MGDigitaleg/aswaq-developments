@@ -3,10 +3,22 @@ import { Phone, Mail, MapPin, Facebook, Instagram, Youtube, Star, ExternalLink, 
 import aswaqLogo from "@/assets/aswaq-logo.webp";
 
 const reviews = [
-  { name: "Abdo Elkattan", rating: 5, text: "The best shop for Japanese sweets, boba and mochi 🍡🧁", textAr: "أفضل محل للحلويات اليابانية والبوبا والموتشي 🍡🧁" },
-  { name: "Ahmad Halawa", rating: 5, text: "Whatever you want in one place ♥", textAr: "كل اللي تحتاجه في مكان واحد ♥" },
-  { name: "Basmala Mohamed", rating: 5, text: "Food: 5 · Service: 5 · Atmosphere: 5", textAr: "الطعام: 5 · الخدمة: 5 · الأجواء: 5" },
-  { name: "Trendy Cakes With Eman", rating: 5, text: "Food: 5 · Service: 5 · Atmosphere: 5", textAr: "الطعام: 5 · الخدمة: 5 · الأجواء: 5" },
+  {
+    name: "Mohamed Marghany",
+    rating: 5,
+    text: "Excellent",
+    textAr: "ممتاز",
+    date: "a year ago",
+    dateAr: "منذ عام",
+  },
+  {
+    name: "Ahmed Kandil",
+    rating: 5,
+    text: "A very reputable and reliable company, especially Mr. Mohamed El-Sadek and Mr. Ahmed Mohsen.",
+    textAr: "شركة محترمة وموثوقة جدًا، وخصوصًا الأستاذ محمد الصادق والأستاذ أحمد محسن.",
+    date: "3 years ago",
+    dateAr: "منذ 3 سنوات",
+  },
 ];
 
 const StarRating = ({ rating }: { rating: number }) => (
@@ -60,7 +72,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      {/* Pre-footer CTA */}
       <div className="border-b border-primary-foreground/[0.06]" style={{ background: 'linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(222 38% 15%) 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
@@ -78,10 +89,8 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-          {/* Brand */}
           <div className="lg:col-span-2 lg:pr-10">
             <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[170px] mb-7" width={170} height={67} />
             <p className={`text-primary-foreground/65 text-sm leading-[1.85] ${fontClass} mb-8 max-w-sm`}>
@@ -105,7 +114,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/80 uppercase tracking-[0.2em]">
               {isArabic ? "روابط سريعة" : "Quick Links"}
@@ -119,7 +127,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Projects + Units */}
           <div>
             <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/80 uppercase tracking-[0.2em]">
               {isArabic ? "مشاريعنا" : "Our Projects"}
@@ -139,13 +146,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h3 className="font-body text-[10px] font-bold mb-6 text-primary-foreground/80 uppercase tracking-[0.2em]">
               {isArabic ? "تواصل معنا" : "Contact Us"}
             </h3>
             <ul className={`space-y-5 ${fontClass}`}>
-              {/* Hotline — prominent */}
               <li>
                 <a href="tel:19474" className="flex items-center gap-3 group transition-colors duration-300">
                   <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.07] border border-primary-foreground/[0.12] flex items-center justify-center shrink-0 group-hover:bg-primary-foreground/[0.12] transition-colors">
@@ -182,23 +187,22 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Google Reviews */}
       <div className="border-t border-primary-foreground/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-7">
             <div className="flex items-center gap-3">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={14} className={i < 5 ? "fill-steel text-steel" : "text-primary-foreground/15"} />
+                  <Star key={i} size={14} className={i < 4 ? "fill-steel text-steel" : "text-primary-foreground/15"} />
                 ))}
               </div>
-              <span className="text-lg font-bold text-primary-foreground/90 font-['Montserrat']">4.6</span>
+              <span className="text-lg font-bold text-primary-foreground/90 font-['Montserrat']">4.2</span>
               <span className={`text-[12px] text-primary-foreground/60 ${fontClass}`}>
                 {isArabic ? "بناءً على تقييمات Google" : "based on Google Reviews"}
               </span>
             </div>
             <a
-              href="https://maps.app.goo.gl/6jGACMa9mZKx5sYp9"
+              href="https://maps.app.goo.gl/xVJYJwrPV8hRpSMR6"
               target="_blank"
               rel="noopener noreferrer"
               className={`text-[12px] text-primary-foreground/55 hover:text-primary-foreground/85 flex items-center gap-1.5 ${fontClass} transition-colors duration-300`}
@@ -208,7 +212,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             {reviews.map((review, i) => (
               <div
                 key={i}
@@ -218,14 +222,18 @@ const Footer = () => {
                 <p className={`text-[12.5px] text-primary-foreground/65 mt-2.5 mb-3 ${fontClass} leading-relaxed min-h-[36px]`}>
                   "{isArabic ? review.textAr : review.text}"
                 </p>
-                <p className={`text-[12px] font-semibold text-primary-foreground/85 ${fontClass}`}>{review.name}</p>
+                <div className="flex items-center justify-between gap-3">
+                  <p className={`text-[12px] font-semibold text-primary-foreground/85 ${fontClass}`}>{review.name}</p>
+                  <p className={`text-[11px] text-primary-foreground/45 shrink-0 ${fontClass}`}>
+                    {isArabic ? review.dateAr : review.date}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom */}
       <div className="border-t border-primary-foreground/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className={`text-[11px] text-primary-foreground/50 ${fontClass}`}>
