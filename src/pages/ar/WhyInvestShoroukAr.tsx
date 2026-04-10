@@ -64,7 +64,7 @@ const WhyInvestShoroukAr = () => {
       {/* Market Stats */}
       <section className="py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <div className="mx-auto mb-6 w-[60px] h-[2px] bg-foreground" />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">مدينة الشروق بالأرقام</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto">مؤشرات السوق الرئيسية التي تجعل مدينة الشروق وجهة استثمارية مميزة.</p>
@@ -97,7 +97,7 @@ const WhyInvestShoroukAr = () => {
       {/* Location Advantages */}
       <section className="py-16 md:py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <div className="mx-auto mb-6 w-[60px] h-[2px] bg-foreground" />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">مزايا الموقع</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto">لماذا تعتبر مدينة الشروق الموقع المثالي للاستثمار العقاري التجاري.</p>
@@ -127,7 +127,7 @@ const WhyInvestShoroukAr = () => {
       {/* Investment Returns */}
       <section className="py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <div className="mx-auto mb-6 w-[60px] h-[2px] bg-foreground" />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">عوائد استثمارية قوية</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto">أسباب مدعومة بالبيانات لتفوق العقارات التجارية في مدينة الشروق.</p>
@@ -160,7 +160,7 @@ const WhyInvestShoroukAr = () => {
       {/* Why ASWAQ */}
       <section className="py-16 md:py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <div className="mx-auto mb-6 w-[60px] h-[2px] bg-foreground" />
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">لماذا تستثمر مع أسواق للتطوير العقاري</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto">مدعومة بأكثر من 20 عاماً من الخبرة ومحفظة تضم أكثر من 15 مشروعاً ناجحاً.</p>

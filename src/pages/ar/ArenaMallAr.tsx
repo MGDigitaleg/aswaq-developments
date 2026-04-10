@@ -409,7 +409,7 @@ const ArenaMallAr = () => {
       </section>
 
       {/* ═══ CTA النهائي ═══ */}
-      <section className="bg-primary py-20 md:py-28">
+      <section className="bg-primary py-14 md:py-20">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p className="mb-5 text-[11px] font-arabic font-semibold tracking-[0.15em] text-primary-foreground/35">الخطوة التالية</p>

@@ -136,7 +136,7 @@ const CityHubMallAr = () => {
       </section>
 
       {/* ═══ 2. QUICK SNAPSHOT ═══ */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div {...fadeUp} className="order-2 lg:order-1">
@@ -171,9 +171,9 @@ const CityHubMallAr = () => {
       </section>
 
       {/* ═══ 3. WHY CITY HUB WORKS ═══ */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">المنطق التجاري الذكي</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">لماذا ينجح سيتي هب</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
@@ -198,9 +198,9 @@ const CityHubMallAr = () => {
       </section>
 
       {/* ═══ 4. LOCATION ═══ */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">الموقع الاستراتيجي</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">موقع مهيّأ للصلة التجارية اليومية</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
@@ -238,7 +238,7 @@ const CityHubMallAr = () => {
       </section>
 
       {/* ═══ 5. BUILT FOR DAILY RETAIL ═══ */}
-      <section className="py-16 md:py-24 bg-primary">
+      <section className="py-12 md:py-18 bg-primary">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
             <p className="text-[10px] font-arabic font-semibold tracking-[0.12em] mb-4" style={{ color: 'hsl(var(--primary-foreground) / 0.35)' }}>
@@ -256,9 +256,9 @@ const CityHubMallAr = () => {
       </section>
 
       {/* ═══ 6. UNIT TYPES ═══ */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">فئات الوحدات</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">مساحات للنمو التجاري العملي</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
@@ -283,9 +283,9 @@ const CityHubMallAr = () => {
       </section>
 
       {/* ═══ 7. REALITY / PROOF ═══ */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">على أرض الواقع</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">عنوان تجاري يتشكّل في الحياة الحقيقية</h2>
           </motion.div>
@@ -304,9 +304,9 @@ const CityHubMallAr = () => {
       <MallGallerySection mallName="سيتي هب مول" images={galleryImages} videos={galleryVideos} lang="ar" />
 
       {/* ═══ 9. INVESTMENT VALUE ═══ */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">منظور المستثمر</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">لماذا يجذب سيتي هب المستثمرين</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
@@ -328,7 +328,7 @@ const CityHubMallAr = () => {
       </section>
 
       {/* ═══ 10. FINAL CTA ═══ */}
-      <section className="py-20 md:py-28 bg-primary relative overflow-hidden">
+      <section className="py-14 md:py-20 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]">
           <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent" />
         </div>
