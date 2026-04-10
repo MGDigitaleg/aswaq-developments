@@ -139,7 +139,7 @@ const CityHubMall = () => {
       </section>
 
       {/* ═══ 2. QUICK SNAPSHOT ═══ */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div {...fadeUp}>
@@ -174,9 +174,9 @@ const CityHubMall = () => {
       </section>
 
       {/* ═══ 3. WHY CITY HUB WORKS ═══ */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">Smart Commercial Logic</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Why City Hub Works
@@ -208,9 +208,9 @@ const CityHubMall = () => {
       </section>
 
       {/* ═══ 4. LOCATION & EVERYDAY DEMAND ═══ */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">Strategic Location</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Positioned for Daily Commercial Relevance
@@ -267,7 +267,7 @@ const CityHubMall = () => {
       </section>
 
       {/* ═══ 5. BUILT FOR DAILY RETAIL ═══ */}
-      <section className="py-16 md:py-24 bg-primary">
+      <section className="py-12 md:py-18 bg-primary">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
             <p className="text-[10px] font-body font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: 'hsl(var(--primary-foreground) / 0.35)' }}>
@@ -285,9 +285,9 @@ const CityHubMall = () => {
       </section>
 
       {/* ═══ 6. BUSINESS FIT / UNIT TYPES ═══ */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">Unit Categories</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Spaces for Practical Commercial Growth
@@ -319,9 +319,9 @@ const CityHubMall = () => {
       </section>
 
       {/* ═══ 7. REALITY / PROOF ═══ */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">On the Ground</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
               A Commercial Address Taking Shape in Real Life
@@ -349,9 +349,9 @@ const CityHubMall = () => {
       <MallGallerySection mallName="City Hub Mall" images={galleryImages} videos={galleryVideos} />
 
       {/* ═══ 9. INVESTMENT VALUE ═══ */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <motion.div {...fadeUp} className="text-center mb-14">
+          <motion.div {...fadeUp} className="text-center mb-10">
             <p className="section-label mb-3">Investor Perspective</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Why City Hub Appeals to Investors
@@ -380,7 +380,7 @@ const CityHubMall = () => {
       </section>
 
       {/* ═══ 10. FINAL CTA ═══ */}
-      <section className="py-20 md:py-28 bg-primary relative overflow-hidden">
+      <section className="py-14 md:py-20 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]">
           <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent" />
         </div>

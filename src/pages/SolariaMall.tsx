@@ -261,7 +261,7 @@ const SolariaMall = () => {
       {/* ═══════════════════════════════════════════
           3. 360° ARCHITECTURAL EXPLORER
       ═══════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 bg-cream">
+      <section className="py-14 md:py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <motion.div {...fadeUp} className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-5">
@@ -296,7 +296,7 @@ const SolariaMall = () => {
       {/* ═══════════════════════════════════════════
           5. AVAILABLE UNITS
       ═══════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 bg-cream">
+      <section className="py-14 md:py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <motion.div {...fadeUp} className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-5">
@@ -384,7 +384,7 @@ const SolariaMall = () => {
       {/* ═══════════════════════════════════════════
           6. LOCATION INTELLIGENCE
       ═══════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-14 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <motion.div {...fadeUp}>
@@ -462,7 +462,7 @@ const SolariaMall = () => {
       {/* ═══════════════════════════════════════════
           7. PROJECT FILM
       ═══════════════════════════════════════════ */}
-      <section className="py-20 md:py-28 bg-cream">
+      <section className="py-14 md:py-20 bg-cream">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
           <motion.div {...fadeUp} className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-5">

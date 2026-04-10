@@ -183,7 +183,7 @@ const MercadoMall = () => {
       </section>
 
       {/* ─── 2. QUICK SNAPSHOT — Direct daytime front exterior ─── */}
-      <section id="snapshot" className="py-16 md:py-24 bg-background">
+      <section id="snapshot" className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div {...fadeUp} transition={{ duration: 0.7 }}>
@@ -216,7 +216,7 @@ const MercadoMall = () => {
       </section>
 
       {/* ─── 3. WHY MERCADO WORKS — Corner/angled exterior as visual accent ─── */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
@@ -253,7 +253,7 @@ const MercadoMall = () => {
       <MercadoTenantsSection />
 
       {/* ─── 5. BUILT AROUND DAILY MOVEMENT — Internal walkway + courtyard ─── */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div {...imgReveal}>
@@ -286,7 +286,7 @@ const MercadoMall = () => {
       </section>
 
       {/* ─── 6. ARCHITECTURAL / EXPERIENCE — Courtyard/elevator + exterior supports ─── */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="order-2 lg:order-1">
@@ -319,9 +319,9 @@ const MercadoMall = () => {
       </section>
 
       {/* ─── 7. COMMERCIAL OPPORTUNITY — Aerial render ─── */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
+          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-10">
             <p className="section-label mb-3">Available Opportunities</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">Commercial Units for Retail Growth</h2>
             <p className="text-muted-foreground font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
@@ -357,9 +357,9 @@ const MercadoMall = () => {
       </section>
 
       {/* ─── 8. STRATEGIC LOCATION ─── */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
+          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-10">
             <p className="section-label mb-3">Strategic Position</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">Positioned for Visibility in El Shorouk</h2>
             <p className="text-muted-foreground font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
@@ -405,7 +405,7 @@ const MercadoMall = () => {
       </section>
 
       {/* ─── 9. CURATED GALLERY — 4 tabs ─── */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-12 md:py-18 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-12">
             <p className="section-label mb-3">Visual Archive</p>
@@ -446,7 +446,7 @@ const MercadoMall = () => {
       </section>
 
       {/* ─── 10. OPERATIONAL PROOF — Real photos grid ─── */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-18 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
@@ -492,7 +492,7 @@ const MercadoMall = () => {
       </section>
 
       {/* ─── 11. FINAL CTA — Strongest night render ─── */}
-      <section className="relative bg-primary py-20 md:py-28 overflow-hidden">
+      <section className="relative bg-primary py-14 md:py-20 overflow-hidden">
         <div className="absolute inset-0">
           <img src={render7} alt="" className="w-full h-full object-cover opacity-[0.06]" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/70" />
