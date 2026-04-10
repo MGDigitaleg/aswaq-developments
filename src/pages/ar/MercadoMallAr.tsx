@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight, CheckCircle2, MapPin, ShoppingBag, UtensilsCrossed,
   Briefcase, Sparkles, Building2, Eye, Users, LayoutGrid, Store,
-  TrendingUp, Shield, Repeat, Target
+  Repeat, Target, ExternalLink, CircleDot
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import Lightbox from "@/components/Lightbox";
@@ -36,24 +36,31 @@ const snapshotStats = [
 ];
 
 const whyCards = [
-  { icon: Building2, title: "بيئة تشغيلية", desc: "مول فعّال وقائم — وليس مجرد مفهوم أو وعد مستقبلي." },
-  { icon: Store, title: "حضور العلامات التجارية", desc: "مستأجرون حاليون يخلقون أجواء تجارية موثوقة وناجحة." },
-  { icon: LayoutGrid, title: "مساحات مرنة", desc: "من 29 م² إلى 300 م²، تناسب مختلف أنواع الأنشطة التجارية." },
-  { icon: MapPin, title: "موقع متميز بالشروق", desc: "يخدم واحدة من أكثر مناطق شرق القاهرة كثافة سكانية وطلباً." },
+  { icon: Building2, title: "بيئة تشغيلية", desc: "ميركادو يعمل بالفعل كوجهة تجارية حية مع استخدام يومي نشط وحضور تجزئة راسخ." },
+  { icon: Store, title: "حضور العلامات التجارية", desc: "العلامات الحالية تعزز الثقة وتجذب الزوار وتقوّي المصداقية التجارية للمول." },
+  { icon: LayoutGrid, title: "مساحات مرنة", desc: "مجموعة من مساحات الوحدات تبدأ من 29 م² تجعل ميركادو مناسباً للمفاهيم الناشئة والمشغلين الراسخين." },
+  { icon: MapPin, title: "موقع متميز بالشروق", desc: "موقعه يدعم الأهمية المحلية القوية والرؤية والطلب اليومي من السكان المحيطين." },
+];
+
+const movementPoints = [
+  "تداول مفتوح وتدفق زوار",
+  "تعرض واضح لواجهات المحلات",
+  "نشاط يومي متكرر",
+  "مناسب لتجارة نمط الحياة والخدمات",
 ];
 
 const commercialCards = [
-  { icon: ShoppingBag, title: "محلات تجزئة", desc: "وحدات بالأرضي والطوابق العليا مع رؤية قوية." },
-  { icon: UtensilsCrossed, title: "مفاهيم المأكولات", desc: "مناطق طعام مفتوحة ومساحات جاهزة للكافيهات." },
-  { icon: Briefcase, title: "أعمال خدمية", desc: "عيادات، صالونات، محلات تقنية، وخدمات مهنية." },
-  { icon: Sparkles, title: "علامات لايف ستايل", desc: "أزياء، عافية، لياقة، وتجارة تجزئة نمط الحياة." },
+  { icon: ShoppingBag, title: "محلات تجزئة", desc: "مناسبة للعلامات التي تعتمد على الرؤية وسهولة الوصول والحركة اليومية." },
+  { icon: UtensilsCrossed, title: "مفاهيم المأكولات", desc: "موقع مثالي للكافيهات ومفاهيم الطعام ومشغلي الأغذية الباحثين عن نشاط الوجهة." },
+  { icon: Briefcase, title: "أعمال خدمية", desc: "مثالية للأعمال التي تستفيد من الأهمية المحلية والراحة والزيارات المتكررة." },
+  { icon: Sparkles, title: "علامات لايف ستايل", desc: "ملائمة للأزياء والجمال والتجزئة المتخصصة والعلامات الراغبة بالنمو ضمن بيئة تجارية نشطة." },
 ];
 
 const locationCards = [
-  { icon: Users, title: "محيط سكني كثيف", desc: "يخدم آلاف الأسر في الحي الثاني بالشروق." },
-  { icon: Eye, title: "سهولة الوصول والرؤية", desc: "واجهة مباشرة على طريق رئيسي أمام بنك القاهرة." },
-  { icon: Repeat, title: "طلب يومي متكرر", desc: "حركة زوار متكررة من الاحتياجات اليومية والخدمات." },
-  { icon: Target, title: "أهمية الحي المحيط", desc: "في قلب المنطقة التجارية الأكثر نشاطاً بالشروق." },
+  { icon: Users, title: "محيط سكني كثيف", desc: "يستفيد ميركادو من التجمع السكني القريب الذي يدعم الطلب اليومي المتكرر." },
+  { icon: Eye, title: "سهولة الوصول والرؤية", desc: "موقعه يتيح الوصول المريح والواجهة القوية والتعرض التجاري العملي." },
+  { icon: Repeat, title: "طلب يومي متكرر", desc: "السياق المحيط يدعم تكرار الزيارات لمشغلي التجزئة والطعام والخدمات." },
+  { icon: Target, title: "أهمية الحي المحيط", desc: "يندمج ميركادو بشكل طبيعي في الحياة التجارية للشروق ويخدم جمهوراً محلياً نشطاً بالفعل." },
 ];
 
 const investorPoints = [
@@ -110,9 +117,12 @@ const MercadoMallAr = () => {
               <p className="text-[10px] font-semibold tracking-[0.3em] uppercase font-body mb-5 text-primary-foreground/35">
                 شركة أسواق للتطوير العقاري — وجهة تجارية فعّالة
               </p>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[4.2rem] font-bold text-primary-foreground mb-6 leading-[1.15]" style={{ letterSpacing: '-0.01em' }}>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[4.2rem] font-bold text-primary-foreground mb-4 leading-[1.15]" style={{ letterSpacing: '-0.01em' }}>
                 ميركادو مول<br />مدينة الشروق
               </h1>
+              <p className="text-primary-foreground/45 font-arabic text-sm md:text-[15px] mb-6">
+                وجهة تجزئة فعّالة في قلب مدينة الشروق
+              </p>
               <p className="text-primary-foreground/50 font-arabic text-[15px] md:text-base leading-[1.95] max-w-xl mb-10">
                 ميركادو مول وجهة تجارية متكاملة الخدمات مصممة لتلبية احتياجات مجتمعات الشروق النابضة بالحياة. مع علامات تجارية فعّالة ووحدات جاهزة للتشغيل وحركة يومية قوية، يوفر بيئة مثبتة لنمو التجزئة والأعمال الحديثة.
               </p>
@@ -207,9 +217,17 @@ const MercadoMallAr = () => {
               <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
                 مبني حول الحركة اليومية
               </h2>
-              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95]">
+              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95] mb-6">
                 تم تصميم ميركادو مول حول حركة التجزئة المفتوحة والرؤية الواضحة ومزيج المستأجرين الذي يدعم تكرار الزيارات — مما يجعله جذاباً للعلامات التجارية ومفاهيم الطعام والأعمال الخدمية وتجارة نمط الحياة.
               </p>
+              <div className="space-y-2.5">
+                {movementPoints.map((point, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <CircleDot size={14} className="text-accent shrink-0" />
+                    <p className="text-foreground font-arabic text-sm">{point}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -224,8 +242,11 @@ const MercadoMallAr = () => {
               <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
                 تجربة تجزئة بانفتاح وحيوية
               </h2>
-              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95]">
+              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95] mb-4">
                 ميركادو مول أكثر من مجرد صف وحدات — إنه بيئة تجزئة متعددة المستويات مع تداول مفتوح واتصال بصري ونقاط تفاعل متعددة عبر المشروع.
+              </p>
+              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95]">
+                تصميمه يدعم الاكتشاف وتكرار الزيارات والتفاعل الأقوى بين العلامات التجارية والزوار ومساحات الوجهة.
               </p>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
@@ -304,6 +325,17 @@ const MercadoMallAr = () => {
               referrerPolicy="no-referrer-when-downgrade" title="موقع ميركادو مول" className="w-full"
             />
           </motion.div>
+          <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="text-center mt-6">
+            <a
+              href="https://maps.app.goo.gl/mercadomall"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[12px] font-body font-semibold tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
+              فتح في خرائط جوجل
+              <ExternalLink size={12} />
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -313,6 +345,9 @@ const MercadoMallAr = () => {
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-12">
             <p className="section-label mb-3">الأرشيف البصري</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">ميركادو من منظور مختلف</h2>
+            <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
+              استكشف ميركادو مول من خلال مجموعة بصرية منتقاة تعكس طابعه المعماري وبيئة التجزئة النشطة وحضوره التجاري.
+            </p>
           </motion.div>
           <div className="flex justify-center mb-10">
             <div className="flex bg-background rounded-lg p-1 gap-1 border border-border/30" style={{ boxShadow: 'var(--shadow-sm)' }}>
@@ -368,6 +403,9 @@ const MercadoMallAr = () => {
                   </motion.div>
                 ))}
               </div>
+              <p className="text-muted-foreground font-arabic text-[13px] leading-[1.85] mt-6 italic">
+                بالنسبة للمستثمرين، يمثل ميركادو عرضاً تجارياً أكثر واقعية — مبني على نشاط مرئي وأهمية عملية وعلاقة أقوى بين المساحة والطلب.
+              </p>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>

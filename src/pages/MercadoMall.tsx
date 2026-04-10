@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight, CheckCircle2, MapPin, ShoppingBag, UtensilsCrossed,
   Briefcase, Sparkles, Building2, Eye, Users, LayoutGrid, Store,
-  TrendingUp, Shield, Repeat, Target
+  Repeat, Target, ExternalLink, CircleDot
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import Lightbox from "@/components/Lightbox";
@@ -36,24 +36,31 @@ const snapshotStats = [
 ];
 
 const whyCards = [
-  { icon: Building2, title: "Operational Environment", desc: "An active, functioning mall — not a concept or a future promise." },
-  { icon: Store, title: "Brand Presence", desc: "Existing tenants create a credible, commercially viable atmosphere." },
-  { icon: LayoutGrid, title: "Flexible Unit Sizes", desc: "From 29 sqm to 300 sqm, accommodating a wide range of business types." },
-  { icon: MapPin, title: "Prime El Shorouk Position", desc: "Serving one of East Cairo's most populated and in-demand areas." },
+  { icon: Building2, title: "Operational Environment", desc: "Mercado is already functioning as a live commercial destination with active daily use and established retail presence." },
+  { icon: Store, title: "Brand Presence", desc: "Existing brands help reinforce trust, attract visitors, and strengthen the mall's commercial credibility." },
+  { icon: LayoutGrid, title: "Flexible Unit Sizes", desc: "A range of unit sizes starting from 29 sqm makes Mercado suitable for both emerging concepts and established operators." },
+  { icon: MapPin, title: "Prime El Shorouk Position", desc: "Its location supports strong neighborhood relevance, visibility, and everyday demand from the surrounding population." },
+];
+
+const movementPoints = [
+  "Open circulation and visitor flow",
+  "Visible shopfront exposure",
+  "Repeated daily activity",
+  "Suitable for lifestyle and service-led retail",
 ];
 
 const commercialCards = [
-  { icon: ShoppingBag, title: "Retail Shops", desc: "Ground and upper floor units with strong visibility." },
-  { icon: UtensilsCrossed, title: "F&B Concepts", desc: "Open-air dining areas, food courts, and café-ready spaces." },
-  { icon: Briefcase, title: "Service Businesses", desc: "Clinics, salons, tech shops, and professional services." },
-  { icon: Sparkles, title: "Lifestyle Brands", desc: "Fashion, wellness, fitness, and lifestyle retail." },
+  { icon: ShoppingBag, title: "Retail Shops", desc: "Suitable for customer-facing brands that rely on visibility, accessibility, and everyday traffic." },
+  { icon: UtensilsCrossed, title: "F&B Concepts", desc: "Well-positioned for cafés, dining concepts, and food operators seeking destination-based activity." },
+  { icon: Briefcase, title: "Service Businesses", desc: "Ideal for businesses that benefit from neighborhood relevance, convenience, and recurring visits." },
+  { icon: Sparkles, title: "Lifestyle Brands", desc: "A strong fit for fashion, beauty, specialty retail, and brands looking to grow within an active commercial setting." },
 ];
 
 const locationCards = [
-  { icon: Users, title: "Dense Residential Surroundings", desc: "Serving thousands of households in El Shorouk's Second District." },
-  { icon: Eye, title: "Easy Access & Visibility", desc: "Direct frontage on a main road facing Banque du Caire." },
-  { icon: Repeat, title: "Everyday Demand Potential", desc: "Strong recurring footfall from daily essentials and services." },
-  { icon: Target, title: "Strong Neighborhood Relevance", desc: "Central to El Shorouk's most active commercial zone." },
+  { icon: Users, title: "Dense Residential Surroundings", desc: "Mercado benefits from a nearby residential population that supports recurring daily demand." },
+  { icon: Eye, title: "Easy Access and Visibility", desc: "Its placement allows for convenient arrival, strong frontage, and practical commercial exposure." },
+  { icon: Repeat, title: "Everyday Demand Potential", desc: "The surrounding context supports repeat visits for retail, food, and service-oriented operators." },
+  { icon: Target, title: "Strong Neighborhood Relevance", desc: "Mercado fits naturally into the commercial life of El Shorouk and serves an already active local audience." },
 ];
 
 const investorPoints = [
@@ -110,9 +117,12 @@ const MercadoMall = () => {
               <p className="text-[10px] font-semibold tracking-[0.3em] uppercase font-body mb-5 text-primary-foreground/35">
                 ASWAQ Developments — Active Commercial Destination
               </p>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[4.2rem] font-bold text-primary-foreground mb-6 leading-[1.05]" style={{ letterSpacing: '-0.02em' }}>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[4.2rem] font-bold text-primary-foreground mb-4 leading-[1.05]" style={{ letterSpacing: '-0.02em' }}>
                 Mercado Mall<br />El Shorouk
               </h1>
+              <p className="text-primary-foreground/45 font-body text-sm md:text-[15px] mb-6 tracking-wide">
+                An Active Retail Destination in the Heart of El Shorouk
+              </p>
               <p className="text-primary-foreground/50 font-body text-[15px] md:text-base leading-[1.85] max-w-xl mb-10">
                 Mercado Mall is a fully serviced commercial destination designed to meet the needs of El Shorouk's vibrant and densely populated communities. With active brands, ready-to-operate units, and strong everyday footfall, it offers a proven environment for modern retail and business growth.
               </p>
@@ -207,9 +217,17 @@ const MercadoMall = () => {
               <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
                 Built Around Daily Movement
               </h2>
-              <p className="text-muted-foreground font-body text-[15px] leading-[1.9]">
+              <p className="text-muted-foreground font-body text-[15px] leading-[1.9] mb-6">
                 Mercado Mall is structured around open retail movement, clear visibility, and a tenant mix that supports repeat visits — making it attractive for brands, food concepts, service businesses, and lifestyle retail.
               </p>
+              <div className="space-y-2.5">
+                {movementPoints.map((point, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <CircleDot size={14} className="text-accent shrink-0" />
+                    <p className="text-foreground font-body text-sm">{point}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -224,8 +242,11 @@ const MercadoMall = () => {
               <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
                 A Retail Experience with Openness and Energy
               </h2>
-              <p className="text-muted-foreground font-body text-[15px] leading-[1.9]">
+              <p className="text-muted-foreground font-body text-[15px] leading-[1.9] mb-4">
                 Mercado Mall is more than a row of units — it is a layered retail environment with open circulation, visual connectivity, and multiple engagement points across the project.
+              </p>
+              <p className="text-muted-foreground font-body text-[15px] leading-[1.9]">
+                Its configuration supports discovery, repeat visits, and stronger interaction between brands, visitors, and destination spaces.
               </p>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }} className="order-1 lg:order-2">
@@ -304,6 +325,17 @@ const MercadoMall = () => {
               referrerPolicy="no-referrer-when-downgrade" title="Mercado Mall Location" className="w-full"
             />
           </motion.div>
+          <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.1 }} className="text-center mt-6">
+            <a
+              href="https://maps.app.goo.gl/mercadomall"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[12px] font-body font-semibold tracking-[0.1em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
+              Open in Google Maps
+              <ExternalLink size={12} />
+            </a>
+          </motion.div>
         </div>
       </section>
 
@@ -313,6 +345,9 @@ const MercadoMall = () => {
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-12">
             <p className="section-label mb-3">Visual Archive</p>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">Mercado in Perspective</h2>
+            <p className="text-muted-foreground font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
+              Explore Mercado Mall through a curated visual selection that reflects its architectural character, active retail environment, and commercial presence.
+            </p>
           </motion.div>
           <div className="flex justify-center mb-10">
             <div className="flex bg-background rounded-lg p-1 gap-1 border border-border/30" style={{ boxShadow: 'var(--shadow-sm)' }}>
@@ -368,6 +403,9 @@ const MercadoMall = () => {
                   </motion.div>
                 ))}
               </div>
+              <p className="text-muted-foreground font-body text-[13px] leading-[1.85] mt-6 italic">
+                For investors, Mercado represents a more grounded commercial proposition — one shaped by visible activity, practical relevance, and a stronger relationship between space and demand.
+              </p>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
