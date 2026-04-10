@@ -21,6 +21,7 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   const [loaded, setLoaded] = useState(false);
   const [loadProgress, setLoadProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [hasAutoRotated, setHasAutoRotated] = useState(false);
 
   // Refs for drag logic
   const frameRef = useRef(0);
@@ -30,6 +31,7 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
   const rafRef = useRef<number>(0);
+  const autoRotateRef = useRef<number>(0);
 
   // Preload images
   useEffect(() => {
