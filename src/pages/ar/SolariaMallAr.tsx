@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, CheckCircle2, ChevronDown, ArrowLeft, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
 
 import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
 import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
 import solariaImg from "@/assets/solaria-mall.webp";
-import useSEO from "@/hooks/useSEO";
+import heroImg from "@/assets/hero-solaria.webp";
 import solaria1 from "@/assets/gallery/solaria-1.webp";
 import solaria2 from "@/assets/gallery/solaria-2.webp";
 import solaria3 from "@/assets/gallery/solaria-3.webp";

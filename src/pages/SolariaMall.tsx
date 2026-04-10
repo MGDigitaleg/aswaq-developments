@@ -70,26 +70,53 @@ const SolariaMall = () => {
       ═══════════════════════════════════════════ */}
       <section className="relative h-screen min-h-[600px] max-h-[1000px] overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <motion.img
             src={heroImg}
             alt="Solaria Mall architectural facade"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover will-change-transform"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 12, ease: "easeOut" }}
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(
-                to bottom,
-                hsl(var(--navy) / 0.25) 0%,
-                hsl(var(--navy) / 0.10) 40%,
-                hsl(var(--navy) / 0.50) 75%,
-                hsl(var(--navy) / 0.92) 100%
-              )`,
-            }}
-          />
+          {/* 4-layer gradient system */}
+          <div className="absolute inset-0" style={{
+            background: `linear-gradient(to bottom, hsl(var(--navy) / 0.20) 0%, transparent 35%)`,
+          }} />
+          <div className="absolute inset-0" style={{
+            background: `linear-gradient(to bottom, transparent 50%, hsl(var(--navy) / 0.55) 75%, hsl(var(--navy) / 0.95) 100%)`,
+          }} />
+          <div className="absolute inset-0" style={{
+            background: `linear-gradient(to right, hsl(var(--navy) / 0.35) 0%, transparent 50%)`,
+          }} />
+          {/* Vignette */}
+          <div className="absolute inset-0" style={{
+            background: `radial-gradient(ellipse at center, transparent 40%, hsl(var(--navy) / 0.25) 100%)`,
+          }} />
         </div>
 
-        <div className="relative z-10 h-full flex flex-col justify-end pb-16 md:pb-24 px-6 sm:px-10 lg:px-16">
+        {/* Status Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="absolute top-28 md:top-32 right-6 sm:right-10 lg:right-16 z-20"
+        >
+          <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-primary-foreground/15" style={{
+            background: 'hsl(var(--navy) / 0.55)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+          }}>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: 'hsl(152 45% 50%)' }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: 'hsl(152 45% 50%)' }} />
+            </span>
+            <span className="text-[11px] font-body font-semibold tracking-[0.12em] uppercase" style={{ color: 'hsl(var(--primary-foreground) / 0.90)' }}>
+              Now Selling
+            </span>
+          </div>
+        </motion.div>
+
+        <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-6 sm:px-10 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,19 +136,47 @@ const SolariaMall = () => {
               Solaria Mall
             </h1>
             <p
-              className="font-body text-[15px] md:text-[17px] leading-[1.8] max-w-xl"
-              style={{ color: "hsl(var(--primary-foreground) / 0.55)" }}
+              className="font-body text-[15px] md:text-[17px] leading-[1.8] max-w-xl mb-8"
+              style={{ color: "hsl(var(--primary-foreground) / 0.60)" }}
             >
               A landmark destination for retail, healthcare, and corporate excellence in El Shorouk City.
             </p>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <Link
+                to="/units/for-sale"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg text-[13px] font-body font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  background: 'hsl(var(--primary-foreground))',
+                  color: 'hsl(var(--navy))',
+                  boxShadow: '0 4px 20px -4px hsl(0 0% 100% / 0.15)',
+                }}
+              >
+                Reserve Your Unit
+                <ArrowRight size={14} />
+              </Link>
+              <a
+                href="tel:19474"
+                className="btn-outline-light px-6 py-3.5 text-[13px] rounded-lg font-body"
+              >
+                <Phone size={14} />
+                Call 19474
+              </a>
+            </motion.div>
           </motion.div>
 
           {/* Scroll cue */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            transition={{ delay: 1.8, duration: 0.8 }}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           >
             <span className="text-[9px] font-body tracking-[0.3em] uppercase" style={{ color: "hsl(var(--primary-foreground) / 0.3)" }}>
               Scroll
