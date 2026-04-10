@@ -76,7 +76,16 @@ const ArenaMallAr = () => {
     "استكشف أرينا مول الشروق من شركة أسواق للتطوير العقاري — وجهة تجارية متعددة الاستخدامات للمحلات والعيادات والمكاتب وفرص الاستثمار."
   );
 
-  return (
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (images: string[], index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
     <Layout>
       {/* ═══ HERO ═══ */}
       <section className="relative flex min-h-screen items-end overflow-hidden bg-primary">
