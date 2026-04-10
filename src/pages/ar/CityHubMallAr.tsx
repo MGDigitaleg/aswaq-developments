@@ -80,6 +80,22 @@ const CityHubMallAr = () => {
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, hsl(var(--navy) / 0.30) 0%, transparent 50%)' }} />
         </div>
 
+        {/* Status Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="absolute top-28 md:top-32 left-6 sm:left-10 lg:left-16 z-20"
+        >
+          <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-primary-foreground/15" style={{ background: 'hsl(var(--navy) / 0.55)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: 'hsl(152 45% 50%)' }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: 'hsl(152 45% 50%)' }} />
+            </span>
+            <span className="text-[11px] font-arabic font-semibold tracking-[0.08em]" style={{ color: 'hsl(var(--primary-foreground) / 0.90)' }}>يعمل بالكامل</span>
+          </div>
+        </motion.div>
+
         <div className="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-6 sm:px-10 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 35 }}
