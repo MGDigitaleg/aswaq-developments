@@ -1,162 +1,415 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, ShoppingBag, TrendingUp, Store, Wrench, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import {
+  ArrowRight, CheckCircle2, MapPin, ShoppingBag, UtensilsCrossed,
+  Briefcase, Sparkles, Building2, Eye, Users, LayoutGrid, Store,
+  TrendingUp, Shield, Repeat, Target
+} from "lucide-react";
 import Layout from "@/components/Layout";
-import CTASection from "@/components/CTASection";
-import MallGallerySection from "@/components/MallGallerySection";
-import mercadoImg from "@/assets/mercado-mall.webp";
+import Lightbox from "@/components/Lightbox";
+import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
+
+// Images
+import mercadoHero from "@/assets/gallery/mercado-4.jpg";
+import mercadoAbout from "@/assets/gallery/mercado-3.jpg";
+import mercadoInterior from "@/assets/gallery/mercado-9.jpg";
+import mercadoExperience from "@/assets/gallery/mercado-8.jpg";
 import mercado1 from "@/assets/gallery/mercado-1.webp";
+import mercado2 from "@/assets/gallery/mercado-2.jpg";
+import mercado3 from "@/assets/gallery/mercado-3.jpg";
+import mercado4 from "@/assets/gallery/mercado-4.jpg";
+import mercado5 from "@/assets/gallery/mercado-5.jpg";
+import mercado6 from "@/assets/gallery/mercado-6.jpg";
+import mercado7 from "@/assets/gallery/mercado-7.jpg";
+import mercado8 from "@/assets/gallery/mercado-8.jpg";
+import mercado9 from "@/assets/gallery/mercado-9.jpg";
 
-const galleryImages = [mercado1];
-const galleryVideos = ["fHgVO2698Jw", "_QHKwyMozZw", "hUGvrHMnmoY"];
+const fadeUp = { initial: { opacity: 0, y: 25 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
-const unitTypes = [
-  { icon: ShoppingBag, label: "محلات للإيجار ووحدات تجارية" },
-  { icon: TrendingUp, label: "عقارات تجارية للاستثمار" },
-  { icon: Store, label: "محلات تجزئة للإيجار" },
-  { icon: Wrench, label: "مساحات لمزودي الخدمات والشركات المتخصصة" },
+const snapshotStats = [
+  { value: "تشغيل كامل", label: "مول تجاري فعّال" },
+  { value: "3 طوابق", label: "من النشاط التجاري" },
+  { value: "+29 م²", label: "أصغر مساحة وحدة" },
+  { value: "علامات نشطة", label: "وحركة يومية" },
 ];
 
-const whyInvest = [
-  "موقع استراتيجي في شرق القاهرة يضمن تدفقاً ثابتاً للزوار",
-  "تصميم معماري حديث يعزز من الرؤية وجاذبية الأعمال",
-  "مساحات وحدات مرنة تبدأ من حوالي 24 م²",
-  "أسعار تنافسية توفر نقاط دخول جذابة للمستثمرين",
-  "خطط سداد مرنة مع خيارات مقدم وأقساط ميسرة للمستثمرين",
-  "تسليم فوري أو قريب جداً مما يسمح بتشغيل أسرع",
-  "بيئة تجارية كاملة الخدمات تشمل مواقف سيارات، أمن، أنظمة مراقبة، مصاعد، ومناطق بلازا",
+const whyCards = [
+  { icon: Building2, title: "بيئة تشغيلية", desc: "مول فعّال وقائم — وليس مجرد مفهوم أو وعد مستقبلي." },
+  { icon: Store, title: "حضور العلامات التجارية", desc: "مستأجرون حاليون يخلقون أجواء تجارية موثوقة وناجحة." },
+  { icon: LayoutGrid, title: "مساحات مرنة", desc: "من 29 م² إلى 300 م²، تناسب مختلف أنواع الأنشطة التجارية." },
+  { icon: MapPin, title: "موقع متميز بالشروق", desc: "يخدم واحدة من أكثر مناطق شرق القاهرة كثافة سكانية وطلباً." },
 ];
+
+const commercialCards = [
+  { icon: ShoppingBag, title: "محلات تجزئة", desc: "وحدات بالأرضي والطوابق العليا مع رؤية قوية." },
+  { icon: UtensilsCrossed, title: "مفاهيم المأكولات", desc: "مناطق طعام مفتوحة ومساحات جاهزة للكافيهات." },
+  { icon: Briefcase, title: "أعمال خدمية", desc: "عيادات، صالونات، محلات تقنية، وخدمات مهنية." },
+  { icon: Sparkles, title: "علامات لايف ستايل", desc: "أزياء، عافية، لياقة، وتجارة تجزئة نمط الحياة." },
+];
+
+const locationCards = [
+  { icon: Users, title: "محيط سكني كثيف", desc: "يخدم آلاف الأسر في الحي الثاني بالشروق." },
+  { icon: Eye, title: "سهولة الوصول والرؤية", desc: "واجهة مباشرة على طريق رئيسي أمام بنك القاهرة." },
+  { icon: Repeat, title: "طلب يومي متكرر", desc: "حركة زوار متكررة من الاحتياجات اليومية والخدمات." },
+  { icon: Target, title: "أهمية الحي المحيط", desc: "في قلب المنطقة التجارية الأكثر نشاطاً بالشروق." },
+];
+
+const investorPoints = [
+  "وجهة تجارية قائمة وفعّالة",
+  "نشاط فعلي للمستأجرين والعلامات التجارية",
+  "بيئة تجزئة ذات إمكانية تكرار الزيارات",
+  "أهمية قوية للسكان المحيطين",
+  "دخول مرن عبر مساحات وحدات متنوعة",
+  "ثقة أكبر مقارنة بالمشاريع المفاهيمية فقط",
+];
+
+type GalleryTab = "exterior" | "retail" | "aerial" | "night";
+const galleryTabs: { key: GalleryTab; label: string }[] = [
+  { key: "exterior", label: "الواجهة الخارجية" },
+  { key: "retail", label: "تجربة التجزئة" },
+  { key: "aerial", label: "منظر جوي" },
+  { key: "night", label: "ليلي وأجواء" },
+];
+const galleryMap: Record<GalleryTab, string[]> = {
+  exterior: [mercado3, mercado7, mercado1],
+  retail: [mercado9, mercado8, mercado5],
+  aerial: [mercado2, mercado6],
+  night: [mercado4, mercado5],
+};
+const allGalleryImages = [mercado1, mercado2, mercado3, mercado4, mercado5, mercado6, mercado7, mercado8, mercado9];
 
 const MercadoMallAr = () => {
-  useSEO("ميركادو مول | وحدات تجارية للإيجار والبيع في الشروق", "استثمر في ميركادو مول الشروق الذي يقدم وحدات تجزئة للبيع والإيجار بأسعار مرنة.");
+  useSEO(
+    "ميركادو مول | وحدات تجارية للإيجار والبيع في الشروق",
+    "استثمر في ميركادو مول الشروق الذي يقدم وحدات تجزئة للبيع والإيجار بأسعار مرنة."
+  );
+
+  const [activeTab, setActiveTab] = useState<GalleryTab>("exterior");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (img: string) => {
+    const idx = allGalleryImages.indexOf(img);
+    setLightboxIndex(idx >= 0 ? idx : 0);
+    setLightboxOpen(true);
+  };
 
   return (
     <Layout>
-      {/* Hero */}
+      {/* ─── 1. HERO ─── */}
       <section className="relative bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+        <div className="absolute inset-0">
+          <img src={mercadoHero} alt="" className="w-full h-full object-cover opacity-[0.15]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/60" />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 text-center relative z-10 min-h-[420px] flex flex-col justify-end">
-          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body mb-4 text-primary-foreground/40">شركة أسواق للتطوير العقاري</p>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-5 leading-tight">ميركادو مول في مدينة الشروق</h1>
-            <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
-              وجهة تجارية متميزة مصممة لتلبية الطلب المتزايد على مساحات التجزئة والأعمال في شرق القاهرة.
-            </p>
-          </motion.div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 md:pt-48 pb-20 md:pb-28 relative z-10">
+          <div className="max-w-3xl mr-auto">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase font-body mb-5 text-primary-foreground/35">
+                شركة أسواق للتطوير العقاري — وجهة تجارية فعّالة
+              </p>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[4.2rem] font-bold text-primary-foreground mb-6 leading-[1.15]" style={{ letterSpacing: '-0.01em' }}>
+                ميركادو مول<br />مدينة الشروق
+              </h1>
+              <p className="text-primary-foreground/50 font-arabic text-[15px] md:text-base leading-[1.95] max-w-xl mb-10">
+                ميركادو مول وجهة تجارية متكاملة الخدمات مصممة لتلبية احتياجات مجتمعات الشروق النابضة بالحياة. مع علامات تجارية فعّالة ووحدات جاهزة للتشغيل وحركة يومية قوية، يوفر بيئة مثبتة لنمو التجزئة والأعمال الحديثة.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a href="#snapshot" className="btn-outline-light px-8 py-3.5 text-[12px] rounded-lg font-body group">
+                  اكتشف ميركادو
+                  <ArrowRight size={13} className="transition-transform group-hover:-translate-x-1 rotate-180" />
+                </a>
+                <Link to="/ar/contact" className="inline-flex items-center gap-2 px-8 py-3.5 text-[12px] font-body font-semibold tracking-[0.08em] uppercase rounded-lg border border-primary-foreground/15 text-primary-foreground/60 hover:text-primary-foreground hover:border-primary-foreground/30 transition-all duration-300">
+                  طلب تفاصيل الوحدة
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* About */}
+      {/* ─── 2. QUICK SNAPSHOT ─── */}
+      <section id="snapshot" className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
+              <p className="section-label mb-3">مركز تجاري نابض بالحياة</p>
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
+                يعمل بالفعل. مُثبت بالفعل.
+              </h2>
+              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95] mb-8">
+                على عكس المشاريع التي لا تزال في مرحلة المفهوم، يعمل ميركادو مول بالفعل كوجهة تجارية. مزيج المستأجرين والتداول المفتوح والبيئة النشطة تجعله عنواناً عملياً واستثمارياً في الشروق.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {snapshotStats.map((s, i) => (
+                  <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08, duration: 0.4 }}
+                    className="p-5 bg-cream rounded-xl border border-border/30"
+                    style={{ boxShadow: 'var(--shadow-sm)' }}
+                  >
+                    <p className="font-display text-lg md:text-xl font-bold text-foreground mb-1">{s.value}</p>
+                    <p className="text-muted-foreground font-arabic text-xs tracking-wide">{s.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={mercadoAbout} alt="ميركادو مول — وجهة تجارية فعّالة في الشروق" className="w-full h-full object-cover" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3. WHY MERCADO WORKS ─── */}
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
+            <p className="section-label mb-3">ميزة ميركادو</p>
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">لماذا ينجح ميركادو</h2>
+            <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
+              يجمع ميركادو مول بين سهولة الوصول والتعرض التجاري الواضح وبيئة مستأجرين نشطة — مما يخلق عرضاً أقوى للأعمال التي تريد العمل ضمن وجهة مثبتة بدلاً من وجهة تخمينية.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {whyCards.map((card, i) => (
+              <motion.div key={card.title} {...fadeUp} transition={{ delay: i * 0.08, duration: 0.4 }}
+                className="p-6 md:p-7 bg-card rounded-2xl border border-border/30 hover:border-accent/15 transition-all duration-300 group"
+                style={{ boxShadow: 'var(--shadow-sm)' }}
+              >
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/15 transition-colors duration-300">
+                  <card.icon size={22} className="text-accent" />
+                </div>
+                <h3 className="font-display text-base font-bold text-foreground mb-2">{card.title}</h3>
+                <p className="text-muted-foreground font-arabic text-[13px] leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 4. ACTIVE BRANDS / TENANT MIX ─── */}
+      <MercadoTenantsSection isArabic />
+
+      {/* ─── 5. BUILT AROUND DAILY MOVEMENT ─── */}
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={mercadoInterior} alt="حركة التجزئة الداخلية في ميركادو مول" className="w-full h-full object-cover" />
+              </div>
+            </motion.div>
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
+              <p className="section-label mb-3">مصمم للحركة اليومية</p>
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
+                مبني حول الحركة اليومية
+              </h2>
+              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95]">
+                تم تصميم ميركادو مول حول حركة التجزئة المفتوحة والرؤية الواضحة ومزيج المستأجرين الذي يدعم تكرار الزيارات — مما يجعله جذاباً للعلامات التجارية ومفاهيم الطعام والأعمال الخدمية وتجارة نمط الحياة.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 6. ARCHITECTURAL / EXPERIENCE ─── */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={mercadoImg} alt="ميركادو مول - أسواق للتطوير العقاري" className="w-full h-full object-cover" />
-              </div>
+            <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
+              <p className="section-label mb-3">الرؤية المعمارية</p>
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
+                تجربة تجزئة بانفتاح وحيوية
+              </h2>
+              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95]">
+                ميركادو مول أكثر من مجرد صف وحدات — إنه بيئة تجزئة متعددة المستويات مع تداول مفتوح واتصال بصري ونقاط تفاعل متعددة عبر المشروع.
+              </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <div className="section-divider mb-6" style={{ marginLeft: 'auto', marginRight: 0 }} />
-              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">ميركادو مول بالشروق</h2>
-              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.9] mb-4">
-                يُعد ميركادو مول الشروق وجهة تجارية متميزة يقع في موقع استراتيجي ويمتد على ثلاثة طوابق، ويقدم مجموعة واسعة من الوحدات التجارية تبدأ مساحاتها من 24 متر مربع.
-              </p>
-              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.9]">
-                بفضل موقعه القوي وتصميماته العملية وتركيزه على الجانب الاستثماري، يمثل ميركادو مول فرصة استثمارية حقيقية للباحثين عن العقارات التجارية ومحلات للبيع في الشروق.
-              </p>
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={mercadoExperience} alt="التجربة المعمارية لميركادو مول" className="w-full h-full object-cover" />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Location */}
+      {/* ─── 7. COMMERCIAL OPPORTUNITY ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">الموقع الاستراتيجي</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">موقع ميركادو مول</h2>
+          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
+            <p className="section-label mb-3">الفرص المتاحة</p>
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">وحدات تجارية لنمو التجزئة</h2>
             <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
-              يتمتع ميركادو مول بموقع استراتيجي في مدينة الشروق، الحي الثاني غرب، مباشرة أمام بنك القاهرة والمدرسة اليابانية.
+              مع مساحات وحدات تبدأ من 29 متر مربع ومجموعة من خيارات المواقع عبر المول، يوفر ميركادو فرصاً للمفاهيم الناشئة والمشغلين الراسخين الراغبين في النمو بالشروق.
             </p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+            {commercialCards.map((card, i) => (
+              <motion.div key={card.title} {...fadeUp} transition={{ delay: i * 0.08, duration: 0.4 }}
+                className="p-6 md:p-7 bg-card rounded-2xl border border-border/30 hover:border-accent/15 transition-all duration-300 group"
+                style={{ boxShadow: 'var(--shadow-sm)' }}
+              >
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/15 transition-colors duration-300">
+                  <card.icon size={22} className="text-accent" />
+                </div>
+                <h3 className="font-display text-base font-bold text-foreground mb-2">{card.title}</h3>
+                <p className="text-muted-foreground font-arabic text-[13px] leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div className="text-center">
+            <Link to="/ar/contact" className="group btn-premium px-10 py-4 text-[13px] rounded-lg font-body">
+              طلب الوحدات المتاحة
+              <ArrowRight size={14} className="transition-transform group-hover:-translate-x-1 rotate-180" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 8. STRATEGIC LOCATION ─── */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
+            <p className="section-label mb-3">الموقع الاستراتيجي</p>
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">موقع مميز للرؤية في الشروق</h2>
+            <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
+              يخدم ميركادو مول واحدة من أكثر مناطق الشروق نشاطاً وكثافة سكانية، مستفيداً من الطلب المحلي القوي والواجهة المتاحة وحركة الزوار المتكررة.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+            {locationCards.map((card, i) => (
+              <motion.div key={card.title} {...fadeUp} transition={{ delay: i * 0.08, duration: 0.4 }}
+                className="p-5 md:p-6 bg-cream rounded-xl border border-border/30 hover:border-accent/15 transition-all duration-300"
+                style={{ boxShadow: 'var(--shadow-sm)' }}
+              >
+                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                  <card.icon size={18} className="text-accent" />
+                </div>
+                <h3 className="font-display text-sm font-bold text-foreground mb-1.5">{card.title}</h3>
+                <p className="text-muted-foreground font-arabic text-[12px] leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div {...fadeUp} transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto rounded-2xl overflow-hidden"
             style={{ boxShadow: 'var(--shadow-lg)' }}
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d442274.52711179055!2d31.4139086!3d30.0004101!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581d4c995d3bcb%3A0x9e8ec7cb114e26c5!2sMercado%20mall!5e0!3m2!1sar!2seg!4v1772535763986!5m2!1sar!2seg"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="موقع ميركادو مول"
-              className="w-full"
+              width="100%" height="400" style={{ border: 0 }} allowFullScreen loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade" title="موقع ميركادو مول" className="w-full"
             />
           </motion.div>
         </div>
       </section>
 
-      {/* Available Units */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="section-label mb-3">المساحات المتاحة</p>
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">الوحدات التجارية المتاحة في ميركادو مول</h2>
-          <p className="text-muted-foreground font-arabic max-w-2xl mx-auto mb-12 text-[15px] leading-relaxed">
-            استكشف الوحدات المتاحة للإيجار والبيع في ميركادو مول بمساحات تتراوح من 24 م² إلى 300 م².
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-            {unitTypes.map((type, i) => (
-              <motion.div key={type.label} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.4 }}
-                className="flex flex-col items-center gap-4 p-6 md:p-7 bg-card rounded-2xl border border-border/30 hover:border-accent/15 transition-all duration-300"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
-              >
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
-                  <type.icon size={24} className="text-accent" />
-                </div>
-                <p className="font-semibold text-foreground font-arabic text-sm text-center">{type.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Invest */}
+      {/* ─── 9. CURATED GALLERY ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">القيمة الاستثمارية</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">لماذا تستثمر في ميركادو مول</h2>
+          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-12">
+            <p className="section-label mb-3">الأرشيف البصري</p>
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">ميركادو من منظور مختلف</h2>
+          </motion.div>
+          <div className="flex justify-center mb-10">
+            <div className="flex bg-background rounded-lg p-1 gap-1 border border-border/30" style={{ boxShadow: 'var(--shadow-sm)' }}>
+              {galleryTabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`px-5 py-2.5 rounded-md text-[12px] font-arabic font-medium tracking-wide transition-all duration-200 ${activeTab === tab.key ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'}`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {whyInvest.map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05, duration: 0.4 }}
-                className="flex items-start gap-3 p-4 md:p-5 bg-card rounded-xl border border-border/30 hover:border-accent/15 transition-all duration-300"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {galleryMap[activeTab].map((src, i) => (
+              <motion.div key={`${activeTab}-${i}`}
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.06, duration: 0.4 }}
+                className="rounded-2xl overflow-hidden border border-border/30 aspect-[4/3] cursor-pointer"
                 style={{ boxShadow: 'var(--shadow-sm)' }}
+                onClick={() => openLightbox(src)}
               >
-                <CheckCircle2 size={18} className="text-accent shrink-0 mt-0.5" />
-                <p className="text-foreground font-arabic text-sm leading-relaxed">{item}</p>
+                <img src={src} alt={`ميركادو مول ${tab} ${i + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"
+                />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <MallGallerySection mallName="ميركادو مول" images={galleryImages} videos={galleryVideos} lang="ar" />
+      {/* ─── 10. INVESTMENT VALUE ─── */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
+              <p className="section-label mb-3">ثقة المستثمرين</p>
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
+                لماذا يجذب ميركادو المستثمرين
+              </h2>
+              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.95] mb-8">
+                يقدم ميركادو مول نوعاً مختلفاً من الفرص: أصل تجاري مدعوم بالتشغيل الفعلي وحضور المستأجرين والأهمية التجارية — مما يجعله أكثر من مجرد وعد مستقبلي.
+              </p>
+              <div className="space-y-3">
+                {investorPoints.map((point, i) => (
+                  <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.06, duration: 0.35 }}
+                    className="flex items-start gap-3 p-4 bg-cream rounded-xl border border-border/30"
+                    style={{ boxShadow: 'var(--shadow-sm)' }}
+                  >
+                    <CheckCircle2 size={17} className="text-accent shrink-0 mt-0.5" />
+                    <p className="text-foreground font-arabic text-sm leading-relaxed">{point}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={mercado6} alt="فرصة استثمارية في ميركادو مول" className="w-full h-full object-cover" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
-      <CTASection
-        title="استثمر في ميركادو مول اليوم"
-        subtitle="احجز وحدتك التجارية الآن في مول متميز وجاهز للتشغيل في مدينة الشروق واستفد من الطلب الإيجاري القوي وفرص النمو المستقبلي."
-        buttonText="طلب تفاصيل الوحدة"
-        buttonLink="/ar/contact"
-      />
+      {/* ─── 11. FINAL CTA ─── */}
+      <section className="relative bg-primary py-20 md:py-28 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={mercado2} alt="" className="w-full h-full object-cover opacity-[0.08]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/70" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div {...fadeUp} transition={{ duration: 0.7 }}>
+            <div className="section-divider mb-8" style={{ background: 'linear-gradient(90deg, transparent, hsl(var(--primary-foreground) / 0.1), transparent)' }} />
+            <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5 leading-[1.15] max-w-2xl mx-auto">
+              انضم إلى وجهة تجارية فعّالة
+            </h2>
+            <p className="text-primary-foreground/50 font-arabic max-w-xl mx-auto mb-10 text-[15px] leading-relaxed">
+              اكتشف الإمكانيات التجارية لميركادو مول، وتعرف على الفرص المتاحة، وضع عملك داخل أحد عناوين التجزئة الراسخة في الشروق.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link to="/ar/contact" className="group btn-outline-light px-10 py-4 text-[13px] rounded-lg font-body">
+                طلب تفاصيل الوحدة
+                <ArrowRight size={14} className="transition-transform group-hover:-translate-x-1 rotate-180" />
+              </Link>
+              <Link to="/ar/contact" className="inline-flex items-center gap-2 px-8 py-4 text-[12px] font-body font-semibold tracking-[0.08em] uppercase rounded-lg border border-primary-foreground/15 text-primary-foreground/60 hover:text-primary-foreground hover:border-primary-foreground/30 transition-all duration-300">
+                احجز زيارة
+              </Link>
+              <Link to="/ar/contact" className="inline-flex items-center gap-2 px-8 py-4 text-[12px] font-body font-semibold tracking-[0.08em] uppercase rounded-lg text-primary-foreground/40 hover:text-primary-foreground/70 transition-all duration-300">
+                تحدث مع المبيعات
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Lightbox images={allGalleryImages} open={lightboxOpen} startIndex={lightboxIndex} onClose={() => setLightboxOpen(false)} />
     </Layout>
   );
 };
