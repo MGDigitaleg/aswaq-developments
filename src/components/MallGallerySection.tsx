@@ -109,6 +109,7 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
           </TabsContent>
         </Tabs>
       </div>
+      <Lightbox images={images} open={lightboxOpen} startIndex={lightboxIndex} onClose={() => setLightboxOpen(false)} />
     </section>
   );
 };
