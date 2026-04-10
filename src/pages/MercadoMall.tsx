@@ -12,15 +12,15 @@ import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 
 // 3D Renders — primary visual language (aspirational, cinematic, premium)
-import render2 from "@/assets/gallery/mercado-2.webp";
-import render3 from "@/assets/gallery/mercado-3.webp";
-import render4 from "@/assets/gallery/mercado-4.webp";
-import render5 from "@/assets/gallery/mercado-5.webp";
-import render6 from "@/assets/gallery/mercado-6.webp";
-import render7 from "@/assets/gallery/mercado-7.webp";
+import render1 from "@/assets/gallery/mercado-1.webp";   // internal courtyard / elevator
+import render2 from "@/assets/gallery/mercado-2.webp";   // aerial render from above
+import render3 from "@/assets/gallery/mercado-3.webp";   // direct daytime front exterior
+import render4 from "@/assets/gallery/mercado-4.webp";   // front night render
+import render5 from "@/assets/gallery/mercado-5.webp";   // daytime internal open walkway
+import render6 from "@/assets/gallery/mercado-6.webp";   // strong corner / angled exterior
+import render7 from "@/assets/gallery/mercado-7.webp";   // wide premium night façade (strongest)
 
 // Real photos — proof of operational activity
-import realTower from "@/assets/gallery/mercado-real-tower.webp";
 import realRetail from "@/assets/gallery/mercado-real-retail.webp";
 import realCorner from "@/assets/gallery/mercado-real-corner.webp";
 import realCorridor from "@/assets/gallery/mercado-real-corridor.webp";
@@ -77,18 +77,26 @@ const investorPoints = [
   "More confidence than concept-only projects",
 ];
 
-type GalleryTab = "vision" | "active" | "night";
+/* ── Gallery: 4 tabs ── */
+type GalleryTab = "vision" | "retail" | "exterior" | "real";
 const galleryTabs: { key: GalleryTab; label: string }[] = [
   { key: "vision", label: "3D Vision" },
-  { key: "active", label: "Real & Active" },
-  { key: "night", label: "Night & Ambience" },
+  { key: "retail", label: "Retail Experience" },
+  { key: "exterior", label: "Exterior & Presence" },
+  { key: "real", label: "Real Operation" },
 ];
 const galleryMap: Record<GalleryTab, string[]> = {
-  vision: [render3, render7, render2, render6],
-  active: [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor],
-  night: [render4, render5],
+  vision: [render2, render3, render1, render6, render7],
+  retail: [render5, realCourtyard, realCorridor],
+  exterior: [render3, render4, render6, realCorner],
+  real: [realRetail, realCorridor, realCourtyard, realWide, realStairs],
 };
-const allGalleryImages = [render3, render7, render2, render6, realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render4, render5];
+const allGalleryImages = [
+  render2, render3, render1, render6, render7,
+  render5, realCourtyard, realCorridor,
+  render4, realCorner,
+  realRetail, realWide, realStairs,
+];
 
 const MercadoMall = () => {
   useSEO(
@@ -108,9 +116,8 @@ const MercadoMall = () => {
 
   return (
     <Layout>
-      {/* ─── 1. HERO — Cinematic, immersive ─── */}
+      {/* ─── 1. HERO — Strongest night exterior render ─── */}
       <section className="relative bg-primary overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[85vh]">
-        {/* Pre-graded cinematic image — no runtime CSS filters needed */}
         <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.06 }}
@@ -118,14 +125,13 @@ const MercadoMall = () => {
           transition={{ duration: 10, ease: "easeOut" }}
         >
           <img
-            src={render3}
+            src={render7}
             alt="Mercado Mall — Premium commercial destination"
             className="w-full h-full object-cover object-center"
             fetchPriority="high"
             decoding="sync"
           />
         </motion.div>
-        {/* Layered depth: bottom anchor + left text zone + top vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 md:via-primary/60 to-primary/10 md:to-primary/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/70 md:from-primary/80 via-primary/20 md:via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-primary to-transparent" />
@@ -176,7 +182,7 @@ const MercadoMall = () => {
         </div>
       </section>
 
-      {/* ─── 2. QUICK SNAPSHOT ─── */}
+      {/* ─── 2. QUICK SNAPSHOT — Direct daytime front exterior ─── */}
       <section id="snapshot" className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -202,36 +208,43 @@ const MercadoMall = () => {
             </motion.div>
             <motion.div {...imgReveal}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={render7} alt="Mercado Mall — Operational commercial destination in El Shorouk" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+                <img src={render3} alt="Mercado Mall — Daytime front exterior" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── 3. WHY MERCADO WORKS ─── */}
+      {/* ─── 3. WHY MERCADO WORKS — Corner/angled exterior as visual accent ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
-            <p className="section-label mb-3">The Mercado Advantage</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">Why Mercado Works</h2>
-            <p className="text-muted-foreground font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
-              Mercado Mall combines accessibility, visible retail exposure, and an active tenant environment — creating a stronger proposition for businesses that want to operate within a proven destination rather than a speculative one.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {whyCards.map((card, i) => (
-              <motion.div key={card.title} {...fadeUp} transition={{ delay: i * 0.08, duration: 0.45 }}
-                className="p-6 md:p-7 bg-card rounded-2xl border border-border/30 hover:border-accent/15 hover:-translate-y-1 transition-all duration-400 group"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/15 transition-colors duration-300">
-                  <card.icon size={22} className="text-accent" />
-                </div>
-                <h3 className="font-display text-base font-bold text-foreground mb-2">{card.title}</h3>
-                <p className="text-muted-foreground font-body text-[13px] leading-relaxed">{card.desc}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
+              <p className="section-label mb-3">The Mercado Advantage</p>
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">Why Mercado Works</h2>
+              <p className="text-muted-foreground font-body max-w-2xl text-[15px] leading-relaxed mb-8">
+                Mercado Mall combines accessibility, visible retail exposure, and an active tenant environment — creating a stronger proposition for businesses that want to operate within a proven destination rather than a speculative one.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {whyCards.map((card, i) => (
+                  <motion.div key={card.title} {...fadeUp} transition={{ delay: i * 0.08, duration: 0.45 }}
+                    className="p-5 bg-card rounded-xl border border-border/30 hover:border-accent/15 hover:-translate-y-1 transition-all duration-400 group"
+                    style={{ boxShadow: 'var(--shadow-sm)' }}
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors duration-300">
+                      <card.icon size={20} className="text-accent" />
+                    </div>
+                    <h3 className="font-display text-sm font-bold text-foreground mb-1.5">{card.title}</h3>
+                    <p className="text-muted-foreground font-body text-[12px] leading-relaxed">{card.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div {...imgReveal}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={render6} alt="Mercado Mall — Corner angled exterior view" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -239,13 +252,16 @@ const MercadoMall = () => {
       {/* ─── 4. ACTIVE BRANDS / TENANT MIX ─── */}
       <MercadoTenantsSection />
 
-      {/* ─── 5. BUILT AROUND DAILY MOVEMENT ─── */}
+      {/* ─── 5. BUILT AROUND DAILY MOVEMENT — Internal walkway + courtyard ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div {...imgReveal}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={render2} alt="Mercado Mall circulation and retail movement" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] mb-4" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={render5} alt="Mercado Mall daytime internal walkway" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              </div>
+              <div className="rounded-xl overflow-hidden aspect-[16/7]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                <img src={realCourtyard} alt="Mercado Mall real courtyard" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
@@ -269,7 +285,7 @@ const MercadoMall = () => {
         </div>
       </section>
 
-      {/* ─── 6. ARCHITECTURAL / EXPERIENCE ─── */}
+      {/* ─── 6. ARCHITECTURAL / EXPERIENCE — Courtyard/elevator + exterior supports ─── */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -286,15 +302,23 @@ const MercadoMall = () => {
               </p>
             </motion.div>
             <motion.div {...imgReveal} className="order-1 lg:order-2">
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={render6} alt="Mercado Mall architectural experience" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              <div className="rounded-2xl overflow-hidden aspect-[4/3] mb-4" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                <img src={render1} alt="Mercado Mall central courtyard and elevator" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                  <img src={render3} alt="Mercado Mall exterior" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                  <img src={render6} alt="Mercado Mall corner view" className="w-full h-full object-cover" loading="lazy" />
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── 7. COMMERCIAL OPPORTUNITY ─── */}
+      {/* ─── 7. COMMERCIAL OPPORTUNITY — Aerial render ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-14">
@@ -303,6 +327,11 @@ const MercadoMall = () => {
             <p className="text-muted-foreground font-body max-w-2xl mx-auto text-[15px] leading-relaxed">
               With unit sizes starting from 29 square meters and a range of positioning options across the mall, Mercado provides opportunities for both emerging concepts and established operators looking to grow in El Shorouk.
             </p>
+          </motion.div>
+          <motion.div {...imgReveal} className="mb-12">
+            <div className="rounded-2xl overflow-hidden aspect-[21/9] max-w-4xl mx-auto" style={{ boxShadow: 'var(--shadow-lg)' }}>
+              <img src={render2} alt="Mercado Mall aerial view" className="w-full h-full object-cover" loading="lazy" />
+            </div>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
             {commercialCards.map((card, i) => (
@@ -375,7 +404,7 @@ const MercadoMall = () => {
         </div>
       </section>
 
-      {/* ─── 9. CURATED GALLERY ─── */}
+      {/* ─── 9. CURATED GALLERY — 4 tabs ─── */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-12">
@@ -386,7 +415,7 @@ const MercadoMall = () => {
             </p>
           </motion.div>
           <div className="flex justify-center mb-10">
-            <div className="flex bg-background rounded-lg p-1 gap-1 border border-border/30" style={{ boxShadow: 'var(--shadow-sm)' }}>
+            <div className="flex flex-wrap justify-center bg-background rounded-lg p-1 gap-1 border border-border/30" style={{ boxShadow: 'var(--shadow-sm)' }}>
               {galleryTabs.map((tab) => (
                 <button
                   key={tab.key}
@@ -416,7 +445,7 @@ const MercadoMall = () => {
         </div>
       </section>
 
-      {/* ─── 10. INVESTMENT VALUE ─── */}
+      {/* ─── 10. OPERATIONAL PROOF — Real photos grid ─── */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -444,18 +473,28 @@ const MercadoMall = () => {
               </p>
             </motion.div>
             <motion.div {...imgReveal}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={realRetail} alt="Mercado Mall investment opportunity" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+              <div className="space-y-3">
+                <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
+                  <img src={realRetail} alt="Mercado Mall active storefront" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                    <img src={realCorridor} alt="Mercado Mall corridor" className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <div className="rounded-xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-sm)' }}>
+                    <img src={realCourtyard} alt="Mercado Mall courtyard" className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── 11. FINAL CTA ─── */}
+      {/* ─── 11. FINAL CTA — Strongest night render ─── */}
       <section className="relative bg-primary py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={render4} alt="" className="w-full h-full object-cover opacity-[0.06]" loading="lazy" />
+          <img src={render7} alt="" className="w-full h-full object-cover opacity-[0.06]" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/70" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
