@@ -56,8 +56,9 @@ const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGalle
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05, duration: 0.4 }}
-                    className="rounded-2xl overflow-hidden border border-border/30 aspect-[4/3]"
+                    className="rounded-2xl overflow-hidden border border-border/30 aspect-[4/3] cursor-pointer"
                     style={{ boxShadow: 'var(--shadow-sm)' }}
+                    onClick={() => { setLightboxIndex(i); setLightboxOpen(true); }}
                   >
                     <img
                       src={src}
