@@ -198,12 +198,12 @@ const IndexAr = () => {
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col justify-end pb-14 md:pb-20 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="max-w-xl mr-auto">
+            <div className="max-w-xl ml-auto text-right">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex items-center gap-3 mb-5"
+                className="flex items-center gap-3 mb-5 justify-end flex-row-reverse"
               >
                 <div className="w-7 h-px bg-primary-foreground/25" />
                 <p className="font-arabic text-[10px] md:text-[11px] tracking-[0.15em] text-primary-foreground/50 font-semibold">
