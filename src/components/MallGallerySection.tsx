@@ -13,6 +13,8 @@ interface MallGallerySectionProps {
 
 const MallGallerySection = ({ mallName, images, videos, lang = "en" }: MallGallerySectionProps) => {
   const [activeMedia, setActiveMedia] = useState("images");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
   const isAr = lang === "ar";
 
   if (images.length === 0 && videos.length === 0) return null;
