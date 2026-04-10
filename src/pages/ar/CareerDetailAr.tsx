@@ -1,11 +1,56 @@
 import { useEffect } from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar } from "lucide-react";
+import { ArrowRight, Calendar, MapPin, Briefcase, Clock, CheckCircle2, Target } from "lucide-react";
 import Layout from "@/components/Layout";
 import CareerApplicationForm from "@/components/CareerApplicationForm";
 import { useCareer, useCareers } from "@/hooks/useCareers";
 import heroImage from "@/assets/about-hero.webp";
+
+/* ── Parse structured description into sections (Arabic) ── */
+const parseDescription = (text: string) => {
+  const sections: { title: string; items: string[] }[] = [];
+  let intro = "";
+  let current: { title: string; items: string[] } | null = null;
+
+  for (const raw of text.split("\n")) {
+    const line = raw.trim();
+    if (!line) continue;
+
+    if (
+      (line.endsWith(":") || line.endsWith("：") || line.endsWith(":")) &&
+      !line.startsWith("- ") &&
+      line.length < 80
+    ) {
+      if (current) sections.push(current);
+      current = { title: line.replace(/:$|：$|:$/g, ""), items: [] };
+      continue;
+    }
+
+    if (line.startsWith("- ") || line.startsWith("• ") || line.startsWith("▪️")) {
+      const content = line.replace(/^[-•▪️]\s*/, "");
+      if (current) current.items.push(content);
+      continue;
+    }
+
+    if (!current && !sections.length) {
+      intro += (intro ? " " : "") + line;
+    } else if (current) {
+      current.items.push(line);
+    } else {
+      intro += (intro ? " " : "") + line;
+    }
+  }
+  if (current) sections.push(current);
+  return { intro, sections };
+};
+
+const getSectionIcon = (title: string) => {
+  const lower = title.toLowerCase();
+  if (lower.includes("مسؤولي") || lower.includes("responsibilit") || lower.includes("مهام")) return Target;
+  if (lower.includes("متطلب") || lower.includes("requirement") || lower.includes("مؤهل")) return CheckCircle2;
+  return Briefcase;
+};
 
 const CareerDetailAr = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -13,16 +58,18 @@ const CareerDetailAr = () => {
   const { careers } = useCareers();
 
   useEffect(() => {
-    if (career) {
-      document.title = `${career.title} | وظائف | أسواق للتطوير العقاري`;
-    }
+    if (career) document.title = `${career.title_ar || career.title} | وظائف | أسواق للتطوير العقاري`;
   }, [career]);
 
   if (loading) {
     return (
       <Layout>
-        <div className="min-h-screen flex items-center justify-center">
-          <p className="text-muted-foreground">جاري التحميل...</p>
+        <div className="min-h-screen flex items-center justify-center bg-cream">
+          <div className="animate-pulse space-y-4 w-full max-w-2xl px-6">
+            <div className="h-8 bg-muted rounded w-1/2" />
+            <div className="h-4 bg-muted rounded w-1/3" />
+            <div className="h-4 bg-muted rounded w-full" />
+          </div>
         </div>
       </Layout>
     );
@@ -30,61 +77,54 @@ const CareerDetailAr = () => {
 
   if (!career) return <Navigate to="/ar/careers" replace />;
 
-  const renderDescription = (text: string) => {
-    return text.split("\n").map((line, i) => {
-      const trimmed = line.trim();
-      if (!trimmed) return <br key={i} />;
-      if (trimmed.startsWith("**") && trimmed.endsWith("**")) {
-        return <p key={i} className="font-bold text-foreground mt-4 mb-1">{trimmed.replace(/\*\*/g, "")}</p>;
-      }
-      const boldMatch = trimmed.match(/^\*\*(.+?)\*\*(.*)$/);
-      if (boldMatch) {
-        return <p key={i} className="mt-1"><strong>{boldMatch[1]}</strong>{boldMatch[2]}</p>;
-      }
-      if (trimmed.startsWith("- ") || trimmed.startsWith("▪️")) {
-        const content = trimmed.replace(/^-\s*/, "").replace(/^▪️\s*/, "");
-        const parts = content.split(/\*\*(.+?)\*\*/);
-        return (
-          <li key={i} className="mr-4 text-muted-foreground">
-            {parts.map((part, j) => j % 2 === 1 ? <strong key={j}>{part}</strong> : part)}
-          </li>
-        );
-      }
-      if (trimmed.startsWith("#")) {
-        const content = trimmed.replace(/^#+\s*/, "");
-        return <p key={i} className="font-bold text-foreground mt-3">{content}</p>;
-      }
-      return <p key={i} className="text-muted-foreground mt-1">{trimmed}</p>;
-    });
-  };
+  const description = career.description_ar || career.description;
+  const { intro, sections } = parseDescription(description);
 
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-[40vh] min-h-[450px] flex items-center justify-center pt-[120px]">
-        <img src={heroImage} alt="وظائف" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-primary/70" />
-        <div className="relative z-10 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary-foreground"
-          >
-            وظائف
-          </motion.h1>
+      <section className="relative h-[45vh] min-h-[420px] flex items-end pb-10 md:pb-14 overflow-hidden">
+        <div className="absolute inset-0" style={{ backgroundImage: `url(${heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-primary/20" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <Link
+              to="/ar/careers"
+              className="inline-flex items-center gap-2 text-primary-foreground/50 hover:text-primary-foreground/80 transition-colors text-xs font-body tracking-wide uppercase mb-5"
+            >
+              العودة للوظائف <ArrowRight size={14} />
+            </Link>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-[2.6rem] font-bold tracking-tight text-primary-foreground leading-[1.15] max-w-3xl">
+              {career.title_ar || career.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5">
+              <span className="flex items-center gap-1.5 text-xs text-primary-foreground/50 font-body">
+                <Calendar size={13} className="text-primary-foreground/40" />
+                {new Date(career.date).toLocaleDateString("ar-EG", { day: "numeric", month: "long", year: "numeric" })}
+              </span>
+              <span className="flex items-center gap-1.5 text-xs text-primary-foreground/50 font-body">
+                <MapPin size={13} className="text-primary-foreground/40" />
+                مدينة الشروق
+              </span>
+              <span className="flex items-center gap-1.5 text-xs text-primary-foreground/50 font-body">
+                <Clock size={13} className="text-primary-foreground/40" />
+                دوام كامل
+              </span>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Application Form */}
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-2 lg:sticky lg:top-28 lg:self-start">
               <CareerApplicationForm
                 careers={careers}
                 selectedCareerId={career.id}
-                title="استفسار"
+                title="قدّم الآن"
                 labels={{
                   name: "الاسم",
                   email: "الايميل",
@@ -106,35 +146,61 @@ const CareerDetailAr = () => {
             </div>
 
             {/* Job Details */}
-            <div className="lg:col-span-2 order-2 lg:order-1">
-              <Link
-                to="/ar/careers"
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm mb-6"
-              >
-                العودة للوظائف <ArrowLeft size={16} className="rotate-180" />
-              </Link>
+            <div className="lg:col-span-2 space-y-8 order-2 lg:order-1">
+              {/* Intro */}
+              {intro && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-card rounded-2xl border border-border/40 p-6 md:p-8"
+                >
+                  <h2 className="font-display text-lg font-bold text-foreground mb-3">عن هذه الوظيفة</h2>
+                  <p className="text-sm text-muted-foreground font-body leading-relaxed">{intro}</p>
+                </motion.div>
+              )}
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-                  {career.title_ar || career.title}
-                </h2>
-                <div className="flex items-center gap-2 mt-3 text-sm text-muted-foreground">
-                  <Calendar size={14} />
-                  <span>
-                    {new Date(career.date).toLocaleDateString("ar-EG", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </span>
-                </div>
-                <div className="mt-6 text-sm leading-relaxed">
-                  <ul className="list-disc">{renderDescription(career.description_ar || career.description)}</ul>
-                </div>
-              </motion.div>
+              {/* Sections */}
+              {sections.map((section, i) => {
+                const Icon = getSectionIcon(section.title);
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 + i * 0.08 }}
+                    className="bg-card rounded-2xl border border-border/40 p-6 md:p-8"
+                  >
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center">
+                        <Icon size={16} className="text-primary/60" />
+                      </div>
+                      <h3 className="font-display text-base font-bold text-foreground">{section.title}</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      {section.items.map((item, j) => (
+                        <li key={j} className="flex items-start gap-3 text-sm text-muted-foreground font-body leading-relaxed">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary/30 mt-[7px] flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
+
+              {/* Fallback raw */}
+              {!intro && sections.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-card rounded-2xl border border-border/40 p-6 md:p-8"
+                >
+                  <div className="text-sm text-muted-foreground font-body leading-relaxed whitespace-pre-line">
+                    {description}
+                  </div>
+                </motion.div>
+              )}
             </div>
           </div>
         </div>
