@@ -9,7 +9,6 @@ import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import AnimatedCounter from "@/components/AnimatedCounter";
-import AnimatedCounter from "@/components/AnimatedCounter";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
