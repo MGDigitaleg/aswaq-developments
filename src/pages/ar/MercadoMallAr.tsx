@@ -336,7 +336,7 @@ const MercadoMallAr = () => {
                 style={{ boxShadow: 'var(--shadow-sm)' }}
                 onClick={() => openLightbox(src)}
               >
-                <img src={src} alt={`ميركادو مول ${tab} ${i + 1}`}
+                <img src={src} alt={`ميركادو مول ${activeTab} ${i + 1}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"
                 />
               </motion.div>
