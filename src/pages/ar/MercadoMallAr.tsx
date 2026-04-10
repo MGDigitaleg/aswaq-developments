@@ -19,6 +19,7 @@ import realCorridor from "@/assets/gallery/mercado-real-corridor.webp";
 import realCourtyard from "@/assets/gallery/mercado-real-courtyard.webp";
 import realWide from "@/assets/gallery/mercado-real-wide.webp";
 import realStairs from "@/assets/gallery/mercado-real-stairs.webp";
+import heroCinematic from "@/assets/gallery/mercado-hero-cinematic.webp";
 
 // 3D Renders (optimized WebP)
 import render2 from "@/assets/gallery/mercado-2.webp";
@@ -109,18 +110,19 @@ const MercadoMallAr = () => {
   return (
     <Layout>
       {/* ─── 1. HERO ─── */}
-      <section className="relative bg-primary overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[80vh]">
+      <section className="relative bg-primary overflow-hidden min-h-[600px] md:min-h-[700px] lg:min-h-[85vh]">
         <motion.div
           className="absolute inset-0"
-          initial={{ scale: 1.08 }}
+          initial={{ scale: 1.06 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 8, ease: "easeOut" }}
+          transition={{ duration: 10, ease: "easeOut" }}
         >
-          <img src={realWide} alt="" className="w-full h-full object-cover" style={{ filter: "brightness(0.35) contrast(1.1) saturate(1.15)" }} fetchPriority="high" decoding="sync" />
+          <img src={heroCinematic} alt="" className="w-full h-full object-cover object-left-top" fetchPriority="high" decoding="sync" />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-l from-primary/60 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-primary/20" />
+        <div className="absolute inset-0 bg-gradient-to-l from-primary/80 via-primary/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-primary to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-primary/40 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-44 md:pt-52 pb-24 md:pb-32 relative z-10 flex flex-col justify-end min-h-[inherit]">
           <div className="max-w-2xl mr-auto">
