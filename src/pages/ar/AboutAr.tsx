@@ -26,8 +26,8 @@ const AboutAr = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center pt-[120px] overflow-hidden">
+      {/* Hero — clean cinematic video, no text overlay */}
+      <section className="relative h-[60vh] min-h-[420px] overflow-hidden">
         <video
           autoPlay
           muted
@@ -37,35 +37,30 @@ const AboutAr = () => {
         >
           <source src="/videos/about-hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 hero-gradient" />
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="relative z-10 text-center px-4 max-w-3xl"
-        >
-          <p className="text-primary-foreground/40 font-arabic font-semibold tracking-[0.25em] uppercase text-[10px] mb-4">قصتنا</p>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-            من نحن
-          </h1>
-          <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
-            نحن في مجال الاستثمار العقاري واحدة من الشركات الرائدة في السوق المصري. نبني المستقبل بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا.
-          </p>
-        </motion.div>
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: 'linear-gradient(to top, hsl(222 47% 5% / 0.6) 0%, transparent 50%)'
+        }} />
       </section>
 
-      {/* About Content */}
-      <section className="py-16 md:py-24 bg-background">
+      {/* Intro — title + description moved below hero */}
+      <section className="py-16 md:py-24 bg-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
             className="text-center"
           >
-            <div className="section-divider mb-8" />
-            <p className="text-muted-foreground font-arabic leading-[1.9] text-[15px]">
+            <p className="text-primary-foreground/40 font-arabic font-semibold tracking-[0.25em] text-[10px] mb-4">قصتنا</p>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
+              من نحن
+            </h1>
+            <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed mb-10">
+              نحن في مجال الاستثمار العقاري واحدة من الشركات الرائدة في السوق المصري. نبني المستقبل بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا.
+            </p>
+            <div className="w-12 h-px bg-primary-foreground/15 mx-auto mb-10" />
+            <p className="text-primary-foreground/45 font-arabic leading-[1.9] text-[15px] max-w-3xl mx-auto">
               نحن لسنا مجرد مطور عقاري، بل نمتد بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا، ونجاح شركائنا في الاستثمار المستدام. لقد ركزنا جهودنا منذ انطلاقنا في الشروق، في منطقة شرق القاهرة، حيث نقدم مشاريع عقارية متكاملة تخدم قطاعات التجزئة والإدارة والطب.
             </p>
           </motion.div>
