@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, ArrowLeft, Calculator } from "lucide-react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
@@ -149,6 +149,9 @@ const UnitCategoryPage = ({
           </div>
         </div>
       </section>
+
+      {/* ROI Calculator CTA */}
+      <ROIBanner />
 
       <FAQSection faqs={faqs} title={faqTitle} />
       <CTASection title={ctaTitle} subtitle={ctaSubtitle} buttonText={ctaButtonText || "Request Unit Details"} buttonLink="/contact" />
