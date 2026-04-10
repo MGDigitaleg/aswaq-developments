@@ -31,7 +31,6 @@ const projectMeta: Record<string, { type: string; typeAr: string; desc: string; 
 };
 
 const getNavLinks = (prefix: string): NavItem[] => [
-  { label: prefix ? "الرئيسية" : "Home", href: `${prefix}/`, priority: "primary" },
   { label: prefix ? "من نحن" : "About Us", href: `${prefix}/about`, priority: "primary" },
   {
     label: prefix ? "المشاريع" : "Projects",
@@ -483,7 +482,7 @@ const Navbar = () => {
           <div className={`flex items-center justify-between px-4 lg:px-6 ${scrolled ? 'py-2' : 'py-2.5'}`} style={{ transition: 'padding 0.4s ease' }}>
             {/* Mobile: empty spacer for centering | Desktop: Logo */}
             <div className="lg:hidden w-8" />
-            <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0 lg:mr-auto">
+            <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0">
               <img
                 src={aswaqLogo}
                 alt="ASWAQ Developments"
@@ -493,8 +492,8 @@ const Navbar = () => {
               />
             </Link>
 
-            {/* Desktop Nav — primary links */}
-            <nav className="hidden lg:flex items-center gap-5 xl:gap-6">
+            {/* Desktop Nav — centered primary links */}
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-6 flex-1 justify-center">
               {primaryLinks.map((link) => {
                 const active = isPathInTree(location.pathname, link);
 
