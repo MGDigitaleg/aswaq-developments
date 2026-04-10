@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -19,6 +20,7 @@ import Layout from "@/components/Layout";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useSEO from "@/hooks/useSEO";
+import Lightbox from "@/components/Lightbox";
 
 import heroImage from "@/assets/arena-premium/arena-night-render.jpg";
 import snapshotImage from "@/assets/arena-premium/arena-render-main.jpg";
@@ -74,7 +76,19 @@ const ArenaMallAr = () => {
     "استكشف أرينا مول الشروق من شركة أسواق للتطوير العقاري — وجهة تجارية متعددة الاستخدامات للمحلات والعيادات والمكاتب وفرص الاستثمار."
   );
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (images: string[], index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
+    <>
+    <Lightbox images={lightboxImages} open={lightboxOpen} startIndex={lightboxIndex} onClose={() => setLightboxOpen(false)} />
     <Layout>
       {/* ═══ HERO ═══ */}
       <section className="relative flex min-h-screen items-end overflow-hidden bg-primary">
@@ -363,8 +377,8 @@ const ArenaMallAr = () => {
               <TabsContent key={key} value={key}>
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                   {images.map((image, index) => (
-                    <motion.div key={`${key}-${index}`} variants={fadeUp} className="group overflow-hidden rounded-[24px] border border-border/40 bg-card" style={{ boxShadow: "var(--shadow-lg)" }}>
-                      <img src={image} alt={`أرينا مول ${key} ${index + 1}`} className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" />
+                    <motion.div key={`${key}-${index}`} variants={fadeUp} className="group cursor-pointer overflow-hidden rounded-[24px] border border-border/40 bg-card" style={{ boxShadow: "var(--shadow-lg)" }} onClick={() => openLightbox(images, index)}>
+                      <img src={image} alt={`أرينا مول ${key} ${index + 1}`} className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" draggable={false} />
                     </motion.div>
                   ))}
                 </motion.div>
@@ -412,6 +426,7 @@ const ArenaMallAr = () => {
         </div>
       </section>
     </Layout>
+    </>
   );
 };
 
