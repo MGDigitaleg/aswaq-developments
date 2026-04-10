@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ImageIcon, Film } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import Lightbox from "@/components/Lightbox";
 
 interface MallGallerySectionProps {
   mallName: string;
