@@ -33,7 +33,7 @@ import render9 from "@/assets/gallery/mercado-9.webp";
 
 /* ── Animation presets ── */
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-60px" } };
-const imgReveal = { initial: { opacity: 0, scale: 1.04 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } };
+const imgReveal = { initial: { opacity: 0, scale: 1.04 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, margin: "-40px" as const }, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } };
 
 /* ── Data ── */
 const snapshotStats = [
