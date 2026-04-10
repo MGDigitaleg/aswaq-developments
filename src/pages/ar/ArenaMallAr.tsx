@@ -58,12 +58,12 @@ const businessCards = [
 ];
 
 const investorReasons = [
-  { icon: Layers, text: "طلب متعدد الاستخدامات يشمل التجاري والطبي والإداري" },
-  { icon: Eye, text: "واجهة مميزة وقيمة بصرية عالية للعلامات التجارية" },
-  { icon: TrendingUp, text: "موقع في ممر نمو عالي مع ارتفاع مستمر في قيمة الأراضي" },
-  { icon: Users, text: "تعدد ملفات المستأجرين يقلل مخاطر الشغور" },
-  { icon: ShieldCheck, text: "تقدم إنشائي مرئي — وليس مجرد وعود" },
-  { icon: BarChart3, text: "مصمم لزيادة رأس المال على المدى الطويل وتحقيق عوائد إيجارية" },
+  { icon: Layers, text: "مشروع متعدد الاستخدامات يجمع التجاري والطبي والإداري تحت سقف واحد" },
+  { icon: Eye, text: "واجهة لافتة تمنح كل علامة تجارية حضوراً بصرياً قوياً" },
+  { icon: TrendingUp, text: "موقع في محور نمو متسارع مع ارتفاع مستمر في قيمة العقارات" },
+  { icon: Users, text: "تنوّع المستأجرين يحمي من مخاطر الشغور ويضمن استقراراً إيجارياً" },
+  { icon: ShieldCheck, text: "تقدم إنشائي ملموس على أرض الواقع — وليس مجرد وعود" },
+  { icon: BarChart3, text: "مصمم لتحقيق نمو في رأس المال وعوائد إيجارية مستدامة" },
 ];
 
 const galleryTabs = {
@@ -236,7 +236,7 @@ const ArenaMallAr = () => {
                 موقع استراتيجي في الشروق
               </h2>
               <p className="mb-8 text-base font-arabic leading-8 text-muted-foreground">
-                يستفيد أرينا مول من موقع يدعم الحركة اليومية والتعرض التجاري والأهمية التجارية — مما يجعله مناسباً للعلامات التجارية والممارسات الصحية ومستخدمي المكاتب العصرية.
+                يتمتع أرينا مول بموقع يضمن حركة يومية مستمرة وحضوراً تجارياً لافتاً — ما يجعله الخيار الأمثل للعلامات التجارية والعيادات والشركات التي تبحث عن عنوان يعمل لصالحها.
               </p>
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="mb-8 grid gap-3 sm:grid-cols-2">
                 {[
@@ -313,7 +313,7 @@ const ArenaMallAr = () => {
               </p>
             </div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-2 gap-3">
-              {["الحضور الهيكلي تم إنشاؤه", "هوية الواجهة تتشكّل", "تفعيل الموقع والواجهة", "التواصل مع المبيعات والمستثمرين"].map((item) => (
+              {["الهيكل الإنشائي اكتمل", "هوية الواجهة بدأت تتشكّل", "تجهيز الموقع والمداخل", "استقبال طلبات الحجز والاستثمار"].map((item) => (
                 <motion.div key={item} variants={fadeUp} className="rounded-xl border border-border/30 bg-card p-4" style={{ boxShadow: "var(--shadow-sm)" }}>
                   <span className="mb-2 block text-[10px] font-arabic font-semibold tracking-[0.1em] text-accent">تقدم</span>
                   <p className="text-sm font-arabic text-foreground">{item}</p>
@@ -344,7 +344,7 @@ const ArenaMallAr = () => {
               لماذا يجذب أرينا المستثمرين
             </h2>
             <p className="text-base font-arabic leading-8 text-muted-foreground">
-              حضور معماري واستخدام تجاري مرن وتقدم تطوير مرئي في عنوان واحد — مما يخلق عرضاً قوياً للمستثمرين الباحثين عن طلب مستقر وقيمة طويلة الأمد.
+              حضور معماري قوي، واستخدام تجاري مرن، وتقدم إنشائي ملموس — كلها عوامل تجعل أرينا فرصة استثمارية مقنعة لمن يبحث عن عائد مستدام وقيمة تتصاعد مع الوقت.
             </p>
           </div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
