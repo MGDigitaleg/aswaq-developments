@@ -416,21 +416,22 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            {/* Interactive Orbit Viewer */}
+            {/* Cinematic Solaria Aerial */}
             <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: '0 32px 80px -16px hsl(232 78% 8% / 0.18), 0 12px 28px -8px hsl(232 78% 8% / 0.08)' }}>
-              <SolariaOrbitViewer
+              <motion.div
                 className="aspect-[4/3] md:aspect-[2/1]"
-                onFrameChange={(frame, dragging) => {
-                  const el = document.getElementById('solaria-overlay');
-                  if (!el) return;
-                  // Map frame (0–35) to a subtle horizontal shift (-12px to +12px)
-                  const normalized = (frame / 35) * 2 - 1; // -1 → +1
-                  const xShift = normalized * 12;
-                  const opacity = dragging ? 0.7 : 1;
-                  el.style.transform = `translateX(${xShift}px)`;
-                  el.style.opacity = String(opacity);
-                }}
-              />
+                initial={{ scale: 1.08 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 12, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <img
+                  src="/solaria-orbit/frame-12.jpg"
+                  alt="Solaria Mall — premium aerial architectural view"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
+              </motion.div>
 
               {/* Desktop overlay content */}
               <div id="solaria-overlay" className="absolute inset-y-0 left-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none" style={{ transition: 'transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease' }}>
