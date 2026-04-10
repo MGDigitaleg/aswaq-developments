@@ -410,8 +410,8 @@ const ArenaMall = () => {
               <TabsContent key={key} value={key}>
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className={`grid gap-4 ${key === "vision" ? "md:grid-cols-2 xl:grid-cols-3" : "md:grid-cols-2 xl:grid-cols-3"}`}>
                   {images.map((image, index) => (
-                    <motion.div key={`${key}-${index}`} variants={fadeUp} className="group overflow-hidden rounded-[24px] border border-border/40 bg-card" style={{ boxShadow: "var(--shadow-lg)" }}>
-                      <img src={image} alt={`Arena Mall ${key} ${index + 1}`} className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" />
+                    <motion.div key={`${key}-${index}`} variants={fadeUp} className="group cursor-pointer overflow-hidden rounded-[24px] border border-border/40 bg-card" style={{ boxShadow: "var(--shadow-lg)" }} onClick={() => openLightbox(images, index)}>
+                      <img src={image} alt={`Arena Mall ${key} ${index + 1}`} className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" draggable={false} />
                     </motion.div>
                   ))}
                 </motion.div>
