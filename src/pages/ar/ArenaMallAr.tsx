@@ -86,6 +86,9 @@ const ArenaMallAr = () => {
     setLightboxOpen(true);
   };
 
+  return (
+    <>
+    <Lightbox images={lightboxImages} open={lightboxOpen} startIndex={lightboxIndex} onClose={() => setLightboxOpen(false)} />
     <Layout>
       {/* ═══ HERO ═══ */}
       <section className="relative flex min-h-screen items-end overflow-hidden bg-primary">
