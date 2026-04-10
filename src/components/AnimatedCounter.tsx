@@ -9,11 +9,13 @@ interface AnimatedCounterProps {
 
 const AnimatedCounter = ({ value, duration = 2000, className }: AnimatedCounterProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [display, setDisplay] = useState("0");
+  const isInView = useInView(ref, { once: true, margin: "50px" });
+  const [display, setDisplay] = useState("");
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || hasAnimated.current) return;
+    hasAnimated.current = true;
 
     // Parse the value: extract prefix, number, suffix
     const match = value.match(/^([^\d]*)(\d+)(.*)$/);
@@ -43,7 +45,8 @@ const AnimatedCounter = ({ value, duration = 2000, className }: AnimatedCounterP
     requestAnimationFrame(animate);
   }, [isInView, value, duration]);
 
-  return <span ref={ref} className={className}>{display}</span>;
+  // Show final value as fallback if not yet animated
+  return <span ref={ref} className={className}>{display || value}</span>;
 };
 
 export default AnimatedCounter;
