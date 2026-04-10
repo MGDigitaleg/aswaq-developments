@@ -86,8 +86,8 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     if (!loaded || hasAutoRotated || isDragging) return;
 
     let frame = 0;
-    const totalSteps = 12;
-    const intervalMs = 120; // ~8fps for a gentle, cinematic feel
+    const totalSteps = TOTAL_FRAMES;
+    const intervalMs = 80; // ~12fps for a smooth full rotation
     let step = 0;
 
     const tick = () => {
