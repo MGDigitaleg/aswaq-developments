@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import CTASection from "@/components/CTASection";
 import useSEO from "@/hooks/useSEO";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import aswaqLogo from "@/assets/aswaq-logo.webp";
 
 const whyChoose = [
   { icon: Award, text: "خبرة عقارية تمتد لأكثر من 20 عاماً في مجال الاستثمار العقاري في مصر" },
@@ -89,9 +90,12 @@ const AboutAr = () => {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="lg:col-span-7 space-y-8"
             >
-              <p className="text-primary-foreground/60 font-arabic text-[17px] md:text-[18px] leading-[2] first-letter:text-4xl first-letter:font-display first-letter:font-bold first-letter:text-primary-foreground first-letter:float-right first-letter:ml-2 first-letter:mt-1">
-                نحن في مجال الاستثمار العقاري واحدة من الشركات الرائدة في السوق المصري. نبني المستقبل بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا.
-              </p>
+              <div className="flex items-start gap-4">
+                <p className="text-primary-foreground/60 font-arabic text-[17px] md:text-[18px] leading-[2]">
+                  نحن في مجال الاستثمار العقاري واحدة من الشركات الرائدة في السوق المصري. نبني المستقبل بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا.
+                </p>
+                <img src={aswaqLogo} alt="أسواق للتطوير العقاري" className="w-[72px] mt-1 shrink-0 opacity-70" />
+              </div>
               <div className="w-full h-px bg-primary-foreground/[0.06]" />
               <p className="text-primary-foreground/45 font-arabic text-[15px] leading-[2]">
                 نحن لسنا مجرد مطور عقاري، بل نمتد بخبرة تمتد لأكثر من 20 عاماً في مصر، حيث نتخصص في إنشاء وحدات متعددة الاستخدامات لعملائنا، ونجاح شركائنا في الاستثمار المستدام.
