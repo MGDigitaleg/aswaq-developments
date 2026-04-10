@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronRight, ArrowRight, Landmark, Train, GraduationCap, HeartPulse } from "lucide-react";
-import SolariaOrbitViewer from "@/components/SolariaOrbitViewer";
+
 import { useLatestNews } from "@/hooks/useNewsArticles";
 import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
@@ -434,7 +434,7 @@ const Index = () => {
               </motion.div>
 
               {/* Desktop overlay content */}
-              <div id="solaria-overlay" className="absolute inset-y-0 left-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none" style={{ transition: 'transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease' }}>
+              <div className="absolute inset-y-0 left-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none" style={{ transition: 'opacity 0.4s ease' }}>
                 <div className="max-w-md">
                   <div className="flex items-start gap-5 mb-5">
                     <div className="w-24 lg:w-[104px] h-24 lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-3 shrink-0 pointer-events-auto" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
