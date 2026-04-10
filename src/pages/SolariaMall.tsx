@@ -12,7 +12,20 @@ import useSEO from "@/hooks/useSEO";
 import solariaImg from "@/assets/solaria-mall.webp";
 import heroImg from "@/assets/hero-solaria.webp";
 import solaria4 from "@/assets/gallery/solaria-4.webp";
+import solaria3 from "@/assets/gallery/solaria-3.webp";
+import solaria2 from "@/assets/gallery/solaria-2.webp";
+import solaria1 from "@/assets/gallery/solaria-1.webp";
+import solariaNight from "@/assets/gallery/solaria-night.webp";
+import solariaBirdEntrance from "@/assets/gallery/solaria-bird-entrance.webp";
+import solariaOutroDay from "@/assets/gallery/solaria-outro-day.webp";
+import solariaCam16 from "@/assets/gallery/solaria-cam16.webp";
+import solariaIntro from "@/assets/gallery/solaria-intro.webp";
+import solariaCube from "@/assets/gallery/solaria-cube.webp";
+import solariaOutro from "@/assets/gallery/solaria-outro.webp";
 import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
+import MallGallerySection from "@/components/MallGallerySection";
+
+const solariaGalleryImages = [solariaNight, solariaBirdEntrance, solariaIntro, solariaCube, solariaOutro, solariaOutroDay, solariaCam16, solaria4, solaria3, solaria2, solaria1];
 
 /* ─── Data ─── */
 
