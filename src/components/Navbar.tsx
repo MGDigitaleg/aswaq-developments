@@ -284,13 +284,20 @@ const UnitsTabbedDropdown = ({ item, isActive, isArabic }: { item: NavItem; isAc
                 );
               })}
 
-              {/* View all */}
-              <div className="border-t border-border/30 mt-2 pt-2 mx-1">
+              {/* View all + ROI */}
+              <div className="border-t border-border/30 mt-2 pt-2 mx-1 space-y-0.5">
                 <Link
                   to={item.href}
                   className="flex items-center justify-between px-3 py-2.5 text-[12px] font-bold text-foreground/50 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.04] font-body"
                 >
                   <span>{isArabic ? "عرض جميع الوحدات" : "View All Units"}</span>
+                  {isArabic ? <ArrowLeft size={11} /> : <ArrowRight size={11} />}
+                </Link>
+                <Link
+                  to={isArabic ? "/ar/roi-calculator" : "/roi-calculator"}
+                  className="flex items-center justify-between px-3 py-2.5 text-[12px] font-bold text-foreground/50 hover:text-foreground transition-colors rounded-lg hover:bg-foreground/[0.04] font-body"
+                >
+                  <span>{isArabic ? "حاسبة العائد" : "ROI Calculator"}</span>
                   {isArabic ? <ArrowLeft size={11} /> : <ArrowRight size={11} />}
                 </Link>
               </div>
