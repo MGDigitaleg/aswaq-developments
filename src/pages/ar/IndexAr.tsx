@@ -496,8 +496,8 @@ const IndexAr = () => {
                         {editorialProjects[0].name}
                       </h3>
                     </div>
-                    <div className="w-24 lg:w-[104px] h-24 lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-3 shrink-0 pointer-events-auto" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
-                      <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
+                    <div className="w-24 lg:w-[104px] h-24 lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-1.5 shrink-0 pointer-events-auto" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
+                      <img src={editorialProjects[0].logo} alt="" className="w-[85%] h-[85%] object-contain" />
                     </div>
                   </div>
                   <p className="text-primary-foreground/55 text-[14px] font-arabic leading-[1.7] mb-6">
@@ -522,8 +522,8 @@ const IndexAr = () => {
             {/* Mobile content — below the orbit viewer */}
             <div className="md:hidden mt-5 px-1">
               <div className="flex items-start gap-4 mb-3 flex-row-reverse">
-                <div className="w-16 h-16 rounded-xl bg-white border border-border/40 flex items-center justify-center p-2 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
-                  <img src={editorialProjects[0].logo} alt="" className="w-full h-full object-contain" />
+                <div className="w-16 h-16 rounded-xl bg-white border border-border/40 flex items-center justify-center p-1 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
+                  <img src={editorialProjects[0].logo} alt="" className="w-[85%] h-[85%] object-contain" />
                 </div>
                 <div className="pt-0.5 text-right">
                   <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-foreground/30 mb-1">
@@ -564,8 +564,8 @@ const IndexAr = () => {
               </div>
               <div className="order-2 lg:order-1 lg:pl-2">
                 <div className="flex items-start gap-4 mb-3.5">
-                  <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white border border-border/40 flex items-center justify-center p-1 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
-                    <img src={editorialProjects[1].logo} alt="" className="w-full h-full object-contain" />
+                  <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
+                    <img src={editorialProjects[1].logo} alt="" className="w-[80%] h-[80%] object-contain" />
                   </div>
                   <div className="pt-1">
                     <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-foreground/30 mb-1">
@@ -607,8 +607,8 @@ const IndexAr = () => {
               </div>
               <div className="lg:pr-2">
                 <div className="flex items-start gap-4 mb-3.5">
-                  <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white border border-border/40 flex items-center justify-center px-2 py-2 shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
-                    <img src={editorialProjects[2].logo} alt="" className="w-full h-full object-contain" />
+                  <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white border border-border/40 flex items-center justify-center shrink-0" style={{ boxShadow: '0 4px 16px hsl(0 0% 0% / 0.08)' }}>
+                    <img src={editorialProjects[2].logo} alt="" className="w-[80%] h-[80%] object-contain" />
                   </div>
                   <div className="pt-1">
                     <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-foreground/30 mb-1">
@@ -650,8 +650,8 @@ const IndexAr = () => {
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, hsl(232 78% 8% / 0.88) 0%, hsl(232 78% 10% / 0.45) 50%, hsl(232 78% 10% / 0.15) 100%)' }} />
                 <div className="absolute bottom-0 left-0 right-0 p-7 md:p-10">
                   <div className="flex items-center gap-5">
-                    <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white/95 border border-white/20 flex items-center justify-center p-1.5 shrink-0" style={{ boxShadow: '0 6px 24px hsl(0 0% 0% / 0.18)' }}>
-                      <img src={editorialProjects[3].logo} alt="" className="w-full h-full object-contain" />
+                    <div className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-xl bg-white/95 border border-white/20 flex items-center justify-center shrink-0" style={{ boxShadow: '0 6px 24px hsl(0 0% 0% / 0.18)' }}>
+                      <img src={editorialProjects[3].logo} alt="" className="w-[80%] h-[80%] object-contain" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <span className="block text-[9px] font-arabic font-bold tracking-[0.25em] text-primary-foreground/40 mb-1">
