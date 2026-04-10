@@ -467,8 +467,9 @@ const Navbar = () => {
           }}
         >
           <div className={`flex items-center justify-between px-4 lg:px-6 ${scrolled ? 'py-2' : 'py-2.5'}`} style={{ transition: 'padding 0.4s ease' }}>
-            {/* Logo */}
-            <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0">
+            {/* Mobile: empty spacer for centering | Desktop: Logo */}
+            <div className="lg:hidden w-8" />
+            <Link to={isArabic ? "/ar" : "/"} className="relative group shrink-0 lg:mr-auto">
               <img
                 src={aswaqLogo}
                 alt="ASWAQ Developments"
