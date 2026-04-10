@@ -426,6 +426,7 @@ const ArenaMallAr = () => {
         </div>
       </section>
     </Layout>
+    </>
   );
 };
 
