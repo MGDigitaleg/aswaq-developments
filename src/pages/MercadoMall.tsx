@@ -19,6 +19,7 @@ import realCorridor from "@/assets/gallery/mercado-real-corridor.webp";
 import realCourtyard from "@/assets/gallery/mercado-real-courtyard.webp";
 import realWide from "@/assets/gallery/mercado-real-wide.webp";
 import realStairs from "@/assets/gallery/mercado-real-stairs.webp";
+import heroCinematic from "@/assets/gallery/mercado-hero-cinematic.webp";
 
 // 3D Renders (optimized WebP — only those actually displayed)
 import render2 from "@/assets/gallery/mercado-2.webp";
