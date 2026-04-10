@@ -21,6 +21,7 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   const [loaded, setLoaded] = useState(false);
   const [loadProgress, setLoadProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [hasAutoRotated, setHasAutoRotated] = useState(false);
 
   // Refs for drag logic
   const frameRef = useRef(0);
@@ -30,6 +31,7 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
   const rafRef = useRef<number>(0);
+  const autoRotateRef = useRef<number>(0);
 
   // Preload images
   useEffect(() => {
@@ -79,6 +81,34 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     drawFrame(frame);
   }, [drawFrame]);
 
+  // Auto-rotate on first load — slow sweep through ~12 frames then stop
+  useEffect(() => {
+    if (!loaded || hasAutoRotated || isDragging) return;
+
+    let frame = 0;
+    const totalSteps = 12;
+    const intervalMs = 120; // ~8fps for a gentle, cinematic feel
+    let step = 0;
+
+    const tick = () => {
+      step++;
+      frame = step;
+      setFrame(frame);
+      if (step >= totalSteps) {
+        setHasAutoRotated(true);
+        return;
+      }
+      autoRotateRef.current = window.setTimeout(tick, intervalMs);
+    };
+
+    // Small delay before starting
+    autoRotateRef.current = window.setTimeout(tick, 800);
+
+    return () => {
+      clearTimeout(autoRotateRef.current);
+    };
+  }, [loaded, hasAutoRotated, isDragging, setFrame]);
+
   // Inertia animation — gentle, premium deceleration
   useEffect(() => {
     let running = true;
@@ -116,6 +146,8 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     e.preventDefault();
     setIsDragging(true);
+    setHasAutoRotated(true); // Stop auto-rotate on interaction
+    clearTimeout(autoRotateRef.current);
     velocityRef.current = 0;
     dragStartXRef.current = e.clientX;
     dragStartFrameRef.current = frameRef.current;
