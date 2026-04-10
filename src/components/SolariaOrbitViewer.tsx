@@ -11,9 +11,10 @@ const frameSrcs = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
 
 interface SolariaOrbitViewerProps {
   className?: string;
+  onFrameChange?: (frame: number, isDragging: boolean) => void;
 }
 
-const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
+const SolariaOrbitViewer = ({ className = "", onFrameChange }: SolariaOrbitViewerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
@@ -79,7 +80,8 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     frameRef.current = frame;
     setCurrentFrame(frame);
     drawFrame(frame);
-  }, [drawFrame]);
+    onFrameChange?.(frame, isDragging);
+  }, [drawFrame, onFrameChange, isDragging]);
 
   // Auto-rotate on first load — slow sweep through ~12 frames then stop
   useEffect(() => {

@@ -418,10 +418,22 @@ const Index = () => {
           >
             {/* Interactive Orbit Viewer */}
             <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: '0 32px 80px -16px hsl(232 78% 8% / 0.18), 0 12px 28px -8px hsl(232 78% 8% / 0.08)' }}>
-              <SolariaOrbitViewer className="aspect-[4/3] md:aspect-[2/1]" />
+              <SolariaOrbitViewer
+                className="aspect-[4/3] md:aspect-[2/1]"
+                onFrameChange={(frame, dragging) => {
+                  const el = document.getElementById('solaria-overlay');
+                  if (!el) return;
+                  // Map frame (0–35) to a subtle horizontal shift (-12px to +12px)
+                  const normalized = (frame / 35) * 2 - 1; // -1 → +1
+                  const xShift = normalized * 12;
+                  const opacity = dragging ? 0.7 : 1;
+                  el.style.transform = `translateX(${xShift}px)`;
+                  el.style.opacity = String(opacity);
+                }}
+              />
 
               {/* Desktop overlay content */}
-              <div className="absolute inset-y-0 left-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none">
+              <div id="solaria-overlay" className="absolute inset-y-0 left-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none" style={{ transition: 'transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease' }}>
                 <div className="max-w-md">
                   <div className="flex items-start gap-5 mb-5">
                     <div className="w-24 lg:w-[104px] h-24 lg:h-[104px] rounded-2xl bg-white/95 border border-white/25 flex items-center justify-center p-3 shrink-0 pointer-events-auto" style={{ boxShadow: '0 8px 32px hsl(0 0% 0% / 0.2)' }}>
