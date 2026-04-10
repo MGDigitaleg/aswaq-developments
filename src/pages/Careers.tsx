@@ -23,9 +23,9 @@ const Careers = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative h-[50vh] min-h-[480px] flex items-end pb-12 md:pb-16">
-        <img src={heroImage} alt="Careers at ASWAQ" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/30" />
+      <section className="relative h-[50vh] min-h-[480px] flex items-end pb-12 md:pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-fixed" style={{ backgroundImage: `url(${heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-primary/20" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
