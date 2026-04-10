@@ -11,7 +11,15 @@ import Lightbox from "@/components/Lightbox";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 
-// Real photos (cropped & optimized WebP)
+// 3D Renders — primary visual language (aspirational, cinematic, premium)
+import render2 from "@/assets/gallery/mercado-2.webp";
+import render3 from "@/assets/gallery/mercado-3.webp";
+import render4 from "@/assets/gallery/mercado-4.webp";
+import render5 from "@/assets/gallery/mercado-5.webp";
+import render6 from "@/assets/gallery/mercado-6.webp";
+import render7 from "@/assets/gallery/mercado-7.webp";
+
+// Real photos — proof of operational activity
 import realTower from "@/assets/gallery/mercado-real-tower.webp";
 import realRetail from "@/assets/gallery/mercado-real-retail.webp";
 import realCorner from "@/assets/gallery/mercado-real-corner.webp";
@@ -19,15 +27,6 @@ import realCorridor from "@/assets/gallery/mercado-real-corridor.webp";
 import realCourtyard from "@/assets/gallery/mercado-real-courtyard.webp";
 import realWide from "@/assets/gallery/mercado-real-wide.webp";
 import realStairs from "@/assets/gallery/mercado-real-stairs.webp";
-import heroCinematic from "@/assets/gallery/mercado-hero-cinematic.webp";
-
-// 3D Renders (optimized WebP — only those actually displayed)
-import render2 from "@/assets/gallery/mercado-2.webp";
-import render3 from "@/assets/gallery/mercado-3.webp";
-import render4 from "@/assets/gallery/mercado-4.webp";
-import render5 from "@/assets/gallery/mercado-5.webp";
-import render6 from "@/assets/gallery/mercado-6.webp";
-import render7 from "@/assets/gallery/mercado-7.webp";
 
 /* ── Animation presets (CSS-friendly, no useScroll overhead) ── */
 const fadeUp = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-60px" as const } };
