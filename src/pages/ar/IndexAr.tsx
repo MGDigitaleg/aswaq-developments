@@ -17,8 +17,8 @@ import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/com
 import heroSolariaNight from "@/assets/gallery/solaria-night.webp";
 import heroArenaNight from "@/assets/gallery/arena-2.webp";
 import heroMercadoNight from "@/assets/gallery/mercado-5.webp";
-import heroCityhubFountain from "@/assets/gallery/cityhub-2.webp";
-import heroCityhub from "@/assets/hero-cityhub.webp";
+import heroCityhubFountain from "@/assets/gallery/cityhub-4.webp";
+import heroCityhub from "@/assets/gallery/cityhub-4.webp";
 import cityhubImg from "@/assets/cityhub-mall.webp";
 import mercadoImg from "@/assets/mercado-mall.webp";
 import arenaImg from "@/assets/arena-mall.webp";
