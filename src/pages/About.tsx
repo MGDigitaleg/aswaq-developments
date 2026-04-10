@@ -163,9 +163,9 @@ const About = () => {
                 transition={{ delay: i * 0.1, duration: 0.5 }}
               >
                 <div className="font-['Montserrat'] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary-foreground mb-3">
-                  <AnimatedCounter value={stat.value} />
+                  <AnimatedCounter value={stat.value} className="text-primary-foreground" />
                 </div>
-                <div className="text-primary-foreground/45 font-body text-sm tracking-wide">{stat.label}</div>
+                <div className="text-primary-foreground/60 font-body text-sm tracking-wide">{stat.label}</div>
               </motion.div>
             ))}
           </div>
