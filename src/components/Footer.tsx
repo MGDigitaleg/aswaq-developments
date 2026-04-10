@@ -60,6 +60,7 @@ const Footer = () => {
     { name: isArabic ? "وحدات للبيع" : "Units for Sale", href: `${prefix}/units/for-sale` },
     { name: isArabic ? "وحدات للاستثمار" : "Units for Investment", href: `${prefix}/units/for-investment` },
     { name: isArabic ? "وحدات للإيجار" : "Units for Rent", href: `${prefix}/units/for-rent` },
+    { name: isArabic ? "حاسبة العائد" : "ROI Calculator", href: `${prefix}/roi-calculator` },
   ];
 
   const socialLinks = [

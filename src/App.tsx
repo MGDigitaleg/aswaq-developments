@@ -36,6 +36,7 @@ const Careers = lazy(() => import("./pages/Careers"));
 const CareerDetail = lazy(() => import("./pages/CareerDetail"));
 const WhyInvestShorouk = lazy(() => import("./pages/WhyInvestShorouk"));
 const VirtualTour = lazy(() => import("./pages/VirtualTour"));
+const ROICalculatorPage = lazy(() => import("./pages/ROICalculatorPage"));
 const NewsDetailRedirect = lazy(() => import("./components/NewsDetailRedirect"));
 const NewsDetailArabicRedirect = lazy(() => import("./components/NewsDetailArabicRedirect"));
 const WorksRedirect = lazy(() => import("./components/WorksRedirect"));
@@ -76,6 +77,7 @@ const CareersAr = lazy(() => import("./pages/ar/CareersAr"));
 const CareerDetailAr = lazy(() => import("./pages/ar/CareerDetailAr"));
 const WhyInvestShoroukAr = lazy(() => import("./pages/ar/WhyInvestShoroukAr"));
 const VirtualTourAr = lazy(() => import("./pages/ar/VirtualTourAr"));
+const ROICalculatorPageAr = lazy(() => import("./pages/ar/ROICalculatorPageAr"));
 
 const queryClient = new QueryClient();
 
@@ -117,6 +119,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/why-invest-shorouk" element={<WhyInvestShorouk />} />
             <Route path="/virtual-tour" element={<VirtualTour />} />
+            <Route path="/roi-calculator" element={<ROICalculatorPage />} />
 
             {/* Arabic routes */}
             <Route path="/ar" element={<IndexAr />} />
@@ -147,6 +150,7 @@ const App = () => (
             <Route path="/ar/careers/:slug" element={<CareerDetailAr />} />
             <Route path="/ar/why-invest-shorouk" element={<WhyInvestShoroukAr />} />
             <Route path="/ar/virtual-tour" element={<VirtualTourAr />} />
+            <Route path="/ar/roi-calculator" element={<ROICalculatorPageAr />} />
 
             {/* Admin routes */}
             <Route path="/admin/login" element={<AdminLogin />} />

@@ -8,8 +8,6 @@ import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
-import ROICalculator from "@/components/ROICalculator";
-import TrustedBySection from "@/components/TrustedBySection";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
@@ -757,14 +755,13 @@ const Index = () => {
 
 
 
-      {/* ═══════════════ UNITS + ROI ═══════════════ */}
+      {/* ═══════════════ UNITS CTA ═══════════════ */}
       <section className="relative py-14 md:py-20 bg-primary overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-foreground/[0.02] to-transparent" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-primary-foreground/[0.01] blur-3xl" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col items-center text-center gap-12">
+          <div className="flex flex-col items-center text-center gap-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -783,7 +780,7 @@ const Index = () => {
               <p className="text-primary-foreground/45 font-body max-w-xl mx-auto mb-8 text-[15px] leading-relaxed">
                 Browse our available units and select what matches your business or investment plan.
               </p>
-              <div className="flex flex-wrap gap-2 justify-center">
+              <div className="flex flex-wrap gap-2 justify-center mb-6">
                 {[
                   { label: "All Properties", href: "/units" },
                   { label: "Commercial", href: "/units/commercial-for-sale" },
@@ -799,31 +796,22 @@ const Index = () => {
                   </Link>
                 ))}
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="w-full max-w-5xl mx-auto"
-            >
-              <ROICalculator wide />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-            >
-              <Link
-                to="/units"
-                className="btn-outline-light px-9 py-3.5 text-[12.5px] rounded-lg font-body group"
-              >
-                Reserve Your Unit
-                <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
-              </Link>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <Link
+                  to="/units"
+                  className="btn-outline-light px-9 py-3.5 text-[12.5px] rounded-lg font-body group"
+                >
+                  Reserve Your Unit
+                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/roi-calculator"
+                  className="border border-primary-foreground/10 text-primary-foreground/45 px-7 py-3.5 rounded-lg text-[12.5px] font-body font-medium hover:border-primary-foreground/22 hover:text-primary-foreground/65 transition-colors duration-300 inline-flex items-center gap-2"
+                >
+                  ROI Calculator
+                  <ArrowRight size={12} />
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
