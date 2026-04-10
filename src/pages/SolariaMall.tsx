@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   MapPin, ShoppingBag, Stethoscope, Briefcase, Building2,
@@ -7,6 +7,7 @@ import {
   Maximize2, Phone, Mail
 } from "lucide-react";
 import Layout from "@/components/Layout";
+import SolariaOrbitViewer from "@/components/SolariaOrbitViewer";
 import useSEO from "@/hooks/useSEO";
 
 import solariaImg from "@/assets/solaria-mall.webp";
@@ -29,13 +30,7 @@ const solariaGalleryImages = [solariaNight, solariaBirdEntrance, solariaIntro, s
 
 /* ─── Data ─── */
 
-const hotspots = [
-  { id: "retail", label: "Retail Zone", icon: ShoppingBag, x: "18%", y: "62%", description: "Ground-level storefronts with direct street access and high visibility." },
-  { id: "medical", label: "Medical Wing", icon: Stethoscope, x: "75%", y: "38%", description: "Dedicated healthcare floors with private entrances and elevator access." },
-  { id: "offices", label: "Office Suites", icon: Briefcase, x: "55%", y: "22%", description: "Upper-floor corporate spaces with panoramic views and premium finishes." },
-  { id: "entrance", label: "Main Entrance", icon: DoorOpen, x: "48%", y: "82%", description: "Grand double-height lobby with architectural statement and wayfinding." },
-  { id: "views", label: "Skyline Views", icon: Eye, x: "82%", y: "15%", description: "Unobstructed views from the upper floors across El Shorouk's landscape." },
-];
+/* hotspots removed — replaced by 360° orbit viewer */
 
 const unitCategories = [
   { icon: ShoppingBag, label: "Commercial", count: "24 units", area: "45–180 m²", floor: "GF – 1F", status: "Available" },
