@@ -480,7 +480,7 @@ const IndexAr = () => {
                   poster="/solaria-orbit/frame-12.jpg"
                   className="absolute inset-0 w-full h-full object-cover"
                 >
-                  <source src={solariaVideo.url} type="video/mp4" />
+                  <source src={solariaVideoUrl} type="video/mp4" />
                 </video>
               </div>
 
