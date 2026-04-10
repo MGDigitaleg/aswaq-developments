@@ -174,7 +174,7 @@ const MercadoMallAr = () => {
                 ))}
               </div>
             </motion.div>
-            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}>
+            <motion.div {...imgReveal}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
                 <img src={realCorner} alt="ميركادو مول — وجهة تجارية فعّالة في الشروق" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
