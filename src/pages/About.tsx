@@ -49,28 +49,72 @@ const About = () => {
         }} />
       </section>
 
-      {/* Intro — title + description moved below hero */}
-      <section className="py-12 md:py-18 bg-primary">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="text-center"
-          >
-            <p className="text-primary-foreground/40 font-body font-semibold tracking-[0.25em] uppercase text-[10px] mb-4">Our Story</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-              About Us
-            </h1>
-            <p className="text-primary-foreground/55 font-body max-w-2xl mx-auto text-[15px] leading-relaxed mb-10">
-              ASWAQ Developments, established in 2019, represents a strategic milestone built on more than 20 years of proven success across residential, commercial, industrial, and resort sectors.
-            </p>
-            <div className="w-12 h-px bg-primary-foreground/15 mx-auto mb-10" />
-            <p className="text-primary-foreground/45 font-body leading-[1.9] text-[15px] max-w-3xl mx-auto">
-              Formed in partnership with real estate firms active since 2002, ASWAQ was created to streamline the management of existing and future projects, enhance profitability, and exceed client expectations while opening new markets with diverse investment and employment opportunities. Since its inception, ASWAQ has continued to thrive by delivering high-quality Residential, Commercial, Administrative, and Medical projects.
-            </p>
-          </motion.div>
+      {/* Intro — editorial split layout */}
+      <section className="py-14 md:py-20 bg-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            {/* Left column — title + label */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-5 lg:sticky lg:top-32"
+            >
+              <p className="text-primary-foreground/40 font-body font-semibold tracking-[0.25em] uppercase text-[10px] mb-4">Our Story</p>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-primary-foreground leading-[1.08] mb-6">
+                About Us
+              </h1>
+              <div className="w-12 h-px bg-primary-foreground/15 mb-6" />
+              {/* Inline stat highlights */}
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { val: "20+", label: "Years of Experience" },
+                  { val: "15+", label: "Projects Delivered" },
+                  { val: "3B+", label: "EGP Invested" },
+                  { val: "400+", label: "Satisfied Clients" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.15 + i * 0.06, duration: 0.4 }}
+                    className="p-4 rounded-xl border border-primary-foreground/[0.07] bg-primary-foreground/[0.03]"
+                  >
+                    <span className="font-['Montserrat'] text-2xl font-extrabold text-primary-foreground block mb-0.5">{s.val}</span>
+                    <span className="text-primary-foreground/40 text-[11px] font-body tracking-wide">{s.label}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right column — body text, editorial style */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="lg:col-span-7 space-y-8"
+            >
+              <p className="text-primary-foreground/60 font-body text-[17px] md:text-[18px] leading-[1.9] first-letter:text-4xl first-letter:font-display first-letter:font-bold first-letter:text-primary-foreground first-letter:float-left first-letter:mr-2 first-letter:mt-1">
+                ASWAQ Developments, established in 2019, represents a strategic milestone built on more than 20 years of proven success across residential, commercial, industrial, and resort sectors.
+              </p>
+              <div className="w-full h-px bg-primary-foreground/[0.06]" />
+              <p className="text-primary-foreground/45 font-body text-[15px] leading-[1.9]">
+                Formed in partnership with real estate firms active since 2002, ASWAQ was created to streamline the management of existing and future projects, enhance profitability, and exceed client expectations while opening new markets with diverse investment and employment opportunities.
+              </p>
+              <p className="text-primary-foreground/45 font-body text-[15px] leading-[1.9]">
+                Since its inception, ASWAQ has continued to thrive by delivering high-quality Residential, Commercial, Administrative, and Medical projects — earning the trust of over 400 clients and investors.
+              </p>
+              {/* Pull quote */}
+              <div className="relative pl-5 border-l-2 border-accent/30">
+                <p className="font-display text-primary-foreground/70 text-[16px] md:text-[17px] italic leading-relaxed">
+                  "Building excellence isn't just our goal — it's our legacy."
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -144,28 +188,6 @@ const About = () => {
                   <item.icon size={18} className="text-accent" />
                 </div>
                 <span className="font-body font-medium text-foreground text-sm">{item.text}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Bar */}
-      <section className="bg-primary py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-              >
-                <div className="font-['Montserrat'] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary-foreground mb-3">
-                  <AnimatedCounter value={stat.value} className="text-primary-foreground" />
-                </div>
-                <div className="text-primary-foreground/60 font-body text-sm tracking-wide">{stat.label}</div>
               </motion.div>
             ))}
           </div>
