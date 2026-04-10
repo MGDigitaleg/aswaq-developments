@@ -117,6 +117,8 @@ const Lightbox = ({ images, open, startIndex = 0, onClose }: LightboxProps) => {
               className="max-h-[85vh] max-w-[90vw] rounded-2xl object-contain"
               style={{ boxShadow: "0 30px 80px -20px hsl(0 0% 0% / 0.6)" }}
               onClick={(e) => e.stopPropagation()}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
               draggable={false}
             />
           </AnimatePresence>
