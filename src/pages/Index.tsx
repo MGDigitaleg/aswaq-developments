@@ -415,7 +415,7 @@ const Index = () => {
       <MercadoTenantsSection />
 
       {/* ═══════════════ PORTFOLIO HEADER ═══════════════ */}
-      <section className="pt-20 md:pt-28 pb-6 md:pb-8 bg-cream">
+      <section className="pt-14 md:pt-20 pb-6 md:pb-8 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -669,14 +669,14 @@ const Index = () => {
       </section>
 
 
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-14 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-14"
+            className="text-center mb-10"
           >
             <div className="flex items-center gap-3 justify-center mb-4">
               <div className="w-8 h-px bg-steel/40" />
@@ -714,14 +714,14 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ WHY INVEST ═══════════════ */}
-      <section className="py-20 md:py-28 bg-cream">
+      <section className="py-14 md:py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-14"
+            className="text-center mb-10"
           >
             <div className="flex items-center gap-3 justify-center mb-4">
               <div className="w-8 h-px bg-steel/40" />
@@ -759,7 +759,7 @@ const Index = () => {
       <TrustedBySection lang="en" />
 
       {/* ═══════════════ UNITS + ROI ═══════════════ */}
-      <section className="relative py-20 md:py-28 bg-primary overflow-hidden">
+      <section className="relative py-14 md:py-20 bg-primary overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-foreground/[0.02] to-transparent" />
           <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-primary-foreground/[0.01] blur-3xl" />
@@ -831,9 +831,9 @@ const Index = () => {
       </section>
 
       {/* ═══════════════ LATEST NEWS ═══════════════ */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-14 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-14">
+          <div className="flex items-end justify-between mb-10">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-px bg-steel/40" />
