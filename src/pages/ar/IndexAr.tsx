@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft, ArrowLeft, Landmark, Train, GraduationCap, HeartPulse } from "lucide-react";
-import solariaVideo from "../../public/solaria-hero-cinematic.mp4.asset.json";
+import solariaVideo from "../../../public/solaria-hero-cinematic.mp4.asset.json";
 import { useLatestNews } from "@/hooks/useNewsArticles";
 import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
