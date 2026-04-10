@@ -83,12 +83,12 @@ const galleryTabs: { key: GalleryTab; label: string }[] = [
   { key: "night", label: "ليلي وأجواء" },
 ];
 const galleryMap: Record<GalleryTab, string[]> = {
-  exterior: [mercado3, mercado7, mercado1],
-  retail: [mercado9, mercado8, mercado5],
-  aerial: [mercado2, mercado6],
-  night: [mercado4, mercado5],
+  exterior: [realCorner, realTower, render3, render7],
+  retail: [realRetail, realCourtyard, realWide, realCorridor],
+  aerial: [render2, render6],
+  night: [render4, render5],
 };
-const allGalleryImages = [mercado1, mercado2, mercado3, mercado4, mercado5, mercado6, mercado7, mercado8, mercado9];
+const allGalleryImages = [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render2, render3, render4, render5, render6, render7];
 
 const MercadoMallAr = () => {
   useSEO(
@@ -111,7 +111,7 @@ const MercadoMallAr = () => {
       {/* ─── 1. HERO ─── */}
       <section className="relative bg-primary overflow-hidden">
         <div className="absolute inset-0">
-          <img src={mercadoHero} alt="" className="w-full h-full object-cover opacity-[0.15]" />
+          <img src={realWide} alt="" className="w-full h-full object-cover" style={{ filter: "brightness(0.35) contrast(1.1) saturate(1.15)" }} fetchPriority="high" decoding="sync" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/60" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 md:pt-48 pb-20 md:pb-28 relative z-10">
@@ -169,7 +169,7 @@ const MercadoMallAr = () => {
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={mercadoAbout} alt="ميركادو مول — وجهة تجارية فعّالة في الشروق" className="w-full h-full object-cover" />
+                <img src={realCorner} alt="ميركادو مول — وجهة تجارية فعّالة في الشروق" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
           </div>
@@ -212,7 +212,7 @@ const MercadoMallAr = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div {...fadeUp} transition={{ duration: 0.6 }}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={mercadoInterior} alt="حركة التجزئة الداخلية في ميركادو مول" className="w-full h-full object-cover" />
+                <img src={realCourtyard} alt="حركة التجزئة الداخلية في ميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
@@ -254,7 +254,7 @@ const MercadoMallAr = () => {
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={mercadoExperience} alt="التجربة المعمارية لميركادو مول" className="w-full h-full object-cover" />
+                <img src={realTower} alt="التجربة المعمارية لميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
           </div>
@@ -412,7 +412,7 @@ const MercadoMallAr = () => {
             </motion.div>
             <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={mercado6} alt="فرصة استثمارية في ميركادو مول" className="w-full h-full object-cover" />
+                <img src={realRetail} alt="فرصة استثمارية في ميركادو مول" className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
               </div>
             </motion.div>
           </div>
@@ -422,7 +422,7 @@ const MercadoMallAr = () => {
       {/* ─── 11. FINAL CTA ─── */}
       <section className="relative bg-primary py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={mercado2} alt="" className="w-full h-full object-cover opacity-[0.08]" />
+          <img src={render4} alt="" className="w-full h-full object-cover opacity-[0.06]" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/70" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
