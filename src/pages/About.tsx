@@ -194,28 +194,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="bg-primary py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-              >
-                <div className="font-['Montserrat'] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary-foreground mb-3">
-                  <AnimatedCounter value={stat.value} className="text-primary-foreground" />
-                </div>
-                <div className="text-primary-foreground/60 font-body text-sm tracking-wide">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <CTASection
         title="Secure Your Investment with a Trusted Developer"
