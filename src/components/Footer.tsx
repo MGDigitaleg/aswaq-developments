@@ -37,13 +37,13 @@ const Footer = () => {
 
   const quickLinks = isArabic
     ? [
-        { label: "الرئيسية", href: "/ar" }, { label: "من نحن", href: "/ar/about" },
+        { label: "من نحن", href: "/ar/about" },
         { label: "المشاريع", href: "/ar/projects" }, { label: "اختر وحدتك", href: "/ar/units" },
         { label: "الأخبار", href: "/ar/news" }, { label: "معرض الصور", href: "/ar/gallery" },
         { label: "وظائف", href: "/ar/careers" }, { label: "تواصل معنا", href: "/ar/contact" },
       ]
     : [
-        { label: "Home", href: "/" }, { label: "About Us", href: "/about" },
+        { label: "About Us", href: "/about" },
         { label: "Our Projects", href: "/projects" }, { label: "Choose your Unit", href: "/units" },
         { label: "News", href: "/news" }, { label: "Gallery", href: "/gallery" },
         { label: "Careers", href: "/careers" }, { label: "Contact Us", href: "/contact" },
