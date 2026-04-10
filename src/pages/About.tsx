@@ -35,13 +35,13 @@ const About = () => {
     <Layout>
       <JsonLd data={breadcrumbs} />
       {/* Hero — clean cinematic video, no text overlay */}
-      <section className="relative aspect-video max-h-[75vh] overflow-hidden bg-primary">
+      <section className="relative w-full h-[50vh] md:h-[65vh] lg:h-[75vh] overflow-hidden bg-primary">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-contain"
+          className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/videos/about-hero.mp4" type="video/mp4" />
         </video>
