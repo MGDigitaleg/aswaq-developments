@@ -111,16 +111,30 @@ const Index = () => {
   const { articles: latestNews } = useLatestNews("en", 3);
   const faqSchemaData = buildFaqSchema(faqs.map(f => ({ question: f.question, answer: f.answer })));
 
+  const SLIDE_DURATION = 6000;
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    setProgress(0);
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5500);
+    const timer = setInterval(nextSlide, SLIDE_DURATION);
     return () => clearInterval(timer);
   }, [nextSlide]);
+
+  useEffect(() => {
+    const start = Date.now();
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      setProgress(Math.min(elapsed / SLIDE_DURATION, 1));
+      if (elapsed < SLIDE_DURATION) rafRef.current = requestAnimationFrame(tick);
+    };
+    const rafRef = { current: requestAnimationFrame(tick) };
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [currentSlide]);
 
   return (
     <Layout>
