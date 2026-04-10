@@ -11,6 +11,7 @@ const frameSrcs = Array.from({ length: TOTAL_FRAMES }, (_, i) => {
 
 interface SolariaOrbitViewerProps {
   className?: string;
+  onFrameChange?: (frame: number, isDragging: boolean) => void;
 }
 
 const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
