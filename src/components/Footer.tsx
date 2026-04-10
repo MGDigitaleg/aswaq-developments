@@ -191,16 +191,16 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-primary-foreground/[0.06]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-7">
-            <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+            <div className="flex items-center gap-2.5">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={14} className={i < 4 ? "fill-steel text-steel" : "text-primary-foreground/15"} />
+                  <Star key={i} size={11} className={i < 4 ? "fill-steel text-steel" : "text-primary-foreground/15"} />
                 ))}
               </div>
-              <span className="text-lg font-bold text-primary-foreground/90 font-['Montserrat']">4.2</span>
-              <span className={`text-[12px] text-primary-foreground/60 ${fontClass}`}>
+              <span className="text-sm font-bold text-primary-foreground/90 font-['Montserrat']">4.2</span>
+              <span className={`text-[11px] text-primary-foreground/50 ${fontClass}`}>
                 {isArabic ? "بناءً على تقييمات Google" : "based on Google Reviews"}
               </span>
             </div>
@@ -208,29 +208,31 @@ const Footer = () => {
               href="https://maps.app.goo.gl/xVJYJwrPV8hRpSMR6"
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-[12px] text-primary-foreground/55 hover:text-primary-foreground/85 flex items-center gap-1.5 ${fontClass} transition-colors duration-300`}
+              className={`text-[11px] text-primary-foreground/45 hover:text-primary-foreground/75 flex items-center gap-1 ${fontClass} transition-colors duration-300`}
             >
               {isArabic ? "اترك تقييم" : "Leave a Review"}
-              <ExternalLink size={11} />
+              <ExternalLink size={10} />
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div className="flex flex-col sm:flex-row gap-2.5">
             {reviews.map((review, i) => (
               <div
                 key={i}
-                className="bg-primary-foreground/[0.04] rounded-xl p-4.5 border border-primary-foreground/[0.07] hover:border-primary-foreground/[0.14] transition-all duration-300"
+                className="flex-1 bg-primary-foreground/[0.03] rounded-lg px-4 py-3 border border-primary-foreground/[0.06]"
               >
-                <StarRating rating={review.rating} />
-                <p className={`text-[12.5px] text-primary-foreground/65 mt-2.5 mb-3 ${fontClass} leading-relaxed min-h-[36px]`}>
-                  "{isArabic ? review.textAr : review.text}"
-                </p>
-                <div className="flex items-center justify-between gap-3">
-                  <p className={`text-[12px] font-semibold text-primary-foreground/85 ${fontClass}`}>{review.name}</p>
-                  <p className={`text-[11px] text-primary-foreground/45 shrink-0 ${fontClass}`}>
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <StarRating rating={review.rating} />
+                    <p className={`text-[11px] font-semibold text-primary-foreground/80 ${fontClass}`}>{review.name}</p>
+                  </div>
+                  <p className={`text-[10px] text-primary-foreground/35 shrink-0 ${fontClass}`}>
                     {isArabic ? review.dateAr : review.date}
                   </p>
                 </div>
+                <p className={`text-[11.5px] text-primary-foreground/50 ${fontClass} leading-relaxed line-clamp-2`}>
+                  "{isArabic ? review.textAr : review.text}"
+                </p>
               </div>
             ))}
           </div>
