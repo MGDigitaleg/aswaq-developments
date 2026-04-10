@@ -5,6 +5,7 @@ import CTASection from "@/components/CTASection";
 import useSEO from "@/hooks/useSEO";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import JsonLd, { buildBreadcrumbSchema } from "@/components/JsonLd";
+import aswaqLogo from "@/assets/aswaq-logo.webp";
 
 const whyChoose = [
   { icon: Award, text: "20+ Years of Real Estate Expertise" },
@@ -97,9 +98,12 @@ const About = () => {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="lg:col-span-7 space-y-8"
             >
-              <p className="text-primary-foreground/60 font-body text-[17px] md:text-[18px] leading-[1.9] first-letter:text-4xl first-letter:font-display first-letter:font-bold first-letter:text-primary-foreground first-letter:float-left first-letter:mr-2 first-letter:mt-1">
-                ASWAQ Developments, established in 2019, represents a strategic milestone built on more than 20 years of proven success across residential, commercial, industrial, and resort sectors.
-              </p>
+              <div className="flex items-start gap-4">
+                <img src={aswaqLogo} alt="ASWAQ Developments" className="w-[72px] mt-1 shrink-0 opacity-70" />
+                <p className="text-primary-foreground/60 font-body text-[17px] md:text-[18px] leading-[1.9]">
+                  Established in 2019, ASWAQ Developments represents a strategic milestone built on more than 20 years of proven success across residential, commercial, industrial, and resort sectors.
+                </p>
+              </div>
               <div className="w-full h-px bg-primary-foreground/[0.06]" />
               <p className="text-primary-foreground/45 font-body text-[15px] leading-[1.9]">
                 Formed in partnership with real estate firms active since 2002, ASWAQ was created to streamline the management of existing and future projects, enhance profitability, and exceed client expectations while opening new markets with diverse investment and employment opportunities.
