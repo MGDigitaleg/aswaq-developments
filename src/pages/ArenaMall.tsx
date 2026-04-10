@@ -100,6 +100,8 @@ const ArenaMall = () => {
   };
 
   return (
+    <>
+    <Lightbox images={lightboxImages} open={lightboxOpen} startIndex={lightboxIndex} onClose={() => setLightboxOpen(false)} />
     <Layout>
       {/* ════════════════════════════════════════════
           HERO — Full-viewport cinematic opener
@@ -461,6 +463,7 @@ const ArenaMall = () => {
         </div>
       </section>
     </Layout>
+    </>
   );
 };
 
