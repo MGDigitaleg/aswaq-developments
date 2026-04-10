@@ -11,22 +11,25 @@ import Lightbox from "@/components/Lightbox";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 
-// Images
-import mercadoHero from "@/assets/gallery/mercado-4.jpg";
-import mercadoAbout from "@/assets/gallery/mercado-3.jpg";
-import mercadoInterior from "@/assets/gallery/mercado-9.jpg";
-import mercadoExperience from "@/assets/gallery/mercado-8.jpg";
-import mercado1 from "@/assets/gallery/mercado-1.webp";
-import mercado2 from "@/assets/gallery/mercado-2.jpg";
-import mercado3 from "@/assets/gallery/mercado-3.jpg";
-import mercado4 from "@/assets/gallery/mercado-4.jpg";
-import mercado5 from "@/assets/gallery/mercado-5.jpg";
-import mercado6 from "@/assets/gallery/mercado-6.jpg";
-import mercado7 from "@/assets/gallery/mercado-7.jpg";
-import mercado8 from "@/assets/gallery/mercado-8.jpg";
-import mercado9 from "@/assets/gallery/mercado-9.jpg";
+// Real photos (cropped & optimized WebP)
+import realTower from "@/assets/gallery/mercado-real-tower.webp";
+import realRetail from "@/assets/gallery/mercado-real-retail.webp";
+import realCorner from "@/assets/gallery/mercado-real-corner.webp";
+import realCorridor from "@/assets/gallery/mercado-real-corridor.webp";
+import realCourtyard from "@/assets/gallery/mercado-real-courtyard.webp";
+import realWide from "@/assets/gallery/mercado-real-wide.webp";
+import realStairs from "@/assets/gallery/mercado-real-stairs.webp";
 
-const fadeUp = { initial: { opacity: 0, y: 25 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
+// 3D Renders (optimized WebP)
+import render2 from "@/assets/gallery/mercado-2.webp";
+import render3 from "@/assets/gallery/mercado-3.webp";
+import render4 from "@/assets/gallery/mercado-4.webp";
+import render5 from "@/assets/gallery/mercado-5.webp";
+import render6 from "@/assets/gallery/mercado-6.webp";
+import render7 from "@/assets/gallery/mercado-7.webp";
+
+const fadeUp = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-60px" as const } };
+const imgReveal = { initial: { opacity: 0, scale: 1.03 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, margin: "-40px" as const }, transition: { duration: 0.7 } };
 
 const snapshotStats = [
   { value: "تشغيل كامل", label: "مول تجاري فعّال" },

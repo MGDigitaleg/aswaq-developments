@@ -90,24 +90,7 @@ const galleryMap: Record<GalleryTab, string[]> = {
   aerial: [render2, render6],
   night: [render4, render5],
 };
-const allGalleryImages = [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render1, render2, render3, render4, render5, render6, render7, render8, render9];
-
-/* ── Parallax image component ── */
-const ParallaxImage = ({ src, alt, className = "", priority = false }: { src: string; alt: string; className?: string; priority?: boolean }) => {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  return (
-    <motion.div className={`overflow-hidden ${className}`} style={{ y }} {...imgReveal}>
-      <img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover"
-        loading={priority ? "eager" : "lazy"}
-        decoding={priority ? "sync" : "async"}
-      />
-    </motion.div>
-  );
-};
+const allGalleryImages = [realCorner, realTower, realRetail, realCourtyard, realWide, realCorridor, realStairs, render2, render3, render4, render5, render6, render7];
 
 const MercadoMall = () => {
   useSEO(
