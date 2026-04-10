@@ -133,7 +133,7 @@ const MercadoMallAr = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="absolute top-28 md:top-32 left-6 sm:left-10 lg:left-16 z-20"
+          className="absolute top-28 md:top-32 right-6 sm:right-10 lg:right-16 z-20"
         >
           <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-primary-foreground/15" style={{ background: 'hsl(var(--navy) / 0.55)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
             <span className="relative flex h-2.5 w-2.5">
@@ -145,7 +145,7 @@ const MercadoMallAr = () => {
         </motion.div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-44 md:pt-52 pb-24 md:pb-32 relative z-10 flex flex-col justify-end min-h-[inherit]">
-          <div className="max-w-2xl mr-auto">
+          <div className="max-w-2xl ml-auto text-right">
             <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
               <p className="text-[9px] font-semibold tracking-[0.4em] uppercase font-body mb-6 text-primary-foreground/30">
                 شركة أسواق للتطوير العقاري — وجهة تجارية فعّالة
@@ -158,7 +158,7 @@ const MercadoMallAr = () => {
               <motion.p className="text-primary-foreground/45 font-arabic text-[15px] md:text-base leading-[1.95] max-w-lg mb-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.8 }}>
                 وجهة تجارية متكاملة الخدمات مع علامات تجارية فعّالة ووحدات جاهزة للتشغيل وحركة يومية قوية — بيئة مثبتة لنمو التجزئة والأعمال الحديثة.
               </motion.p>
-              <motion.div className="flex flex-wrap gap-3" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.1 }}>
+              <motion.div className="flex flex-wrap gap-3 justify-end" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.1 }}>
                 <a href="#snapshot" className="btn-outline-light px-8 py-3.5 text-[12px] rounded-lg font-body group">
                   اكتشف ميركادو
                   <ArrowRight size={13} className="transition-transform group-hover:-translate-x-1 rotate-180" />
