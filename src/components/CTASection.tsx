@@ -33,7 +33,7 @@ const CTASection = ({
           <h2 className="font-display text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary-foreground mb-5 leading-[1.08] max-w-3xl mx-auto">
             {title}
           </h2>
-          <p className="text-primary-foreground/55 font-body max-w-xl mx-auto mb-10 text-[15px] leading-relaxed">
+          <p className="text-primary-foreground/55 font-body max-w-xl mx-auto mb-8 text-[15px] leading-relaxed">
             {subtitle}
           </p>
           <Link
