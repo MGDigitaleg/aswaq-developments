@@ -379,6 +379,13 @@ const MobileAccordion = ({ item, pathname, onClose, isArabic }: { item: NavItem;
                   >
                     {isArabic ? "عرض جميع الوحدات" : "View All Units"}
                   </Link>
+                  <Link
+                    to={isArabic ? "/ar/roi-calculator" : "/roi-calculator"}
+                    onClick={onClose}
+                    className="block text-[12.5px] font-semibold text-primary-foreground/35 hover:text-primary-foreground/60 py-2.5 transition-colors"
+                  >
+                    {isArabic ? "حاسبة العائد" : "ROI Calculator"}
+                  </Link>
                 </>
               ) : (
                 item.children?.map((child) => (
