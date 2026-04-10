@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronRight, ArrowRight, Landmark, Train, GraduationCap, HeartPulse } from "lucide-react";
+import solariaVideo from "../../public/solaria-hero-cinematic.mp4.asset.json";
 
 import { useLatestNews } from "@/hooks/useNewsArticles";
 import { useState, useEffect, useCallback } from "react";
@@ -631,7 +632,7 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-import solariaVideo from "../../public/solaria-hero-cinematic.mp4.asset.json";
+
 
       <section className="py-20 md:py-28 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
