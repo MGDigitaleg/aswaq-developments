@@ -48,6 +48,47 @@ const commonFaqs = [
 
 export { commonFaqs };
 
+const ROIBanner = () => {
+  const location = useLocation();
+  const isArabic = location.pathname.startsWith("/ar");
+  const ArrowIcon = isArabic ? ArrowLeft : ArrowRight;
+  return (
+    <section className="py-10 md:py-14 bg-cream">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 md:p-8 bg-card rounded-2xl border border-border/30"
+          style={{ boxShadow: 'var(--shadow-md)' }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+              <Calculator size={20} className="text-accent" />
+            </div>
+            <div>
+              <h3 className={`font-display text-base font-bold text-foreground ${isArabic ? 'font-arabic' : ''}`}>
+                {isArabic ? "احسب عائد استثمارك" : "Calculate Your ROI"}
+              </h3>
+              <p className={`text-muted-foreground text-[13px] ${isArabic ? 'font-arabic' : 'font-body'}`}>
+                {isArabic ? "استخدم حاسبتنا التفاعلية لنمذجة عوائدك" : "Use our interactive calculator to model your returns"}
+              </p>
+            </div>
+          </div>
+          <Link
+            to={isArabic ? "/ar/roi-calculator" : "/roi-calculator"}
+            className="inline-flex items-center gap-2 text-[12px] font-semibold font-body text-accent hover:text-foreground transition-colors shrink-0"
+          >
+            {isArabic ? "حاسبة العائد" : "ROI Calculator"}
+            <ArrowIcon size={12} />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const UnitCategoryPage = ({
   metaTitle,
   metaDescription,
