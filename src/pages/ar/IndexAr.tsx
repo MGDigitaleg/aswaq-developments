@@ -19,6 +19,22 @@ import heroArenaNight from "@/assets/arena-premium/arena-night-render.jpg";
 import heroMercadoNight from "@/assets/gallery/mercado-1.webp";
 import heroCityhubFountain from "@/assets/gallery/cityhub-2.webp";
 import heroCityhub from "@/assets/hero-cityhub.webp";
+import cityhubImg from "@/assets/cityhub-mall.webp";
+import mercadoImg from "@/assets/mercado-mall.webp";
+import arenaImg from "@/assets/arena-mall.webp";
+import solariaImg from "@/assets/solaria-mall.webp";
+import solariaPositioning from "@/assets/solaria-positioning.webp";
+import solariaLogo from "@/assets/logos/solaria-mall-clean.png";
+import arenaLogo from "@/assets/logos/arena-mall-clean.png";
+import mercadoLogo from "@/assets/logos/mercado-mall-clean.png";
+import cityHubLogo from "@/assets/logos/city-hub-mall-clean.png";
+
+const heroSlides = [
+  { image: heroSolariaNight, label: "سولاريا مول", objectPos: "object-center" },
+  { image: heroMercadoNight, label: "ميركادو مول", objectPos: "object-center" },
+  { image: heroArenaNight, label: "أرينا مول", objectPos: "object-[center_60%]" },
+  { image: heroCityhubFountain, label: "سيتي هب مول", objectPos: "object-center" },
+];
 
 const editorialProjects = [
   {
