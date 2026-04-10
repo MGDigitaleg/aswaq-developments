@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, TrendingUp, Layers, ShieldCheck, Building2, ChevronLeft, ArrowLeft, Landmark, Train, GraduationCap, HeartPulse } from "lucide-react";
-import solariaVideo from "../../../public/solaria-hero-cinematic.mp4.asset.json";
+const solariaVideoUrl = "/solaria-orbit-clean.mp4";
 import { useLatestNews } from "@/hooks/useNewsArticles";
 import { useState, useEffect, useCallback } from "react";
 import Layout from "@/components/Layout";
@@ -480,7 +480,7 @@ const IndexAr = () => {
                   poster="/solaria-orbit/frame-12.jpg"
                   className="absolute inset-0 w-full h-full object-cover"
                 >
-                  <source src={solariaVideo.url} type="video/mp4" />
+                  <source src={solariaVideoUrl} type="video/mp4" />
                 </video>
               </div>
 

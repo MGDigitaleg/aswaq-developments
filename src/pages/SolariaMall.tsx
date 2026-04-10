@@ -7,7 +7,7 @@ import {
   Maximize2, Phone, Mail
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import SolariaOrbitViewer from "@/components/SolariaOrbitViewer";
+
 import useSEO from "@/hooks/useSEO";
 
 import solariaImg from "@/assets/solaria-mall.webp";
@@ -223,7 +223,11 @@ const SolariaMall = () => {
 
           <motion.div {...fadeUp} className="relative max-w-5xl mx-auto">
             <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-xl)" }}>
-              <SolariaOrbitViewer className="aspect-[4/3] md:aspect-[2/1]" />
+              <div className="aspect-[4/3] md:aspect-[2/1] relative">
+                <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
+                  <source src="/solaria-orbit-clean.mp4" type="video/mp4" />
+                </video>
+              </div>
             </div>
           </motion.div>
         </div>

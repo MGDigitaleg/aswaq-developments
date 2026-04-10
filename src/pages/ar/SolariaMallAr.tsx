@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, CheckCircle2 } from "lucide-react";
 import Layout from "@/components/Layout";
-import SolariaOrbitViewer from "@/components/SolariaOrbitViewer";
+
 import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
 import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
@@ -106,7 +106,11 @@ const SolariaMallAr = () => {
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="max-w-5xl mx-auto">
             <div className="rounded-2xl overflow-hidden" style={{ boxShadow: 'var(--shadow-xl)' }}>
-              <SolariaOrbitViewer className="aspect-[4/3] md:aspect-[2/1]" />
+              <div className="aspect-[4/3] md:aspect-[2/1] relative">
+                <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
+                  <source src="/solaria-orbit-clean.mp4" type="video/mp4" />
+                </video>
+              </div>
             </div>
           </motion.div>
         </div>
