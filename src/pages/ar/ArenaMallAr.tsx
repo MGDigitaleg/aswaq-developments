@@ -1,163 +1,416 @@
 import { motion } from "framer-motion";
-import { MapPin, Building2, Stethoscope, Briefcase, ShoppingBag, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import {
+  ArrowLeft,
+  Briefcase,
+  Building2,
+  CheckCircle2,
+  MapPin,
+  Stethoscope,
+  Store,
+  TrendingUp,
+  Eye,
+  Users,
+  BarChart3,
+  ShieldCheck,
+  Layers,
+} from "lucide-react";
 import Layout from "@/components/Layout";
-import CTASection from "@/components/CTASection";
-import MallGallerySection from "@/components/MallGallerySection";
-import arenaImg from "@/assets/arena-mall.webp";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useSEO from "@/hooks/useSEO";
-import arena1 from "@/assets/gallery/arena-1.webp";
-import arena2 from "@/assets/gallery/arena-2.webp";
 
-const galleryImages = [arena1, arena2];
-const galleryVideos = ["buh9BJmWn9A", "unR4JKFXAXE", "6YWp0lGYC3Q", "JFqUABOPOk8", "kVdnKIBWN2A"];
+import heroImage from "@/assets/arena-premium/arena-night-render.jpg";
+import snapshotImage from "@/assets/arena-premium/arena-render-main.jpg";
+import visionRender from "@/assets/arena-premium/arena-render-angle.jpg";
+import lifestyleRender from "@/assets/arena-premium/arena-back-render.jpg";
+import aerialRender from "@/assets/arena-premium/arena-aerial-render.jpg";
+import facadeWide from "@/assets/arena-premium/arena-construction-wide.jpg";
+import facadeDetail from "@/assets/arena-premium/arena-construction-facade.jpg";
+import siteOffice from "@/assets/arena-premium/arena-construction-site-office.jpg";
+import distanceShot from "@/assets/arena-premium/arena-construction-distance.jpg";
+import courtyardShot from "@/assets/arena-premium/arena-construction-courtyard.jpg";
 
-const unitTypes = [
-  { icon: ShoppingBag, label: "محلات تجارية وصالات عرض" },
-  { icon: Stethoscope, label: "عيادات طبية ووحدات رعاية صحية" },
-  { icon: Briefcase, label: "مكاتب إدارية ومقرات للشركات" },
-  { icon: Building2, label: "وحدات أعمال مرنة للشركات الناشئة والقائمة" },
+const fadeUp = { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0 } };
+const stagger = { visible: { transition: { staggerChildren: 0.08 } } };
+
+const Chapter = ({ number, label }: { number: string; label: string }) => (
+  <div className="mb-8 flex items-center gap-4">
+    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 font-display text-sm text-foreground/40">
+      {number}
+    </span>
+    <span className="text-[11px] font-arabic font-semibold tracking-[0.18em] text-accent/80">
+      {label}
+    </span>
+    <div className="h-px flex-1 bg-border/40" />
+  </div>
+);
+
+const businessCards = [
+  { icon: Store, title: "محلات تجارية وصالات عرض", desc: "وحدات بواجهة مميزة في الأدوار الأرضية والأولى، مصممة للعلامات التجارية والمطاعم ومقدمي الخدمات." },
+  { icon: Stethoscope, title: "عيادات طبية", desc: "أدوار مجهزة بالبنية التحتية اللازمة لعيادات الأسنان والجلدية والتخصصات الطبية المختلفة." },
+  { icon: Briefcase, title: "مكاتب إدارية", desc: "تخطيطات فعّالة بإضاءة طبيعية مناسبة للشركات المهنية والفروع والاستشارات." },
+  { icon: Building2, title: "وحدات تجارية مرنة", desc: "مساحات قابلة للتكيف تدعم مساحات العمل المشتركة ومراكز التدريب ونماذج الأعمال المختلطة." },
 ];
 
-const whyInvest = [
-  "موقع استراتيجي بواجهة مباشرة أمام الجامعة الفرنسية مع نشاط يومي كثيف",
-  "تصميم متعدد الاستخدامات يجمع بين الأنشطة التجارية والطبية والإدارية",
-  "مخططات مرنة للوحدات تناسب مختلف القطاعات والصناعات",
-  "هندسة معمارية حديثة وبيئة مهنية متكاملة",
-  "سهولة الوصول إلى محاور النقل الرئيسية والمجتمعات السكنية المحيطة",
-  "أسعار تنافسية مع خطط سداد ميسرة ومناسبة للمستثمرين",
-  "بيئة تجارية كاملة الخدمات: مواقف سيارات، أمن، أنظمة مراقبة، مصاعد، ومناطق بلازا",
+const investorReasons = [
+  { icon: Layers, text: "طلب متعدد الاستخدامات يشمل التجاري والطبي والإداري" },
+  { icon: Eye, text: "واجهة مميزة وقيمة بصرية عالية للعلامات التجارية" },
+  { icon: TrendingUp, text: "موقع في ممر نمو عالي مع ارتفاع مستمر في قيمة الأراضي" },
+  { icon: Users, text: "تعدد ملفات المستأجرين يقلل مخاطر الشغور" },
+  { icon: ShieldCheck, text: "تقدم إنشائي مرئي — وليس مجرد وعود" },
+  { icon: BarChart3, text: "مصمم لزيادة رأس المال على المدى الطويل وتحقيق عوائد إيجارية" },
 ];
+
+const galleryTabs = {
+  vision: [heroImage, snapshotImage, visionRender, aerialRender, lifestyleRender],
+  progress: [facadeWide, facadeDetail, siteOffice, distanceShot, courtyardShot],
+  presence: [facadeDetail, snapshotImage, courtyardShot, heroImage],
+};
 
 const ArenaMallAr = () => {
-  useSEO("أرينا مول | وحدات تجارية وطبية وإدارية للإيجار في الشروق", "استكشف أفضل الوحدات المتاحة للإيجار في أرينا مول الشروق من شركة أسواق للتطوير العقاري.");
+  useSEO(
+    "أرينا مول الشروق | فرصة استثمارية تجارية متميزة",
+    "استكشف أرينا مول الشروق من شركة أسواق للتطوير العقاري — وجهة تجارية متعددة الاستخدامات للمحلات والعيادات والمكاتب وفرص الاستثمار."
+  );
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent" />
+      {/* ═══ HERO ═══ */}
+      <section className="relative flex min-h-screen items-end overflow-hidden bg-primary">
+        <div className="absolute inset-0">
+          <img src={heroImage} alt="أرينا مول — منظر ليلي خارجي" className="h-full w-full object-cover" fetchPriority="high" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--primary) / 0.3) 0%, hsl(var(--primary) / 0.5) 40%, hsl(var(--primary) / 0.88) 75%, hsl(var(--primary) / 0.97) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(270deg, hsl(var(--primary) / 0.7) 0%, transparent 60%)" }} />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 md:pt-40 pb-16 md:pb-20 text-center relative z-10 min-h-[420px] flex flex-col justify-end">
-          <motion.div initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase font-body mb-4 text-primary-foreground/40">شركة أسواق للتطوير العقاري</p>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-5 leading-tight">أرينا مول في مدينة الشروق</h1>
-            <p className="text-primary-foreground/55 font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
-              مشروع عصري متعدد الاستخدامات مصمم خصيصاً لتلبية الاحتياجات المتطورة للشركات والمهنيين والمستثمرين في مدينة الشروق.
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-20 pt-40 sm:px-6 md:pb-28 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} className="max-w-3xl">
+            <p className="mb-6 text-[11px] font-arabic font-semibold tracking-[0.2em] text-primary-foreground/50">
+              شركة أسواق للتطوير العقاري — الشروق
             </p>
+            <h1 className="mb-6 font-arabic text-5xl font-bold leading-[1.1] text-primary-foreground md:text-7xl lg:text-8xl">
+              أرينا<br />مول
+            </h1>
+            <div className="mb-8 h-px w-20 bg-primary-foreground/20" />
+            <p className="mb-3 text-xl font-arabic font-medium text-primary-foreground/90 md:text-2xl">
+              مبني للظهور. مصمم للأعمال.
+            </p>
+            <p className="mb-10 max-w-xl text-base font-arabic leading-8 text-primary-foreground/55">
+              وجهة تجارية عصرية متعددة الاستخدامات، صُممت للعلامات التجارية الطموحة والعيادات والشركات التي تسعى لحضور متميز وقيمة طويلة الأمد.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link to="/ar/contact" className="btn-premium justify-center px-8 py-4 text-sm font-arabic">
+                طلب الكتيب <ArrowLeft size={16} />
+              </Link>
+              <Link to="/ar/contact" className="btn-outline-light justify-center px-8 py-4 text-sm font-arabic">
+                حجز زيارة للموقع
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* About */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <div className="rounded-2xl overflow-hidden aspect-[4/3]" style={{ boxShadow: 'var(--shadow-lg)' }}>
-                <img src={arenaImg} alt="أرينا مول - أسواق للتطوير العقاري" className="w-full h-full object-cover" />
+      {/* ═══ 01 — نبذة عن المشروع ═══ */}
+      <section className="section-padding bg-background">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Chapter number="٠١" label="نبذة عن المشروع" />
+          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} transition={{ duration: 0.7 }}>
+              <div className="overflow-hidden rounded-[28px] border border-border/40" style={{ boxShadow: "var(--shadow-premium)" }}>
+                <img src={snapshotImage} alt="أرينا مول — منظر نهاري" className="w-full object-cover" loading="lazy" />
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <div className="section-divider mb-6" style={{ marginLeft: 'auto', marginRight: 0 }} />
-              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">أرينا مول بمدينة الشروق</h2>
-              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.9] mb-4">
-                يُعد أرينا مول مشروعاً عصرياً متعدد الاستخدامات من تطوير شركة أسواق للتطوير العقاري، يقع في واحد من أكثر المواقع الاستراتيجية في المدينة. ويوفر بيئة استثمارية راقية تضم مزيجاً من الوحدات التجارية والإدارية والطبية.
+
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} transition={{ duration: 0.7, delay: 0.1 }}>
+              <h2 className="mb-6 font-arabic text-3xl leading-tight text-foreground md:text-5xl">
+                معلم تجاري معاصر في الشروق
+              </h2>
+              <p className="mb-8 text-base font-arabic leading-8 text-muted-foreground">
+                أرينا مول وجهة حديثة متعددة الاستخدامات مصممة لخدمة الطلب التجاري والطبي والإداري في عنوان واحد. بواجهة قوية وهوية معمارية متميزة واستخدام تجاري مرن، بُني لدعم الظهور والحركة والقيمة التجارية طويلة الأمد.
               </p>
-              <p className="text-muted-foreground font-arabic text-[15px] leading-[1.9]">
-                بفضل تصميمه المعماري الحديث وتنوع مساحات وحداته، يلبي المول متطلبات محلات التجزئة ومكاتب الإدارة وعيادات الرعاية الصحية.
-              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {["مفهوم تجاري متعدد الاستخدامات", "فرص للمحلات والعيادات والمكاتب", "واجهة متميزة بحضور بصري قوي", "موقع استراتيجي في الشروق"].map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-xl border border-border/30 bg-card p-4" style={{ boxShadow: "var(--shadow-sm)" }}>
+                    <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-accent" />
+                    <p className="text-sm font-arabic text-foreground">{item}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Location */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">الموقع الاستراتيجي</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">موقع أرينا مول</h2>
-            <p className="text-muted-foreground font-arabic max-w-2xl mx-auto text-[15px] leading-relaxed">
-              يتمتع أرينا مول بموقع استراتيجي فريد مباشرة أمام الجامعة الفرنسية في مدينة الشروق، مما يمنحه مزايا استثمارية كبرى.
+      {/* ═══ اقتباس ═══ */}
+      <section className="bg-primary py-16 md:py-20">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <motion.blockquote initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="font-arabic text-2xl font-medium leading-relaxed text-primary-foreground/85 md:text-4xl md:leading-snug">
+            "ليس مجرد مبنى — بل موقع استراتيجي<br className="hidden md:block" /> في مدينة لا تزال تنمو."
+          </motion.blockquote>
+          <div className="mx-auto mt-6 h-px w-16 bg-primary-foreground/15" />
+        </div>
+      </section>
+
+      {/* ═══ 02 — من الرؤية إلى الواقع ═══ */}
+      <section className="section-padding bg-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Chapter number="٠٢" label="من الرؤية إلى الواقع" />
+          <div className="mb-12 max-w-3xl">
+            <h2 className="mb-6 font-arabic text-3xl leading-tight text-foreground md:text-5xl">
+              ما تم تخيّله أصبح يتشكّل الآن
+            </h2>
+            <p className="text-base font-arabic leading-8 text-muted-foreground">
+              أرينا مول ليس مجرد تصميم جميل — بل يتحول إلى واقع بكل ثقة. الحضور المعماري للمشروع ينتقل من المفهوم إلى البناء، مما يمنح المستثمرين وأصحاب الأعمال دليلاً ملموساً على ما يتم تسليمه.
             </p>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto rounded-2xl overflow-hidden"
-            style={{ boxShadow: 'var(--shadow-lg)' }}
-          >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d220929.63495783907!2d31.4380646!3d30.0934547!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581dde296e1a5b%3A0xdc596b1d18b48bea!2sArena%20Mall%20El-Shorouk!5e0!3m2!1sar!2seg!4v1772535766831!5m2!1sar!2seg"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="موقع أرينا مول"
-              className="w-full"
-            />
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={fadeUp} transition={{ duration: 0.8 }} className="overflow-hidden rounded-[28px] border border-border/40 bg-card p-5 md:p-8" style={{ boxShadow: "var(--shadow-premium)" }}>
+            <BeforeAfterSlider beforeImage={visionRender} afterImage={facadeWide} beforeLabel="الرؤية" afterLabel="الواقع" className="aspect-[16/9] rounded-[20px]" />
+            <div className="mt-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+              <div className="flex flex-wrap gap-2">
+                {["الرؤية", "التقدم", "ثقة التسليم"].map((label) => (
+                  <span key={label} className="rounded-full border border-border/50 bg-background px-4 py-2 text-[10px] font-arabic font-semibold tracking-[0.1em] text-foreground/60">
+                    {label}
+                  </span>
+                ))}
+              </div>
+              <p className="font-arabic text-sm text-muted-foreground">صُمم بعناية. يُبنى بزخم.</p>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Available Units */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="section-label mb-3">المساحات المتاحة</p>
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4">الوحدات المتاحة في أرينا مول</h2>
-          <p className="text-muted-foreground font-arabic max-w-2xl mx-auto mb-12 text-[15px] leading-relaxed">
-            اكتشف الوحدات المتاحة للإيجار والبيع في أرينا مول بمساحات تتراوح من 16 م² إلى 343 م².
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-            {unitTypes.map((type, i) => (
-              <motion.div key={type.label} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06, duration: 0.4 }}
-                className="flex flex-col items-center gap-4 p-6 md:p-7 bg-card rounded-2xl border border-border/30 hover:border-accent/15 transition-all duration-300"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
-              >
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center">
-                  <type.icon size={24} className="text-accent" />
+      {/* ═══ 03 — الهوية المعمارية ═══ */}
+      <section className="section-padding bg-background">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Chapter number="٠٣" label="الهوية المعمارية" />
+          <div className="mb-12 max-w-3xl">
+            <h2 className="mb-6 font-arabic text-3xl leading-tight text-foreground md:text-5xl">
+              واجهة مصممة للحضور
+            </h2>
+            <p className="text-base font-arabic leading-8 text-muted-foreground">
+              خطوط معمارية نظيفة، زجاج واسع، إطارات حجمية قوية، وتعبير معاصر متعدد الاستخدامات يعزز ظهور العلامات التجارية ويخلق وجهة تجارية متميزة.
+            </p>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-[1.3fr_0.7fr]">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.7 }} className="overflow-hidden rounded-[28px] border border-border/40" style={{ boxShadow: "var(--shadow-lg)" }}>
+              <img src={facadeDetail} alt="واجهة أرينا مول — تقدم البناء" className="aspect-[16/10] w-full object-cover" loading="lazy" />
+            </motion.div>
+            <div className="grid gap-4">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6, delay: 0.08 }} className="overflow-hidden rounded-[28px] border border-border/40" style={{ boxShadow: "var(--shadow-lg)" }}>
+                <img src={courtyardShot} alt="الساحة الداخلية — تقدم البناء" className="aspect-[4/3] w-full object-cover" loading="lazy" />
+              </motion.div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6, delay: 0.14 }} className="overflow-hidden rounded-[28px] border border-border/40" style={{ boxShadow: "var(--shadow-lg)" }}>
+                <img src={distanceShot} alt="أرينا مول — منظر عام" className="aspect-[4/3] w-full object-cover" loading="lazy" />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ 04 — الموقع الاستراتيجي ═══ */}
+      <section className="section-padding bg-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Chapter number="٠٤" label="ذكاء الموقع" />
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+            <div>
+              <h2 className="mb-6 font-arabic text-3xl leading-tight text-foreground md:text-5xl">
+                موقع استراتيجي في الشروق
+              </h2>
+              <p className="mb-8 text-base font-arabic leading-8 text-muted-foreground">
+                يستفيد أرينا مول من موقع يدعم الحركة اليومية والتعرض التجاري والأهمية التجارية — مما يجعله مناسباً للعلامات التجارية والممارسات الصحية ومستخدمي المكاتب العصرية.
+              </p>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="mb-8 grid gap-3 sm:grid-cols-2">
+                {[
+                  { icon: Eye, text: "واجهة عالية الظهور وسهولة الوصول" },
+                  { icon: Users, text: "تجمعات سكنية نشطة في المحيط" },
+                  { icon: TrendingUp, text: "إمكانية حركة يومية قوية" },
+                  { icon: BarChart3, text: "منطقة طلب متعدد الاستخدامات متنامية" },
+                ].map((item) => (
+                  <motion.div key={item.text} variants={fadeUp} className="flex items-start gap-3 rounded-xl border border-border/30 bg-card p-4" style={{ boxShadow: "var(--shadow-sm)" }}>
+                    <item.icon size={16} className="mt-0.5 shrink-0 text-accent" />
+                    <p className="text-sm font-arabic text-foreground">{item.text}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+              <div className="flex items-center gap-3 rounded-xl border border-border/30 bg-card px-5 py-4" style={{ boxShadow: "var(--shadow-sm)" }}>
+                <MapPin size={18} className="shrink-0 text-accent" />
+                <p className="text-sm font-arabic text-foreground">أمام الجامعة الفرنسية — واجهة تجارية عالية الظهور</p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="overflow-hidden rounded-[28px] border border-border/40" style={{ boxShadow: "var(--shadow-premium)" }}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d220929.63495783907!2d31.4380646!3d30.0934547!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14581dde296e1a5b%3A0xdc596b1d18b48bea!2sArena%20Mall%20El-Shorouk!5e0!3m2!1sar!2seg!4v1772535766831!5m2!1sar!2seg"
+                  width="100%" height="380" style={{ border: 0 }} allowFullScreen loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade" title="أرينا مول الشروق على الخريطة" className="w-full"
+                />
+              </div>
+              <a href="https://maps.google.com/?q=Arena%20Mall%20El-Shorouk" target="_blank" rel="noreferrer" className="btn-premium inline-flex w-full justify-center px-6 py-3 text-sm font-arabic sm:w-auto">
+                فتح في خرائط جوجل <ArrowLeft size={15} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ 05 — مساحات الأعمال ═══ */}
+      <section className="section-padding bg-background">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Chapter number="٠٥" label="المزيج التجاري" />
+          <div className="mb-12 max-w-3xl">
+            <h2 className="mb-6 font-arabic text-3xl leading-tight text-foreground md:text-5xl">
+              مساحات مصممة للأعمال العصرية
+            </h2>
+            <p className="text-base font-arabic leading-8 text-muted-foreground">
+              من المحلات التجارية عالية الظهور إلى الأدوار الجاهزة للعيادات والمساحات المكتبية الفعّالة، يدعم أرينا مول نماذج أعمال متعددة في وجهة واحدة متكاملة.
+            </p>
+          </div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {businessCards.map((card) => (
+              <motion.div key={card.title} variants={fadeUp} className="group rounded-2xl border border-border/30 bg-card p-7 transition-all duration-500 hover:-translate-y-1" style={{ boxShadow: "var(--shadow-sm)" }}>
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary transition-colors duration-300 group-hover:bg-accent/10">
+                  <card.icon size={22} className="text-accent" />
                 </div>
-                <p className="font-semibold text-foreground font-arabic text-sm text-center">{type.label}</p>
+                <h3 className="mb-3 font-arabic text-xl text-foreground">{card.title}</h3>
+                <p className="text-sm font-arabic leading-7 text-muted-foreground">{card.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ 06 — تقدم البناء ═══ */}
+      <section className="section-padding bg-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Chapter number="٠٦" label="الدليل الميداني" />
+          <div className="mb-12 grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-end">
+            <div>
+              <h2 className="mb-6 font-arabic text-3xl leading-tight text-foreground md:text-5xl">
+                تقدم مرئي على أرض الواقع
+              </h2>
+              <p className="text-base font-arabic leading-8 text-muted-foreground">
+                أرينا مول يتشكّل بنشاط. التقدم الإنشائي الأخير يعكس زخم التسليم ويعزز الثقة لدى المشترين والمستأجرين والمستثمرين.
+              </p>
+            </div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid grid-cols-2 gap-3">
+              {["الحضور الهيكلي تم إنشاؤه", "هوية الواجهة تتشكّل", "تفعيل الموقع والواجهة", "التواصل مع المبيعات والمستثمرين"].map((item) => (
+                <motion.div key={item} variants={fadeUp} className="rounded-xl border border-border/30 bg-card p-4" style={{ boxShadow: "var(--shadow-sm)" }}>
+                  <span className="mb-2 block text-[10px] font-arabic font-semibold tracking-[0.1em] text-accent">تقدم</span>
+                  <p className="text-sm font-arabic text-foreground">{item}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {[facadeWide, siteOffice, courtyardShot].map((image, index) => (
+              <motion.div key={image} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.6, delay: index * 0.08 }} className="overflow-hidden rounded-[24px] border border-border/40" style={{ boxShadow: "var(--shadow-lg)" }}>
+                <img src={image} alt={`تقدم بناء أرينا مول ${index + 1}`} className="aspect-[4/3] w-full object-cover" loading="lazy" />
+                <div className="p-4">
+                  <span className="rounded-full bg-secondary px-3 py-1.5 text-[10px] font-arabic font-semibold tracking-[0.1em] text-foreground/60">تطوير نشط</span>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Invest */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">القيمة الاستثمارية</p>
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">لماذا تستثمر في أرينا مول</h2>
+      {/* ═══ 07 — لماذا أرينا للمستثمرين ═══ */}
+      <section className="section-padding bg-background">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Chapter number="٠٧" label="المنطق الاستثماري" />
+          <div className="mb-12 max-w-3xl">
+            <h2 className="mb-6 font-arabic text-3xl leading-tight text-foreground md:text-5xl">
+              لماذا يجذب أرينا المستثمرين
+            </h2>
+            <p className="text-base font-arabic leading-8 text-muted-foreground">
+              حضور معماري واستخدام تجاري مرن وتقدم تطوير مرئي في عنوان واحد — مما يخلق عرضاً قوياً للمستثمرين الباحثين عن طلب مستقر وقيمة طويلة الأمد.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {whyInvest.map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05, duration: 0.4 }}
-                className="flex items-start gap-3 p-4 md:p-5 bg-card rounded-xl border border-border/30 hover:border-accent/15 transition-all duration-300"
-                style={{ boxShadow: 'var(--shadow-sm)' }}
-              >
-                <CheckCircle2 size={18} className="text-accent shrink-0 mt-0.5" />
-                <p className="text-foreground font-arabic text-sm leading-relaxed">{item}</p>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {investorReasons.map((item) => (
+              <motion.div key={item.text} variants={fadeUp} className="flex items-start gap-4 rounded-2xl border border-border/30 bg-card p-6 transition-all duration-500 hover:-translate-y-1" style={{ boxShadow: "var(--shadow-sm)" }}>
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary">
+                  <item.icon size={18} className="text-accent" />
+                </div>
+                <p className="text-sm font-arabic leading-7 text-foreground">{item.text}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <MallGallerySection mallName="أرينا مول" images={galleryImages} videos={galleryVideos} lang="ar" />
+      {/* ═══ 08 — معرض الصور ═══ */}
+      <section className="section-padding bg-cream">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Chapter number="٠٨" label="المعرض البصري" />
+          <div className="mb-12 max-w-3xl">
+            <h2 className="mb-6 font-arabic text-3xl leading-tight text-foreground md:text-5xl">أرينا من كل زاوية</h2>
+          </div>
 
-      <CTASection
-        title="استثمر في أرينا مول اليوم"
-        subtitle="احجز مساحتك التجارية الآن في أرينا مول الشروق. تواصل مع شركة أسواق للتطوير العقاري للحصول على التفاصيل والأسعار وتوافر الوحدات."
-        buttonText="طلب تفاصيل الوحدة"
-        buttonLink="/ar/contact"
-      />
+          <Tabs defaultValue="vision" className="w-full">
+            <TabsList className="mb-10 h-auto flex-wrap gap-2 rounded-2xl bg-card p-2">
+              <TabsTrigger value="vision" className="rounded-xl px-6 py-3 font-arabic text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">الرؤية ثلاثية الأبعاد</TabsTrigger>
+              <TabsTrigger value="progress" className="rounded-xl px-6 py-3 font-arabic text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">تقدم البناء</TabsTrigger>
+              <TabsTrigger value="presence" className="rounded-xl px-6 py-3 font-arabic text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">الواجهة والحضور</TabsTrigger>
+            </TabsList>
+
+            {Object.entries(galleryTabs).map(([key, images]) => (
+              <TabsContent key={key} value={key}>
+                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {images.map((image, index) => (
+                    <motion.div key={`${key}-${index}`} variants={fadeUp} className="group overflow-hidden rounded-[24px] border border-border/40 bg-card" style={{ boxShadow: "var(--shadow-lg)" }}>
+                      <img src={image} alt={`أرينا مول ${key} ${index + 1}`} className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" loading="lazy" />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </TabsContent>
+            ))}
+          </Tabs>
+        </div>
+      </section>
+
+      {/* ═══ تجربة الوجهة ═══ */}
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <div className="absolute inset-0">
+          <img src={aerialRender} alt="أرينا مول — منظر جوي" className="h-full w-full object-cover" loading="lazy" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(var(--primary) / 0.6) 0%, hsl(var(--primary) / 0.85) 100%)" }} />
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+            <h2 className="mb-6 font-arabic text-3xl leading-tight text-primary-foreground md:text-5xl">
+              أكثر من مبنى —<br />تجربة وجهة متكاملة
+            </h2>
+            <p className="mx-auto max-w-2xl text-base font-arabic leading-8 text-primary-foreground/70">
+              بيئة تشعر فيها العلامات التجارية بالرسوخ، والعملاء بالترحيب، والأعمال بالجاهزية للنمو.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ CTA النهائي ═══ */}
+      <section className="bg-primary py-20 md:py-28">
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <p className="mb-5 text-[11px] font-arabic font-semibold tracking-[0.15em] text-primary-foreground/35">الخطوة التالية</p>
+            <h2 className="mb-6 font-arabic text-3xl leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
+              ضع عملك في<br />أرينا مول
+            </h2>
+            <p className="mx-auto mb-10 max-w-2xl text-base font-arabic leading-8 text-primary-foreground/55">
+              استكشف الفرص المتاحة، اطلب معلومات تفصيلية، أو حدد موعد زيارة للموقع لاكتشاف الإمكانات التجارية لأرينا مول الشروق.
+            </p>
+            <div className="flex flex-col justify-center gap-3 sm:flex-row">
+              <Link to="/ar/contact" className="btn-premium justify-center px-8 py-4 text-sm font-arabic">طلب الكتيب</Link>
+              <Link to="/ar/contact" className="btn-outline-light justify-center px-8 py-4 text-sm font-arabic">حجز زيارة للموقع</Link>
+              <Link to="/ar/contact" className="btn-outline-light justify-center px-8 py-4 text-sm font-arabic">تحدث مع فريق المبيعات</Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </Layout>
   );
 };
