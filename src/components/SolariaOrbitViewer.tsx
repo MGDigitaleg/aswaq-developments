@@ -23,6 +23,7 @@ const SolariaOrbitViewer = ({ className = "", onFrameChange }: SolariaOrbitViewe
   const [loadProgress, setLoadProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [hasAutoRotated, setHasAutoRotated] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   // Refs for drag logic
   const frameRef = useRef(0);
@@ -56,6 +57,27 @@ const SolariaOrbitViewer = ({ className = "", onFrameChange }: SolariaOrbitViewe
     imagesRef.current = images;
   }, []);
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.45,
+      }
+    );
+
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, []);
+
   const drawFrame = useCallback((index: number, imgs?: HTMLImageElement[]) => {
     const canvas = canvasRef.current;
     const images = imgs || imagesRef.current;
@@ -83,9 +105,9 @@ const SolariaOrbitViewer = ({ className = "", onFrameChange }: SolariaOrbitViewe
     onFrameChange?.(frame, isDragging);
   }, [drawFrame, onFrameChange, isDragging]);
 
-  // Auto-rotate on first load — slow sweep through ~12 frames then stop
+  // Auto-rotate on first load — only after the viewer enters the viewport
   useEffect(() => {
-    if (!loaded || hasAutoRotated || isDragging) return;
+    if (!loaded || !isInView || hasAutoRotated || isDragging) return;
 
     const totalSteps = TOTAL_FRAMES;
     let step = 0;
@@ -113,13 +135,12 @@ const SolariaOrbitViewer = ({ className = "", onFrameChange }: SolariaOrbitViewe
       autoRotateRef.current = window.setTimeout(tick, getInterval(step));
     };
 
-    // Small delay before starting
     autoRotateRef.current = window.setTimeout(tick, 800);
 
     return () => {
       clearTimeout(autoRotateRef.current);
     };
-  }, [loaded, hasAutoRotated, isDragging, setFrame]);
+  }, [loaded, isInView, hasAutoRotated, isDragging, setFrame]);
 
   // Inertia animation — gentle, premium deceleration
   useEffect(() => {
