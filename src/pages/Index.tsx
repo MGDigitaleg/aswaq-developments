@@ -755,8 +755,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Trusted By */}
-      <TrustedBySection lang="en" />
+
 
       {/* ═══════════════ UNITS + ROI ═══════════════ */}
       <section className="relative py-14 md:py-20 bg-primary overflow-hidden">

@@ -772,8 +772,7 @@ const IndexAr = () => {
         </div>
       </section>
 
-      {/* Trusted By */}
-      <TrustedBySection lang="ar" />
+
 
       {/* ═══════════════ UNITS CTA + ROI ═══════════════ */}
       <section className="relative py-14 md:py-20 bg-primary overflow-hidden">
