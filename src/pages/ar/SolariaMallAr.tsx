@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin, ShoppingBag, Stethoscope, Briefcase, Building2, CheckCircle2 } from "lucide-react";
 import Layout from "@/components/Layout";
+import SolariaOrbitViewer from "@/components/SolariaOrbitViewer";
 import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
 import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
@@ -93,6 +94,21 @@ const SolariaMallAr = () => {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* 360° Architectural Explorer */}
+      <section className="py-16 md:py-24 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
+            <p className="section-label mb-3">استكشف المبنى</p>
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">نظرة معمارية شاملة</h2>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="max-w-5xl mx-auto">
+            <div className="rounded-2xl overflow-hidden" style={{ boxShadow: 'var(--shadow-xl)' }}>
+              <SolariaOrbitViewer className="aspect-[4/3] md:aspect-[2/1]" />
+            </div>
+          </motion.div>
         </div>
       </section>
 
