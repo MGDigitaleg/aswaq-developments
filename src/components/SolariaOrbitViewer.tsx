@@ -81,6 +81,34 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
     drawFrame(frame);
   }, [drawFrame]);
 
+  // Auto-rotate on first load — slow sweep through ~12 frames then stop
+  useEffect(() => {
+    if (!loaded || hasAutoRotated || isDragging) return;
+
+    let frame = 0;
+    const totalSteps = 12;
+    const intervalMs = 120; // ~8fps for a gentle, cinematic feel
+    let step = 0;
+
+    const tick = () => {
+      step++;
+      frame = step;
+      setFrame(frame);
+      if (step >= totalSteps) {
+        setHasAutoRotated(true);
+        return;
+      }
+      autoRotateRef.current = window.setTimeout(tick, intervalMs);
+    };
+
+    // Small delay before starting
+    autoRotateRef.current = window.setTimeout(tick, 800);
+
+    return () => {
+      clearTimeout(autoRotateRef.current);
+    };
+  }, [loaded, hasAutoRotated, isDragging, setFrame]);
+
   // Inertia animation — gentle, premium deceleration
   useEffect(() => {
     let running = true;
