@@ -85,20 +85,28 @@ const SolariaOrbitViewer = ({ className = "" }: SolariaOrbitViewerProps) => {
   useEffect(() => {
     if (!loaded || hasAutoRotated || isDragging) return;
 
-    let frame = 0;
     const totalSteps = TOTAL_FRAMES;
-    const intervalMs = 140; // ~7fps for a cinematic, slow rotation
     let step = 0;
+
+    // Ease-in-out: slow start, fast middle, slow end
+    const getInterval = (s: number) => {
+      const t = s / totalSteps; // 0→1
+      // Cosine ease-in-out: slow at edges, fast in the middle
+      const ease = 0.5 - 0.5 * Math.cos(Math.PI * t);
+      // Map ease (0→1→0 speed curve) to interval: slow=220ms, fast=60ms
+      const slow = 220;
+      const fast = 60;
+      return slow - ease * (slow - fast);
+    };
 
     const tick = () => {
       step++;
-      frame = step;
-      setFrame(frame);
+      setFrame(step);
       if (step >= totalSteps) {
         setHasAutoRotated(true);
         return;
       }
-      autoRotateRef.current = window.setTimeout(tick, intervalMs);
+      autoRotateRef.current = window.setTimeout(tick, getInterval(step));
     };
 
     // Small delay before starting
