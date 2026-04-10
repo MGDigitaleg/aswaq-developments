@@ -5,7 +5,7 @@ import { Calendar, MapPin, Briefcase, ArrowRight, Users, Building2, Clock } from
 import Layout from "@/components/Layout";
 import CareerApplicationForm from "@/components/CareerApplicationForm";
 import { useCareers } from "@/hooks/useCareers";
-import heroImage from "@/assets/about-hero.webp";
+import heroImage from "@/assets/arena-premium/arena-render-main.jpg";
 
 const stats = [
   { icon: Users, value: "50+", label: "Team Members" },

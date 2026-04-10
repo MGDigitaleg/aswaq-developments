@@ -5,7 +5,7 @@ import { ArrowLeft, Calendar, MapPin, Briefcase, Clock, CheckCircle2, Target } f
 import Layout from "@/components/Layout";
 import CareerApplicationForm from "@/components/CareerApplicationForm";
 import { useCareer, useCareers } from "@/hooks/useCareers";
-import heroImage from "@/assets/about-hero.webp";
+import heroImage from "@/assets/arena-premium/arena-night-render.jpg";
 
 /* ── Parse structured description into sections ── */
 const parseDescription = (text: string) => {
