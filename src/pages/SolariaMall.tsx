@@ -204,7 +204,7 @@ const SolariaMall = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          3. INTERACTIVE EXTERIOR VIEWER
+          3. 360° ARCHITECTURAL EXPLORER
       ═══════════════════════════════════════════ */}
       <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
@@ -222,87 +222,9 @@ const SolariaMall = () => {
           </motion.div>
 
           <motion.div {...fadeUp} className="relative max-w-5xl mx-auto">
-            <div className="rounded-2xl overflow-hidden relative" style={{ boxShadow: "var(--shadow-xl)" }}>
-              <img
-                src={solaria4}
-                alt="Solaria Mall building overview"
-                className="w-full aspect-[16/10] object-cover"
-              />
-              <div
-                className="absolute inset-0"
-                style={{ background: "linear-gradient(to top, hsl(var(--navy) / 0.3), transparent 40%)" }}
-              />
-
-              {/* Hotspots */}
-              {hotspots.map((spot) => (
-                <button
-                  key={spot.id}
-                  onClick={() => setActiveHotspot(activeHotspot === spot.id ? null : spot.id)}
-                  className="absolute group z-20"
-                  style={{ left: spot.x, top: spot.y, transform: "translate(-50%, -50%)" }}
-                >
-                  <span
-                    className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full transition-all duration-500"
-                    style={{
-                      background: activeHotspot === spot.id
-                        ? "hsl(var(--navy))"
-                        : "hsl(var(--ivory) / 0.85)",
-                      boxShadow: "0 4px 20px hsl(var(--navy) / 0.25)",
-                      border: `1.5px solid ${activeHotspot === spot.id ? "hsl(var(--navy))" : "hsl(var(--navy) / 0.15)"}`,
-                    }}
-                  >
-                    <spot.icon
-                      size={15}
-                      style={{
-                        color: activeHotspot === spot.id
-                          ? "hsl(var(--primary-foreground))"
-                          : "hsl(var(--navy))",
-                      }}
-                    />
-                  </span>
-                  {/* Pulse ring */}
-                  <span
-                    className="absolute inset-0 rounded-full animate-ping"
-                    style={{
-                      background: "hsl(var(--navy) / 0.1)",
-                      animationDuration: "3s",
-                    }}
-                  />
-                </button>
-              ))}
+            <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "var(--shadow-xl)" }}>
+              <SolariaOrbitViewer className="aspect-[4/3] md:aspect-[2/1]" />
             </div>
-
-            {/* Side panel */}
-            <AnimatePresence>
-              {activeHotspot && (() => {
-                const spot = hotspots.find((h) => h.id === activeHotspot);
-                if (!spot) return null;
-                return (
-                  <motion.div
-                    key={spot.id}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute top-4 right-4 md:top-8 md:right-8 w-64 md:w-72 rounded-xl p-5 glass z-30"
-                    style={{ boxShadow: "var(--shadow-xl)" }}
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "hsl(var(--navy) / 0.08)" }}>
-                          <spot.icon size={14} style={{ color: "hsl(var(--navy))" }} />
-                        </div>
-                        <h4 className="font-display text-sm font-bold text-foreground">{spot.label}</h4>
-                      </div>
-                      <button onClick={() => setActiveHotspot(null)} className="p-1 rounded-md transition-colors hover:bg-muted">
-                        <X size={14} className="text-muted-foreground" />
-                      </button>
-                    </div>
-                    <p className="text-muted-foreground font-body text-[13px] leading-[1.7]">{spot.description}</p>
-                  </motion.div>
-                );
-              })()}
-            </AnimatePresence>
           </motion.div>
         </div>
       </section>
