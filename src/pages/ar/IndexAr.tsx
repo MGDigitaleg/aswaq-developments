@@ -14,10 +14,10 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import MercadoTenantsSection from "@/components/MercadoTenantsSection";
 import useSEO from "@/hooks/useSEO";
 import JsonLd, { organizationSchema, websiteSchema, buildFaqSchema } from "@/components/JsonLd";
-import heroBg from "@/assets/hero-building.webp";
-import heroMercado from "@/assets/hero-mercado.webp";
-import heroArena from "@/assets/hero-arena.webp";
-import heroSolaria from "@/assets/hero-solaria.webp";
+import heroSolariaNight from "@/assets/gallery/solaria-night.webp";
+import heroArenaNight from "@/assets/arena-premium/arena-night-render.jpg";
+import heroMercadoNight from "@/assets/gallery/mercado-1.webp";
+import heroCityhubFountain from "@/assets/gallery/cityhub-2.webp";
 import heroCityhub from "@/assets/hero-cityhub.webp";
 import cityhubImg from "@/assets/cityhub-mall.webp";
 import mercadoImg from "@/assets/mercado-mall.webp";
@@ -30,17 +30,17 @@ import mercadoLogo from "@/assets/logos/mercado-mall-clean.png";
 import cityHubLogo from "@/assets/logos/city-hub-mall-clean.png";
 
 const heroSlides = [
-  { image: heroBg, label: "سيتي هب مول" },
-  { image: heroMercado, label: "ميركادو مول" },
-  { image: heroArena, label: "أرينا مول" },
-  { image: heroSolaria, label: "سولاريا مول" },
+  { image: heroSolariaNight, label: "سولاريا مول", objectPos: "object-center" },
+  { image: heroMercadoNight, label: "ميركادو مول", objectPos: "object-center" },
+  { image: heroArenaNight, label: "أرينا مول", objectPos: "object-[center_60%]" },
+  { image: heroCityhubFountain, label: "سيتي هب مول", objectPos: "object-center" },
 ];
 
 const editorialProjects = [
   {
     name: "سولاريا مول",
     slug: "solaria-mall",
-    image: heroSolaria,
+    image: heroSolariaNight,
     logo: solariaLogo,
     tag: "تجزئة وطبي",
     location: "مدينة الشروق، شرق القاهرة",
@@ -50,7 +50,7 @@ const editorialProjects = [
   {
     name: "أرينا مول",
     slug: "arena-mall",
-    image: heroArena,
+    image: heroArenaNight,
     logo: arenaLogo,
     tag: "تجاري وطبي",
     location: "مدينة الشروق، شرق القاهرة",
@@ -60,7 +60,7 @@ const editorialProjects = [
   {
     name: "ميركادو مول",
     slug: "mercado-mall",
-    image: heroMercado,
+    image: heroMercadoNight,
     logo: mercadoLogo,
     tag: "متعدد الاستخدامات",
     location: "مدينة الشروق، شرق القاهرة",
@@ -132,16 +132,30 @@ const IndexAr = () => {
   const { articles: latestNews } = useLatestNews("ar", 3);
   const faqSchemaData = buildFaqSchema(faqs.map(f => ({ question: f.question, answer: f.answer })));
 
+  const SLIDE_DURATION = 6000;
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    setProgress(0);
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5500);
+    const timer = setInterval(nextSlide, SLIDE_DURATION);
     return () => clearInterval(timer);
   }, [nextSlide]);
+
+  useEffect(() => {
+    const start = Date.now();
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      setProgress(Math.min(elapsed / SLIDE_DURATION, 1));
+      if (elapsed < SLIDE_DURATION) rafRef.current = requestAnimationFrame(tick);
+    };
+    const rafRef = { current: requestAnimationFrame(tick) };
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [currentSlide]);
 
   return (
     <Layout>
@@ -151,35 +165,40 @@ const IndexAr = () => {
 
       {/* ═══════════════ HERO ═══════════════ */}
       <section className="relative min-h-[550px] overflow-hidden" style={{ height: '100vh', maxHeight: '900px' }}>
-        <AnimatePresence mode="popLayout">
+        {heroSlides.map((slide, idx) => (
           <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+            key={idx}
+            initial={false}
+            animate={{ 
+              opacity: idx === currentSlide ? 1 : 0,
+              scale: idx === currentSlide ? 1 : 1.05,
+            }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
+            style={{ zIndex: idx === currentSlide ? 1 : 0 }}
           >
-            <img
-              src={heroSlides[currentSlide].image}
-              alt={`أسواق للتطوير العقاري - ${heroSlides[currentSlide].label}`}
-              className="w-full h-full object-cover object-center"
-              fetchPriority={currentSlide === 0 ? "high" : "auto"}
-              loading={currentSlide === 0 ? "eager" : "lazy"}
+            <motion.img
+              src={slide.image}
+              alt={`أسواق للتطوير العقاري - ${slide.label}`}
+              className={`w-full h-full object-cover ${slide.objectPos}`}
+              fetchPriority={idx === 0 ? "high" : "auto"}
+              loading={idx === 0 ? "eager" : "lazy"}
+              animate={idx === currentSlide ? { scale: [1, 1.08] } : {}}
+              transition={{ duration: 6.5, ease: "linear" }}
             />
           </motion.div>
-        </AnimatePresence>
+        ))}
 
-        {/* Strong right-to-left gradient for RTL text readability */}
-        <div className="absolute inset-0 pointer-events-none" style={{
+        {/* Cinematic gradient overlay - RTL */}
+        <div className="absolute inset-0 pointer-events-none z-[2]" style={{
           background: `
-            linear-gradient(to left, hsl(222 47% 5% / 0.88) 0%, hsl(222 47% 5% / 0.72) 30%, hsl(222 47% 5% / 0.35) 55%, hsl(222 47% 5% / 0.08) 80%, transparent 100%),
-            linear-gradient(to top, hsl(222 47% 5% / 0.75) 0%, transparent 40%)
+            linear-gradient(to left, hsl(222 47% 5% / 0.90) 0%, hsl(222 47% 5% / 0.74) 28%, hsl(222 47% 5% / 0.38) 52%, hsl(222 47% 5% / 0.10) 78%, transparent 100%),
+            linear-gradient(to top, hsl(222 47% 5% / 0.80) 0%, hsl(222 47% 5% / 0.15) 35%, transparent 60%)
           `
         }} />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-end pb-14 md:pb-18 lg:pb-20">
+        <div className="relative z-10 h-full flex flex-col justify-end pb-14 md:pb-20 lg:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="max-w-xl mr-auto">
               <motion.div
@@ -239,19 +258,34 @@ const IndexAr = () => {
           </div>
         </div>
 
-        {/* Slide indicators */}
-        <div className="absolute bottom-6 left-4 md:left-10 z-20 flex items-center gap-3">
-          <div className="flex gap-1.5">
-            {heroSlides.map((_, i) => (
+        {/* Premium slide indicators with progress bars - RTL positioned */}
+        <div className="absolute bottom-6 left-4 md:left-10 z-20 flex items-center gap-4">
+          <div className="flex gap-2">
+            {heroSlides.map((slide, i) => (
               <button
                 key={i}
-                onClick={() => setCurrentSlide(i)}
-                className={`rounded-full transition-all duration-500 ${i === currentSlide ? "w-7 h-1 bg-primary-foreground/60" : "w-1 h-1 bg-primary-foreground/20 hover:bg-primary-foreground/35"}`}
-                aria-label={`الانتقال إلى الشريحة ${i + 1}`}
-              />
+                onClick={() => { setCurrentSlide(i); setProgress(0); }}
+                className="group flex flex-col items-center gap-1.5"
+                aria-label={`الانتقال إلى الشريحة ${i + 1} - ${slide.label}`}
+              >
+                <span className={`text-[8px] font-['Montserrat'] font-semibold tracking-wider uppercase transition-all duration-500 ${i === currentSlide ? 'text-primary-foreground/70' : 'text-primary-foreground/0 group-hover:text-primary-foreground/30'}`}>
+                  {slide.label.split(' ')[0]}
+                </span>
+                <div className="relative w-8 md:w-12 h-[2px] bg-primary-foreground/15 rounded-full overflow-hidden">
+                  {i === currentSlide && (
+                    <div
+                      className="absolute inset-y-0 left-0 bg-primary-foreground/70 rounded-full"
+                      style={{ width: `${progress * 100}%` }}
+                    />
+                  )}
+                  {i < currentSlide && (
+                    <div className="absolute inset-0 bg-primary-foreground/40 rounded-full" />
+                  )}
+                </div>
+              </button>
             ))}
           </div>
-          <span className="text-[9px] text-primary-foreground/20 font-['Montserrat'] font-semibold tabular-nums">
+          <span className="text-[9px] text-primary-foreground/25 font-['Montserrat'] font-semibold tabular-nums">
             {String(currentSlide + 1).padStart(2, '0')}/{String(heroSlides.length).padStart(2, '0')}
           </span>
         </div>
