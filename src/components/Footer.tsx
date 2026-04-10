@@ -172,15 +172,17 @@ const Footer = () => {
                   marketing@aswaqdev.com
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-[13px] text-primary-foreground/65">
+              <li className="flex items-start gap-3 text-[13px] text-primary-foreground/80">
                 <div className="w-9 h-9 rounded-lg bg-primary-foreground/[0.07] border border-primary-foreground/[0.12] flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin size={14} className="text-primary-foreground/65" />
+                  <MapPin size={14} className="text-primary-foreground/70" />
                 </div>
-                <span className="leading-relaxed">
-                  {isArabic
-                    ? "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون"
-                    : "Villa 1/127 - Al-Nsoor complex, Al Moltaqa Neighborhood, Otostrad road - Sheraton"}
-                </span>
+                <div className="min-w-0 flex-1 pt-1">
+                  <span className="block leading-relaxed break-words text-primary-foreground/80">
+                    {isArabic
+                      ? "فيلا 1/127 - مجمع النسور، حي الملتقى، طريق الأوتوستراد - شيراتون"
+                      : "Villa 1/127 - Al-Nsoor complex, Al Moltaqa Neighborhood, Otostrad road - Sheraton"}
+                  </span>
+                </div>
               </li>
             </ul>
           </div>
