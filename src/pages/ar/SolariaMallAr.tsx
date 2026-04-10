@@ -7,7 +7,7 @@ import CTASection from "@/components/CTASection";
 import MallGallerySection from "@/components/MallGallerySection";
 import InteractiveFloorPlan from "@/components/InteractiveFloorPlan";
 import solariaImg from "@/assets/solaria-mall.webp";
-import heroImg from "@/assets/hero-solaria.webp";
+import useSEO from "@/hooks/useSEO";
 import solaria1 from "@/assets/gallery/solaria-1.webp";
 import solaria2 from "@/assets/gallery/solaria-2.webp";
 import solaria3 from "@/assets/gallery/solaria-3.webp";
