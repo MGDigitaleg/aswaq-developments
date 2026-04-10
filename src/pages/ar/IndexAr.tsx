@@ -434,22 +434,20 @@ const IndexAr = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            {/* Cinematic Solaria Aerial */}
+            {/* Cinematic Solaria Aerial — Living Video */}
             <div className="relative rounded-2xl overflow-hidden" style={{ boxShadow: '0 32px 80px -16px hsl(232 78% 8% / 0.18), 0 12px 28px -8px hsl(232 78% 8% / 0.08)' }}>
-              <motion.div
-                className="aspect-[4/3] md:aspect-[2/1]"
-                initial={{ scale: 1.08 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 12, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <img
-                  src="/solaria-orbit/frame-12.jpg"
-                  alt="سولاريا مول — منظر جوي معماري"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
-              </motion.div>
+              <div className="aspect-[4/3] md:aspect-[2/1] relative">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster="/solaria-orbit/frame-12.jpg"
+                  className="absolute inset-0 w-full h-full object-cover"
+                >
+                  <source src={solariaVideo.url} type="video/mp4" />
+                </video>
+              </div>
 
               {/* Desktop overlay content — RTL: aligned right */}
               <div className="absolute inset-y-0 right-0 hidden md:flex items-center p-10 lg:p-14 z-[5] pointer-events-none">
